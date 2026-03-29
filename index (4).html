@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HandwerksManufaktur – Mehr Badsanierungsaufträge für SHK-Betriebe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="cursor-glow" id="cursorGlow"></div>
+<nav id="navbar">
+  <a href="#home" class="nav-wordmark">Handwerks<span>Manufaktur</span></a>
+  <ul class="nav-links">
+    <li><a href="#prozess">Prozess</a></li>
+    <li><a href="#ergebnisse">Ergebnisse</a></li>
+    <li><a href="#ueber-mich">Über mich</a></li>
+    <li><a href="#referenzen">Referenzen</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-cta">Erstgespräch</a>
+  <button class="hamburger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#prozess" onclick="toggleMenu()">Prozess</a>
+  <a href="#ergebnisse" onclick="toggleMenu()">Ergebnisse</a>
+  <a href="#ueber-mich" onclick="toggleMenu()">Über mich</a>
+  <a href="#referenzen" onclick="toggleMenu()">Referenzen</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#kontakt" class="btn-primary" style="font-size:1rem" onclick="toggleMenu()">Kostenloses Erstgespräch</a>
+</div>
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-mesh"><div class="mesh-blob"></div><div class="mesh-blob"></div><div class="mesh-blob"></div></div>
+  <div class="hero-grid"></div>
+  <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+  <div class="hero-content">
+    <div class="hero-overline"><div class="hero-overline-line"></div><div class="hero-overline-text">Spezialisiert auf SHK-Betriebe</div></div>
+    <h1>
+      <span class="line">Mehr <span class="accent">Badsanierungsaufträge</span></span>
+      <span class="line">für Ihren SHK-Betrieb.</span>
+      <span class="line" style="font-style:italic;color:var(--text-muted);font-size:.68em;font-weight:700">Planbar. Messbar. Skalierbar.</span>
+    </h1>
+    <p class="hero-sub">Wir übernehmen die komplette Kundengewinnung für Sanitär-, Heizungs- und Klimabetriebe – damit Ihr Terminkalender voll ist und Sie sich aufs Handwerk konzentrieren können.</p>
+    <div class="hero-pills">
+      <div class="pill">🛁 Badsanierung</div>
+      <div class="pill">🔧 SHK-spezialisiert</div>
+      <div class="pill">📍 DACH-weit</div>
+      <div class="pill">📈 Messbare Ergebnisse</div>
+    </div>
+    <div class="hero-cta-row">
+      <a href="#kontakt" class="btn-primary">Potenzialanalyse sichern <span class="arrow">→</span></a>
+      <div class="hero-note"><span>✓</span> Kostenlos &nbsp;·&nbsp; <span>✓</span> Unverbindlich</div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="bath-scene">
+      <canvas id="bathCanvas" class="bath-canvas"></canvas>
+      
+
+    </div>
+  </div>
+</section>
+<div class="stats-marquee"><div class="stats-track" id="statsTrack"></div></div>
+<div class="ticker-section">
+  <p class="ticker-label">SHK-Betriebe, die HandwerksManufaktur vertrauen</p>
+  <div class="ticker-outer"><div class="ticker-track" id="tickerTrack"></div></div>
+</div>
+<section class="problems" id="probleme">
+  <div class="section-eyebrow reveal"><div class="eyebrow-line"></div><div class="eyebrow-text">Das eigentliche Problem</div></div>
+  <h2 class="section-title reveal">Warum gute SHK-Betriebe trotzdem<br>zu wenige Anfragen haben</h2>
+  <div class="problems-grid">
+    <div class="problem-card reveal"><div class="problem-num">01</div><span class="problem-icon">📉</span><h3>Keine planbare Auftragsgewinnung</h3><p>Der Kalender ist heute voll – und nächste Woche gähnend leer. Viele Betriebe verlassen sich auf Empfehlungen statt auf ein System, das verlässlich neue Aufträge bringt.</p></div>
+    <div class="problem-card reveal" style="transition-delay:.1s"><div class="problem-num">02</div><span class="problem-icon">⏰</span><h3>Keine Zeit für Marketing</h3><p>Zwischen Baustelle, Büro und Notdienst bleibt kaum Zeit für Werbung. Social Media, Google, Website – all das wird auf die lange Bank geschoben. Verständlich – aber teuer.</p></div>
+    <div class="problem-card reveal" style="transition-delay:.2s"><div class="problem-num">03</div><span class="problem-icon">💸</span><h3>Geld für Werbung verpufft</h3><p>Ob Flyer, Zeitung oder eine teure Agentur ohne Branchenkenntnis – die Ergebnisse bleiben aus. Es fehlt ein System, das speziell auf Badsanierungsanfragen ausgelegt ist.</p></div>
+  </div>
+</section>
+<section class="process" id="prozess">
+  <div class="process-bg-text">SYSTEM</div>
+  <div class="process-header">
+    <div><div class="section-eyebrow reveal-left"><div class="eyebrow-line"></div><div class="eyebrow-text">Unser Vorgehen</div></div><h2 class="section-title reveal-left">In 4 Schritten zu einem<br>vollen Auftragsbuch</h2></div>
+    <p class="section-sub reveal-right">Kein Rätselraten, kein Ausprobieren. Wir haben ein erprobtes System speziell für SHK-Betriebe entwickelt – und setzen es vollständig für Sie um.</p>
+  </div>
+  <div class="process-steps" id="processSteps">
+    <div class="process-connector"></div>
+    <div class="process-connector-animated" id="processConnector"></div>
+    <div class="step reveal"><div class="step-num">1</div><h3>Potenzialanalyse</h3><p>Wir analysieren Ihren Markt, Ihre Region und Ihre Zielkunden – kostenlos und unverbindlich.</p></div>
+    <div class="step reveal" style="transition-delay:.15s"><div class="step-num">2</div><h3>Strategie &amp; Setup</h3><p>Zielgruppe, Botschaft, Kanäle – alles auf Badsanierungsanfragen ausgerichtet. Fertig in unter 2 Wochen.</p></div>
+    <div class="step reveal" style="transition-delay:.3s"><div class="step-num">3</div><h3>Kampagne live</h3><p>Anfragen kommen direkt zu Ihnen – vorqualifiziert mit Kontaktdaten und Projektwunsch.</p></div>
+    <div class="step reveal" style="transition-delay:.45s"><div class="step-num">4</div><h3>Optimierung &amp; Skalierung</h3><p>Wir werten aus und optimieren laufend. Was funktioniert, wird skaliert – mehr Anfragen, gleicher Preis.</p></div>
+  </div>
+</section>
+<section class="results" id="ergebnisse">
+  <div class="results-inner">
+    <div class="results-stats reveal-left">
+      <div class="stat-card reveal-scale"><div class="stat-val" data-target="312" data-suffix="%" data-prefix="+">+0%</div><div class="stat-label">Durchschnittliche Steigerung qualifizierter Anfragen in 90 Tagen</div></div>
+      <div class="stat-card reveal-scale" style="transition-delay:.1s"><div class="stat-val" data-target="40000" data-suffix="" data-prefix="€ ">€ 0</div><div class="stat-label">Ø Auftragswert Badsanierung</div></div>
+      <div class="stat-card reveal-scale" style="transition-delay:.2s"><div class="stat-val" data-target="14" data-suffix=" Tage" data-prefix="">0 Tage</div><div class="stat-label">Bis zur ersten qualifizierten Anfrage</div></div>
+      <div class="stat-card reveal-scale" style="transition-delay:.3s"><div class="stat-val" data-target="100" data-suffix="+" data-prefix="">0+</div><div class="stat-label">Handwerksfirmen vertrauen auf uns</div></div>
+    </div>
+    <div class="reveal-right">
+      <div class="section-eyebrow" style="margin-bottom:.9rem"><div class="eyebrow-line"></div><div class="eyebrow-text">Ergebnisse die zählen</div></div>
+      <h2 class="section-title">Zahlen,<br>keine Versprechen</h2>
+      <p class="section-sub">Wir messen alles – Kosten pro Anfrage, Abschlussquoten, ROI. Sie sehen transparent, was Ihre Investition bringt.</p>
+      <ul class="checklist">
+        <li><span class="checkmark">✓</span> Nur vorqualifizierte Anfragen mit echtem Kaufinteresse</li>
+        <li><span class="checkmark">✓</span> Vollständige Transparenz über alle Kampagnendaten</li>
+        <li><span class="checkmark">✓</span> Monatliches Reporting mit klaren KPIs</li>
+        <li><span class="checkmark">✓</span> Kein Knebelvertrag – monatlich kündbar</li>
+        <li><span class="checkmark">✓</span> Über 5 Jahre Erfahrung mit Handwerksbetrieben</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="about" id="ueber-mich">
+  <div class="about-inner">
+    <div class="reveal-left" style="display:flex;justify-content:center">
+      <div class="about-portrait-wrap">
+        <img id="aboutPortrait" class="about-portrait" alt="Noah Seelau">
+        <div class="about-stat-badge"><div class="asb-num">100+</div><div class="asb-label">Betreute Handwerksfirmen</div></div>
+      </div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-eyebrow" style="margin-bottom:.9rem"><div class="eyebrow-line"></div><div class="eyebrow-text">Über mich</div></div>
+      <h2 class="section-title">Der Mensch hinter<br>HandwerksManufaktur</h2>
+      <p class="section-sub">Ich bin Noah Seelau – Gründer der HandwerksManufaktur. Seit über 5 Jahren arbeite ich ausschließlich mit Handwerksbetrieben. Ich kenne die Abläufe, spreche die Sprache der Branche und weiß, worauf es im Alltag wirklich ankommt.</p>
+      <p class="section-sub" style="margin-top:1rem">Mit meiner Spezialisierung auf SHK-Betriebe und Badsanierungsanfragen bringe ich nicht nur Erfahrung mit – sondern ein erprobtes System, das planbar funktioniert.</p>
+      <div style="display:flex;align-items:center;gap:1rem;margin-top:2rem;padding:1.2rem 1.4rem;background:rgba(27,127,168,0.06);border:1px solid rgba(27,127,168,0.18);border-radius:12px">
+        <img id="aboutAvatar" style="width:50px;height:50px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--teal);mix-blend-mode:screen;flex-shrink:0" alt="Noah Seelau">
+        <div><div class="about-name">Noah Seelau</div><div class="about-role">Gründer &amp; Geschäftsführer, HandwerksManufaktur</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="testimonials" id="referenzen">
+  <div class="section-eyebrow reveal"><div class="eyebrow-line"></div><div class="eyebrow-text">Kundenstimmen</div></div>
+  <h2 class="section-title reveal">Was SHK-Betriebe über uns sagen</h2>
+  <p class="section-sub reveal">Echte Google-Bewertungen von echten Kunden.</p>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal"><div class="testi-card-top"><div class="testi-stars">★★★★★</div><div class="google-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google</div></div><p class="testi-text">Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. Die Beratung war kompetent, verständlich und stets auf unsere individuellen Wünsche abgestimmt. Das Ergebnis hat unsere Erwartungen nicht nur erfüllt, sondern sogar übertroffen.</p><div class="testi-author"><div class="testi-avatar-init" style="background:linear-gradient(135deg,#1b6ca8,#22a8d4)">FG</div><div><div class="testi-name">Franz Gallenberger</div><div class="testi-company">Sanitär · Heizung · Klimatechnik</div></div></div></div>
+    <div class="testi-card reveal" style="transition-delay:.1s"><div class="testi-card-top"><div class="testi-stars">★★★★★</div><div class="google-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google</div></div><p class="testi-text">Wir sind sehr zufrieden! Der Kontakt mit Noah ist immer freundlich.</p><div class="testi-author"><div class="testi-avatar-init" style="background:linear-gradient(135deg,#c8260f,#e84c2b)">BS</div><div><div class="testi-name">Be Se</div><div class="testi-company">Senftleben Sanitär Heizung, Ehingen (Donau)</div></div></div></div>
+    <div class="testi-card reveal" style="transition-delay:.2s"><div class="testi-card-top"><div class="testi-stars">★★★★★</div><div class="google-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google</div></div><p class="testi-text">Reibungsloser Ablauf bis zur Fertigstellung. Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit, gerne wieder.</p><div class="testi-author"><div class="testi-avatar-init" style="background:linear-gradient(135deg,#1a1a1a,#444)">LZ</div><div><div class="testi-name">Lanzinger GmbH</div><div class="testi-company">Sanitär · Heizung · Klimatechnik</div></div></div></div>
+    <div class="testi-card reveal" style="transition-delay:.3s"><div class="testi-card-top"><div class="testi-stars">★★★★★</div><div class="google-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google</div></div><p class="testi-text">Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren.</p><div class="testi-author"><div class="testi-avatar-init" style="background:linear-gradient(135deg,#5b3fa8,#8b67d4)">AS</div><div><div class="testi-name">Andrea Süßmeier</div><div class="testi-company">Handwerksbetrieb</div></div></div></div>
+  </div>
+</section>
+<section class="for-whom">
+  <div class="section-eyebrow reveal"><div class="eyebrow-line"></div><div class="eyebrow-text">Passt das zu mir?</div></div>
+  <h2 class="section-title reveal">Für wen HandwerksManufaktur<br>gemacht ist</h2>
+  <p class="section-sub reveal">Wir arbeiten nicht mit jedem – damit wir mit denen arbeiten, bei denen wir echte Ergebnisse erzielen können.</p>
+  <div class="for-whom-grid">
+    <div class="whom-card reveal"><span class="whom-icon">🔧</span><div><h3>SHK-Betrieb mit mind. 3 Mitarbeitern</h3><p>Sie haben die Kapazität, eingehende Anfragen auch zu bedienen – Voraussetzung für unser System.</p></div></div>
+    <div class="whom-card reveal" style="transition-delay:.1s"><span class="whom-icon">🛁</span><div><h3>Fokus auf Badsanierung</h3><p>Badsanierung ist Ihr Kerngeschäft oder soll es werden. Wir bringen Ihnen genau diese Kunden.</p></div></div>
+    <div class="whom-card reveal" style="transition-delay:.2s"><span class="whom-icon">📍</span><div><h3>Klares Einzugsgebiet</h3><p>Sie haben eine definierte Region – und wollen dort dominant sichtbar werden.</p></div></div>
+    <div class="whom-card reveal" style="transition-delay:.3s"><span class="whom-icon">💡</span><div><h3>Bereit für Wachstum</h3><p>Sie wollen nicht auf Empfehlungen warten, sondern aktiv und planbar wachsen.</p></div></div>
+  </div>
+</section>
+<section class="comparison">
+  <div style="text-align:center;max-width:620px;margin:0 auto">
+    <div class="section-eyebrow reveal" style="justify-content:center"><div class="eyebrow-line"></div><div class="eyebrow-text">Der Unterschied</div></div>
+    <h2 class="section-title reveal">HandwerksManufaktur vs.<br>herkömmliches Marketing</h2>
+  </div>
+  <div class="comparison-table reveal">
+    <div class="ct-header"><div>Kriterium</div><div>Klassische Agentur</div><div>HandwerksManufaktur</div></div>
+    <div class="ct-row"><div>SHK-Branchenkenntnis</div><div><span class="ct-no">✗</span></div><div><span class="ct-yes">✓</span></div></div>
+    <div class="ct-row"><div>Fokus auf Badsanierungsanfragen</div><div><span class="ct-no">✗</span></div><div><span class="ct-yes">✓</span></div></div>
+    <div class="ct-row"><div>Vorqualifizierte Anfragen</div><div><span class="ct-maybe">Manchmal</span></div><div><span class="ct-yes">✓</span></div></div>
+    <div class="ct-row"><div>Transparentes Reporting</div><div><span class="ct-maybe">Selten</span></div><div><span class="ct-yes">✓</span></div></div>
+    <div class="ct-row"><div>Kein Langzeitvertrag</div><div><span class="ct-no">✗</span></div><div><span class="ct-yes">✓</span></div></div>
+    <div class="ct-row"><div>Erste Anfragen in unter 14 Tagen</div><div><span class="ct-no">✗</span></div><div><span class="ct-yes">✓</span></div></div>
+    <div class="ct-row"><div>Über 5 Jahre Handwerkserfahrung</div><div><span class="ct-no">✗</span></div><div><span class="ct-yes">✓</span></div></div>
+  </div>
+</section>
+<section class="faq" id="faq">
+  <div style="text-align:center;max-width:560px;margin:0 auto">
+    <div class="section-eyebrow reveal" style="justify-content:center"><div class="eyebrow-line"></div><div class="eyebrow-text">Häufige Fragen</div></div>
+    <h2 class="section-title reveal">Alles, was Sie<br>wissen müssen</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Was kostet die Zusammenarbeit?<span class="faq-icon">+</span></div><div class="faq-a">Die Kosten hängen von Ihrem Einzugsgebiet und gewünschtem Anfragesvolumen ab. Im kostenlosen Erstgespräch erstellen wir gemeinsam ein individuelles Angebot – ohne versteckte Gebühren.</div></div>
+    <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Wie schnell kommen erste Anfragen?<span class="faq-icon">+</span></div><div class="faq-a">In den meisten Fällen gehen erste Anfragen innerhalb von 7–14 Tagen nach Kampagnenstart ein.</div></div>
+    <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Muss ich mich lange binden?<span class="faq-icon">+</span></div><div class="faq-a">Nein. Eine Mindestlaufzeit von 3 Monaten gilt, damit das System seine volle Wirkung entfalten kann – danach monatlich kündbar.</div></div>
+    <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Was passiert, wenn ich nicht genug Kapazität habe?<span class="faq-icon">+</span></div><div class="faq-a">Wir steuern das Anfragesvolumen aktiv – Sie bekommen nie mehr Anfragen als Sie sinnvoll bearbeiten können.</div></div>
+    <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Übernehmt ihr auch Mitarbeitergewinnung?<span class="faq-icon">+</span></div><div class="faq-a">Ja – neben der Auftragsgewinnung bieten wir auf Wunsch auch Recruiting-Kampagnen speziell für SHK-Betriebe an.</div></div>
+    <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Habt ihr Erfahrung in der Handwerksbranche?<span class="faq-icon">+</span></div><div class="faq-a">Ja – seit über 5 Jahren arbeiten wir ausschließlich mit Handwerksbetrieben. Über 100 Betriebe haben wir bereits betreut.</div></div>
+  </div>
+</section>
+<section class="cta-section" id="kontakt">
+  <div class="cta-grid-bg"></div>
+  <div class="cta-inner">
+    <div class="section-eyebrow reveal" style="justify-content:center;margin-bottom:1rem"><div class="eyebrow-line"></div><div class="eyebrow-text">Jetzt starten</div></div>
+    <h2 class="reveal">Bereit für einen<br><em style="color:var(--teal-bright);font-style:italic">vollen Auftragskalender?</em></h2>
+    <p class="reveal">Buchen Sie jetzt Ihr kostenloses Erstgespräch. In 30 Minuten analysieren wir gemeinsam Ihr Potenzial.</p>
+    <div class="cta-pills reveal">
+      <div class="pill">✓ Kostenlos &amp; unverbindlich</div>
+      <div class="pill">✓ In 24h Rückmeldung</div>
+      <div class="pill">✓ SHK-spezialisiert</div>
+    </div>
+    <a href="/cdn-cgi/l/email-protection#f891969e97b89c919dd59099969c8f9d8a938b9599968d9e99938c8d8ad69c9d" class="btn-primary reveal" style="font-size:1.05rem;padding:1.1rem 2.6rem;margin:0 auto;display:inline-flex">Kostenloses Erstgespräch buchen <span class="arrow">→</span></a>
+    <p class="reveal" style="margin-top:1.4rem;font-size:.81rem;color:var(--text-muted)"><strong style="color:var(--teal-bright)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="137a7d757c53777a763e7b727d7764766178607e727d667572786766613d7776">[email&#160;protected]</a></strong> &nbsp;·&nbsp; <strong style="color:var(--teal-bright)">+49 8194 7174990</strong></p>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div><a href="#home" class="footer-wordmark">Handwerks<span>Manufaktur</span></a><p class="footer-desc">Performance-Marketing für SHK-Betriebe. Mehr Badsanierungsanfragen – messbar, planbar, skalierbar.</p></div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="#prozess">Unser Prozess</a></li><li><a href="#ergebnisse">Ergebnisse</a></li><li><a href="#ueber-mich">Über mich</a></li><li><a href="#referenzen">Referenzen</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+    <div class="footer-col"><h4>Rechtliches</h4><ul><li><a href="#" onclick="openLegal('impressum');return false">Impressum</a></li><li><a href="#" onclick="openLegal('datenschutz');return false">Datenschutz</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 HandwerksManufaktur. Alle Rechte vorbehalten.</span><span>Mit ❤️ gebaut für SHK-Betriebe in Deutschland</span></div>
+</footer>
+<div class="legal-page" id="impressum-page"><div class="legal-page-inner"><button class="legal-close-btn" onclick="closeLegal()">← Zurück</button><h1>Impressum</h1><h2>Angaben gemäß § 5 TMG</h2><p><strong>HANDWERKSMANUFAKTUR LTD</strong><br>Georgiou Griva Digeni, 51<br>Athineon Building, 1st floor<br>8047, Paphos, Cyprus<br>Vertreten durch: Noah Seelau</p><h2>Kontakt</h2><p>Telefon: +49 8194 7174990<br>E-Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd94939b92bd999498d0959c93998a988f968e909c93889b9c9689888fd39998">[email&#160;protected]</a></p><h2>EU-Streitschlichtung</h2><p>Plattform zur OS: <a href="https://ec.europa.eu/consumers/odr" target="_blank" style="color:var(--teal-bright)">ec.europa.eu/consumers/odr</a></p><h3>Haftungsausschluss</h3><p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte nach den allgemeinen Gesetzen verantwortlich.</p></div></div>
+<div class="legal-page" id="datenschutz-page"><div class="legal-page-inner"><button class="legal-close-btn" onclick="closeLegal()">← Zurück</button><h1>Datenschutzerklärung</h1><h2>Verantwortliche Stelle</h2><p>HANDWERKSMANUFAKTUR LTD · Noah Seelau · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="751c1b131a35111c10581d141b110210071e0618141b0013141e0100075b1110">[email&#160;protected]</a></p><h2>Ihre Rechte</h2><p>Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer personenbezogenen Daten.</p><h2>Kontaktaufnahme</h2><p>Bei Kontaktaufnahme per E-Mail werden Ihre Daten zur Bearbeitung gespeichert (Art. 6 Abs. 1 lit. b DSGVO).</p></div></div>
+
+<script src="images.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

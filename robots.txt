@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shk.die-handwerksmanufaktur.de/sitemap.xml

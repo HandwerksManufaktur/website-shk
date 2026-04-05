@@ -618,40 +618,41 @@ function shkLogoFile(files){
 function handleLogoDrop2(e){e.preventDefault();if(e.dataTransfer.files.length)shkLogoFile(e.dataTransfer.files);}
 
 function collectFormData() {
-  const data = {};
-  // General fields - skip dynamic blocks
-  document.querySelectorAll('input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select').forEach(function(el) {
-    if (!el.value.trim() || el.type === 'file') return;
-    if (el.closest('.stelle-block, .stelle-item, .leistung-shk, #vorteileList, .benefitsList')) return;
-    const field = el.closest('.field,.f');
-    const label = field && field.querySelector('label') ? field.querySelector('label').textContent.replace('*','').trim() : '';
-    if (label && label.length > 1 && !data[label]) data[label] = el.value.trim();
-  });
-  // Vorteile des Betriebs
-  const vList = document.getElementById('vorteileList');
-  if(vList){
-    const v = [...vList.querySelectorAll('input')].map(i=>i.value.trim()).filter(Boolean);
-    if(v.length) data['Vorteile des Betriebs'] = v.join(' | ');
-  }
-  // Stellen mit Benefits
-  document.querySelectorAll('.stelle-block, .stelle-item, [class*="stelle"]').forEach(function(block, i) {
-    const bez = block.querySelector('input[placeholder*="Stelle"], input[placeholder*="Bezeichnung"]');
-    if (bez && bez.value.trim()) {
-      data['── Stelle ' + (i+1) + ': ' + bez.value.trim() + ' ──'] = '';
-      block.querySelectorAll('input[type=text], textarea').forEach(function(el) {
-        if (!el.value.trim() || el === bez) return;
-        const f = el.closest('.field');
-        const lbl = f && f.querySelector('label') ? f.querySelector('label').textContent.replace('*','').trim() : el.placeholder;
-        if (lbl) data['  ' + lbl] = el.value.trim();
-      });
-      const benefits = [...block.querySelectorAll('.benefitsList input, [class*="benefit"] input')].map(e=>e.value.trim()).filter(Boolean);
-      if (benefits.length) data['  Benefits'] = benefits.join(' | ');
+  var data = {};
+  var usedLabels = {};
+  var inputs = document.querySelectorAll('input:not([type=file]):not([type=radio]):not([type=checkbox]),textarea,select');
+  inputs.forEach(function(el) {
+    var val = (el.value || '').trim();
+    if (!val) return;
+    // Find best label
+    var label = '';
+    // 1. label[for=id]
+    if (el.id) {
+      var l = document.querySelector('label[for="' + el.id + '"]');
+      if (l) label = l.textContent;
     }
-  });
-  // Leistungen (LeadGen)
-  document.querySelectorAll('.leistung-shk').forEach(function(block, i) {
-    const el = block.querySelector('input[type=text]');
-    if (el && el.value.trim()) data['── Leistung ' + (i+1) + ' ──'] = el.value.trim();
+    // 2. parent .field > label
+    if (!label) {
+      var f = el.closest('.field') || el.closest('.f');
+      if (f) { var l2 = f.querySelector(':scope > label'); if (l2) label = l2.textContent; }
+    }
+    // 3. preceding sibling label
+    if (!label) {
+      var f2 = el.closest('.field') || el.closest('.f');
+      if (f2) { var l3 = f2.querySelector('label'); if (l3) label = l3.textContent; }
+    }
+    // 4. placeholder fallback
+    if (!label) label = el.placeholder || el.name || '';
+    label = label.replace(/\*/g,'').replace(/\s+/g,' ').trim().slice(0,60);
+    if (!label || label.length < 2) label = 'Eingabe';
+    // Handle duplicate labels
+    if (usedLabels[label]) {
+      usedLabels[label]++;
+      label = label + ' (' + usedLabels[label] + ')';
+    } else {
+      usedLabels[label] = 1;
+    }
+    data[label] = val;
   });
   return data;
 }

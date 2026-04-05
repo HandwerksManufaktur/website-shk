@@ -579,6 +579,22 @@ function shkLogoFile(files){
   });}
 }
 function handleLogoDrop2(e){e.preventDefault();if(e.dataTransfer.files.length)shkLogoFile(e.dataTransfer.files);}
+
+function collectFormData() {
+  const data = {};
+  document.querySelectorAll('input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select').forEach(function(el) {
+    if (!el.value.trim()) return;
+    if (el.type === 'file') return;
+    const field = el.closest('.field,.f,[class*="field"]');
+    const label = field && field.querySelector('label') ? field.querySelector('label').textContent.replace('*','').trim() : (el.placeholder || el.name || el.id);
+    if (label && label.length > 1) {
+      if (data[label]) data[label] += ', ' + el.value.trim();
+      else data[label] = el.value.trim();
+    }
+  });
+  return data;
+}
+
 async function submitForm(){
   if(!dsgvoSHK){alert('Bitte stimme zuerst der Datenschutzerklärung zu (Checkbox am Ende des Formulars).');return;}
   const firmaInput=document.querySelector('#formWrap input[placeholder*="Mustermann"], #formWrap input[placeholder*="GmbH"]');
@@ -598,7 +614,7 @@ async function submitForm(){
     // 1. Create Drive folders
     if(status)status.textContent='Ordnerstruktur wird angelegt…';
     const API='https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
-    const r=await fetch(API+'/create-folders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firmaName,leistungen,serviceType:'shk'})});
+    const r=await fetch(API+'/create-folders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firmaName,leistungen,serviceType:'shk',formData:collectFormData()})});
     const{folderIds,driveLink}=await r.json();
     // 2. Upload logo if present
     if(window.shkFileStore2&&window.shkFileStore2['logo']&&window.shkFileStore2['logo'].length&&folderIds&&folderIds.sonstiges){

@@ -314,7 +314,7 @@
     <div class="field-group">
       <div class="field-row">
         <div class="field"><label>Dienstleistung / Produkt <span class="req">*</span></label><input type="text" placeholder="z.B. Wärmepumpe, Badsanierung"></div>
-        <div class="field"><label>Durchschnittlicher Auftragswert</label><input type="text" placeholder="z.B. 8.000 €"></div>
+        <div class="field"><label>Durchschnittlicher Auftragswert</label><input type="text" placeholder="z.B. 30.000 – 50.000 €"></div>
       </div>
       <div class="field"><label>Aktuelle Auslastung <span class="req">*</span></label>
         <select><option value="">Bitte wählen</option><option>Unter 40%</option><option>40–60%</option><option>60–80%</option><option>80–95%</option><option>Vollständig ausgelastet</option></select>
@@ -324,6 +324,10 @@
           <select><option value="">Bitte wählen</option><option>1–5</option><option>6–10</option><option>11–20</option><option>20+</option></select>
         </div>
         <div class="field"><label>Einzugsgebiet / Radius <span class="req">*</span></label><input type="text" placeholder="z.B. Hamburg + 50 km"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Badsanierungen / Monat</label><input type="text" placeholder="z.B. 3-5 Aufträge"></div>
+        <div class="field"><label>Wärmepumpen / Monat</label><input type="text" placeholder="z.B. 1-2 Aufträge"></div>
       </div>
       <div class="field"><label>Was muss passieren damit ihr nach der Laufzeit zufrieden seid? <span class="req">*</span></label><textarea placeholder="Eure Erwartungen an das Ergebnis..."></textarea></div>
       <div class="divider"></div>
@@ -353,7 +357,7 @@
         <label>Gibt es bereits Fotos / Videos von Projekten?</label><div class="toggle" id="fotos-toggle"></div>
       </div>
       <div class="conditional" id="fotos-cond">
-        <div class="cond-section"><div class="field"><label>Link / Speicherort</label><input type="url" placeholder="Google Drive, Website, Dropbox..."></div></div>
+        <div class="cond-section"></div>
       </div>
     </div>
   </div>
@@ -372,7 +376,7 @@
             <div class="field"><label>Link zur Seite</label><input type="url" placeholder="https://facebook.com/..."></div>
           </div>
           <div class="field"><label>E-Mail des Admin-Accounts <span class="req">*</span></label><input type="email" placeholder="admin@email.de"><div class="hint">Wir fügen euch als Partner im Werbeanzeigenmanager hinzu</div></div>
-          <div class="field"><label>Backup-Account (Name + E-Mail)</label><input type="text" placeholder="z.B. Ehepartner, Mitarbeiter – wer könnte als Backup-Account hinzugefügt werden falls der Hauptaccount gesperrt wird?"></div>
+          <div class="field"><label>Backup-Account (Name + E-Mail)</label><input type="text" placeholder="z.B. Max Mustermann"><div class="hint" style="margin-top:6px">Wer könnte als Backup-Account hinzugefügt werden, falls der Hauptaccount gesperrt wird? z.B. Ehepartner, Mitarbeiter</div</div>
         </div></div>
       </div>
       <div class="toggle-field" onclick="toggleCond('ig-toggle','ig-cond')">
@@ -470,6 +474,11 @@ function setService(val){
   document.getElementById('arbeitgeberField').style.display=val==='recruiting'?'flex':'none';
   const lWrap=document.getElementById('leistungenSHK-wrap');
   if(lWrap)lWrap.style.display=val==='leadgen'?'block':'none';
+  // Auto-add first Leistung when LeadGen selected
+  if(val==='leadgen' && !window._leadgenInit){
+    window._leadgenInit=true;
+    addLeistungSHK();
+  }
 }
 
 function toggleCond(t,c){const toggle=document.getElementById(t);const cond=document.getElementById(c);cond.classList.toggle('visible',toggle.classList.toggle('on'));}
@@ -585,13 +594,23 @@ function collectFormData() {
   document.querySelectorAll('input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select').forEach(function(el) {
     if (!el.value.trim()) return;
     if (el.type === 'file') return;
-    const field = el.closest('.field,.f,[class*="field"]');
-    const label = field && field.querySelector('label') ? field.querySelector('label').textContent.replace('*','').trim() : (el.placeholder || el.name || el.id);
+    const field = el.closest('.field,.f,.leistung-shk,[class*="field"]');
+    const label = field && field.querySelector('label') ? field.querySelector('label').textContent.replace('*','').trim() : (el.placeholder || el.name || '');
     if (label && label.length > 1) {
-      if (data[label]) data[label] += ', ' + el.value.trim();
+      if (data[label]) data[label] += ' | ' + el.value.trim();
       else data[label] = el.value.trim();
     }
   });
+  // Leistungen aus den dynamischen Feldern
+  document.querySelectorAll('.leistung-shk input[type=text]').forEach(function(el, i) {
+    if (el.value.trim()) data['Leistung ' + (i+1)] = el.value.trim();
+  });
+  // Vorteile
+  const vList = document.getElementById('vorteileList');
+  if(vList){
+    const vorteile = [...vList.querySelectorAll('input')].map(i=>i.value.trim()).filter(Boolean);
+    if(vorteile.length) data['Vorteile des Betriebs'] = vorteile.join(' | ');
+  }
   return data;
 }
 

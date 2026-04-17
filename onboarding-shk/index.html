@@ -201,18 +201,19 @@
     <div class="block-header"><div class="block-num">00</div><div class="block-title">🎯 Gebuchte Leistung</div></div>
     <div class="service-selector">
       <label class="service-card" id="card-recruiting">
-        <input type="radio" name="service" value="recruiting" onchange="setService('recruiting')">
+        <input type="checkbox" value="recruiting" onchange="toggleService('recruiting',this.checked)">
         <div class="sc-icon">🔧</div>
         <div class="sc-label">Recruiting</div>
         <div class="sc-desc">Fachkräfte finden & gewinnen</div>
       </label>
       <label class="service-card" id="card-leadgen">
-        <input type="radio" name="service" value="leadgen" onchange="setService('leadgen')">
+        <input type="checkbox" value="leadgen" onchange="toggleService('leadgen',this.checked)">
         <div class="sc-icon">📈</div>
         <div class="sc-label">Neukundengewinnung</div>
         <div class="sc-desc">Mehr Aufträge & neue Kunden gewinnen</div>
       </label>
     </div>
+    <div class="hint" style="margin-top:12px;text-align:center">Du kannst auch beides auswählen, wenn du sowohl Recruiting als auch Neukundengewinnung gebucht hast.</div>
   </div>
 
   <!-- BLOCK 1 – STAMMDATEN -->
@@ -491,21 +492,22 @@ document.addEventListener('input', function(e) {
 window.addEventListener('load', loadDraft);
 
 const API_BASE='https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
-function updateProgress(){const i=document.querySelectorAll('input:not([type=file]):not([type=radio]),textarea,select');const f=[...i].filter(x=>x.value.trim()!=='').length;document.getElementById('progressFill').style.width=Math.min(100,Math.round(f/i.length*100))+'%';}
+function updateProgress(){const i=document.querySelectorAll('input:not([type=file]):not([type=radio]):not([type=checkbox]),textarea,select');const f=[...i].filter(x=>x.value.trim()!=='').length;document.getElementById('progressFill').style.width=Math.min(100,Math.round(f/i.length*100))+'%';}
 document.addEventListener('input',updateProgress);
 
-function setService(val){
-  document.getElementById('card-recruiting').classList.toggle('active',val==='recruiting');
-  document.getElementById('card-leadgen').classList.toggle('active',val==='leadgen');
-  document.getElementById('block-recruiting').classList.toggle('visible',val==='recruiting');
-  document.getElementById('block-leadgen').classList.toggle('visible',val==='leadgen');
-  document.getElementById('arbeitgeberField').style.display=val==='recruiting'?'flex':'none';
-  const lWrap=document.getElementById('leistungenSHK-wrap');
-  if(lWrap)lWrap.style.display=val==='leadgen'?'block':'none';
-  // Auto-add first Leistung when LeadGen selected
-  if(val==='leadgen' && !window._leadgenInit){
-    window._leadgenInit=true;
-    addLeistungSHK();
+function toggleService(val,on){
+  document.getElementById('card-'+val).classList.toggle('active',on);
+  document.getElementById('block-'+val).classList.toggle('visible',on);
+  if(val==='recruiting'){
+    document.getElementById('arbeitgeberField').style.display=on?'flex':'none';
+  }
+  if(val==='leadgen'){
+    const lWrap=document.getElementById('leistungenSHK-wrap');
+    if(lWrap)lWrap.style.display=on?'block':'none';
+    if(on && !window._leadgenInit){
+      window._leadgenInit=true;
+      addLeistungSHK();
+    }
   }
 }
 

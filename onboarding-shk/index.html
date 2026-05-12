@@ -160,8 +160,17 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 .success-screen p{color:var(--muted);font-size:15px;line-height:1.7;max-width:400px}
 
 /* UPLOAD OVERLAY */
-.upload-overlay{display:none;position:fixed;inset:0;background:rgba(11,24,41,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center}
+.upload-overlay{display:none;position:fixed;inset:0;background:#f4f8fc;z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center}
 .upload-overlay.show{display:flex}
+@keyframes barPulse{0%,100%{opacity:1}50%{opacity:0.5}}
+@keyframes logoBounce{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.4)}}
+.upload-logo-bars{display:flex;gap:5px;align-items:flex-end;margin-bottom:28px}
+.upload-logo-bars span{display:block;width:6px;border-radius:3px;background:var(--accent)}
+.upload-logo-bars span:nth-child(1){height:14px;animation:logoBounce 1s ease-in-out 0s infinite}
+.upload-logo-bars span:nth-child(2){height:22px;animation:logoBounce 1s ease-in-out 0.15s infinite}
+.upload-logo-bars span:nth-child(3){height:12px;animation:logoBounce 1s ease-in-out 0.3s infinite}
+.upload-logo-bars span:nth-child(4){height:18px;animation:logoBounce 1s ease-in-out 0.1s infinite}
+.upload-logo-bars span:nth-child(5){height:10px;animation:logoBounce 1s ease-in-out 0.25s infinite}
 
 @media(max-width:600px){
   .header{padding:14px 18px}
@@ -196,13 +205,14 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 
 <!-- UPLOAD OVERLAY -->
 <div class="upload-overlay" id="shkUploadOverlay">
-  <div style="font-family:var(--font-head);font-size:40px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-1px">WIRD<br>HOCHGELADEN<span style="color:var(--accent)">.</span></div>
-  <div style="color:rgba(255,255,255,0.45);font-size:13px;margin-bottom:28px">Bitte Seite nicht schließen.</div>
-  <div style="width:min(380px,80vw);background:rgba(255,255,255,0.08);border-radius:100px;height:6px;overflow:hidden;margin-bottom:10px">
-    <div id="shkProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width 0.4s;border-radius:100px"></div>
+  <div class="upload-logo-bars"><span></span><span></span><span></span><span></span><span></span></div>
+  <div style="font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-0.5px" id="shkUploadTitle">Wir richten alles ein</div>
+  <div style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.5" id="shkUploadStatus">Deine Google Drive-Ordnerstruktur wird angelegt…</div>
+  <div style="width:min(400px,80vw);background:#dde8f0;border-radius:100px;height:8px;overflow:hidden;margin-bottom:10px">
+    <div id="shkProgressBar" style="height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;border-radius:100px;transition:width 0.4s ease"></div>
   </div>
-  <div style="font-size:12px;color:var(--accent);font-weight:500;margin-bottom:18px" id="shkProgressPct">0%</div>
-  <div style="font-size:13px;color:rgba(255,255,255,0.45)" id="shkUploadStatus">Formulardaten werden verarbeitet…</div>
+  <div style="font-size:12px;color:var(--accent);font-weight:600;margin-bottom:6px" id="shkProgressPct">Starte…</div>
+  <div style="font-size:11px;color:var(--muted)">Bitte Seite nicht schließen</div>
 </div>
 
 <!-- SUCCESS -->
@@ -768,15 +778,30 @@ async function submitForm() {
   if (window.shkFileStore2) Object.values(window.shkFileStore2).forEach(function(files) { if (files) files.forEach(function(f) { _tot += f.size; }); });
   const overlay = document.getElementById('shkUploadOverlay');
   const status = document.getElementById('shkUploadStatus');
+  const bar = document.getElementById('shkProgressBar');
+  const pct = document.getElementById('shkProgressPct');
   overlay.classList.add('show');
   document.getElementById('wizardWrap').style.display = 'none';
   document.querySelector('.wizard-nav').style.display = 'none';
+  // Sofort: langsamer Fake-Crawl bis 28% während create-folders läuft
+  bar.style.transition = 'width 75s linear';
+  bar.style.width = '28%';
+  if (pct) pct.textContent = 'Vorbereitung…';
+  // Animierte Status-Dots
+  var _dotBase = 'Deine Google Drive-Ordnerstruktur wird angelegt';
+  var _dotN = 0;
+  var _dotTimer = setInterval(function() { _dotN = (_dotN + 1) % 4; if (status) status.textContent = _dotBase + '.'.repeat(_dotN || 1); }, 600);
   try {
-    if (status) status.textContent = 'Ordnerstruktur wird angelegt…';
     const API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
     const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData() }) });
     const { folderIds } = await r.json();
-    function updateProg(add) { _done += add; const p = Math.round(_done / (_tot || 1) * 100); const b = document.getElementById('shkProgressBar'); const pe = document.getElementById('shkProgressPct'); if (b) b.style.width = p + '%'; if (pe) pe.textContent = p + '%'; }
+    // Folder fertig – echten Fortschritt starten
+    clearInterval(_dotTimer);
+    bar.style.transition = 'width 0.4s ease';
+    bar.style.width = '0%';
+    if (status) status.textContent = 'Dateien werden hochgeladen…';
+    if (pct) pct.textContent = '0%';
+    function updateProg(add) { _done += add; const p = Math.round(_done / (_tot || 1) * 100); if (bar) bar.style.width = p + '%'; if (pct) pct.textContent = p + '%'; }
     async function uploadFiles(files, folderId) {
       if (!folderId || !files || !files.length) return;
       const CHUNK = 5 * 1024 * 1024;
@@ -799,10 +824,20 @@ async function submitForm() {
     if (fs2['inhaber'] && fs2['inhaber'].length && folderIds && folderIds.inhaberfoto) { if (status) status.textContent = 'Inhaberfotos…'; await uploadFiles(fs2['inhaber'], folderIds.inhaberfoto); }
     if (fs2['team'] && fs2['team'].length && folderIds && folderIds.teamfotos) { if (status) status.textContent = 'Teamfotos…'; await uploadFiles(fs2['team'], folderIds.teamfotos); }
     for (let i = 0; i < leistungen.length; i++) { const key = 'leistung_' + (i + 1); if (fs2[key] && fs2[key].length && folderIds && folderIds['leistung_' + i]) { if (status) status.textContent = leistungen[i] + '…'; await uploadFiles(fs2[key], folderIds['leistung_' + i]); } }
-    overlay.classList.remove('show');
-    clearDraft();
-    document.getElementById('successScreen').classList.add('visible');
+    bar.style.width = '100%';
+    if (pct) pct.textContent = '100%';
+    if (status) status.textContent = 'Alles fertig!';
+    const titleEl = document.getElementById('shkUploadTitle');
+    if (titleEl) titleEl.textContent = 'Fertig! 🎉';
+    setTimeout(function() {
+      overlay.classList.remove('show');
+      clearDraft();
+      document.getElementById('successScreen').classList.add('visible');
+    }, 800);
   } catch (err) {
+    clearInterval(_dotTimer);
+    bar.style.transition = 'width 0.4s ease';
+    bar.style.width = '0%';
     overlay.classList.remove('show');
     document.getElementById('wizardWrap').style.display = 'block';
     document.querySelector('.wizard-nav').style.display = 'flex';

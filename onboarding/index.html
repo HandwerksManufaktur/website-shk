@@ -748,19 +748,131 @@ function toggleDsgvoSHK() {
 // === COLLECT DATA ===
 function collectFormData() {
   var data = {};
-  document.querySelectorAll('label').forEach(function(lbl) {
-    var t = lbl.textContent.replace(/[*]/g,'').replace(/\s+/g,' ').trim();
-    if (!t || t.length < 2) return;
-    var p = lbl.parentElement;
-    if (!p) return;
-    var inp = p.querySelector('input:not([type=file]):not([type=radio]):not([type=checkbox]),textarea,select');
-    if (!inp) return;
-    var val = (inp.value || '').trim();
-    if (!val) return;
-    var key = t.slice(0, 60); var orig = key; var n = 1;
+  var hasR = document.getElementById('cb-recruiting').checked;
+  var hasL = document.getElementById('cb-leadgen').checked;
+
+  function add(k, v) {
+    if (v === null || v === undefined || !v.toString().trim()) return;
+    var key = k; var orig = key; var n = 1;
     while (data[key] !== undefined) { n++; key = orig + ' (' + n + ')'; }
-    data[key] = val;
+    data[key] = v.toString().trim();
+  }
+  function section(title) { data['── ' + title + ' ──'] = ''; }
+  function val(id) { var el = document.getElementById(id); return el ? (el.value || '').trim() : ''; }
+  function tog(id) { var el = document.getElementById(id); return el ? el.classList.contains('on') : false; }
+
+  var services = [];
+  if (hasR) services.push('Recruiting');
+  if (hasL) services.push('Neukundengewinnung');
+  add('Gebuchte Leistung(en)', services.join(' + '));
+
+  // ── FIRMENDATEN ──
+  section('FIRMENDATEN');
+  add('Firmenname + Rechtsform', val('firmaName'));
+  add('UID / USt-ID', val('ustId'));
+  add('Straße + Hausnummer', val('strasse'));
+  add('PLZ', val('plz'));
+  add('Ort', val('ort'));
+  add('Website', val('website'));
+  add('Ansprechpartner', val('ansprechpartner'));
+  add('E-Mail', val('email'));
+  add('Telefon', val('telefon'));
+
+  // ── POSITIONIERUNG ──
+  section('POSITIONIERUNG');
+  add('Warum entscheiden sich Kunden für euch?', val('kundenUsp'));
+  if (hasR) add('Was macht euch als Arbeitgeber besonders?', val('arbeitgeberUsp'));
+
+  // ── RECRUITING ──
+  if (hasR) {
+    section('RECRUITING – BETRIEB');
+    var vorteile = [];
+    document.querySelectorAll('#vorteileList .vorteil-row input[type=text]').forEach(function(inp) {
+      var v = (inp.value || '').trim(); if (v) vorteile.push(v);
+    });
+    add('Betriebsvorteile', vorteile.length ? vorteile.join('\n') : '');
+    add('Einsatzgebiet / Radius', val('einsatzgebiet'));
+
+    var stellen = document.querySelectorAll('.stelle-item');
+    stellen.forEach(function(stelle, i) {
+      section('STELLE ' + (i + 1));
+      stelle.querySelectorAll('label').forEach(function(lbl) {
+        var t = lbl.textContent.replace(/[*✓]/g,'').replace(/\s+/g,' ').trim();
+        if (!t || t.length < 2) return;
+        var p = lbl.parentElement; if (!p) return;
+        var inp = p.querySelector('input[type=text],input[type=tel],textarea');
+        if (!inp) return;
+        var v = (inp.value || '').trim(); if (!v) return;
+        add('  ' + t, v);
+      });
+    });
+  }
+
+  // ── NEUKUNDENGEWINNUNG ──
+  if (hasL) {
+    section('NEUKUNDENGEWINNUNG');
+    add('Dienstleistung / Produkt', val('dienstleistung'));
+    add('Durchschnittlicher Auftragswert', val('auftragswert'));
+    add('Einzugsgebiet / Radius', val('einzugsgebiet'));
+    add('Aktuelle Auslastung Badsanierung / Monat', val('badsanierungen'));
+    add('Aktuelle Auslastung Wärmepumpen / Monat', val('waermepumpen'));
+    add('Erfolgsziel nach der Laufzeit', val('erfolgsziel'));
+    add('Wer kontaktiert Leads?', val('leadKontakt'));
+  }
+
+  // ── VIDEO & SOCIAL MEDIA ──
+  section('VIDEO & SOCIAL MEDIA');
+  var personen = [];
+  document.querySelectorAll('#personenList .person-item').forEach(function(item) {
+    var inps = item.querySelectorAll('input[type=text]');
+    var name = inps[0] ? (inps[0].value || '').trim() : '';
+    var rolle = inps[1] ? (inps[1].value || '').trim() : '';
+    if (name || rolle) personen.push(name + (rolle ? ' (' + rolle + ')' : ''));
   });
+  add('Personen vor der Kamera', personen.length ? personen.join(', ') : '');
+  add('Wunschtermin Videodreh', val('videoDreh'));
+
+  add('Facebook Seite vorhanden', tog('fb-toggle') ? 'Ja' : 'Nein');
+  if (tog('fb-toggle')) {
+    var fbCond = document.getElementById('fb-cond');
+    if (fbCond) {
+      fbCond.querySelectorAll('label').forEach(function(lbl) {
+        var t = lbl.textContent.replace(/[*]/g,'').replace(/\s+/g,' ').trim();
+        if (!t || t.length < 2) return;
+        var p = lbl.parentElement; if (!p) return;
+        var inp = p.querySelector('input[type=text],input[type=email],input[type=url]');
+        if (!inp) return;
+        var v = (inp.value || '').trim(); if (!v) return;
+        add('  FB: ' + t, v);
+      });
+    }
+  }
+
+  add('Instagram Account vorhanden', tog('ig-toggle') ? 'Ja' : 'Nein');
+  if (tog('ig-toggle')) {
+    var igCond = document.getElementById('ig-cond');
+    if (igCond) {
+      igCond.querySelectorAll('label').forEach(function(lbl) {
+        var t = lbl.textContent.replace(/[*]/g,'').replace(/\s+/g,' ').trim();
+        if (!t || t.length < 2) return;
+        var p = lbl.parentElement; if (!p) return;
+        var inp = p.querySelector('input[type=text],input[type=url]');
+        if (!inp) return;
+        var v = (inp.value || '').trim(); if (!v) return;
+        add('  IG: ' + t, v);
+      });
+    }
+  }
+
+  add('Werbung bereits geschaltet', tog('ads-toggle') ? 'Ja' : 'Nein');
+  if (tog('ads-toggle')) {
+    var adsCond = document.getElementById('ads-cond');
+    if (adsCond) {
+      var ta = adsCond.querySelector('textarea');
+      if (ta && ta.value.trim()) add('  Werbung Details', ta.value.trim());
+    }
+  }
+
   return data;
 }
 

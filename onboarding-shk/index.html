@@ -4,720 +4,838 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SHK Onboarding – HandwerksManufaktur</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#0B1829;--surface:#0f2035;--surface2:#162840;--border:#1e3a55;
-    --accent:#4DC4D4;--accent2:#2ecd6f;--accent-dim:rgba(77,196,212,0.08);
-    --text:#f0f4f8;--muted:#4a6a85;--label:#6a8aa5;
-    --radius:6px;--font-head:'Playfair Display',serif;--font-body:'Inter',sans-serif;
-  }
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;min-height:100vh}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#0ca4c2;--accent2:#2ecd6f;--accent-dim:rgba(12,164,194,0.1);
+  --text:#0b2044;--muted:#6b8ba4;--label:#4a6a85;
+  --surface:#f1f6fb;--border:#c4d8e9;--card:#fff;
+  --radius:10px;--font-head:'Playfair Display',serif;--font-body:'Inter',sans-serif;
+  --shadow:0 4px 24px rgba(11,32,68,0.1);
+}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(160deg,#0b2a54 0%,#0f3870 60%,#0a2a52 100%);background-attachment:fixed;min-height:100vh;font-family:var(--font-body);color:var(--text)}
 
-  .header{background:rgba(11,24,41,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-  .header-logo{display:flex;align-items:center;gap:10px}
-  .logo-bars{display:flex;gap:3px;align-items:flex-end}
-  .logo-bars span{display:block;width:4px;background:var(--accent)}
-  .logo-bars span:nth-child(1){height:12px}
-  .logo-bars span:nth-child(2){height:18px}
-  .logo-bars span:nth-child(3){height:10px}
-  .logo-text{font-family:var(--font-body);font-weight:500;font-size:14px;letter-spacing:0.5px;line-height:1.2;color:var(--text)}
-  .header-badge{border:1px solid var(--border);border-radius:20px;padding:6px 16px;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--accent)}
+/* HEADER */
+.header{background:rgba(11,24,41,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);padding:16px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo-bars{display:flex;gap:3px;align-items:flex-end}
+.logo-bars span{display:block;width:4px;background:var(--accent);border-radius:2px}
+.logo-bars span:nth-child(1){height:11px}
+.logo-bars span:nth-child(2){height:17px}
+.logo-bars span:nth-child(3){height:9px}
+.logo-text{font-weight:500;font-size:13px;letter-spacing:0.3px;line-height:1.25;color:#fff;margin-left:10px}
+.header-left{display:flex;align-items:center}
+.header-badge{border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--accent)}
 
-  .progress-bar{height:2px;background:var(--border)}
-  .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;transition:width 0.4s}
+/* PROGRESS */
+.progress-track{height:3px;background:rgba(255,255,255,0.08)}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;transition:width 0.5s ease}
 
-  .form-wrap{max-width:740px;margin:0 auto;padding:60px 24px 100px}
+/* STEP DOTS */
+.step-dots{display:flex;align-items:center;justify-content:center;padding:26px 24px 0;max-width:680px;margin:0 auto}
+.step-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;z-index:1;min-width:44px}
+.step-dot{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.35);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.step-dot.done{background:var(--accent);border-color:var(--accent);color:#fff}
+.step-dot.active{background:#fff;border-color:#fff;color:var(--text)}
+.step-dot-label{font-size:9px;color:rgba(255,255,255,0.3);font-weight:500;letter-spacing:0.2px;text-align:center;white-space:nowrap;transition:color 0.3s}
+.step-dot-wrap.active .step-dot-label{color:rgba(255,255,255,0.85)}
+.step-dot-wrap.done .step-dot-label{color:rgba(255,255,255,0.45)}
+.step-connector{flex:1;height:2px;background:rgba(255,255,255,0.1);margin-bottom:20px;transition:background 0.3s;min-width:8px}
+.step-connector.done{background:var(--accent)}
 
-  .checklist-box{border:1px solid rgba(77,196,212,0.2);border-left:3px solid var(--accent);background:var(--accent-dim);border-radius:var(--radius);padding:20px 24px;margin-bottom:48px}
-  .checklist-box h3{font-family:var(--font-body);font-weight:500;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-  .checklist-box ul{list-style:none;display:grid;gap:8px}
-  .checklist-box li{font-size:13px;color:var(--label);display:flex;align-items:center;gap:10px}
-  .checklist-box li::before{content:'✓';color:var(--accent);font-weight:500}
+/* MOTIVATION BANNER */
+.motiv-wrap{max-width:680px;margin:18px auto 0;padding:0 24px}
+.motiv-inner{background:rgba(255,255,255,0.09);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.13);border-radius:12px;padding:13px 18px;display:flex;align-items:center;gap:12px;animation:fadeUp 0.4s ease both}
+.motiv-emoji{font-size:20px;flex-shrink:0}
+.motiv-text{font-size:13px;color:rgba(255,255,255,0.88);line-height:1.45}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
 
-  .intro{margin-bottom:56px}
-  .intro-eyebrow{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:20px}
-  .intro-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--accent)}
-  .intro h1{font-family:var(--font-head);font-size:52px;font-weight:800;line-height:1.05;margin-bottom:8px}
-  .intro h1 em{font-style:italic;color:var(--accent)}
-  .intro h1 span{display:block}
-  .intro p{color:var(--label);font-size:15px;line-height:1.7;max-width:500px;margin-top:16px}
+/* WIZARD */
+.wizard-wrap{max-width:680px;margin:0 auto;padding:22px 24px 110px}
+.step{display:none;animation:slideIn 0.3s ease both}
+.step.active{display:block}
 
-  /* SERVICE SELECTOR */
-  .service-selector{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:48px}
-  .service-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:22px;cursor:pointer;transition:all 0.2s;user-select:none}
-  .service-card:hover{border-color:#2a5070}
-  .service-card.active{border-color:var(--accent);background:var(--accent-dim)}
-  .service-card input{display:none}
-  .sc-icon{font-size:24px;margin-bottom:10px}
-  .sc-label{font-family:var(--font-head);font-weight:700;font-size:17px;margin-bottom:4px}
-  .service-card.active .sc-label{color:var(--accent)}
-  .sc-desc{font-size:12px;color:var(--muted)}
+/* CARD */
+.step-card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px}
+.card-head{padding:22px 26px 18px;border-bottom:1px solid #eef3f8}
+.card-title{font-family:var(--font-head);font-size:21px;font-weight:800;color:var(--text);margin-bottom:3px}
+.card-sub{font-size:13px;color:var(--muted);line-height:1.5}
+.card-body{padding:22px 26px}
 
-  .block{margin-bottom:52px}
-  .block-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-  .block-num{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(77,196,212,0.3);border-radius:20px;padding:4px 12px;flex-shrink:0}
-  .block-title{font-family:var(--font-head);font-weight:700;font-size:20px}
-  .block-badge{margin-left:auto;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(77,196,212,0.25);border-radius:20px;padding:3px 10px}
+/* FIELDS */
+.fg{display:grid;gap:16px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:10px;font-weight:600;letter-spacing:0.9px;text-transform:uppercase;color:var(--label)}
+.field label .req{color:var(--accent);margin-left:2px}
+.field input,.field select,.field textarea{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font-body);font-size:14px;font-weight:400;padding:11px 15px;outline:none;transition:all 0.2s;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(12,164,194,0.1)}
+.field input::placeholder,.field textarea::placeholder{color:#b8cdd9;font-weight:300}
+.field textarea{resize:vertical;min-height:84px;line-height:1.6}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8ba4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px;cursor:pointer}
+.hint{font-size:11px;color:var(--muted);line-height:1.5;display:flex;gap:5px}
+.hint::before{content:'→';color:var(--accent);flex-shrink:0}
+.divider{height:1px;background:#eef3f8;margin:4px 0}
 
-  .field-group{display:grid;gap:16px}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .field{display:flex;flex-direction:column;gap:7px}
-  .field label{font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--label)}
-  .field label .req{color:var(--accent);margin-left:2px}
-  .field input,.field select,.field textarea{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:14px;font-weight:300;padding:13px 16px;outline:none;transition:border-color 0.15s,background 0.15s;width:100%}
-  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);background:rgba(77,196,212,0.04)}
-  .field textarea{resize:vertical;min-height:90px;line-height:1.6}
-  .field input::placeholder,.field textarea::placeholder{color:var(--muted)}
-  .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a6a85' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
-  .hint{font-size:11px;color:var(--muted);display:flex;gap:6px;line-height:1.5}
-  .hint::before{content:'→';color:var(--accent);flex-shrink:0}
-  .divider{height:1px;background:var(--border);margin:4px 0}
+/* SERVICE CARDS */
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.service-card{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:22px 18px;cursor:pointer;transition:all 0.2s;user-select:none;position:relative}
+.service-card:hover{border-color:#8ab8d4;background:#e6f1f8}
+.service-card.active{border-color:var(--accent);background:var(--accent-dim);box-shadow:0 0 0 3px rgba(12,164,194,0.1)}
+.service-card input[type=checkbox]{position:absolute;top:14px;right:14px;width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+.sc-icon{font-size:26px;margin-bottom:10px}
+.sc-label{font-family:var(--font-head);font-weight:700;font-size:17px;color:var(--text);margin-bottom:3px}
+.service-card.active .sc-label{color:var(--accent)}
+.sc-desc{font-size:12px;color:var(--muted);line-height:1.4}
+.service-hint{text-align:center;font-size:12px;color:rgba(255,255,255,0.45);margin-top:12px}
 
-  .toggle-field{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:15px 18px;cursor:pointer;user-select:none;gap:16px;transition:border-color 0.15s}
-  .toggle-field:hover{border-color:#2a5070}
-  .toggle-field label{font-size:14px;color:var(--text);cursor:pointer;font-weight:300}
-  .toggle{width:46px;height:26px;background:var(--border);border-radius:13px;position:relative;transition:background 0.2s;flex-shrink:0}
-  .toggle::after{content:'';position:absolute;width:20px;height:20px;background:#2a4a65;border-radius:50%;top:3px;left:3px;transition:transform 0.2s,background 0.2s}
-  .toggle.on{background:var(--accent)}
-  .toggle.on::after{transform:translateX(20px);background:#000}
-  .conditional{display:none}
-  .conditional.visible{display:block}
-  .cond-section{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-top:8px}
+/* STELLE */
+.stelle-item{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:18px;margin-bottom:10px;position:relative}
+.stelle-num{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.remove-stelle{position:absolute;top:14px;right:14px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;width:26px;height:26px;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.remove-stelle:hover{border-color:#ff4444;color:#ff4444}
+.add-btn{width:100%;background:transparent;border:1.5px dashed var(--border);border-radius:8px;color:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:500;padding:12px;cursor:pointer;transition:all 0.2s;margin-top:6px}
+.add-btn:hover{border-color:var(--accent);color:var(--accent)}
 
-  /* SERVICE BLOCKS */
-  .service-block{display:none}
-  .service-block.visible{display:block}
+/* VORTEIL INPUTS */
+.vorteil-row{display:flex;gap:8px;align-items:center}
+.vorteil-row input{flex:1;background:var(--surface);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font-body);font-size:13px;font-weight:400;padding:9px 13px;outline:none;transition:all 0.2s}
+.vorteil-row input:focus{border-color:var(--accent);background:#fff}
+.vorteil-check{color:var(--accent);flex-shrink:0;font-size:14px;font-weight:700}
 
-  /* STELLE */
-  .stelle-item{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px;position:relative}
-  .stelle-num{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-  .remove-stelle{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border);border-radius:var(--radius);color:var(--muted);cursor:pointer;width:28px;height:28px;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
-  .remove-stelle:hover{border-color:#ff4444;color:#ff4444}
-  .add-stelle{width:100%;background:transparent;border:1px dashed var(--border);border-radius:var(--radius);color:var(--muted);font-family:var(--font-body);font-size:13px;padding:14px;cursor:pointer;transition:all 0.2s;margin-top:8px}
-  .add-stelle:hover{border-color:var(--accent);color:var(--accent)}
+/* TOGGLE */
+.toggle-field{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:13px 17px;cursor:pointer;user-select:none;gap:14px;transition:border-color 0.2s}
+.toggle-field:hover{border-color:#8ab8d4}
+.toggle-field label{font-size:14px;color:var(--text);cursor:pointer;font-weight:400}
+.toggle{width:44px;height:24px;background:var(--border);border-radius:12px;position:relative;transition:background 0.2s;flex-shrink:0}
+.toggle::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
+.toggle.on{background:var(--accent)}
+.toggle.on::after{transform:translateX(20px)}
+.conditional{display:none}
+.conditional.visible{display:block}
+.cond-section{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;margin-top:8px}
 
-  /* PERSONEN */
-  .person-item{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;margin-bottom:10px}
-  .person-item input{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:14px;font-weight:300;padding:12px 16px;outline:none;transition:border-color 0.15s}
-  .person-item input:focus{border-color:var(--accent)}
-  .remove-person{background:transparent;border:1px solid var(--border);border-radius:var(--radius);color:var(--muted);width:42px;height:42px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
-  .remove-person:hover{border-color:#ff4444;color:#ff4444}
-  .add-person{background:transparent;border:1px dashed var(--border);border-radius:var(--radius);color:var(--muted);font-family:var(--font-body);font-size:13px;padding:12px;cursor:pointer;transition:all 0.2s;width:100%;margin-top:4px}
-  .add-person:hover{border-color:var(--accent);color:var(--accent)}
+/* PERSON */
+.person-item{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;margin-bottom:10px}
+.person-item input{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font-body);font-size:14px;padding:10px 13px;outline:none;transition:all 0.2s}
+.person-item input:focus{border-color:var(--accent);background:#fff}
+.remove-person{background:transparent;border:1.5px solid var(--border);border-radius:8px;color:var(--muted);width:40px;height:40px;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+.remove-person:hover{border-color:#ff4444;color:#ff4444}
 
-  .submit-area{margin-top:52px;padding-top:28px;border-top:1px solid var(--border);display:flex;align-items:center;gap:24px}
-  .btn-submit{background:var(--accent);color:#000;border:none;border-radius:var(--radius);font-family:var(--font-body);font-weight:500;font-size:15px;padding:17px 36px;cursor:pointer;transition:opacity 0.2s;white-space:nowrap}
-  .btn-submit:hover{opacity:0.88}
-  .btn-submit:disabled{opacity:0.4;cursor:not-allowed}
-  .submit-note{font-size:12px;color:var(--muted);line-height:1.7}
+/* UPLOAD */
+.upload-zone{border:2px dashed var(--border);border-radius:10px;padding:20px;text-align:center;cursor:pointer;background:var(--surface);position:relative;overflow:hidden;transition:all 0.2s}
+.upload-zone:hover{border-color:var(--accent);background:#e6f1f8}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.preview-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.preview-chip{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3px 9px;font-size:11px;color:var(--label)}
+.leistung-item{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
 
-  .success-screen{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px}
-  .success-screen.visible{display:flex}
-  .success-screen h2{font-family:var(--font-head);font-size:48px;font-weight:800;margin-bottom:12px}
-  .success-screen h2 em{font-style:italic;color:var(--accent)}
-  .success-screen p{color:var(--label);font-size:15px;line-height:1.7;max-width:420px}
+/* DSGVO */
+.dsgvo-box{display:flex;align-items:flex-start;gap:13px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:15px 17px;cursor:pointer;transition:border-color 0.2s}
+.dsgvo-box:hover{border-color:var(--accent)}
+.dsgvo-check{width:21px;height:21px;border:2px solid var(--border);border-radius:5px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.dsgvo-check.on{background:var(--accent);border-color:var(--accent)}
+.dsgvo-text{font-size:13px;color:var(--label);line-height:1.6}
+.dsgvo-text a{color:var(--accent);text-decoration:none}
 
-  @media(max-width:620px){.field-row{grid-template-columns:1fr}.header{padding:18px 20px}.form-wrap{padding:36px 16px 80px}.intro h1{font-size:38px}.service-selector{grid-template-columns:1fr}.person-item{grid-template-columns:1fr 1fr auto}}
+/* NAVIGATION */
+.wizard-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-top:1px solid #dde8f0;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;z-index:50;box-shadow:0 -4px 20px rgba(11,32,68,0.07)}
+.nav-info{font-size:11px;color:var(--muted);font-weight:500;text-align:center;line-height:1.3}
+.nav-info strong{font-size:16px;font-weight:700;color:var(--text);display:block}
+.btn-back{background:transparent;border:1.5px solid var(--border);border-radius:10px;color:var(--label);font-family:var(--font-body);font-size:14px;font-weight:500;padding:12px 22px;cursor:pointer;transition:all 0.2s}
+.btn-back:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.btn-back:disabled{opacity:0.25;cursor:not-allowed}
+.btn-next{background:var(--accent);border:none;border-radius:10px;color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;padding:12px 28px;cursor:pointer;transition:all 0.2s}
+.btn-next:hover{background:#0891ae;box-shadow:0 4px 12px rgba(12,164,194,0.3)}
+.btn-finish{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;padding:12px 28px;cursor:pointer;transition:all 0.2s}
+.btn-finish:hover{opacity:0.9;box-shadow:0 4px 14px rgba(46,205,111,0.3)}
 
-  .upload-zone-shk{border:1px dashed var(--border);border-radius:var(--radius);padding:18px;text-align:center;cursor:pointer;background:var(--surface);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:5px}
-  .upload-zone-shk input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-  .upload-zone-shk:hover{border-color:var(--accent)}
-  .preview-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-  .preview-chip-shk{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 9px;font-size:11px;color:var(--label)}
-  .leistung-shk{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px}
+/* SUCCESS */
+.success-screen{display:none;position:fixed;inset:0;z-index:300;background:linear-gradient(160deg,#0b2a54,#0f3870);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px}
+.success-screen.visible{display:flex}
+.success-screen h2{font-family:var(--font-head);font-size:48px;font-weight:800;color:#fff;margin-bottom:12px}
+.success-screen h2 em{font-style:italic;color:var(--accent)}
+.success-screen p{color:rgba(255,255,255,0.55);font-size:15px;line-height:1.7;max-width:400px}
+
+/* UPLOAD OVERLAY */
+.upload-overlay{display:none;position:fixed;inset:0;background:rgba(11,24,41,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center}
+.upload-overlay.show{display:flex}
+
+@media(max-width:600px){
+  .header{padding:14px 18px}
+  .fr{grid-template-columns:1fr}
+  .service-grid{grid-template-columns:1fr}
+  .step-dot-label{display:none}
+  .person-item{grid-template-columns:1fr 1fr auto}
+  .wizard-wrap{padding:18px 16px 100px}
+  .card-head,.card-body{padding:18px}
+}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-logo">
+  <div class="header-left">
     <div class="logo-bars"><span></span><span></span><span></span></div>
     <div class="logo-text">Handwerks<br>Manufaktur</div>
   </div>
   <div class="header-badge">SHK Onboarding</div>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 
-<div id="shkUploadOverlay" style="display:none;position:fixed;inset:0;background:rgba(11,24,41,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center">
-  <div style="font-family:var(--font-head);font-size:42px;font-weight:800;margin-bottom:6px;letter-spacing:-1px">WIRD<br>HOCHGELADEN<span style="color:var(--accent)">.</span></div>
-  <div style="color:var(--muted);font-size:13px;margin-bottom:28px">Bitte Seite nicht schließen – das kann je nach Datenmenge einige Minuten dauern.</div>
-  <div style="width:min(400px,80vw);background:var(--border);border-radius:100px;height:6px;overflow:hidden;margin-bottom:12px">
-    <div id="shkProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width 0.4s ease;border-radius:100px"></div>
+<div class="step-dots" id="stepDots"></div>
+
+<div class="motiv-wrap">
+  <div class="motiv-inner" id="motivBanner">
+    <div class="motiv-emoji" id="motivEmoji">👋</div>
+    <div class="motiv-text" id="motivText">Schön, dass du dabei bist! Lass uns gemeinsam loslegen.</div>
   </div>
-  <div style="font-size:12px;color:var(--accent);font-weight:500;margin-bottom:20px" id="shkProgressPct">0%</div>
-  <div style="font-size:13px;color:var(--muted)" id="shkUploadStatus">Formulardaten werden verarbeitet…</div>
 </div>
-<style>
-@keyframes shkLoad{0%{width:10%}50%{width:80%}100%{width:10%}}
-@keyframes shkUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes shkBlink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-  .upload-zone-shk{border:1px dashed var(--border);border-radius:var(--radius);padding:18px;text-align:center;cursor:pointer;background:var(--surface);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:5px}
-  .upload-zone-shk input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-  .upload-zone-shk:hover{border-color:var(--accent)}
-  .preview-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-  .preview-chip-shk{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 9px;font-size:11px;color:var(--label)}
-  .leistung-shk{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px}
-</style>
+<!-- UPLOAD OVERLAY -->
+<div class="upload-overlay" id="shkUploadOverlay">
+  <div style="font-family:var(--font-head);font-size:40px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-1px">WIRD<br>HOCHGELADEN<span style="color:var(--accent)">.</span></div>
+  <div style="color:rgba(255,255,255,0.45);font-size:13px;margin-bottom:28px">Bitte Seite nicht schließen.</div>
+  <div style="width:min(380px,80vw);background:rgba(255,255,255,0.08);border-radius:100px;height:6px;overflow:hidden;margin-bottom:10px">
+    <div id="shkProgressBar" style="height:100%;background:var(--accent);width:0%;transition:width 0.4s;border-radius:100px"></div>
+  </div>
+  <div style="font-size:12px;color:var(--accent);font-weight:500;margin-bottom:18px" id="shkProgressPct">0%</div>
+  <div style="font-size:13px;color:rgba(255,255,255,0.45)" id="shkUploadStatus">Formulardaten werden verarbeitet…</div>
+</div>
+
+<!-- SUCCESS -->
 <div class="success-screen" id="successScreen">
-  <div style="animation:shkUp 0.7s ease both;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;max-width:480px">
-    <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--text);letter-spacing:1px">Handwerks<span style="color:var(--accent)">Manufaktur</span></div>
-    <img src="data:image/png;base64,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" alt="Noah" style="width:80px;height:80px;border-radius:50%;border:3px solid var(--accent);object-fit:cover">
-    <div>
-      <div style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Noah Seelau · HandwerksManufaktur</div>
-      <h2 style="font-family:var(--font-head);font-size:44px;font-weight:800;line-height:1.05">Formular<br><em style="color:var(--accent)">eingegangen.</em></h2>
-    </div>
-    <p style="color:var(--label);font-size:15px;line-height:1.7">Ich freue mich auf die Zusammenarbeit! 🤝<br>Wir hören uns zeitnah im Onboarding-Call!</p>
-    <div style="display:flex;align-items:center;gap:10px">
-      <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:shkBlink 1.5s infinite"></div>
-      <span style="font-size:13px;color:var(--muted)">Formular wird verarbeitet…</span>
-    </div>
-  </div>
+  <div style="font-size:56px;margin-bottom:20px">🎉</div>
+  <h2>Alles <em>bereit!</em></h2>
+  <p>Deine Daten sind eingegangen. Wir melden uns innerhalb von 24 Stunden – dann geht's los!</p>
 </div>
 
-<div class="form-wrap" id="formWrap">
+<!-- WIZARD -->
+<div class="wizard-wrap" id="wizardWrap">
 
-  <div class="intro">
-    <div class="intro-eyebrow">SHK Onboarding</div>
-    <h1><span>Jetzt geht's</span><em>los.</em></h1>
-    <p>Füll dieses Formular aus bevor wir starten. Je mehr du mitbringst, desto schneller kommen wir in die Umsetzung.</p>
-  </div>
-
-  <div class="checklist-box">
-    <h3>Was du vorher bereit haben solltest</h3>
-    <ul>
-      <li>UID / USt-ID (steht auf jeder Rechnung)</li>
-      <li>Facebook-Seite vorhanden + Admin-E-Mail</li>
-      <li>Bei Recruiting: alle offenen Stellen + Anforderungen</li>
-      <li>Bei LeadGen: Einzugsgebiet + durchschnittlicher Auftragswert</li>
-    </ul>
-  </div>
-
-  <!-- SERVICE SELECT -->
-  <div class="block">
-    <div class="block-header"><div class="block-num">00</div><div class="block-title">🎯 Gebuchte Leistung</div></div>
-    <div class="service-selector">
-      <label class="service-card" id="card-recruiting">
-        <input type="checkbox" value="recruiting" onchange="toggleService('recruiting',this.checked)">
-        <div class="sc-icon">🔧</div>
-        <div class="sc-label">Recruiting</div>
-        <div class="sc-desc">Fachkräfte finden & gewinnen</div>
-      </label>
-      <label class="service-card" id="card-leadgen">
-        <input type="checkbox" value="leadgen" onchange="toggleService('leadgen',this.checked)">
-        <div class="sc-icon">📈</div>
-        <div class="sc-label">Neukundengewinnung</div>
-        <div class="sc-desc">Mehr Aufträge & neue Kunden gewinnen</div>
-      </label>
-    </div>
-    <div class="hint" style="margin-top:12px;text-align:center">Du kannst auch beides auswählen, wenn du sowohl Recruiting als auch Neukundengewinnung gebucht hast.</div>
-  </div>
-
-  <!-- BLOCK 1 – STAMMDATEN -->
-  <div class="block">
-    <div class="block-header"><div class="block-num">01</div><div class="block-title">🏢 Unternehmensdaten</div></div>
-    <div class="field-group">
-      <div class="field-row">
-        <div class="field"><label>Firmenname + Rechtsform <span class="req">*</span></label><input type="text" id="firmaName" placeholder="z.B. Mustermann GmbH" required></div>
-        <div class="field"><label>UID / USt-ID <span class="req">*</span></label><input type="text" placeholder="DE123456789"></div>
+  <!-- STEP 1: SERVICE -->
+  <div class="step active" id="step-welcome">
+    <div class="step-card">
+      <div class="card-head">
+        <div class="card-title">Was haben wir gebucht?</div>
+        <div class="card-sub">Wähle eine oder beide Leistungen – du kannst mehreres anklicken.</div>
       </div>
-      <div class="field"><label>Straße + Hausnummer <span class="req">*</span></label><input type="text" placeholder="z.B. Musterstraße 12"></div>
-      <div class="field-row">
-        <div class="field" style="max-width:160px"><label>PLZ <span class="req">*</span></label><input type="text" placeholder="z.B. 20095"></div>
-        <div class="field"><label>Ort <span class="req">*</span></label><input type="text" placeholder="z.B. Hamburg"></div>
-      </div>
-      <div class="field"><label>Website</label><input type="url" placeholder="https://..."></div>
-      <div class="divider"></div>
-      <div class="field-row">
-        <div class="field"><label>Ansprechpartner <span class="req">*</span></label><input type="text" placeholder="Name + Position"></div>
-        <div class="field"><label>E-Mail <span class="req">*</span></label><input type="email" placeholder="kontakt@firma.de"></div>
-      </div>
-      <div class="field"><label>Telefon <span class="req">*</span></label><input type="tel" placeholder="+49 ..."></div>
-    </div>
-  </div>
-
-  <!-- BLOCK 2 – POSITIONIERUNG -->
-  <div class="block">
-    <div class="block-header"><div class="block-num">02</div><div class="block-title">💡 Positionierung</div></div>
-    <div class="field-group">
-      <div class="field"><label>Warum entscheiden sich Kunden für euch? <span class="req">*</span></label><textarea placeholder="Was macht euch besonders gegenüber der Konkurrenz?"></textarea></div>
-      <div class="field" id="arbeitgeberField" style="display:none"><label>Was macht euch als Arbeitgeber besonders? <span class="req">*</span></label><textarea placeholder="Warum sollte jemand bei euch anfangen?"></textarea></div>
-    </div>
-  </div>
-
-  <!-- BLOCK 3 – RECRUITING -->
-  <div class="block service-block" id="block-recruiting">
-    <div class="block-header"><div class="block-num">03</div><div class="block-title">🔧 Recruiting</div><div class="block-badge">Nur Recruiting</div></div>
-    <div class="field-group">
-      <div class="field">
-        <label>Vorteile des Betriebs <span class="req">*</span></label>
-        <div class="hint" style="margin-bottom:10px">Diese Punkte kommen direkt in eure Recruiting-Anzeigen – je konkreter, desto besser</div>
-        <div style="display:flex;flex-direction:column;gap:8px" id="vorteileList">
-          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);font-size:15px;flex-shrink:0">✓</span><input type="text" placeholder="z.B. Überstunden werden immer ausgeglichen" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:10px 14px;outline:none;transition:border-color 0.15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></div>
-          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);font-size:15px;flex-shrink:0">✓</span><input type="text" placeholder="z.B. 30 Tage Urlaub" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:10px 14px;outline:none;transition:border-color 0.15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></div>
-          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);font-size:15px;flex-shrink:0">✓</span><input type="text" placeholder="z.B. Weiterbildungen werden bezahlt" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:10px 14px;outline:none;transition:border-color 0.15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></div>
-          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);font-size:15px;flex-shrink:0">✓</span><input type="text" placeholder="z.B. Moderne Fahrzeuge &amp; Werkzeug gestellt" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:10px 14px;outline:none;transition:border-color 0.15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></div>
-          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);font-size:15px;flex-shrink:0">✓</span><input type="text" placeholder="z.B. Teamevents, flache Hierarchien" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:10px 14px;outline:none;transition:border-color 0.15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></div>
+      <div class="card-body">
+        <div class="service-grid">
+          <label class="service-card" id="card-recruiting">
+            <input type="checkbox" id="cb-recruiting" onchange="onServiceChange('recruiting',this.checked)">
+            <div class="sc-icon">🔧</div>
+            <div class="sc-label">Recruiting</div>
+            <div class="sc-desc">Fachkräfte finden & gewinnen</div>
+          </label>
+          <label class="service-card" id="card-leadgen">
+            <input type="checkbox" id="cb-leadgen" onchange="onServiceChange('leadgen',this.checked)">
+            <div class="sc-icon">📈</div>
+            <div class="sc-label">Neukundengewinnung</div>
+            <div class="sc-desc">Mehr Aufträge & neue Kunden gewinnen</div>
+          </label>
         </div>
-        <button type="button" onclick="addVorteil()" style="background:transparent;border:1px dashed var(--border);border-radius:var(--radius);color:var(--muted);font-family:var(--font-body);font-size:12px;padding:10px;cursor:pointer;margin-top:8px;width:100%;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">+ Weiteren Vorteil hinzufügen</button>
+        <div class="service-hint">Beides gebucht? Einfach beide anklicken!</div>
       </div>
-      <div class="divider"></div>
-      <div id="stellenList">
-        <div class="stelle-item" id="stelle-1">
-          <div class="stelle-num">Stelle #1</div>
-          <div class="field-group">
-            <div class="field-row">
-              <div class="field"><label>Stellenbezeichnung <span class="req">*</span></label><input type="text" placeholder="z.B. SHK-Monteur"></div>
-              <div class="field"><label>Gehaltsspanne brutto</label><input type="text" placeholder="z.B. 3.000–3.800 €"></div>
+    </div>
+  </div>
+
+  <!-- STEP 2: COMPANY -->
+  <div class="step" id="step-company">
+    <div class="step-card">
+      <div class="card-head">
+        <div class="card-title">🏢 Dein Betrieb</div>
+        <div class="card-sub">Grundlegende Infos zu deinem Unternehmen – einmalig für alle Leistungen.</div>
+      </div>
+      <div class="card-body">
+        <div class="fg">
+          <div class="fr">
+            <div class="field"><label>Firmenname + Rechtsform <span class="req">*</span></label><input type="text" id="firmaName" placeholder="z.B. Mustermann GmbH"></div>
+            <div class="field"><label>UID / USt-ID <span class="req">*</span></label><input type="text" id="ustId" placeholder="DE123456789"></div>
+          </div>
+          <div class="field"><label>Straße + Hausnummer <span class="req">*</span></label><input type="text" id="strasse" placeholder="z.B. Musterstraße 12"></div>
+          <div class="fr">
+            <div class="field" style="max-width:150px"><label>PLZ <span class="req">*</span></label><input type="text" id="plz" placeholder="20095"></div>
+            <div class="field"><label>Ort <span class="req">*</span></label><input type="text" id="ort" placeholder="z.B. Hamburg"></div>
+          </div>
+          <div class="field"><label>Website</label><input type="url" id="website" placeholder="https://..."></div>
+          <div class="divider"></div>
+          <div class="fr">
+            <div class="field"><label>Ansprechpartner <span class="req">*</span></label><input type="text" id="ansprechpartner" placeholder="Name + Position"></div>
+            <div class="field"><label>E-Mail <span class="req">*</span></label><input type="email" id="email" placeholder="kontakt@firma.de"></div>
+          </div>
+          <div class="field"><label>Telefon <span class="req">*</span></label><input type="tel" id="telefon" placeholder="+49 ..."></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: POSITIONING -->
+  <div class="step" id="step-positioning">
+    <div class="step-card">
+      <div class="card-head">
+        <div class="card-title">💡 Eure Positionierung</div>
+        <div class="card-sub">Was macht euch besonders – für Kunden und als Arbeitgeber?</div>
+      </div>
+      <div class="card-body">
+        <div class="fg">
+          <div class="field"><label>Warum entscheiden sich Kunden für euch? <span class="req">*</span></label><textarea id="kundenUsp" placeholder="Was macht euch besonders gegenüber der Konkurrenz?"></textarea></div>
+          <div class="field" id="arbeitgeberField" style="display:none"><label>Was macht euch als Arbeitgeber besonders? <span class="req">*</span></label><textarea id="arbeitgeberUsp" placeholder="Warum sollte jemand bei euch anfangen?"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: RECRUITING (conditional) -->
+  <div class="step" id="step-recruiting">
+    <div class="step-card">
+      <div class="card-head">
+        <div class="card-title">🔧 Recruiting</div>
+        <div class="card-sub">Eure Betriebsvorteile und offene Stellen für die Anzeigen.</div>
+      </div>
+      <div class="card-body">
+        <div class="fg">
+          <div class="field">
+            <label>Vorteile des Betriebs <span class="req">*</span></label>
+            <div class="hint" style="margin-bottom:8px">Diese Punkte kommen direkt in eure Recruiting-Anzeigen – je konkreter, desto besser</div>
+            <div id="vorteileList" style="display:flex;flex-direction:column;gap:7px">
+              <div class="vorteil-row"><span class="vorteil-check">✓</span><input type="text" placeholder="z.B. Überstunden werden immer ausgeglichen"></div>
+              <div class="vorteil-row"><span class="vorteil-check">✓</span><input type="text" placeholder="z.B. 30 Tage Urlaub"></div>
+              <div class="vorteil-row"><span class="vorteil-check">✓</span><input type="text" placeholder="z.B. Weiterbildungen werden bezahlt"></div>
+              <div class="vorteil-row"><span class="vorteil-check">✓</span><input type="text" placeholder="z.B. Moderne Fahrzeuge & Werkzeug gestellt"></div>
+              <div class="vorteil-row"><span class="vorteil-check">✓</span><input type="text" placeholder="z.B. Teamevents, flache Hierarchien"></div>
             </div>
-            <div class="field"><label>Muss-Anforderungen</label><textarea placeholder="z.B. Gesellenbrief SHK, Führerschein Klasse B"></textarea></div>
-            <div class="field"><label>Kann-Anforderungen</label><textarea placeholder="z.B. Erfahrung mit Wärmepumpen"></textarea></div>
-            <div class="field-row">
-              <div class="field"><label>Einsatzgebiet / Radius</label><input type="text" placeholder="z.B. München + 30 km"></div>
-              <div class="field"><label>Arbeitszeiten</label><input type="text" placeholder="z.B. Mo–Fr 7–16 Uhr"></div>
+            <button type="button" class="add-btn" onclick="addVorteil()" style="margin-top:10px">+ Weiteren Vorteil hinzufügen</button>
+          </div>
+          <div class="divider"></div>
+          <div>
+            <div id="stellenList">
+              <div class="stelle-item" id="stelle-1">
+                <div class="stelle-num">Stelle #1</div>
+                <div class="fg">
+                  <div class="fr">
+                    <div class="field"><label>Stellenbezeichnung <span class="req">*</span></label><input type="text" placeholder="z.B. SHK-Monteur"></div>
+                    <div class="field"><label>Gehaltsspanne brutto</label><input type="text" placeholder="z.B. 3.000–3.800 €"></div>
+                  </div>
+                  <div class="field"><label>Muss-Anforderungen</label><textarea placeholder="z.B. Gesellenbrief SHK, Führerschein Klasse B"></textarea></div>
+                  <div class="field"><label>Kann-Anforderungen</label><textarea placeholder="z.B. Erfahrung mit Wärmepumpen"></textarea></div>
+                  <div class="fr">
+                    <div class="field"><label>Einsatzgebiet / Radius</label><input type="text" placeholder="z.B. München + 30 km"></div>
+                    <div class="field"><label>Arbeitszeiten</label><input type="text" placeholder="z.B. Mo–Fr 7–16 Uhr"></div>
+                  </div>
+                  <div class="field"><label>Benefits</label><textarea placeholder="Firmenfahrzeug, Werkzeug gestellt..."></textarea></div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="add-btn" onclick="addStelle()">+ Weitere Stelle hinzufügen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5: LEADGEN (conditional) -->
+  <div class="step" id="step-leadgen">
+    <div class="step-card">
+      <div class="card-head">
+        <div class="card-title">📈 Neukundengewinnung</div>
+        <div class="card-sub">Details zu eurer Kampagne und den gewünschten Aufträgen.</div>
+      </div>
+      <div class="card-body">
+        <div class="fg">
+          <div class="fr">
+            <div class="field"><label>Dienstleistung / Produkt <span class="req">*</span></label><input type="text" id="dienstleistung" placeholder="z.B. Wärmepumpe, Badsanierung"></div>
+            <div class="field"><label>Durchschnittlicher Auftragswert</label><input type="text" id="auftragswert" placeholder="z.B. 30.000–50.000 €"></div>
+          </div>
+          <div class="field"><label>Aktuelle Auslastung <span class="req">*</span></label>
+            <select id="auslastung"><option value="">Bitte wählen</option><option>Unter 40%</option><option>40–60%</option><option>60–80%</option><option>80–95%</option><option>Vollständig ausgelastet</option></select>
+          </div>
+          <div class="fr">
+            <div class="field"><label>Gewünschte Leads / Monat</label>
+              <select id="leadsMonat"><option value="">Bitte wählen</option><option>1–5</option><option>6–10</option><option>11–20</option><option>20+</option></select>
+            </div>
+            <div class="field"><label>Einzugsgebiet / Radius <span class="req">*</span></label><input type="text" id="einzugsgebiet" placeholder="z.B. Hamburg + 50 km"></div>
+          </div>
+          <div class="fr">
+            <div class="field"><label>Badsanierungen / Monat</label><input type="text" id="badsanierungen" placeholder="z.B. 3–5 Aufträge"></div>
+            <div class="field"><label>Wärmepumpen / Monat</label><input type="text" id="waermepumpen" placeholder="z.B. 1–2 Aufträge"></div>
+          </div>
+          <div class="field"><label>Was muss passieren damit ihr nach der Laufzeit zufrieden seid? <span class="req">*</span></label><textarea id="erfolgsziel" placeholder="Eure Erwartungen an das Ergebnis..."></textarea></div>
+          <div class="divider"></div>
+          <div class="fr">
+            <div class="field"><label>Wer kontaktiert Leads? <span class="req">*</span></label><input type="text" id="leadKontakt" placeholder="Name + Position"></div>
+            <div class="field"><label>Wie schnell werden Leads kontaktiert? <span class="req">*</span></label>
+              <select id="leadSpeed"><option value="">Bitte wählen</option><option>1–3 Stunden</option><option>Innerhalb 24h</option><option>Innerhalb 48h</option><option>Später</option></select>
+            </div>
+          </div>
+          <div class="hint">Einer der wichtigsten Hebel für Performance – je schneller, desto besser</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6: SOCIAL & VIDEO -->
+  <div class="step" id="step-social">
+    <div class="step-card">
+      <div class="card-head">
+        <div class="card-title">🎬 Video & Social Media</div>
+        <div class="card-sub">Wer erscheint vor der Kamera und welche Kanäle nutzt ihr?</div>
+      </div>
+      <div class="card-body">
+        <div class="fg">
+          <div class="field">
+            <label>Welche Personen stehen vor der Kamera? <span class="req">*</span></label>
+            <div id="personenList">
+              <div class="person-item"><input type="text" placeholder="Name"><input type="text" placeholder="Rolle / Position"><button type="button" class="remove-person" style="display:none" onclick="removePerson(this)">×</button></div>
+            </div>
+            <button type="button" class="add-btn" onclick="addPerson()" style="margin-top:4px">+ Weitere Person</button>
+          </div>
+          <div class="field"><label>Wann kann der Videodreh stattfinden?</label><input type="text" id="videoDreh" placeholder="z.B. 15.04. Vormittag, 22.04. flexibel"></div>
+          <div class="divider"></div>
+          <div class="toggle-field" onclick="toggleCond('fb-toggle','fb-cond')">
+            <label>Facebook Seite vorhanden?</label><div class="toggle" id="fb-toggle"></div>
+          </div>
+          <div class="conditional" id="fb-cond">
+            <div class="cond-section"><div class="fg">
+              <div class="fr">
+                <div class="field"><label>Name der Seite</label><input type="text" placeholder="Firmenname auf Facebook"></div>
+                <div class="field"><label>Link zur Seite</label><input type="url" placeholder="https://facebook.com/..."></div>
+              </div>
+              <div class="field"><label>E-Mail des Admin-Accounts <span class="req">*</span></label><input type="email" placeholder="admin@email.de"><div class="hint" style="margin-top:5px">Wir fügen euch als Partner im Werbeanzeigenmanager hinzu</div></div>
+              <div class="field"><label>Backup-Account (Name + E-Mail)</label><input type="text" placeholder="z.B. Max Mustermann – max@email.de"><div class="hint" style="margin-top:5px">Falls Hauptaccount gesperrt wird – z.B. Ehepartner, Mitarbeiter</div></div>
+            </div></div>
+          </div>
+          <div class="toggle-field" onclick="toggleCond('ig-toggle','ig-cond')">
+            <label>Instagram Account vorhanden?</label><div class="toggle" id="ig-toggle"></div>
+          </div>
+          <div class="conditional" id="ig-cond">
+            <div class="cond-section"><div class="fr">
+              <div class="field"><label>Handle</label><input type="text" placeholder="@handle"></div>
+              <div class="field"><label>Link</label><input type="url" placeholder="https://instagram.com/..."></div>
+            </div></div>
+          </div>
+          <div class="toggle-field" onclick="toggleCond('ads-toggle','ads-cond')">
+            <label>Wurde bereits Werbung geschaltet?</label><div class="toggle" id="ads-toggle"></div>
+          </div>
+          <div class="conditional" id="ads-cond">
+            <div class="cond-section"><div class="field"><label>Wann und was wurde gemacht?</label><textarea placeholder="Plattform, Ziel, Ergebnis..."></textarea></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 7: ASSETS -->
+  <div class="step" id="step-assets">
+    <div class="step-card">
+      <div class="card-head">
+        <div class="card-title">📸 Fotos & Logo</div>
+        <div class="card-sub">Lade deine Unterlagen hoch – je mehr, desto besser für die Kampagne.</div>
+      </div>
+      <div class="card-body">
+        <div class="fg">
+          <div class="field">
+            <label>Logo hochladen</label>
+            <div class="upload-zone" ondragover="event.preventDefault()" ondrop="handleLogoDrop2(event)">
+              <input type="file" id="shkLogoInput" accept=".png,.svg,.jpg,.pdf,.heic,.heif" onchange="shkLogoFile(this.files)">
+              <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
+              <div style="font-size:13px;color:var(--text)"><span style="color:var(--accent);text-decoration:underline">Datei auswählen</span> oder reinziehen</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px">PNG, SVG, PDF · transparent bevorzugt</div>
+            </div>
+            <div id="shkLogoPreview" class="preview-row"></div>
+          </div>
+          <div class="fr">
+            <div class="field">
+              <label>📸 Inhaberfoto</label>
+              <div class="upload-zone" ondragover="event.preventDefault()" ondrop="shkDrop(event,'inhaber')">
+                <input type="file" accept="image/*,.heic,.heif" multiple onchange="shkFile(this.files,'inhaber')">
+                <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
+                <div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Foto auswählen</span> oder reinziehen</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">Porträt oder auf der Baustelle</div>
+              </div>
+              <div id="preview-inhaber" class="preview-row"></div>
             </div>
             <div class="field">
-              <label>Benefits der Stelle <span class="req">*</span></label>
-              <div class="hint" style="margin-bottom:8px">Je konkreter, desto besser – diese Punkte kommen direkt in die Anzeige</div>
-              <div style="display:flex;flex-direction:column;gap:7px" class="benefitsList">
-                <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);flex-shrink:0">✓</span><input type="text" placeholder="z.B. Firmenfahrzeug auch privat nutzbar" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:9px 13px;outline:none"></div>
-                <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);flex-shrink:0">✓</span><input type="text" placeholder="z.B. Geregelte Arbeitszeiten Mo–Fr" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:9px 13px;outline:none"></div>
-                <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);flex-shrink:0">✓</span><input type="text" placeholder="z.B. Keine Montageeinsätze / kein Reisen" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:9px 13px;outline:none"></div>
-                <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);flex-shrink:0">✓</span><input type="text" placeholder="z.B. Werkzeug gestellt, moderne Fahrzeuge" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:9px 13px;outline:none"></div>
-                <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--accent);flex-shrink:0">✓</span><input type="text" placeholder="z.B. Feste Stammkunden, saubere Arbeit" style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:9px 13px;outline:none"></div>
+              <label>👥 Teamfotos & Arbeitsalltag</label>
+              <div class="upload-zone" ondragover="event.preventDefault()" ondrop="shkDrop(event,'team')">
+                <input type="file" accept="image/*,.heic,.heif" multiple onchange="shkFile(this.files,'team')">
+                <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
+                <div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Fotos auswählen</span> oder reinziehen</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">Team, Baustelle, Fahrzeuge</div>
               </div>
-              <button type="button" onclick="addBenefit(this)" style="background:transparent;border:1px dashed var(--border);border-radius:var(--radius);color:var(--muted);font-family:var(--font-body);font-size:11px;padding:8px;cursor:pointer;margin-top:6px;width:100%;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">+ Weiteren Benefit hinzufügen</button>
+              <div id="preview-team" class="preview-row"></div>
             </div>
           </div>
-        </div>
-      </div>
-      <button type="button" class="add-stelle" onclick="addStelle()">+ Weitere Stelle hinzufügen</button>
-      <div class="divider"></div>
-      <div class="field-row">
-        <div class="field"><label>Bewerbungen letzte 3 Monate</label>
-          <select><option value="">Bitte wählen</option><option>0–5</option><option>6–15</option><option>16–30</option><option>30+</option></select>
-        </div>
-        <div class="field"><label>Wer bearbeitet Bewerbungen? <span class="req">*</span></label><input type="text" placeholder="Name der Person"></div>
-      </div>
-      <div class="field"><label>Rückmeldung an Bewerber innerhalb von <span class="req">*</span></label>
-        <select><option value="">Bitte wählen</option><option>24h</option><option>48h</option><option>72h</option><option>Länger</option></select>
-        <div class="hint">Kritischer KPI – beeinflusst direkt unsere Performance-Auswertung</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BLOCK 4 – LEADGEN -->
-  <div class="block service-block" id="block-leadgen">
-    <div class="block-header"><div class="block-num">03</div><div class="block-title">📈 Lead Generation</div><div class="block-badge">Nur Neukundengewinnung</div></div>
-    <div class="field-group">
-      <div class="field-row">
-        <div class="field"><label>Dienstleistung / Produkt <span class="req">*</span></label><input type="text" placeholder="z.B. Wärmepumpe, Badsanierung"></div>
-        <div class="field"><label>Durchschnittlicher Auftragswert</label><input type="text" placeholder="z.B. 30.000 – 50.000 €"></div>
-      </div>
-      <div class="field"><label>Aktuelle Auslastung <span class="req">*</span></label>
-        <select><option value="">Bitte wählen</option><option>Unter 40%</option><option>40–60%</option><option>60–80%</option><option>80–95%</option><option>Vollständig ausgelastet</option></select>
-      </div>
-      <div class="field-row">
-        <div class="field"><label>Gewünschte Leads / Monat</label>
-          <select><option value="">Bitte wählen</option><option>1–5</option><option>6–10</option><option>11–20</option><option>20+</option></select>
-        </div>
-        <div class="field"><label>Einzugsgebiet / Radius <span class="req">*</span></label><input type="text" placeholder="z.B. Hamburg + 50 km"></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label>Badsanierungen / Monat</label><input type="text" placeholder="z.B. 3-5 Aufträge"></div>
-        <div class="field"><label>Wärmepumpen / Monat</label><input type="text" placeholder="z.B. 1-2 Aufträge"></div>
-      </div>
-      <div class="field"><label>Was muss passieren damit ihr nach der Laufzeit zufrieden seid? <span class="req">*</span></label><textarea placeholder="Eure Erwartungen an das Ergebnis..."></textarea></div>
-      <div class="divider"></div>
-      <div class="field-row">
-        <div class="field"><label>Wer kontaktiert Leads? <span class="req">*</span></label><input type="text" placeholder="Name + Position"></div>
-        <div class="field"><label>Wie schnell werden Leads kontaktiert? <span class="req">*</span></label>
-          <select><option value="">Bitte wählen</option><option>1–3 Stunden</option><option>Innerhalb 24h</option><option>Innerhalb 48h</option><option>Später</option></select>
-        </div>
-      </div>
-      <div class="hint">Einer der wichtigsten Hebel für Performance – je schneller, desto besser</div>
-    </div>
-  </div>
-
-  <!-- BLOCK 5 – VIDEO & CONTENT -->
-  <div class="block">
-    <div class="block-header"><div class="block-num">04</div><div class="block-title">🎬 Video & Content</div></div>
-    <div class="field-group">
-      <div class="field">
-        <label>Welche Personen stehen vor der Kamera? <span class="req">*</span></label>
-        <div id="personenList">
-          <div class="person-item"><input type="text" placeholder="Name"><input type="text" placeholder="Rolle / Position"><button type="button" class="remove-person" style="display:none" onclick="removePerson(this)">×</button></div>
-        </div>
-        <button type="button" class="add-person" onclick="addPerson()">+ Weitere Person hinzufügen</button>
-      </div>
-      <div class="field"><label>Wann kann der Videodreh stattfinden?</label><input type="text" placeholder="z.B. 15.04. Vormittag, 17.04. Nachmittag, 22.04. flexibel"></div>
-      <div class="toggle-field" onclick="toggleCond('fotos-toggle','fotos-cond')">
-        <label>Gibt es bereits Fotos / Videos von Projekten?</label><div class="toggle" id="fotos-toggle"></div>
-      </div>
-      <div class="conditional" id="fotos-cond">
-        <div class="cond-section"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BLOCK 6 – SOCIAL & TECH -->
-  <div class="block">
-    <div class="block-header"><div class="block-num">05</div><div class="block-title">📱 Social & Tech</div></div>
-    <div class="field-group">
-      <div class="toggle-field" onclick="toggleCond('fb-toggle','fb-cond')">
-        <label>Facebook Seite vorhanden?</label><div class="toggle" id="fb-toggle"></div>
-      </div>
-      <div class="conditional" id="fb-cond">
-        <div class="cond-section"><div class="field-group">
-          <div class="field-row">
-            <div class="field"><label>Name der Seite</label><input type="text" placeholder="Firmenname auf Facebook"></div>
-            <div class="field"><label>Link zur Seite</label><input type="url" placeholder="https://facebook.com/..."></div>
+          <div id="leistungenSHK-wrap" style="display:none">
+            <label style="font-size:10px;font-weight:600;letter-spacing:0.9px;text-transform:uppercase;color:var(--label);display:block;margin-bottom:10px">🏗️ Fotos je Leistung</label>
+            <div id="leistungenSHK"></div>
+            <button type="button" id="addLeistungBtn" class="add-btn">+ Leistung mit Fotos hinzufügen</button>
           </div>
-          <div class="field"><label>E-Mail des Admin-Accounts <span class="req">*</span></label><input type="email" placeholder="admin@email.de"><div class="hint">Wir fügen euch als Partner im Werbeanzeigenmanager hinzu</div></div>
-          <div class="field"><label>Backup-Account (Name + E-Mail)</label><input type="text" placeholder="z.B. Max Mustermann"><div class="hint" style="margin-top:6px">Wer könnte als Backup-Account hinzugefügt werden, falls der Hauptaccount gesperrt wird? z.B. Ehepartner, Mitarbeiter</div</div>
-        </div></div>
-      </div>
-      <div class="toggle-field" onclick="toggleCond('ig-toggle','ig-cond')">
-        <label>Instagram Account vorhanden?</label><div class="toggle" id="ig-toggle"></div>
-      </div>
-      <div class="conditional" id="ig-cond">
-        <div class="cond-section"><div class="field-row">
-          <div class="field"><label>Name</label><input type="text" placeholder="@handle"></div>
-          <div class="field"><label>Link</label><input type="url" placeholder="https://instagram.com/..."></div>
-        </div></div>
-      </div>
-      <div class="toggle-field" onclick="toggleCond('ads-toggle','ads-cond')">
-        <label>Wurde bereits Werbung geschaltet?</label><div class="toggle" id="ads-toggle"></div>
-      </div>
-      <div class="conditional" id="ads-cond">
-        <div class="cond-section"><div class="field"><label>Wann und was wurde gemacht?</label><textarea placeholder="Plattform, Ziel, Ergebnis..."></textarea></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-bottom:40px">
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border)">
-      <div style="font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(77,196,212,0.3);border-radius:20px;padding:3px 11px">06</div>
-      <div style="font-family:var(--font-head);font-weight:700;font-size:18px">Logo</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:7px">
-      <div style="font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--label)">Logo hochladen</div>
-      <div style="border:1px dashed var(--border);border-radius:var(--radius);padding:22px;text-align:center;cursor:pointer;background:var(--surface);position:relative;overflow:hidden" ondragover="event.preventDefault()" ondrop="handleLogoDrop2(event)">
-        <input type="file" id="shkLogoInput" accept=".png,.svg,.jpg,.pdf,.heic,.heif" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%" onchange="shkLogoFile(this.files)">
-        <div style="font-size:20px;margin-bottom:6px;opacity:0.5">⬆</div>
-        <div style="font-size:13px;color:var(--text)"><span style="color:var(--accent);text-decoration:underline">Datei auswählen</span> oder reinziehen</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">PNG, SVG, PDF · transparent bevorzugt</div>
-      </div>
-      <div id="shkLogoPreview" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px"></div>
-    </div>
-  </div>
-
-  <div class="block">
-    <div class="block-header">
-      <div class="block-num">07</div>
-      <div class="block-title">📸 Fotos & Logo</div>
-    </div>
-    <div class="field-group">
-      <div class="field-row">
-        <div class="field">
-          <label>📸 Inhaberfoto</label>
-          <div class="upload-zone-shk" ondragover="event.preventDefault()" ondrop="shkDrop(event,'inhaber')">
-            <input type="file" accept="image/*,.heic,.heif" multiple onchange="shkFile(this.files,'inhaber')">
-            <div style="font-size:18px;opacity:0.5">⬆</div>
-            <div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Foto auswählen</span> oder reinziehen</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:3px">Porträt, vor Ort oder auf der Baustelle</div>
-          </div>
-          <div id="preview-inhaber" class="preview-row"></div>
-        </div>
-        <div class="field">
-          <label>👥 Teamfotos & Arbeitsalltag</label>
-          <div class="upload-zone-shk" ondragover="event.preventDefault()" ondrop="shkDrop(event,'team')">
-            <input type="file" accept="image/*,.heic,.heif" multiple onchange="shkFile(this.files,'team')">
-            <div style="font-size:18px;opacity:0.5">⬆</div>
-            <div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Fotos auswählen</span> oder reinziehen</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:3px">Team, Baustelle, Fahrzeuge, Arbeitsalltag</div>
-          </div>
-          <div id="preview-team" class="preview-row"></div>
         </div>
       </div>
-      <div id="leistungenSHK-wrap" style="display:none">
-        <div style="font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--label);margin-bottom:10px">🏗️ Fotos je Leistung</div>
-        <div id="leistungenSHK"></div>
-        <button type="button" id="addLeistungBtn" style="width:100%;background:transparent;border:1px dashed var(--border);border-radius:var(--radius);color:var(--muted);font-family:var(--font-body);font-size:13px;padding:13px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">+ Leistung mit Fotos hinzufügen</button>
+    </div>
+  </div>
+
+  <!-- STEP 8: SUBMIT -->
+  <div class="step" id="step-submit">
+    <div class="step-card">
+      <div class="card-head">
+        <div class="card-title">🏁 Fast fertig!</div>
+        <div class="card-sub">Nur noch die Datenschutzerklärung bestätigen, dann sind wir durch.</div>
+      </div>
+      <div class="card-body">
+        <div class="fg">
+          <div class="dsgvo-box" onclick="toggleDsgvoSHK()">
+            <div class="dsgvo-check" id="dsgvoBoxSHK"></div>
+            <div class="dsgvo-text">Ich habe die <a href="https://die-handwerksmanufaktur.de/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span style="color:var(--accent)">*</span></div>
+          </div>
+          <div style="background:rgba(12,164,194,0.07);border:1px solid rgba(12,164,194,0.18);border-radius:10px;padding:15px 17px;font-size:13px;color:var(--label);line-height:1.6">
+            Nach dem Absenden legen wir automatisch deine Google Drive-Ordnerstruktur an. Wir melden uns innerhalb von 24 Stunden – dann geht's los!
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div style="margin-bottom:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:flex-start;gap:12px;cursor:pointer" onclick="toggleDsgvoSHK()">
-    <div id="dsgvoBoxSHK" style="width:20px;height:20px;border:2px solid var(--border);border-radius:3px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.15s"></div>
-    <div style="font-size:13px;color:var(--label);line-height:1.5">Ich habe die <a href="https://die-handwerksmanufaktur.de/datenschutz/" target="_blank" style="color:var(--accent)">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span style="color:var(--accent)">*</span></div>
-  </div>
+</div><!-- /wizardWrap -->
 
-  <div class="submit-area">
-    <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">Formular absenden →</button>
-    <div class="submit-note">Daten werden verschlüsselt übertragen<br>und ausschließlich intern verwendet.</div>
-  </div>
+<!-- NAVIGATION -->
+<div class="wizard-nav">
+  <button class="btn-back" id="btnBack" onclick="goBack()" disabled>← Zurück</button>
+  <div class="nav-info"><strong id="navStepNum">1</strong>von <span id="navStepTotal">8</span> Schritten</div>
+  <button class="btn-next" id="btnNext" onclick="goNext()">Weiter →</button>
 </div>
 
 <script>
+// === CONFIG ===
+const STEP_MESSAGES = {
+  'step-welcome':     { emoji: '👋', text: 'Schön, dass du dabei bist! Wähle aus, was wir gemeinsam starten.' },
+  'step-company':     { emoji: '🏢', text: 'Super! Jetzt brauche ich ein paar Infos zu deinem Betrieb.' },
+  'step-positioning': { emoji: '💪', text: 'Richtig gut! Wie positioniert ihr euch am Markt?' },
+  'step-recruiting':  { emoji: '🔧', text: 'Weiter so! Jetzt zu euren offenen Stellen.' },
+  'step-leadgen':     { emoji: '📈', text: 'Toll gemacht! Jetzt noch die Infos zur Neukundengewinnung.' },
+  'step-social':      { emoji: '🎬', text: 'Fast da – noch kurz zu Social Media & Video.' },
+  'step-assets':      { emoji: '📸', text: 'Letzter Schritt! Nur noch die Fotos hochladen.' },
+  'step-submit':      { emoji: '🏁', text: 'Geschafft! Bereit zum Absenden.' },
+};
 
-// ─── Autosave ────────────────────────────────────────────────────────────────
-const SAVE_KEY = 'hwm_shk_draft';
-function saveDraft() {
-  const data = {};
-  document.querySelectorAll('input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select').forEach(function(el) {
-    if (el.id) data[el.id] = el.value;
+const STEP_LABELS = {
+  'step-welcome':'Leistung','step-company':'Betrieb','step-positioning':'Markt',
+  'step-recruiting':'Recruiting','step-leadgen':'LeadGen',
+  'step-social':'Social','step-assets':'Fotos','step-submit':'Absenden'
+};
+
+let currentIdx = 0;
+let stepSeq = [];
+
+function buildSeq() {
+  const r = document.getElementById('cb-recruiting').checked;
+  const l = document.getElementById('cb-leadgen').checked;
+  const s = ['step-welcome','step-company','step-positioning'];
+  if (r) s.push('step-recruiting');
+  if (l) s.push('step-leadgen');
+  s.push('step-social','step-assets','step-submit');
+  return s;
+}
+
+function renderDots() {
+  const c = document.getElementById('stepDots');
+  c.innerHTML = '';
+  stepSeq.forEach(function(sid, i) {
+    if (i > 0) {
+      const conn = document.createElement('div');
+      conn.className = 'step-connector' + (i <= currentIdx ? ' done' : '');
+      c.appendChild(conn);
+    }
+    const wrap = document.createElement('div');
+    const isDone = i < currentIdx, isActive = i === currentIdx;
+    wrap.className = 'step-dot-wrap' + (isActive ? ' active' : '') + (isDone ? ' done' : '');
+    const dot = document.createElement('div');
+    dot.className = 'step-dot' + (isActive ? ' active' : '') + (isDone ? ' done' : '');
+    dot.textContent = isDone ? '✓' : (i + 1);
+    const lbl = document.createElement('div');
+    lbl.className = 'step-dot-label';
+    lbl.textContent = STEP_LABELS[sid] || '';
+    wrap.appendChild(dot);
+    wrap.appendChild(lbl);
+    c.appendChild(wrap);
   });
-  localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+  document.getElementById('progressFill').style.width = (currentIdx / (stepSeq.length - 1) * 100) + '%';
+}
+
+function updateMotiv(sid) {
+  const m = STEP_MESSAGES[sid] || { emoji: '👍', text: 'Weiter so!' };
+  document.getElementById('motivEmoji').textContent = m.emoji;
+  document.getElementById('motivText').textContent = m.text;
+  const el = document.getElementById('motivBanner');
+  el.style.animation = 'none'; el.offsetHeight; el.style.animation = 'fadeUp 0.4s ease both';
+}
+
+function showStep(idx) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  const sid = stepSeq[idx];
+  document.getElementById(sid).classList.add('active');
+  updateMotiv(sid);
+  renderDots();
+  document.getElementById('btnBack').disabled = idx === 0;
+  document.getElementById('navStepNum').textContent = idx + 1;
+  document.getElementById('navStepTotal').textContent = stepSeq.length;
+  const isLast = idx === stepSeq.length - 1;
+  const btn = document.getElementById('btnNext');
+  btn.textContent = isLast ? 'Absenden ✓' : 'Weiter →';
+  btn.className = isLast ? 'btn-finish' : 'btn-next';
+  btn.onclick = isLast ? submitForm : goNext;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goNext() {
+  if (currentIdx === 0) {
+    const r = document.getElementById('cb-recruiting').checked;
+    const l = document.getElementById('cb-leadgen').checked;
+    if (!r && !l) { alert('Bitte wähle mindestens eine Leistung aus.'); return; }
+    stepSeq = buildSeq();
+  }
+  if (currentIdx < stepSeq.length - 1) { currentIdx++; showStep(currentIdx); }
+}
+
+function goBack() {
+  if (currentIdx > 0) { currentIdx--; showStep(currentIdx); }
+}
+
+// === SERVICE ===
+function onServiceChange(val, on) {
+  document.getElementById('card-' + val).classList.toggle('active', on);
+  if (val === 'recruiting') {
+    document.getElementById('arbeitgeberField').style.display = on ? 'flex' : 'none';
+  }
+  if (val === 'leadgen') {
+    const w = document.getElementById('leistungenSHK-wrap');
+    if (w) w.style.display = on ? 'block' : 'none';
+    if (on && !window._leadgenInit) { window._leadgenInit = true; addLeistungSHK(); }
+  }
+  stepSeq = buildSeq();
+  renderDots();
+}
+
+// === AUTOSAVE ===
+const SAVE_KEY = 'hwm_shk_draft_v2';
+function saveDraft() {
+  const d = {};
+  document.querySelectorAll('input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select').forEach(function(el) {
+    if (el.id) d[el.id] = el.value;
+  });
+  localStorage.setItem(SAVE_KEY, JSON.stringify(d));
 }
 function loadDraft() {
   try {
-    const saved = localStorage.getItem(SAVE_KEY);
-    if (!saved) return;
-    const data = JSON.parse(saved);
-    Object.entries(data).forEach(function([id, val]) {
+    const s = localStorage.getItem(SAVE_KEY);
+    if (!s) return;
+    JSON.parse(s);
+    Object.entries(JSON.parse(s)).forEach(function([id, val]) {
       const el = document.getElementById(id);
-      if (el && val) { el.value = val; el.dispatchEvent(new Event('input')); }
+      if (el && val) { el.value = val; }
     });
   } catch(e) {}
 }
 function clearDraft() { localStorage.removeItem(SAVE_KEY); }
 document.addEventListener('input', function(e) {
-  if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'SELECT') return;
-  saveDraft();
+  if (['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) saveDraft();
 });
-window.addEventListener('load', loadDraft);
 
-const API_BASE='https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
-function updateProgress(){const i=document.querySelectorAll('input:not([type=file]):not([type=radio]):not([type=checkbox]),textarea,select');const f=[...i].filter(x=>x.value.trim()!=='').length;document.getElementById('progressFill').style.width=Math.min(100,Math.round(f/i.length*100))+'%';}
-document.addEventListener('input',updateProgress);
-
-function toggleService(val,on){
-  document.getElementById('card-'+val).classList.toggle('active',on);
-  document.getElementById('block-'+val).classList.toggle('visible',on);
-  if(val==='recruiting'){
-    document.getElementById('arbeitgeberField').style.display=on?'flex':'none';
-  }
-  if(val==='leadgen'){
-    const lWrap=document.getElementById('leistungenSHK-wrap');
-    if(lWrap)lWrap.style.display=on?'block':'none';
-    if(on && !window._leadgenInit){
-      window._leadgenInit=true;
-      addLeistungSHK();
-    }
-  }
+// === FIELD HELPERS ===
+function toggleCond(t, c) {
+  const tog = document.getElementById(t);
+  const cond = document.getElementById(c);
+  cond.classList.toggle('visible', tog.classList.toggle('on'));
 }
 
-function toggleCond(t,c){const toggle=document.getElementById(t);const cond=document.getElementById(c);cond.classList.toggle('visible',toggle.classList.toggle('on'));}
+let stelleCount = 1;
+function addStelle() {
+  stelleCount++;
+  const c = document.getElementById('stellenList');
+  const div = document.createElement('div');
+  div.className = 'stelle-item';
+  div.id = 'stelle-' + stelleCount;
+  div.innerHTML = '<div class="stelle-num">Stelle #' + stelleCount + '</div>' +
+    '<button type="button" class="remove-stelle" onclick="this.closest(\'.stelle-item\').remove()">×</button>' +
+    '<div class="fg"><div class="fr"><div class="field"><label>Stellenbezeichnung <span class="req">*</span></label><input type="text" placeholder="z.B. SHK-Monteur"></div>' +
+    '<div class="field"><label>Gehaltsspanne brutto</label><input type="text" placeholder="z.B. 3.000–3.800 €"></div></div>' +
+    '<div class="field"><label>Muss-Anforderungen</label><textarea placeholder="z.B. Gesellenbrief SHK, Führerschein Klasse B"></textarea></div>' +
+    '<div class="field"><label>Kann-Anforderungen</label><textarea placeholder="z.B. Erfahrung mit Wärmepumpen"></textarea></div>' +
+    '<div class="fr"><div class="field"><label>Einsatzgebiet / Radius</label><input type="text" placeholder="z.B. München + 30 km"></div>' +
+    '<div class="field"><label>Arbeitszeiten</label><input type="text" placeholder="z.B. Mo–Fr 7–16 Uhr"></div></div>' +
+    '<div class="field"><label>Benefits</label><textarea placeholder="Firmenfahrzeug, Werkzeug gestellt..."></textarea></div></div>';
+  c.appendChild(div);
+}
 
-let stelleCount=1;
-function addStelle(){stelleCount++;const c=document.getElementById('stellenList');const div=document.createElement('div');div.className='stelle-item';div.id='stelle-'+stelleCount;div.innerHTML=`<div class="stelle-num">Stelle #${stelleCount}</div><button type="button" class="remove-stelle" onclick="this.closest('.stelle-item').remove()">×</button><div class="field-group"><div class="field-row"><div class="field"><label>Stellenbezeichnung <span class="req">*</span></label><input type="text" placeholder="z.B. SHK-Monteur"></div><div class="field"><label>Gehaltsspanne brutto</label><input type="text" placeholder="z.B. 3.000–3.800 €"></div></div><div class="field"><label>Muss-Anforderungen</label><textarea placeholder="z.B. Gesellenbrief SHK, Führerschein Klasse B"></textarea></div><div class="field"><label>Kann-Anforderungen</label><textarea placeholder="z.B. Erfahrung mit Wärmepumpen"></textarea></div><div class="field-row"><div class="field"><label>Einsatzgebiet / Radius</label><input type="text" placeholder="z.B. München + 30 km"></div><div class="field"><label>Arbeitszeiten</label><input type="text" placeholder="z.B. Mo–Fr 7–16 Uhr"></div></div><div class="field"><label>Benefits</label><textarea placeholder="Firmenfahrzeug, Werkzeug gestellt..."></textarea></div></div>`;c.appendChild(div);}
-
-function addPerson(){const list=document.getElementById('personenList');const div=document.createElement('div');div.className='person-item';div.innerHTML=`<input type="text" placeholder="Name"><input type="text" placeholder="Rolle / Position"><button type="button" class="remove-person" onclick="removePerson(this)">×</button>`;list.appendChild(div);updateRemoveBtns();}
-function removePerson(btn){btn.closest('.person-item').remove();updateRemoveBtns();}
-function updateRemoveBtns(){const items=document.querySelectorAll('.person-item');items.forEach((item,i)=>{const btn=item.querySelector('.remove-person');if(btn)btn.style.display=items.length>1?'flex':'none';});}
-
-function addVorteil(){
-  const list=document.getElementById('vorteileList');
-  const div=document.createElement('div');
-  div.style.cssText='display:flex;gap:8px;align-items:center';
-  div.innerHTML=`<span style="color:var(--ac);font-size:16px;flex-shrink:0">✓</span><input type="text" placeholder="Weiterer Vorteil..." style="flex:1;background:var(--s);border:1px solid var(--b);border-radius:var(--r);color:var(--tx);font-family:var(--fb);font-size:13px;padding:10px 14px;outline:none">`;
+function addPerson() {
+  const list = document.getElementById('personenList');
+  const div = document.createElement('div');
+  div.className = 'person-item';
+  div.innerHTML = '<input type="text" placeholder="Name"><input type="text" placeholder="Rolle / Position"><button type="button" class="remove-person" onclick="removePerson(this)">×</button>';
   list.appendChild(div);
+  updateRemoveBtns();
 }
-let shkLogoFiles=[];
-function handleLogoFile(files){
-  shkLogoFiles=[...files];
-  const p=document.getElementById('logoPreview');
-  p.innerHTML='';
-  [...files].forEach(f=>{
-    const c=document.createElement('div');
-    c.style.cssText='background:var(--s2);border:1px solid var(--b);border-radius:6px;padding:5px 10px;font-size:11px;color:var(--lb)';
-    c.textContent=f.name.slice(0,30);
-    p.appendChild(c);
+function removePerson(btn) { btn.closest('.person-item').remove(); updateRemoveBtns(); }
+function updateRemoveBtns() {
+  const items = document.querySelectorAll('.person-item');
+  items.forEach(function(item) {
+    const btn = item.querySelector('.remove-person');
+    if (btn) btn.style.display = items.length > 1 ? 'flex' : 'none';
   });
 }
-function handleLogoDrop(e){e.preventDefault();if(e.dataTransfer.files.length)handleLogoFile(e.dataTransfer.files);}
-window.shkFileStore2={};var shkFileStore2=window.shkFileStore2;
-let shkLeistungCount2=0;
-function shkFile(files,key){
-  if(!shkFileStore2[key])shkFileStore2[key]=[];
-  shkFileStore2[key].push(...files);
-  const p=document.getElementById('preview-'+key);
-  if(p){[...files].forEach(f=>{const c=document.createElement('div');c.className='preview-chip-shk';c.textContent=f.name.slice(0,22);p.appendChild(c);});}
-}
-function shkDrop(e,key){e.preventDefault();if(e.dataTransfer.files.length)shkFile(e.dataTransfer.files,key);}
-function addLeistungSHK(){
-  shkLeistungCount2++;
-  var id=shkLeistungCount2;
-  var key='leistung_'+id;
-  var c=document.getElementById('leistungenSHK');
-  if(!c){return;}
-  var div=document.createElement('div');
-  div.className='leistung-shk';
-  var inner='<div style="font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Leistung #'+id+'</div>';
-  inner+='<input type="text" placeholder="Leistungsname z.B. Badsanierung" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:14px;padding:11px 14px;outline:none;margin-bottom:10px;box-sizing:border-box">';
-  inner+='<div style="font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--label);margin-bottom:7px">Fotos zu dieser Leistung – Vorher/Nachher, fertige Projekte</div>';
-  inner+='<div class="upload-zone-shk" id="uz-'+key+'">';
-  inner+='<input type="file" accept="image/*,.heic,.heif" multiple id="fi-'+key+'">';
-  inner+='<div style="font-size:18px;opacity:0.5">&#x2B06;</div>';
-  inner+='<div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Fotos ausw\u00e4hlen</span> oder reinziehen</div>';
-  inner+='<div style="font-size:11px;color:var(--muted)">Ca. 10-15 Fotos falls m\u00f6glich</div>';
-  inner+='</div>';
-  inner+='<div id="preview-'+key+'" class="preview-row"></div>';
-  div.innerHTML=inner;
-  c.appendChild(div);
-  var fi=document.getElementById('fi-'+key);
-  var uz=document.getElementById('uz-'+key);
-  if(fi)fi.addEventListener('change',function(){shkFile(this.files,key);});
-  if(uz){
-    uz.addEventListener('dragover',function(e){e.preventDefault();});
-    uz.addEventListener('drop',function(e){e.preventDefault();if(e.dataTransfer.files.length)shkFile(e.dataTransfer.files,key);});
-  }
-}
-function addBenefit(btn){
-  const list=btn.previousElementSibling;
-  const div=document.createElement('div');
-  div.style.cssText='display:flex;gap:8px;align-items:center';
-  div.innerHTML='<span style="color:var(--accent);flex-shrink:0">✓</span><input type="text" placeholder="Weiterer Benefit..." style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:9px 13px;outline:none">';
-  list.appendChild(div);
-}
-function addVorteil(){
-  const list=document.getElementById('vorteileList');
-  if(!list)return;
-  const div=document.createElement('div');
-  div.style.cssText='display:flex;gap:8px;align-items:center';
-  div.innerHTML='<span style="color:var(--accent);font-size:15px;flex-shrink:0">✓</span><input type="text" placeholder="Weiterer Vorteil..." style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:10px 14px;outline:none">';
-  list.appendChild(div);
-}
-let dsgvoSHK=false;
-function toggleDsgvoSHK(){
-  dsgvoSHK=!dsgvoSHK;
-  const box=document.getElementById('dsgvoBoxSHK');
-  if(!box)return;
-  box.style.background=dsgvoSHK?'var(--accent)':'transparent';
-  box.style.borderColor=dsgvoSHK?'var(--accent)':'var(--border)';
-  box.innerHTML=dsgvoSHK?'<span style="color:#000;font-size:13px;font-weight:900">✓</span>':'';
-}
-// Wire up button after DOM ready
-window.addEventListener('load',function(){
-  const btn=document.getElementById('addLeistungBtn');
-  if(btn)btn.onclick=addLeistungSHK;
-});
-function shkLogoFile(files){
-  if(!window.shkFileStore2)window.shkFileStore2={};
-  window.shkFileStore2['logo']=[...files];
-  const p=document.getElementById('shkLogoPreview');
-  if(p){p.innerHTML='';[...files].forEach(function(f){
-    const c=document.createElement('div');
-    c.className='preview-chip-shk';
-    c.textContent=f.name.slice(0,25);
-    p.appendChild(c);
-  });}
-}
-function handleLogoDrop2(e){e.preventDefault();if(e.dataTransfer.files.length)shkLogoFile(e.dataTransfer.files);}
 
+function addVorteil() {
+  const list = document.getElementById('vorteileList');
+  const div = document.createElement('div');
+  div.className = 'vorteil-row';
+  div.innerHTML = '<span class="vorteil-check">✓</span><input type="text" placeholder="Weiterer Vorteil...">';
+  list.appendChild(div);
+}
+
+// === FILE UPLOADS ===
+window.shkFileStore2 = {}; var shkFileStore2 = window.shkFileStore2;
+let shkLeistungCount2 = 0;
+
+function shkFile(files, key) {
+  if (!shkFileStore2[key]) shkFileStore2[key] = [];
+  shkFileStore2[key].push(...files);
+  const p = document.getElementById('preview-' + key);
+  if (p) { [...files].forEach(function(f) { const c = document.createElement('div'); c.className = 'preview-chip'; c.textContent = f.name.slice(0, 22); p.appendChild(c); }); }
+}
+function shkDrop(e, key) { e.preventDefault(); if (e.dataTransfer.files.length) shkFile(e.dataTransfer.files, key); }
+
+function shkLogoFile(files) {
+  if (!window.shkFileStore2) window.shkFileStore2 = {};
+  window.shkFileStore2['logo'] = [...files];
+  const p = document.getElementById('shkLogoPreview');
+  if (p) { p.innerHTML = ''; [...files].forEach(function(f) { const c = document.createElement('div'); c.className = 'preview-chip'; c.textContent = f.name.slice(0, 25); p.appendChild(c); }); }
+}
+function handleLogoDrop2(e) { e.preventDefault(); if (e.dataTransfer.files.length) shkLogoFile(e.dataTransfer.files); }
+
+function addLeistungSHK() {
+  shkLeistungCount2++;
+  var id = shkLeistungCount2;
+  var key = 'leistung_' + id;
+  var c = document.getElementById('leistungenSHK');
+  if (!c) return;
+  var div = document.createElement('div');
+  div.className = 'leistung-item';
+  div.innerHTML = '<div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Leistung #' + id + '</div>' +
+    '<input type="text" placeholder="Leistungsname z.B. Badsanierung" style="width:100%;background:#fff;border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font-body);font-size:14px;padding:10px 13px;outline:none;margin-bottom:10px;box-sizing:border-box">' +
+    '<div style="font-size:10px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--label);margin-bottom:7px">Fotos zu dieser Leistung</div>' +
+    '<div class="upload-zone" id="uz-' + key + '" ondragover="event.preventDefault()">' +
+    '<input type="file" accept="image/*,.heic,.heif" multiple id="fi-' + key + '">' +
+    '<div style="font-size:20px;opacity:0.3">⬆</div>' +
+    '<div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Fotos auswählen</span> oder reinziehen</div>' +
+    '<div style="font-size:11px;color:var(--muted)">Ca. 10–15 Fotos falls möglich</div>' +
+    '</div><div id="preview-' + key + '" class="preview-row"></div>';
+  c.appendChild(div);
+  var fi = document.getElementById('fi-' + key);
+  var uz = document.getElementById('uz-' + key);
+  if (fi) fi.addEventListener('change', function() { shkFile(this.files, key); });
+  if (uz) uz.addEventListener('drop', function(e) { e.preventDefault(); if (e.dataTransfer.files.length) shkFile(e.dataTransfer.files, key); });
+}
+
+window.addEventListener('load', function() {
+  const btn = document.getElementById('addLeistungBtn');
+  if (btn) btn.onclick = addLeistungSHK;
+});
+
+// === DSGVO ===
+let dsgvoSHK = false;
+function toggleDsgvoSHK() {
+  dsgvoSHK = !dsgvoSHK;
+  const box = document.getElementById('dsgvoBoxSHK');
+  if (!box) return;
+  box.classList.toggle('on', dsgvoSHK);
+  box.innerHTML = dsgvoSHK ? '<span style="color:#fff;font-size:12px;font-weight:700">✓</span>' : '';
+}
+
+// === COLLECT DATA ===
 function collectFormData() {
   var data = {};
   document.querySelectorAll('label').forEach(function(lbl) {
-    var labelText = lbl.textContent.replace(/[*]/g,'').replace(/\s+/g,' ').trim();
-    if (!labelText || labelText.length < 2) return;
-    var container = lbl.parentElement;
-    if (!container) return;
-    var input = container.querySelector('input:not([type=file]):not([type=radio]):not([type=checkbox]),textarea,select');
-    if (!input) return;
-    var val = (input.value || '').trim();
+    var t = lbl.textContent.replace(/[*]/g,'').replace(/\s+/g,' ').trim();
+    if (!t || t.length < 2) return;
+    var p = lbl.parentElement;
+    if (!p) return;
+    var inp = p.querySelector('input:not([type=file]):not([type=radio]):not([type=checkbox]),textarea,select');
+    if (!inp) return;
+    var val = (inp.value || '').trim();
     if (!val) return;
-    var key = labelText.slice(0, 60);
-    var orig = key; var n = 1;
+    var key = t.slice(0, 60); var orig = key; var n = 1;
     while (data[key] !== undefined) { n++; key = orig + ' (' + n + ')'; }
     data[key] = val;
   });
   return data;
 }
 
-async function submitForm(){
-  if(!dsgvoSHK){alert('Bitte stimme zuerst der Datenschutzerklärung zu (Checkbox am Ende des Formulars).');return;}
-  const firmaInput=document.querySelector('#formWrap input[placeholder*="Mustermann"], #formWrap input[placeholder*="GmbH"]');
-  const firmaName=(firmaInput&&firmaInput.value.trim())||'Neukunde';
-  // Leistungsnamen sammeln
-  const leistungen=[...document.querySelectorAll('.leistung-shk input[type=text]')].map(i=>i.value.trim()||'Leistung');
-  // Show overlay
-  // Calculate total upload size for progress bar
-  _shkTotalBytes=0;_shkDoneBytes=0;
-  const allStores=[window.shkFileStore2];
-  allStores.forEach(function(store){if(store){Object.values(store).forEach(function(files){if(files)files.forEach(function(f){_shkTotalBytes+=f.size;});});}});
-  const overlay=document.getElementById('shkUploadOverlay');
-  const status=document.getElementById('shkUploadStatus');
-  if(overlay)overlay.style.display='flex';
-  document.getElementById('formWrap').style.display='none';
-  try{
-    // 1. Create Drive folders
-    if(status)status.textContent='Ordnerstruktur wird angelegt…';
-    const API='https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
-    const r=await fetch(API+'/create-folders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firmaName,leistungen,serviceType:'shk',formData:collectFormData()})});
-    const{folderIds,driveLink}=await r.json();
-    // 2. Upload logo if present
-    if(window.shkFileStore2&&window.shkFileStore2['logo']&&window.shkFileStore2['logo'].length&&folderIds&&folderIds.sonstiges){
-      if(status)status.textContent='Logo wird hochgeladen…';
-      await uploadFiles2(window.shkFileStore2['logo'],folderIds.sonstiges,API,status);
-    }
-    // 3. Upload inhaber
-    if(window.shkFileStore2&&window.shkFileStore2['inhaber']&&shkFileStore2['inhaber'].length){
-      if(status)status.textContent='Inhaberfotos werden hochgeladen…';
-      await uploadFiles2(window.shkFileStore2['inhaber'],folderIds.inhaberfoto,API,status);
-    }
-    // 4. Upload team
-    if(window.shkFileStore2&&window.shkFileStore2['team']&&shkFileStore2['team'].length){
-      if(status)status.textContent='Teamfotos werden hochgeladen…';
-      await uploadFiles2(window.shkFileStore2['team'],folderIds.teamfotos,API,status);
-    }
-    // 5. Upload leistungen
-    for(let i=0;i<leistungen.length;i++){
-      const key='leistung_'+(i+1);
-      if(window.shkFileStore2&&window.shkFileStore2[key]&&shkFileStore2[key].length&&folderIds['leistung_'+i]){
-        if(status)status.textContent=leistungen[i]+' wird hochgeladen…';
-        await uploadFiles2(window.shkFileStore2[key],folderIds['leistung_'+i],API,status);
+// === SUBMIT ===
+async function submitForm() {
+  if (!dsgvoSHK) { alert('Bitte stimme zuerst der Datenschutzerklärung zu.'); return; }
+  const firmaName = (document.getElementById('firmaName') || {}).value || 'Neukunde';
+  const leistungen = [...document.querySelectorAll('.leistung-item input[type=text]')].map(function(i) { return i.value.trim() || 'Leistung'; });
+  const hasR = document.getElementById('cb-recruiting').checked;
+  const hasL = document.getElementById('cb-leadgen').checked;
+  const serviceTypes = [];
+  if (hasR) serviceTypes.push('recruiting');
+  if (hasL) serviceTypes.push('leadgen');
+  var _tot = 0, _done = 0;
+  if (window.shkFileStore2) Object.values(window.shkFileStore2).forEach(function(files) { if (files) files.forEach(function(f) { _tot += f.size; }); });
+  const overlay = document.getElementById('shkUploadOverlay');
+  const status = document.getElementById('shkUploadStatus');
+  overlay.classList.add('show');
+  document.getElementById('wizardWrap').style.display = 'none';
+  document.querySelector('.wizard-nav').style.display = 'none';
+  try {
+    if (status) status.textContent = 'Ordnerstruktur wird angelegt…';
+    const API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
+    const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData() }) });
+    const { folderIds } = await r.json();
+    function updateProg(add) { _done += add; const p = Math.round(_done / (_tot || 1) * 100); const b = document.getElementById('shkProgressBar'); const pe = document.getElementById('shkProgressPct'); if (b) b.style.width = p + '%'; if (pe) pe.textContent = p + '%'; }
+    async function uploadFiles(files, folderId) {
+      if (!folderId || !files || !files.length) return;
+      const CHUNK = 5 * 1024 * 1024;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        if (status) status.textContent = (i + 1) + '/' + files.length + ' – ' + file.name.slice(0, 25) + '…';
+        const sr = await fetch(API + '/start-upload', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fileName: file.name, mimeType: file.type || 'application/octet-stream', folderId, totalSize: file.size }) });
+        const { sessionUrl } = await sr.json();
+        const chunks = Math.ceil(file.size / CHUNK) || 1;
+        for (let c = 0; c < chunks; c++) {
+          const start = c * CHUNK, end = Math.min(start + CHUNK, file.size);
+          const fd = new FormData(); fd.append('chunk', file.slice(start, end), file.name); fd.append('sessionUrl', sessionUrl); fd.append('byteStart', start); fd.append('byteEnd', end - 1); fd.append('totalSize', file.size);
+          await fetch(API + '/upload-chunk', { method: 'POST', body: fd });
+          updateProg(end - start);
+        }
       }
     }
-    if(overlay)overlay.style.display='none';
-    clearDraft();document.getElementById('successScreen').classList.add('visible');
-  }catch(err){
-    if(overlay)overlay.style.display='none';
-    document.getElementById('formWrap').style.display='block';
-    alert('Fehler: '+err.message+'. Bitte erneut versuchen.');
+    const fs2 = window.shkFileStore2 || {};
+    if (fs2['logo'] && fs2['logo'].length && folderIds && folderIds.sonstiges) { if (status) status.textContent = 'Logo wird hochgeladen…'; await uploadFiles(fs2['logo'], folderIds.sonstiges); }
+    if (fs2['inhaber'] && fs2['inhaber'].length && folderIds && folderIds.inhaberfoto) { if (status) status.textContent = 'Inhaberfotos…'; await uploadFiles(fs2['inhaber'], folderIds.inhaberfoto); }
+    if (fs2['team'] && fs2['team'].length && folderIds && folderIds.teamfotos) { if (status) status.textContent = 'Teamfotos…'; await uploadFiles(fs2['team'], folderIds.teamfotos); }
+    for (let i = 0; i < leistungen.length; i++) { const key = 'leistung_' + (i + 1); if (fs2[key] && fs2[key].length && folderIds && folderIds['leistung_' + i]) { if (status) status.textContent = leistungen[i] + '…'; await uploadFiles(fs2[key], folderIds['leistung_' + i]); } }
+    overlay.classList.remove('show');
+    clearDraft();
+    document.getElementById('successScreen').classList.add('visible');
+  } catch (err) {
+    overlay.classList.remove('show');
+    document.getElementById('wizardWrap').style.display = 'block';
+    document.querySelector('.wizard-nav').style.display = 'flex';
+    alert('Fehler: ' + err.message + '. Bitte erneut versuchen.');
   }
 }
-var _shkTotalBytes=0,_shkDoneBytes=0;
-function updateSHKProgress(add){
-  _shkDoneBytes+=add;
-  const pct=_shkTotalBytes>0?Math.round((_shkDoneBytes/_shkTotalBytes)*100):0;
-  const bar=document.getElementById('shkProgressBar');
-  const pctEl=document.getElementById('shkProgressPct');
-  if(bar)bar.style.width=pct+'%';
-  if(pctEl)pctEl.textContent=pct+'%';
-}
-async function uploadFiles2(files,folderId,API,status){
-  if(!folderId||!files||!files.length)return;
-  const CHUNK=5*1024*1024;
-  for(let i=0;i<files.length;i++){
-    const file=files[i];
-    if(status)status.textContent=(i+1)+'/'+files.length+' – '+file.name.slice(0,25)+'…';
-    const startR=await fetch(API+'/start-upload',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fileName:file.name,mimeType:file.type||'application/octet-stream',folderId,totalSize:file.size})});
-    const{sessionUrl}=await startR.json();
-    const chunks=Math.ceil(file.size/CHUNK)||1;
-    for(let c=0;c<chunks;c++){
-      const start=c*CHUNK;const end=Math.min(start+CHUNK,file.size);
-      const fd=new FormData();fd.append('chunk',file.slice(start,end),file.name);
-      fd.append('sessionUrl',sessionUrl);fd.append('byteStart',start);
-      fd.append('byteEnd',end-1);fd.append('totalSize',file.size);
-      await fetch(API+'/upload-chunk',{method:'POST',body:fd});
-      updateSHKProgress(end-start);
-    }
-  }
-}
+
+// === INIT ===
+window.addEventListener('load', function() {
+  stepSeq = buildSeq();
+  renderDots();
+  showStep(0);
+  loadDraft();
+});
 </script>
 </body>
 </html>

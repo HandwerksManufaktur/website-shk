@@ -432,7 +432,7 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
       </div>
       <div class="card-body">
         <div style="background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;padding:12px 15px;margin-bottom:18px;font-size:12.5px;line-height:1.55;color:var(--text)">
-          <strong>Kurz zu den Fotos:</strong> Wenn ihr schon welche zur Hand habt — Team, Baustellen, Arbeitsalltag — ladet sie gerne direkt mit hoch. Die müssen nicht perfekt sein, authentisch reicht völlig. Was jetzt noch fehlt, könnt ihr später jederzeit nachschicken, und beim Drehtermin machen wir ohnehin neues Material. Für den Start reichen die Textfelder und euer Logo — schickt das Formular am Ende einfach ab.
+          <strong>Kurz zu den Fotos:</strong> Wenn ihr schon welche zur Hand habt — Team, Baustellen, Arbeitsalltag — ladet sie gerne direkt mit hoch. Die müssen nicht perfekt sein, authentisch reicht völlig. Was jetzt noch fehlt, könnt ihr später einfach in der Google Drive nachreichen, und beim Drehtermin machen wir ohnehin neues Material. Für den Start reichen die Textfelder und euer Logo — schickt das Formular am Ende einfach ab.
         </div>
         <div class="fg">
           <div class="field">
@@ -882,6 +882,43 @@ function collectFormData() {
   return data;
 }
 
+// === MISSING CHECK (für Noahs Benachrichtigung) ===
+function collectMissing(leistungen) {
+  var missing = [];
+  var hasR = document.getElementById('cb-recruiting').checked;
+  var hasL = document.getElementById('cb-leadgen').checked;
+  function chk(id, label) { var el = document.getElementById(id); if (!el || !(el.value || '').trim()) missing.push(label); }
+  chk('ustId', 'UID / USt-ID');
+  chk('strasse', 'Straße + Hausnummer');
+  chk('plz', 'PLZ');
+  chk('ort', 'Ort');
+  chk('ansprechpartner', 'Ansprechpartner');
+  chk('email', 'E-Mail');
+  chk('telefon', 'Telefon');
+  chk('kundenUsp', 'Text: Warum entscheiden sich Kunden für euch?');
+  if (hasR) {
+    chk('arbeitgeberUsp', 'Text: Was macht euch als Arbeitgeber besonders?');
+    chk('einsatzgebiet', 'Einsatzgebiet / Radius');
+  }
+  if (hasL) {
+    chk('dienstleistung', 'Dienstleistung / Produkt');
+    chk('auftragswert', 'Durchschnittlicher Auftragswert');
+    chk('einzugsgebiet', 'Einzugsgebiet / Radius');
+    chk('erfolgsziel', 'Erfolgsziel nach der Laufzeit');
+    chk('leadKontakt', 'Wer kontaktiert Leads?');
+  }
+  chk('videoDreh', 'Wunschtermin Videodreh');
+  var fs2 = window.shkFileStore2 || {};
+  if (!(fs2['logo'] && fs2['logo'].length)) missing.push('Logo (Datei)');
+  if (!(fs2['inhaber'] && fs2['inhaber'].length)) missing.push('Inhaberfoto');
+  if (!(fs2['team'] && fs2['team'].length)) missing.push('Team-Fotos');
+  leistungen.forEach(function(name, i) {
+    var key = 'leistung_' + (i + 1);
+    if (!(fs2[key] && fs2[key].length)) missing.push('Fotos zu Leistung: ' + name);
+  });
+  return missing;
+}
+
 // === SUBMIT ===
 async function submitForm() {
   if (!dsgvoSHK) { alert('Bitte stimme zuerst der Datenschutzerklärung zu.'); return; }
@@ -911,7 +948,7 @@ async function submitForm() {
   var _dotTimer = setInterval(function() { _dotN = (_dotN + 1) % 4; if (status) status.textContent = _dotBase + '.'.repeat(_dotN || 1); }, 600);
   try {
     const API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
-    const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData() }) });
+    const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen) }) });
     const { folderIds } = await r.json();
     // Folder fertig – echten Fortschritt starten
     clearInterval(_dotTimer);

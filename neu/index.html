@@ -130,7 +130,8 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .svc-flow{border-top:1.5px solid var(--line2);}
 .svc-item{display:flex;gap:26px;padding:36px 4px;border-bottom:1.5px solid var(--line2);opacity:.3;transform:translateX(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
 .svc-item.act{opacity:1;transform:none;}
-.si-num{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--acc);flex-shrink:0;width:44px;padding-top:2px;}
+.si-ic{width:48px;height:48px;border-radius:14px;background:var(--acc-soft);border:1px solid #C3E4F4;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;transform:scale(.55) rotate(-8deg);opacity:.4;transition:transform .55s var(--ease),opacity .55s;}
+.svc-item.act .si-ic{transform:none;opacity:1;}
 .svc-item h3{font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:7px;}
 .svc-item p{font-size:15px;color:var(--sub);max-width:460px;}
 @media(max-width:900px){.svc-layout{grid-template-columns:1fr;gap:44px;}.svc-sticky{position:static;}}
@@ -140,7 +141,10 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;counter-reset:step;border-top:1.5px solid var(--line2);}
 .step{padding:30px 28px 6px 0;position:relative;border-right:1.5px solid var(--line);margin-right:28px;}
 .step:last-child{border-right:none;margin-right:0;}
-.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--serif);font-style:italic;font-size:34px;color:var(--acc);display:block;}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;top:32px;right:28px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--faint);}
+.step-ic{width:52px;height:52px;border-radius:15px;background:var(--acc-soft);border:1px solid #C3E4F4;display:flex;align-items:center;justify-content:center;font-size:24px;transform:scale(.5);opacity:0;transition:transform .6s var(--ease),opacity .6s;}
+.step.vis .step-ic{transform:none;opacity:1;}
+.step:hover .step-ic{transform:rotate(-6deg) scale(1.08);}
 .step h3{font-size:17.5px;font-weight:700;letter-spacing:-.02em;margin:14px 0 8px;}
 .step p{font-size:14px;color:var(--sub);}
 @media(max-width:900px){.steps{grid-template-columns:1fr 1fr;}}
@@ -172,9 +176,9 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 @media(max-width:960px){.ph-grid{overflow-x:auto;justify-content:flex-start;padding:8px 24px 24px;margin-left:-24px;margin-right:-24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}.ph-item{scroll-snap-align:center;}}
 
 /* ═══════ HEBEL (Show-Layouts) ═══════ */
-#monteure{padding:40px 0 30px;}
-#auftraege{padding:30px 0 90px;}
-.show{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;}
+#monteure{padding:90px 0 50px;}
+#auftraege{padding:50px 0 120px;}
+.show{display:grid;grid-template-columns:1fr 1.1fr;gap:84px;align-items:center;}
 .show.rev .show-media{order:0;}
 .show-kicker{font-size:13.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);}
 .show-txt h3{font-weight:700;letter-spacing:-.03em;font-size:clamp(30px,3.2vw,44px);line-height:1.05;margin:12px 0 14px;}
@@ -186,12 +190,12 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .show-actions{margin-top:26px;}
 .show-media{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s;}
 .show-media:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
-.show-img{height:440px;}
+.show-img{height:480px;}
 .show-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease);}
 .show-media:hover .show-img img{transform:scale(1.04);}
 @media(max-width:900px){.show{grid-template-columns:1fr;gap:30px;}.show.rev .show-media{order:0;}.show-img{height:320px;}}
 .feed-card{background:var(--night);border:none;padding:38px 34px;}
-.feed{display:flex;flex-direction:column;justify-content:center;min-height:380px;}
+.feed{display:flex;flex-direction:column;justify-content:center;min-height:460px;}
 .feed-head{color:var(--night-sub);font-size:13px;font-weight:600;display:flex;gap:9px;align-items:center;margin-bottom:18px;}
 .dot-live{width:8px;height:8px;border-radius:50%;background:#37D67A;animation:pulse 2s infinite;}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(55,214,122,.45);}70%{box-shadow:0 0 0 9px rgba(55,214,122,0);}100%{box-shadow:0 0 0 0 rgba(55,214,122,0);}}
@@ -219,7 +223,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .founder .n{font-weight:600;font-size:15.5px;color:#fff;}
 .founder .r{font-size:12.5px;color:var(--acc);font-weight:600;margin:1px 0 4px;}
 .founder .q{font-size:13.5px;color:var(--night-sub);font-style:italic;margin:0;}
-.night-vis img{border-radius:var(--r-md);width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;}
+.night-vis img{border-radius:var(--r-md);width:100%;aspect-ratio:4/5;object-fit:cover;object-position:67% 30%;}
 .nstats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:var(--night-line);border-radius:var(--r-md);overflow:hidden;position:relative;z-index:2;}
 .nstat{background:var(--night2);padding:28px 24px;text-align:center;}
 .nstat .v{font-weight:800;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.03em;}
@@ -417,14 +421,14 @@ footer{padding:30px 0 40px;color:var(--sub);}
     <div class="svc-layout">
       <div class="svc-sticky reveal">
         <div class="eyebrow"><span class="dot"></span>Das eigentliche Problem</div>
-        <h2 class="d" style="margin-top:18px;">Ausgelastet ist nicht <em>profitabel.</em></h2>
-        <p class="sec-sub">Nach hunderten Gesprächen mit SHK-Inhabern läuft es fast immer auf zwei Engpässe hinaus: die falschen Aufträge – oder zu wenig Leute für die richtigen.</p>
+        <h2 class="d" style="margin-top:18px;">Entweder fehlen die Aufträge.<br>Oder <em>die Leute dafür.</em></h2>
+        <p class="sec-sub">Nach hunderten Gesprächen mit SHK-Inhabern ist das Muster klar: Es hakt an einem von beiden – und meistens hängt das eine am anderen.</p>
         <a href="#kontakt" class="btn btn-ink" style="margin-top:28px;">Potenzial durchrechnen</a>
       </div>
       <div class="svc-flow">
-        <div class="svc-item"><div class="si-num">01</div><div><h3>Der Kleinkram frisst den Tag</h3><p>Notdienst, tropfende Ventile, Wartungen – der Kalender ist voll. Ein Inhaber hat es so gesagt: fünfmal vor Ort, sechsmal Kuchen bei der Oma – und am Ende bleibt nichts hängen.</p></div></div>
-        <div class="svc-item"><div class="si-num">02</div><div><h3>Großprojekte kommen nach Zufall</h3><p>Ein Komplettbad oder eine Wärmepumpe bringt 20.000–50.000&nbsp;€. Aber sie kommen, wie sie wollen: monatelang nichts – und dann drei auf einmal, wenn die Kapazität gerade fehlt. Mundpropaganda ist gut. Planbar ist sie nicht.</p></div></div>
-        <div class="svc-item"><div class="si-num">03</div><div><h3>„Ich brauche keine Arbeit. Ich brauche Leute."</h3><p>Der Satz fällt in fast jedem zweiten Gespräch. Aufträge wären da – aber ohne Monteure musst du Kunden ablehnen. Und wer einen Job hat, öffnet kein Stellenportal.</p></div></div>
+        <div class="svc-item"><div class="si-ic">🔧</div><div><h3>Der Kleinkram frisst den Tag</h3><p>Notdienst, tropfende Ventile, Wartungen – der Kalender ist voll. Ein Inhaber hat es so gesagt: fünfmal vor Ort, sechsmal Kuchen bei der Oma – und am Ende bleibt nichts hängen.</p></div></div>
+        <div class="svc-item"><div class="si-ic">🎲</div><div><h3>Großprojekte kommen nach Zufall</h3><p>Ein Komplettbad oder eine Wärmepumpe bringt 20.000–50.000&nbsp;€. Aber sie kommen, wie sie wollen: monatelang nichts – und dann drei auf einmal, wenn die Kapazität gerade fehlt. Mundpropaganda ist gut. Planbar ist sie nicht.</p></div></div>
+        <div class="svc-item"><div class="si-ic">👷</div><div><h3>„Ich brauche keine Arbeit. Ich brauche Leute."</h3><p>Der Satz fällt in fast jedem zweiten Gespräch. Aufträge wären da – aber ohne Monteure musst du Kunden ablehnen. Und wer einen Job hat, öffnet kein Stellenportal.</p></div></div>
       </div>
     </div>
   </div>
@@ -436,15 +440,15 @@ footer{padding:30px 0 40px;color:var(--sub);}
     <div class="reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;">
       <div>
         <div class="eyebrow"><span class="dot"></span>Unser Vorgehen</div>
-        <h2 class="d" style="margin-top:18px;">Vier Schritte zu<br><em>planbaren Großprojekten.</em></h2>
+        <h2 class="d" style="margin-top:18px;">Vier Schritte zu planbaren<br><em>Aufträgen &amp; Bewerbungen.</em></h2>
       </div>
-      <p class="sec-sub" style="margin:0;max-width:320px;">Kein Rätselraten, kein Ausprobieren – ein erprobtes System, in unter 2 Wochen startklar.</p>
+      <p class="sec-sub" style="margin:0;max-width:320px;">Ein System, das für Recruiting und Auftragsgewinnung gleich funktioniert – in unter 2 Wochen startklar.</p>
     </div>
     <div class="steps">
-      <div class="step stagger"><h3>Potenzialanalyse</h3><p>Wir rechnen durch, was in deinem Einzugsgebiet steckt: Nachfrage, Wettbewerb, realistisches Anfrage-Volumen – kostenlos.</p></div>
-      <div class="step stagger"><h3>Strategie &amp; Setup</h3><p>Zielgruppe, Botschaft, Funnel, Kampagne – alles auf deine margenstarken Leistungen ausgerichtet. Live in unter 2 Wochen.</p></div>
-      <div class="step stagger"><h3>Kampagne live</h3><p>Erste qualifizierte Anfragen meist nach 7 Tagen – vorqualifiziert, mit Kontaktdaten und konkretem Projektwunsch.</p></div>
-      <div class="step stagger"><h3>Optimieren &amp; Skalieren</h3><p>Wir messen alles: Kosten pro Anfrage, Abschlussquote, ROI. Was funktioniert, wird skaliert – bis der Rhythmus steht.</p></div>
+      <div class="step stagger"><div class="step-ic">🔍</div><h3>Potenzialanalyse</h3><p>Wir rechnen durch, was dein Einzugsgebiet hergibt – Aufträge, Bewerber, Wettbewerb. Kostenlos.</p></div>
+      <div class="step stagger"><div class="step-ic">🎯</div><h3>Strategie &amp; Setup</h3><p>Zielgruppe, Botschaft, Funnel – zugeschnitten auf dein Ziel: Monteure, Aufträge oder beides.</p></div>
+      <div class="step stagger"><div class="step-ic">🚀</div><h3>Kampagne live</h3><p>Erste qualifizierte Anfragen oder Bewerbungen meist nach 7 Tagen – mit Kontaktdaten, vorgeprüft.</p></div>
+      <div class="step stagger"><div class="step-ic">📈</div><h3>Optimieren &amp; Skalieren</h3><p>Wir messen alles: Kosten pro Anfrage und Bewerbung, Quoten, ROI. Was funktioniert, wird skaliert.</p></div>
     </div>
   </div>
 </section>
@@ -583,14 +587,14 @@ footer{padding:30px 0 40px;color:var(--sub);}
         <div>
           <div class="eyebrow" style="color:#5BC2EA;"><span class="dot"></span>Wer dahinter steht</div>
           <h2 style="margin-top:18px;">Wir kommen selbst<br>aus dem <em>Handwerk.</em></h2>
-          <p>Drei Brüder im Handwerk, zwei davon Meister – bei uns war Handwerk nie „Zielgruppe", sondern Alltag am Küchentisch. Wir wissen, wie ein Betrieb von innen aussieht, wenn vormittags Land unter ist und der Notdienst den Kalender regiert.</p>
-          <p><strong>Sieh uns als deine externe Marketingabteilung.</strong> Über 100 Handwerksbetriebe haben wir in den letzten sechs Jahren im Online-Marketing unterstützt – spezialisiert auf SHK. Du redest mit dem, der deine Kampagne baut und deine Zahlen kennt.</p>
+          <p>Drei Brüder im Handwerk, zwei davon Meister. Wir wissen, wie ein Betrieb von innen aussieht, wenn vormittags Land unter ist und der Notdienst den Kalender regiert.</p>
+          <p><strong>Sieh uns als deine externe Marketingabteilung:</strong> über 100 Handwerksbetriebe im Online-Marketing unterstützt – seit über sechs Jahren, spezialisiert auf SHK.</p>
           <div class="founder">
             <img src="/neu/assets/fotos/noah-rund.png" alt="Noah Seelau" loading="lazy">
             <div>
               <div class="n">Noah Seelau</div>
               <div class="r">Gründer &amp; Geschäftsführer</div>
-              <p class="q">„Am Ende zählt, was bei dir ankommt: Bewerbungen und Aufträge. Der Rest ist Deko."</p>
+              <p class="q">„Bei uns gibt es keine Hotline. Es gibt meine Nummer."</p>
             </div>
           </div>
         </div>
@@ -599,7 +603,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="nstats">
         <div class="nstat"><div class="v">100<span>+</span></div><div class="l">Handwerksbetriebe betreut</div></div>
         <div class="nstat"><div class="v">5,0<span>★</span></div><div class="l">Google-Bewertung</div></div>
-        <div class="nstat"><div class="v">Ø 7<span> Tage</span></div><div class="l">bis zur ersten qualifizierten Anfrage</div></div>
+        <div class="nstat"><div class="v">Ø 7<span> Tage</span></div><div class="l">bis zur ersten Anfrage oder Bewerbung</div></div>
       </div>
     </div>
   </div>
@@ -661,8 +665,8 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <p class="sec-sub" style="margin:0;max-width:340px;">Bewegtbild zieht in Kampagnen deutlich besser als Standbilder. So könnte das auf der Seite aussehen – dein Call, ob es bleibt.</p>
     </div>
     <div class="reel-clip reveal">
-      <video autoplay muted loop playsinline preload="metadata" poster="/neu/assets/shk-loop-poster-v2.jpg">
-        <source src="/neu/assets/shk-loop-v2.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline preload="metadata" poster="/neu/assets/shk-loop-poster-v3.jpg">
+        <source src="/neu/assets/shk-loop-v3.mp4" type="video/mp4">
       </video>
       <div class="reel-shade"></div>
       <div class="reel-cap"><span>🛁 Bad · Heizung · Wärmepumpe</span></div>
@@ -854,7 +858,7 @@ document.querySelectorAll('.rot').forEach(function(r){
     var r=img.getBoundingClientRect();
     if(r.bottom>0&&r.top<innerHeight){
       var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
-      img.style.objectPosition='center calc(30% + '+(p*14).toFixed(2)+'%)';
+      img.style.objectPosition='67% calc(30% + '+(p*14).toFixed(2)+'%)';
     }
     requestAnimationFrame(tick);
   }

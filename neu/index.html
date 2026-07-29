@@ -81,6 +81,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .hero-proof{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:26px;font-size:14.5px;color:var(--sub);flex-wrap:wrap;}
 .hero-proof .stars{color:#F5A623;letter-spacing:1px;}
 .hero-proof b{color:var(--ink);font-weight:600;}
+#hero .rot{color:var(--acc);}
 .o1,.o2,.o3,.o4,.o5{opacity:0;animation:rise .95s var(--ease) forwards;}
 .o1{animation-delay:.15s;}.o2{animation-delay:.3s;}.o3{animation-delay:.5s;}.o4{animation-delay:.68s;}.o5{animation-delay:.9s;}
 @keyframes rise{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
@@ -92,12 +93,15 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .hclip-label{text-align:center;font-size:13.5px;font-weight:600;color:var(--night-sub);margin-bottom:44px;position:relative;z-index:2;}
 .hclip-label b{color:#fff;}
 .hphones{display:flex;justify-content:center;align-items:flex-end;gap:34px;position:relative;z-index:2;}
-.hphone{width:238px;flex-shrink:0;border-radius:34px;border:9px solid #0B0906;background:#0B0906;box-shadow:0 40px 90px rgba(0,0,0,.55);overflow:hidden;transform:translateY(34px);}
+.hphone{width:238px;flex-shrink:0;border-radius:34px;border:9px solid #060B12;background:#060B12;box-shadow:0 40px 90px rgba(0,0,0,.55);overflow:hidden;transform:translateY(34px);animation:floatM 7s ease-in-out infinite;}
+@keyframes floatM{0%,100%{transform:translateY(34px);}50%{transform:translateY(20px);}}
+@keyframes floatL{0%,100%{transform:translateY(58px) rotate(-4deg);}50%{transform:translateY(44px) rotate(-4deg);}}
+@keyframes floatR{0%,100%{transform:translateY(58px) rotate(4deg);}50%{transform:translateY(44px) rotate(4deg);}}
 .hphone.side{width:206px;opacity:.92;}
-.hphone.l{transform:translateY(58px) rotate(-4deg);}
-.hphone.r{transform:translateY(58px) rotate(4deg);}
+.hphone.l{transform:translateY(58px) rotate(-4deg);animation:floatL 8.5s ease-in-out infinite .9s;}
+.hphone.r{transform:translateY(58px) rotate(4deg);animation:floatR 9.5s ease-in-out infinite 1.7s;}
 .hphone img{border-radius:24px;width:100%;display:block;}
-@media(max-width:760px){.hphones{gap:16px;}.hphone.side{display:none;}.hphone{transform:translateY(24px);width:250px;}.hclip{clip-path:inset(0 6% round 18px);padding-top:56px;}}
+@media(max-width:760px){.hphones{gap:16px;}.hphone.side{display:none;}.hphone{transform:translateY(24px);width:250px;animation:none;}.hclip{clip-path:inset(0 6% round 18px);padding-top:56px;}}
 
 /* ═══════ LOGO BAND ═══════ */
 #band{padding:90px 0 0;}
@@ -146,7 +150,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 #funnels{padding:0 0 60px;}
 .ph-grid{display:flex;justify-content:center;align-items:flex-start;gap:44px;margin-top:64px;}
 .ph-item{text-align:center;flex-shrink:0;}
-.phone{width:262px;margin:0 auto;border-radius:38px;border:10px solid #0B0906;background:#0B0906;box-shadow:0 30px 70px rgba(12,45,72,.28);overflow:hidden;position:relative;transition:transform .5s var(--ease),box-shadow .5s;}
+.phone{width:262px;margin:0 auto;border-radius:38px;border:10px solid #060B12;background:#060B12;box-shadow:0 30px 70px rgba(12,45,72,.28);overflow:hidden;position:relative;transition:transform .5s var(--ease),box-shadow .5s;}
 .ph-item:hover .phone{transform:translateY(-8px);box-shadow:0 44px 90px rgba(12,45,72,.36);}
 .ph-item.mid .phone{width:282px;}
 .pview{position:relative;height:520px;--pvh:520px;overflow:hidden;border-radius:28px;background:#fff;}
@@ -160,28 +164,25 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .ph-hint{text-align:center;margin-top:40px;font-size:13px;color:var(--faint);}
 @media(max-width:960px){.ph-grid{overflow-x:auto;justify-content:flex-start;padding:8px 24px 24px;margin-left:-24px;margin-right:-24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}.ph-item{scroll-snap-align:center;}}
 
-/* ═══════ HEBEL (2 Karten) ═══════ */
-#hebel{padding:60px 0 110px;}
-.hb-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:52px;}
-.hb-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:40px 38px;transition:transform .45s var(--ease),box-shadow .45s;}
-.hb-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
-.hb-ic{font-size:30px;}
-.hb-card h3{font-size:24px;font-weight:700;letter-spacing:-.025em;margin:16px 0 4px;}
-.hb-card h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--acc);}
-.hb-card .hb-sub{font-size:15px;color:var(--sub);margin-bottom:20px;}
-.hb-card ul{list-style:none;border-top:1.5px solid var(--line);}
-.hb-card li{display:flex;gap:12px;padding:13px 0;border-bottom:1.5px solid var(--line);font-size:14.5px;color:var(--sub);}
-.hb-card li b{color:var(--ink);font-weight:600;}
-.hb-card li .ck{color:var(--acc-deep);font-weight:700;flex-shrink:0;}
-@media(max-width:860px){.hb-grid{grid-template-columns:1fr;}}
-.qual{margin-top:26px;background:var(--acc-soft);border:1px solid #C3E4F4;border-radius:var(--r-lg);padding:36px 38px;}
-.qual h3{font-size:22px;font-weight:700;letter-spacing:-.02em;}
-.qual h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--acc-deep);}
-.qual>p{font-size:15px;color:var(--sub);margin-top:6px;}
-.q-items{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:24px;}
-.q-items b{display:block;font-size:15px;font-weight:700;margin-bottom:5px;}
-.q-items span{font-size:14px;color:var(--sub);}
-@media(max-width:860px){.q-items{grid-template-columns:1fr;}.qual{padding:28px 24px;}}
+/* ═══════ HEBEL (Show-Layouts) ═══════ */
+#auftraege{padding:40px 0 30px;}
+#monteure{padding:30px 0 90px;}
+.show{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;}
+.show.rev .show-media{order:0;}
+.show-kicker{font-size:13.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);}
+.show-txt h3{font-weight:700;letter-spacing:-.03em;font-size:clamp(30px,3.2vw,44px);line-height:1.05;margin:12px 0 14px;}
+.show-txt h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--acc);}
+.show-txt p{font-size:16px;color:var(--sub);max-width:460px;}
+.chk{list-style:none;margin-top:20px;border-top:1.5px solid var(--line2);max-width:460px;}
+.chk li{padding:12px 0 12px 30px;border-bottom:1.5px solid var(--line);font-size:15px;font-weight:500;position:relative;}
+.chk li::before{content:"✓";position:absolute;left:2px;color:var(--acc-deep);font-weight:700;}
+.show-actions{margin-top:26px;}
+.show-media{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s;}
+.show-media:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.show-img{height:440px;}
+.show-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease);}
+.show-media:hover .show-img img{transform:scale(1.04);}
+@media(max-width:900px){.show{grid-template-columns:1fr;gap:30px;}.show.rev .show-media{order:0;}.show-img{height:320px;}}
 
 /* ═══════ NIGHT: Über uns + Zahlen ═══════ */
 #studio{padding:0 0 120px;}
@@ -197,7 +198,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .founder .n{font-weight:600;font-size:15.5px;color:#fff;}
 .founder .r{font-size:12.5px;color:var(--acc);font-weight:600;margin:1px 0 4px;}
 .founder .q{font-size:13.5px;color:var(--night-sub);font-style:italic;margin:0;}
-.night-vis img{border-radius:var(--r-md);}
+.night-vis img{border-radius:var(--r-md);width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;}
 .nstats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:var(--night-line);border-radius:var(--r-md);overflow:hidden;position:relative;z-index:2;}
 .nstat{background:var(--night2);padding:28px 24px;text-align:center;}
 .nstat .v{font-weight:800;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.03em;}
@@ -237,22 +238,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .rc-g{flex-shrink:0;display:flex;align-items:center;}
 .rc-st{color:#F5A623;font-size:12.5px;letter-spacing:1.5px;margin-bottom:8px;}
 .rc-tx{font-size:14px;color:var(--sub);line-height:1.55;}
-.rmore{text-align:center;margin-top:36px;font-size:14.5px;color:var(--sub);}
-.rmore a{color:var(--acc-deep);font-weight:600;border-bottom:1.5px solid rgba(34,168,212,.4);}
 
-/* ═══════ PASST / PASST NICHT ═══════ */
-#passt{padding:0 0 120px;}
-.pn-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:52px;}
-.pn-card{border-radius:var(--r-lg);padding:38px 36px;border:1px solid var(--line);background:var(--card);}
-.pn-card.no{background:transparent;border:1.5px dashed var(--line2);}
-.pn-card h3{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:18px;}
-.pn-card ul{list-style:none;}
-.pn-card li{display:flex;gap:12px;padding:11px 0;font-size:15px;color:var(--sub);border-bottom:1px solid var(--line);}
-.pn-card li:last-child{border:none;}
-.pn-card .ck{color:var(--acc-deep);font-weight:700;flex-shrink:0;}
-.pn-card.no .ck{color:var(--faint);}
-.pn-card li b{color:var(--ink);font-weight:600;}
-@media(max-width:860px){.pn-grid{grid-template-columns:1fr;}}
 
 /* ═══════ FAQ ═══════ */
 #faq{padding:0 0 120px;}
@@ -310,7 +296,8 @@ footer{padding:30px 0 40px;color:var(--sub);}
   <a href="#hero" class="nav-logo"><img src="/Logos%20SHK/Logo%20Handwerksmanufaktur%20weiss.png" alt="HandwerksManufaktur"></a>
   <div class="nav-links">
     <a href="#funnels">Kampagnen</a>
-    <a href="#system">System</a>
+    <a href="#auftraege">Aufträge</a>
+    <a href="#monteure">Monteure</a>
     <a href="#studio">Über uns</a>
     <a href="#faq">FAQ</a>
     <a href="#kontakt" class="nav-cta">Potenzialanalyse</a>
@@ -321,11 +308,11 @@ footer{padding:30px 0 40px;color:var(--sub);}
 <section id="hero">
   <div class="hero-inner">
     <div class="eyebrow o1"><span class="dot"></span>Leadgen &amp; Recruiting für SHK-Betriebe</div>
-    <h1 class="o2">Voller Kalender.<br><span class="accent">Leere Marge?</span></h1>
-    <p class="hero-sub o3">Kleinreparaturen füllen den Tag – aber nicht das Konto. Wir bringen SHK-Betrieben planbar Badsanierungs- und Wärmepumpen-Projekte mit 20.000–50.000&nbsp;€ Auftragswert. Und die Monteure, um sie umzusetzen.</p>
+    <h1 class="o2">Planbar mehr<br><span class="accent rot"><span class="on">Badsanierungen.</span><span>Wärmepumpen.</span><span>Monteure.</span><span>Bewerbungen.</span></span></h1>
+    <p class="hero-sub o3">Zu wenig Großprojekte – oder zu wenig Leute, um sie umzusetzen? Wir bauen SHK-Betrieben einen eigenen Kampagnen-Kanal, der beides liefert: Bad- und Wärmepumpen-Anfragen mit 20.000–50.000&nbsp;€ Projektwert. Und Bewerbungen von Monteuren, die nie ein Stellenportal öffnen.</p>
     <div class="hero-ctas o4">
-      <a href="#kontakt" class="btn btn-ink">Kostenlose Potenzialanalyse</a>
-      <a href="#funnels" class="btn btn-ghost">Live-Kampagnen ansehen</a>
+      <a href="#auftraege" class="btn btn-ink">🛁 Mehr Aufträge</a>
+      <a href="#monteure" class="btn btn-ghost">👷 Mehr Monteure</a>
     </div>
     <div class="hero-proof o4"><span class="stars">★★★★★</span><span><b>5,0</b> auf Google</span><span>·</span><span><b>100+</b> Betriebe</span><span>·</span><span><b>Nur</b> Handwerk</span></div>
   </div>
@@ -401,13 +388,13 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="svc-sticky reveal">
         <div class="eyebrow"><span class="dot"></span>Das eigentliche Problem</div>
         <h2 class="d" style="margin-top:18px;">Ausgelastet ist nicht <em>profitabel.</em></h2>
-        <p class="sec-sub">Die meisten SHK-Betriebe haben kein Auslastungsproblem. Sie haben ein Auftragsmix-Problem – und ein Personalproblem, das Wachstum deckelt.</p>
+        <p class="sec-sub">Nach hunderten Gesprächen mit SHK-Inhabern läuft es fast immer auf zwei Engpässe hinaus: die falschen Aufträge – oder zu wenig Leute für die richtigen.</p>
         <a href="#kontakt" class="btn btn-ink" style="margin-top:28px;">Potenzial durchrechnen</a>
       </div>
       <div class="svc-flow">
-        <div class="svc-item"><div class="si-num">01</div><div><h3>Die falschen Aufträge</h3><p>Kleinreparaturen, Notdienste, Wartungen – der Kalender ist voll, aber die margenstarken Komplettbäder und Wärmepumpen kommen zu selten und zu zufällig.</p></div></div>
-        <div class="svc-item"><div class="si-num">02</div><div><h3>Wachstum ohne Planbarkeit</h3><p>Ein Großprojekt bringt 20.000–50.000&nbsp;€. Aber statt in einem planbaren Rhythmus kommen sie nach Zufall: monatelang nichts – und dann drei auf einmal, wenn die Kapazität gerade fehlt. So lässt sich kein Betrieb steuern.</p></div></div>
-        <div class="svc-item"><div class="si-num">03</div><div><h3>Personal als Deckel</h3><p>Kapazität für mehr wäre da – es fehlen die Monteure. Und über Stellenportale bewirbt sich niemand, der gerade einen Job hat. Ohne planbare Bewerbungen bleibt Wachstum ein Wunsch.</p></div></div>
+        <div class="svc-item"><div class="si-num">01</div><div><h3>Der Kleinkram frisst den Tag</h3><p>Notdienst, tropfende Ventile, Wartungen – der Kalender ist voll. Ein Inhaber hat es so gesagt: fünfmal vor Ort, sechsmal Kuchen bei der Oma – und am Ende bleibt nichts hängen.</p></div></div>
+        <div class="svc-item"><div class="si-num">02</div><div><h3>Großprojekte kommen nach Zufall</h3><p>Ein Komplettbad oder eine Wärmepumpe bringt 20.000–50.000&nbsp;€. Aber sie kommen, wie sie wollen: monatelang nichts – und dann drei auf einmal, wenn die Kapazität gerade fehlt. Mundpropaganda ist gut. Planbar ist sie nicht.</p></div></div>
+        <div class="svc-item"><div class="si-num">03</div><div><h3>„Ich brauche keine Arbeit. Ich brauche Leute."</h3><p>Der Satz fällt in fast jedem zweiten Gespräch. Aufträge wären da – aber ohne Monteure musst du Kunden ablehnen. Und wer einen Job hat, öffnet kein Stellenportal.</p></div></div>
       </div>
     </div>
   </div>
@@ -495,48 +482,43 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="rc"><div class="rc-h"><div class="rc-av">AR</div><div style="flex:1;"><div class="rc-nm">Autohaus Ressle</div><div class="rc-rl">Recruiting-Kampagne</div></div></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Wir haben eine überraschend hohe Anzahl an Bewerbern erhalten. Für uns ist dieser Weg der Personalsuche zukunftsweisend."</p></div>
     </div>
   </div>
-  <p class="rmore reveal">Alle Bewertungen sind unveränderte Ausschnitte aus unserem <a href="https://www.google.com/search?q=HandwerksManufaktur" target="_blank" rel="noopener">Google-Profil</a>.</p>
 </section>
 
-<!-- ═══════ HEBEL ═══════ -->
-<section id="hebel">
+<!-- ═══════ HEBEL 1: AUFTRÄGE ═══════ -->
+<section id="auftraege">
   <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow"><span class="dot"></span>Zwei Hebel, ein System</div>
-      <h2 class="d" style="margin-top:18px;">Aufträge rein.<br>Monteure <em>dazu.</em></h2>
-      <p class="sec-sub">Manche Betriebe brauchen Aufträge. Andere brauchen Leute. Die meisten früher oder später beides – deshalb kommt bei uns beides aus einem System.</p>
-    </div>
-    <div class="hb-grid">
-      <div class="hb-card stagger">
-        <div class="hb-ic">🛁</div>
-        <h3>Auftrags-Funnel <em>Bad &amp; Wärmepumpe.</em></h3>
-        <p class="hb-sub">Gezielte Kampagnen in deinem Einzugsgebiet – für die Projekte, die sich wirklich lohnen.</p>
-        <ul>
-          <li><span class="ck">✓</span><span><b>Vorqualifizierte Anfragen</b> mit Kontaktdaten, Projektwunsch und Objektdaten – keine anonymen Klicks.</span></li>
-          <li><span class="ck">✓</span><span><b>Exklusiv für deinen Betrieb</b> – keine Portal-Leads, die parallel an vier Wettbewerber verkauft werden.</span></li>
-          <li><span class="ck">✓</span><span><b>Fokus auf 20.000–50.000&nbsp;€ Projekte</b> – Komplettbäder und Wärmepumpen statt Tropfhähnen.</span></li>
-          <li><span class="ck">✓</span><span><b>Transparentes Reporting</b> – du siehst, was jeder investierte Euro bringt.</span></li>
+    <div class="show reveal">
+      <div class="show-txt">
+        <div class="show-kicker">Hebel 1 · Leadgen</div>
+        <h3>Auftrags-Funnel für <em>Bad &amp; Wärmepumpe.</em></h3>
+        <p>Dein eigener Kampagnen-Kanal, in deinem Namen, in deinem Einzugsgebiet – keine Portal-Leads, die parallel an vier Wettbewerber gehen.</p>
+        <ul class="chk">
+          <li>Exklusiv für deinen Betrieb</li>
+          <li>Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li>
+          <li>Regelbar – auf Wunsch auch nur 1–2 Aufträge im Monat</li>
         </ul>
+        <div class="show-actions"><a href="#kontakt" class="btn btn-ink">Potenzial durchrechnen</a></div>
       </div>
-      <div class="hb-card stagger">
-        <div class="hb-ic">👷</div>
-        <h3>Recruiting-Funnel <em>für Monteure.</em></h3>
-        <p class="hb-sub">Dieselbe Methodik, anderes Ziel: Bewerbungen von Fachkräften, die nie ein Stellenportal öffnen.</p>
-        <ul>
-          <li><span class="ck">✓</span><span><b>Bewerbung in 60 Sekunden</b> – ohne Lebenslauf, ohne Anschreiben, direkt vom Handy.</span></li>
-          <li><span class="ck">✓</span><span><b>Erreicht Wechselwillige</b> – Anlagenmechaniker, die einen Job haben, aber offen sind, wenn's passt.</span></li>
-          <li><span class="ck">✓</span><span><b>Vorqualifiziert</b> nach Erfahrung, Gewerk und Verfügbarkeit – du sprichst nur mit passenden Kandidaten.</span></li>
-          <li><span class="ck">✓</span><span><b>Dein Betrieb als Marke</b> – echte Fotos, echtes Team, echte Vorteile statt Stellenanzeigen-Floskeln.</span></li>
-        </ul>
-      </div>
+      <div class="show-media wcard"><div class="show-img"><img src="/neu/assets/fotos/shk-05.jpg" alt="Badberatung im SHK-Betrieb" loading="lazy"></div></div>
     </div>
-    <div class="qual stagger">
-      <h3>Und dazwischen: <em>Qualifizierung.</em></h3>
-      <p>Bei dir landet nur, was vorher geprüft wurde – egal ob Anfrage oder Bewerbung.</p>
-      <div class="q-items">
-        <div><b>🛁 Projekt-Check</b><span>Objekt, Baujahr, Eigentum, Zeitrahmen – jede Anfrage beantwortet die wichtigsten Fragen, bevor du sie siehst.</span></div>
-        <div><b>👷 Bewerber-Check</b><span>Gewerk, Erfahrung, Verfügbarkeit – du telefonierst nur mit Kandidaten, die zu deinem Betrieb passen.</span></div>
-        <div><b>⚙️ Dein Tempo</b><span>Kampagnen lassen sich hoch- und runterregeln – Anfragen kommen so, wie dein Team sie stemmen kann.</span></div>
+  </div>
+</section>
+
+<!-- ═══════ HEBEL 2: MONTEURE ═══════ -->
+<section id="monteure">
+  <div class="wrap">
+    <div class="show rev reveal">
+      <div class="show-media wcard"><div class="show-img"><img src="/neu/assets/fotos/erwin-schmidt-van.jpg" alt="Monteure im SHK-Betrieb" loading="lazy" style="object-position:center 30%;"></div></div>
+      <div class="show-txt">
+        <div class="show-kicker">Hebel 2 · Recruiting</div>
+        <h3>Recruiting-Funnel für <em>Monteure.</em></h3>
+        <p>Dieselbe Maschine, anderes Ziel: Sie erreicht Monteure, die einen Job haben und nie ein Stellenportal öffnen – aber wechseln, wenn's passt. Es sind Arbeitnehmerjahre. Wir nutzen das für dich.</p>
+        <ul class="chk">
+          <li>Bewerbung in 60 Sekunden – ohne Lebenslauf</li>
+          <li>Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li>
+          <li>Dein Betrieb als Marke – echte Fotos statt Floskeln</li>
+        </ul>
+        <div class="show-actions"><a href="#kontakt" class="btn btn-ghost">Recruiting besprechen</a></div>
       </div>
     </div>
   </div>
@@ -549,15 +531,15 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="night-grid">
         <div>
           <div class="eyebrow" style="color:#5BC2EA;"><span class="dot"></span>Wer dahinter steht</div>
-          <h2 style="margin-top:18px;">Keine Standard-Agentur.<br>Seit über 6 Jahren <em>nur Handwerk.</em></h2>
-          <p>Seit über sechs Jahren arbeiten wir ausschließlich mit Handwerksbetrieben – über 100 Betriebe, vom Ein-Mann-Meister bis zum 30-Mann-Unternehmen. Mit diesem Fokus haben wir uns auf SHK spezialisiert: planbar mehr Großprojekte, planbar mehr Bewerbungen.</p>
-          <p><strong>Kein Agentur-Karussell, keine Praktikanten-Tickets.</strong> Du hast einen Ansprechpartner, der deine Branche kennt und deine Zahlen im Blick hat.</p>
+          <h2 style="margin-top:18px;">Wir kommen selbst<br>aus dem <em>Handwerk.</em></h2>
+          <p>In unserer Familie stecken zwei Handwerksbetriebe mit je 20 Mann. Wir wissen, wie ein Betrieb von innen aussieht, wenn vormittags Land unter ist und der Notdienst den Kalender regiert. Seit über sechs Jahren machen wir deshalb genau eines: Marketing für Handwerksbetriebe – über 100 bis heute.</p>
+          <p><strong>Sieh uns als deine externe Marketingabteilung.</strong> Kein Agentur-Karussell, keine Praktikanten-Tickets – du redest mit dem, der deine Kampagne baut und deine Zahlen kennt.</p>
           <div class="founder">
             <img src="/neu/assets/fotos/noah-rund.png" alt="Noah Seelau" loading="lazy">
             <div>
               <div class="n">Noah Seelau</div>
               <div class="r">Gründer &amp; Geschäftsführer</div>
-              <p class="q">„Du redest bei uns mit dem, der deine Kampagne wirklich baut – nicht mit einem Account-Manager."</p>
+              <p class="q">„Es geht nicht um Masse. Es geht um planbare Auslastung."</p>
             </div>
           </div>
         </div>
@@ -566,7 +548,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="nstats">
         <div class="nstat"><div class="v">100<span>+</span></div><div class="l">Handwerksbetriebe betreut</div></div>
         <div class="nstat"><div class="v">5,0<span>★</span></div><div class="l">Google-Bewertung</div></div>
-        <div class="nstat"><div class="v">7<span> Tage</span></div><div class="l">bis zur ersten qualifizierten Anfrage</div></div>
+        <div class="nstat"><div class="v">Ø 7<span> Tage</span></div><div class="l">bis zur ersten qualifizierten Anfrage</div></div>
       </div>
     </div>
   </div>
@@ -579,7 +561,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="eyebrow"><span class="dot"></span>Aus der Praxis</div>
       <h2 class="d" style="margin-top:18px;">Wir kennen deine <em>Baustellen.</em></h2>
     </div>
-    <p class="sec-sub" style="margin:0;max-width:340px;">Echte Fotos aus Betrieben, mit denen wir arbeiten – Baustelle, Lager, Kundendienst. Keine Stockfotos.</p>
+    <p class="sec-sub" style="margin:0;max-width:340px;">Heizungskeller, Lager, Baustelle – hier entstehen die Fotos für unsere Kampagnen. Keine Stockfotos.</p>
   </div>
   <div class="fmarq">
     <div class="fmarq-t">
@@ -588,17 +570,14 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="fcard"><img src="/neu/assets/fotos/senftleben-team.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/shk-01.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/erwin-schmidt-monteur.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
+      <div class="fcard"><img src="/neu/assets/fotos/senftleben-lager.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
+      <div class="fcard"><img src="/neu/assets/fotos/klass-beratung.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
+      <div class="fcard"><img src="/neu/assets/fotos/shk-06.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/shk-07.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/klass-team-van.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/shk-05.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/senftleben-lager.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/shk-02.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/erwin-schmidt-van.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/shk-06.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/klass-beratung.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/shk-08.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
+      <div class="fcard"><img src="/neu/assets/fotos/shk-02.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/erwin-schmidt-team.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/shk-03.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/klass-werkbank.jpg" alt="SHK-Betrieb aus der Praxis" loading="lazy"></div>
     </div>
     <div class="fmarq-t" aria-hidden="true">
@@ -607,47 +586,15 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="fcard"><img src="/neu/assets/fotos/senftleben-team.jpg" alt="" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/shk-01.jpg" alt="" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/erwin-schmidt-monteur.jpg" alt="" loading="lazy"></div>
+      <div class="fcard"><img src="/neu/assets/fotos/senftleben-lager.jpg" alt="" loading="lazy"></div>
+      <div class="fcard"><img src="/neu/assets/fotos/klass-beratung.jpg" alt="" loading="lazy"></div>
+      <div class="fcard"><img src="/neu/assets/fotos/shk-06.jpg" alt="" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/shk-07.jpg" alt="" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/klass-team-van.jpg" alt="" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/shk-05.jpg" alt="" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/senftleben-lager.jpg" alt="" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/shk-02.jpg" alt="" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/erwin-schmidt-van.jpg" alt="" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/shk-06.jpg" alt="" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/klass-beratung.jpg" alt="" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/shk-08.jpg" alt="" loading="lazy"></div>
+      <div class="fcard"><img src="/neu/assets/fotos/shk-02.jpg" alt="" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/erwin-schmidt-team.jpg" alt="" loading="lazy"></div>
-      <div class="fcard"><img src="/neu/assets/fotos/shk-03.jpg" alt="" loading="lazy"></div>
       <div class="fcard"><img src="/neu/assets/fotos/klass-werkbank.jpg" alt="" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ PASST ═══════ -->
-<section id="passt">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow"><span class="dot"></span>Ehrliche Ansage</div>
-      <h2 class="d" style="margin-top:18px;">Wir arbeiten nicht<br>mit <em>jedem.</em></h2>
-    </div>
-    <div class="pn-grid">
-      <div class="pn-card stagger">
-        <h3>Passt, wenn …</h3>
-        <ul>
-          <li><span class="ck">✓</span><span>du einen <b>SHK-Betrieb ab ca. 5 Mitarbeitern</b> führst und Kapazität für Großprojekte hast.</span></li>
-          <li><span class="ck">✓</span><span>du <b>planbar mehr Komplettbäder und Wärmepumpen</b> willst – statt Kleinkram.</span></li>
-          <li><span class="ck">✓</span><span>du ein <b>klares Einzugsgebiet</b> hast und dort die erste Adresse werden willst.</span></li>
-          <li><span class="ck">✓</span><span><b>Personal dein Engpass</b> ist – dann starten wir mit Recruiting statt Leadgen.</span></li>
-        </ul>
-      </div>
-      <div class="pn-card no stagger">
-        <h3>Passt nicht, wenn …</h3>
-        <ul>
-          <li><span class="ck">✗</span><span>du <b>billige Sammel-Leads</b> von Portalen suchst, die parallel an vier Wettbewerber gehen.</span></li>
-          <li><span class="ck">✗</span><span>du <b>keine Kapazität</b> hast und auch keine aufbauen willst.</span></li>
-          <li><span class="ck">✗</span><span>du Ergebnisse <b>nach 3 Tagen</b> erwartest – ein System braucht Anlauf, dann läuft es.</span></li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
@@ -666,10 +613,10 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="faq-item"><div class="faq-q" onclick="faq(this)">Was kostet die Zusammenarbeit?<span class="pm">+</span></div><div class="faq-a"><p>Die Kosten hängen von deinem Einzugsgebiet und dem gewünschten Projektvolumen ab. In der kostenlosen Potenzialanalyse bekommst du ein individuelles Angebot – transparent, ohne versteckte Gebühren.</p></div></div>
       <div class="faq-item"><div class="faq-q" onclick="faq(this)">Wir haben schon genug zu tun – warum dann ihr?<span class="pm">+</span></div><div class="faq-a"><p>Die Frage ist nicht, ob dein Kalender voll ist – sondern womit. Wenn du mehr margenstarke Badsanierungen und Wärmepumpen statt Kleinreparaturen willst, bringen wir genau diese Anfragen planbar rein.</p></div></div>
       <div class="faq-item"><div class="faq-q" onclick="faq(this)">Wie schnell kommen die ersten Anfragen?<span class="pm">+</span></div><div class="faq-a"><p>In den meisten Fällen gehen erste qualifizierte Anfragen innerhalb von 7 Tagen nach Kampagnenstart ein – das Setup davor dauert unter 2 Wochen.</p></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="faq(this)">Was, wenn wir die Anfragen nicht abarbeiten können?<span class="pm">+</span></div><div class="faq-a"><p>Die Kampagne lässt sich hoch- und runterregeln. Du bekommst Anfragen in dem Tempo, das dein Team stemmen kann – nicht drei Großprojekte auf einmal, wenn es gerade nicht passt.</p></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="faq(this)">Was unterscheidet euch von Lead-Portalen?<span class="pm">+</span></div><div class="faq-a"><p>Portal-Leads werden parallel an mehrere Betriebe verkauft – du telefonierst um die Wette. Unsere Anfragen entstehen über deine eigene Kampagne mit deinem Namen, deinen Fotos, deinem Gebiet. Exklusiv für dich.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="faq(this)">Was, wenn wir die Anfragen nicht abarbeiten können?<span class="pm">+</span></div><div class="faq-a"><p>Die Kampagne lässt sich über die Qualifizierung drosseln – auf Wunsch auf ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team stemmen kann. Es geht um planbare Auslastung, nicht um Masse.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="faq(this)">Was unterscheidet euch von Lead-Portalen?<span class="pm">+</span></div><div class="faq-a"><p>Portal-Leads werden parallel an mehrere Betriebe verkauft – du telefonierst um die Wette mit Preisvergleichern. Wir bauen stattdessen einen eigenen Kanal in deinem Namen: deine Fotos, dein Gebiet, deine Anfragen. Und eine Anfrage ohne Adresse und Rückrufnummer zählt bei uns nicht als Anfrage.</p></div></div>
       <div class="faq-item"><div class="faq-q" onclick="faq(this)">Muss ich mich lange binden?<span class="pm">+</span></div><div class="faq-a"><p>Nein. Eine Anlaufzeit von 3 Monaten gilt, damit das System seine volle Wirkung entfalten kann – danach monatlich kündbar. Kein Knebelvertrag.</p></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="faq(this)">Was, wenn Personal unser Engpass ist?<span class="pm">+</span></div><div class="faq-a"><p>Dann starten wir mit Recruiting statt Auftragsgewinnung: gezielte Kampagnen für SHK-Fachkräfte in deiner Region – dieselbe Methodik, anderes Ziel. Siehst du oben live bei Senftleben und Erwin Schmidt &amp; Sohn.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="faq(this)">Was, wenn Personal unser Engpass ist?<span class="pm">+</span></div><div class="faq-a"><p>Dann starten wir mit Recruiting statt Auftragsgewinnung: gezielte Kampagnen für Monteure in deiner Region – dieselbe Methodik, anderes Ziel. Siehst du oben live bei Senftleben und Erwin Schmidt &amp; Sohn.</p></div></div>
     </div>
   </div>
   </div>
@@ -680,7 +627,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
   <div class="wrap">
     <div class="k-card reveal">
       <div class="k-head">
-        <h2>Bereit für <span class="rot" id="rot"><span class="on">planbare Großprojekte?</span><span>volle Auftragsbücher?</span><span>neue Monteure?</span><span>messbares Wachstum?</span></span></h2>
+        <h2>Bereit für <span class="rot"><span class="on">planbare Großprojekte?</span><span>volle Auftragsbücher?</span><span>neue Monteure?</span><span>messbares Wachstum?</span></span></h2>
         <p>In 30 Minuten rechnen wir gemeinsam durch, wie viele Badsanierungs- und Wärmepumpen-Anfragen in deiner Region möglich sind – kostenlos, unverbindlich, ohne Verkaufsshow.</p>
       </div>
       <div class="k-ctas">
@@ -822,11 +769,25 @@ document.querySelectorAll('.split').forEach(function(h){wio.observe(h);});
   els.forEach(function(el){cio.observe(el);});
 })();
 
-// Rotator
-(function(){
-  var r=document.getElementById('rot');if(!r)return;
+// Rotatoren (Hero + Kontakt)
+document.querySelectorAll('.rot').forEach(function(r){
   var ws=r.querySelectorAll('span'),i=0;
   setInterval(function(){ws[i].classList.remove('on');i=(i+1)%ws.length;ws[i].classList.add('on');},2600);
+});
+
+// Sanfter Parallax fürs Portrait in der Night-Sektion
+(function(){
+  var img=document.querySelector('.night-vis img');if(!img)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  function tick(){
+    var r=img.getBoundingClientRect();
+    if(r.bottom>0&&r.top<innerHeight){
+      var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+      img.style.objectPosition='center calc(30% + '+(p*14).toFixed(2)+'%)';
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 })();
 
 // Phone-Mockups: Tap startet/stoppt den Funnel-Durchlauf (Touch-Geräte ohne Hover)

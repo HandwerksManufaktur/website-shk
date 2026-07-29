@@ -138,10 +138,10 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 
 /* ═══════ SYSTEM (4 Schritte) ═══════ */
 #system{padding:60px 0 110px;}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;counter-reset:step;border-top:1.5px solid var(--line2);}
-.step{padding:30px 28px 6px 0;position:relative;border-right:1.5px solid var(--line);margin-right:28px;}
-.step:last-child{border-right:none;margin-right:0;}
-.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;top:32px;right:28px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--faint);}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px;counter-reset:step;}
+.step{padding:28px 26px 26px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);transition:transform .45s var(--ease),box-shadow .45s;}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;top:30px;right:24px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--faint);}
 .step-ic{width:52px;height:52px;border-radius:15px;background:var(--acc-soft);border:1px solid #C3E4F4;display:flex;align-items:center;justify-content:center;font-size:24px;transform:scale(.5);opacity:0;transition:transform .6s var(--ease),opacity .6s;}
 .step.vis .step-ic{transform:none;opacity:1;}
 .step:hover .step-ic{transform:rotate(-6deg) scale(1.08);}
@@ -169,7 +169,8 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .ph-live::before{content:"";width:7px;height:7px;border-radius:50%;background:#37D67A;animation:pulse 2s infinite;}
 .ph-hint{text-align:center;margin-top:40px;font-size:13px;color:var(--faint);}
 .ph-stats{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
-.ps{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 18px;min-width:96px;}
+.ps{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 18px;min-width:96px;transition:transform .35s var(--ease),box-shadow .35s;}
+.ps:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
 .ps b{display:block;font-size:20px;font-weight:800;letter-spacing:-.02em;}
 .ps span{font-size:12px;color:var(--sub);}
 .ph-period{margin-top:10px;font-size:13px;font-weight:600;color:var(--faint);}
@@ -199,7 +200,8 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .feed-head{color:var(--night-sub);font-size:13px;font-weight:600;display:flex;gap:9px;align-items:center;margin-bottom:18px;}
 .dot-live{width:8px;height:8px;border-radius:50%;background:#37D67A;animation:pulse 2s infinite;}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(55,214,122,.45);}70%{box-shadow:0 0 0 9px rgba(55,214,122,0);}100%{box-shadow:0 0 0 0 rgba(55,214,122,0);}}
-.fitem{background:var(--night2);border:1px solid var(--night-line);border-radius:14px;padding:15px 18px;margin-bottom:12px;opacity:0;transform:translateY(14px);animation:fin 11s infinite;}
+.fitem{background:var(--night2);border:1px solid var(--night-line);border-radius:14px;padding:15px 18px;margin-bottom:12px;opacity:0;transform:translateY(14px);animation:fin 11s infinite;transition:border-color .3s;}
+.fitem:hover{border-color:rgba(46,196,232,.5);}
 .fitem:last-child{margin-bottom:0;}
 .f1{animation-delay:.4s;}.f2{animation-delay:1.7s;}.f3{animation-delay:3s;}.f4{animation-delay:4.3s;}
 @keyframes fin{0%{opacity:0;transform:translateY(14px);}5%,86%{opacity:1;transform:none;}94%,100%{opacity:0;transform:translateY(-6px);}}
@@ -222,7 +224,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .founder img{width:56px;height:56px;border-radius:50%;object-fit:cover;}
 .founder .n{font-weight:600;font-size:15.5px;color:#fff;}
 .founder .r{font-size:12.5px;color:var(--acc);font-weight:600;margin:1px 0 4px;}
-.founder .q{font-size:13.5px;color:var(--night-sub);font-style:italic;margin:0;}
+.founder .q{font-size:13.5px;color:var(--night-sub);margin:0;}
 .night-vis img{border-radius:var(--r-md);width:100%;aspect-ratio:4/5;object-fit:cover;object-position:67% 30%;}
 .nstats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:var(--night-line);border-radius:var(--r-md);overflow:hidden;position:relative;z-index:2;}
 .nstat{background:var(--night2);padding:28px 24px;text-align:center;}
@@ -255,7 +257,8 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .rmarq{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
 .rmarq-t{display:flex;gap:18px;padding:6px 9px;flex-shrink:0;animation:marq 85s linear infinite;}
 .rmarq:hover .rmarq-t{animation-play-state:paused;}
-.rc{flex:0 0 390px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:24px 26px;}
+.rc{flex:0 0 390px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:24px 26px;transition:transform .4s var(--ease),box-shadow .4s,border-color .3s;}
+.rc:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--line2);}
 .rc-h{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
 .rc-av{width:40px;height:40px;border-radius:50%;background:var(--acc-soft);color:var(--acc-deep);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .rc-nm{font-weight:600;font-size:14.5px;line-height:1.25;}
@@ -265,14 +268,21 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .rc-tx{font-size:14px;color:var(--sub);line-height:1.55;}
 
 
-/* ═══════ VIDEO-TESTSEKTION ═══════ */
-#reel{padding:110px 0 0;}
-.reel-clip{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--night);box-shadow:var(--shadow-lg);}
-.reel-clip video{width:100%;height:62vh;min-height:380px;object-fit:cover;display:block;}
-.reel-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,12,20,.5) 0%,transparent 40%);}
-.reel-cap{position:absolute;left:0;right:0;bottom:26px;text-align:center;}
-.reel-cap span{display:inline-block;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:10px;padding:10px 18px;font-size:13.5px;font-weight:600;color:var(--ink);box-shadow:var(--shadow-md);}
-@media(max-width:700px){.reel-clip video{height:46vh;}}
+/* ═══════ PROJEKTE-GALERIE ═══════ */
+#projekte{padding:110px 0 0;}
+.pj-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:16px;grid-auto-flow:dense;}
+.pj-grid .pj:nth-child(1){grid-column:1;grid-row:1/3;}
+.pj-grid .pj:nth-child(5){grid-column:4;grid-row:1/3;}
+.pj{position:relative;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);}
+.pj.big{grid-row:span 2;}
+.pj img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease);}
+.pj:hover img{transform:scale(1.06);}
+.pj::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(4,12,20,.55));opacity:0;transition:opacity .4s;}
+.pj:hover::after{opacity:1;}
+.pj-tag{position:absolute;left:14px;bottom:12px;z-index:2;font-size:13px;font-weight:600;color:#fff;background:rgba(4,12,20,.55);backdrop-filter:blur(6px);border-radius:9px;padding:6px 12px;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s;}
+.pj:hover .pj-tag{opacity:1;transform:none;}
+@media(max-width:900px){.pj-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px;}.pj-grid .pj:nth-child(1){grid-column:1;grid-row:1/3;}.pj-grid .pj:nth-child(5){grid-column:2;grid-row:3/5;}}
+@media(max-width:560px){.pj-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px;}}
 
 /* ═══════ FAQ ═══════ */
 #faq{padding:110px 0 120px;}
@@ -437,12 +447,10 @@ footer{padding:30px 0 40px;color:var(--sub);}
 <!-- ═══════ SYSTEM ═══════ -->
 <section id="system">
   <div class="wrap">
-    <div class="reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;">
-      <div>
-        <div class="eyebrow"><span class="dot"></span>Unser Vorgehen</div>
-        <h2 class="d" style="margin-top:18px;">Vier Schritte zu planbaren<br><em>Aufträgen &amp; Bewerbungen.</em></h2>
-      </div>
-      <p class="sec-sub" style="margin:0;max-width:320px;">Ein System, das für Recruiting und Auftragsgewinnung gleich funktioniert – in unter 2 Wochen startklar.</p>
+    <div class="reveal" style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;"><span class="dot"></span>Unser Vorgehen</div>
+      <h2 class="d" style="margin-top:18px;">Vier Schritte zu planbaren<br><em>Aufträgen &amp; Bewerbungen.</em></h2>
+      <p class="sec-sub" style="margin:16px auto 0;">Ein System, das für Recruiting und Auftragsgewinnung gleich funktioniert – in unter 2 Wochen startklar.</p>
     </div>
     <div class="steps">
       <div class="step stagger"><div class="step-ic">🔍</div><h3>Potenzialanalyse</h3><p>Wir rechnen durch, was dein Einzugsgebiet hergibt – Aufträge, Bewerber, Wettbewerb. Kostenlos.</p></div>
@@ -586,15 +594,15 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="night-grid">
         <div>
           <div class="eyebrow" style="color:#5BC2EA;"><span class="dot"></span>Wer dahinter steht</div>
-          <h2 style="margin-top:18px;">Wir kommen selbst<br>aus dem <em>Handwerk.</em></h2>
-          <p>Drei Brüder im Handwerk, zwei davon Meister. Wir wissen, wie ein Betrieb von innen aussieht, wenn vormittags Land unter ist und der Notdienst den Kalender regiert.</p>
-          <p><strong>Sieh uns als deine externe Marketingabteilung:</strong> über 100 Handwerksbetriebe im Online-Marketing unterstützt – seit über sechs Jahren, spezialisiert auf SHK.</p>
+          <h2 style="margin-top:18px;">Kein Agentur-Apparat.<br>Ein <em>Ansprechpartner.</em></h2>
+          <p>Wir kommen selbst aus dem Handwerk – drei Brüder, zwei davon Meister. Deshalb reden wir nicht in Marketing-Floskeln, sondern über Einzugsgebiete, Monteure und volle Auftragsbücher.</p>
+          <p><strong>Sieh uns als deine externe Marketingabteilung:</strong> über 100 Handwerksbetriebe im Online-Marketing unterstützt, seit über sechs Jahren – spezialisiert auf SHK. Du redest immer direkt mit dem, der deine Kampagne baut.</p>
           <div class="founder">
             <img src="/neu/assets/fotos/noah-rund.png" alt="Noah Seelau" loading="lazy">
             <div>
               <div class="n">Noah Seelau</div>
               <div class="r">Gründer &amp; Geschäftsführer</div>
-              <p class="q">„Bei uns gibt es keine Hotline. Es gibt meine Nummer."</p>
+              <p class="q">Baut und betreut jede Kampagne selbst – vom ersten Gespräch bis zum laufenden Reporting.</p>
             </div>
           </div>
         </div>
@@ -654,22 +662,23 @@ footer{padding:30px 0 40px;color:var(--sub);}
   </div>
 </section>
 
-<!-- ═══════ VIDEO (TESTSEKTION — Noahs Call: bleibt's drin?) ═══════ -->
-<section id="reel">
+<!-- ═══════ PROJEKTE: BAD & WÄRMEPUMPE ═══════ -->
+<section id="projekte">
   <div class="wrap">
-    <div class="reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:44px;">
+    <div class="reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px;">
       <div>
-        <div class="eyebrow"><span class="dot"></span>Experiment · sag Bescheid, ob's bleibt</div>
-        <h2 class="d" style="margin-top:18px;">Bad &amp; Wärmepumpe.<br><em>In Bewegung.</em></h2>
+        <div class="eyebrow"><span class="dot"></span>Wofür das alles läuft</div>
+        <h2 class="d" style="margin-top:18px;">Echte Projekte.<br><em>Echte Ergebnisse.</em></h2>
       </div>
-      <p class="sec-sub" style="margin:0;max-width:340px;">Bewegtbild zieht in Kampagnen deutlich besser als Standbilder. So könnte das auf der Seite aussehen – dein Call, ob es bleibt.</p>
+      <p class="sec-sub" style="margin:0;max-width:340px;">Bäder und Wärmepumpen aus Projekten unserer Kunden – genau solche Aufträge holen die Kampagnen rein.</p>
     </div>
-    <div class="reel-clip reveal">
-      <video autoplay muted loop playsinline preload="metadata" poster="/neu/assets/shk-loop-poster-v3.jpg">
-        <source src="/neu/assets/shk-loop-v3.mp4" type="video/mp4">
-      </video>
-      <div class="reel-shade"></div>
-      <div class="reel-cap"><span>🛁 Bad · Heizung · Wärmepumpe</span></div>
+    <div class="pj-grid">
+      <div class="pj stagger big"><img src="/neu/assets/projekte/bad-wanne.jpg" alt="Modernes Komplettbad mit freistehender Wanne" loading="lazy" style="object-position:center 65%;"><span class="pj-tag">🛁 Komplettbad</span></div>
+      <div class="pj stagger"><img src="/neu/assets/projekte/wp-haus.jpg" alt="Wärmepumpe am Einfamilienhaus" loading="lazy"><span class="pj-tag">🔥 Wärmepumpe</span></div>
+      <div class="pj stagger"><img src="/neu/assets/projekte/bad-dusche.jpg" alt="Bodengleiche Dusche" loading="lazy"><span class="pj-tag">🚿 Bodengleiche Dusche</span></div>
+      <div class="pj stagger"><img src="/neu/assets/projekte/wp-garten.jpg" alt="Wärmepumpen-Montage" loading="lazy"><span class="pj-tag">🔥 Wärmepumpe</span></div>
+      <div class="pj stagger big"><img src="/neu/assets/projekte/bad-marmor.jpg" alt="Badsanierung mit Naturstein" loading="lazy" style="object-position:center 45%;"><span class="pj-tag">🛁 Badsanierung</span></div>
+      <div class="pj stagger"><img src="/neu/assets/projekte/wp-herbst.jpg" alt="Wärmepumpe Außeneinheit" loading="lazy"><span class="pj-tag">🔥 Heizungstausch</span></div>
     </div>
   </div>
 </section>
@@ -844,11 +853,32 @@ document.querySelectorAll('.split').forEach(function(h){wio.observe(h);});
   els.forEach(function(el){cio.observe(el);});
 })();
 
-// Rotatoren (Hero + Kontakt)
+// Rotatoren (Hero + Kontakt) — sequenziell: erst aus, dann ein
 document.querySelectorAll('.rot').forEach(function(r){
   var ws=r.querySelectorAll('span'),i=0;
-  setInterval(function(){ws[i].classList.remove('on');i=(i+1)%ws.length;ws[i].classList.add('on');},2600);
+  setInterval(function(){
+    ws[i].classList.remove('on');
+    setTimeout(function(){i=(i+1)%ws.length;ws[i].classList.add('on');},420);
+  },2800);
 });
+
+// Sanfter Parallax für die Case-Study-Phones (gegenläufig beim Scrollen)
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.ph-item'));if(!items.length)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(innerWidth<960)return;
+  function tick(){
+    items.forEach(function(it,i){
+      var r=it.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight){
+        var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+        it.style.transform='translateY('+(p*(i%2?26:-26)).toFixed(1)+'px)';
+      }
+    });
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
 
 // Sanfter Parallax fürs Portrait in der Night-Sektion
 (function(){

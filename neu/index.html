@@ -209,12 +209,34 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .fi-top span{color:#fff;font-weight:600;font-size:15px;}
 .fi-top b{color:#37D67A;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;flex-shrink:0;}
 .fi-meta{color:var(--night-sub);font-size:13px;margin-top:4px;}
+@media(min-width:1500px){
+  .wrap{max-width:1320px;}
+  #nav{padding:18px 48px;}
+  #nav.scrolled{padding:13px 48px;}
+  .hero-inner{max-width:1040px;}
+  #hero h1{font-size:clamp(42px,6.4vw,96px);}
+  .hphone{width:266px;}
+  .hphone.side{width:230px;}
+  .phone{width:302px;}
+  .ph-item.mid .phone{width:324px;}
+  .pview{height:600px;--pvh:600px;}
+  .ph-item.mid .pview{height:644px;--pvh:644px;}
+  .ph-grid{gap:110px;}
+  .show{gap:110px;}
+  .show-img{height:520px;}
+  .pj-grid{grid-auto-rows:250px;}
+  .fcard{width:280px;height:360px;}
+  .steps{gap:22px;}
+}
+
 @media(prefers-reduced-motion:reduce){.fitem{opacity:1;transform:none;animation:none;}}
 
 /* ═══════ NIGHT: Über uns + Zahlen ═══════ */
 #studio{padding:0 0 120px;}
 .night{background:var(--night);color:#fff;border-radius:var(--r-lg);padding:76px 64px;position:relative;overflow:hidden;}
 .night::before{content:"";position:absolute;top:-160px;right:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(34,168,212,.17),transparent 62%);pointer-events:none;}
+.night::after,.k-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(560px circle at var(--mx,70%) var(--my,20%),rgba(46,196,232,.09),transparent 60%);pointer-events:none;transition:opacity .4s;opacity:0;}
+.night:hover::after,.k-card:hover::after{opacity:1;}
 .night-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;position:relative;z-index:2;}
 .night h2{font-weight:700;letter-spacing:-.035em;font-size:clamp(30px,3.8vw,48px);line-height:1.06;}
 .night h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:#5BC2EA;}
@@ -224,7 +246,6 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .founder img{width:56px;height:56px;border-radius:50%;object-fit:cover;}
 .founder .n{font-weight:600;font-size:15.5px;color:#fff;}
 .founder .r{font-size:12.5px;color:var(--acc);font-weight:600;margin:1px 0 4px;}
-.founder .q{font-size:13.5px;color:var(--night-sub);margin:0;}
 .night-vis img{border-radius:var(--r-md);width:100%;aspect-ratio:4/5;object-fit:cover;object-position:67% 30%;}
 .nstats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:var(--night-line);border-radius:var(--r-md);overflow:hidden;position:relative;z-index:2;}
 .nstat{background:var(--night2);padding:28px 24px;text-align:center;}
@@ -594,15 +615,14 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="night-grid">
         <div>
           <div class="eyebrow" style="color:#5BC2EA;"><span class="dot"></span>Wer dahinter steht</div>
-          <h2 style="margin-top:18px;">Kein Agentur-Apparat.<br>Ein <em>Ansprechpartner.</em></h2>
-          <p>Wir kommen selbst aus dem Handwerk – drei Brüder, zwei davon Meister. Deshalb reden wir nicht in Marketing-Floskeln, sondern über Einzugsgebiete, Monteure und volle Auftragsbücher.</p>
+          <h2 style="margin-top:18px;">Handwerk liegt bei uns<br><em>in der Familie.</em></h2>
+          <p>Drei Brüder, zwei davon Handwerksmeister. Deshalb reden wir nicht in Marketing-Floskeln, sondern über Einzugsgebiete, Monteure und volle Auftragsbücher.</p>
           <p><strong>Sieh uns als deine externe Marketingabteilung:</strong> über 100 Handwerksbetriebe im Online-Marketing unterstützt, seit über sechs Jahren – spezialisiert auf SHK. Du redest immer direkt mit dem, der deine Kampagne baut.</p>
           <div class="founder">
             <img src="/neu/assets/fotos/noah-rund.png" alt="Noah Seelau" loading="lazy">
             <div>
               <div class="n">Noah Seelau</div>
-              <div class="r">Gründer &amp; Geschäftsführer</div>
-              <p class="q">Baut und betreut jede Kampagne selbst – vom ersten Gespräch bis zum laufenden Reporting.</p>
+              <div class="r">Gründer</div>
             </div>
           </div>
         </div>
@@ -861,6 +881,49 @@ document.querySelectorAll('.rot').forEach(function(r){
     setTimeout(function(){i=(i+1)%ws.length;ws[i].classList.add('on');},420);
   },2800);
 });
+
+// 3D-Tilt: Phones neigen sich zur Maus (Apple-like)
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  document.querySelectorAll('.ph-item .phone').forEach(function(ph){
+    ph.addEventListener('mousemove',function(e){
+      var r=ph.getBoundingClientRect();
+      var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      ph.style.transform='perspective(900px) rotateY('+(x*9).toFixed(2)+'deg) rotateX('+(-y*7).toFixed(2)+'deg) translateY(-6px)';
+    });
+    ph.addEventListener('mouseleave',function(){ph.style.transform='';});
+  });
+})();
+
+// Cursor-Spotlight auf dunklen Karten
+document.querySelectorAll('.night,.k-card').forEach(function(card){
+  card.addEventListener('mousemove',function(e){
+    var r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    card.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+});
+
+// Count-up für Ergebnis-Zahlen der Case Studies
+(function(){
+  var els=[].slice.call(document.querySelectorAll('.ps b')).filter(function(el){return /^\d+$/.test(el.textContent.trim());});
+  if(!els.length)return;
+  var pio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      pio.unobserve(e.target);
+      var el=e.target,target=+el.textContent,start=null;
+      function frame(ts){
+        if(!start)start=ts;
+        var t=Math.min(1,(ts-start)/1100),eased=1-Math.pow(1-t,3);
+        el.textContent=Math.round(target*eased);
+        if(t<1)requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  },{threshold:.7});
+  els.forEach(function(el){pio.observe(el);});
+})();
 
 // Sanfter Parallax für die Case-Study-Phones (gegenläufig beim Scrollen)
 (function(){

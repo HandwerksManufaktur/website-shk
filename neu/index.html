@@ -72,7 +72,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 
 /* ═══════ HERO ═══════ */
 #hero{padding:170px 0 0;text-align:center;position:relative;}
-#hero::before{content:"";position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:min(1200px,100vw);height:700px;background:radial-gradient(ellipse at 50% 20%,rgba(34,168,212,.10),transparent 55%),radial-gradient(ellipse at 30% 60%,rgba(46,196,232,.13),transparent 50%),radial-gradient(ellipse at 72% 55%,rgba(120,205,235,.15),transparent 50%);pointer-events:none;}
+#hero::before{content:"";position:absolute;top:-180px;left:0;right:0;width:auto;height:760px;background:radial-gradient(ellipse at 50% 20%,rgba(34,168,212,.10),transparent 55%),radial-gradient(ellipse at 30% 60%,rgba(46,196,232,.13),transparent 50%),radial-gradient(ellipse at 72% 55%,rgba(120,205,235,.15),transparent 50%);pointer-events:none;}
 .hero-inner{position:relative;z-index:2;max-width:960px;margin:0 auto;padding:0 24px;}
 #hero h1{font-weight:800;letter-spacing:-.045em;font-size:clamp(42px,6.4vw,84px);line-height:1.02;}
 #hero h1 .accent{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--acc);}
@@ -81,7 +81,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .hero-proof{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:26px;font-size:14.5px;color:var(--sub);flex-wrap:wrap;}
 .hero-proof .stars{color:#F5A623;letter-spacing:1px;}
 .hero-proof b{color:var(--ink);font-weight:600;}
-#hero .rot{color:var(--acc);}
+#hero .rot{color:var(--acc);text-align:center;justify-items:center;}
 .o1,.o2,.o3,.o4,.o5{opacity:0;animation:rise .95s var(--ease) forwards;}
 .o1{animation-delay:.15s;}.o2{animation-delay:.3s;}.o3{animation-delay:.5s;}.o4{animation-delay:.68s;}.o5{animation-delay:.9s;}
 @keyframes rise{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
@@ -156,7 +156,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .pview{position:relative;height:520px;--pvh:520px;overflow:hidden;border-radius:28px;background:#fff;}
 .ph-item.mid .pview{height:560px;--pvh:560px;}
 .pview img{position:absolute;top:0;left:0;width:100%;will-change:transform;}
-.ph-item:hover .pview img,.ph-item.run .pview img{animation:pscroll 26s cubic-bezier(.25,.1,.25,1) forwards;}
+.ph-item:hover .pview img,.ph-item.run .pview img{animation:pscroll var(--pdur,22s) cubic-bezier(.25,.1,.25,1) forwards;}
 @keyframes pscroll{0%{transform:translateY(0);}100%{transform:translateY(calc(-100% + var(--pvh)));}}
 .ph-name{margin-top:22px;font-size:16.5px;font-weight:700;letter-spacing:-.015em;}
 .ph-tag{font-size:13px;color:var(--faint);margin-top:3px;}
@@ -165,8 +165,8 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 @media(max-width:960px){.ph-grid{overflow-x:auto;justify-content:flex-start;padding:8px 24px 24px;margin-left:-24px;margin-right:-24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}.ph-item{scroll-snap-align:center;}}
 
 /* ═══════ HEBEL (Show-Layouts) ═══════ */
-#auftraege{padding:40px 0 30px;}
-#monteure{padding:30px 0 90px;}
+#monteure{padding:40px 0 30px;}
+#auftraege{padding:30px 0 90px;}
 .show{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;}
 .show.rev .show-media{order:0;}
 .show-kicker{font-size:13.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);}
@@ -183,6 +183,20 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 .show-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease);}
 .show-media:hover .show-img img{transform:scale(1.04);}
 @media(max-width:900px){.show{grid-template-columns:1fr;gap:30px;}.show.rev .show-media{order:0;}.show-img{height:320px;}}
+.feed-card{background:var(--night);border:none;padding:38px 34px;}
+.feed{display:flex;flex-direction:column;justify-content:center;min-height:380px;}
+.feed-head{color:var(--night-sub);font-size:13px;font-weight:600;display:flex;gap:9px;align-items:center;margin-bottom:18px;}
+.dot-live{width:8px;height:8px;border-radius:50%;background:#37D67A;animation:pulse 2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(55,214,122,.45);}70%{box-shadow:0 0 0 9px rgba(55,214,122,0);}100%{box-shadow:0 0 0 0 rgba(55,214,122,0);}}
+.fitem{background:var(--night2);border:1px solid var(--night-line);border-radius:14px;padding:15px 18px;margin-bottom:12px;opacity:0;transform:translateY(14px);animation:fin 11s infinite;}
+.fitem:last-child{margin-bottom:0;}
+.f1{animation-delay:.4s;}.f2{animation-delay:1.7s;}.f3{animation-delay:3s;}.f4{animation-delay:4.3s;}
+@keyframes fin{0%{opacity:0;transform:translateY(14px);}5%,86%{opacity:1;transform:none;}94%,100%{opacity:0;transform:translateY(-6px);}}
+.fi-top{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.fi-top span{color:#fff;font-weight:600;font-size:15px;}
+.fi-top b{color:#37D67A;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;flex-shrink:0;}
+.fi-meta{color:var(--night-sub);font-size:13px;margin-top:4px;}
+@media(prefers-reduced-motion:reduce){.fitem{opacity:1;transform:none;animation:none;}}
 
 /* ═══════ NIGHT: Über uns + Zahlen ═══════ */
 #studio{padding:0 0 120px;}
@@ -207,7 +221,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 @media(max-width:900px){.night{padding:52px 28px;}.night-grid{grid-template-columns:1fr;gap:44px;}.nstats{grid-template-columns:1fr;}}
 
 /* ═══════ FOTO-STREIFEN ═══════ */
-#fotos{padding:100px 0;overflow:hidden;background:var(--night);color:#fff;}
+#fotos{padding:110px 0;overflow:hidden;background:var(--night);color:#fff;}
 #fotos .eyebrow{color:#5BC2EA;}
 #fotos .eyebrow .dot{background:var(--acc);}
 #fotos .sec-sub{color:var(--night-sub);}
@@ -241,7 +255,7 @@ h2.d em,.serif-it{font-family:var(--serif);font-style:italic;font-weight:400;let
 
 
 /* ═══════ FAQ ═══════ */
-#faq{padding:0 0 120px;}
+#faq{padding:110px 0 120px;}
 .faq-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:70px;align-items:start;}
 .faq-head{position:sticky;top:120px;}
 .faq-tel{display:inline-block;margin-top:24px;font-size:16px;font-weight:600;border-bottom:1.5px solid var(--line2);padding-bottom:2px;}
@@ -296,8 +310,8 @@ footer{padding:30px 0 40px;color:var(--sub);}
   <a href="#hero" class="nav-logo"><img src="/Logos%20SHK/Logo%20Handwerksmanufaktur%20weiss.png" alt="HandwerksManufaktur"></a>
   <div class="nav-links">
     <a href="#funnels">Kampagnen</a>
-    <a href="#auftraege">Aufträge</a>
     <a href="#monteure">Monteure</a>
+    <a href="#auftraege">Aufträge</a>
     <a href="#studio">Über uns</a>
     <a href="#faq">FAQ</a>
     <a href="#kontakt" class="nav-cta">Potenzialanalyse</a>
@@ -307,22 +321,22 @@ footer{padding:30px 0 40px;color:var(--sub);}
 <!-- ═══════ HERO ═══════ -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="eyebrow o1"><span class="dot"></span>Leadgen &amp; Recruiting für SHK-Betriebe</div>
-    <h1 class="o2">Planbar mehr<br><span class="accent rot"><span class="on">Badsanierungen.</span><span>Wärmepumpen.</span><span>Monteure.</span><span>Bewerbungen.</span></span></h1>
-    <p class="hero-sub o3">Zu wenig Großprojekte – oder zu wenig Leute, um sie umzusetzen? Wir bauen SHK-Betrieben einen eigenen Kampagnen-Kanal, der beides liefert: Bad- und Wärmepumpen-Anfragen mit 20.000–50.000&nbsp;€ Projektwert. Und Bewerbungen von Monteuren, die nie ein Stellenportal öffnen.</p>
+    <div class="eyebrow o1"><span class="dot"></span>Recruiting &amp; Aufträge für SHK-Betriebe</div>
+    <h1 class="o2">Planbar mehr<br><span class="accent rot"><span class="on">Monteure.</span><span>Anlagenmechaniker.</span><span>Badsanierungen.</span><span>Wärmepumpen.</span><span>Bewerbungen.</span></span></h1>
+    <p class="hero-sub o3">Zu wenig Leute – oder zu wenig Großprojekte? Wir bauen SHK-Betrieben einen eigenen Kampagnen-Kanal, der beides liefert: Bewerbungen von Monteuren, die nie ein Stellenportal öffnen. Und Bad- &amp; Wärmepumpen-Anfragen mit 20.000–50.000&nbsp;€ Projektwert.</p>
     <div class="hero-ctas o4">
-      <a href="#auftraege" class="btn btn-ink">🛁 Mehr Aufträge</a>
-      <a href="#monteure" class="btn btn-ghost">👷 Mehr Monteure</a>
+      <a href="#monteure" class="btn btn-ink">👷 Mehr Monteure</a>
+      <a href="#auftraege" class="btn btn-ghost">🛁 Mehr Aufträge</a>
     </div>
-    <div class="hero-proof o4"><span class="stars">★★★★★</span><span><b>5,0</b> auf Google</span><span>·</span><span><b>100+</b> Betriebe</span><span>·</span><span><b>Nur</b> Handwerk</span></div>
+    <div class="hero-proof o4"><span class="stars">★★★★★</span><span><b>5,0</b> auf Google</span><span>·</span><span><b>100+</b> Betriebe</span><span>·</span><span><b>Spezialisiert</b> auf SHK</span></div>
   </div>
   <div class="hero-stage o5">
     <div class="hclip" id="hclip">
-      <div class="hclip-label">Echte Kampagnen, die gerade laufen: <b>Anfragen &amp; Bewerbungen direkt aufs Handy deiner Kunden</b></div>
+      <div class="hclip-label">Echte Kampagnen, die gerade laufen: <b>Bewerbungen &amp; Anfragen direkt aufs Handy</b></div>
       <div class="hphones">
         <div class="hphone side l"><img src="/neu/assets/funnels/senftleben-jobs-hero.jpg" alt="Recruiting-Funnel Senftleben Haustechnik"></div>
-        <div class="hphone"><img src="/neu/assets/funnels/senftleben-leadgen-hero.jpg" alt="Badsanierungs-Funnel Senftleben Haustechnik"></div>
-        <div class="hphone side r"><img src="/neu/assets/funnels/erwin-schmidt-jobs-hero.jpg" alt="Recruiting-Funnel Erwin Schmidt &amp; Sohn"></div>
+        <div class="hphone"><img src="/neu/assets/funnels/erwin-schmidt-jobs-hero.jpg" alt="Recruiting-Funnel Erwin Schmidt &amp; Sohn"></div>
+        <div class="hphone side r"><img src="/neu/assets/funnels/senftleben-leadgen-hero.jpg" alt="Badsanierungs-Funnel Senftleben Haustechnik"></div>
       </div>
     </div>
   </div>
@@ -332,7 +346,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
 <section id="band">
   <div class="wrap">
     <div class="band-card reveal">
-      <div class="band-label">Vom Familienbetrieb bis zum 30-Mann-Unternehmen: <b>SHK- &amp; Handwerksbetriebe in ganz DACH</b> vertrauen uns</div>
+      <div class="band-label">Vom Familienbetrieb bis zum 50-Mann-Unternehmen: <b>SHK- &amp; Handwerksbetriebe in ganz DACH</b> vertrauen uns</div>
       <div class="marq">
         <div class="marq-t">
           <div class="li"><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik" loading="lazy"></div>
@@ -430,23 +444,23 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <p class="sec-sub" style="margin:0;max-width:360px;">Drei Ausschnitte aus laufenden Kampagnen. Jede Anfrage und jede Bewerbung durchläuft so eine Strecke – und beantwortet dabei die wichtigsten Fragen, bevor sie beim Betrieb landet.</p>
     </div>
     <div class="ph-grid">
-      <div class="ph-item stagger">
+      <div class="ph-item stagger" style="--pdur:16s;">
         <div class="phone"><div class="pview"><img src="/neu/assets/funnels/senftleben-jobs-full.jpg" alt="Recruiting-Funnel Senftleben Haustechnik" loading="lazy"></div></div>
         <div class="ph-name">Senftleben Haustechnik</div>
         <div class="ph-tag">Ehingen (Donau) · Familienbetrieb in 3. Generation</div>
         <span class="ph-badge">👷 Recruiting-Funnel</span>
       </div>
-      <div class="ph-item mid stagger">
-        <div class="phone"><div class="pview"><img src="/neu/assets/funnels/senftleben-leadgen-full.jpg" alt="Badsanierungs-Funnel Senftleben Haustechnik" loading="lazy"></div></div>
-        <div class="ph-name">Senftleben Haustechnik</div>
-        <div class="ph-tag">Badsanierung · Komplettbäder aus einer Hand</div>
-        <span class="ph-badge">🛁 Auftrags-Funnel</span>
-      </div>
-      <div class="ph-item stagger">
+      <div class="ph-item mid stagger" style="--pdur:11s;">
         <div class="phone"><div class="pview"><img src="/neu/assets/funnels/erwin-schmidt-jobs-full.jpg" alt="Recruiting-Funnel Erwin Schmidt &amp; Sohn" loading="lazy"></div></div>
         <div class="ph-name">Erwin Schmidt &amp; Sohn</div>
         <div class="ph-tag">Sindelfingen · SHK-Familienbetrieb in 3. Generation</div>
         <span class="ph-badge">👷 Recruiting-Funnel</span>
+      </div>
+      <div class="ph-item stagger" style="--pdur:22s;">
+        <div class="phone"><div class="pview"><img src="/neu/assets/funnels/senftleben-leadgen-full.jpg" alt="Badsanierungs-Funnel Senftleben Haustechnik" loading="lazy"></div></div>
+        <div class="ph-name">Senftleben Haustechnik</div>
+        <div class="ph-tag">Badsanierung · Komplettbäder aus einer Hand</div>
+        <span class="ph-badge">🛁 Auftrags-Funnel</span>
       </div>
     </div>
     <p class="ph-hint reveal">Drüberfahren oder antippen – der Funnel scrollt von selbst durch.</p>
@@ -466,30 +480,61 @@ footer{padding:30px 0 40px;color:var(--sub);}
   </div>
   <div class="rmarq">
     <div class="rmarq-t">
-      <div class="rc"><div class="rc-h"><div class="rc-av">FG</div><div style="flex:1;"><div class="rc-nm">Franz Gallenberger</div><div class="rc-rl">Sanitär · Heizung · Klimatechnik</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. Die Beratung war kompetent, verständlich und stets auf unsere individuellen Wünsche abgestimmt. Das Ergebnis hat unsere Erwartungen nicht nur erfüllt, sondern sogar übertroffen."</p></div>
+      <div class="rc"><div class="rc-h"><div class="rc-av">FG</div><div style="flex:1;"><div class="rc-nm">Franz Gallenberger</div><div class="rc-rl">SHK-Betrieb · Sanitär, Heizung, Klima</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. Die Beratung war kompetent, verständlich und stets auf unsere individuellen Wünsche abgestimmt. Das Ergebnis hat unsere Erwartungen nicht nur erfüllt, sondern sogar übertroffen."</p></div>
       <div class="rc"><div class="rc-h"><div class="rc-av">BS</div><div style="flex:1;"><div class="rc-nm">Benjamin Senftleben</div><div class="rc-rl">Senftleben Haustechnik, Ehingen</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Wir sind sehr zufrieden! Der Kontakt mit Noah ist immer freundlich."</p></div>
       <div class="rc"><div class="rc-h"><div class="rc-av">LZ</div><div style="flex:1;"><div class="rc-nm">Lanzinger GmbH</div><div class="rc-rl">Sanitär · Heizung · Klimatechnik</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Reibungsloser Ablauf bis zur Fertigstellung. Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit, gerne wieder."</p></div>
-      <div class="rc"><div class="rc-h"><div class="rc-av">AS</div><div style="flex:1;"><div class="rc-nm">Andrea Süßmeier</div><div class="rc-rl">Süßmeier Heizungstechnik</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren."</p></div>
+      <div class="rc"><div class="rc-h"><div class="rc-av">AS</div><div style="flex:1;"><div class="rc-nm">Andrea Süßmeier</div><div class="rc-rl">Süßmeier Heizungstechnik · SHK</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren."</p></div>
       <div class="rc"><div class="rc-h"><div class="rc-av">HS</div><div style="flex:1;"><div class="rc-nm">Hannes Schmidt GmbH</div><div class="rc-rl">Sanitär-Heizung-Klima</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Nach einem kurzen Telefonat verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. Auch ohne große Computerkenntnisse können wir die Seite selber bearbeiten."</p></div>
-      <div class="rc"><div class="rc-h"><div class="rc-av">AR</div><div style="flex:1;"><div class="rc-nm">Autohaus Ressle</div><div class="rc-rl">Recruiting-Kampagne</div></div></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Wir haben eine überraschend hohe Anzahl an Bewerbern erhalten. Für uns ist dieser Weg der Personalsuche zukunftsweisend."</p></div>
+      <div class="rc"><div class="rc-h"><div class="rc-av">AK</div><div style="flex:1;"><div class="rc-nm">Alisa Kirchner</div><div class="rc-rl">Kirchner GmbH</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Noah hat unsere Website erstellt und auch die Bilder hierfür gemacht! Wir sind absolut happy und die Zusammenarbeit läuft immer super unkompliziert."</p></div>
+      <div class="rc"><div class="rc-h"><div class="rc-av">IR</div><div style="flex:1;"><div class="rc-nm">Isabella Rauch</div><div class="rc-rl">Autohaus Ressle · Recruiting</div></div></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Wir haben eine überraschend hohe Anzahl an Bewerbern erhalten. Für uns ist dieser Weg der Personalsuche zukunftsweisend."</p></div>
     </div>
     <div class="rmarq-t" aria-hidden="true">
-      <div class="rc"><div class="rc-h"><div class="rc-av">FG</div><div style="flex:1;"><div class="rc-nm">Franz Gallenberger</div><div class="rc-rl">Sanitär · Heizung · Klimatechnik</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. Die Beratung war kompetent, verständlich und stets auf unsere individuellen Wünsche abgestimmt. Das Ergebnis hat unsere Erwartungen nicht nur erfüllt, sondern sogar übertroffen."</p></div>
+      <div class="rc"><div class="rc-h"><div class="rc-av">FG</div><div style="flex:1;"><div class="rc-nm">Franz Gallenberger</div><div class="rc-rl">SHK-Betrieb · Sanitär, Heizung, Klima</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. Die Beratung war kompetent, verständlich und stets auf unsere individuellen Wünsche abgestimmt. Das Ergebnis hat unsere Erwartungen nicht nur erfüllt, sondern sogar übertroffen."</p></div>
       <div class="rc"><div class="rc-h"><div class="rc-av">BS</div><div style="flex:1;"><div class="rc-nm">Benjamin Senftleben</div><div class="rc-rl">Senftleben Haustechnik, Ehingen</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Wir sind sehr zufrieden! Der Kontakt mit Noah ist immer freundlich."</p></div>
       <div class="rc"><div class="rc-h"><div class="rc-av">LZ</div><div style="flex:1;"><div class="rc-nm">Lanzinger GmbH</div><div class="rc-rl">Sanitär · Heizung · Klimatechnik</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Reibungsloser Ablauf bis zur Fertigstellung. Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit, gerne wieder."</p></div>
-      <div class="rc"><div class="rc-h"><div class="rc-av">AS</div><div style="flex:1;"><div class="rc-nm">Andrea Süßmeier</div><div class="rc-rl">Süßmeier Heizungstechnik</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren."</p></div>
+      <div class="rc"><div class="rc-h"><div class="rc-av">AS</div><div style="flex:1;"><div class="rc-nm">Andrea Süßmeier</div><div class="rc-rl">Süßmeier Heizungstechnik · SHK</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren."</p></div>
       <div class="rc"><div class="rc-h"><div class="rc-av">HS</div><div style="flex:1;"><div class="rc-nm">Hannes Schmidt GmbH</div><div class="rc-rl">Sanitär-Heizung-Klima</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Nach einem kurzen Telefonat verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. Auch ohne große Computerkenntnisse können wir die Seite selber bearbeiten."</p></div>
-      <div class="rc"><div class="rc-h"><div class="rc-av">AR</div><div style="flex:1;"><div class="rc-nm">Autohaus Ressle</div><div class="rc-rl">Recruiting-Kampagne</div></div></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Wir haben eine überraschend hohe Anzahl an Bewerbern erhalten. Für uns ist dieser Weg der Personalsuche zukunftsweisend."</p></div>
+      <div class="rc"><div class="rc-h"><div class="rc-av">AK</div><div style="flex:1;"><div class="rc-nm">Alisa Kirchner</div><div class="rc-rl">Kirchner GmbH</div></div><span class="rc-g"><svg viewBox="0 0 48 48" width="15" height="15" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Noah hat unsere Website erstellt und auch die Bilder hierfür gemacht! Wir sind absolut happy und die Zusammenarbeit läuft immer super unkompliziert."</p></div>
+      <div class="rc"><div class="rc-h"><div class="rc-av">IR</div><div style="flex:1;"><div class="rc-nm">Isabella Rauch</div><div class="rc-rl">Autohaus Ressle · Recruiting</div></div></div><div class="rc-st">★★★★★</div><p class="rc-tx">„Wir haben eine überraschend hohe Anzahl an Bewerbern erhalten. Für uns ist dieser Weg der Personalsuche zukunftsweisend."</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ HEBEL 1: AUFTRÄGE ═══════ -->
-<section id="auftraege">
+<!-- ═══════ HEBEL 1: MONTEURE ═══════ -->
+<section id="monteure">
   <div class="wrap">
     <div class="show reveal">
       <div class="show-txt">
-        <div class="show-kicker">Hebel 1 · Leadgen</div>
+        <div class="show-kicker">Hebel 1 · Recruiting</div>
+        <h3>Recruiting-Funnel für <em>Monteure.</em></h3>
+        <p>Erreicht Anlagenmechaniker und Kundendiensttechniker, die einen Job haben und nie ein Stellenportal öffnen – aber wechseln, wenn's passt. Es sind Arbeitnehmerjahre. Wir nutzen das für dich.</p>
+        <ul class="chk">
+          <li>Bewerbung in 60 Sekunden – ohne Lebenslauf</li>
+          <li>Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li>
+          <li>Dein Betrieb als Marke – echte Fotos statt Floskeln</li>
+        </ul>
+        <div class="show-actions"><a href="#kontakt" class="btn btn-ink">Recruiting besprechen</a></div>
+      </div>
+      <div class="show-media wcard"><div class="show-img"><img src="/neu/assets/fotos/erwin-schmidt-van.jpg" alt="Monteure im SHK-Betrieb" loading="lazy" style="object-position:center 30%;"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HEBEL 2: AUFTRÄGE ═══════ -->
+<section id="auftraege">
+  <div class="wrap">
+    <div class="show rev reveal">
+      <div class="show-media feed-card">
+        <div class="feed">
+          <div class="feed-head"><span class="dot-live"></span>So kommen Anfragen bei dir an</div>
+          <div class="fitem f1"><div class="fi-top"><span>🛁 Komplettbad</span><b>vorqualifiziert ✓</b></div><div class="fi-meta">EFH · Baujahr 1994 · Eigentümer · Start im Frühjahr</div></div>
+          <div class="fitem f2"><div class="fi-top"><span>🔥 Wärmepumpe</span><b>vorqualifiziert ✓</b></div><div class="fi-meta">Ölheizung Bj. 2001 · 160 m² · Eigentümer</div></div>
+          <div class="fitem f3"><div class="fi-top"><span>🛁 Bad barrierefrei</span><b>vorqualifiziert ✓</b></div><div class="fi-meta">Bodengleiche Dusche · Eigentumswohnung · zeitnah</div></div>
+          <div class="fitem f4"><div class="fi-top"><span>🔥 Heizungstausch</span><b>vorqualifiziert ✓</b></div><div class="fi-meta">Gas raus, Wärmepumpe rein · EFH · Förderung geklärt</div></div>
+        </div>
+      </div>
+      <div class="show-txt">
+        <div class="show-kicker">Hebel 2 · Aufträge</div>
         <h3>Auftrags-Funnel für <em>Bad &amp; Wärmepumpe.</em></h3>
         <p>Dein eigener Kampagnen-Kanal, in deinem Namen, in deinem Einzugsgebiet – keine Portal-Leads, die parallel an vier Wettbewerber gehen.</p>
         <ul class="chk">
@@ -497,28 +542,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
           <li>Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li>
           <li>Regelbar – auf Wunsch auch nur 1–2 Aufträge im Monat</li>
         </ul>
-        <div class="show-actions"><a href="#kontakt" class="btn btn-ink">Potenzial durchrechnen</a></div>
-      </div>
-      <div class="show-media wcard"><div class="show-img"><img src="/neu/assets/fotos/shk-05.jpg" alt="Badberatung im SHK-Betrieb" loading="lazy"></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ HEBEL 2: MONTEURE ═══════ -->
-<section id="monteure">
-  <div class="wrap">
-    <div class="show rev reveal">
-      <div class="show-media wcard"><div class="show-img"><img src="/neu/assets/fotos/erwin-schmidt-van.jpg" alt="Monteure im SHK-Betrieb" loading="lazy" style="object-position:center 30%;"></div></div>
-      <div class="show-txt">
-        <div class="show-kicker">Hebel 2 · Recruiting</div>
-        <h3>Recruiting-Funnel für <em>Monteure.</em></h3>
-        <p>Dieselbe Maschine, anderes Ziel: Sie erreicht Monteure, die einen Job haben und nie ein Stellenportal öffnen – aber wechseln, wenn's passt. Es sind Arbeitnehmerjahre. Wir nutzen das für dich.</p>
-        <ul class="chk">
-          <li>Bewerbung in 60 Sekunden – ohne Lebenslauf</li>
-          <li>Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li>
-          <li>Dein Betrieb als Marke – echte Fotos statt Floskeln</li>
-        </ul>
-        <div class="show-actions"><a href="#kontakt" class="btn btn-ghost">Recruiting besprechen</a></div>
+        <div class="show-actions"><a href="#kontakt" class="btn btn-ghost">Potenzial durchrechnen</a></div>
       </div>
     </div>
   </div>
@@ -532,14 +556,14 @@ footer{padding:30px 0 40px;color:var(--sub);}
         <div>
           <div class="eyebrow" style="color:#5BC2EA;"><span class="dot"></span>Wer dahinter steht</div>
           <h2 style="margin-top:18px;">Wir kommen selbst<br>aus dem <em>Handwerk.</em></h2>
-          <p>In unserer Familie stecken zwei Handwerksbetriebe mit je 20 Mann. Wir wissen, wie ein Betrieb von innen aussieht, wenn vormittags Land unter ist und der Notdienst den Kalender regiert. Seit über sechs Jahren machen wir deshalb genau eines: Marketing für Handwerksbetriebe – über 100 bis heute.</p>
-          <p><strong>Sieh uns als deine externe Marketingabteilung.</strong> Kein Agentur-Karussell, keine Praktikanten-Tickets – du redest mit dem, der deine Kampagne baut und deine Zahlen kennt.</p>
+          <p>Drei Brüder im Handwerk, zwei davon Meister – bei uns war Handwerk nie „Zielgruppe", sondern Alltag am Küchentisch. Wir wissen, wie ein Betrieb von innen aussieht, wenn vormittags Land unter ist und der Notdienst den Kalender regiert.</p>
+          <p><strong>Sieh uns als deine externe Marketingabteilung.</strong> Seit über sechs Jahren machen wir nichts anderes als Marketing für Handwerksbetriebe – über 100 bis heute, spezialisiert auf SHK. Du redest mit dem, der deine Kampagne baut und deine Zahlen kennt.</p>
           <div class="founder">
             <img src="/neu/assets/fotos/noah-rund.png" alt="Noah Seelau" loading="lazy">
             <div>
               <div class="n">Noah Seelau</div>
               <div class="r">Gründer &amp; Geschäftsführer</div>
-              <p class="q">„Es geht nicht um Masse. Es geht um planbare Auslastung."</p>
+              <p class="q">„Wir sind Wachstumspartner – keine Anfragen-Verkäufer."</p>
             </div>
           </div>
         </div>
@@ -627,12 +651,12 @@ footer{padding:30px 0 40px;color:var(--sub);}
   <div class="wrap">
     <div class="k-card reveal">
       <div class="k-head">
-        <h2>Bereit für <span class="rot"><span class="on">planbare Großprojekte?</span><span>volle Auftragsbücher?</span><span>neue Monteure?</span><span>messbares Wachstum?</span></span></h2>
-        <p>In 30 Minuten rechnen wir gemeinsam durch, wie viele Badsanierungs- und Wärmepumpen-Anfragen in deiner Region möglich sind – kostenlos, unverbindlich, ohne Verkaufsshow.</p>
+        <h2>Bereit für <span class="rot"><span class="on">neue Monteure?</span><span>planbare Großprojekte?</span><span>volle Auftragsbücher?</span><span>messbares Wachstum?</span></span></h2>
+        <p>In 30 Minuten rechnen wir gemeinsam durch, was in deiner Region drin ist – Bewerbungen von Monteuren oder Bad- und Wärmepumpen-Anfragen. Kostenlos, unverbindlich, ohne Verkaufsshow.</p>
       </div>
       <div class="k-ctas">
-        <a href="https://calendly.com/noahseelau/leadgen-potenzial" target="_blank" rel="noopener" class="btn btn-acc">🛁 Aufträge gewinnen →</a>
-        <a href="https://calendly.com/noahseelau/recruiting-potenzial" target="_blank" rel="noopener" class="btn btn-rec">👷 Monteure finden →</a>
+        <a href="https://calendly.com/noahseelau/recruiting-potenzial" target="_blank" rel="noopener" class="btn btn-acc">👷 Monteure finden →</a>
+        <a href="https://calendly.com/noahseelau/leadgen-potenzial" target="_blank" rel="noopener" class="btn btn-rec">🛁 Aufträge gewinnen →</a>
       </div>
       <div class="k-meta">
         <span>📞 <a href="tel:+4981947174990"><b>+49 8194 7174990</b></a></span>

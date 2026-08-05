@@ -697,12 +697,40 @@ window.shkFileStore2 = {}; var shkFileStore2 = window.shkFileStore2;
 let shkLeistungCount2 = 0;
 
 function shkFile(files, key) {
+  // Ordner-Einträge & leere Dateien rausfiltern (0-Byte-Uploads lassen Drive mit 400 scheitern)
+  const clean = [...files].filter(function(f) { return f.size > 0; });
   if (!shkFileStore2[key]) shkFileStore2[key] = [];
-  shkFileStore2[key].push(...files);
+  shkFileStore2[key].push(...clean);
   const p = document.getElementById('preview-' + key);
-  if (p) { [...files].forEach(function(f) { const c = document.createElement('div'); c.className = 'preview-chip'; c.textContent = f.name.slice(0, 22); p.appendChild(c); }); }
+  if (p) { clean.forEach(function(f) { const c = document.createElement('div'); c.className = 'preview-chip'; c.textContent = f.name.slice(0, 22); p.appendChild(c); }); }
 }
-function shkDrop(e, key) { e.preventDefault(); if (e.dataTransfer.files.length) shkFile(e.dataTransfer.files, key); }
+// Rekursiv Dateien aus gedroppten Ordnern einsammeln (webkitGetAsEntry)
+function shkWalkEntry(entry) {
+  return new Promise(function(resolve) {
+    if (entry.isFile) { entry.file(function(f) { resolve([f]); }, function() { resolve([]); }); }
+    else if (entry.isDirectory) {
+      const reader = entry.createReader();
+      const collected = [];
+      (function readBatch() {
+        reader.readEntries(function(batch) {
+          if (!batch.length) { Promise.all(collected.map(shkWalkEntry)).then(function(a) { resolve(a.flat()); }); }
+          else { collected.push(...batch); readBatch(); }
+        }, function() { resolve([]); });
+      })();
+    } else resolve([]);
+  });
+}
+function shkCollectDrop(e, cb) {
+  const items = e.dataTransfer.items;
+  if (items && items.length && items[0].webkitGetAsEntry) {
+    const entries = [];
+    for (let i = 0; i < items.length; i++) { const en = items[i].webkitGetAsEntry(); if (en) entries.push(en); }
+    Promise.all(entries.map(shkWalkEntry)).then(function(a) { const files = a.flat(); if (files.length) cb(files); });
+  } else if (e.dataTransfer.files.length) {
+    cb(e.dataTransfer.files);
+  }
+}
+function shkDrop(e, key) { e.preventDefault(); shkCollectDrop(e, function(files) { shkFile(files, key); }); }
 
 function shkLogoFile(files) {
   if (!window.shkFileStore2) window.shkFileStore2 = {};
@@ -710,7 +738,7 @@ function shkLogoFile(files) {
   const p = document.getElementById('shkLogoPreview');
   if (p) { p.innerHTML = ''; [...files].forEach(function(f) { const c = document.createElement('div'); c.className = 'preview-chip'; c.textContent = f.name.slice(0, 25); p.appendChild(c); }); }
 }
-function handleLogoDrop2(e) { e.preventDefault(); if (e.dataTransfer.files.length) shkLogoFile(e.dataTransfer.files); }
+function handleLogoDrop2(e) { e.preventDefault(); shkCollectDrop(e, shkLogoFile); }
 
 function addLeistungSHK() {
   shkLeistungCount2++;
@@ -733,7 +761,7 @@ function addLeistungSHK() {
   var fi = document.getElementById('fi-' + key);
   var uz = document.getElementById('uz-' + key);
   if (fi) fi.addEventListener('change', function() { shkFile(this.files, key); });
-  if (uz) uz.addEventListener('drop', function(e) { e.preventDefault(); if (e.dataTransfer.files.length) shkFile(e.dataTransfer.files, key); });
+  if (uz) uz.addEventListener('drop', function(e) { e.preventDefault(); shkCollectDrop(e, function(files) { shkFile(files, key); }); });
 }
 
 window.addEventListener('load', function() {
@@ -920,8 +948,14 @@ function collectMissing(leistungen) {
 }
 
 // === SUBMIT ===
+// Merkt sich nach dem ersten Erfolg die Ordner-IDs — verhindert doppelte
+// Drive-Ordner/ClickUp-Tasks, wenn der Kunde nach einem Upload-Fehler nochmal absendet.
+let shkCreatedFolders = null;
+let shkUploadErrors = [];
+
 async function submitForm() {
   if (!dsgvoSHK) { alert('Bitte stimme zuerst der Datenschutzerklärung zu.'); return; }
+  shkUploadErrors = [];
   const firmaName = (document.getElementById('firmaName') || {}).value || 'Neukunde';
   const leistungen = [...document.querySelectorAll('.leistung-item input[type=text]')].map(function(i) { return i.value.trim() || 'Leistung'; });
   const hasR = document.getElementById('cb-recruiting').checked;
@@ -948,8 +982,13 @@ async function submitForm() {
   var _dotTimer = setInterval(function() { _dotN = (_dotN + 1) % 4; if (status) status.textContent = _dotBase + '.'.repeat(_dotN || 1); }, 600);
   try {
     const API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
-    const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen) }) });
-    const { folderIds } = await r.json();
+    if (!shkCreatedFolders) {
+      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen) }) });
+      const created = await r.json();
+      if (created.error) throw new Error(created.error);
+      shkCreatedFolders = created.folderIds;
+    }
+    const folderIds = shkCreatedFolders;
     // Folder fertig – echten Fortschritt starten
     clearInterval(_dotTimer);
     bar.style.transition = 'width 0.4s ease';
@@ -963,14 +1002,22 @@ async function submitForm() {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         if (status) status.textContent = (i + 1) + '/' + files.length + ' – ' + file.name.slice(0, 25) + '…';
-        const sr = await fetch(API + '/start-upload', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fileName: file.name, mimeType: file.type || 'application/octet-stream', folderId, totalSize: file.size }) });
-        const { sessionUrl } = await sr.json();
-        const chunks = Math.ceil(file.size / CHUNK) || 1;
-        for (let c = 0; c < chunks; c++) {
-          const start = c * CHUNK, end = Math.min(start + CHUNK, file.size);
-          const fd = new FormData(); fd.append('chunk', file.slice(start, end), file.name); fd.append('sessionUrl', sessionUrl); fd.append('byteStart', start); fd.append('byteEnd', end - 1); fd.append('totalSize', file.size);
-          await fetch(API + '/upload-chunk', { method: 'POST', body: fd });
-          updateProg(end - start);
+        try {
+          const sr = await fetch(API + '/start-upload', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fileName: file.name, mimeType: file.type || 'application/octet-stream', folderId, totalSize: file.size }) });
+          const { sessionUrl, error } = await sr.json();
+          if (error || !sessionUrl) throw new Error(error || 'Keine Upload-Session');
+          const chunks = Math.ceil(file.size / CHUNK) || 1;
+          for (let c = 0; c < chunks; c++) {
+            const start = c * CHUNK, end = Math.min(start + CHUNK, file.size);
+            const fd = new FormData(); fd.append('chunk', file.slice(start, end), file.name); fd.append('sessionUrl', sessionUrl); fd.append('byteStart', start); fd.append('byteEnd', end - 1); fd.append('totalSize', file.size);
+            const cr = await fetch(API + '/upload-chunk', { method: 'POST', body: fd });
+            if (!cr.ok) throw new Error('Chunk-Upload fehlgeschlagen');
+            updateProg(end - start);
+          }
+        } catch (e) {
+          console.error('Upload failed:', file.name, e);
+          shkUploadErrors.push(file.name);
+          updateProg(file.size);
         }
       }
     }
@@ -987,6 +1034,12 @@ async function submitForm() {
     setTimeout(function() {
       overlay.classList.remove('show');
       clearDraft();
+      if (shkUploadErrors.length) {
+        const note = document.createElement('p');
+        note.style.cssText = 'color:var(--muted);font-size:13px;line-height:1.7;max-width:440px;margin-top:14px';
+        note.textContent = 'Hinweis: ' + shkUploadErrors.length + ' Datei(en) konnten nicht hochgeladen werden (' + shkUploadErrors.slice(0, 3).join(', ') + (shkUploadErrors.length > 3 ? ', …' : '') + '). Kein Problem — eure Daten sind angekommen, die Fotos könnt ihr einfach später in der Google Drive nachreichen.';
+        document.getElementById('successScreen').appendChild(note);
+      }
       document.getElementById('successScreen').classList.add('visible');
     }, 800);
   } catch (err) {
@@ -996,7 +1049,7 @@ async function submitForm() {
     overlay.classList.remove('show');
     document.getElementById('wizardWrap').style.display = 'block';
     document.querySelector('.wizard-nav').style.display = 'flex';
-    alert('Fehler: ' + err.message + '. Bitte erneut versuchen.');
+    alert('Es gab ein technisches Problem beim Übertragen. Bitte einfach nochmal auf Absenden klicken — bereits übertragene Daten bleiben erhalten.');
   }
 }
 

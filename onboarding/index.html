@@ -983,7 +983,7 @@ async function submitForm() {
   try {
     const API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
     if (!shkCreatedFolders) {
-      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen) }) });
+      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen), clientV: 3 }) });
       const created = await r.json();
       if (created.error) throw new Error(created.error);
       shkCreatedFolders = created.folderIds;
@@ -1049,7 +1049,7 @@ async function submitForm() {
     overlay.classList.remove('show');
     document.getElementById('wizardWrap').style.display = 'block';
     document.querySelector('.wizard-nav').style.display = 'flex';
-    alert('Es gab ein technisches Problem beim Übertragen. Bitte einfach nochmal auf Absenden klicken — bereits übertragene Daten bleiben erhalten.');
+    alert(err && err.message && err.message.length > 20 ? err.message : 'Es gab ein technisches Problem beim Übertragen. Bitte einfach nochmal auf Absenden klicken — bereits übertragene Daten bleiben erhalten.');
   }
 }
 

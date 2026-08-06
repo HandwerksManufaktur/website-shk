@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vorbereitung Onboarding-Call – HandwerksManufaktur</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#0ca4c2;--accent2:#2ecd6f;--accent-dim:rgba(12,164,194,0.1);
+  --text:#0b2044;--muted:#6b8ba4;--label:#4a6a85;
+  --surface:#f1f6fb;--border:#c4d8e9;--card:#fff;
+  --radius:10px;--font-head:'Playfair Display',serif;--font-body:'Inter',sans-serif;
+  --shadow:0 4px 24px rgba(11,32,68,0.1);
+}
+body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(--text)}
+.header{background:#fff;border-bottom:1px solid #dde8f0;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(11,32,68,0.06)}
+.logo-bars{display:flex;gap:3px;align-items:flex-end}
+.logo-bars span{display:block;width:4px;background:var(--accent);border-radius:2px}
+.logo-bars span:nth-child(1){height:11px}
+.logo-bars span:nth-child(2){height:17px}
+.logo-bars span:nth-child(3){height:9px}
+.logo-text{font-weight:500;font-size:13px;letter-spacing:0.3px;line-height:1.25;color:var(--text);margin-left:10px}
+.header-left{display:flex;align-items:center}
+.header-badge{border:1px solid rgba(12,164,194,0.3);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--accent);background:rgba(12,164,194,0.06)}
+.wrap{max-width:680px;margin:0 auto;padding:36px 24px 80px}
+h1{font-family:var(--font-head);font-size:clamp(26px,5vw,34px);line-height:1.2;margin-bottom:14px}
+.intro{font-size:14.5px;color:var(--label);line-height:1.65;margin-bottom:10px}
+.time-badge{display:inline-block;background:var(--accent-dim);border:1px solid rgba(12,164,194,0.3);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:30px}
+.card{background:var(--card);border:1px solid #dde8f0;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:18px}
+.card-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;font-weight:600;margin-right:10px;flex-shrink:0}
+.card-head{display:flex;align-items:center;margin-bottom:10px}
+.card-title{font-size:16px;font-weight:600}
+.card p{font-size:13.5px;line-height:1.65;color:var(--label)}
+.card p+p{margin-top:8px}
+.card .why{background:var(--surface);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.6;color:var(--label)}
+.card .why strong{color:var(--text)}
+.steps-inline{margin-top:12px;padding-left:0;list-style:none}
+.steps-inline li{font-size:13px;line-height:1.6;color:var(--label);padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed #e4edf4}
+.steps-inline li:last-child{border-bottom:none}
+.steps-inline li::before{content:'→';position:absolute;left:4px;color:var(--accent);font-weight:600}
+.optional-tag{display:inline-block;background:#eef3f8;border-radius:12px;padding:2px 10px;font-size:10px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted);margin-left:8px;vertical-align:middle}
+.footer-note{background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;padding:14px 18px;font-size:13px;line-height:1.6;color:var(--text);margin-top:28px}
+.footer-note a{color:var(--accent);font-weight:600;text-decoration:none}
+.store-links{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+.store-links a{display:inline-block;border:1.5px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--text);text-decoration:none;background:var(--surface)}
+.store-links a:hover{border-color:var(--accent);color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <div class="logo-bars"><span></span><span></span><span></span></div>
+    <div class="logo-text">Handwerks<br>Manufaktur</div>
+  </div>
+  <div class="header-badge">Vorbereitung Onboarding</div>
+</header>
+
+<div class="wrap">
+  <h1>Vorbereitung für unseren Onboarding-Call</h1>
+  <p class="intro">Wenn diese Punkte vorab erledigt sind, legen wir im Call direkt mit dem Wesentlichen los — und ihr spart euch einen zweiten Termin für Technik-Basics.</p>
+  <div class="time-badge">⏱ Dauert ca. 10 Minuten</div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">1</span><span class="card-title">In Facebook einloggen — am PC und am Handy</span></div>
+    <p>Loggt euch mit dem Konto ein, das eure Facebook-Unternehmensseite verwaltet (meistens das private Profil des Inhabers). Bitte auf <strong>beiden Geräten</strong> — im Call brauchen wir beides.</p>
+    <p>Passwort vergessen? Setzt es am besten schon vorher zurück, nicht erst im Termin.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">2</span><span class="card-title">Google Authenticator aufs Handy laden + Zwei-Faktor einrichten</span></div>
+    <p>Ladet die kostenlose App „Google Authenticator" auf euer Handy:</p>
+    <div class="store-links">
+      <a href="https://apps.apple.com/de/app/google-authenticator/id388497605" target="_blank" rel="noopener">📱 iPhone (App Store)</a>
+      <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" rel="noopener">🤖 Android (Play Store)</a>
+    </div>
+    <p style="margin-top:14px">Dann aktiviert ihr die zweistufige Authentifizierung in Facebook — geht so:</p>
+    <ul class="steps-inline">
+      <li>Facebook öffnen → <strong>Einstellungen</strong> → <strong>Kontenübersicht</strong> (Accounts Center)</li>
+      <li><strong>Passwort und Sicherheit</strong> → <strong>Zweistufige Authentifizierung</strong></li>
+      <li>Euer Profil auswählen → Methode <strong>„Authentifizierungs-App"</strong> wählen</li>
+      <li>Den angezeigten QR-Code mit Google Authenticator scannen</li>
+      <li>Den 6-stelligen Code aus der App eingeben — fertig</li>
+      <li>Zum Schluss: <strong>Wiederherstellungscodes</strong> anzeigen lassen und sicher abspeichern oder ausdrucken</li>
+    </ul>
+    <div class="why"><strong>Warum das wichtig ist:</strong> Meta verlangt die zweistufige Authentifizierung für alle, die Werbung schalten. Ohne sie können wir das Werbekonto nicht sauber aufsetzen — und sie schützt euer Konto vor Fremdzugriff.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">3</span><span class="card-title">Kreditkarte bereitlegen</span></div>
+    <p>Fürs Werbekonto braucht ihr eine Zahlungsmethode. <strong>Am besten: Kreditkarte.</strong> PayPal geht zur Not auch.</p>
+    <p>Noch keine Kreditkarte im Betrieb? Dann beantragt am besten jetzt schon eine — das dauert je nach Bank 1–2 Wochen. Eine normale Karte eurer Hausbank reicht völlig.</p>
+    <div class="why"><strong>Warum Kreditkarte:</strong> Bei Meta läuft die Abrechnung über Kreditkarte am stabilsten. Bei PayPal oder Lastschrift kommt es öfter zu Zahlungsfehlern — und dann pausiert Meta eure Anzeigen mitten in der Kampagne. Genau das wollen wir vermeiden.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">4</span><span class="card-title">Zweite Person als Backup überlegen</span></div>
+    <p>Überlegt euch, wer neben euch noch Zugriff bekommen soll — z.B. Ehepartner, Büro oder ein Mitarbeiter, dem ihr vertraut. <strong>Name + E-Mail-Adresse</strong> reichen, die Person fügen wir im Call gemeinsam hinzu.</p>
+    <div class="why"><strong>Warum:</strong> Falls euer Handy oder Zugang mal verloren geht, kommt ihr über die zweite Person wieder ins Konto. Ohne Backup kann das Werbekonto sonst dauerhaft gesperrt bleiben.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">5</span><span class="card-title">Webdesigner-Kontakt / Hoster-Zugang<span class="optional-tag">Optional</span></span></div>
+    <p>Falls vorhanden: Sucht den Kontakt zu eurem Webdesigner raus, oder die Zugangsdaten zu eurem Website-Hoster (z.B. IONOS, Strato). Brauchen wir nur, falls wir für eure Kampagne etwas an der Domain einstellen.</p>
+  </div>
+
+  <div class="footer-note">
+    Fragen zu einem der Punkte? Kein Problem — ruft einfach kurz durch: <a href="tel:+4981947174990">+49 8194 7174990</a>. Und falls etwas nicht klappt: Wir lösen das gemeinsam im Call, verschiebt den Termin deswegen nicht.
+  </div>
+</div>
+
+</body>
+</html>

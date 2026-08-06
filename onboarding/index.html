@@ -722,12 +722,18 @@ function shkWalkEntry(entry) {
 }
 function shkCollectDrop(e, cb) {
   const items = e.dataTransfer.items;
+  const plainFiles = e.dataTransfer.files;
   if (items && items.length && items[0].webkitGetAsEntry) {
     const entries = [];
     for (let i = 0; i < items.length; i++) { const en = items[i].webkitGetAsEntry(); if (en) entries.push(en); }
-    Promise.all(entries.map(shkWalkEntry)).then(function(a) { const files = a.flat(); if (files.length) cb(files); });
-  } else if (e.dataTransfer.files.length) {
-    cb(e.dataTransfer.files);
+    if (!entries.length) { if (plainFiles.length) cb(plainFiles); return; }
+    Promise.all(entries.map(shkWalkEntry)).then(function(a) {
+      const files = a.flat();
+      if (files.length) cb(files);
+      else if (plainFiles.length) cb(plainFiles);
+    });
+  } else if (plainFiles.length) {
+    cb(plainFiles);
   }
 }
 function shkDrop(e, key) { e.preventDefault(); shkCollectDrop(e, function(files) { shkFile(files, key); }); }

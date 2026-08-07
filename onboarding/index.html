@@ -466,6 +466,20 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
               </div>
               <div id="preview-team" class="preview-row"></div>
             </div>
+            <div class="field" style="grid-column:1/-1">
+              <label>✍️ Einwilligung der abgebildeten Personen</label>
+              <div style="font-size:11.5px;color:var(--muted);line-height:1.6;margin-bottom:8px">Sobald Mitarbeiter auf Fotos oder Videos zu sehen sind, brauchen wir von ihnen eine unterschriebene Einwilligung. Trage die Namen ein — wir erzeugen euch daraus das fertige Formular auf euren Briefkopf.</div>
+              <textarea id="shkMitarbeiterNamen" placeholder="Ein Name pro Zeile:&#10;Max Mustermann&#10;Erika Musterfrau" style="min-height:88px"></textarea>
+              <button type="button" onclick="oeffneEinwilligungSHK()" style="margin-top:9px;background:transparent;border:1.5px solid var(--border);color:var(--accent);border-radius:9px;padding:10px 16px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer">📄 Formular öffnen &amp; drucken</button>
+              <div style="font-size:11.5px;color:var(--muted);line-height:1.6;margin:9px 0 6px">Unterschriebene Formulare hier hochladen — oder später per Mail an info@die-handwerksmanufaktur.de.</div>
+              <div class="upload-zone" ondragover="event.preventDefault()" ondrop="shkDrop(event,'einwilligungen')">
+                <input type="file" accept="image/*,.pdf,.heic,.heif" multiple onchange="shkFile(this.files,'einwilligungen')">
+                <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
+                <div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Unterschriebene Einwilligungen</span> hochladen</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">Scan oder Foto · PDF, JPG, PNG</div>
+              </div>
+              <div id="preview-einwilligungen" class="preview-row"></div>
+            </div>
           </div>
           <div id="leistungenSHK-wrap" style="display:none">
             <label style="font-size:10px;font-weight:600;letter-spacing:0.9px;text-transform:uppercase;color:var(--label);display:block;margin-bottom:10px">🏗️ Fotos je Leistung</label>
@@ -825,6 +839,25 @@ function toggleDsgvoSHK() {
   box.innerHTML = dsgvoSHK ? '<span style="color:#fff;font-size:12px;font-weight:700">✓</span>' : '';
 }
 
+// === EINWILLIGUNGS-FORMULAR ===
+function mitarbeiterNamenSHK() {
+  var el = document.getElementById('shkMitarbeiterNamen');
+  if (!el) return [];
+  return el.value.split('\n').map(function(n) { return n.trim(); }).filter(Boolean);
+}
+function oeffneEinwilligungSHK() {
+  var el = document.getElementById('firmaName');
+  var betrieb = (el ? el.value : '').trim();
+  if (!betrieb) {
+    alert('Bitte trage zuerst im Schritt „Betrieb" euren Firmennamen ein — das Formular läuft auf euren Namen.');
+    return;
+  }
+  var url = 'https://die-handwerksmanufaktur.de/einwilligung/?betrieb=' + encodeURIComponent(betrieb);
+  var namen = mitarbeiterNamenSHK();
+  if (namen.length) url += '&namen=' + encodeURIComponent(namen.join('|'));
+  window.open(url, '_blank', 'noopener');
+}
+
 // === BILDRECHTE / REFERENZ ===
 let bildrechteSHK = false;
 let bildrechteZeitSHK = '';
@@ -970,6 +1003,10 @@ function collectFormData() {
   add('Datenschutzerklärung akzeptiert', dsgvoSHK ? 'Ja' : 'Nein');
   add('Bildrechte & Referenznutzung erklärt (§ 16 AGB)', bildrechteSHK ? 'Ja' : 'Nein');
   add('Mitarbeiter-Einwilligungen zugesichert', bildrechteSHK ? 'Ja' : 'Nein');
+  var mnSHK = mitarbeiterNamenSHK();
+  if (mnSHK.length) add('Abgebildete Personen (Einwilligung)', mnSHK.join(', '));
+  var fsE = (window.shkFileStore2 || {})['einwilligungen'];
+  add('Unterschriebene Einwilligungen hochgeladen', (fsE && fsE.length) ? fsE.length + ' Datei(en)' : 'Nein – wird nachgereicht');
   add('Zeitpunkt der Erklärung', bildrechteZeitSHK);
 
   return data;
@@ -1091,6 +1128,7 @@ async function submitForm() {
     if (fs2['logo'] && fs2['logo'].length && folderIds && folderIds.sonstiges) { if (status) status.textContent = 'Logo wird hochgeladen…'; await uploadFiles(fs2['logo'], folderIds.sonstiges); }
     if (fs2['inhaber'] && fs2['inhaber'].length && folderIds && folderIds.inhaberfoto) { if (status) status.textContent = 'Inhaberfotos…'; await uploadFiles(fs2['inhaber'], folderIds.inhaberfoto); }
     if (fs2['team'] && fs2['team'].length && folderIds && folderIds.teamfotos) { if (status) status.textContent = 'Teamfotos…'; await uploadFiles(fs2['team'], folderIds.teamfotos); }
+    if (fs2['einwilligungen'] && fs2['einwilligungen'].length && folderIds && folderIds.sonstiges) { if (status) status.textContent = 'Einwilligungen…'; await uploadFiles(fs2['einwilligungen'], folderIds.sonstiges); }
     for (let i = 0; i < leistungen.length; i++) { const key = 'leistung_' + (i + 1); if (fs2[key] && fs2[key].length && folderIds && folderIds['leistung_' + i]) { if (status) status.textContent = leistungen[i] + '…'; await uploadFiles(fs2[key], folderIds['leistung_' + i]); } }
     bar.style.width = '100%';
     if (pct) pct.textContent = '100%';

@@ -47,6 +47,11 @@ h1{font-family:var(--font-head);font-size:clamp(26px,5vw,34px);line-height:1.2;m
 .store-links{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
 .store-links a{display:inline-block;border:1.5px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--text);text-decoration:none;background:var(--surface)}
 .store-links a:hover{border-color:var(--accent);color:var(--accent)}
+.app-box{display:flex;align-items:center;gap:14px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;margin-top:12px}
+.app-box img{width:56px;height:56px;border-radius:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(11,32,68,0.12)}
+.app-box-text{font-size:13px;line-height:1.5;color:var(--label)}
+.app-box-text strong{color:var(--text);display:block;font-size:13.5px;margin-bottom:2px}
+.tap-hint{font-size:12px;color:var(--muted);margin-top:7px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -69,19 +74,21 @@ h1{font-family:var(--font-head);font-size:clamp(26px,5vw,34px);line-height:1.2;m
     <p>Die zweistufige Authentifizierung („Zwei-Faktor") ist ein zusätzlicher Sicherheitscode vom Handy, der beim Einloggen abgefragt wird. Meta schreibt sie für alle vor, die Werbung schalten — und sie schützt euer Konto vor Fremdzugriff. Klingt technisch, ist aber in 5 Minuten erledigt — und ihr braucht dafür nichts außer eurem Handy. Einfach der Reihe nach:</p>
 
     <p style="margin-top:14px"><strong>Teil 1 — App aufs Handy laden:</strong></p>
-    <ul class="steps-inline">
-      <li>Am Handy den App Store (iPhone) bzw. Play Store (Android) öffnen</li>
-      <li>„Google Authenticator" suchen (Anbieter: Google) und installieren — die App ist kostenlos</li>
-      <li>Die App einmal öffnen und liegen lassen — mehr erstmal nicht</li>
-    </ul>
-    <div class="store-links">
-      <a href="https://apps.apple.com/de/app/google-authenticator/id388497605" target="_blank" rel="noopener">📱 iPhone (App Store)</a>
-      <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" rel="noopener">🤖 Android (Play Store)</a>
+    <div class="app-box">
+      <img src="google-authenticator-icon.png" alt="Symbol der Google-Authenticator-App: bunter Stern aus blauen, roten, gelben und grünen Balken">
+      <div class="app-box-text"><strong>Google Authenticator</strong>So sieht die App aus — bunter Stern, Anbieter „Google LLC". Die App ist kostenlos.</div>
     </div>
+    <p class="tap-hint">👉 <strong>Tippt einfach auf euren Store</strong> — der Link führt direkt zur richtigen App, ihr müsst nichts suchen:</p>
+    <div class="store-links">
+      <a href="https://apps.apple.com/de/app/google-authenticator/id388497605" target="_blank" rel="noopener">📱 iPhone — zum App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" rel="noopener">🤖 Android — zum Play Store</a>
+    </div>
+    <p class="tap-hint">Dort auf „Laden" bzw. „Installieren" tippen. Danach die App einmal öffnen und wieder zur Seite legen — mehr erstmal nicht.<br>Falls ihr die Links nicht öffnen könnt: Store am Handy öffnen und „Google Authenticator" in die Suche eintippen.</p>
 
     <p style="margin-top:18px"><strong>Teil 2 — In Facebook aktivieren</strong> (alles komplett am Handy):</p>
     <ul class="steps-inline">
       <li>Am Handy die <strong>Facebook-App</strong> öffnen → unten rechts aufs <strong>Menü ☰</strong> tippen → <strong>„Einstellungen und Privatsphäre"</strong> → <strong>„Einstellungen"</strong></li>
+      <li><strong>Schneller Weg:</strong> Oben in den Einstellungen ist eine <strong>Suchleiste</strong> — tippt dort einfach <strong>„Zweistufige Authentifizierung"</strong> ein und wählt den Treffer aus. Dann könnt ihr die nächsten zwei Schritte überspringen.</li>
       <li>Oben auf <strong>„Kontenübersicht"</strong> tippen (heißt manchmal auch „Accounts Center")</li>
       <li><strong>„Passwort und Sicherheit"</strong> → <strong>„Zweistufige Authentifizierung"</strong> → euer Profil auswählen</li>
       <li>Als Methode <strong>„Authentifizierungs-App"</strong> wählen → „Weiter"</li>

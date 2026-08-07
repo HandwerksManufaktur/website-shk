@@ -482,13 +482,17 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
     <div class="step-card">
       <div class="card-head">
         <div class="card-title">🏁 Fast fertig!</div>
-        <div class="card-sub">Nur noch die Datenschutzerklärung bestätigen, dann sind wir durch.</div>
+        <div class="card-sub">Nur noch die beiden Erklärungen bestätigen, dann sind wir durch.</div>
       </div>
       <div class="card-body">
         <div class="fg">
           <div class="dsgvo-box" onclick="toggleDsgvoSHK()">
             <div class="dsgvo-check" id="dsgvoBoxSHK"></div>
             <div class="dsgvo-text">Ich habe die <a href="https://die-handwerksmanufaktur.de/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span style="color:var(--accent)">*</span></div>
+          </div>
+          <div class="dsgvo-box" onclick="toggleBildrechteSHK()" style="margin-top:10px">
+            <div class="dsgvo-check" id="bildrechteBoxSHK"></div>
+            <div class="dsgvo-text">Ich erkläre für unseren Betrieb: Die HandwerksManufaktur darf die bei uns angefertigten Foto- und Videoaufnahmen sowie unseren Firmennamen und unser Logo als Referenz verwenden (z.B. Website, Portfolio, Social Media). Ich stelle sicher, dass alle abgebildeten Personen – insbesondere unsere Mitarbeiter – vor den Aufnahmen eingewilligt haben, und stelle die HandwerksManufaktur von Ansprüchen Dritter frei. Details siehe <a href="https://shk.die-handwerksmanufaktur.de/agb/" target="_blank">§ 16 AGB</a>. <span style="color:var(--accent)">*</span></div>
           </div>
           <div style="background:rgba(12,164,194,0.07);border:1px solid rgba(12,164,194,0.18);border-radius:10px;padding:15px 17px;font-size:13px;color:var(--label);line-height:1.6">
             Nach dem Absenden legen wir automatisch deine Google Drive-Ordnerstruktur an. Wir melden uns innerhalb von 24 Stunden – dann geht's los!
@@ -622,8 +626,20 @@ function onServiceChange(val, on) {
 const SAVE_KEY = 'hwm_shk_draft_v2';
 function saveDraft() {
   const d = {};
-  document.querySelectorAll('input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select').forEach(function(el) {
+  document.querySelectorAll('input[type=text],input[type=email],input[type=tel],input[type=url],input[type=time],textarea,select').forEach(function(el) {
     if (el.id) d[el.id] = el.value;
+  });
+  // Schalter + gebuchte Leistungen mitsichern — sonst stehen sie nach einem Reload
+  // wieder auf Default und werden als echte Kundenangabe abgeschickt.
+  d.__toggles = {};
+  ['fb-toggle', 'ig-toggle', 'ads-toggle'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) d.__toggles[id] = el.classList.contains('on');
+  });
+  d.__services = {};
+  ['cb-recruiting', 'cb-leadgen'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) d.__services[id] = el.checked;
   });
   localStorage.setItem(SAVE_KEY, JSON.stringify(d));
 }
@@ -631,11 +647,28 @@ function loadDraft() {
   try {
     const s = localStorage.getItem(SAVE_KEY);
     if (!s) return;
-    JSON.parse(s);
-    Object.entries(JSON.parse(s)).forEach(function([id, val]) {
+    const data = JSON.parse(s);
+    // Gebuchte Leistungen zuerst: schalten die zugehörigen Formular-Abschnitte frei
+    if (data.__services) {
+      Object.entries(data.__services).forEach(function([id, on]) {
+        const el = document.getElementById(id);
+        if (!el || !on || el.checked) return;
+        el.checked = true;
+        el.dispatchEvent(new Event('change'));
+      });
+    }
+    Object.entries(data).forEach(function([id, val]) {
+      if (id.indexOf('__') === 0) return;
       const el = document.getElementById(id);
       if (el && val) { el.value = val; }
     });
+    if (data.__toggles) {
+      Object.entries(data.__toggles).forEach(function([id, on]) {
+        const el = document.getElementById(id);
+        if (!el || !on || el.classList.contains('on')) return;
+        el.click();
+      });
+    }
   } catch(e) {}
 }
 function clearDraft() { localStorage.removeItem(SAVE_KEY); }
@@ -785,6 +818,18 @@ function toggleDsgvoSHK() {
   box.innerHTML = dsgvoSHK ? '<span style="color:#fff;font-size:12px;font-weight:700">✓</span>' : '';
 }
 
+// === BILDRECHTE / REFERENZ ===
+let bildrechteSHK = false;
+let bildrechteZeitSHK = '';
+function toggleBildrechteSHK() {
+  bildrechteSHK = !bildrechteSHK;
+  bildrechteZeitSHK = bildrechteSHK ? new Date().toISOString() : '';
+  const box = document.getElementById('bildrechteBoxSHK');
+  if (!box) return;
+  box.classList.toggle('on', bildrechteSHK);
+  box.innerHTML = bildrechteSHK ? '<span style="color:#fff;font-size:12px;font-weight:700">✓</span>' : '';
+}
+
 // === COLLECT DATA ===
 function collectFormData() {
   var data = {};
@@ -913,6 +958,13 @@ function collectFormData() {
     }
   }
 
+  // ── ERKLÄRUNGEN ──
+  section('ERKLÄRUNGEN');
+  add('Datenschutzerklärung akzeptiert', dsgvoSHK ? 'Ja' : 'Nein');
+  add('Bildrechte & Referenznutzung erklärt (§ 16 AGB)', bildrechteSHK ? 'Ja' : 'Nein');
+  add('Mitarbeiter-Einwilligungen zugesichert', bildrechteSHK ? 'Ja' : 'Nein');
+  add('Zeitpunkt der Erklärung', bildrechteZeitSHK);
+
   return data;
 }
 
@@ -961,6 +1013,7 @@ let shkUploadErrors = [];
 
 async function submitForm() {
   if (!dsgvoSHK) { alert('Bitte stimme zuerst der Datenschutzerklärung zu.'); return; }
+  if (!bildrechteSHK) { alert('Bitte bestätige noch die Erklärung zu Bildrechten und Referenznutzung.'); return; }
   shkUploadErrors = [];
   const firmaName = (document.getElementById('firmaName') || {}).value || 'Neukunde';
   const leistungen = [...document.querySelectorAll('.leistung-item input[type=text]')].map(function(i) { return i.value.trim() || 'Leistung'; });

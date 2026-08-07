@@ -519,6 +519,11 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
             <div class="dsgvo-check" id="bildrechteBoxSHK"></div>
             <div class="dsgvo-text">Ich erkläre für unseren Betrieb: Die HandwerksManufaktur darf die bei uns angefertigten Foto- und Videoaufnahmen sowie unseren Firmennamen und unser Logo als Referenz verwenden (z.B. Website, Portfolio, Social Media). Ich stelle sicher, dass alle abgebildeten Personen – insbesondere unsere Mitarbeiter – vor den Aufnahmen eingewilligt haben, und stelle die HandwerksManufaktur von Ansprüchen Dritter frei. Details siehe <a href="https://shk.die-handwerksmanufaktur.de/agb/" target="_blank">§ 16 AGB</a>. <span style="color:var(--accent)">*</span></div>
           </div>
+          <div style="margin-top:10px;padding:13px 16px;background:rgba(30,154,208,.07);border:1px solid rgba(30,154,208,.28);border-radius:10px;font-size:13.5px;line-height:1.55">
+            <b>📄 Vorlage für euer Team</b><br>
+            Damit ihr die Einwilligungen sauber dokumentiert habt, stellen wir euch eine fertige Vorlage bereit — ausdrucken, beim Fototermin unterschreiben lassen, bei euch aufbewahren.<br>
+            <a href="#" id="einwLink" target="_blank" rel="noopener" style="display:inline-block;margin-top:7px;font-weight:600">→ Einwilligungs-Vorlage öffnen (mit eurem Betriebsnamen)</a>
+          </div>
           <div style="background:rgba(12,164,194,0.07);border:1px solid rgba(12,164,194,0.18);border-radius:10px;padding:15px 17px;font-size:13px;color:var(--label);line-height:1.6">
             Nach dem Absenden legen wir automatisch deine Google Drive-Ordnerstruktur an. Wir melden uns innerhalb von 24 Stunden – dann geht's los!
           </div>
@@ -602,6 +607,7 @@ function updateMotiv(sid) {
 }
 
 function showStep(idx) {
+  if (typeof updateEinwLink === 'function') updateEinwLink();
   document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
   const sid = stepSeq[idx];
   document.getElementById(sid).classList.add('active');
@@ -872,6 +878,13 @@ function oeffneEinwilligungSHK() {
 // === BILDRECHTE / REFERENZ ===
 let bildrechteSHK = false;
 let bildrechteZeitSHK = '';
+function updateEinwLink() {
+  const a = document.getElementById('einwLink');
+  if (!a) return;
+  const el = document.getElementById('firmaName') || document.getElementById('shkFirma');
+  const fn = (el && el.value ? el.value : '').trim();
+  a.href = 'https://shk.die-handwerksmanufaktur.de/einwilligung/' + (fn ? '?betrieb=' + encodeURIComponent(fn) : '');
+}
 function toggleBildrechteSHK() {
   bildrechteSHK = !bildrechteSHK;
   bildrechteZeitSHK = bildrechteSHK ? new Date().toISOString() : '';

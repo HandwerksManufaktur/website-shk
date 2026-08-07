@@ -1049,7 +1049,7 @@ async function submitForm() {
   try {
     const API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
     if (!shkCreatedFolders) {
-      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen), clientV: 3 }) });
+      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen), clientV: 4 }) });
       const created = await r.json();
       if (created.error) throw new Error(created.error);
       shkCreatedFolders = created.folderIds;

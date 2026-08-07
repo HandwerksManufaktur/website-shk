@@ -675,6 +675,13 @@ function clearDraft() { localStorage.removeItem(SAVE_KEY); }
 document.addEventListener('input', function(e) {
   if (['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) saveDraft();
 });
+// Schalter/Checkboxen feuern kein input-Event (Divs bzw. change) — sonst gehen sie beim Reload verloren
+document.addEventListener('change', function(e) {
+  if (e.target.type === 'checkbox') setTimeout(saveDraft, 0);
+});
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.toggle, .choice-btn')) setTimeout(saveDraft, 0);
+});
 
 // === FIELD HELPERS ===
 function toggleCond(t, c) {

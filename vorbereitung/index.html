@@ -17,13 +17,9 @@
 }
 body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(--text)}
 .header{background:#fff;border-bottom:1px solid #dde8f0;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(11,32,68,0.06)}
-.logo-bars{display:flex;gap:3px;align-items:flex-end}
-.logo-bars span{display:block;width:4px;background:var(--accent);border-radius:2px}
-.logo-bars span:nth-child(1){height:11px}
-.logo-bars span:nth-child(2){height:17px}
-.logo-bars span:nth-child(3){height:9px}
-.logo-text{font-weight:500;font-size:13px;letter-spacing:0.3px;line-height:1.25;color:var(--text);margin-left:10px}
 .header-left{display:flex;align-items:center}
+.header-left img{height:34px;width:auto;display:block}
+@media (max-width:520px){.header{padding:14px 18px}.header-left img{height:28px}.header-badge{font-size:10px;padding:4px 10px}}
 .header-badge{border:1px solid rgba(12,164,194,0.3);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--accent);background:rgba(12,164,194,0.06)}
 .wrap{max-width:680px;margin:0 auto;padding:36px 24px 80px}
 h1{font-family:var(--font-head);font-size:clamp(26px,5vw,34px);line-height:1.2;margin-bottom:14px}
@@ -57,10 +53,9 @@ h1{font-family:var(--font-head);font-size:clamp(26px,5vw,34px);line-height:1.2;m
 <body>
 
 <header class="header">
-  <div class="header-left">
-    <div class="logo-bars"><span></span><span></span><span></span></div>
-    <div class="logo-text">Handwerks<br>Manufaktur</div>
-  </div>
+  <a class="header-left" href="https://shk.die-handwerksmanufaktur.de/">
+    <img src="logo.png" alt="HandwerksManufaktur">
+  </a>
   <div class="header-badge">Vorbereitung Onboarding</div>
 </header>
 

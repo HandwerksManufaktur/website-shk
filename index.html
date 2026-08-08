@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marketing für SHK-Betriebe: Monteure &amp; Aufträge gewinnen</title>
-<meta name="description" content="Kampagnen für SHK-Betriebe: Bewerbungen von Monteuren und Bad- &amp; Wärmepumpen-Anfragen. 100+ Betriebe betreut, erste Ergebnisse in 7 Tagen. Kostenlose Analyse.">
+<meta name="description" content="Kampagnen für SHK-Betriebe: Bewerbungen von Monteuren und Bad- &amp; Wärmepumpen-Anfragen. 120+ Betriebe betreut, erste Ergebnisse in 7 Tagen. Kostenlose Analyse.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://shk.die-handwerksmanufaktur.de/">
 <meta name="author" content="HandwerksManufaktur">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="HandwerksManufaktur">
 <meta property="og:title" content="Marketing für SHK-Betriebe: Monteure &amp; Aufträge gewinnen">
-<meta property="og:description" content="Bewerbungen von Monteuren und Bad- &amp; Wärmepumpen-Anfragen – planbar statt Zufall. 100+ SHK- und Handwerksbetriebe betreut.">
+<meta property="og:description" content="Bewerbungen von Monteuren und Bad- &amp; Wärmepumpen-Anfragen – planbar statt Zufall. 120+ SHK- und Handwerksbetriebe betreut.">
 <meta property="og:url" content="https://shk.die-handwerksmanufaktur.de/">
 <meta property="og:image" content="https://shk.die-handwerksmanufaktur.de/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -130,7 +130,11 @@ a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2.5px solid va
 .hero-stage{position:relative;z-index:2;width:100%;margin:70px auto 0;}
 .hclip{position:relative;overflow:hidden;clip-path:inset(0 12% round 22px);will-change:clip-path;background:var(--night);padding:74px 24px 0;}
 .hclip::before{content:"";position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:900px;height:560px;background:radial-gradient(ellipse,rgba(34,168,212,.2),transparent 60%);pointer-events:none;}
-.hclip-label{text-align:center;font-size:13.5px;font-weight:600;color:var(--night-sub);margin-bottom:44px;position:relative;z-index:2;}
+.hclip-label{display:flex;justify-content:center;margin-bottom:44px;position:relative;z-index:2;}
+.hclip-label span{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:100px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:13px;font-weight:600;letter-spacing:.01em;color:#E8F0F7;}
+.hclip-label .ld{width:7px;height:7px;border-radius:50%;background:#34D399;box-shadow:0 0 0 0 rgba(52,211,153,.5);animation:ldpulse 2.2s infinite;}
+@keyframes ldpulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.45);}70%{box-shadow:0 0 0 9px rgba(52,211,153,0);}100%{box-shadow:0 0 0 0 rgba(52,211,153,0);}}
+@media(prefers-reduced-motion:reduce){.hclip-label .ld{animation:none;}}
 .hclip-label b{color:#fff;}
 .hphones{display:flex;justify-content:center;align-items:flex-end;gap:34px;position:relative;z-index:2;}
 .hphone{width:238px;flex-shrink:0;border-radius:34px;border:9px solid #060B12;background:#060B12;box-shadow:0 40px 90px rgba(0,0,0,.55);overflow:hidden;transform:translateY(34px);animation:floatM 7s ease-in-out infinite;}
@@ -153,6 +157,8 @@ a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2.5px solid va
 .marq:hover .marq-t{animation-play-state:paused;}
 @keyframes marq{to{transform:translateX(-100%);}}
 .marq.rev2 .marq-t{animation-direction:reverse;animation-duration:48s;}
+.marq.rev3 .marq-t{animation-duration:56s;}
+.marq+.marq{margin-top:26px;}
 .marq .li{flex-shrink:0;height:38px;display:flex;align-items:center;opacity:.65;transition:opacity .3s;}
 .marq .li:hover{opacity:1;}
 .marq .li img{height:38px;width:auto;max-width:140px;object-fit:contain;}
@@ -539,11 +545,11 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <a href="#monteure" class="btn btn-ink">👷 Mehr Monteure</a>
       <a href="#auftraege" class="btn btn-ghost">🛁 Mehr Aufträge</a>
     </div>
-    <div class="hero-proof o4"><span class="stars">★★★★★</span><span><b>5,0</b> auf Google</span><span>·</span><span><b>100+</b> Betriebe</span><span>·</span><span><b>Spezialisiert</b> auf SHK</span></div>
+    <div class="hero-proof o4"><span class="stars">★★★★★</span><span><b>5,0</b> auf Google</span><span>·</span><span><b>120+</b> Betriebe</span><span>·</span><span><b>Spezialisiert</b> auf SHK</span></div>
   </div>
   <div class="hero-stage o5">
     <div class="hclip" id="hclip">
-      <div class="hclip-label">Echte Kampagnen, die gerade laufen: <b>Bewerbungen &amp; Anfragen direkt aufs Handy</b></div>
+      <div class="hclip-label"><span><i class="ld"></i>Läuft gerade für unsere Kunden</span></div>
       <div class="hphones">
         <div class="hphone side l"><img src="/assets/funnels/senftleben-jobs-hero.jpg" width="480" height="1038" loading="lazy" alt="Recruiting-Funnel Senftleben Haustechnik"></div>
         <div class="hphone"><img src="/assets/funnels/erwin-schmidt-jobs-hero.jpg" width="480" height="1038" fetchpriority="high" alt="Recruiting-Funnel für Monteure – Erwin Schmidt &amp; Sohn"></div>
@@ -557,7 +563,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
 <section id="band">
   <div class="wrap">
     <div class="band-card reveal">
-      <div class="band-label">Ein Ausschnitt aus <b>über 100 Betrieben</b>, die wir betreuen — vom Familienbetrieb bis zum 50-Mann-Unternehmen</div>
+      <div class="band-label"><b>Über 120 Betriebe</b> setzen auf uns — hier ein Ausschnitt</div>
       <div class="marq">
         <div class="marq-t">
           <div class="li"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="Erwin Schmidt &amp; Sohn" loading="lazy"></div>
@@ -566,27 +572,36 @@ footer{padding:30px 0 40px;color:var(--sub);}
           <div class="li"><img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="Heizung Sanitär Klaß" loading="lazy"></div>
           <div class="li"><img src="/Logos%20SHK/Logo%20Hannes%20Schmidt%20GmbH%20Weiss.png" alt="Hannes Schmidt GmbH" loading="lazy"></div>
           <div class="li"><img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="Irlbacher GmbH" loading="lazy"></div>
+        </div>
+        <div class="marq-t" aria-hidden="true">
+          <div class="li"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Sussmann%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Hannes%20Schmidt%20GmbH%20Weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="marq rev2">
+        <div class="marq-t">
           <div class="li"><img src="/Logos%20SHK/Logo%20Lanzinger%20GmbH%20weiss.png" alt="Lanzinger GmbH" loading="lazy"></div>
           <div class="li"><img src="/Logos%20SHK/Logo%20Franz%20Gallenberger%20weiss.png" alt="Franz Gallenberger" loading="lazy"></div>
           <div class="li"><img src="/Logos%20SHK/Logo%20Goldacker%20weiss.png" alt="Goldacker" loading="lazy"></div>
-        </div>
-        <div class="marq-t" aria-hidden="true">
-          <div class="li"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Sussmann%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Hannes%20Schmidt%20GmbH%20Weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Lanzinger%20GmbH%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Franz%20Gallenberger%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Goldacker%20weiss.png" alt="" loading="lazy"></div>
-        </div>
-      </div>
-      <div class="marq rev2" style="margin-top:26px;">
-        <div class="marq-t">
           <div class="li"><img src="/Logos%20SHK/Logo%20Entenmann%20Haustechnik%20weiss.png" alt="Entenmann Haustechnik" loading="lazy"></div>
           <div class="li"><img src="/Logos%20SHK/Logo%20Haustechnik%20Buchschmid%20weiss.png" alt="Haustechnik Buchschmid" loading="lazy"></div>
           <div class="li"><img src="/Logos%20SHK/Logo%20Suessmeier%20Heizungstechnik%20weiss.png" alt="Süßmeier Heizungstechnik" loading="lazy"></div>
+        </div>
+        <div class="marq-t" aria-hidden="true">
+          <div class="li"><img src="/Logos%20SHK/Logo%20Lanzinger%20GmbH%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Franz%20Gallenberger%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Goldacker%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Entenmann%20Haustechnik%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Haustechnik%20Buchschmid%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Suessmeier%20Heizungstechnik%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="marq rev3">
+        <div class="marq-t">
           <div class="li"><img src="/Logos%20SHK/Logo%20Markus%20Ditsch%20weiss.png" alt="Markus Ditsch" loading="lazy"></div>
           <div class="li"><img src="/Logos%20SHK/Logo%20Yannick%20Stimpfle%20weiss.png" alt="Yannick Stimpfle" loading="lazy"></div>
           <div class="li"><img src="/Logos%20SHK/Logo%20Lueders%20Fliesen%20weiss.png" alt="Lüders Fliesen" loading="lazy"></div>
@@ -594,14 +609,11 @@ footer{padding:30px 0 40px;color:var(--sub);}
           <div class="li"><img src="/Logos%20SHK/Logo%20Franticonstruct%20weiss.png" alt="Franticonstruct" loading="lazy"></div>
         </div>
         <div class="marq-t" aria-hidden="true">
-          <div class="li"><img src="/Logos%20SHK/Logo%20Entenmann%20Haustechnik%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Haustechnik%20Buchschmid%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Suessmeier%20Heizungstechnik%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Markus%20Ditsch%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Yannick%20Stimpfle%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Lueders%20Fliesen%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Azemi%20Hausrenovierungen%20weiss.png" alt="" loading="lazy"></div>
-          <div class="li"><img src="/Logos%20SHK/Logo%20Franticonstruct%20weiss.png" alt="" loading="lazy"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Markus%20Ditsch%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Yannick%20Stimpfle%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Lueders%20Fliesen%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Azemi%20Hausrenovierungen%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
+          <div class="li"><img src="/Logos%20SHK/Logo%20Franticonstruct%20weiss.png" alt="" loading="lazy" aria-hidden="true"></div>
         </div>
       </div>
     </div>
@@ -829,10 +841,9 @@ footer{padding:30px 0 40px;color:var(--sub);}
       <div class="night-grid">
         <div>
           <div class="eyebrow" style="color:#5BC2EA;"><span class="dot"></span>Wer dahinter steht</div>
-          <h2 style="margin-top:18px;">Volle Auftragsbücher.<br>Und die Leute <em>dafür.</em></h2>
-          <p>Angefangen haben wir 2019 mit Websites für Handwerksbetriebe. Über 100 sind es inzwischen, vom Zwei-Mann-Familienbetrieb bis zum 50-Mann-Unternehmen. Bei SHK-Betrieben landen heute zwei Dinge im Kalender: Bad- und Wärmepumpen-Termine, für die sich die Anfahrt lohnt, und Monteure, die anfangen statt abzusagen.</p>
-          <p>Wir kommen für das Shooting in deinen Betrieb, bauen die Kampagne auf und werten sie laufend aus. Kein Account-Manager, keine Ticketnummer: Wer deine Kampagne baut, sitzt auch schon im Erstgespräch.</p>
-          <p><strong>Warum wir nur Handwerk machen:</strong> Drei Brüder in der Familie, zwei davon Handwerksmeister. Wir wissen, wie ein Betrieb von innen aussieht, wenn vormittags Land unter ist und der Notdienst den Kalender regiert.</p>
+          <h2 style="margin-top:18px;">Du führst den Betrieb.<br>Wir füllen den <em>Kalender.</em></h2>
+          <p>Ich bin Noah. Seit 2019 machen wir Marketing nur fürs Handwerk – über 120 Betriebe inzwischen. Bei SHK heißt das: Bad- und Wärmepumpen-Anfragen, für die sich die Anfahrt lohnt, und Bewerbungen von Monteuren, die kein Stellenportal öffnen.</p>
+          <p><strong>Warum nur Handwerk?</strong> Drei Brüder, zwei davon Handwerksmeister. Wir kommen fürs Shooting in deinen Betrieb – und du redest immer mit dem, der deine Kampagne baut.</p>
           <div class="founder">
             <img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" loading="lazy">
             <div>
@@ -844,7 +855,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
         <div class="night-vis"><img src="/assets/fotos/noah-portrait.jpg" alt="Noah Seelau" loading="lazy"></div>
       </div>
       <div class="nstats">
-        <div class="nstat"><div class="v">100<span>+</span></div><div class="l">Handwerksbetriebe betreut</div></div>
+        <div class="nstat"><div class="v">120<span>+</span></div><div class="l">Handwerksbetriebe betreut</div></div>
         <div class="nstat"><div class="v">5,0<span>★</span></div><div class="l">Google-Bewertung</div></div>
         <div class="nstat"><div class="v">Ø 7<span> Tage</span></div><div class="l">bis zur ersten Anfrage oder Bewerbung</div></div>
       </div>

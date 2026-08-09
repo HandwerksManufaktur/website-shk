@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HandwerksManufaktur – SHK Cinematic Preview</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#EDEDEE; --dim:#8A8F98; --faint:#55595F;
+  --acc:#1E9AD0;
+  --f:'Inter',-apple-system,sans-serif; --ft:'Inter Tight','Inter',sans-serif;
+  --spring:linear(0,.0083 1.2%,.0333 2.5%,.1301 5.1%,.6238 12.9%,.8261 16.3%,.9425 19.6%,.9843 21.9%,1.0071 24.6%,1.0132 27.5%,1.0034 34.2%,.9989 42.2%,1);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#000;color:var(--ink);font-family:var(--f);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-optical-sizing:auto;}
+h1,h2,h3{text-wrap:balance;font-optical-sizing:auto;}
+p{text-wrap:pretty;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;}
+
+/* ═══ Riesige federleichte Headlines ═══ */
+.mega{font-family:var(--ft);font-weight:300;letter-spacing:-.025em;line-height:1.04;font-size:clamp(42px,6.4vw,96px);color:#fff;}
+.mega b{font-weight:400;}
+.big{font-family:var(--ft);font-weight:300;letter-spacing:-.02em;line-height:1.08;font-size:clamp(32px,4.4vw,64px);color:#fff;}
+.eyebrow{font-size:13.5px;font-weight:500;letter-spacing:.02em;color:var(--dim);margin-bottom:22px;}
+
+/* ═══ Nav — minimal ═══ */
+#nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px 40px;transition:background .4s,backdrop-filter .4s;}
+#nav.scrolled{background:rgba(0,0,0,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);}
+#nav .mark{display:flex;align-items:center;gap:10px;font-weight:500;font-size:14.5px;letter-spacing:.08em;text-transform:uppercase;}
+#nav .mark img{height:26px;width:auto;}
+#nav .links{display:flex;gap:30px;align-items:center;font-size:14.5px;}
+#nav .links a{color:var(--dim);transition:color .25s;}
+#nav .links a:hover{color:#fff;}
+#nav .links a.solid{color:#000;background:#fff;padding:9px 18px;border-radius:9px;font-weight:500;transition:transform .34s var(--spring),opacity .25s;}
+#nav .links a.solid:hover{opacity:.88;}
+#nav .links a.solid:active{transform:scale(.97);}
+
+/* ═══ Hero — Vollbild, Bild mit Vignette ═══ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;filter:brightness(.42) saturate(.85);transform:scale(1.06);}
+.hero-bg::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 30% 45%,transparent 30%,rgba(0,0,0,.72) 100%),
+  linear-gradient(to bottom,rgba(0,0,0,.45),transparent 30%,transparent 62%,#000 96%);}
+.hero-in{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:120px 40px 90px;}
+.hero-in .mega{max-width:820px;}
+.hero-sub{margin-top:26px;font-size:clamp(16.5px,1.5vw,20px);color:var(--dim);max-width:520px;font-weight:300;}
+.hero-ctas{display:flex;gap:14px;margin-top:42px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;min-height:50px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;border:none;font-family:var(--f);touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:transform .34s var(--spring),opacity .25s,background .25s;}
+.btn:active{transform:scale(.97);transition-duration:.09s;}
+.btn-w{background:#fff;color:#000;}
+.btn-w:hover{opacity:.88;}
+.btn-g{background:transparent;color:var(--dim);}
+.btn-g:hover{color:#fff;}
+.btn .ar{font-size:17px;transition:transform .3s var(--ease);}
+.btn:hover .ar{transform:translateX(3px);}
+.hero-logos{margin-top:74px;padding-top:30px;border-top:1px solid rgba(255,255,255,.14);display:flex;gap:44px;align-items:center;flex-wrap:wrap;}
+.hero-logos img{height:30px;width:auto;opacity:.5;filter:grayscale(20%);transition:opacity .3s;}
+.hero-logos img:hover{opacity:.95;}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--acc);outline-offset:3px;border-radius:8px;}
+
+/* ═══ Scroll-Reveal: gedimmt → hell ═══ */
+.lift{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1.05s var(--spring);}
+.lift.on{opacity:1;transform:none;}
+.glow{color:var(--faint);transition:color .9s var(--ease);}
+.glow.on{color:var(--ink);}
+
+/* ═══ Hebel-Liste (Kardashev-Stil): Scroll steuert das Highlight ═══ */
+#hebel{position:relative;height:320svh;}
+.hebel-sticky{position:sticky;top:0;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
+.hebel-bg{position:absolute;inset:0;}
+.hebel-bg img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.34) saturate(.8);opacity:0;transition:opacity 1.1s var(--ease);}
+.hebel-bg img.show{opacity:1;}
+.hebel-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.9) 22%,rgba(0,0,0,.35) 60%,rgba(0,0,0,.65)),linear-gradient(to bottom,#000,transparent 18%,transparent 82%,#000);}
+.hebel-in{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 40px;width:100%;}
+.hebel-in .big{max-width:640px;}
+.hlist{margin-top:54px;max-width:760px;}
+.hrow{display:grid;grid-template-columns:120px 1fr;gap:26px;padding:20px 0;border-top:1px solid rgba(255,255,255,.13);font-size:clamp(15.5px,1.4vw,18.5px);}
+.hrow:last-child{border-bottom:1px solid rgba(255,255,255,.13);}
+.hrow .t{color:var(--faint);font-weight:400;transition:color .6s;}
+.hrow .d{color:var(--faint);font-weight:300;transition:color .6s;}
+.hrow.act .t{color:#fff;font-weight:500;}
+.hrow.act .d{color:#fff;}
+
+/* ═══ Vollbild-Statement ═══ */
+.state{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;}
+.state img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.9);}
+.state::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,#000 2%,transparent 30%,transparent 55%,rgba(0,0,0,.88) 92%);}
+.state-in{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 40px 110px;width:100%;display:grid;grid-template-columns:1fr;gap:18px;}
+.state-in.right{justify-items:end;text-align:right;}
+.state-in .big{max-width:700px;}
+.state-sub{color:var(--dim);font-size:clamp(16px,1.4vw,19px);font-weight:300;max-width:520px;}
+
+/* ═══ Fakten-Zeilen (Tesla/SpaceX-Stil) ═══ */
+#fakten{padding:150px 0 130px;}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px;}
+.frow{display:grid;grid-template-columns:240px 1fr 1fr;gap:44px;padding:52px 0;border-top:1px solid rgba(255,255,255,.12);align-items:start;}
+.frow:last-of-type{border-bottom:1px solid rgba(255,255,255,.12);}
+.frow .logo img{height:44px;width:auto;opacity:.9;}
+.frow .fact{font-size:clamp(15.5px,1.35vw,18px);font-weight:300;margin-bottom:18px;}
+.frow .fact b{font-weight:500;}
+@media(max-width:900px){.frow{grid-template-columns:1fr;gap:18px;padding:38px 0;}.frow .logo img{height:36px;}}
+
+/* ═══ Phones auf Schwarz ═══ */
+#live{padding:130px 0 150px;text-align:center;}
+.phones{display:flex;justify-content:center;gap:44px;margin-top:70px;align-items:flex-start;}
+.ph{width:270px;border-radius:36px;border:9px solid #17181B;background:#17181B;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.07);transition:transform .6s var(--spring);}
+.ph:hover{transform:translateY(-10px);}
+.ph img{display:block;width:100%;height:auto;border-radius:26px;}
+.ph.mid{width:300px;margin-top:-26px;}
+@media(max-width:900px){.phones{gap:18px;}.ph.side{display:none;}.ph.mid{width:min(300px,78vw);margin-top:0;}}
+
+/* ═══ Prozess als gedimmte Zeilen ═══ */
+#prozess{padding:40px 0 150px;}
+.prow{display:grid;grid-template-columns:90px 300px 1fr;gap:34px;padding:30px 0;border-top:1px solid rgba(255,255,255,.12);font-size:clamp(15.5px,1.4vw,18.5px);align-items:baseline;}
+.prow:last-of-type{border-bottom:1px solid rgba(255,255,255,.12);}
+.prow .n{font-family:var(--ft);font-weight:300;font-size:clamp(22px,2vw,30px);}
+.prow .t{font-weight:500;}
+.prow .d{font-weight:300;}
+@media(max-width:900px){.prow{grid-template-columns:56px 1fr;gap:14px;}.prow .d{grid-column:2;}}
+
+/* ═══ Finale ═══ */
+.fin{position:relative;min-height:96svh;display:flex;align-items:center;overflow:hidden;}
+.fin img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.34) saturate(.7);}
+.fin::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,#000 4%,transparent 42%),radial-gradient(90% 70% at 50% 100%,rgba(0,0,0,.85),transparent 60%);}
+.fin-in{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 40px;width:100%;}
+.fin-sub{color:var(--dim);margin-top:20px;max-width:480px;font-weight:300;font-size:clamp(16px,1.4vw,19px);}
+.fin-ctas{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;}
+.fin-meta{margin-top:70px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);display:flex;gap:34px;flex-wrap:wrap;color:var(--dim);font-size:14.5px;}
+.fin-meta b{color:var(--ink);font-weight:500;}
+
+footer{padding:34px 40px 44px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--faint);font-size:13.5px;}
+footer .fl{display:flex;gap:14px 22px;flex-wrap:wrap;}
+footer a{color:var(--faint);transition:color .25s;}
+footer a:hover{color:var(--ink);}
+
+@media(max-width:760px){
+  #nav{padding:16px 22px;}
+  #nav .links a:not(.solid){display:none;}
+  .hero-in,.hebel-in,.wrap,.state-in,.fin-in{padding-left:22px;padding-right:22px;}
+  .hero-logos{gap:26px;}
+  .hero-logos img{height:24px;}
+  .hrow{grid-template-columns:86px 1fr;gap:14px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+  .lift,.glow{opacity:1!important;transform:none!important;color:var(--ink)!important;}
+  html{scroll-behavior:auto;}
+}
+@media(prefers-reduced-transparency:reduce){
+  #nav.scrolled{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="mark" href="#"><img src="/Logos%20SHK/Logo%20Handwerksmanufaktur%20weiss.png" alt="HandwerksManufaktur"></a>
+  <div class="links">
+    <a href="#fakten">Ergebnisse</a>
+    <a href="#live">Kampagnen</a>
+    <a class="solid" href="#start">Potenzialanalyse</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-bg"><img src="/assets/fotos/shk-07.jpg" alt="" fetchpriority="high"></div>
+  <div class="hero-in">
+    <div class="eyebrow lift">Kampagnen für SHK-Betriebe</div>
+    <h1 class="mega lift">Planbar mehr Monteure.<br>Und die Aufträge <b>dazu.</b></h1>
+    <p class="hero-sub lift">Ein eigener Kampagnen-Kanal für dein Einzugsgebiet – Bewerbungen von Monteuren, die kein Stellenportal öffnen, und Anfragen für Bäder und Wärmepumpen.</p>
+    <div class="hero-ctas lift">
+      <a class="btn btn-w" href="#start">Potenzialanalyse <span class="ar">›</span></a>
+      <a class="btn btn-g" href="#fakten">Ergebnisse ansehen <span class="ar">›</span></a>
+    </div>
+    <div class="hero-logos lift">
+      <img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik">
+      <img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="Erwin Schmidt &amp; Sohn">
+      <img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="Heizung Sanitär Klaß">
+      <img src="/Logos%20SHK/Logo%20Sussmann%20weiss.png" alt="Erich Sussmann GmbH">
+      <img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="Irlbacher GmbH">
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HEBEL-LISTE (scroll-gesteuert) ═══ -->
+<section id="hebel">
+  <div class="hebel-sticky">
+    <div class="hebel-bg">
+      <img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="" class="hb-0 show">
+      <img src="/assets/projekte/bad-marmor.jpg" alt="" class="hb-1">
+      <img src="/assets/projekte/wp-haus.jpg" alt="" class="hb-2">
+    </div>
+    <div class="hebel-in">
+      <div class="eyebrow">Wo es bei SHK-Betrieben hakt</div>
+      <h2 class="big">Zwei Engpässe.<br>Ein System für beide.</h2>
+      <div class="hlist">
+        <div class="hrow" data-i="0"><div class="t">Hebel 1</div><div class="d">Bewerbungen von Monteuren und Anlagenmechanikern – vorqualifiziert nach Gewerk, Erfahrung und Führerschein</div></div>
+        <div class="hrow" data-i="1"><div class="t">Hebel 2</div><div class="d">Exklusive Bad-Anfragen mit 20.000–50.000&nbsp;€ Projektwert – nur aus deinem Einzugsgebiet</div></div>
+        <div class="hrow" data-i="2"><div class="t">Hebel 2+</div><div class="d">Wärmepumpe und Heizungstausch – vorqualifiziert nach Objekt, Baujahr, Eigentum und Zeitrahmen</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATEMENT ═══ -->
+<section class="state">
+  <img class="bg" src="/assets/fotos/senftleben-team.jpg" alt="">
+  <div class="state-in right">
+    <h2 class="big lift">Ein Kanal, gebaut für<br>dein Einzugsgebiet.</h2>
+    <p class="state-sub lift">Läuft auf deinen Namen, mit echten Fotos aus deinem Betrieb. Keine Portal-Leads, die parallel bei vier Wettbewerbern landen.</p>
+  </div>
+</section>
+
+<!-- ═══ FAKTEN ═══ -->
+<section id="fakten">
+  <div class="wrap">
+    <div class="eyebrow lift">Ergebnisse aus laufenden Kampagnen</div>
+    <h2 class="big lift" style="max-width:640px;">Keine Versprechen.<br>Zwischenstände.</h2>
+    <div style="height:64px;"></div>
+    <div class="frow">
+      <div class="logo glow"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="Erwin Schmidt &amp; Sohn"></div>
+      <div>
+        <div class="fact glow"><b>25 Bewerber</b> in den ersten 3 Wochen</div>
+        <div class="fact glow"><b>2 Stellen besetzt</b> – Anlagenmechaniker &amp; Kundendienst</div>
+      </div>
+      <div>
+        <div class="fact glow">Recruiting-Funnel, Raum Sindelfingen</div>
+        <div class="fact glow">Familienbetrieb in 3. Generation</div>
+      </div>
+    </div>
+    <div class="frow">
+      <div class="logo glow"><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik"></div>
+      <div>
+        <div class="fact glow"><b>10 qualifizierte Bad-Anfragen</b> in den ersten 2 Wochen</div>
+        <div class="fact glow"><b>3 Besichtigungstermine</b> vereinbart</div>
+      </div>
+      <div>
+        <div class="fact glow">Auftrags-Funnel Badsanierung, Raum Ehingen</div>
+        <div class="fact glow">Meisterbetrieb, alle Gewerke aus einer Hand</div>
+      </div>
+    </div>
+    <div class="frow">
+      <div class="logo glow"><img src="/Logos%20SHK/Logo%20Handwerksmanufaktur%20weiss.png" alt="HandwerksManufaktur"></div>
+      <div>
+        <div class="fact glow"><b>Über 120 Betriebe</b> im DACH-Raum betreut</div>
+        <div class="fact glow"><b>5,0 ★</b> auf Google</div>
+      </div>
+      <div>
+        <div class="fact glow">Seit über sechs Jahren nur Handwerk</div>
+        <div class="fact glow"><b>Ø 7 Tage</b> bis zur ersten Anfrage oder Bewerbung</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LIVE-KAMPAGNEN ═══ -->
+<section id="live">
+  <div class="wrap">
+    <div class="eyebrow lift">Läuft gerade für unsere Kunden</div>
+    <h2 class="big lift">So sieht das live aus.</h2>
+    <div class="phones lift">
+      <div class="ph side"><img src="/assets/funnels/senftleben-jobs-hero.jpg" width="480" height="1038" loading="lazy" alt="Recruiting-Funnel Senftleben Haustechnik"></div>
+      <div class="ph mid"><img src="/assets/funnels/erwin-schmidt-jobs-hero.jpg" width="480" height="1038" alt="Recruiting-Funnel Erwin Schmidt &amp; Sohn"></div>
+      <div class="ph side"><img src="/assets/funnels/senftleben-leadgen-hero.jpg" width="480" height="1038" loading="lazy" alt="Badsanierungs-Funnel Senftleben Haustechnik"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROZESS ═══ -->
+<section id="prozess">
+  <div class="wrap">
+    <div class="eyebrow lift">Der Weg dahin</div>
+    <h2 class="big lift" style="max-width:620px;">In unter zwei Wochen<br>läuft die erste Kampagne.</h2>
+    <div style="height:58px;"></div>
+    <div class="prow"><div class="n glow">01</div><div class="t glow">Potenzialanalyse</div><div class="d glow">Wir schauen uns dein Einzugsgebiet an: Wie viele Leute erreichen wir, wer wirbt dort schon, was ist realistisch drin. Kostet nichts.</div></div>
+    <div class="prow"><div class="n glow">02</div><div class="t glow">Strategie &amp; Setup</div><div class="d glow">Zielgruppe, Botschaft und Funnel bauen wir auf dein Ziel zu – Monteure, Aufträge oder beides. Fürs Shooting kommen wir in deinen Betrieb.</div></div>
+    <div class="prow"><div class="n glow">03</div><div class="t glow">Kampagne live</div><div class="d glow">Meist nach sieben Tagen kommen die ersten Anfragen oder Bewerbungen rein – mit Kontaktdaten und vorgeprüft.</div></div>
+    <div class="prow"><div class="n glow">04</div><div class="t glow">Optimieren &amp; Skalieren</div><div class="d glow">Wir sehen, was jede Anfrage und jede Bewerbung kostet. Was funktioniert, bekommt mehr Budget.</div></div>
+  </div>
+</section>
+
+<!-- ═══ FINALE ═══ -->
+<section class="fin" id="start">
+  <img class="bg" src="/assets/projekte/wp-herbst.jpg" alt="">
+  <div class="fin-in">
+    <h2 class="mega lift">Rechnen wir<br>deine Region <b>durch.</b></h2>
+    <p class="fin-sub lift">30 Minuten, kostenlos und unverbindlich: Was ist in deinem Einzugsgebiet drin – Bewerbungen, Aufträge oder beides?</p>
+    <div class="fin-ctas lift">
+      <a class="btn btn-w" href="https://calendly.com/noahseelau/recruiting-potenzial" target="_blank" rel="noopener">Monteure finden <span class="ar">›</span></a>
+      <a class="btn btn-g" href="https://calendly.com/noahseelau/leadgen-potenzial" target="_blank" rel="noopener">Aufträge gewinnen <span class="ar">›</span></a>
+    </div>
+    <div class="fin-meta lift">
+      <span>📞 <a href="tel:+4981947174990"><b>+49 8194 7174990</b></a></span>
+      <span>✉️ <a href="mailto:info@die-handwerksmanufaktur.de"><b>info@die-handwerksmanufaktur.de</b></a></span>
+      <span>📍 <b>DACH-weit</b></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 HandwerksManufaktur</span>
+  <div class="fl">
+    <a href="https://die-handwerksmanufaktur.de/">HandwerksManufaktur</a>
+    <a href="/impressum/">Impressum</a>
+    <a href="/datenschutz/">Datenschutz</a>
+    <a href="/agb/">AGB</a>
+  </div>
+</footer>
+
+<script>
+/* Nav */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+/* Reveal: .lift hebt sich, .glow leuchtet auf — leicht gestaffelt */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      var el=e.target, sibs=[].slice.call(el.parentElement.querySelectorAll('.lift,.glow')), i=sibs.indexOf(el);
+      setTimeout(function(){el.classList.add('on');}, Math.max(0,i)*90);
+      io.unobserve(el);
+    }
+  });
+},{threshold:.2,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.lift,.glow').forEach(function(el){io.observe(el);});
+
+/* Hebel-Liste: Scroll-Fortschritt steuert Highlight + Hintergrundbild */
+(function(){
+  var sec=document.getElementById('hebel'), rows=[].slice.call(sec.querySelectorAll('.hrow')),
+      bgs=[].slice.call(sec.querySelectorAll('.hebel-bg img')), cur=-1;
+  function upd(){
+    var r=sec.getBoundingClientRect(), total=r.height-innerHeight;
+    var p=Math.min(1,Math.max(0,-r.top/total));
+    var i=Math.min(rows.length-1,Math.floor(p*rows.length));
+    if(i!==cur){
+      cur=i;
+      rows.forEach(function(el,k){el.classList.toggle('act',k===i);});
+      bgs.forEach(function(el,k){el.classList.toggle('show',k===i);});
+    }
+  }
+  addEventListener('scroll',upd,{passive:true});upd();
+})();
+</script>
+</body>
+</html>

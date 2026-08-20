@@ -368,6 +368,9 @@ body.on-night .hint{color:var(--night-sub);}
 :root{--navh:74px;}
 body.web{overflow:hidden;}
 .web .hint{display:none;}
+/* Folien können hier scrollen — ohne Hintergrund läuft der Text unter dem Logo durch */
+.web .hud.top{background:linear-gradient(180deg,var(--bg) 42%,rgba(246,249,252,0));}
+body.web.on-night .hud.top{background:linear-gradient(180deg,var(--night) 42%,rgba(12,22,32,0));}
 
 /* — Bedienleiste — */
 #nav{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;align-items:center;gap:12px;

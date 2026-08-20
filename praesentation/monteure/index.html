@@ -802,7 +802,7 @@ body.on-night #nav .steps b.on{background:var(--accent-l,#4FC3F0);}
   <div class="cover-glow"></div>
   <div class="kicker" data-a="1">Der nächste Schritt</div>
   <h1 data-a="2" style="font-size:clamp(42px,6.2vw,100px);">Machen wir dein<br>Team <span class="acc">voll.</span></h1>
-  <p class="sub" data-a="3" style="margin-top:20px;">Wenn's für dich passt, starten wir mit dem Setup-Meeting — Dreh und Kampagne laufen dann über uns.</p>
+  <p class="sub" data-a="3" style="margin-top:20px;">Der erste Schritt ist ein kurzes Telefonat. 10 Minuten reichen, um zu klären, ob wir für deinen Betrieb der Richtige sind — über Strategie reden wir erst danach.</p>
   <div class="chips" data-a="4">
     <div class="chip">45 Min <b>Setup-Meeting</b></div>
     <div class="chip">→</div>
@@ -946,7 +946,7 @@ const WQ = new URLSearchParams(location.search);
 (function(){
   const letzte = slides[slides.length-1];
   const box = letzte.querySelector('.fitwrap') || letzte;
-  box.insertAdjacentHTML('beforeend', "<div class=\"webcta\" data-a=\"6\">\n  <a class=\"c1\" href=\"https://calendly.com/noahseelau/recruiting-potenzial\" target=\"_blank\" rel=\"noopener\" data-cta=\"final\">\n    <svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M8 3v4M16 3v4M3 10h18\"/></svg>Termin aussuchen</a>\n  <a class=\"c2\" href=\"tel:+4981947174990\" data-cta=\"tel\">\n    <svg viewBox=\"0 0 24 24\"><path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z\"/></svg>Lieber anrufen</a>\n</div>");
+  box.insertAdjacentHTML('beforeend', "<div class=\"webcta\" data-a=\"6\">\n  <a class=\"c1\" href=\"https://calendly.com/noahseelau/recruiting-potenzial\" target=\"_blank\" rel=\"noopener\" data-cta=\"final\">\n    <svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M8 3v4M16 3v4M3 10h18\"/></svg>Kurz telefonieren</a>\n  <a class=\"c2\" href=\"tel:+4981947174990\" data-cta=\"tel\">\n    <svg viewBox=\"0 0 24 24\"><path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z\"/></svg>Lieber anrufen</a>\n</div>");
 })();
 
 /* — Start-Hinweis auf der Titelfolie — */
@@ -958,8 +958,9 @@ const WQ = new URLSearchParams(location.search);
 })();
 
 /* — Bedienleiste — */
-/* Die Pfeile der Ablauf-Kette sind eigene Kästchen — im Hochformat stören sie */
-document.querySelectorAll('.chips .chip').forEach(c => { if (!c.querySelector('b')) c.classList.add('pfeil'); });
+/* Die Ablauf-Kette (Setup-Meeting → Dreh → Kampagne) gehört in den Termin,
+   nicht auf die Folie, die nur den ersten Schritt verkaufen soll. */
+document.querySelectorAll('.chips').forEach(c => c.remove());
 
 const nprev = document.getElementById('nprev'), nnext = document.getElementById('nnext'),
       nsteps = document.getElementById('nsteps'), nzaehl = document.getElementById('nzaehl'),
@@ -981,7 +982,7 @@ function navMalen(){
   const s = slides[akt], letzterSchritt = (+s.dataset.stepnow||0) >= s.querySelectorAll('[data-s]').length;
   const ende = akt === slides.length-1 && letzterSchritt;
   nnext.classList.toggle('done', ende);
-  nnexttxt.textContent = ende ? 'Termin aussuchen' : 'Weiter';
+  nnexttxt.textContent = ende ? 'Kurz telefonieren' : 'Weiter';
 }
 new MutationObserver(navMalen).observe(document.body, {subtree:true, attributes:true, attributeFilter:['class','data-stepnow']});
 navMalen();

@@ -456,6 +456,7 @@ body.on-night #nav .steps b.on{background:var(--accent-l,#4FC3F0);}
 #splz .mittering{fill:none;stroke:var(--accent);stroke-width:2;opacity:.35;}
 #splz .lbl{font-family:var(--fd);font-weight:700;font-size:9.5px;fill:var(--muted);opacity:0;transition:opacity .5s ease;}
 #splz .lbl.on{opacity:.9;}
+#splz .lbl.stadt{font-size:11.5px;font-weight:800;fill:#41505F;}
 #splz .lbl.mine{fill:var(--white);font-size:12px;font-weight:800;opacity:1;}
 
 /* ══════════ HOCHFORMAT ══════════ */
@@ -671,7 +672,7 @@ body.on-night #nav .steps b.on{background:var(--accent-l,#4FC3F0);}
       <div class="pillar" data-s="2"><div class="pv"><div class="cap"></div><div class="cap2"></div><div class="shaft">
         <div class="pt"><b>2</b>Aufmerksamkeit</div><div class="tagl">Herausstechen aus der Masse</div>
         <div class="viz vphone"><div class="notch"></div><div class="scr"><img src="assets/video-stills/phone-mirjana.jpg" alt=""><div class="vplay"><i>▶</i></div></div><div class="vact"><span><b>♥</b> 214</span><span>💬 31</span><span>↗ 18</span></div></div>
-        <div class="pd">Hier: Mirjana von der Sussmann GmbH. Gesichter aus dem Betrieb — da bleiben Monteure hängen.</div>
+        <div class="pd">Gesichter aus dem Betrieb statt Stellenanzeige — da bleiben Monteure beim Scrollen hängen.</div>
       </div><div class="base"></div><div class="base2"></div></div></div>
       <div class="pillar" data-s="3"><div class="pv"><div class="cap"></div><div class="cap2"></div><div class="shaft">
         <div class="pt"><b>3</b>Einfachheit</div><div class="tagl">Senken der Bewerbungshürden</div>
@@ -1001,7 +1002,12 @@ Object.entries({"ci-ums": "30.000", "ci-n": "2"}).forEach(([id,wert]) => {
         rad = document.getElementById('plzrad');
   let daten = null, laden = null, km = 25, aktuell = null;
 
-  const hole = () => laden || (laden = fetch('plz.json').then(r=>r.json()).then(j=>{daten=j.plz; return j;}).catch(()=>{laden=null;}));
+  const groesse = new Map();   // Ortsname -> Anzahl PLZ-Gebiete = Anhaltspunkt für die Stadtgröße
+  const hole = () => laden || (laden = fetch('plz.json').then(r=>r.json()).then(j=>{
+    daten = j.plz;
+    for (const r of daten) if (r[3]) groesse.set(r[3], (groesse.get(r[3])||0) + 1);
+    return j;
+  }).catch(()=>{laden=null;}));
   // Datei erst holen, wenn die Folie in Sicht kommt — nicht beim Seitenstart
   new MutationObserver(()=>{ if (document.getElementById('splz').classList.contains('active')) hole(); })
     .observe(document.getElementById('splz'), {attributes:true, attributeFilter:['class']});
@@ -1051,10 +1057,12 @@ Object.entries({"ci-ums": "30.000", "ci-n": "2"}).forEach(([id,wert]) => {
       `<circle class="ort" cx="${(n.x*s).toFixed(1)}" cy="${(-n.y*s).toFixed(1)}" r="${(nah.length>120?1.7:2.4)*(n.ort?1:.62)}" style="animation-delay:${(k%40)*22}ms"></circle>`).join('');
     // Beschriftung: nächstgelegene Orte zuerst, aber nur solange nichts überlappt
     // (überlappende Ortsnamen waren der auffälligste Fehler der ersten Fassung)
-    const kasten = [], passt = (x,y,txt,gross) => {
+    const kasten = [], passt = (x,y,txt,gross,anker) => {
       const b = txt.length * (gross ? 5.6 : 4.5) / 2, h = gross ? 7 : 5.5;
-      const k = {x1:x-b, x2:x+b, y1:y-h, y2:y+h};
-      if (Math.hypot(Math.abs(x)+b*0.5, Math.abs(y)) > 88) return null;   // nicht über den Ring hinaus
+      const mitte = anker === 'start' ? x + b : anker === 'end' ? x - b : x;
+      const k = {x1:mitte-b, x2:mitte+b, y1:y-h, y2:y+h};
+      x = mitte;
+      if (Math.hypot(Math.abs(mitte)+b*0.4, Math.abs(y)) > 104) return null;  // Rand der Zeichenfläche
       if (kasten.some(o => k.x1 < o.x2+1.5 && k.x2 > o.x1-1.5 && k.y1 < o.y2+1.5 && k.y2 > o.y1-1.5)) return null;
       kasten.push(k); return true;
     };
@@ -1064,15 +1072,31 @@ Object.entries({"ci-ums": "30.000", "ci-n": "2"}).forEach(([id,wert]) => {
       txte += `<text class="lbl mine on" x="0" y="-17" text-anchor="middle">${ort}</text>`;
     }
     kasten.push({x1:-13, x2:13, y1:-13, y2:13});  // Fläche des Mittelpunkt-Symbols freihalten
-    const kandidaten = nah.filter(n => n.ort && n.ort !== ort).sort((a,b)=>a.d-b.d)
-      .filter((n,k,arr) => arr.findIndex(m=>m.ort===n.ort) === k);
+    const eindeutig = nah.filter(n => n.ort && n.ort !== ort).sort((a,b)=>a.d-b.d)
+      .filter((n,k,arr) => arr.findIndex(m=>m.ort===n.ort) === k)
+      .map(n => ({...n, g: groesse.get(n.ort) || 1}));
+    const staedte = eindeutig.filter(n => n.g >= 3).sort((a,b)=> b.g - a.g || a.d - b.d).slice(0, 4);
+    const kandidaten = [...staedte, ...eindeutig.filter(n => !staedte.includes(n))];
     let gesetzt = 0;
     for (const n of kandidaten) {
-      if (gesetzt >= 7) break;
-      const x = n.x*s, y = -n.y*s;
-      for (const dy of (y < 0 ? [-6, 10] : [10, -6])) {          // erst weg vom Mittelpunkt
-        if (passt(x, y+dy, n.ort, false)) {
-          txte += `<text class="lbl" x="${x.toFixed(1)}" y="${(y+dy).toFixed(1)}" text-anchor="middle">${n.ort}</text>`;
+      if (gesetzt >= 9) break;
+      const x = n.x*s, y = -n.y*s, gross = n.g >= 3;
+      // vier Ausweichpositionen: über/unter dem Punkt, dann seitlich versetzt.
+      // Mit nur zwei Varianten fiel z. B. Stuttgart durch — es lag hinter dem
+      // (größeren) Label des eigenen Ortes.
+      const plaetze = [
+        [x, y + (y < 0 ? -6 : 10), 'middle'],          // über / unter dem Punkt
+        [x, y + (y < 0 ? 10 : -6), 'middle'],
+        [x + 5, y + 3, 'start'],                        // rechts / links daneben
+        [x - 5, y + 3, 'end'],
+        [x + 5, y - 7, 'start'],                        // diagonal ausweichen
+        [x - 5, y - 7, 'end'],
+        [x + 5, y + 12, 'start'],
+        [x - 5, y + 12, 'end'],
+      ];
+      for (const [lx, ly, anker] of plaetze) {
+        if (passt(lx, ly, n.ort, gross, anker)) {
+          txte += `<text class="lbl${gross ? ' stadt' : ''}" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anker}">${n.ort}</text>`;
           gesetzt++; break;
         }
       }

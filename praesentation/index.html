@@ -357,9 +357,6 @@ body.on-night .hint{color:var(--night-sub);}
 body.web{overflow:hidden;}
 .web .hint{display:none;}
 
-/* Die Pfeile der Ablauf-Kette sind eigene Kästchen — im Hochformat stören sie */
-document.querySelectorAll('.chips .chip').forEach(c => { if (!c.querySelector('b')) c.classList.add('pfeil'); });
-
 /* — Bedienleiste — */
 #nav{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;align-items:center;gap:12px;
   padding:12px clamp(16px,3vw,34px) calc(12px + env(safe-area-inset-bottom));
@@ -476,7 +473,7 @@ body.on-night #nav .steps b.on{background:var(--accent-l,#4FC3F0);}
   #s10 .vidgrid,#s9b .vidgrid{grid-template-columns:repeat(2,1fr)!important;}
   #s12 .flay{grid-template-columns:1fr 1fr!important;gap:20px!important;}
   #s12 .flay>div:first-child{grid-column:1/-1!important;}
-  #splz .karte{max-width:330px;}
+  #splz .karte{max-width:250px;margin-top:6px;}
   #splz .ergzahl{font-size:clamp(42px,13vw,64px)!important;}
   #nav{--navh:70px;}
   #nav .zaehl{display:none;}
@@ -932,6 +929,9 @@ const WQ = new URLSearchParams(location.search);
 })();
 
 /* — Bedienleiste — */
+/* Die Pfeile der Ablauf-Kette sind eigene Kästchen — im Hochformat stören sie */
+document.querySelectorAll('.chips .chip').forEach(c => { if (!c.querySelector('b')) c.classList.add('pfeil'); });
+
 const nprev = document.getElementById('nprev'), nnext = document.getElementById('nnext'),
       nsteps = document.getElementById('nsteps'), nzaehl = document.getElementById('nzaehl'),
       nnexttxt = document.getElementById('nnexttxt');
@@ -1058,6 +1058,8 @@ Object.entries({"ci-proj": "30.000", "ci-marge": "20", "ci-n": "2"}).forEach(([i
       [...gLbl.querySelectorAll('.lbl')].forEach((t,k)=> setTimeout(()=>t.classList.add('on'), 700 + k*110));
     });
     hoch(nOut, anzahl);
+    // am Handy steht das Ergebnis unterhalb der Eingabe — sonst sieht man es nicht
+    if (innerWidth <= 900) setTimeout(()=>erg.scrollIntoView({behavior:'smooth', block:'center'}), 260);
     document.getElementById('plzlbl').textContent = ort
       ? 'Orte rund um ' + ort : 'Orte in deinem Einzugsgebiet';
     sub.innerHTML = 'Im Umkreis von <b>' + km + ' km</b>' + (ort ? ' um ' + ort : '') +

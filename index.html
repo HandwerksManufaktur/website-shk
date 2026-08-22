@@ -104,12 +104,17 @@ a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2.5px solid va
 #nav::after{content:"";position:absolute;left:0;right:0;bottom:-22px;height:22px;background:linear-gradient(to bottom,rgba(246,249,252,.9),rgba(246,249,252,0));opacity:0;transition:opacity .35s;pointer-events:none;}
 #nav.scrolled::after{opacity:1;}
 .nav-logo img{height:30px;filter:invert(1) brightness(.25);}
+.nav-right{display:flex;align-items:center;gap:26px;}
 .nav-links{display:flex;align-items:center;gap:26px;}
+#burger{display:none;width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:12px;-webkit-tap-highlight-color:transparent;}
+#burger span{display:block;width:20px;height:2px;border-radius:2px;background:var(--ink);transition:transform .38s var(--spring),opacity .2s;}
+#burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+#burger.open span:nth-child(2){opacity:0;}
+#burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .nav-links a{font-size:14.5px;font-weight:550;color:var(--sub);letter-spacing:.004em;transition:color .2s;}
 .nav-links a:hover{color:var(--ink);}
 .nav-cta{background:var(--ink);color:#fff!important;border-radius:12px;padding:11px 20px;font-weight:600;transition:background .25s;}
 .nav-cta:hover{background:var(--acc);}
-@media(max-width:680px){.nav-links a:not(.nav-cta){display:none;}}
 
 /* ═══════ HERO ═══════ */
 #hero{padding:170px 0 0;text-align:center;position:relative;}
@@ -323,6 +328,7 @@ a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2.5px solid va
 .nstat .l{font-size:13px;color:var(--night-sub);margin-top:4px;}
 @media(max-width:900px){.night{padding:52px 28px;}.night-grid{grid-template-columns:1fr;gap:44px;}.nstats{grid-template-columns:1fr;}}
 
+
 /* ═══════ FALLSTUDIE (Video-Testimonial) ═══════ */
 #fallstudie{padding:0 0 110px;}
 .fs-head{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:end;position:relative;z-index:2;margin-bottom:44px;}
@@ -477,6 +483,46 @@ footer{padding:30px 0 40px;color:var(--sub);}
   .ps,.rc,.step,.hb-card,.faq-item{border-color:var(--line2);}
   #nav{background:var(--paper);backdrop-filter:none;}
 }
+/* ═══════ MOBIL-FEINSCHLIFF (21.08.2026) ═══════ */
+@media(max-width:900px){
+  #nav{padding:11px 16px;}
+  #nav.scrolled{padding:9px 16px;}
+  .nav-logo img{height:34px;}
+  #burger{display:flex;}
+  .nav-right{gap:8px;}
+  .nav-cta{padding:10px 15px;font-size:14px;border-radius:11px;}
+  .nav-links{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;
+    background:#FAF7F1;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);
+    box-shadow:0 22px 44px -24px rgba(12,45,72,.55);padding:4px 18px 12px;
+    opacity:0;transform:translateY(-10px);pointer-events:none;
+    transition:opacity .28s var(--ease),transform .38s var(--spring);}
+  .nav-links.open{opacity:1;transform:none;pointer-events:auto;}
+  .nav-links a{padding:15px 2px;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line);}
+  .nav-links a:last-child{border-bottom:0;}
+}
+@media(max-width:960px){
+  .ph-grid{gap:22px;padding:8px 16px 20px;margin-left:-16px;margin-right:-16px;}
+}
+@media(max-width:560px){
+  .wrap{padding:0 16px;}
+  .hero-ctas{flex-wrap:nowrap;gap:10px;}
+  .hero-ctas .btn{flex:1 1 0;justify-content:center;padding:15px 8px;font-size:14.5px;gap:7px;white-space:nowrap;}
+  .night{padding:44px 20px;}
+  .rc{flex:0 0 min(86vw,340px);}
+  .fcard{width:74vw;max-width:300px;height:206px;}
+  .pj-grid{grid-template-columns:1fr;grid-auto-rows:186px;gap:12px;}
+  .pj-grid .pj:nth-child(1),.pj-grid .pj:nth-child(5){grid-column:1;grid-row:auto;}
+  .pj.big{grid-row:span 1;}
+  .pj-tag{opacity:1;transform:none;}
+  .phone,.ph-item.mid .phone{width:min(84vw,310px);}
+  .pview,.ph-item.mid .pview{height:610px;--pvh:610px;}
+  #kinetic{padding:64px 0 20px;}
+  #stimmen{padding:72px 0 78px;}
+  #projekte{padding:72px 0 0;}
+  #fotos{padding:72px 0;}
+  #monteure{padding:62px 0 38px;}
+  #fallstudie{padding:0 0 62px;}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -578,13 +624,17 @@ footer{padding:30px 0 40px;color:var(--sub);}
 
 <nav id="nav">
   <a href="#hero" class="nav-logo"><img src="/Logos%20SHK/Logo%20Handwerksmanufaktur%20weiss.png" alt="HandwerksManufaktur"></a>
-  <div class="nav-links">
-    <a href="#funnels">Kampagnen</a>
-    <a href="#monteure">Monteure</a>
-    <a href="#auftraege">Aufträge</a>
-    <a href="#studio">Über uns</a>
-    <a href="#faq">FAQ</a>
+  <div class="nav-right">
+    <div class="nav-links" id="navlinks">
+      <a href="#funnels">Kampagnen</a>
+      <a href="#monteure">Monteure</a>
+      <a href="#auftraege">Aufträge</a>
+      <a href="#fallstudie">Fallstudie</a>
+      <a href="#studio">Über uns</a>
+      <a href="#faq">FAQ</a>
+    </div>
     <a href="#kontakt" class="nav-cta">Potenzialanalyse</a>
+    <button id="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -747,7 +797,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
         <div class="ph-period">in den ersten 2 Wochen</div>
       </div>
     </div>
-    <p class="ph-hint reveal">Drüberfahren oder antippen – der Funnel scrollt von selbst durch.</p>
+    <p class="ph-hint reveal">Zur Seite wischen für die zweite Kampagne. Der Funnel scrollt von selbst durch.</p>
   </div>
 </section>
 
@@ -1133,6 +1183,7 @@ document.querySelectorAll('.stagger').forEach(function(el,i){el.dataset.delay=(i
         var span=row.querySelector('span');
         var w=span.offsetWidth/3;
         var x=(-scrollY*speed)%w;
+        if(x>0)x-=w;   /* sonst schiebt die gegenlaeufige Zeile ihren Text aus dem Bild */
         row.style.transform='translateX('+x+'px)';
       }
     });
@@ -1227,6 +1278,32 @@ document.querySelectorAll('.night,.k-card').forEach(function(card){
     card.style.setProperty('--my',(e.clientY-r.top)+'px');
   });
 });
+
+// Mobiles Menü
+(function(){
+  var b=document.getElementById('burger'), l=document.getElementById('navlinks');
+  if(!b||!l)return;
+  function zu(){ b.classList.remove('open'); l.classList.remove('open'); b.setAttribute('aria-expanded','false'); b.setAttribute('aria-label','Menü öffnen'); }
+  b.addEventListener('click',function(){
+    var auf=!b.classList.contains('open');
+    b.classList.toggle('open',auf); l.classList.toggle('open',auf);
+    b.setAttribute('aria-expanded',String(auf));
+    b.setAttribute('aria-label',auf?'Menü schließen':'Menü öffnen');
+  });
+  l.addEventListener('click',function(e){ if(e.target.tagName==='A') zu(); });
+  addEventListener('keydown',function(e){ if(e.key==='Escape') zu(); });
+  addEventListener('resize',function(){ if(innerWidth>900) zu(); },{passive:true});
+})();
+
+// Ohne Maus (Handy/Tablet) starten die Funnel-Phones von allein, sobald sie im Bild sind
+(function(){
+  if(!matchMedia('(hover: none)').matches)return;
+  var items=[].slice.call(document.querySelectorAll('.ph-item'));if(!items.length)return;
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('run'); io.unobserve(e.target); } });
+  },{threshold:.45});
+  items.forEach(function(i){io.observe(i);});
+})();
 
 // Projekte-Galerie: die sechs Bilder wandern durch die Kacheln (nie zweimal dasselbe gleichzeitig)
 (function(){

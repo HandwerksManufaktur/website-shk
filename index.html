@@ -287,8 +287,7 @@ a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2.5px solid va
   .ph-grid{gap:110px;}
   .show{gap:110px;}
   .show-img{height:520px;}
-  .pj-grid{grid-auto-rows:250px;}
-  .fcard{width:280px;height:360px;}
+  .fcard{height:360px;}
   .steps{gap:22px;}
 }
 
@@ -406,8 +405,8 @@ a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2.5px solid va
 
 
 /* ═══════ PROJEKTE-GALERIE ═══════ */
-#projekte{padding:110px 0 0;}
-.pj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+#projekte{padding:110px 0 40px;}
+.pj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;}
 .pj{position:relative;aspect-ratio:5/6;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);}
 .pj img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s var(--ease),transform 1s var(--spring);}
 .pj img.on{opacity:1;}

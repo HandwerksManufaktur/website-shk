@@ -353,9 +353,9 @@ a:focus-visible,button:focus-visible,.faq-q:focus-visible{outline:2.5px solid va
 .fs-stats{margin-top:26px;display:grid;gap:2px;background:var(--night-line);border-radius:var(--r-md);overflow:hidden;}
 .fst{background:var(--night2);display:flex;align-items:center;gap:15px;padding:15px 20px;}
 .fst .i{font-size:18px;line-height:1;width:22px;text-align:center;flex-shrink:0;}
-.fst .v{font-weight:800;font-size:25px;letter-spacing:-.03em;min-width:52px;}
+.fst .v{font-weight:800;font-size:25px;letter-spacing:-.03em;min-width:52px;flex-shrink:0;}
 .fst .v span{color:#5BC2EA;}
-.fst .l{font-size:13.5px;color:var(--night-sub);}
+.fst .l{font-size:13.5px;color:var(--night-sub);flex:1 1 auto;min-width:0;}
 .fs-role{display:flex;gap:16px;align-items:center;background:var(--night2);border:1px solid var(--night-line);border-radius:var(--r-md);padding:14px 20px;margin-top:20px;}
 .fs-role img{width:104px;height:48px;object-fit:contain;flex-shrink:0;}
 .fs-role .n{font-weight:600;font-size:15px;color:#fff;}
@@ -618,7 +618,19 @@ footer{padding:30px 0 40px;color:var(--sub);}
       "about": {"@id": "https://die-handwerksmanufaktur.de/#organization"},
       "primaryImageOfPage": "https://shk.die-handwerksmanufaktur.de/og-image.jpg",
       "inLanguage": "de-DE",
-      "video": {"@id": "https://shk.die-handwerksmanufaktur.de/#video-ess"}
+      "video": [{"@id": "https://shk.die-handwerksmanufaktur.de/#video-ess"}, {"@id": "https://shk.die-handwerksmanufaktur.de/#video-senftleben"}]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://shk.die-handwerksmanufaktur.de/#video-senftleben",
+      "name": "Fallstudie Senftleben Haustechnik: Auftrags-Funnel f\u00fcr Badsanierung",
+      "description": "Benjamin Senftleben, Inhaber von Senftleben Haustechnik in Ehingen, \u00fcber die Leadgen-Kampagne f\u00fcr Badsanierung: 125.000 Aufrufe im 25-km-Umkreis, 21 Anfragen und \u00fcber 10 Vor-Ort-Termine in zwei Monaten.",
+      "thumbnailUrl": "https://shk.die-handwerksmanufaktur.de/assets/testimonial/senftleben-testimonial-poster.jpg",
+      "contentUrl": "https://shk.die-handwerksmanufaktur.de/assets/testimonial/senftleben-testimonial.mp4",
+      "uploadDate": "2026-09-02",
+      "duration": "PT2M25S",
+      "inLanguage": "de-DE",
+      "publisher": {"@id": "https://die-handwerksmanufaktur.de/#organization"}
     },
     {
       "@type": "VideoObject",
@@ -809,11 +821,11 @@ footer{padding:30px 0 40px;color:var(--sub);}
         <div class="ph-tag">Ehingen (Donau) · Badsanierung in 3. Generation</div>
         <span class="ph-badge">🛁 Auftrags-Funnel</span> <span class="ph-live">Live</span>
         <div class="ph-stats">
-          <div class="ps"><b>110.000</b><span>Aufrufe der Anzeigen</span></div>
-          <div class="ps"><b>17</b><span>Bad-Anfragen</span></div>
-          <div class="ps"><b>8</b><span>Vor-Ort-Termine</span></div>
+          <div class="ps"><b>125.000</b><span>Aufrufe der Anzeigen</span></div>
+          <div class="ps"><b>21</b><span>Bad-Anfragen</span></div>
+          <div class="ps"><b>10+</b><span>Vor-Ort-Termine</span></div>
         </div>
-        <div class="ph-period">in den ersten 4 Wochen</div>
+        <div class="ph-period">in den ersten 2 Monaten</div>
       </div>
     </div>
     <p class="ph-hint reveal">Zur Seite wischen für die zweite Kampagne. Der Funnel scrollt von selbst durch.</p>
@@ -855,7 +867,7 @@ footer{padding:30px 0 40px;color:var(--sub);}
   </div>
 </section>
 
-<!-- ═══════ FALLSTUDIE: ERWIN SCHMIDT & SOHN ═══════ -->
+<!-- ═══════ FALLSTUDIEN: ERWIN SCHMIDT & SOHN (Recruiting) + SENFTLEBEN (Leadgen) ═══════ -->
 <section id="fallstudie">
   <div class="wrap">
     <div class="night reveal">
@@ -891,6 +903,45 @@ footer{padding:30px 0 40px;color:var(--sub);}
             <div>
               <div class="n">Florian Schmidt</div>
               <div class="r">Geschäftsführer, Erwin Schmidt &amp; Sohn GmbH</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="night reveal" style="margin-top:28px;">
+      <div class="fs-head">
+        <div>
+          <div class="eyebrow" style="color:#5BC2EA;"><span class="dot"></span>Fallstudie · Auftrags-Funnel Badsanierung</div>
+          <h2>„Aufträge haben wir<br>jetzt aktuell <em>genügend.“</em></h2>
+        </div>
+        <p class="fs-lead">Senftleben Haustechnik in Ehingen, SHK-Meisterbetrieb in dritter Generation, hat volle Auftragsbücher. Trotzdem laufen seit Juli Anzeigen für Badsanierung im Umkreis von 25 km, mit Benjamin Senftleben selbst vor der Kamera und Filterfragen vor der Anfrage. Nach dem Startpaket hat er verlängert. Sein Grund: Der Name soll im Kopf sein, wenn das nächste Bad ansteht. Werbung macht man nicht nur, wenn es schlecht läuft.</p>
+      </div>
+      <div class="fs-grid">
+        <div class="fs-video" style="background-image:url(/assets/testimonial/senftleben-testimonial-poster.jpg);">
+          <video preload="metadata" playsinline
+                 poster="/assets/testimonial/senftleben-testimonial-poster.jpg"
+                 aria-label="Videostimme von Benjamin Senftleben, Senftleben Haustechnik">
+            <source src="/assets/testimonial/senftleben-testimonial.mp4" type="video/mp4">
+            Dein Browser kann dieses Video nicht abspielen.
+          </video>
+          <button class="fs-play" type="button" aria-label="Video abspielen, Dauer 2 Minuten 25 Sekunden">
+            <span class="ring"><svg width="26" height="28" viewBox="0 0 26 28" aria-hidden="true" style="margin-left:4px;"><path d="M2 2.6c0-1.3 1.4-2.1 2.5-1.4l18.6 11.4c1.1.7 1.1 2.3 0 3L4.5 26.8C3.4 27.5 2 26.7 2 25.4V2.6z" fill="#0C1620"/></svg></span>
+            <span class="lbl">Video ansehen · 2:25</span>
+          </button>
+        </div>
+        <div class="fs-txt">
+          <p class="fs-quote">„Also die Zusammenarbeit würde ich auf jeden Fall jedem empfehlen, weil das auch immer unkompliziert ist.“</p>
+          <div class="fs-stats">
+            <div class="fst"><span class="i">👀</span><span class="v">125.000</span><span class="l">Aufrufe im 25-km-Umkreis</span></div>
+            <div class="fst"><span class="i">📩</span><span class="v">21</span><span class="l">Bad-Anfragen über den Funnel</span></div>
+            <div class="fst"><span class="i">📍</span><span class="v">10+</span><span class="l">Vor-Ort-Termine in 2 Monaten</span></div>
+          </div>
+          <div class="fs-role">
+            <img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik" loading="lazy">
+            <div>
+              <div class="n">Benjamin Senftleben</div>
+              <div class="r">Inhaber, Senftleben Haustechnik, Ehingen</div>
             </div>
           </div>
         </div>
@@ -1448,10 +1499,15 @@ document.querySelectorAll('.night,.k-card').forEach(function(card){
 
 // Fallstudie-Video: eigener Play-Button über dem Poster
 (function(){
-  var box=document.querySelector('.fs-video');if(!box)return;
-  var v=box.querySelector('video'),btn=box.querySelector('.fs-play');if(!v||!btn)return;
-  btn.addEventListener('click',function(){box.classList.add('playing');v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){box.classList.remove('playing');v.controls=false;});});
-  v.addEventListener('ended',function(){box.classList.remove('playing');v.controls=false;v.load();});
+  var boxes=[].slice.call(document.querySelectorAll('.fs-video'));if(!boxes.length)return;
+  boxes.forEach(function(box){
+    var v=box.querySelector('video'),btn=box.querySelector('.fs-play');if(!v||!btn)return;
+    btn.addEventListener('click',function(){
+      // nur ein Fallstudien-Video gleichzeitig
+      boxes.forEach(function(o){if(o!==box){var ov=o.querySelector('video');if(ov&&!ov.paused){ov.pause();}}});
+      box.classList.add('playing');v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){box.classList.remove('playing');v.controls=false;});});
+    v.addEventListener('ended',function(){box.classList.remove('playing');v.controls=false;v.load();});
+  });
 })();
 
 // Count-up für Ergebnis-Zahlen der Case Studies

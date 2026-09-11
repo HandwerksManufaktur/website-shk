@@ -547,3 +547,5 @@ function startAnim(){
     // 100+ badge
     // 100+ badge – centered under animation area
     var bH=h*.048, bW=Math.min(lw*.7,260), bX=lx+lw*.5-bW/2, bY=h*.92;
+
+window.__lebt = true;

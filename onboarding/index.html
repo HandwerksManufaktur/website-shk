@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <script>document.documentElement.classList.add('js');setTimeout(function(){if(window.__lebt)return;document.documentElement.classList.remove('js');document.querySelectorAll('main *,section *').forEach(function(e){if(getComputedStyle(e).opacity==='0'&&!e.closest('[hidden],dialog,.mnav,.modal,.overlay'))e.style.opacity='1'})},3000)</script>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__lebt)document.documentElement.classList.remove('js')},3000)</script>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -197,7 +197,7 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 
 /* 🔴 Sicherheitsnetz (11.09.2026): ohne html.js ist alles sofort sichtbar —
    sonst bleibt die Seite nach dem Hero leer, wenn das Skript nicht durchkommt. */
-html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word,html:not(.js) .fitem,html:not(.js) .pj,html:not(.js) .pj-tag,html:not(.js) .step,html:not(.js) .step-ic,html:not(.js) .marq,html:not(.js) .ph-item,html:not(.js) .ph-hint,html:not(.js) .mid,html:not(.js) .night{opacity:1!important;transform:none!important;}
+html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!important;transform:none!important;}
 </style>
 </head>
 <body>
@@ -1194,6 +1194,8 @@ window.addEventListener('load', function() {
   showStep(0);
   loadDraft();
 });
+
+window.__lebt = true;
 </script>
 </body>
 </html>

@@ -488,7 +488,7 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
               <div style="font-size:11.5px;color:var(--muted);line-height:1.6;margin-bottom:8px">Sobald Mitarbeiter auf Fotos oder Videos zu sehen sind, brauchen wir von ihnen eine unterschriebene Einwilligung. Trage die Namen ein — wir erzeugen euch daraus das fertige Formular auf euren Briefkopf.</div>
               <textarea id="shkMitarbeiterNamen" placeholder="Ein Name pro Zeile:&#10;Max Mustermann&#10;Erika Musterfrau" style="min-height:88px"></textarea>
               <button type="button" onclick="oeffneEinwilligungSHK()" style="margin-top:9px;background:transparent;border:1.5px solid var(--border);color:var(--accent);border-radius:9px;padding:10px 16px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer">📄 Formular öffnen &amp; drucken</button>
-              <div style="font-size:11.5px;color:var(--muted);line-height:1.6;margin:9px 0 6px">Unterschriebene Formulare hier hochladen — oder später per Mail an info@die-handwerksmanufaktur.de.</div>
+              <div style="font-size:11.5px;color:var(--muted);line-height:1.6;margin:9px 0 6px">Unterschriebene Formulare hier hochladen — oder später per Mail an info@handwerksmanufaktur.digital.</div>
               <div class="upload-zone" ondragover="event.preventDefault()" ondrop="shkDrop(event,'einwilligungen')">
                 <input type="file" accept="image/*,.pdf,.heic,.heif" multiple onchange="shkFile(this.files,'einwilligungen')">
                 <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
@@ -519,11 +519,11 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
         <div class="fg">
           <div class="dsgvo-box" onclick="toggleDsgvoSHK()">
             <div class="dsgvo-check" id="dsgvoBoxSHK"></div>
-            <div class="dsgvo-text">Ich habe die <a href="https://die-handwerksmanufaktur.de/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span style="color:var(--accent)">*</span></div>
+            <div class="dsgvo-text">Ich habe die <a href="https://handwerksmanufaktur.digital/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span style="color:var(--accent)">*</span></div>
           </div>
           <div class="dsgvo-box" onclick="toggleBildrechteSHK()" style="margin-top:10px">
             <div class="dsgvo-check" id="bildrechteBoxSHK"></div>
-            <div class="dsgvo-text">Ich erkläre für unseren Betrieb: Die HandwerksManufaktur darf die bei uns angefertigten Foto- und Videoaufnahmen, unseren Firmennamen und unser Logo sowie Kundenstimmen, die wir abgeben (z.B. Bewertungen, Interviews, Videos), als Referenz verwenden (z.B. Website, Portfolio, Präsentationen, Social Media). Ich stelle sicher, dass alle abgebildeten Personen – insbesondere unsere Mitarbeiter – vor den Aufnahmen eingewilligt haben, und stelle die HandwerksManufaktur von Ansprüchen Dritter frei. Details siehe <a href="https://shk.die-handwerksmanufaktur.de/agb/" target="_blank">§ 16 AGB</a>. <span style="color:var(--accent)">*</span></div>
+            <div class="dsgvo-text">Ich erkläre für unseren Betrieb: Die HandwerksManufaktur darf die bei uns angefertigten Foto- und Videoaufnahmen, unseren Firmennamen und unser Logo sowie Kundenstimmen, die wir abgeben (z.B. Bewertungen, Interviews, Videos), als Referenz verwenden (z.B. Website, Portfolio, Präsentationen, Social Media). Ich stelle sicher, dass alle abgebildeten Personen – insbesondere unsere Mitarbeiter – vor den Aufnahmen eingewilligt haben, und stelle die HandwerksManufaktur von Ansprüchen Dritter frei. Details siehe <a href="https://shk.handwerksmanufaktur.digital/agb/" target="_blank">§ 16 AGB</a>. <span style="color:var(--accent)">*</span></div>
           </div>
           <div style="margin-top:10px;padding:13px 16px;background:rgba(30,154,208,.07);border:1px solid rgba(30,154,208,.28);border-radius:10px;font-size:13.5px;line-height:1.55">
             <b>📄 Vorlage für euer Team</b><br>
@@ -875,7 +875,7 @@ function oeffneEinwilligungSHK() {
     alert('Bitte trage zuerst im Schritt „Betrieb" euren Firmennamen ein — das Formular läuft auf euren Namen.');
     return;
   }
-  var url = 'https://die-handwerksmanufaktur.de/einwilligung/?betrieb=' + encodeURIComponent(betrieb);
+  var url = 'https://handwerksmanufaktur.digital/einwilligung/?betrieb=' + encodeURIComponent(betrieb);
   var namen = mitarbeiterNamenSHK();
   if (namen.length) url += '&namen=' + encodeURIComponent(namen.join('|'));
   window.open(url, '_blank', 'noopener');
@@ -889,7 +889,7 @@ function updateEinwLink() {
   if (!a) return;
   const el = document.getElementById('firmaName') || document.getElementById('shkFirma');
   const fn = (el && el.value ? el.value : '').trim();
-  a.href = 'https://shk.die-handwerksmanufaktur.de/einwilligung/' + (fn ? '?betrieb=' + encodeURIComponent(fn) : '');
+  a.href = 'https://shk.handwerksmanufaktur.digital/einwilligung/' + (fn ? '?betrieb=' + encodeURIComponent(fn) : '');
 }
 function toggleBildrechteSHK() {
   bildrechteSHK = !bildrechteSHK;

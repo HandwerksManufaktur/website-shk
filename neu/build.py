@@ -28,7 +28,7 @@ def u(p):  # Seiten-Link
 # ── Assets ────────────────────────────────────────────────────────────────
 def css_js_version():
     import hashlib
-    h = hashlib.md5((HIER/'styles.css').read_bytes() + (HIER/'main.js').read_bytes()).hexdigest()[:8]
+    h = hashlib.md5((HIER/'styles.css').read_bytes() + (HIER/'main.js').read_bytes() + Path(__file__).read_bytes()).hexdigest()[:8]
     return h
 V = css_js_version()
 

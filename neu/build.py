@@ -231,7 +231,7 @@ def hebel():
     <div class="sec-kopf mitte"><p class="kick rv">Zwei Hebel, ein System</p><h2 class="d rv">Was fehlt dir gerade: <span class="em k">Leute</span> oder <span class="em w">Aufträge</span>?</h2></div>
     <div class="hebel-grid">
       <a class="hebel-karte rv" href="{u('/monteure/')}"><div class="txt"><span class="chip"><span aria-hidden="true">👷</span>Hebel 1 · Recruiting</span><h3>Mitarbeitergewinnung für SHK-Monteure.</h3><ul><li>Bewerbung in 60 Sekunden, ohne Lebenslauf</li><li>Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li><li>Dein Betrieb als Marke, mit Fotos aus deinem Betrieb</li></ul><span class="btn btn-white">Recruiting ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="Monteur eines SHK-Betriebs mit Werkzeug" loading="lazy" width="1100" height="733" style="object-position:55% 25%"></div></a>
-      <a class="hebel-karte w rv" data-d="1" href="{u('/auftraege/')}"><div class="txt"><span class="chip"><span aria-hidden="true">🛁</span>Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><ul><li>Exklusiv für deinen Betrieb</li><li>Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>Regelbar, auf Wunsch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/senftleben-team.jpg" alt="Das Team von Senftleben Haustechnik" loading="lazy" width="1100" height="725" style="object-position:50% 30%"></div></a>
+      <a class="hebel-karte w rv" data-d="1" href="{u('/auftraege/')}"><div class="txt"><span class="chip"><span aria-hidden="true">🛁</span>Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><ul><li>Exklusiv für deinen Betrieb</li><li>Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>Regelbar, auf Wunsch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/senftleben-team.jpg" alt="Das Team von Senftleben Haustechnik" loading="lazy" width="1100" height="725" style="object-position:50% 8%"></div></a>
     </div>
   </div>
 </section>'''
@@ -240,9 +240,15 @@ ESS_LOGO = '/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png'
 SEN_LOGO = '/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png'
 SUS_LOGO = '/Logos%20SHK/Logo%20Sussmann%20weiss.png'
 
+ICON = {'Bewerbungen': '📩', 'Stelle besetzt': '✅', 'Wochen Laufzeit': '⏱️', 'Aufrufe im Umkreis': '👀', 'Bad-Anfragen': '🛁', 'Vor-Ort-Termine': '📍', 'Erster Auftrag': '💶', 'Tage Kampagne': '⏱️', 'Stelle: Lohn &amp; Buchhaltung': '✅', 'Aufrufe im 25-km-Umkreis': '👀', 'Bad-Anfragen über den Funnel': '🛁', 'Vor-Ort-Termine in 2 Monaten': '📍', 'Wochen Kampagnen-Laufzeit': '⏱️', 'Stelle besetzt: Anlagenmechaniker SHK': '✅', 'Auftrag: Teilsanierung Bad': '💶'}
+def zahl_html(b, s, k):
+    ic = ICON.get(s, '')
+    zi = f'<span class="zi" aria-hidden="true">{ic}</span>' if ic else ''
+    return f'<div class="zahl {k}">{zi}<b>{b}</b><small>{s}</small></div>'
+
 def fall_karte(logo, name, ort, chip, chipk, poster, video, dauer, zitat, zahlen, zeit, d=0, alt=''):
     pos = '8%' if 'senftleben' in poster else '50%'
-    z = ''.join(f'<div class="zahl {chipk}"><b>{b}</b><small>{s}</small></div>' for b, s in zahlen)
+    z = ''.join(zahl_html(b, s, chipk) for b, s in zahlen)
     return f'''<article class="fall-karte rv" data-d="{d}">
   <div class="vid"><video preload="none" poster="{poster}" playsinline style="object-position:50% {pos}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span><span aria-hidden="true">▶</span> Video ansehen · {dauer}</span></button></div>
   <div class="txt">
@@ -259,8 +265,8 @@ def fallstudien_teaser():
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick rv">Ausgewählte Kampagnen</p><h2 class="d rv">Funnels, die <span class="em w">liefern.</span></h2></div><p class="lead rv">Drei Kampagnen, die gerade laufen, mit den Zahlen aus den ersten Wochen. Die Inhaber vor der Kamera.</p></div>
     <div class="fall-grid drei">
-      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting-Funnel · läuft', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Wir haben nur nicht gedacht, dass es so viele sind."', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Anlagenmechaniker SHK, erste 4 Wochen')}
-      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Auftrags-Funnel · läuft', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht."', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · 25-km-Umkreis, erste 2 Monate', 1)}
+      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting-Funnel · läuft', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Wir haben nur nicht gedacht, dass es so viele sind."', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen')}
+      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Auftrags-Funnel · läuft', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht."', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 1)}
       {sussmann_karte(2)}
     </div>
     <p class="rv" style="text-align:center;margin-top:32px"><a class="btn btn-white" href="{u('/fallstudien/')}">Alle Fallstudien in voller Länge <span aria-hidden="true">→</span></a></p>
@@ -268,7 +274,7 @@ def fallstudien_teaser():
 </section>'''
 
 def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, zahlen, chipk, aria):
-    z = ''.join(f'<div class="zahl {chipk}"><b>{b}</b><small>{s}</small></div>' for b, s in zahlen)
+    z = ''.join(zahl_html(b, s, chipk) for b, s in zahlen)
     return f'''<article class="fall-gross rv">
   <div class="vid"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:50% {'8%' if 'senftleben' in poster else '50%'}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span><span aria-hidden="true">▶</span> Video ansehen · {dauer}</span></button></div>
   <div class="txt">
@@ -292,9 +298,13 @@ def senftleben_recruiting_karte():
 def sussmann_karte(d=1):
     return f'''<article class="fall-karte rv" data-d="{d}">
   <div class="vid"><img src="/assets/fotos/shk-02.jpg" alt="Patrick und Mirjana Sussmann in ihrem Betrieb" loading="lazy" width="1100" height="732" style="object-position:50% 30%"></div>
-  <div class="txt"><span class="chip w"><i aria-hidden="true"></i>Auftrags-Funnel · läuft</span><blockquote>„Wir kriegen auch immer wieder E-Mails: Sie hat unsere Werbung bei Instagram gesehen und voll sympathisch (…)"</blockquote><p style="color:var(--sub);font-size:14px;margin-top:-6px">Benjamin Senftleben über das, was neben den Anfragen noch ankommt.</p>
-  <div class="betrieb"><img src="{SUS_LOGO}" alt="Sussmann GmbH" loading="lazy"><span><b>Sussmann GmbH</b><small>Kirchheim · Badsanierung</small></span></div>
-  <div class="zahlen"><div class="zahl w"><b>14</b><small>Bad-Anfragen</small></div><div class="zahl w"><b>7<span class="plus">+</span></b><small>Vor-Ort-Termine</small></div><div class="zahl w"><b>10.000 €</b><small>Erster Auftrag</small></div></div><p class="zeit">Patrick Wähnl, Sussmann GmbH · erster Auftrag nach 2 Wochen Kampagne · Stand 22.09.2026</p></div>
+  <div class="txt">
+    <span class="chip w"><i aria-hidden="true"></i>Auftrags-Funnel · läuft</span>
+    <blockquote>Erster Auftrag nach zwei Wochen Kampagne.</blockquote>
+    <div class="betrieb"><img src="{SUS_LOGO}" alt="Sussmann GmbH" loading="lazy"><span><b>Sussmann GmbH</b><small>Kirchheim · Badsanierung</small></span></div>
+    <div class="zahlen">{zahl_html('14', 'Bad-Anfragen', 'w')}{zahl_html('7<span class="plus">+</span>', 'Vor-Ort-Termine', 'w')}{zahl_html('10.000 €', 'Erster Auftrag', 'w')}</div>
+    <p class="zeit">Patrick Wähnl, Inhaber · Zahlen aus den ersten 2 Wochen</p>
+  </div>
 </article>'''
 
 REELS = [('patrick-reel', 'Patrick'), ('josef', 'Josef'), ('mirjana-hook', 'Mirjana'), ('meike-solo', 'Meike'), ('benjamin-schirm', 'Benjamin')]
@@ -318,11 +328,12 @@ STIMMEN = [
 ]
 STIMMEN_LOGO = {'Franz Gallenberger': 'Logo Franz Gallenberger weiss.png', 'Benjamin Senftleben': 'Logo Senftleben Haustechnik weiss.png', 'Lanzinger GmbH': 'Logo Lanzinger GmbH weiss.png', 'Andrea Süßmeier': 'Logo Suessmeier Heizungstechnik weiss.png', 'Hannes Schmidt GmbH': 'Logo Hannes Schmidt GmbH Weiss.png', 'Alisa Kirchner': 'Logo Kirchner weiss.png', 'Isabella Rauch': 'Logo Autohaus Ressle weiss.png'}
 def stimmen():
-    k = ''.join(f'<article class="stimme"><div class="kopf"><span class="lg"><img src="/Logos%20SHK/{STIMMEN_LOGO[n].replace(" ", "%20")}" alt="{html.escape(b)}" loading="lazy"></span><span class="stern" aria-label="5 von 5 Sternen">★★★★★</span></div><blockquote>{z}</blockquote><div class="wer"><span><b>{n}</b><small>{b}</small></span></div></article>' for n, b, z in STIMMEN)
+    slides = ''.join(f'<figure class="stimme-buehne{" an" if i == 0 else ""}" data-i="{i}"><blockquote>{z}</blockquote><figcaption><b>{n}</b><span>{b}</span></figcaption></figure>' for i, (n, b, z) in enumerate(STIMMEN))
+    waehler = ''.join(f'<button type="button" class="stimme-logo{" an" if i == 0 else ""}" data-i="{i}" aria-label="Bewertung von {html.escape(n)}"><img src="/Logos%20SHK/{STIMMEN_LOGO[n].replace(" ", "%20")}" alt="" loading="lazy"></button>' for i, (n, b, z) in enumerate(STIMMEN))
     return f'''<section class="stimmen" id="stimmen">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Stimmen aus der Branche</p><h2 class="d rv">Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span></h2></div><p class="rv"><span class="google">{GOOGLE_G}<span>5,0 <span class="stern" aria-hidden="true">★★★★★</span></span><span style="font-weight:500;color:var(--sub)">Google Bewertungen</span></span></p></div>
-    <div class="stimmen-marq"><div class="spur">{k}{k}</div></div>
+    <div class="sec-kopf mitte"><p class="kick rv">Stimmen aus der Branche</p><h2 class="d rv">Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span></h2><p class="rv"><span class="google">{GOOGLE_G}<span>5,0 <span class="stern" aria-hidden="true">★★★★★</span></span><span style="font-weight:500;color:var(--sub)">57 Google-Bewertungen</span></span></p></div>
+    <div class="stimmen-stage rv"><span class="stern gross" aria-hidden="true">★★★★★</span><div class="stimmen-slides">{slides}</div><div class="stimmen-logos">{waehler}</div></div>
   </div>
 </section>'''
 
@@ -436,13 +447,10 @@ def seite_start():
   </div>
   <div class="wrap weit buehne-wrap"><div class="buehne feed"><div class="raster" aria-hidden="true"></div><span class="live"><i aria-hidden="true"></i>Läuft gerade für unsere Kunden</span>
     <div class="feed-innen">
-      {phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'p1', '0s')}
-      {reel_phone('patrick-reel', 'Patrick · Sussmann', 'p2')}
-      {reel_phone('mirjana-hook', 'Mirjana · Sussmann', 'p3')}
-      {reel_phone('benjamin-schirm', 'Benjamin · Senftleben', 'p4')}
-      {phone('/assets/funnels/senftleben-leadgen-full.jpg', 'Aufträge · Senftleben Haustechnik', '#F5762B', 'p5', '3s')}
+      {phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'p2', '0s')}
+      {reel_phone('mirjana-hook', 'Anzeige · Sussmann GmbH', 'p3')}
+      {phone('/assets/funnels/senftleben-leadgen-full.jpg', 'Aufträge · Senftleben Haustechnik', '#F5762B', 'p4', '3s')}
     </div>
-    <div class="zettel" aria-hidden="true">{hero_zettel()}</div>
   </div></div>
 </section>'''
     body = hero + logo_band() + kinetik() + leiter() + problem() + system() + hebel() + fallstudien_teaser() + stimmen() + ablauf() + ueber_insel() + statement('Der Auftrag ist da, der Monteur nicht. <em>Oder umgekehrt.</em>', mitte=True) + faq() + kontakt()

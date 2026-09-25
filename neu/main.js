@@ -183,6 +183,16 @@
     img.complete ? set() : img.addEventListener('load', set); addEventListener('resize', set);
   });
 
+  /* Stimmen: eine Bühne, Logo-Leiste als Wähler, wechselt alle 6 s */
+  const slides = $$('.stimme-buehne'), logos = $$('.stimme-logo');
+  if (slides.length) {
+    let i = 0, timer;
+    const zeig = (k) => { i = (k + slides.length) % slides.length; slides.forEach((s, n) => s.classList.toggle('an', n === i)); logos.forEach((l, n) => l.classList.toggle('an', n === i)); };
+    const takt = () => { clearInterval(timer); if (!rm) timer = setInterval(() => zeig(i + 1), 6000); };
+    logos.forEach((l, n) => l.addEventListener('click', () => { zeig(n); takt(); }));
+    takt();
+  }
+
   /* Stimmen: ziehen mit der Maus */
   const bahnS = $('.stimmen-bahn');
   if (bahnS) {

@@ -163,6 +163,20 @@
     if (ton) ton.addEventListener('click', () => { const an = vid.muted; $$('.reel video').forEach(x => x.muted = true); $$('.reel .ton').forEach(x => x.textContent = '🔇'); vid.muted = !an; ton.textContent = an ? '🔊' : '🔇'; if (an) vid.play().catch(()=>{}); });
   });
 
+  /* Feed-Bühne: Zettel kommen nacheinander an, Phones parallaxen */
+  const zettel = $$('.zettel .ticket');
+  if (zettel.length && !rm) {
+    let i = 0, laeuft = false;
+    const takt = () => { zettel.forEach(z => z.classList.remove('an')); zettel[i % zettel.length].classList.add('an'); zettel[(i + 3) % zettel.length].classList.add('an'); i++; };
+    const ioZ = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !laeuft) { laeuft = true; takt(); setInterval(takt, 2800); } }), { threshold: .3 });
+    ioZ.observe($('.zettel'));
+  } else { zettel.forEach(z => z.classList.add('an')); }
+  const feedPhones = $$('.feed-innen .phone');
+  if (feedPhones.length && !rm) {
+    const fak = [.10, .05, 0, .05, .10];
+    addEventListener('scroll', () => { const y = scrollY; feedPhones.forEach((p, k) => p.style.setProperty('--ty', (-y * fak[k]).toFixed(1) + 'px')); }, { passive: true });
+  }
+
   /* Phones auf Bühne/Unterseiten: Scrollhöhe je Bild */
   $$('.phone .scroller img, .mini-phone img').forEach(img => {
     const set = () => { const box = img.parentElement.getBoundingClientRect(); if (img.naturalHeight) img.style.setProperty('--sk', (box.height / 1038).toFixed(3)); };

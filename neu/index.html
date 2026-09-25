@@ -1,358 +1,215 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__lebt)document.documentElement.classList.remove('js')},3000)</script>
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__lebt)document.documentElement.classList.remove('js')},3000)</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HandwerksManufaktur – SHK Cinematic Preview</title>
-<meta name="robots" content="noindex, nofollow, noarchive">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@300;400&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#EDEDEE; --dim:#8A8F98; --faint:#55595F;
-  --acc:#1E9AD0;
-  --f:'Inter',-apple-system,sans-serif; --ft:'Inter Tight','Inter',sans-serif;
-  --spring:linear(0,.0083 1.2%,.0333 2.5%,.1301 5.1%,.6238 12.9%,.8261 16.3%,.9425 19.6%,.9843 21.9%,1.0071 24.6%,1.0132 27.5%,1.0034 34.2%,.9989 42.2%,1);
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:#000;color:var(--ink);font-family:var(--f);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-optical-sizing:auto;}
-h1,h2,h3{text-wrap:balance;font-optical-sizing:auto;}
-p{text-wrap:pretty;}
-a{color:inherit;text-decoration:none;}
-img{max-width:100%;}
-
-/* ═══ Riesige federleichte Headlines ═══ */
-.mega{font-family:var(--ft);font-weight:300;letter-spacing:-.025em;line-height:1.04;font-size:clamp(42px,6.4vw,96px);color:#fff;}
-.mega b{font-weight:400;}
-.big{font-family:var(--ft);font-weight:300;letter-spacing:-.02em;line-height:1.08;font-size:clamp(32px,4.4vw,64px);color:#fff;}
-.eyebrow{font-size:13.5px;font-weight:500;letter-spacing:.02em;color:var(--dim);margin-bottom:22px;}
-
-/* ═══ Nav — minimal ═══ */
-#nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px 40px;transition:background .4s,backdrop-filter .4s;}
-#nav.scrolled{background:rgba(0,0,0,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);}
-#nav .mark{display:flex;align-items:center;gap:10px;font-weight:500;font-size:14.5px;letter-spacing:.08em;text-transform:uppercase;}
-#nav .mark img{height:26px;width:auto;}
-#nav .links{display:flex;gap:30px;align-items:center;font-size:14.5px;}
-#nav .links a{color:var(--dim);transition:color .25s;}
-#nav .links a:hover{color:#fff;}
-#nav .links a.solid{color:#000;background:#fff;padding:9px 18px;border-radius:9px;font-weight:500;transition:transform .34s var(--spring),opacity .25s;}
-#nav .links a.solid:hover{opacity:.88;}
-#nav .links a.solid:active{transform:scale(.97);}
-
-/* ═══ Hero — Vollbild, Bild mit Vignette ═══ */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;filter:brightness(.42) saturate(.85);transform:scale(1.06);}
-.hero-bg::after{content:"";position:absolute;inset:0;background:
-  radial-gradient(120% 90% at 30% 45%,transparent 30%,rgba(0,0,0,.72) 100%),
-  linear-gradient(to bottom,rgba(0,0,0,.45),transparent 30%,transparent 62%,#000 96%);}
-.hero-in{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:120px 40px 90px;}
-.hero-in .mega{max-width:820px;}
-.hero-sub{margin-top:26px;font-size:clamp(16.5px,1.5vw,20px);color:var(--dim);max-width:520px;font-weight:300;}
-.hero-ctas{display:flex;gap:14px;margin-top:42px;flex-wrap:wrap;}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;min-height:50px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;border:none;font-family:var(--f);touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:transform .34s var(--spring),opacity .25s,background .25s;}
-.btn:active{transform:scale(.97);transition-duration:.09s;}
-.btn-w{background:#fff;color:#000;}
-.btn-w:hover{opacity:.88;}
-.btn-g{background:transparent;color:var(--dim);}
-.btn-g:hover{color:#fff;}
-.btn .ar{font-size:17px;transition:transform .3s var(--ease);}
-.btn:hover .ar{transform:translateX(3px);}
-.hero-logos{margin-top:74px;padding-top:30px;border-top:1px solid rgba(255,255,255,.14);display:flex;gap:44px;align-items:center;flex-wrap:wrap;}
-.hero-logos img{height:30px;width:auto;opacity:.5;filter:grayscale(20%);transition:opacity .3s;}
-.hero-logos img:hover{opacity:.95;}
-a:focus-visible,button:focus-visible{outline:2.5px solid var(--acc);outline-offset:3px;border-radius:8px;}
-
-/* ═══ Scroll-Reveal: gedimmt → hell ═══ */
-.lift{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1.05s var(--spring);}
-.lift.on{opacity:1;transform:none;}
-.glow{color:var(--faint);transition:color .9s var(--ease);}
-.glow.on{color:var(--ink);}
-
-/* ═══ Hebel-Liste (Kardashev-Stil): Scroll steuert das Highlight ═══ */
-#hebel{position:relative;height:320svh;}
-.hebel-sticky{position:sticky;top:0;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
-.hebel-bg{position:absolute;inset:0;}
-.hebel-bg img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.34) saturate(.8);opacity:0;transition:opacity 1.1s var(--ease);}
-.hebel-bg img.show{opacity:1;}
-.hebel-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.9) 22%,rgba(0,0,0,.35) 60%,rgba(0,0,0,.65)),linear-gradient(to bottom,#000,transparent 18%,transparent 82%,#000);}
-.hebel-in{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 40px;width:100%;}
-.hebel-in .big{max-width:640px;}
-.hlist{margin-top:54px;max-width:760px;}
-.hrow{display:grid;grid-template-columns:120px 1fr;gap:26px;padding:20px 0;border-top:1px solid rgba(255,255,255,.13);font-size:clamp(15.5px,1.4vw,18.5px);}
-.hrow:last-child{border-bottom:1px solid rgba(255,255,255,.13);}
-.hrow .t{color:var(--faint);font-weight:400;transition:color .6s;}
-.hrow .d{color:var(--faint);font-weight:300;transition:color .6s;}
-.hrow.act .t{color:#fff;font-weight:500;}
-.hrow.act .d{color:#fff;}
-
-/* ═══ Vollbild-Statement ═══ */
-.state{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;}
-.state img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.9);}
-.state::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,#000 2%,transparent 30%,transparent 55%,rgba(0,0,0,.88) 92%);}
-.state-in{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 40px 110px;width:100%;display:grid;grid-template-columns:1fr;gap:18px;}
-.state-in.right{justify-items:end;text-align:right;}
-.state-in .big{max-width:700px;}
-.state-sub{color:var(--dim);font-size:clamp(16px,1.4vw,19px);font-weight:300;max-width:520px;}
-
-/* ═══ Fakten-Zeilen (Tesla/SpaceX-Stil) ═══ */
-#fakten{padding:150px 0 130px;}
-.wrap{max-width:1320px;margin:0 auto;padding:0 40px;}
-.frow{display:grid;grid-template-columns:240px 1fr 1fr;gap:44px;padding:52px 0;border-top:1px solid rgba(255,255,255,.12);align-items:start;}
-.frow:last-of-type{border-bottom:1px solid rgba(255,255,255,.12);}
-.frow .logo img{height:44px;width:auto;opacity:.9;}
-.frow .fact{font-size:clamp(15.5px,1.35vw,18px);font-weight:300;margin-bottom:18px;}
-.frow .fact b{font-weight:500;}
-@media(max-width:900px){.frow{grid-template-columns:1fr;gap:18px;padding:38px 0;}.frow .logo img{height:36px;}}
-
-/* ═══ Phones auf Schwarz ═══ */
-#live{padding:130px 0 150px;text-align:center;}
-.phones{display:flex;justify-content:center;gap:44px;margin-top:70px;align-items:flex-start;}
-.ph{width:270px;border-radius:36px;border:9px solid #17181B;background:#17181B;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.07);transition:transform .6s var(--spring);}
-.ph:hover{transform:translateY(-10px);}
-.ph img{display:block;width:100%;height:auto;border-radius:26px;}
-.ph.mid{width:300px;margin-top:-26px;}
-@media(max-width:900px){.phones{gap:18px;}.ph.side{display:none;}.ph.mid{width:min(300px,78vw);margin-top:0;}}
-
-/* ═══ Prozess als gedimmte Zeilen ═══ */
-#prozess{padding:40px 0 150px;}
-.prow{display:grid;grid-template-columns:90px 300px 1fr;gap:34px;padding:30px 0;border-top:1px solid rgba(255,255,255,.12);font-size:clamp(15.5px,1.4vw,18.5px);align-items:baseline;}
-.prow:last-of-type{border-bottom:1px solid rgba(255,255,255,.12);}
-.prow .n{font-family:var(--ft);font-weight:300;font-size:clamp(22px,2vw,30px);}
-.prow .t{font-weight:500;}
-.prow .d{font-weight:300;}
-@media(max-width:900px){.prow{grid-template-columns:56px 1fr;gap:14px;}.prow .d{grid-column:2;}}
-
-/* ═══ Finale ═══ */
-.fin{position:relative;min-height:96svh;display:flex;align-items:center;overflow:hidden;}
-.fin img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.34) saturate(.7);}
-.fin::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,#000 4%,transparent 42%),radial-gradient(90% 70% at 50% 100%,rgba(0,0,0,.85),transparent 60%);}
-.fin-in{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 40px;width:100%;}
-.fin-sub{color:var(--dim);margin-top:20px;max-width:480px;font-weight:300;font-size:clamp(16px,1.4vw,19px);}
-.fin-ctas{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;}
-.fin-meta{margin-top:70px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);display:flex;gap:34px;flex-wrap:wrap;color:var(--dim);font-size:14.5px;}
-.fin-meta b{color:var(--ink);font-weight:500;}
-
-footer{padding:34px 40px 44px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--faint);font-size:13.5px;}
-footer .fl{display:flex;gap:14px 22px;flex-wrap:wrap;}
-footer a{color:var(--faint);transition:color .25s;}
-footer a:hover{color:var(--ink);}
-
-@media(max-width:760px){
-  #nav{padding:16px 22px;}
-  #nav .links a:not(.solid){display:none;}
-  .hero-in,.hebel-in,.wrap,.state-in,.fin-in{padding-left:22px;padding-right:22px;}
-  .hero-logos{gap:26px;}
-  .hero-logos img{height:24px;}
-  .hrow{grid-template-columns:86px 1fr;gap:14px;}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
-  .lift,.glow{opacity:1!important;transform:none!important;color:var(--ink)!important;}
-  html{scroll-behavior:auto;}
-}
-@media(prefers-reduced-transparency:reduce){
-  #nav.scrolled{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none;}
-}
-</style>
+<title>Marketing für SHK-Betriebe: Monteure &amp; Aufträge gewinnen</title>
+<meta name="description" content="Kampagnen für SHK-Betriebe: Bewerbungen von Monteuren und Bad- &amp; Wärmepumpen-Anfragen. 120+ Betriebe betreut, erste Ergebnisse in 7 Tagen. Kostenlose Analyse.">
+<link rel="canonical" href="https://shk.handwerksmanufaktur.digital/">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website"><meta property="og:locale" content="de_DE"><meta property="og:site_name" content="HandwerksManufaktur SHK">
+<meta property="og:url" content="https://shk.handwerksmanufaktur.digital/"><meta property="og:title" content="Marketing für SHK-Betriebe: Monteure &amp; Aufträge gewinnen"><meta property="og:description" content="Kampagnen für SHK-Betriebe: Bewerbungen von Monteuren und Bad- &amp; Wärmepumpen-Anfragen. 120+ Betriebe betreut, erste Ergebnisse in 7 Tagen. Kostenlose Analyse.">
+<meta property="og:image" content="https://shk.handwerksmanufaktur.digital/og-image.jpg"><meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F3F6FA">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-v20-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/neu/styles.css?v=209e7359">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://handwerksmanufaktur.digital/#organization", "name": "HandwerksManufaktur", "legalName": "HANDWERKSMANUFAKTUR LTD", "url": "https://handwerksmanufaktur.digital/", "description": "Marketing-Agentur ausschließlich für Handwerksbetriebe im DACH-Raum. Für SHK-Betriebe: Recruiting-Kampagnen für Monteure und Anlagenmechaniker sowie Auftrags-Kampagnen für Badsanierung und Wärmepumpe.", "image": "https://shk.handwerksmanufaktur.digital/og-image.jpg", "logo": {"@type": "ImageObject", "url": "https://shk.handwerksmanufaktur.digital/favicon.png"}, "telephone": "+4981947174990", "email": "info@handwerksmanufaktur.digital", "address": {"@type": "PostalAddress", "streetAddress": "Georgiou Griva Digeni 51, Athineon Building, 1st floor", "postalCode": "8047", "addressLocality": "Paphos", "addressCountry": "CY"}, "founder": {"@type": "Person", "name": "Noah Seelau"}, "areaServed": [{"@type": "Country", "name": "Deutschland"}, {"@type": "Country", "name": "Österreich"}, {"@type": "Country", "name": "Schweiz"}], "knowsAbout": ["Mitarbeitergewinnung im SHK-Handwerk", "Social Recruiting für Anlagenmechaniker SHK", "Leadgenerierung Badsanierung", "Leadgenerierung Wärmepumpe", "Marketing für Handwerksbetriebe"], "sameAs": ["https://handwerksmanufaktur.digital/"]}, {"@type": "WebPage", "url": "https://shk.handwerksmanufaktur.digital/", "name": "Marketing für SHK-Betriebe: Monteure & Aufträge gewinnen", "description": "Kampagnen für SHK-Betriebe: Bewerbungen von Monteuren und Bad- & Wärmepumpen-Anfragen. 120+ Betriebe betreut, erste Ergebnisse in 7 Tagen. Kostenlose Analyse.", "inLanguage": "de-DE", "isPartOf": {"@type": "WebSite", "url": "https://shk.handwerksmanufaktur.digital/", "name": "HandwerksManufaktur SHK"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Was kostet die Zusammenarbeit?", "acceptedAnswer": {"@type": "Answer", "text": "Der Start liegt bei den meisten SHK-Betrieben im niedrigen vierstelligen Bereich für Setup, Shooting und Kampagnenaufbau, dazu eine monatliche Betreuung ab 1.000 €. Das Werbebudget kommt separat und geht direkt an Meta. Für ein normales Einzugsgebiet rechnen wir mit 750 bis 1.000 € im Monat. Läuft eine zweite Kampagne mit, wird die Betreuung pro Kampagne günstiger. Den genauen Preis rechnen wir in der Potenzialanalyse für deine Region durch."}}, {"@type": "Question", "name": "Wir haben schon genug zu tun, warum dann ihr?", "acceptedAnswer": {"@type": "Answer", "text": "Voll ist der Kalender bei fast jedem Betrieb. Die Frage ist, womit. Wenn du mehr margenstarke Badsanierungen und Wärmepumpen statt Kleinreparaturen willst, bringen wir genau diese Anfragen planbar rein."}}, {"@type": "Question", "name": "Wie schnell kommen die ersten Anfragen?", "acceptedAnswer": {"@type": "Answer", "text": "In den meisten Fällen gehen erste qualifizierte Anfragen innerhalb von 7 Tagen nach Kampagnenstart ein. Das Setup davor dauert unter 2 Wochen."}}, {"@type": "Question", "name": "Wie funktioniert Mitarbeitergewinnung über Social Media?", "acceptedAnswer": {"@type": "Answer", "text": "Social Recruiting erreicht Anlagenmechaniker SHK und Kundendiensttechniker dort, wo sie ohnehin sind: auf Instagram und Facebook, nicht auf Stellenportalen, die nur aktiv Suchende sehen. Die meisten Fachkräfte im Handwerk sind in Arbeit und wechseln nur, wenn ein Angebot vor ihnen landet. Wir spielen deine Stellen als Anzeige in deinem Einzugsgebiet aus, die Bewerbung dauert 60 Sekunden ohne Lebenslauf, und du bekommst nur vorqualifizierte Kandidaten mit Gewerk, Erfahrung und Führerschein."}}, {"@type": "Question", "name": "Was, wenn wir die Anfragen nicht abarbeiten können?", "acceptedAnswer": {"@type": "Answer", "text": "Die Kampagne lässt sich über die Qualifizierung drosseln, auf Wunsch auf ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team stemmen kann. Es geht um planbare Auslastung, nicht um Masse."}}, {"@type": "Question", "name": "Was unterscheidet euch von Lead-Portalen?", "acceptedAnswer": {"@type": "Answer", "text": "Portal-Leads werden parallel an mehrere Betriebe verkauft, du telefonierst um die Wette mit Preisvergleichern. Wir bauen stattdessen einen eigenen Kanal in deinem Namen: deine Fotos, dein Gebiet, deine Anfragen. Und eine Anfrage ohne Adresse und Rückrufnummer zählt bei uns nicht als Anfrage."}}, {"@type": "Question", "name": "Muss ich mich lange binden?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Eine Anlaufzeit von 3 Monaten gilt, damit das System seine volle Wirkung entfalten kann. Danach monatlich kündbar. Kein Knebelvertrag."}}, {"@type": "Question", "name": "Was, wenn Personal unser Engpass ist?", "acceptedAnswer": {"@type": "Answer", "text": "Dann starten wir mit Recruiting statt Auftragsgewinnung: gezielte Kampagnen für Monteure in deiner Region, dieselbe Methodik mit anderem Ziel. Siehst du oben live bei Senftleben und Erwin Schmidt & Sohn."}}]}]}</script>
 </head>
 <body>
-
-<nav id="nav">
-  <a class="mark" href="#"><img src="/Logos%20SHK/Logo%20Handwerksmanufaktur%20weiss.png" alt="HandwerksManufaktur"></a>
-  <div class="links">
-    <a href="#fakten">Ergebnisse</a>
-    <a href="#live">Kampagnen</a>
-    <a class="solid" href="#start">Potenzialanalyse</a>
-  </div>
-</nav>
-
-<!-- ═══ HERO ═══ -->
-<header class="hero">
-  <div class="hero-bg"><img src="/assets/fotos/shk-07.jpg" alt="" fetchpriority="high"></div>
-  <div class="hero-in">
-    <div class="eyebrow lift">Kampagnen für SHK-Betriebe</div>
-    <h1 class="mega lift">Planbar mehr Monteure.<br>Und die Aufträge <b>dazu.</b></h1>
-    <p class="hero-sub lift">Ein eigener Kampagnen-Kanal für dein Einzugsgebiet – Bewerbungen von Monteuren, die kein Stellenportal öffnen, und Anfragen für Bäder und Wärmepumpen.</p>
-    <div class="hero-ctas lift">
-      <a class="btn btn-w" href="#start">Potenzialanalyse <span class="ar">›</span></a>
-      <a class="btn btn-g" href="#fakten">Ergebnisse ansehen <span class="ar">›</span></a>
-    </div>
-    <div class="hero-logos lift">
-      <img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik">
-      <img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="Erwin Schmidt &amp; Sohn">
-      <img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="Heizung Sanitär Klaß">
-      <img src="/Logos%20SHK/Logo%20Sussmann%20weiss.png" alt="Erich Sussmann GmbH">
-      <img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="Irlbacher GmbH">
-    </div>
+<div class="regler-leiste" aria-hidden="true"></div>
+<header class="nav">
+  <div class="wrap">
+    <a class="nav-logo" href="/neu/" aria-label="HandwerksManufaktur — Startseite">
+      <img class="dunkelv" src="/assets/logo-hwm-schwarz.png" alt="HandwerksManufaktur" width="849" height="247">
+      <img class="hell" src="/assets/logo-hwm-weiss.png" alt="" width="884" height="282">
+    </a>
+    <nav aria-label="Hauptnavigation"><ul class="nav-links"><li><a href="/neu/monteure/"><span aria-hidden="true">👷</span>Monteure</a></li><li><a href="/neu/auftraege/"><span aria-hidden="true">🛁</span>Aufträge</a></li><li><a href="/neu/fallstudien/"><span aria-hidden="true">🎬</span>Fallstudien</a></li><li><a href="/neu/ueber-uns/"><span aria-hidden="true">🤝</span>Über uns</a></li><li><a class="nav-cta" href="/neu/potenzialanalyse/"><span aria-hidden="true">🎯</span>Potenzialanalyse</a></li></ul></nav>
+    <button class="burger" aria-label="Menü" aria-expanded="false" aria-controls="mobilmenu"><span></span><span></span><span></span></button>
   </div>
 </header>
-
-<!-- ═══ HEBEL-LISTE (scroll-gesteuert) ═══ -->
-<section id="hebel">
-  <div class="hebel-sticky">
-    <div class="hebel-bg">
-      <img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="" class="hb-0 show">
-      <img src="/assets/projekte/bad-marmor.jpg" alt="" class="hb-1">
-      <img src="/assets/projekte/wp-haus.jpg" alt="" class="hb-2">
-    </div>
-    <div class="hebel-in">
-      <div class="eyebrow">Wo es bei SHK-Betrieben hakt</div>
-      <h2 class="big">Zwei Engpässe.<br>Ein System für beide.</h2>
-      <div class="hlist">
-        <div class="hrow" data-i="0"><div class="t">Hebel 1</div><div class="d">Bewerbungen von Monteuren und Anlagenmechanikern – vorqualifiziert nach Gewerk, Erfahrung und Führerschein</div></div>
-        <div class="hrow" data-i="1"><div class="t">Hebel 2</div><div class="d">Exklusive Bad-Anfragen mit 20.000–50.000&nbsp;€ Projektwert – nur aus deinem Einzugsgebiet</div></div>
-        <div class="hrow" data-i="2"><div class="t">Hebel 2+</div><div class="d">Wärmepumpe und Heizungstausch – vorqualifiziert nach Objekt, Baujahr, Eigentum und Zeitrahmen</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ STATEMENT ═══ -->
-<section class="state">
-  <img class="bg" src="/assets/fotos/senftleben-team.jpg" alt="">
-  <div class="state-in right">
-    <h2 class="big lift">Ein Kanal, gebaut für<br>dein Einzugsgebiet.</h2>
-    <p class="state-sub lift">Läuft auf deinen Namen, mit echten Fotos aus deinem Betrieb. Keine Portal-Leads, die parallel bei vier Wettbewerbern landen.</p>
-  </div>
-</section>
-
-<!-- ═══ FAKTEN ═══ -->
-<section id="fakten">
+<div class="mobilmenu" id="mobilmenu"><a href="/neu/monteure/"><span aria-hidden="true">👷</span>Monteure</a><a href="/neu/auftraege/"><span aria-hidden="true">🛁</span>Aufträge</a><a href="/neu/fallstudien/"><span aria-hidden="true">🎬</span>Fallstudien</a><a href="/neu/ueber-uns/"><span aria-hidden="true">🤝</span>Über uns</a><a class="nav-cta" href="/neu/potenzialanalyse/"><span aria-hidden="true">🎯</span>Potenzialanalyse</a></div>
+<main>
+<section class="hero" id="start">
   <div class="wrap">
-    <div class="eyebrow lift">Ergebnisse aus laufenden Kampagnen</div>
-    <h2 class="big lift" style="max-width:640px;">Keine Versprechen.<br>Zwischenstände.</h2>
-    <div style="height:64px;"></div>
-    <div class="frow">
-      <div class="logo glow"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="Erwin Schmidt &amp; Sohn"></div>
-      <div>
-        <div class="fact glow"><b>25 Bewerber</b> in den ersten 4 Wochen</div>
-        <div class="fact glow"><b>1 Stelle besetzt</b> – Anlagenmechaniker SHK</div>
-      </div>
-      <div>
-        <div class="fact glow">Recruiting-Funnel, Raum Sindelfingen</div>
-        <div class="fact glow">Familienbetrieb in 3. Generation</div>
-      </div>
-    </div>
-    <div class="frow">
-      <div class="logo glow"><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik"></div>
-      <div>
-        <div class="fact glow"><b>21 Bad-Anfragen</b> in den ersten 2 Monaten</div>
-        <div class="fact glow"><b>10+ Vor-Ort-Termine</b> vereinbart</div>
-      </div>
-      <div>
-        <div class="fact glow">Auftrags-Funnel Badsanierung, Raum Ehingen</div>
-        <div class="fact glow">Meisterbetrieb, alle Gewerke aus einer Hand</div>
-      </div>
-    </div>
-    <div class="frow">
-      <div class="logo glow"><img src="/Logos%20SHK/Logo%20Handwerksmanufaktur%20weiss.png" alt="HandwerksManufaktur"></div>
-      <div>
-        <div class="fact glow"><b>Über 120 Betriebe</b> im DACH-Raum betreut</div>
-        <div class="fact glow"><b>5,0 ★</b> auf Google</div>
-      </div>
-      <div>
-        <div class="fact glow">Seit über sechs Jahren nur Handwerk</div>
-        <div class="fact glow"><b>Ø 7 Tage</b> bis zur ersten Anfrage oder Bewerbung</div>
-      </div>
-    </div>
+    <p class="kick rv">Recruiting &amp; Aufträge für SHK-Betriebe</p>
+    <h1 class="h-xl rv" data-d="1">Monteure &amp; Aufträge<br>für SHK-Betriebe. <span class="em w">Aufgedreht.</span></h1>
+    <p class="lead rv" data-d="2">Zu wenig Leute oder zu wenig Großprojekte? Wir bauen dir für beides einen eigenen Kampagnen-Kanal: Monteure, die kein Stellenportal öffnen. Bäder und Wärmepumpen mit 20.000 bis 50.000 € Projektwert.</p>
+    <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="/neu/monteure/"><span class="ic" aria-hidden="true">👷</span>Mehr Monteure</a><a class="btn btn-white btn-lg" href="/neu/auftraege/"><span class="ic" aria-hidden="true">🛁</span>Mehr Aufträge</a></div>
+    <div class="rv" data-d="4"><p class="trust"><span><span class="stern" aria-hidden="true">★★★★★</span> <b>5,0</b> auf Google</span><span>·</span><span><b>120+</b> Betriebe</span><span>·</span><span><b>Spezialisiert</b> auf SHK</span></p></div>
   </div>
-</section>
-
-<!-- ═══ LIVE-KAMPAGNEN ═══ -->
-<section id="live">
+  <div class="wrap weit buehne-wrap"><div class="buehne"><div class="raster" aria-hidden="true"></div><span class="live"><i aria-hidden="true"></i>Läuft gerade für unsere Kunden</span>
+    <div class="buehne-innen">
+      <div class="phone links" aria-hidden="true"><div class="scroller"><img src="/assets/funnels/erwin-schmidt-jobs-full.jpg" alt="" loading="lazy" style="--d:0s"></div><span class="etikett"><i style="background:#1E90E8"></i>Recruiting · Erwin Schmidt &amp; Sohn</span></div>
+      <div><div class="regler" role="slider" tabindex="0" aria-label="Regler: von Zufall zu planbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="12">
+      <svg viewBox="0 0 400 400">
+        <defs><linearGradient id="reglerVerlauf" x1="0" y1="1" x2="1" y2="1"><stop offset="0" stop-color="#1E90E8"/><stop offset=".5" stop-color="#7A7EC8"/><stop offset="1" stop-color="#F5762B"/></linearGradient></defs>
+        <path class="skala" d="M 86.9 313.1 A 160 160 0 1 1 313.1 313.1"/>
+        <path class="bahn" d="M 86.9 313.1 A 160 160 0 1 1 313.1 313.1"/>
+        <g class="ticks"><line x1="106.7" y1="293.3" x2="101.0" y2="299.0"/><line x1="74.5" y1="240.8" x2="66.9" y2="243.3"/><line x1="69.6" y1="179.4" x2="61.7" y2="178.1"/><line x1="93.2" y1="122.4" x2="86.7" y2="117.7"/><line x1="140.1" y1="82.4" x2="136.4" y2="75.3"/><line x1="200.0" y1="68.0" x2="200.0" y2="60.0"/><line x1="259.9" y1="82.4" x2="263.6" y2="75.3"/><line x1="306.8" y1="122.4" x2="313.3" y2="117.7"/><line x1="330.4" y1="179.4" x2="338.3" y2="178.1"/><line x1="325.5" y1="240.8" x2="333.1" y2="243.3"/><line x1="293.3" y1="293.3" x2="299.0" y2="299.0"/></g>
+        <circle class="nabe" cx="200" cy="200" r="104"/>
+        <g class="nadel"><line x1="200" y1="100" x2="200" y2="66"/><circle cx="200" cy="200" r="9"/></g>
+        <text class="wert" x="200" y="224">12%</text>
+        <text class="wert-label" x="200" y="254">kommt nach Zufall</text>
+        <text class="pol kalt" x="86" y="352">ZUFALL</text>
+        <text class="pol warm" x="314" y="352">PLANBAR</text>
+      </svg>
+    </div><p class="regler-hint">Zieh am Regler. <b>Planbar</b> heißt: du bestimmst, wie viel reinkommt.</p></div>
+      <div class="phone rechts" aria-hidden="true"><div class="scroller"><img src="/assets/funnels/senftleben-leadgen-full.jpg" alt="" loading="lazy" style="--d:3s"></div><span class="etikett"><i style="background:#F5762B"></i>Aufträge · Senftleben Haustechnik</span></div>
+    </div>
+  </div></div>
+</section><section class="band" aria-label="Betriebe, mit denen wir arbeiten">
+  <div class="wrap"><div class="band-innen rv">
+    <p class="band-t">Über <b>120 Betriebe</b> setzen auf uns. Hier ein Ausschnitt</p>
+    <div class="marq"><img src="/Logos%20SHK/Logo%20Autohaus%20Ressle%20weiss.png" alt="Autohaus Ressle" loading="lazy"><img src="/Logos%20SHK/Logo%20Azemi%20Hausrenovierungen%20weiss.png" alt="Azemi Hausrenovierungen" loading="lazy"><img src="/Logos%20SHK/Logo%20Entenmann%20Haustechnik%20weiss.png" alt="Entenmann Haustechnik" loading="lazy"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="Erwin Schmidt" loading="lazy"><img src="/Logos%20SHK/Logo%20Franticonstruct%20weiss.png" alt="Franticonstruct" loading="lazy"><img src="/Logos%20SHK/Logo%20Franz%20Gallenberger%20weiss.png" alt="Franz Gallenberger" loading="lazy"><img src="/Logos%20SHK/Logo%20Goldacker%20weiss.png" alt="Goldacker" loading="lazy"><img src="/Logos%20SHK/Logo%20Hannes%20Schmidt%20GmbH%20Weiss.png" alt="Hannes Schmidt GmbH" loading="lazy"><img src="/Logos%20SHK/Logo%20Haustechnik%20Buchschmid%20weiss.png" alt="Haustechnik Buchschmid" loading="lazy"><img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="Heizung Sanitaer Klass" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="Irlbacher" loading="lazy"><img src="/Logos%20SHK/Logo%20Kirchner%20weiss.png" alt="Kirchner" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Kramer%20Heizungsbau%20weiss.png" alt="Kramer Heizungsbau" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Lanzinger%20GmbH%20weiss.png" alt="Lanzinger GmbH" loading="lazy"><img src="/Logos%20SHK/Logo%20Lueders%20Fliesen%20weiss.png" alt="Lueders Fliesen" loading="lazy"><img src="/Logos%20SHK/Logo%20Markus%20Ditsch%20weiss.png" alt="Markus Ditsch" loading="lazy"><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik" loading="lazy"><img src="/Logos%20SHK/Logo%20Suessmeier%20Heizungstechnik%20weiss.png" alt="Suessmeier Heizungstechnik" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Sussmann%20weiss.png" alt="Sussmann" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Yannick%20Stimpfle%20weiss.png" alt="Yannick Stimpfle" loading="lazy"><img src="/Logos%20SHK/Logo%20Autohaus%20Ressle%20weiss.png" alt="Autohaus Ressle" loading="lazy"><img src="/Logos%20SHK/Logo%20Azemi%20Hausrenovierungen%20weiss.png" alt="Azemi Hausrenovierungen" loading="lazy"><img src="/Logos%20SHK/Logo%20Entenmann%20Haustechnik%20weiss.png" alt="Entenmann Haustechnik" loading="lazy"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="Erwin Schmidt" loading="lazy"><img src="/Logos%20SHK/Logo%20Franticonstruct%20weiss.png" alt="Franticonstruct" loading="lazy"><img src="/Logos%20SHK/Logo%20Franz%20Gallenberger%20weiss.png" alt="Franz Gallenberger" loading="lazy"><img src="/Logos%20SHK/Logo%20Goldacker%20weiss.png" alt="Goldacker" loading="lazy"><img src="/Logos%20SHK/Logo%20Hannes%20Schmidt%20GmbH%20Weiss.png" alt="Hannes Schmidt GmbH" loading="lazy"><img src="/Logos%20SHK/Logo%20Haustechnik%20Buchschmid%20weiss.png" alt="Haustechnik Buchschmid" loading="lazy"><img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="Heizung Sanitaer Klass" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="Irlbacher" loading="lazy"><img src="/Logos%20SHK/Logo%20Kirchner%20weiss.png" alt="Kirchner" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Kramer%20Heizungsbau%20weiss.png" alt="Kramer Heizungsbau" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Lanzinger%20GmbH%20weiss.png" alt="Lanzinger GmbH" loading="lazy"><img src="/Logos%20SHK/Logo%20Lueders%20Fliesen%20weiss.png" alt="Lueders Fliesen" loading="lazy"><img src="/Logos%20SHK/Logo%20Markus%20Ditsch%20weiss.png" alt="Markus Ditsch" loading="lazy"><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik" loading="lazy"><img src="/Logos%20SHK/Logo%20Suessmeier%20Heizungstechnik%20weiss.png" alt="Suessmeier Heizungstechnik" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Sussmann%20weiss.png" alt="Sussmann" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Yannick%20Stimpfle%20weiss.png" alt="Yannick Stimpfle" loading="lazy"></div>
+    <div class="marq rueck"><img src="/Logos%20SHK/Logo%20Yannick%20Stimpfle%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Sussmann%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Suessmeier%20Heizungstechnik%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Markus%20Ditsch%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Lueders%20Fliesen%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Lanzinger%20GmbH%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Kramer%20Heizungsbau%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Kirchner%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Haustechnik%20Buchschmid%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Hannes%20Schmidt%20GmbH%20Weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Goldacker%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Franz%20Gallenberger%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Franticonstruct%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Entenmann%20Haustechnik%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Azemi%20Hausrenovierungen%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Autohaus%20Ressle%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Yannick%20Stimpfle%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Sussmann%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Suessmeier%20Heizungstechnik%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Markus%20Ditsch%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Lueders%20Fliesen%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Lanzinger%20GmbH%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Kramer%20Heizungsbau%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Kirchner%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Irlbacher%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Heizung%20Sanitaer%20Klass%20weiss.png" alt="" loading="lazy" class=wide><img src="/Logos%20SHK/Logo%20Haustechnik%20Buchschmid%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Hannes%20Schmidt%20GmbH%20Weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Goldacker%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Franz%20Gallenberger%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Franticonstruct%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Entenmann%20Haustechnik%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Azemi%20Hausrenovierungen%20weiss.png" alt="" loading="lazy"><img src="/Logos%20SHK/Logo%20Autohaus%20Ressle%20weiss.png" alt="" loading="lazy"></div>
+  </div></div>
+</section><section class="kinetik" aria-hidden="true">
+  <div><span class="zeile">Badsanierungen<span class="sep">·</span>Wärmepumpen<span class="sep">·</span>Neue Monteure<span class="sep">·</span>Badsanierungen<span class="sep">·</span>Wärmepumpen</span></div>
+  <div><span class="zeile serif">Planbar statt Zufall · <b>Messbar statt Bauchgefühl</b> · Planbar statt Zufall · <b>Messbar statt Bauchgefühl</b></span></div>
+</section><section class="probiert" id="probiert">
   <div class="wrap">
-    <div class="eyebrow lift">Läuft gerade für unsere Kunden</div>
-    <h2 class="big lift">So sieht das live aus.</h2>
-    <div class="phones lift">
-      <div class="ph side"><img src="/assets/funnels/senftleben-jobs-hero.jpg" width="480" height="1038" loading="lazy" alt="Recruiting-Funnel Senftleben Haustechnik"></div>
-      <div class="ph mid"><img src="/assets/funnels/erwin-schmidt-jobs-hero.jpg" width="480" height="1038" alt="Recruiting-Funnel Erwin Schmidt &amp; Sohn"></div>
-      <div class="ph side"><img src="/assets/funnels/senftleben-leadgen-hero.jpg" width="480" height="1038" loading="lazy" alt="Badsanierungs-Funnel Senftleben Haustechnik"></div>
-    </div>
+    <div class="sec-kopf"><div><p class="kick k rv">Was du wahrscheinlich schon probiert hast</p><h2 class="d rv">Fünf Wege, die <span class="em k">kalt</span> bleiben.</h2></div><p class="lead rv">Aus hunderten Gesprächen mit SHK-Inhabern: So wird bisher gesucht. Und so wenig kommt zurück.</p></div>
+    <div class="leiter n5"><article class="weg rv" data-d="1"><span class="x" aria-hidden="true">✕</span><div class="ic" aria-hidden="true">🖥️</div><h3>Stellenportal</h3><p>Sehen nur die, die aktiv suchen. Wer in Arbeit ist, öffnet kein Portal.</p></article><article class="weg rv" data-d="2"><span class="x" aria-hidden="true">✕</span><div class="ic" aria-hidden="true">🚐</div><h3>Aufkleber mit QR-Code</h3><p>Auf dem Firmenwagen. Wer ihn liest, steht gerade im Stau.</p></article><article class="weg rv" data-d="3"><span class="x" aria-hidden="true">✕</span><div class="ic" aria-hidden="true">🌐</div><h3>Die Stelle auf der eigenen Webseite</h3><p>Wer sie findet, sucht schon. Alle anderen kommen nie vorbei.</p></article><article class="weg rv" data-d="4"><span class="x" aria-hidden="true">✕</span><div class="ic" aria-hidden="true">🗣️</div><h3>Mundpropaganda</h3><p>Bringt Großprojekte, wann sie wollen: monatelang nichts, dann drei gleichzeitig.</p></article><article class="weg rv" data-d="5"><span class="x" aria-hidden="true">✕</span><div class="ic" aria-hidden="true">📇</div><h3>Lead-Portale</h3><p>Dieselbe Anfrage geht an vier Betriebe. Du telefonierst um die Wette mit Preisvergleichern.</p></article><div class="ende rv" data-d="6"><span>„Kam kaum was zurück."<small>Florian Schmidt, Erwin Schmidt &amp; Sohn, über die Suche vor der Kampagne</small></span></div></div>
   </div>
-</section>
-
-<!-- ═══ PROZESS ═══ -->
-<section id="prozess">
+</section><section class="problem" id="problem">
+  <div class="wrap"><div class="problem-grid">
+    <div class="links"><p class="kick k rv">Das eigentliche Problem</p><h2 class="d rv">Entweder fehlen die Aufträge. <span class="em k">Oder die Leute dafür.</span></h2><p class="lead rv" style="margin-top:18px">In hunderten Gesprächen mit SHK-Inhabern hören wir fast immer dasselbe: Es hakt an einem von beiden, und meistens hängt das eine am anderen.</p><p class="rv" style="margin-top:26px"><a class="btn btn-ink" href="/neu/potenzialanalyse/"><span class="ic" aria-hidden="true">🎯</span>Potenzial durchrechnen</a></p></div>
+    <div class="kalt-liste"><article class="kalt-karte rv" data-d="1"><div class="mini" style="--grad:12%" aria-hidden="true"><span>🔧</span></div><div><h3>Der Kleinkram frisst den Tag</h3><p>Notdienst, tropfende Ventile, Wartungen, der Kalender ist voll. Ein Inhaber hat es so gesagt: fünfmal vor Ort, sechsmal Kuchen bei der Oma, und am Ende bleibt nichts hängen.</p></div></article><article class="kalt-karte rv" data-d="2"><div class="mini" style="--grad:20%" aria-hidden="true"><span>🎲</span></div><div><h3>Großprojekte kommen nach Zufall</h3><p>Ein Komplettbad oder eine Wärmepumpe bringt 20.000 bis 50.000 €. Nur kommen die Projekte, wann sie wollen: monatelang nichts, und dann drei gleichzeitig, wenn ohnehin keine Kapazität da ist. Über Mundpropaganda lässt sich das nicht steuern.</p></div></article><article class="kalt-karte rv" data-d="3"><div class="mini" style="--grad:8%" aria-hidden="true"><span>👷</span></div><div><h3>Der Auftrag ist da, der Monteur nicht</h3><p>Kommt das große Projekt dann doch, fehlt der Mann dafür. Ein Inhaber hat es so gesagt: er schiebt Aufträge vom letzten Jahr vor sich her, weil das Personal fehlt. Und wer schon in Arbeit ist, schaut nicht auf Stellenportalen nach.</p></div></article></div>
+  </div></div>
+</section><section class="system" id="system">
   <div class="wrap">
-    <div class="eyebrow lift">Der Weg dahin</div>
-    <h2 class="big lift" style="max-width:620px;">In unter zwei Wochen<br>läuft die erste Kampagne.</h2>
-    <div style="height:58px;"></div>
-    <div class="prow"><div class="n glow">01</div><div class="t glow">Potenzialanalyse</div><div class="d glow">Wir schauen uns dein Einzugsgebiet an: Wie viele Leute erreichen wir, wer wirbt dort schon, was ist realistisch drin. Kostet nichts.</div></div>
-    <div class="prow"><div class="n glow">02</div><div class="t glow">Strategie &amp; Setup</div><div class="d glow">Zielgruppe, Botschaft und Funnel bauen wir auf dein Ziel zu – Monteure, Aufträge oder beides. Fürs Shooting kommen wir in deinen Betrieb.</div></div>
-    <div class="prow"><div class="n glow">03</div><div class="t glow">Kampagne live</div><div class="d glow">Meist nach sieben Tagen kommen die ersten Anfragen oder Bewerbungen rein – mit Kontaktdaten und vorgeprüft.</div></div>
-    <div class="prow"><div class="n glow">04</div><div class="t glow">Optimieren &amp; Skalieren</div><div class="d glow">Wir sehen, was jede Anfrage und jede Bewerbung kostet. Was funktioniert, bekommt mehr Budget.</div></div>
-  </div>
-</section>
-
-<!-- ═══ FINALE ═══ -->
-<section class="fin" id="start">
-  <img class="bg" src="/assets/projekte/wp-herbst.jpg" alt="">
-  <div class="fin-in">
-    <h2 class="mega lift">Rechnen wir<br>deine Region <b>durch.</b></h2>
-    <p class="fin-sub lift">30 Minuten, kostenlos und unverbindlich: Was ist in deinem Einzugsgebiet drin – Bewerbungen, Aufträge oder beides?</p>
-    <div class="fin-ctas lift">
-      <a class="btn btn-w" href="https://calendly.com/noahseelau/recruiting-potenzial" target="_blank" rel="noopener">Monteure finden <span class="ar">›</span></a>
-      <a class="btn btn-g" href="https://calendly.com/noahseelau/leadgen-potenzial" target="_blank" rel="noopener">Aufträge gewinnen <span class="ar">›</span></a>
-    </div>
-    <div class="fin-meta lift">
-      <span>📞 <a href="tel:+4981947174990"><b>+49 8194 7174990</b></a></span>
-      <span>✉️ <a href="mailto:info@handwerksmanufaktur.digital"><b>info@handwerksmanufaktur.digital</b></a></span>
-      <span>📍 <b>DACH-weit</b></span>
+    <div class="sec-kopf"><div><p class="kick w rv">So wird es warm</p><h2 class="d rv">Ein eigener Kanal. <span class="em w">Deine</span> Anfragen, <span class="em w">deine</span> Bewerber.</h2></div><p class="lead rv">Der Ablauf ist für Recruiting und Auftragsgewinnung derselbe. In unter zwei Wochen läuft die erste Kampagne.</p></div>
+    <div class="bento">
+      <article class="zelle z-a hoch rv"><div class="bild"><img src="/assets/fotos/klass-team-van.jpg" alt="Team eines SHK-Betriebs vor dem Firmenwagen — Shooting für die Kampagne" loading="lazy" width="1100" height="732"></div><span class="nr">01</span><h3>Anzeigen mit Fotos aus deinem Betrieb</h3><p>Dein Betrieb als Marke, mit deinen Leuten vor der Kamera. Wir kommen für das Shooting zu dir: Heizungskeller, Lager, Baustelle.</p></article>
+      <article class="zelle z-b hoch mit-phone rv" data-d="1"><div class="mini-phone" aria-hidden="true"><img src="/assets/funnels/erwin-schmidt-jobs-full.jpg" alt="" loading="lazy"></div><span class="nr">02</span><h3>Filterfragen vor der Bewerbung</h3><p>Bewerbung in 60 Sekunden, ohne Lebenslauf. Vorqualifiziert nach Gewerk, Erfahrung und Führerschein. Bei Aufträgen: Objekt, Baujahr, Eigentum, Zeitrahmen.</p></article>
+      <article class="zelle z-c rv" data-d="2"><svg class="umkreis" viewBox="0 0 320 320" aria-hidden="true">
+  <circle class="r" cx="160" cy="160" r="60"/><circle class="r" cx="160" cy="160" r="100"/><circle class="r aktiv" cx="160" cy="160" r="140"/>
+  <circle class="puls" cx="160" cy="160" r="140"/>
+  <circle class="pin" cx="110" cy="120" r="5"/><circle class="pin" cx="205" cy="95" r="5"/><circle class="pin" cx="240" cy="180" r="5"/><circle class="pin" cx="120" cy="230" r="5"/><circle class="pin" cx="190" cy="250" r="5"/><circle class="pin" cx="70" cy="170" r="5"/>
+  <circle class="haus" cx="160" cy="160" r="9"/>
+</svg><span class="nr">03</span><h3>Nur dein Einzugsgebiet</h3><p>Läuft auf deinen Namen, bespielt nur deinen Umkreis. Jede Anfrage gehört dir allein, nicht vier Wettbewerbern gleichzeitig.</p></article>
+      <article class="zelle z-d mit-tickets rv" data-d="3"><div class="tickets" aria-hidden="true"><div class="ticket" style="--d:0.00s"><span class="tic">👷</span><span><b>Anlagenmechaniker SHK</b><small>8 Jahre Erfahrung · Führerschein B · 12 km entfernt</small></span><span class="ok">qualifiziert ✓</span></div><div class="ticket" style="--d:0.12s"><span class="tic">🔧</span><span><b>Kundendiensttechniker</b><small>Heizung &amp; Sanitär · ab sofort · 7 km entfernt</small></span><span class="ok">qualifiziert ✓</span></div><div class="ticket" style="--d:0.24s"><span class="tic">🛁</span><span><b>Komplettbad</b><small>EFH · Baujahr 1994 · Eigentümer · Start im Frühjahr</small></span><span class="ok">vorqualifiziert ✓</span></div><div class="ticket" style="--d:0.36s"><span class="tic">🔥</span><span><b>Wärmepumpe</b><small>Ölheizung Bj. 2001 · 160 m² · Eigentümer</small></span><span class="ok">vorqualifiziert ✓</span></div></div><span class="nr">04</span><h3>So kommt es bei dir an</h3><p>Mit Kontaktdaten und vorgeprüft. Meist nach sieben Tagen die ersten.</p></article>
+      <article class="zelle z-e rv" data-d="4"><div class="bild"><img src="/assets/fotos/senftleben-lager.jpg" alt="Inhaber eines SHK-Betriebs im Lager" loading="lazy" width="1100" height="728"></div><span class="nr">05</span><h3>Wir sehen, was jede Anfrage kostet</h3><p>Was funktioniert, bekommt mehr Budget. Auf Wunsch gedrosselt auf ein, zwei Aufträge im Monat.</p></article>
     </div>
   </div>
-</section>
-
-<footer>
-  <span>© 2026 HandwerksManufaktur</span>
-  <div class="fl">
-    <a href="https://handwerksmanufaktur.digital/">HandwerksManufaktur</a>
-    <a href="/impressum/">Impressum</a>
-    <a href="/datenschutz/">Datenschutz</a>
-    <a href="/agb/">AGB</a>
+</section><section class="hebel" id="hebel">
+  <div class="wrap">
+    <div class="sec-kopf mitte"><p class="kick rv">Zwei Hebel, ein System</p><h2 class="d rv">Was fehlt dir gerade: <span class="em k">Leute</span> oder <span class="em w">Aufträge</span>?</h2></div>
+    <div class="hebel-grid">
+      <a class="hebel-karte rv" href="/neu/monteure/"><img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="Monteur eines SHK-Betriebs mit Werkzeug" loading="lazy" width="1100" height="733"><span class="chip"><span aria-hidden="true">👷</span>Hebel 1 · Recruiting</span><h3>Mitarbeitergewinnung für SHK-Monteure.</h3><p>Die guten Monteure suchen nicht. Sie sind in Arbeit. Aber sie wechseln, wenn das richtige Angebot vor ihnen liegt. Wir bringen deins dorthin, wo sie jeden Abend sind: in ihren Feed.</p><ul><li>Bewerbung in 60 Sekunden, ohne Lebenslauf</li><li>Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li><li>Dein Betrieb als Marke, mit Fotos aus deinem Betrieb</li></ul><span class="btn btn-white">Recruiting ansehen <span aria-hidden="true">→</span></span></a>
+      <a class="hebel-karte rv" data-d="1" href="/neu/auftraege/"><img src="/assets/projekte/bad-wanne.jpg" alt="Fertig saniertes Bad mit freistehender Wanne" loading="lazy" width="1100" height="825"><span class="chip"><span aria-hidden="true">🛁</span>Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><p>Dein eigener Kanal statt gekaufter Portal-Leads: läuft auf deinen Namen, bespielt nur dein Einzugsgebiet, und jede Anfrage gehört dir allein.</p><ul><li>Exklusiv für deinen Betrieb</li><li>Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>Regelbar, auf Wunsch auch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></a>
+    </div>
+  </div>
+</section><section class="fall" id="fallstudien">
+  <div class="wrap">
+    <div class="sec-kopf"><div><p class="kick rv">Ausgewählte Kampagnen</p><h2 class="d rv">Funnels, die <span class="em w">liefern.</span></h2></div><p class="lead rv">Zwei Kampagnen, die gerade laufen, mit den Zahlen aus den ersten Wochen. Beide Inhaber vor der Kamera.</p></div>
+    <div class="fall-grid">
+      <article class="fall-karte rv" data-d="0">
+  <div class="vid"><video preload="none" poster="/assets/testimonial/ess-testimonial-poster.jpg" playsinline><source src="/assets/testimonial/ess-testimonial.mp4" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span><span aria-hidden="true">▶</span> Video ansehen · 2:48</span></button></div>
+  <div class="txt">
+    <span class="chip "><i aria-hidden="true"></i>Recruiting-Funnel · läuft</span>
+    <blockquote>„Wir haben nur nicht gedacht, dass es so viele sind."</blockquote>
+    <div class="betrieb"><img src="/Logos%20SHK/Logo%20Erwin%20Schmidt%20weiss.png" alt="Erwin Schmidt &amp;amp; Sohn" loading="lazy"><span><b>Erwin Schmidt &amp; Sohn</b><small>Sindelfingen · SHK-Familienbetrieb in 3. Generation</small></span></div>
+    <div class="zahlen"><div class="zahl "><b>25</b><small>Bewerbungen</small></div><div class="zahl "><b>1</b><small>Stelle besetzt: Anlagenmechaniker SHK</small></div><div class="zahl "><b>4</b><small>Wochen Kampagnen-Laufzeit</small></div></div>
+    <p class="zeit">Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen</p>
+  </div>
+</article>
+      <article class="fall-karte rv" data-d="1">
+  <div class="vid"><video preload="none" poster="/assets/testimonial/senftleben-testimonial-poster.jpg" playsinline><source src="/assets/testimonial/senftleben-testimonial.mp4" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span><span aria-hidden="true">▶</span> Video ansehen · 2:22</span></button></div>
+  <div class="txt">
+    <span class="chip w"><i aria-hidden="true"></i>Auftrags-Funnel · läuft</span>
+    <blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht."</blockquote>
+    <div class="betrieb"><img src="/Logos%20SHK/Logo%20Senftleben%20Haustechnik%20weiss.png" alt="Senftleben Haustechnik" loading="lazy"><span><b>Senftleben Haustechnik</b><small>Ehingen (Donau) · Badsanierung in 3. Generation</small></span></div>
+    <div class="zahlen"><div class="zahl w"><b>125.000</b><small>Aufrufe im 25-km-Umkreis</small></div><div class="zahl w"><b>21</b><small>Bad-Anfragen über den Funnel</small></div><div class="zahl w"><b>10<span class="plus">+</span></b><small>Vor-Ort-Termine</small></div></div>
+    <p class="zeit">Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten</p>
+  </div>
+</article>
+    </div>
+    <p class="rv" style="text-align:center;margin-top:32px"><a class="btn btn-white" href="/neu/fallstudien/">Beide Fallstudien in voller Länge <span aria-hidden="true">→</span></a></p>
+  </div>
+</section><section class="reels" id="reels">
+  <div class="wrap">
+    <div class="sec-kopf"><div><p class="kick rv">Aus der Praxis</p><h2 class="d rv">Direkt im Betrieb <span class="em w">gedreht.</span></h2></div><p class="lead rv">Inhaber und Monteure unserer Kunden vor der Kamera. Genau so laufen die Anzeigen im Feed.</p></div>
+    <div class="reel-reihe"><figure class="reel rv" data-d="1"><video muted loop playsinline preload="none" data-quelle="/assets/reels/patrick-reel.mp4" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><button class="ton" type="button" aria-label="Ton an oder aus">🔇</button><figcaption>Patrick</figcaption></figure><figure class="reel rv" data-d="2"><video muted loop playsinline preload="none" data-quelle="/assets/reels/josef.mp4" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><button class="ton" type="button" aria-label="Ton an oder aus">🔇</button><figcaption>Josef</figcaption></figure><figure class="reel rv" data-d="3"><video muted loop playsinline preload="none" data-quelle="/assets/reels/mirjana-hook.mp4" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><button class="ton" type="button" aria-label="Ton an oder aus">🔇</button><figcaption>Mirjana</figcaption></figure><figure class="reel rv" data-d="4"><video muted loop playsinline preload="none" data-quelle="/assets/reels/meike-solo.mp4" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><button class="ton" type="button" aria-label="Ton an oder aus">🔇</button><figcaption>Meike</figcaption></figure><figure class="reel rv" data-d="5"><video muted loop playsinline preload="none" data-quelle="/assets/reels/benjamin-schirm.mp4" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><button class="ton" type="button" aria-label="Ton an oder aus">🔇</button><figcaption>Benjamin</figcaption></figure></div>
+  </div>
+</section><section class="stimmen" id="stimmen">
+  <div class="wrap">
+    <div class="sec-kopf"><div><p class="kick rv">Stimmen aus der Branche</p><h2 class="d rv">Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span></h2></div><p class="rv"><span class="google"><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.8 6.1C12.3 13.5 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.6h12.7c-.6 3-2.2 5.5-4.7 7.2l7.5 5.8c4.4-4.1 7-10.1 7-17.1z"/><path fill="#FBBC05" d="M10.4 28.6A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.8-4.6l-7.8-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.8-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.7-4-13.6-9.9l-7.8 6.1C6.5 42.6 14.6 48 24 48z"/></svg><span>5,0 <span class="stern" aria-hidden="true">★★★★★</span></span><span style="font-weight:500;color:var(--sub)">Google Bewertungen</span></span></p></div>
+    <div class="stimmen-bahn"><article class="stimme"><span class="stern" aria-label="5 von 5 Sternen">★★★★★</span><blockquote>„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. Die Beratung war kompetent, verständlich und stets auf unsere individuellen Wünsche abgestimmt. (…) Das Ergebnis hat unsere Erwartungen nicht nur erfüllt, sondern sogar übertroffen. (…)“</blockquote><div class="wer"><span class="av" aria-hidden="true">F</span><span><b>Franz Gallenberger</b><small>Sanitär · Heizung · Klimatechnik</small></span></div></article><article class="stimme"><span class="stern" aria-label="5 von 5 Sternen">★★★★★</span><blockquote>„(…) Wir sind sehr zufrieden! Auch der Kontakt mit Noah ist immer freundlich. Grüße Fa. Senftleben Sanitär Heizung aus Ehingen (Donau).“</blockquote><div class="wer"><span class="av" aria-hidden="true">B</span><span><b>Benjamin Senftleben</b><small>Senftleben Haustechnik, Ehingen</small></span></div></article><article class="stimme"><span class="stern" aria-label="5 von 5 Sternen">★★★★★</span><blockquote>„(…) Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit, gerne wieder.“</blockquote><div class="wer"><span class="av" aria-hidden="true">L</span><span><b>Lanzinger GmbH</b><small>Sanitär · Heizung · Klimatechnik</small></span></div></article><article class="stimme"><span class="stern" aria-label="5 von 5 Sternen">★★★★★</span><blockquote>„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren. (…)“</blockquote><div class="wer"><span class="av" aria-hidden="true">A</span><span><b>Andrea Süßmeier</b><small>Süßmeier Heizungstechnik · SHK</small></span></div></article><article class="stimme"><span class="stern" aria-label="5 von 5 Sternen">★★★★★</span><blockquote>„(…) Nach einem kurzen Telefonat und Kennenlernen verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“</blockquote><div class="wer"><span class="av" aria-hidden="true">H</span><span><b>Hannes Schmidt GmbH</b><small>Sanitär-Heizung-Klima</small></span></div></article><article class="stimme"><span class="stern" aria-label="5 von 5 Sternen">★★★★★</span><blockquote>„(…) Zusätzlich haben wir sein Recruiting Angebot in Anspruch genommen, auch hier hat er beste Arbeit geleistet und tolle Anzeigen erstellt und sehr professionell umgesetzt! (…)“</blockquote><div class="wer"><span class="av" aria-hidden="true">A</span><span><b>Alisa Kirchner</b><small>Kirchner GmbH</small></span></div></article><article class="stimme"><span class="stern" aria-label="5 von 5 Sternen">★★★★★</span><blockquote>„(…) wir haben eine überraschend hohe Anzahl an BewerberInnen und InteressentInnen über die kreative Stellenanzeige auf Facebook etc. erhalten. Für uns ist dieser Weg der Personalsuche in jedem Fall zukunftsweisend und zeigt sicheren Erfolg. (…)“</blockquote><div class="wer"><span class="av" aria-hidden="true">I</span><span><b>Isabella Rauch</b><small>Autohaus Ressle · Recruiting</small></span></div></article></div>
+    <p class="stimmen-hint">Zum Blättern wischen oder mit der Maus ziehen.</p>
+  </div>
+</section><section class="ablauf" id="ablauf">
+  <div class="wrap">
+    <div class="sec-kopf"><div><p class="kick w rv">Unser Vorgehen</p><h2 class="d rv">Vier Schritte, bis es <span class="em w">läuft.</span></h2></div><p class="lead rv">Der Ablauf ist für Recruiting und Auftragsgewinnung derselbe. In unter zwei Wochen läuft die erste Kampagne.</p></div>
+    <div class="rohr-wrap"><div class="rohr" aria-hidden="true"><i></i><b style="left:12.5%"></b><b style="left:37.5%"></b><b style="left:62.5%"></b><b style="left:87.5%"></b></div><div class="schritte"><article class="schritt rv" data-d="1"><span class="nr" aria-hidden="true">01</span><div class="ic" aria-hidden="true">🔍</div><h3>Potenzialanalyse</h3><p>Wir schauen uns dein Einzugsgebiet an: Wie viele Leute erreichen wir, wer wirbt dort schon, was ist realistisch drin.</p><span class="dauer">kostet nichts</span></article><article class="schritt rv" data-d="2"><span class="nr" aria-hidden="true">02</span><div class="ic" aria-hidden="true">🎯</div><h3>Strategie &amp; Setup</h3><p>Zielgruppe, Botschaft und Funnel bauen wir auf dein Ziel zu: Monteure, Aufträge oder beides.</p><span class="dauer">unter 2 Wochen</span></article><article class="schritt rv" data-d="3"><span class="nr" aria-hidden="true">03</span><div class="ic" aria-hidden="true">🚀</div><h3>Kampagne live</h3><p>Meist nach sieben Tagen kommen die ersten Anfragen oder Bewerbungen rein, mit Kontaktdaten und vorgeprüft.</p><span class="dauer">ab Tag 7</span></article><article class="schritt rv" data-d="4"><span class="nr" aria-hidden="true">04</span><div class="ic" aria-hidden="true">📈</div><h3>Optimieren &amp; Skalieren</h3><p>Wir sehen, was jede Anfrage und jede Bewerbung kostet. Was funktioniert, bekommt mehr Budget.</p><span class="dauer">laufend</span></article></div></div>
+  </div>
+</section><section class="ueber" id="ueber-uns">
+  <div class="wrap"><div class="insel rv">
+    <div class="txt">
+      <p class="kick">Wer dahinter steht</p>
+      <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
+      <p>Ich bin Noah. Seit über sechs Jahren dreht sich bei uns alles um eine Branche: das Handwerk. Über 120 Betriebe später wissen wir ziemlich genau, was funktioniert und was du dir sparen kannst.</p>
+      <p><b>Wir kennen dein Gewerk, bevor du es erklären musst.</b> Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer bereit für sein neues Bad ist, und bauen deine Kampagne genau darauf.</p>
+      <div class="gruender"><img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>Gründer · dein direkter Draht vom ersten Call bis zum Reporting</small></span></div>
+      <div class="stats"><div class="stat"><b>120<span>+</span></b><small>Handwerksbetriebe betreut</small></div><div class="stat"><b>5,0<span>★</span></b><small>Google-Bewertung</small></div><div class="stat"><b>Ø 7</b><small>Tage bis zur ersten Anfrage oder Bewerbung</small></div></div>
+      <p style="margin-top:10px"><a class="btn btn-glass" href="/neu/ueber-uns/">Mehr über uns <span aria-hidden="true">→</span></a></p>
+    </div>
+    <div class="foto"><img src="/assets/fotos/noah-portrait.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="2000" height="1333"></div>
+  </div></div>
+</section><section class="statement" aria-label="Leitsatz"><div class="wrap"><p><span class="w">Voll</span> <span class="w">ist</span> <span class="w">der</span> <span class="w">Kalender</span> <span class="w">bei</span> <span class="w">fast</span> <span class="w">jedem</span> <span class="w">Betrieb.</span> <span class="w">Die</span> <span class="w">Frage</span> <span class="w">ist,</span> <span class="w em">womit.</span></p></div></section><section class="faq" id="faq">
+  <div class="wrap"><div class="faq-grid">
+    <div class="links rv"><p class="kick">Häufige Fragen</p><h2 class="d">Bevor du <span class="em k">fragst.</span></h2><p>Die Fragen, die in fast jedem Erstgespräch mit SHK-Inhabern kommen. Alles andere klären wir in der Potenzialanalyse, ohne Fachchinesisch.</p>
+      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" width="500" height="500"><span><b>Deine Frage steht nicht dabei?</b><small>Am Telefon bist du direkt bei mir.</small></span></div><a class="btn btn-ink" href="tel:+4981947174990"><span class="ic" aria-hidden="true">📞</span>+49 8194 7174990</a></div>
+    </div>
+    <div class="faq-liste rv" data-d="1"><details class="faq-item" open><summary>Was kostet die Zusammenarbeit?<i aria-hidden="true">+</i></summary><div class="a"><p>Der Start liegt bei den meisten SHK-Betrieben im niedrigen vierstelligen Bereich für Setup, Shooting und Kampagnenaufbau, dazu eine monatliche Betreuung ab 1.000 €. Das Werbebudget kommt separat und geht direkt an Meta. Für ein normales Einzugsgebiet rechnen wir mit 750 bis 1.000 € im Monat. Läuft eine zweite Kampagne mit, wird die Betreuung pro Kampagne günstiger. Den genauen Preis rechnen wir in der Potenzialanalyse für deine Region durch.</p></div></details><details class="faq-item"><summary>Wir haben schon genug zu tun, warum dann ihr?<i aria-hidden="true">+</i></summary><div class="a"><p>Voll ist der Kalender bei fast jedem Betrieb. Die Frage ist, womit. Wenn du mehr margenstarke Badsanierungen und Wärmepumpen statt Kleinreparaturen willst, bringen wir genau diese Anfragen planbar rein.</p></div></details><details class="faq-item"><summary>Wie schnell kommen die ersten Anfragen?<i aria-hidden="true">+</i></summary><div class="a"><p>In den meisten Fällen gehen erste qualifizierte Anfragen innerhalb von 7 Tagen nach Kampagnenstart ein. Das Setup davor dauert unter 2 Wochen.</p></div></details><details class="faq-item"><summary>Wie funktioniert Mitarbeitergewinnung über Social Media?<i aria-hidden="true">+</i></summary><div class="a"><p>Social Recruiting erreicht Anlagenmechaniker SHK und Kundendiensttechniker dort, wo sie ohnehin sind: auf Instagram und Facebook, nicht auf Stellenportalen, die nur aktiv Suchende sehen. Die meisten Fachkräfte im Handwerk sind in Arbeit und wechseln nur, wenn ein Angebot vor ihnen landet. Wir spielen deine Stellen als Anzeige in deinem Einzugsgebiet aus, die Bewerbung dauert 60 Sekunden ohne Lebenslauf, und du bekommst nur vorqualifizierte Kandidaten mit Gewerk, Erfahrung und Führerschein.</p></div></details><details class="faq-item"><summary>Was, wenn wir die Anfragen nicht abarbeiten können?<i aria-hidden="true">+</i></summary><div class="a"><p>Die Kampagne lässt sich über die Qualifizierung drosseln, auf Wunsch auf ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team stemmen kann. Es geht um planbare Auslastung, nicht um Masse.</p></div></details><details class="faq-item"><summary>Was unterscheidet euch von Lead-Portalen?<i aria-hidden="true">+</i></summary><div class="a"><p>Portal-Leads werden parallel an mehrere Betriebe verkauft, du telefonierst um die Wette mit Preisvergleichern. Wir bauen stattdessen einen eigenen Kanal in deinem Namen: deine Fotos, dein Gebiet, deine Anfragen. Und eine Anfrage ohne Adresse und Rückrufnummer zählt bei uns nicht als Anfrage.</p></div></details><details class="faq-item"><summary>Muss ich mich lange binden?<i aria-hidden="true">+</i></summary><div class="a"><p>Nein. Eine Anlaufzeit von 3 Monaten gilt, damit das System seine volle Wirkung entfalten kann. Danach monatlich kündbar. Kein Knebelvertrag.</p></div></details><details class="faq-item"><summary>Was, wenn Personal unser Engpass ist?<i aria-hidden="true">+</i></summary><div class="a"><p>Dann starten wir mit Recruiting statt Auftragsgewinnung: gezielte Kampagnen für Monteure in deiner Region, dieselbe Methodik mit anderem Ziel. Siehst du oben live bei Senftleben und Erwin Schmidt &amp; Sohn.</p></div></details></div>
+  </div></div>
+</section><section class="kontakt" id="kontakt">
+  <div class="wrap"><div class="kontakt-karte rv">
+    <div>
+      <p class="kick">Potenzialanalyse</p>
+      <h2 class="d">Bereit für <span class="em w">planbare</span> Aufträge und Bewerbungen?</h2>
+      <p style="margin-top:18px">In 30 Minuten rechnen wir durch, was in deiner Region drin ist: Bewerbungen von Monteuren oder Anfragen für Bäder und Wärmepumpen. Kostenlos und unverbindlich.</p>
+      <div class="kontakt-wege"><a href="tel:+4981947174990"><span aria-hidden="true">📞</span>+49 8194 7174990</a><a href="mailto:info@handwerksmanufaktur.digital"><span aria-hidden="true">✉️</span>info@handwerksmanufaktur.digital</a><span><span aria-hidden="true">📍</span>DACH-weit</span></div>
+      <p class="zusagen"><span>Kostenlos &amp; unverbindlich</span><span>Rückmeldung in 24h</span><span>Nur SHK &amp; Handwerk</span></p>
+    </div>
+    <div class="wahl">
+      <a href="https://calendly.com/noahseelau/recruiting-potenzial" target="_blank" rel="noopener"><span class="ic" aria-hidden="true">👷</span><span><b>Monteure finden</b><small>30 Minuten · Recruiting-Potenzial deiner Region</small></span><span class="pfeil" aria-hidden="true">→</span></a>
+      <a class="w" href="https://calendly.com/noahseelau/leadgen-potenzial" target="_blank" rel="noopener"><span class="ic" aria-hidden="true">🛁</span><span><b>Aufträge gewinnen</b><small>30 Minuten · Bad- und Wärmepumpen-Potenzial</small></span><span class="pfeil" aria-hidden="true">→</span></a>
+    </div>
+  </div></div>
+</section></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="oben">
+      <div class="marke">
+        <img src="/assets/logo-hwm-schwarz.png" alt="HandwerksManufaktur" width="849" height="247">
+        <p>Marketing für SHK-Betriebe: Monteure und Aufträge, planbar statt nach Zufall. Ein Team, ein Ansprechpartner, seit über sechs Jahren nur Handwerk.</p>
+      </div>
+      <div><h4>Leistungen</h4><ul>
+        <li><a href="/neu/monteure/"><span aria-hidden="true">👷</span>Monteure gewinnen</a></li>
+        <li><a href="/neu/auftraege/"><span aria-hidden="true">🛁</span>Aufträge gewinnen</a></li>
+        <li><a href="/neu/potenzialanalyse/"><span aria-hidden="true">🎯</span>Potenzialanalyse</a></li>
+      </ul></div>
+      <div><h4>HandwerksManufaktur</h4><ul>
+        <li><a href="/neu/fallstudien/"><span aria-hidden="true">🎬</span>Fallstudien</a></li>
+        <li><a href="/neu/ueber-uns/"><span aria-hidden="true">🤝</span>Über uns</a></li>
+        <li><a href="https://handwerksmanufaktur.digital/"><span aria-hidden="true">🌐</span>Webdesign für Handwerk</a></li>
+      </ul></div>
+      <div><h4>Kontakt</h4><ul>
+        <li><a href="tel:+4981947174990"><span aria-hidden="true">📞</span>+49 8194 7174990</a></li>
+        <li><a href="mailto:info@handwerksmanufaktur.digital"><span aria-hidden="true">✉️</span>info@handwerksmanufaktur.digital</a></li>
+        <li><a href="/impressum/"><span aria-hidden="true">📄</span>Impressum</a></li>
+        <li><a href="/datenschutz/"><span aria-hidden="true">🔒</span>Datenschutz</a></li>
+        <li><a href="/agb/"><span aria-hidden="true">📑</span>AGB</a></li>
+      </ul></div>
+    </div>
+    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur LTD · Alle Rechte vorbehalten.</span><span>Einsatzgebiet: Deutschland · Österreich · Schweiz</span></div>
   </div>
 </footer>
-
-<script>
-/* Nav */
-var nav=document.getElementById('nav');
-addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
-
-/* Reveal: .lift hebt sich, .glow leuchtet auf — leicht gestaffelt */
-var io=new IntersectionObserver(function(es){
-  es.forEach(function(e){
-    if(e.isIntersecting){
-      var el=e.target, sibs=[].slice.call(el.parentElement.querySelectorAll('.lift,.glow')), i=sibs.indexOf(el);
-      setTimeout(function(){el.classList.add('on');}, Math.max(0,i)*90);
-      io.unobserve(el);
-    }
-  });
-},{threshold:.2,rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('.lift,.glow').forEach(function(el){io.observe(el);});
-
-/* Hebel-Liste: Scroll-Fortschritt steuert Highlight + Hintergrundbild */
-(function(){
-  var sec=document.getElementById('hebel'), rows=[].slice.call(sec.querySelectorAll('.hrow')),
-      bgs=[].slice.call(sec.querySelectorAll('.hebel-bg img')), cur=-1;
-  function upd(){
-    var r=sec.getBoundingClientRect(), total=r.height-innerHeight;
-    var p=Math.min(1,Math.max(0,-r.top/total));
-    var i=Math.min(rows.length-1,Math.floor(p*rows.length));
-    if(i!==cur){
-      cur=i;
-      rows.forEach(function(el,k){el.classList.toggle('act',k===i);});
-      bgs.forEach(function(el,k){el.classList.toggle('show',k===i);});
-    }
-  }
-  addEventListener('scroll',upd,{passive:true});upd();
-})();
-
-window.__lebt = true;
-</script>
+<script src="/neu/main.js?v=209e7359" defer></script>
 </body>
 </html>

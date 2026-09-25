@@ -305,8 +305,9 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 /* ── Ablauf (das Rohr) ──────────────────────────── */
 .ablauf{padding:clamp(80px,9vw,140px) 0}
 .rohr-wrap{position:relative;margin-top:60px}
-.rohr{position:absolute;left:0;right:0;top:34px;height:14px;border-radius:7px;background:var(--line);overflow:hidden}
-.rohr i{position:absolute;inset:0;background:var(--regler);transform-origin:left;transform:scaleX(var(--p,0));transition:transform .2s linear}
+.rohr{position:absolute;left:0;right:0;top:34px;height:16px;border-radius:8px;background:var(--line);overflow:visible}
+.rohr i{position:absolute;inset:0;border-radius:8px;background:var(--regler);transform-origin:left;transform:scaleX(var(--p,0));transition:transform .2s linear}
+.rohr::after{content:"";position:absolute;left:calc(var(--p,0) * 100%);top:50%;width:18px;height:18px;border-radius:50%;background:var(--warm);box-shadow:0 0 0 6px var(--warm-soft),0 0 24px rgba(245,118,43,.6);transform:translate(-50%,-50%);transition:left .2s linear;z-index:3;opacity:min(1, calc(var(--p,0) * 40))}
 .rohr b{position:absolute;top:50%;width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid var(--line2);transform:translate(-50%,-50%);transition:border-color .3s,background .3s,box-shadow .3s;z-index:2}
 .rohr b.an{border-color:var(--warm);box-shadow:0 0 0 6px var(--warm-soft)}
 .schritte{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;z-index:1;padding-top:80px}

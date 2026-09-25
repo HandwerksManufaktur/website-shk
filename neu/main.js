@@ -28,7 +28,8 @@
 
   /* Reveal */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('an'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px', threshold: .12 });
-  $$('.rv').forEach(el => io.observe(el));
+  $$('.rv').forEach(el => { if (el.getBoundingClientRect().top < innerHeight * 1.1) el.classList.add('an'); else io.observe(el); });
+  addEventListener('pageshow', () => $$('.rv').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('an'); }));
 
   /* Bühne (Hero): Clip-Expand + Regler */
   const buehne = $('.buehne');

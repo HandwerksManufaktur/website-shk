@@ -66,6 +66,9 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <head>
 <script>document.documentElement.classList.add('js');setTimeout(function(){{if(!window.__lebt)document.documentElement.classList.remove('js')}},3000)</script>
 <meta charset="UTF-8">
+<meta name="version" content="{V}">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<script>(function(){{try{{var v='{V}';fetch('{u("/version.json")}?t='+Date.now(),{{cache:'no-store'}}).then(function(r){{return r.json()}}).then(function(j){{if(j&&j.v&&j.v!==v&&sessionStorage.getItem('shk-reload')!==j.v){{sessionStorage.setItem('shk-reload',j.v);location.replace(location.pathname+'?v='+j.v+location.hash)}}}}).catch(function(){{}})}}catch(e){{}}}})()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(titel)}</title>
 <meta name="description" content="{html.escape(beschreibung)}">
@@ -541,6 +544,7 @@ def seite_potenzial():
 
 # ── Schreiben ─────────────────────────────────────────────────────────────
 SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/fallstudien/': seite_fallstudien, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial}
+(AUS/'version.json').write_text('{"v":"%s"}\n' % V, encoding='utf-8')
 for pfad, fn in SEITEN.items():
     ziel = AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html'
     ziel.parent.mkdir(parents=True, exist_ok=True)

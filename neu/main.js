@@ -178,7 +178,7 @@
   }
 
   /* Phones auf Bühne/Unterseiten: Scrollhöhe je Bild */
-  $$('.phone .scroller img, .mini-phone img').forEach(img => {
+  $$('.phone .scroller img, .zelle .mini-phone:not(.mini-phones .mini-phone) img').forEach(img => {
     const set = () => { const box = img.parentElement.getBoundingClientRect(); if (img.naturalHeight) img.style.setProperty('--sk', (box.height / 1038).toFixed(3)); };
     img.complete ? set() : img.addEventListener('load', set); addEventListener('resize', set);
   });

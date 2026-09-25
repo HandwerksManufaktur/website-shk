@@ -153,7 +153,7 @@ def logo_band():
     imgs2 = ''.join(f'<img src="{src}" alt="" loading="lazy"{" class=wide" if r >= 3.6 else ""}>' for src, name, r in LOGOS[::-1])
     return f'''<section class="band" aria-label="Betriebe, mit denen wir arbeiten">
   <div class="wrap"><div class="band-innen rv">
-    <p class="band-t">Über <b>120 Betriebe</b> setzen auf uns. Hier ein Ausschnitt</p>
+    <p class="band-t">Über <b>130 Betriebe</b> setzen auf uns. Hier ein Ausschnitt</p>
     <div class="marq">{imgs}{imgs}</div>
     <div class="marq rueck">{imgs2}{imgs2}</div>
   </div></div>
@@ -214,10 +214,10 @@ def system(mixed=True):
     <div class="sec-kopf"><div><p class="kick w rv">So wird es warm</p><h2 class="d rv">Ein eigener Kanal. <span class="em w">Deine</span> Anfragen, <span class="em w">deine</span> Bewerber.</h2></div><p class="lead rv">Der Ablauf ist für Recruiting und Auftragsgewinnung derselbe. In unter zwei Wochen läuft die erste Kampagne.</p></div>
     <div class="bento">
       <article class="zelle z-a hoch rv"><div class="bild"><img src="/assets/fotos/klass-team-van.jpg" alt="Team eines SHK-Betriebs vor dem Firmenwagen — Shooting für die Kampagne" loading="lazy" width="1100" height="732" style="object-position:50% 30%"></div><span class="nr">01</span><h3>Anzeigen mit Fotos aus deinem Betrieb</h3><p>Dein Betrieb als Marke, mit deinen Leuten vor der Kamera. Wir kommen für das Shooting zu dir: Heizungskeller, Lager, Baustelle.</p></article>
-      <article class="zelle z-b hoch mit-phone rv" data-d="1"><div class="mini-phone" aria-hidden="true"><img src="/assets/funnels/erwin-schmidt-jobs-full.jpg" alt="" loading="lazy"></div><span class="nr">02</span><h3>Filterfragen vor der Bewerbung</h3><p>Bewerbung in 60 Sekunden, ohne Lebenslauf. Vorqualifiziert nach Gewerk, Erfahrung und Führerschein. Bei Aufträgen: Objekt, Baujahr, Eigentum, Zeitrahmen.</p></article>
+      <article class="zelle z-b hoch mit-panels rv" data-d="1"><div class="mini-phones" aria-hidden="true"><div class="mini-phone" style="--off:0%"><img src="/assets/funnels/erwin-schmidt-jobs-full.jpg" alt="" loading="lazy"></div><div class="mini-phone" style="--off:31%"><img src="/assets/funnels/erwin-schmidt-jobs-full.jpg" alt="" loading="lazy"></div><div class="mini-phone" style="--off:62%"><img src="/assets/funnels/senftleben-leadgen-full.jpg" alt="" loading="lazy"></div></div><span class="nr">02</span><h3>Filterfragen vor der Bewerbung</h3><p>Bewerbung in 60 Sekunden, ohne Lebenslauf. Vorqualifiziert nach Gewerk, Erfahrung und Führerschein. Bei Aufträgen: Objekt, Baujahr, Eigentum, Zeitrahmen.</p></article>
       <article class="zelle z-c rv" data-d="2">{UMKREIS}<span class="nr">03</span><h3>Nur dein Einzugsgebiet</h3><p>Läuft auf deinen Namen, bespielt nur deinen Umkreis. Jede Anfrage gehört dir allein, nicht vier Wettbewerbern gleichzeitig.</p></article>
       <article class="zelle z-d mit-tickets rv" data-d="3">{tickets(tk)}<span class="nr">04</span><h3>So kommt es bei dir an</h3><p>Mit Kontaktdaten und vorgeprüft. Meist nach sieben Tagen die ersten.</p></article>
-      <article class="zelle z-e rv" data-d="4"><div class="bild"><img src="/assets/fotos/senftleben-lager.jpg" alt="Inhaber eines SHK-Betriebs im Lager" loading="lazy" width="1100" height="728" style="object-position:50% 35%"></div><span class="nr">05</span><h3>Wir sehen, was jede Anfrage kostet</h3><p>Was funktioniert, bekommt mehr Budget. Auf Wunsch gedrosselt auf ein, zwei Aufträge im Monat.</p></article>
+      <article class="zelle z-e rv" data-d="4"><div class="bild"><img src="/assets/fotos/shk-02.jpg" alt="Inhaber und Mitarbeiter am Laptop" loading="lazy" width="1100" height="732" style="object-position:50% 30%"></div><span class="nr">05</span><h3>Wir sehen, was jede Anfrage kostet</h3><p>Was funktioniert, bekommt mehr Budget. Auf Wunsch gedrosselt auf ein, zwei Aufträge im Monat.</p></article>
     </div>
   </div>
 </section>'''
@@ -227,8 +227,8 @@ def hebel():
   <div class="wrap">
     <div class="sec-kopf mitte"><p class="kick rv">Zwei Hebel, ein System</p><h2 class="d rv">Was fehlt dir gerade: <span class="em k">Leute</span> oder <span class="em w">Aufträge</span>?</h2></div>
     <div class="hebel-grid">
-      <a class="hebel-karte rv" href="{u('/monteure/')}"><img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="Monteur eines SHK-Betriebs mit Werkzeug" loading="lazy" width="1100" height="733" style="object-position:55% 25%"><span class="chip"><span aria-hidden="true">👷</span>Hebel 1 · Recruiting</span><h3>Mitarbeitergewinnung für SHK-Monteure.</h3><p>Die guten Monteure suchen nicht. Sie sind in Arbeit. Aber sie wechseln, wenn das richtige Angebot vor ihnen liegt. Wir bringen deins dorthin, wo sie jeden Abend sind: in ihren Feed.</p><ul><li>Bewerbung in 60 Sekunden, ohne Lebenslauf</li><li>Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li><li>Dein Betrieb als Marke, mit Fotos aus deinem Betrieb</li></ul><span class="btn btn-white">Recruiting ansehen <span aria-hidden="true">→</span></span></a>
-      <a class="hebel-karte rv" data-d="1" href="{u('/auftraege/')}"><img src="/assets/projekte/bad-wanne.jpg" alt="Fertig saniertes Bad mit freistehender Wanne" loading="lazy" width="1100" height="825"><span class="chip"><span aria-hidden="true">🛁</span>Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><p>Dein eigener Kanal statt gekaufter Portal-Leads: läuft auf deinen Namen, bespielt nur dein Einzugsgebiet, und jede Anfrage gehört dir allein.</p><ul><li>Exklusiv für deinen Betrieb</li><li>Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>Regelbar, auf Wunsch auch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></a>
+      <a class="hebel-karte rv" href="{u('/monteure/')}"><div class="txt"><span class="chip"><span aria-hidden="true">👷</span>Hebel 1 · Recruiting</span><h3>Mitarbeitergewinnung für SHK-Monteure.</h3><ul><li>Bewerbung in 60 Sekunden, ohne Lebenslauf</li><li>Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li><li>Dein Betrieb als Marke, mit Fotos aus deinem Betrieb</li></ul><span class="btn btn-white">Recruiting ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="Monteur eines SHK-Betriebs mit Werkzeug" loading="lazy" width="1100" height="733" style="object-position:55% 25%"></div></a>
+      <a class="hebel-karte w rv" data-d="1" href="{u('/auftraege/')}"><div class="txt"><span class="chip"><span aria-hidden="true">🛁</span>Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><ul><li>Exklusiv für deinen Betrieb</li><li>Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>Regelbar, auf Wunsch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/senftleben-team.jpg" alt="Das Team von Senftleben Haustechnik" loading="lazy" width="1100" height="725" style="object-position:50% 30%"></div></a>
     </div>
   </div>
 </section>'''
@@ -254,12 +254,13 @@ def fall_karte(logo, name, ort, chip, chipk, poster, video, dauer, zitat, zahlen
 def fallstudien_teaser():
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Ausgewählte Kampagnen</p><h2 class="d rv">Funnels, die <span class="em w">liefern.</span></h2></div><p class="lead rv">Zwei Kampagnen, die gerade laufen, mit den Zahlen aus den ersten Wochen. Beide Inhaber vor der Kamera.</p></div>
-    <div class="fall-grid">
-      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting-Funnel · läuft', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Wir haben nur nicht gedacht, dass es so viele sind."', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt: Anlagenmechaniker SHK'), ('4', 'Wochen Kampagnen-Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen')}
-      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Auftrags-Funnel · läuft', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht."', [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 1)}
+    <div class="sec-kopf"><div><p class="kick rv">Ausgewählte Kampagnen</p><h2 class="d rv">Funnels, die <span class="em w">liefern.</span></h2></div><p class="lead rv">Drei Kampagnen, die gerade laufen, mit den Zahlen aus den ersten Wochen. Die Inhaber vor der Kamera.</p></div>
+    <div class="fall-grid drei">
+      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting-Funnel · läuft', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Wir haben nur nicht gedacht, dass es so viele sind."', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Anlagenmechaniker SHK, erste 4 Wochen')}
+      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Auftrags-Funnel · läuft', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht."', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · 25-km-Umkreis, erste 2 Monate', 1)}
+      {sussmann_karte(2)}
     </div>
-    <p class="rv" style="text-align:center;margin-top:32px"><a class="btn btn-white" href="{u('/fallstudien/')}">Beide Fallstudien in voller Länge <span aria-hidden="true">→</span></a></p>
+    <p class="rv" style="text-align:center;margin-top:32px"><a class="btn btn-white" href="{u('/fallstudien/')}">Alle Fallstudien in voller Länge <span aria-hidden="true">→</span></a></p>
   </div>
 </section>'''
 
@@ -285,17 +286,17 @@ def senftleben_recruiting_karte():
   <div class="zahlen"><div class="zahl"><b>21</b><small>Bewerbungen</small></div><div class="zahl"><b>18</b><small>Tage Kampagne</small></div><div class="zahl"><b>1</b><small>Stelle: Lohn &amp; Buchhaltung</small></div></div><p class="zeit">Stand 22.09.2026</p></div>
 </article>'''
 
-def sussmann_karte():
-    return f'''<article class="fall-karte rv" data-d="1" style="grid-column:span 1">
+def sussmann_karte(d=1):
+    return f'''<article class="fall-karte rv" data-d="{d}">
   <div class="vid"><img src="/assets/fotos/shk-02.jpg" alt="Patrick und Mirjana Sussmann in ihrem Betrieb" loading="lazy" width="1100" height="732" style="object-position:50% 30%"></div>
   <div class="txt"><span class="chip w"><i aria-hidden="true"></i>Auftrags-Funnel · läuft</span><blockquote>„Wir kriegen auch immer wieder E-Mails: Sie hat unsere Werbung bei Instagram gesehen und voll sympathisch (…)"</blockquote><p style="color:var(--sub);font-size:14px;margin-top:-6px">Benjamin Senftleben über das, was neben den Anfragen noch ankommt.</p>
   <div class="betrieb"><img src="{SUS_LOGO}" alt="Sussmann GmbH" loading="lazy"><span><b>Sussmann GmbH</b><small>Kirchheim · Badsanierung</small></span></div>
-  <div class="zahlen"><div class="zahl w"><b>14</b><small>Bad-Anfragen</small></div><div class="zahl w"><b>7<span class="plus">+</span></b><small>Vor-Ort-Termine</small></div><div class="zahl w"><b>10.000 €</b><small>Erster Auftrag nach 2 Wochen Kampagne</small></div></div><p class="zeit">Patrick Wähnl, Sussmann GmbH · Stand 22.09.2026</p></div>
+  <div class="zahlen"><div class="zahl w"><b>14</b><small>Bad-Anfragen</small></div><div class="zahl w"><b>7<span class="plus">+</span></b><small>Vor-Ort-Termine</small></div><div class="zahl w"><b>10.000 €</b><small>Erster Auftrag</small></div></div><p class="zeit">Patrick Wähnl, Sussmann GmbH · erster Auftrag nach 2 Wochen Kampagne · Stand 22.09.2026</p></div>
 </article>'''
 
 REELS = [('patrick-reel', 'Patrick'), ('josef', 'Josef'), ('mirjana-hook', 'Mirjana'), ('meike-solo', 'Meike'), ('benjamin-schirm', 'Benjamin')]
 def reels():
-    r = ''.join(f'<figure class="reel rv" data-d="{i+1}"><video muted loop playsinline preload="none" data-quelle="/assets/reels/{f}.mp4" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><button class="ton" type="button" aria-label="Ton an oder aus">🔇</button><figcaption>{n}</figcaption></figure>' for i, (f, n) in enumerate(REELS))
+    r = ''.join(f'<figure class="reel rv" data-d="{i+1}"><video muted loop playsinline preload="none" data-quelle="/assets/reels/{f}.mp4" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><figcaption>{n}</figcaption></figure>' for i, (f, n) in enumerate(REELS))
     return f'''<section class="reels" id="reels">
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick rv">Aus der Praxis</p><h2 class="d rv">Direkt im Betrieb <span class="em w">gedreht.</span></h2></div><p class="lead rv">Inhaber und Monteure unserer Kunden vor der Kamera. Genau so laufen die Anzeigen im Feed.</p></div>
@@ -318,8 +319,7 @@ def stimmen():
     return f'''<section class="stimmen" id="stimmen">
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick rv">Stimmen aus der Branche</p><h2 class="d rv">Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span></h2></div><p class="rv"><span class="google">{GOOGLE_G}<span>5,0 <span class="stern" aria-hidden="true">★★★★★</span></span><span style="font-weight:500;color:var(--sub)">Google Bewertungen</span></span></p></div>
-    <div class="stimmen-bahn">{k}</div>
-    <p class="stimmen-hint">Zum Blättern wischen oder mit der Maus ziehen.</p>
+    <div class="stimmen-marq"><div class="spur">{k}{k}</div></div>
   </div>
 </section>'''
 
@@ -343,14 +343,14 @@ def ueber_insel(kurz=True):
       <p>Ich bin Noah. Seit über sechs Jahren dreht sich bei uns alles um eine Branche: das Handwerk. Über 120 Betriebe später wissen wir ziemlich genau, was funktioniert und was du dir sparen kannst.</p>
       <p><b>Wir kennen dein Gewerk, bevor du es erklären musst.</b> Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer bereit für sein neues Bad ist, und bauen deine Kampagne genau darauf.</p>
       <div class="gruender"><img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>Gründer · dein direkter Draht vom ersten Call bis zum Reporting</small></span></div>
-      <div class="stats"><div class="stat"><b>120<span>+</span></b><small>Handwerksbetriebe betreut</small></div><div class="stat"><b>5,0<span>★</span></b><small>Google-Bewertung</small></div><div class="stat"><b>Ø 7</b><small>Tage bis zur ersten Anfrage oder Bewerbung</small></div></div>
+      <div class="stats"><div class="stat"><b>120<span>+</span></b><small>Handwerksbetriebe betreut</small></div><div class="stat"><b>5,0<span>★</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>Ø 7</b><small>Tage bis zur ersten Anfrage oder Bewerbung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-glass" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
     <div class="foto"><img src="/assets/fotos/noah-portrait.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="2000" height="1333" style="object-position:68% 30%"></div>
   </div></div>
 </section>'''
 
-def statement(text_html):
+def statement(text_html, mitte=False):
     # Wörter einzeln, damit sich der Satz beim Scrollen füllt; <em> bleibt als Akzent
     teile = re.split(r'(<em>.*?</em>)', text_html)
     out = []
@@ -359,10 +359,9 @@ def statement(text_html):
             for w in t[4:-5].split(): out.append(f'<span class="w em">{w}</span>')
         else:
             for w in t.split(): out.append(f'<span class="w">{w}</span>')
-    return f'<section class="statement" aria-label="Leitsatz"><div class="wrap"><p>{" ".join(out)}</p></div></section>'
+    return f'<section class="statement{" mitte" if mitte else ""}" aria-label="Leitsatz"><div class="wrap"><p>{" ".join(out)}</p></div></section>'
 
 FAQ_ALLE = [
-    ('Was kostet die Zusammenarbeit?', 'Der Start liegt bei den meisten SHK-Betrieben im niedrigen vierstelligen Bereich für Setup, Shooting und Kampagnenaufbau, dazu eine monatliche Betreuung ab 1.000 €. Das Werbebudget kommt separat und geht direkt an Meta. Für ein normales Einzugsgebiet rechnen wir mit 750 bis 1.000 € im Monat. Läuft eine zweite Kampagne mit, wird die Betreuung pro Kampagne günstiger. Den genauen Preis rechnen wir in der Potenzialanalyse für deine Region durch.'),
     ('Wir haben schon genug zu tun, warum dann ihr?', 'Voll ist der Kalender bei fast jedem Betrieb. Die Frage ist, womit. Wenn du mehr margenstarke Badsanierungen und Wärmepumpen statt Kleinreparaturen willst, bringen wir genau diese Anfragen planbar rein.'),
     ('Wie schnell kommen die ersten Anfragen?', 'In den meisten Fällen gehen erste qualifizierte Anfragen innerhalb von 7 Tagen nach Kampagnenstart ein. Das Setup davor dauert unter 2 Wochen.'),
     ('Wie funktioniert Mitarbeitergewinnung über Social Media?', 'Social Recruiting erreicht Anlagenmechaniker SHK und Kundendiensttechniker dort, wo sie ohnehin sind: auf Instagram und Facebook, nicht auf Stellenportalen, die nur aktiv Suchende sehen. Die meisten Fachkräfte im Handwerk sind in Arbeit und wechseln nur, wenn ein Angebot vor ihnen landet. Wir spielen deine Stellen als Anzeige in deinem Einzugsgebiet aus, die Bewerbung dauert 60 Sekunden ohne Lebenslauf, und du bekommst nur vorqualifizierte Kandidaten mit Gewerk, Erfahrung und Führerschein.'),
@@ -443,7 +442,7 @@ def seite_start():
     <div class="zettel" aria-hidden="true">{hero_zettel()}</div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + kinetik() + leiter() + problem() + system() + hebel() + fallstudien_teaser() + reels() + stimmen() + ablauf() + ueber_insel() + statement('Voll ist der Kalender bei fast jedem Betrieb. Die Frage ist, <em>womit.</em>') + faq() + kontakt()
+    body = hero + logo_band() + kinetik() + leiter() + problem() + system() + hebel() + fallstudien_teaser() + stimmen() + ablauf() + ueber_insel() + statement('Der Auftrag ist da, der Monteur nicht. <em>Oder umgekehrt.</em>', mitte=True) + faq() + kontakt()
     return h + body + fuss()
 
 def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):
@@ -457,7 +456,7 @@ def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):
 </section>'''
 
 def seite_monteure():
-    fr = [FAQ_ALLE[3], FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[6], FAQ_ALLE[7]]
+    fr = [FAQ_ALLE[2], FAQ_ALLE[1], FAQ_ALLE[5], FAQ_ALLE[6]]
     h = kopf('Mitarbeitergewinnung für SHK-Betriebe: Monteure über Social Recruiting', 'Anlagenmechaniker SHK und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert, mit Fotos aus deinem Betrieb. Fallstudie: 25 Bewerbungen in 4 Wochen.', '/monteure/', dunkel=True, schema_extra=faq_schema(fr))
     body = uhero('Hebel 1 · Recruiting', 'Mitarbeitergewinnung für <span class="em k">SHK-Monteure.</span>', 'Die guten Monteure suchen nicht. Sie sind in Arbeit. Aber sie wechseln, wenn das richtige Angebot vor ihnen liegt. Wir bringen deins dorthin, wo sie jeden Abend sind: in ihren Feed.', 'Recruiting besprechen', CAL_REC, 'btn-kalt',
         phone('/assets/funnels/senftleben-jobs-full.jpg', 'Recruiting · Senftleben Haustechnik', '#1E90E8', 'links', '2s') + phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'rechts', '0s'))
@@ -482,7 +481,7 @@ def seite_monteure():
     return h + body + fuss()
 
 def seite_auftraege():
-    fr = [FAQ_ALLE[1], FAQ_ALLE[5], FAQ_ALLE[4], FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[6]]
+    fr = [FAQ_ALLE[0], FAQ_ALLE[4], FAQ_ALLE[3], FAQ_ALLE[1], FAQ_ALLE[5]]
     h = kopf('Auftrags-Funnel für Badsanierung & Wärmepumpe: Anfragen für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Einzugsgebiet, exklusiv für deinen Betrieb, vorqualifiziert nach Objekt, Baujahr und Eigentum. Fallstudie: 21 Bad-Anfragen in 2 Monaten.', '/auftraege/', dunkel=True, schema_extra=faq_schema(fr))
     body = uhero('Hebel 2 · Aufträge', 'Auftrags-Funnel für <span class="em w">Bad &amp; Wärmepumpe.</span>', 'Dein eigener Kanal statt gekaufter Portal-Leads: läuft auf deinen Namen, bespielt nur dein Einzugsgebiet, und jede Anfrage gehört dir allein, nicht vier Wettbewerbern gleichzeitig.', 'Potenzial durchrechnen', CAL_LEAD, 'btn-warm',
         phone('/assets/funnels/sussmann-leadgen-hero.jpg', 'Aufträge · Sussmann GmbH', '#F5762B', 'links', '1s') + phone('/assets/funnels/senftleben-leadgen-full.jpg', 'Aufträge · Senftleben Haustechnik', '#F5762B', 'rechts', '0s'), warm=True)
@@ -537,7 +536,7 @@ def seite_potenzial():
   <div class="sec-kopf"><div><p class="kick k rv">Was in den 30 Minuten passiert</p><h2 class="d rv">Drei Dinge schauen wir uns an.</h2></div><p class="lead rv">Kein Verkaufsgespräch, sondern eine Rechnung für deine Region. Danach weißt du, ob es sich lohnt.</p></div>
   {vorteile([('', '🗺️', 'Dein Einzugsgebiet', 'Wie viele Leute erreichen wir im Umkreis deines Betriebs, und wie viele davon passen zur Stelle oder zum Projekt.'), ('', '🔎', 'Wer dort schon wirbt', 'Welche Betriebe in deiner Region bereits Anzeigen schalten, und was das für deine Kampagne bedeutet.'), ('w', '🧮', 'Was realistisch drin ist', 'Was eine Bewerbung oder eine Anfrage in deiner Region kostet, und was Setup und Betreuung für dich bedeuten.')])}
 </div></section>'''
-    body += statement('Kein Verkaufsgespräch. Eine Rechnung für <em>deine Region.</em>') + faq([FAQ_ALLE[0], FAQ_ALLE[2], FAQ_ALLE[6], FAQ_ALLE[7]], 'Vor dem <span class="em k">Termin.</span>')
+    body += statement('Kein Verkaufsgespräch. Eine Rechnung für <em>deine Region.</em>') + faq([FAQ_ALLE[1], FAQ_ALLE[5], FAQ_ALLE[6], FAQ_ALLE[0]], 'Vor dem <span class="em k">Termin.</span>')
     return h + body + fuss()
 
 # ── Schreiben ─────────────────────────────────────────────────────────────

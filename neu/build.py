@@ -411,8 +411,7 @@ def ueber_insel(kurz=True):
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
-      <p>Ich bin Noah. Seit über sechs Jahren dreht sich bei uns alles um eine Branche: das Handwerk. Über 120 Betriebe später wissen wir ziemlich genau, was funktioniert und was du dir sparen kannst.</p>
-      <p><b>Wir kennen dein Gewerk, bevor du es erklären musst.</b> Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer bereit für sein neues Bad ist, und bauen deine Kampagne genau darauf.</p>
+      <p>Ich bin Noah. Seit über sechs Jahren nur Handwerk, über 120 Betriebe. Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer sein neues Bad plant, und bauen deine Kampagne genau darauf. Und wenn dein Umkreis dafür zu klein ist, sagen wir es dir im ersten Gespräch.</p>
       <div class="gruender"><img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>Gründer · dein direkter Draht vom ersten Call bis zum Reporting</small></span></div>
       <div class="stats"><div class="stat"><b>120<span>+</span></b><small>Handwerksbetriebe betreut</small></div><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>Ø 7</b><small>Tage bis zur ersten Anfrage oder Bewerbung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-glass" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
@@ -466,14 +465,14 @@ def kontakt(h2='Bereit für <span class="em w">planbare</span> Aufträge und Bew
       <div class="mit-wem"><img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>rechnet selbst mit dir, kein Callcenter dazwischen</small></span></div>
       <p class="kick">Potenzialanalyse</p>
       <h2 class="d">{h2}</h2>
-      <p style="margin-top:18px">In 30 Minuten rechnen wir durch, was in deiner Region drin ist: Bewerbungen von Monteuren oder Anfragen für Bäder und Wärmepumpen. Kostenlos und unverbindlich.</p>
+      <p style="margin-top:18px">30 Minuten, deine Region, eine Zahl: wie viele Bewerbungen oder Bad-Anfragen realistisch drin sind. Danach weißt du, ob es sich lohnt.</p>
       <div class="kontakt-wege"><a href="{TEL_HREF}">{ic('phone')}{TEL}</a><a href="mailto:{MAIL}">{ic('mail')}{MAIL}</a><span>{ic('pin')}DACH-weit</span></div>
       <p class="zusagen"><span>{ic("checkmark")}Kostenlos &amp; unverbindlich</span><span>{ic("checkmark")}Rückmeldung in 24h</span><span>{ic("checkmark")}Nur SHK &amp; Handwerk</span></p>
     </div>
     <div class="wahl">
       <div class="kunden-reihe" aria-label="Betriebe, mit denen wir arbeiten"><img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="" loading="lazy" width="1100" height="733" style="object-position:40% 20%"><img src="/assets/fotos/sussmann-patrick-mirjana.jpg" alt="" loading="lazy" width="1100" height="734" style="object-position:35% 25%"><img src="/assets/fotos/senftleben-benjamin-van.jpg" alt="" loading="lazy" width="1100" height="733" style="object-position:62% 22%"><img src="/assets/fotos/shk-05.jpg" alt="" loading="lazy" width="1100" height="733" style="object-position:62% 25%"><img src="/assets/fotos/klass-monteur.jpg" alt="" loading="lazy" width="880" height="1100" style="object-position:50% 18%"><span>Über 130 Betriebe, mit denen wir so gerechnet haben</span></div>
-      <a href="{CAL_REC}" target="_blank" rel="noopener">{ic('users','ic')}<span><b>Monteure finden</b><small>30 Minuten · Recruiting-Potenzial deiner Region</small></span><span class="pfeil" aria-hidden="true">→</span></a>
-      <a class="w" href="{CAL_LEAD}" target="_blank" rel="noopener">{ic('bath','ic')}<span><b>Aufträge gewinnen</b><small>30 Minuten · Bad- und Wärmepumpen-Potenzial</small></span><span class="pfeil" aria-hidden="true">→</span></a>
+      <a href="{CAL_REC}" target="_blank" rel="noopener">{ic('users','ic')}<span><h3>Monteure finden</h3><small>30 Minuten · Recruiting-Potenzial deiner Region</small></span><span class="pfeil" aria-hidden="true">→</span></a>
+      <a class="w" href="{CAL_LEAD}" target="_blank" rel="noopener">{ic('bath','ic')}<span><h3>Aufträge gewinnen</h3><small>30 Minuten · Bad- und Wärmepumpen-Potenzial</small></span><span class="pfeil" aria-hidden="true">→</span></a>
     </div>
   </div></div>
 </section>'''

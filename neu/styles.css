@@ -381,10 +381,10 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 /* ── Statement (füllt sich beim Scrollen) ───────── */
 .statement{padding:clamp(70px,8vw,120px) 0}
 .statement p{font-weight:800;letter-spacing:-.04em;font-size:clamp(30px,4.6vw,64px);line-height:1.08;max-width:22ch}
-.statement p .w{color:var(--faint);transition:color .25s}
-.statement p .w.an{color:var(--ink)}
-.statement p .w.em{color:var(--faint)}
-.statement p .w.em.an{color:var(--warm)}
+.statement p .w{color:var(--ink);opacity:.2;transition:opacity .3s}
+.statement p .w.an{opacity:1}
+.statement p .w.em{color:var(--warm)}
+.statement cite{display:block;margin-top:22px;font-style:normal;font-size:14.5px;color:var(--sub);letter-spacing:.01em}
 
 /* ── FAQ ────────────────────────────────────────── */
 .faq{padding:clamp(80px,9vw,140px) 0}
@@ -623,7 +623,6 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .weg:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .weg::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 110%,rgba(30,144,232,.18),transparent 70%);opacity:0;transition:opacity .8s var(--ease);pointer-events:none}
 .weg.gestempelt::before{opacity:1}
-.weg.gestempelt{animation:ruckeln .55s var(--spring)}
 .weg.gestempelt .ic{filter:grayscale(1);transform:rotate(-12deg) scale(.92)}
 .weg.gestempelt .x{animation:stempel .6s var(--spring) forwards}
 @keyframes ruckeln{0%{transform:translate(0,0)}20%{transform:translate(-3px,1px) rotate(-.6deg)}40%{transform:translate(3px,-1px) rotate(.6deg)}60%{transform:translate(-2px,0)}80%{transform:translate(2px,0)}100%{transform:translate(0,0)}}
@@ -747,3 +746,52 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .zahl b{padding-right:26px}
 /* Tablet: drei Fallstudien-Karten nebeneinander schneiden die Zahlen ab (1024 px) — dann untereinander */
 @media(max-width:1180px){.fall-grid.drei{grid-template-columns:1fr}.fall-grid.drei .zahl b{font-size:24px}}
+
+/* ── Runde 7 (26.09.2026) ───────────────────────── */
+/* Icons: monochrom, Haarlinie statt Pastellkachel — nichts Kindliches */
+.weg .ic,.schritt .ic,.vorteil .ic{width:44px;height:44px;border-radius:50%;background:transparent;border:1px solid var(--line2);margin-bottom:16px}
+.weg .ic .ik,.schritt .ic .ik,.vorteil .ic .ik{width:20px;height:20px;color:var(--ink);stroke-width:1.6}
+.weg.gestempelt .ic{background:transparent;border-color:#E5484D}
+.weg.gestempelt .ic .ik{color:#E5484D}
+.vorteil.w .ic .ik{color:var(--ink)} .vorteil.w .ic{border-color:var(--warm)}
+.wahl .ic{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)} .wahl a.w .ic{background:rgba(255,255,255,.08)}
+.wahl .ic .ik{width:22px;height:22px;stroke-width:1.6}
+.zahl .zi .ik,.zahl.w .zi .ik{color:var(--faint);stroke-width:1.6}
+.ticket .tic{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)} .ticket .tic .ik{stroke-width:1.6}
+.hebel-karte .chip .ik,.kontakt-wege .ik,.fuss ul a .ik,.nav-links a .ik{stroke-width:1.7}
+/* Sechs Lagen: redaktionelle Zeilen statt Karten */
+.lagen{display:grid;gap:0;border-top:1px solid var(--line)}
+.lage{display:grid;grid-template-columns:104px 1fr;gap:6px 24px;padding:22px 12px 22px 0;border-bottom:1px solid var(--line);transition:background .3s,transform .4s var(--spring);position:relative}
+.lage:hover{background:var(--card);transform:translateX(6px)}
+.lage .tag{grid-row:1/3;align-self:start;font-size:13px;font-weight:700;letter-spacing:.01em;color:var(--sub);padding-top:4px}
+.lage .tag.k{color:var(--kalt-deep)} .lage .tag.w{color:var(--warm-deep)}
+.lage h3{font-size:clamp(19px,1.7vw,22px);letter-spacing:-.02em;line-height:1.2}
+.lage p{color:var(--sub);font-size:15.5px;max-width:52ch}
+/* Vier Schritte: Zahl statt Kachel, ruhige Spalten */
+.schritt{background:transparent;border:0;border-top:2px solid var(--line2);border-radius:0;padding:22px 8px 0 0}
+.schritt:hover{transform:none;box-shadow:none;border-top-color:var(--ink)}
+.schritt.heiss{border-top-color:var(--warm)}
+.schritt .nr{position:static;display:block;font-family:var(--serif);font-style:italic;font-size:44px;line-height:1;color:var(--ink);margin-bottom:14px}
+.schritt.heiss .nr{color:var(--warm)}
+.schritt .ic{display:none}
+.schritt h3{font-size:19px}
+.schritt .dauer{background:transparent;padding:0;margin-top:14px;color:var(--faint);font-weight:600}
+.schritt .dauer::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--warm);margin-right:8px;vertical-align:1px}
+.schritte{gap:28px;padding-top:70px}
+/* Bewertungen: das Logo ist das Profilbild */
+.stimme .kopf{justify-content:space-between}
+.stimme .google-mini .g{width:20px;height:20px;display:block}
+.stimme .wer .lg{width:96px;height:34px;padding:0;flex:none}
+.stimme .wer .lg img{width:100%;height:100%;object-fit:contain;max-width:none}
+.fall-karte .betrieb .lg{padding:0}
+.fall-karte .betrieb .lg img{width:100%;height:100%;max-width:none;object-fit:contain}
+/* Potenzialanalyse: Menschen statt Fläche */
+.mit-wem{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.mit-wem img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;border:2px solid rgba(255,255,255,.25)}
+.mit-wem b{display:block;font-size:15px} .mit-wem small{color:var(--night-sub);font-size:13.5px;letter-spacing:.01em}
+.kunden-reihe{display:flex;align-items:center;gap:0;margin-bottom:18px;flex-wrap:wrap}
+.kunden-reihe img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--night);margin-right:-12px;transition:transform .3s var(--spring)}
+.kunden-reihe img:hover{transform:translateY(-4px) scale(1.06);z-index:1;position:relative}
+.kunden-reihe span{margin-left:24px;font-size:13.5px;color:var(--night-sub);letter-spacing:.01em}
+@media(max-width:900px){.lage{grid-template-columns:1fr;gap:4px}.lage .tag{grid-row:auto}.schritte{gap:22px}}
+@media(prefers-reduced-motion:reduce){.statement p .w{opacity:1}}

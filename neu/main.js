@@ -72,11 +72,10 @@
     }
     if (worte.length) {
       // Fülltext: gemessen am Textelement, durch die Bildmitte, nur vorwärts, fertig sobald der Block ganz im Bild steht
+      // Skill scroll-text: das TEXTELEMENT messen, Start bei 78 % der Fensterhöhe, voll bei 32 %, beide Richtungen
       const r = statement.getBoundingClientRect();
-      let p;
-      if (r.bottom <= h * .92) p = 1; else p = clamp((h * .72 - r.top) / (r.height), 0, 1);
-      const n = Math.round(p * worte.length);
-      worte.forEach((w, i) => { if (i < n) w.classList.add('an'); });
+      const p = rm ? 1 : clamp((h * .78 - r.top) / (h * .46), 0, 1);
+      worte.forEach((w, i) => w.classList.toggle('an', (i + 1) / worte.length <= p + .02));
     }
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(scrollWork); } }, { passive: true });

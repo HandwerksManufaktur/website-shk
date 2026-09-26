@@ -913,7 +913,7 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .wahl h3{display:block;font-size:17px;font-weight:700;line-height:1.3;margin:0;letter-spacing:-.01em;font-family:var(--f)}
 
 /* ── Runde 12 (27.09.2026): kein Kasten auf Kasten nach dem Hero — Logos in Tinte auf Papier, Laufschrift raus, die Wege als Plan (Hista-Vorbild) ── */
-.band.hell{padding:36px 0 0}
+.band.hell{padding:40px 0 0}
 .band.hell .band-innen{background:transparent;border-radius:0;color:var(--ink);padding:0 0 4px}
 .band.hell .band-innen::before{background:linear-gradient(90deg,var(--paper),transparent)}
 .band.hell .band-innen::after{background:linear-gradient(270deg,var(--paper),transparent)}

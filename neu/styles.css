@@ -436,8 +436,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .fuss .marke img,.fuss .marke img[width][height]{height:44px;width:auto;margin-bottom:14px}
 .fuss .marke p{font-size:14px;color:var(--sub);max-width:34ch}
 .fuss h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;font-weight:700}
-.fuss ul{list-style:none;display:grid;gap:4px}
-.fuss ul a{font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 4px;margin:-6px -4px;transition:color .25s,transform .3s var(--spring)}
+.fuss ul{list-style:none;display:grid;gap:0}
+.fuss ul a{font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 4px;margin:0 -4px;transition:color .25s,transform .3s var(--spring)}
 .fuss ul a:hover{color:var(--kalt-deep);transform:translateX(3px)}
 .fuss .unten{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--faint)}
 .fuss .unten .kante{display:inline-block;width:60px;height:3px;border-radius:2px;background:var(--regler);vertical-align:middle;margin-right:10px}
@@ -745,3 +745,5 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .tickets{min-width:0}.ticket{min-width:0}.ticket>span:not(.tic):not(.ok){min-width:0;flex:1}.ticket small{white-space:normal}
 /* Zahl läuft nicht unter das Icon */
 .zahl b{padding-right:26px}
+/* Tablet: drei Fallstudien-Karten nebeneinander schneiden die Zahlen ab (1024 px) — dann untereinander */
+@media(max-width:1180px){.fall-grid.drei{grid-template-columns:1fr}.fall-grid.drei .zahl b{font-size:24px}}

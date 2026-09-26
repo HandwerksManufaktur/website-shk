@@ -126,6 +126,10 @@
   const bauplan = $('.ablauf'), tafel = $('.plan-tafel');
   if (bauplan && tafel) { const bp = () => { const r = tafel.getBoundingClientRect(), h = innerHeight; bauplan.style.setProperty('--p', (rm ? 1 : clamp((h * .9 - r.top) / (h * .75), 0, 1)).toFixed(3)); }; addEventListener('scroll', bp, { passive: true }); addEventListener('resize', bp); bp(); }
 
+  /* Bewegung nur im Bild (Apple: keine Dauer-Loops außerhalb des Blickfelds): Phones scrollen zwei Durchgänge, sobald sie erscheinen; Laufbänder laufen nur sichtbar */
+  $$('.phone, .mini-phone').forEach(ph => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { ph.classList.add('laeuft'); o.disconnect(); } }), { threshold: .3 }); o.observe(ph); });
+  $$('.band-innen, .stimmen-marq').forEach(m => new IntersectionObserver(es => es.forEach(e => m.classList.toggle('laeuft', e.isIntersecting)), { threshold: 0 }).observe(m));
+
   /* Umkreis: dreimal pulsen, wenn er ins Bild kommt — danach nur beim Hover */
   $$('.umkreis').forEach(u => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { u.classList.add('an'); o.disconnect(); } }), { threshold: .4 }); o.observe(u); });
 
@@ -139,7 +143,9 @@
     btn.addEventListener('click', () => { v.classList.add('laeuft'); vid.controls = true; vid.muted = false; vid.play(); });
   });
 
-  /* Reels: laufen stumm, sobald im Bild; Ton-Knopf */
+  /* Reels: laufen stumm, sobald im Bild; Ton-Knopf (SVG, kein Emoji) */
+  const MUTE = '<svg class="ik" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>', VOL = '<svg class="ik" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5.5a9 9 0 0 1 0 13"/></svg>';
+  $$('.reel .ton').forEach(t => { t.innerHTML = MUTE; });
   $$('.reel').forEach(f => {
     const vid = $('video', f); if (!vid) return;
     const q = vid.dataset.quelle;
@@ -148,7 +154,7 @@
     }), { threshold: .3 });
     o.observe(f);
     const ton = $('.ton', f);
-    if (ton) ton.addEventListener('click', () => { const an = vid.muted; $$('.reel video').forEach(x => x.muted = true); $$('.reel .ton').forEach(x => x.textContent = '🔇'); vid.muted = !an; ton.textContent = an ? '🔊' : '🔇'; if (an) vid.play().catch(()=>{}); });
+    if (ton) ton.addEventListener('click', () => { const an = vid.muted; $$('.reel video').forEach(x => x.muted = true); $$('.reel .ton').forEach(x => x.innerHTML = MUTE); vid.muted = !an; ton.innerHTML = an ? VOL : MUTE; ton.setAttribute('aria-label', an ? 'Ton aus' : 'Ton an'); if (an) vid.play().catch(()=>{}); });
   });
 
   /* Feed-Bühne: Phones parallaxen */

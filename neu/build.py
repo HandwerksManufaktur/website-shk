@@ -49,7 +49,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
         "@type": "ProfessionalService", "@id": "https://handwerksmanufaktur.digital/#organization",
         "name": "HandwerksManufaktur", "legalName": "HANDWERKSMANUFAKTUR LTD", "url": "https://handwerksmanufaktur.digital/",
         "description": "Marketing-Agentur ausschließlich für Handwerksbetriebe im DACH-Raum. Für SHK-Betriebe: Recruiting-Kampagnen für Monteure und Anlagenmechaniker sowie Auftrags-Kampagnen für Badsanierung und Wärmepumpe.",
-        "image": f"{DOMAIN}/og-image.jpg", "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/favicon.png"},
+        "image": f"{DOMAIN}/og-image.jpg", "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/assets/logo-hm-quer-schwarz-1024.png", "width": 1024, "height": 360},
         "telephone": "+4981947174990", "email": MAIL,
         "address": {"@type": "PostalAddress", "streetAddress": "Georgiou Griva Digeni 51, Athineon Building, 1st floor", "postalCode": "8047", "addressLocality": "Paphos", "addressCountry": "CY"},
         "founder": {"@type": "Person", "name": "Noah Seelau"},
@@ -77,9 +77,10 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <meta name="robots" content="{robots}">
 <meta property="og:type" content="website"><meta property="og:locale" content="de_DE"><meta property="og:site_name" content="HandwerksManufaktur SHK">
 <meta property="og:url" content="{canon}"><meta property="og:title" content="{html.escape(titel)}"><meta property="og:description" content="{html.escape(beschreibung)}">
-<meta property="og:image" content="{DOMAIN}{og or '/og-image.jpg'}"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="{DOMAIN}{og or '/og-image-hm.jpg'}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="{'#0B1424' if dunkel else '#F3F6FA'}">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/fonts/archivo-latin-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-v20-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
@@ -87,13 +88,13 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
-<div id="intro" aria-hidden="true"><img src="/assets/logo-hwm-weiss.png" alt="" width="884" height="282"><span class="strich"><i></i></span></div>
+<div id="intro" aria-hidden="true"><img src="/assets/logo-hm-quer-weiss.svg" alt="" width="340" height="91"><span class="strich"><i></i></span></div>
 <div class="regler-leiste" aria-hidden="true"></div>
 <header class="nav{' dunkel' if dunkel else ''}">
   <div class="wrap">
     <a class="nav-logo" href="{u('/')}" aria-label="HandwerksManufaktur — Startseite">
-      <img class="dunkelv" src="/assets/logo-hwm-schwarz.png" alt="HandwerksManufaktur" width="849" height="247">
-      <img class="hell" src="/assets/logo-hwm-weiss.png" alt="" width="884" height="282">
+      <img class="dunkelv" src="/assets/logo-hm-quer-schwarz.svg" alt="HandwerksManufaktur" width="340" height="91">
+      <img class="hell" src="/assets/logo-hm-quer-weiss.svg" alt="" width="340" height="91">
     </a>
     <nav aria-label="Hauptnavigation"><ul class="nav-links">{links}<li><a class="nav-cta" href="{u('/potenzialanalyse/')}">{ic('target')}Potenzialanalyse</a></li></ul></nav>
     <button class="burger" aria-label="Menü" aria-expanded="false" aria-controls="mobilmenu"><span></span><span></span><span></span></button>
@@ -109,7 +110,7 @@ def fuss():
   <div class="wrap">
     <div class="oben">
       <div class="marke">
-        <img src="/assets/logo-hwm-schwarz.png" alt="HandwerksManufaktur" width="849" height="247">
+        <img src="/assets/logo-hm-quer-schwarz.svg" alt="HandwerksManufaktur" width="340" height="91">
         <p>Marketing für SHK-Betriebe: Monteure und Aufträge, planbar statt nach Zufall. Ein Team, ein Ansprechpartner, seit über sechs Jahren nur Handwerk.</p>
       </div>
       <div><h4>Leistungen</h4><ul>

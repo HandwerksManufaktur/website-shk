@@ -172,10 +172,10 @@ def kinetik():
 </section>'''
 
 WEGE_ALLE = [
-    (IK['monitor'], 'Stellenportal', 'Sehen nur die, die aktiv suchen. Wer in Arbeit ist, öffnet kein Portal.'),
+    (IK['monitor'], 'Stellenportal', 'Sehen nur die, die gerade aktiv suchen, also die wenigsten. Wer in Arbeit ist, öffnet kein Portal.'),
     (IK['van'], 'Aufkleber mit QR-Code', 'Auf dem Firmenwagen. Wer ihn liest, steht gerade im Stau.'),
-    (IK['globe'], 'Die Stelle auf der eigenen Webseite', 'Wer sie findet, sucht schon. Alle anderen kommen nie vorbei.'),
-    (IK['speech'], 'Mundpropaganda', 'Bringt Großprojekte, wann sie wollen: monatelang nichts, dann drei gleichzeitig.'),
+    (IK['globe'], 'Die Stelle auf der eigenen Webseite', '„Wir suchen dich" steht bei allen. Wer es liest, sucht schon. Alle anderen kommen nie vorbei.'),
+    (IK['speech'], 'Mundpropaganda', 'Bringt Großprojekte, wann sie wollen: monatelang nichts, dann drei auf einmal. Planen kannst du damit nichts.'),
     (IK['cards'], 'Lead-Portale', 'Dieselbe Anfrage geht an vier Betriebe. Du telefonierst um die Wette mit Preisvergleichern.'),
 ]
 def leiter(wege=WEGE_ALLE, kick='Was du wahrscheinlich schon probiert hast', h2='Fünf Wege, die <span class="em k">kalt</span> bleiben.', lead='Aus hunderten Gesprächen mit SHK-Inhabern: So wird bisher gesucht. Und so wenig kommt zurück.'):
@@ -195,6 +195,23 @@ LAGEN = [
     ('Recruiting', 'k', 'Der Auftrag ist da, der Monteur nicht.', 'Kommt das große Projekt, fehlt der Mann dafür. Ein Inhaber schiebt Aufträge vom letzten Jahr vor sich her, weil das Personal fehlt.'),
     ('Beides', '', 'Der Betrieb ist gut. Nur weiß es keiner.', 'Dritte Generation, sauberer Kundendienst, und trotzdem übersehen: „Wir suchen dich" steht bei allen. Was fehlt, ist der eigene Kanal im Umkreis.'),
 ]
+VERGLEICH = [
+    ('Du lehnst Aufträge ab, weil der Monteur dafür fehlt. Den Auftrag nimmt der Betrieb nebenan.', 'Bewerbungen kommen, bevor die Stelle frei wird. Du stellst ein, wenn es passt, nicht wenn es brennt.'),
+    ('Die Suche beginnt, wenn einer kündigt. Dann verlierst du Wochen, und das Team fährt auf Reserve.', 'Der Kanal läuft durch. Wer im Umkreis wechseln will, sieht zuerst deinen Betrieb, nicht ein Portal.'),
+    ('Dieselbe Bad-Anfrage geht an vier Betriebe. Am Telefon vergleichst du Preise mit Leuten, die du nie siehst.', 'Jede Anfrage gehört dir allein: mit Adresse, Baujahr, Eigentum und Zeitrahmen. Du rufst an, die anderen nicht.'),
+    ('Drei Wochen voll, dann entscheidet der Zufall, was nach der nächsten Baustelle kommt.', 'Bäder und Wärmepumpen in dem Tempo, das dein Team stemmt. Auf Wunsch gedrosselt auf ein, zwei im Monat.'),
+    ('Dein Betrieb ist gut. Nur weiß es im Umkreis keiner, weil „Wir suchen dich" bei allen steht.', 'Deine Leute, deine Fotos, dein Name, auf jedem Handy in deinem Einzugsgebiet. Das schreibt sich kein Wettbewerber ab.'),
+]
+def vergleich():
+    zellen = ''.join(f'<div class="vgl-c heute rv" data-d="{i%3+1}">{IK["x"]}<p>{h}</p></div><div class="vgl-c kanal rv" data-d="{i%3+2}">{IK["checkmark"]}<p>{k}</p></div>' for i, (h, k) in enumerate(VERGLEICH))
+    return f'''<section class="vergleich" id="vergleich">
+  <div class="wrap">
+    <div class="sec-kopf"><div><p class="kick k rv">Wo du stehst, wo du hinwillst</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Lagen aus hunderten Gesprächen mit SHK-Inhabern, und was sich mit einem eigenen Kanal an jeder davon ändert.</p></div>
+    <div class="vgl-tafel rv"><div class="vgl-h heute">Heute</div><div class="vgl-h kanal">Mit eigenem Kanal</div>{zellen}</div>
+    <p class="rv" style="margin-top:28px"><a class="btn btn-ink" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzial durchrechnen</a></p>
+  </div>
+</section>'''
+
 def problem():
     zeilen = ''.join(f'''<article class="lage rv" data-d="{i%3+1}"><span class="tag {k}">{tag}</span><h3>{t}</h3><p>{p}</p></article>''' for i, (tag, k, t, p) in enumerate(LAGEN))
     return f'''<section class="problem" id="problem">
@@ -361,12 +378,14 @@ STIMMEN_LOGO = {'Franz Gallenberger': 'gallenberger', 'Benjamin Senftleben': 'se
 def stimmen():
     def karte(n, b, z):
         return f'<figure class="stimme"><div class="kopf"><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span><span class="google-mini" aria-hidden="true">{GOOGLE_G}</span></div><blockquote>{z}</blockquote><figcaption class="wer"><span class="lg"><img src="/assets/logos-box/{STIMMEN_LOGO[n]}.png" alt="" loading="lazy" width="336" height="120"></span><span><b>{n}</b><small>{b}</small></span></figcaption></figure>'
-    karten = ''.join(karte(n, b, z) for n, b, z in STIMMEN)
+    h = (len(STIMMEN) + 1) // 2
+    reihe1 = ''.join(karte(n, b, z) for n, b, z in STIMMEN[:h]); reihe2 = ''.join(karte(n, b, z) for n, b, z in STIMMEN[h:])
+    still = lambda k: k.replace('<figure class="stimme">', '<figure class="stimme" aria-hidden="true">')
     return f'''<section class="stimmen" id="stimmen">
   <div class="wrap">
     <div class="sec-kopf mitte"><p class="kick rv">Stimmen aus der Branche</p><h2 class="d rv">Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span></h2><p class="rv"><span class="google">{GOOGLE_G}<span>5,0 <span class="stern" aria-hidden="true">{ic("star","voll")*5}</span></span><span style="font-weight:500;color:var(--sub)">57 Google-Bewertungen</span></span></p></div>
   </div>
-  <div class="stimmen-marq rv"><div class="spur">{karten}{karten.replace('<figure class="stimme">', '<figure class="stimme" aria-hidden="true">')}</div></div>
+  <div class="stimmen-marq rv"><div class="spur">{reihe1}{still(reihe1)}</div><div class="spur rueck">{reihe2}{still(reihe2)}</div></div>
 </section>'''
 
 SCHRITTE = [(IK['search'], 'Potenzialanalyse', 'Wir schauen uns dein Einzugsgebiet an: Wie viele Leute erreichen wir, wer wirbt dort schon, was ist realistisch drin.', 'kostet nichts'), (IK['target'], 'Strategie &amp; Setup', 'Zielgruppe, Botschaft und Funnel bauen wir auf dein Ziel zu: Monteure, Aufträge oder beides.', 'unter 2 Wochen'), (IK['rocket'], 'Kampagne live', 'Die erste Anfrage oder Bewerbung kommt oft schon in den ersten 24 Stunden nach der Veröffentlichung, mit Kontaktdaten und vorgeprüft.', 'ab Tag 1'), (IK['chart'], 'Optimieren &amp; Skalieren', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet. Was funktioniert, bekommt mehr Budget.', 'laufend')]
@@ -379,8 +398,9 @@ def ablauf():
     ph = ''.join(f'<li class="phase rv" data-d="{i+1}" style="--a:{a};--b:{b}"><span class="nr" aria-hidden="true">0{i+1}</span><div class="text-p"><span class="wann">{w}</span><b>{t}</b><p>{p}</p></div><div class="spur"><i></i></div></li>' for i, (a, b, w, t, p) in enumerate(PHASEN))
     return f'''<section class="ablauf" id="ablauf">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick w rv">Unser Vorgehen</p><h2 class="d rv">Vom Erstgespräch zur laufenden Kampagne <span class="em w">in zwei Wochen.</span></h2></div><p class="lead rv">Vier Phasen, ein Zeitplan. Der Ablauf ist für Recruiting und Auftragsgewinnung derselbe.</p></div>
+    <div class="sec-kopf"><div><p class="kick w rv">Unser Vorgehen</p><h2 class="d rv">Kein Hoffen, kein Warten. <span class="em w">Ein Zeitplan.</span></h2></div><p class="lead rv">Vier Phasen vom Erstgespräch bis zur laufenden Kampagne, für Recruiting und Auftragsgewinnung derselbe.</p></div>
     <div class="plan-tafel rv"><div class="tage" aria-hidden="true">{tage}</div><ul class="phasen">{ph}</ul><div class="heute" aria-hidden="true"><span>läuft</span></div></div>
+    <div class="aufwand rv"><div>{ic('clock')}<b>Dein Aufwand</b><span>Ein Gespräch von 30 Minuten, ein Shooting bei dir im Betrieb. Ab dann sortierst du Bewerbungen und Anfragen, mehr nicht.</span></div><div>{ic('eye')}<b>Was du siehst</b><span>Jede Woche, was jede Bewerbung und jede Anfrage gekostet hat. Keine Reichweiten-Folien.</span></div><div>{ic('pin')}<b>Wo es läuft</b><span>Nur in deinem Einzugsgebiet. Eine Fachkraft aus Hamburg hilft einem Betrieb in München nicht.</span></div></div>
     <p class="fussnote rv">Richtwert aus den laufenden Kampagnen. Wer schneller Fotos liefert, ist schneller live.</p>
   </div>
 </section>'''
@@ -414,8 +434,11 @@ def statement(text_html, mitte=False, von=''):
     return f'<section class="statement{" mitte" if mitte else ""}" aria-label="Leitsatz"><div class="wrap"><p>{" ".join(out)}</p>{cite}</div></section>'
 
 FAQ_ALLE = [
+    ('Wir haben schon mit einer Agentur gearbeitet. Hat nichts gebracht.', 'Meistens lag es an der Kampagne, nicht am Kanal: Stockfotos statt deiner Leute, keine Filterfragen, jede Region gleich. Wir bauen auf deinen Namen, mit Fotos aus deinem Betrieb und Fragen vor der Bewerbung. Wie das aussieht, siehst du oben in den Fallstudien, bevor du dich entscheidest.'),
+    ('Wir haben keine besonderen Benefits. Warum sollte jemand wechseln?', 'Ein pünktliches Gehalt, ein fester Einsatzbereich und ein Chef, der nicht bei jeder Kleinigkeit laut wird, sind für viele Monteure schon der Grund. Das musst du nicht versprechen, das zeigen wir mit deinen Leuten vor der Kamera.'),
     ('Wir haben schon genug zu tun, warum dann ihr?', 'Voll ist der Kalender bei fast jedem Betrieb. Die Frage ist, womit. Wenn du mehr margenstarke Badsanierungen und Wärmepumpen statt Kleinreparaturen willst, bringen wir genau diese Anfragen planbar rein.'),
-    ('Wie schnell kommen die ersten Anfragen?', 'Die erste qualifizierte Anfrage kommt oft schon in den ersten 24 Stunden nach der Veröffentlichung, spätestens in der ersten Woche. Das Setup davor dauert unter 2 Wochen.'),
+    ('Wie schnell kommen die ersten Anfragen?', 'Die erste qualifizierte Anfrage oder Bewerbung kommt oft schon in den ersten 24 Stunden nach der Veröffentlichung, spätestens in der ersten Woche. Das Setup davor dauert unter 2 Wochen. Aufträge brauchen danach länger als Bewerbungen: Ein Bad wird geplant, eine Bewerbung kommt abends vom Sofa.'),
+    ('Wir sitzen auf dem Land. Lohnt sich das da überhaupt?', 'Gerade dort. Die Kampagne läuft nur in deinem Einzugsgebiet, und auf dem Land ist die Konkurrenz um Aufmerksamkeit kleiner als in der Stadt. Ob dein Umkreis groß genug ist, rechnen wir in der Potenzialanalyse durch, und wenn er es nicht ist, sagen wir dir das im Gespräch.'),
     ('Wie funktioniert Mitarbeitergewinnung über Social Media?', 'Social Recruiting erreicht Anlagenmechaniker SHK und Kundendiensttechniker dort, wo sie ohnehin sind: auf Instagram und Facebook, nicht auf Stellenportalen, die nur aktiv Suchende sehen. Die meisten Fachkräfte im Handwerk sind in Arbeit und wechseln nur, wenn ein Angebot vor ihnen landet. Wir spielen deine Stellen als Anzeige in deinem Einzugsgebiet aus, die Bewerbung dauert 60 Sekunden ohne Lebenslauf, und du bekommst nur vorqualifizierte Kandidaten mit Gewerk, Erfahrung und Führerschein.'),
     ('Was, wenn wir die Anfragen nicht abarbeiten können?', 'Die Kampagne lässt sich über die Qualifizierung drosseln, auf Wunsch auf ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team stemmen kann. Es geht um planbare Auslastung, nicht um Masse.'),
     ('Was unterscheidet euch von Lead-Portalen?', 'Portal-Leads werden parallel an mehrere Betriebe verkauft, du telefonierst um die Wette mit Preisvergleichern. Wir bauen stattdessen einen eigenen Kanal in deinem Namen: deine Fotos, dein Gebiet, deine Anfragen. Und eine Anfrage ohne Adresse und Rückrufnummer zählt bei uns nicht als Anfrage.'),
@@ -481,7 +504,7 @@ def seite_start():
   <div class="wrap">
     <p class="kick rv">Recruiting &amp; Aufträge für SHK-Betriebe</p>
     <h1 class="h-xl hero-h1"><span class="zl"><span>Monteure &amp; Aufträge</span></span><span class="zl"><span>für SHK-Betriebe.</span></span><span class="zl"><span class="em w glut">Aufgedreht.</span></span></h1>
-    <p class="lead rv" data-d="2">Zu wenig Leute oder zu wenig Großprojekte? Wir bauen dir für beides einen eigenen Kampagnen-Kanal: Monteure, die kein Stellenportal öffnen. Bäder und Wärmepumpen mit 20.000 bis 50.000 € Projektwert.</p>
+    <p class="lead rv" data-d="2">Die guten Monteure suchen nicht. Und das große Bad geht an den Betrieb, den der Eigentümer zuerst sieht. Wir bauen dir den Kanal, über den beide bei dir landen: in deinem Umkreis, exklusiv, ohne Portal.</p>
     <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="{u('/monteure/')}">{ic('users','ic')}Mehr Monteure</a><a class="btn btn-white btn-lg" href="{u('/auftraege/')}">{ic('bath','ic')}Mehr Aufträge</a></div>
     <div class="rv" data-d="4">{trust()}</div>
   </div>
@@ -493,7 +516,7 @@ def seite_start():
     </div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + kinetik() + leiter() + problem() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ablauf() + ueber_insel() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.</em>“', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + kontakt()
+    body = hero + logo_band() + kinetik() + leiter() + vergleich() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ablauf() + ueber_insel() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.</em>“', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + kontakt()
     return h + body + fuss()
 
 def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):

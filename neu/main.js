@@ -6,6 +6,14 @@
   const $$ = (s, r=document) => [...r.querySelectorAll(s)];
   const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
 
+  /* Intro: Logo + Regler-Strich, einmal je Sitzung (Bauform aus dem HWM-Konzept) */
+  const intro = $('#intro');
+  if (intro) {
+    let gesehen = false; try { gesehen = sessionStorage.getItem('shk-intro') === '1'; } catch (e) {}
+    if (gesehen || rm) intro.remove();
+    else { requestAnimationFrame(() => intro.classList.add('los')); setTimeout(() => { intro.classList.add('weg'); try { sessionStorage.setItem('shk-intro', '1'); } catch (e) {} }, 1450); setTimeout(() => intro.remove(), 2100); }
+  }
+
   /* Nav */
   const nav = $('.nav');
   const burger = $('.burger');
@@ -93,6 +101,30 @@
     }), { threshold: .35 });
     ioL.observe(leiter);
   }
+
+  /* Kaskade: Balken fahren aus, Zahlen zählen hoch */
+  const zaehlen = (el) => {
+    if (el.dataset.fertig) return; el.dataset.fertig = '1';
+    const ziel = parseFloat(el.dataset.zahl), nach = el.dataset.nach || '';
+    const fmt = n => Math.round(n).toLocaleString('de-DE') + nach;
+    if (rm) { el.textContent = fmt(ziel); return; }
+    const t0 = performance.now(), dauer = 1300;
+    const tick = t => { const k = Math.min(1, (t - t0) / dauer), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(ziel * e); if (k < 1) requestAnimationFrame(tick); else el.textContent = fmt(ziel); };
+    requestAnimationFrame(tick);
+  };
+  $$('.k-stufe').forEach(st => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { $$('.nr[data-zahl]', st).forEach(zaehlen); o.disconnect(); } }), { threshold: .4 }); o.observe(st); });
+
+  /* Kalenderraster: Tage füllen sich beim Scrollen, Zähler läuft mit (beide Richtungen) */
+  $$('[data-kalender]').forEach(tafel => {
+    const treffer = $$('.kal-raster i.an', tafel), zahl = $('.kal-nr', tafel); if (!treffer.length || !zahl) return;
+    let letzte = -1;
+    const mal = () => { const r = tafel.getBoundingClientRect(), h = innerHeight; const p = rm ? 1 : clamp((h * .92 - r.top) / (h * .52 + r.height * .5), 0, 1); const k = Math.round(p * treffer.length); if (k === letzte) return; letzte = k; treffer.forEach((el, n) => el.classList.toggle('voll', n < k)); zahl.textContent = k; };
+    addEventListener('scroll', mal, { passive: true }); addEventListener('resize', mal); mal();
+  });
+
+  /* Bauplan: Balken füllen sich, während die Tafel durchs Bild läuft */
+  const bauplan = $('.ablauf'), tafel = $('.plan-tafel');
+  if (bauplan && tafel) { const bp = () => { const r = tafel.getBoundingClientRect(), h = innerHeight; bauplan.style.setProperty('--p', (rm ? 1 : clamp((h * .9 - r.top) / (h * .75), 0, 1)).toFixed(3)); }; addEventListener('scroll', bp, { passive: true }); addEventListener('resize', bp); bp(); }
 
   /* Umkreis: dreimal pulsen, wenn er ins Bild kommt — danach nur beim Hover */
   $$('.umkreis').forEach(u => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { u.classList.add('an'); o.disconnect(); } }), { threshold: .4 }); o.observe(u); });

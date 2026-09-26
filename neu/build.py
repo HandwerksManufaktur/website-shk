@@ -87,6 +87,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
+<div id="intro" aria-hidden="true"><img src="/assets/logo-hwm-weiss.png" alt="" width="884" height="282"><span class="strich"><i></i></span></div>
 <div class="regler-leiste" aria-hidden="true"></div>
 <header class="nav{' dunkel' if dunkel else ''}">
   <div class="wrap">
@@ -264,6 +265,31 @@ def fall_karte(logo, name, ort, chip, chipk, poster, video, dauer, zitat, zahlen
   </div>
 </article>'''
 
+
+KAL_SEN = [1,3,4,7,9,12,13,16,18,19,22,24,25,28,30,31,34,36,37,40,41]  # 21 von 42 Werktagen (Juli + August)
+def kaskade(variante='senftleben'):
+    if variante == 'senftleben':
+        kick, h2, lead, k = 'Was aus einer Einblendung wird', 'Von 125.000 Einblendungen <span class="em w">zum Termin im Bad.</span>', 'Senftleben Haustechnik in Ehingen, Badsanierung im 25-Kilometer-Umkreis. Alle Zahlen aus dem laufenden Werbekonto und dem CRM.', 'w'
+        stufen = [(100, '125000', '', '125.000', 'Mal im Umkreis ausgespielt', 'Anzeigen auf Instagram und Facebook, 25 Kilometer um den Betrieb.', '2 Monate'),
+                  (46, '21', '', '21', 'Bad-Anfragen kamen an', 'Nach vier Filterfragen: Projektart, Zeitrahmen, Größe, Kontakt. Wer nicht passt, hört vorher auf.', '2 Monate'),
+                  (24, '10', '+', '10+', 'Vor-Ort-Termine daraus', 'Benjamin Senftleben stand bei mehr als zehn dieser Anfragen im Bad.', '2 Monate')]
+        tage, an, marke, kal_text, vorher = 42, KAL_SEN, 'Juli &amp; August', 'von 42 Werktagen brachten eine Anfrage, jeder zweite', 'Empfehlung, Stammkunden, Zufall'
+        fuss = 'Einblendungen und Anfragen aus dem Werbekonto, Termine aus dem CRM. Eine Anfrage wurde abgesagt, weil sie über eine halbe Stunde entfernt lag.'
+    else:
+        kick, h2, lead, k = 'Was aus einer Anzeige wird', 'Von der Anzeige <span class="em k">zur besetzten Stelle.</span>', 'Erwin Schmidt &amp; Sohn in Sindelfingen, ein Anlagenmechaniker für den Kundendienst gesucht. Alle Zahlen aus dem Funnel und dem CRM.', 'k'
+        stufen = [(100, '25', '', '25', 'Bewerbungen kamen an', 'Über den Funnel, ohne Lebenslauf, mit Kontaktdaten und Antworten auf die Filterfragen.', '4 Wochen'),
+                  (8, '1', '', '1', 'Stelle besetzt', 'Ein Anlagenmechaniker SHK, eingestellt aus diesen Bewerbungen.', '4 Wochen')]
+        tage, an, marke, kal_text, vorher = 20, list(range(20)), '4 Wochen', 'Werktage, an jedem kam mindestens eine Bewerbung', 'Aufkleber am Firmenwagen, Stelle auf der eigenen Seite'
+        fuss = 'Bewerbungen aus dem Funnel, Einstellung vom Betrieb bestätigt. Eine zweite Einstellung kam über einen anderen Weg und zählt hier nicht.'
+    st = ''.join(f'<li class="k-stufe rv" data-d="{i}" style="--b:{b}"><span class="k-zahl nr" data-zahl="{z}" data-nach="{n}">{t}</span><span class="k-text"><b>{tt}</b><small>{sm}</small></span><span class="k-zeit">{zt}</span><i class="k-balken"></i></li>' for i, (b, z, n, t, tt, sm, zt) in enumerate(stufen))
+    raster = ''.join(f'<i class="an" data-rang="{an.index(i)}"></i>' if i in an else '<i></i>' for i in range(tage))
+    return f'''<section class="sec kaskade-sek" id="kaskade"><div class="wrap">
+    <div class="sec-kopf"><div><p class="kick {k} rv">{kick}</p><h2 class="d rv">{h2}</h2></div><p class="lead rv">{lead}</p></div>
+    <ol class="kaskade {k}">{st}</ol>
+    <div class="kal-tafel rv" data-kalender data-treffer="{len(an)}"><div class="kal-kopf"><div><span class="kal-nr">0</span><small>{kal_text}</small></div><span class="kal-marke">{marke}</span></div><div class="kal-raster n{tage}" aria-hidden="true">{raster}</div><div class="kal-fuss"><span><b>Vorher</b> {vorher}</span><span class="kal-stand">Scroll weiter, dann füllen sich die Tage</span></div></div>
+    <p class="fussnote rv">{fuss}</p>
+  </div></section>'''
+
 def fallstudien_teaser():
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
@@ -343,13 +369,18 @@ def stimmen():
 </section>'''
 
 SCHRITTE = [(IK['search'], 'Potenzialanalyse', 'Wir schauen uns dein Einzugsgebiet an: Wie viele Leute erreichen wir, wer wirbt dort schon, was ist realistisch drin.', 'kostet nichts'), (IK['target'], 'Strategie &amp; Setup', 'Zielgruppe, Botschaft und Funnel bauen wir auf dein Ziel zu: Monteure, Aufträge oder beides.', 'unter 2 Wochen'), (IK['rocket'], 'Kampagne live', 'Die erste Anfrage oder Bewerbung kommt oft schon in den ersten 24 Stunden nach der Veröffentlichung, mit Kontaktdaten und vorgeprüft.', 'ab Tag 1'), (IK['chart'], 'Optimieren &amp; Skalieren', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet. Was funktioniert, bekommt mehr Budget.', 'laufend')]
+PHASEN = [(0, 1, 'Tag 1', 'Potenzialanalyse', 'Wir schauen uns dein Einzugsgebiet an: Wie viele Leute erreichen wir, wer wirbt dort schon, was ist realistisch drin. Kostet nichts.'),
+          (1, 10, 'Woche 1–2', 'Strategie &amp; Setup', 'Zielgruppe, Botschaft und Funnel bauen wir auf dein Ziel zu: Monteure, Aufträge oder beides. Shooting bei dir im Betrieb.'),
+          (10, 12, 'Ab Tag 10', 'Kampagne live', 'Die erste Anfrage oder Bewerbung kommt oft schon in den ersten 24 Stunden nach der Veröffentlichung, mit Kontaktdaten und vorgeprüft.'),
+          (12, 20, 'Laufend', 'Optimieren &amp; Skalieren', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet. Was funktioniert, bekommt mehr Budget.')]
 def ablauf():
-    s = ''.join(f'<article class="schritt rv" data-d="{i+1}"><span class="nr" aria-hidden="true">0{i+1}</span><div class="ic" aria-hidden="true">{ic}</div><h3>{t}</h3><p>{p}</p><span class="dauer">{d}</span></article>' for i, (ic, t, p, d) in enumerate(SCHRITTE))
-    punkte = ''.join(f'<b style="left:{(i+.5)/4*100:.1f}%"></b>' for i in range(4))
+    tage = ''.join(f'<span class="{"wo" if i % 5 == 0 else ""}">{"W" + str(i // 5 + 1) if i % 5 == 0 else ""}</span>' for i in range(20))
+    ph = ''.join(f'<li class="phase rv" data-d="{i+1}" style="--a:{a};--b:{b}"><span class="nr" aria-hidden="true">0{i+1}</span><div class="text-p"><span class="wann">{w}</span><b>{t}</b><p>{p}</p></div><div class="spur"><i></i></div></li>' for i, (a, b, w, t, p) in enumerate(PHASEN))
     return f'''<section class="ablauf" id="ablauf">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick w rv">Unser Vorgehen</p><h2 class="d rv">Vier Schritte, bis es <span class="em w">läuft.</span></h2></div><p class="lead rv">Der Ablauf ist für Recruiting und Auftragsgewinnung derselbe. In unter zwei Wochen läuft die erste Kampagne.</p></div>
-    <div class="rohr-wrap"><div class="rohr" aria-hidden="true"><i></i>{punkte}</div><div class="schritte">{s}</div></div>
+    <div class="sec-kopf"><div><p class="kick w rv">Unser Vorgehen</p><h2 class="d rv">Vom Erstgespräch zur laufenden Kampagne <span class="em w">in zwei Wochen.</span></h2></div><p class="lead rv">Vier Phasen, ein Zeitplan. Der Ablauf ist für Recruiting und Auftragsgewinnung derselbe.</p></div>
+    <div class="plan-tafel rv"><div class="tage" aria-hidden="true">{tage}</div><ul class="phasen">{ph}</ul><div class="heute" aria-hidden="true"><span>läuft</span></div></div>
+    <p class="fussnote rv">Richtwert aus den laufenden Kampagnen. Wer schneller Fotos liefert, ist schneller live.</p>
   </div>
 </section>'''
 
@@ -461,7 +492,7 @@ def seite_start():
     </div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + kinetik() + leiter() + problem() + system() + hebel() + fallstudien_teaser() + stimmen() + ablauf() + ueber_insel() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.</em>“', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + kontakt()
+    body = hero + logo_band() + kinetik() + leiter() + problem() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ablauf() + ueber_insel() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.</em>“', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + kontakt()
     return h + body + fuss()
 
 def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):
@@ -496,7 +527,7 @@ def seite_monteure():
 </div></section>'''
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Fallstudie · Recruiting</p><h2 class="d rv">„Wir haben nur nicht gedacht, dass es <span class="em k">so viele</span> sind."</h2></div><p class="lead rv">Erwin Schmidt &amp; Sohn, Sindelfingen. Ein Anlagenmechaniker gesucht, 25 Bewerbungen bekommen, Stelle besetzt.</p></div>{FALL_ESS()}
   <div class="fall-grid" style="margin-top:20px">{senftleben_recruiting_karte()}<article class="fall-karte rv" data-d="2" style="background:var(--night);color:#fff;border-color:var(--night)"><div class="txt" style="justify-content:center"><p class="kick" style="color:var(--night-sub)">Was die Zahlen bedeuten</p><blockquote>„In den ersten X Wochen" heißt: die Kampagnen laufen weiter.</blockquote><p style="color:var(--night-sub)">Alle Zahlen stammen aus dem Funnel und dem CRM des jeweiligen Betriebs und beziehen sich auf den genannten Zeitraum nach Kampagnenstart.</p><p><a class="btn btn-kalt" href="{CAL_REC}" target="_blank" rel="noopener">{ic('target','ic')}Recruiting besprechen</a></p></div></article></div></div></section>'''
-    body += reels() + statement('Die guten Monteure suchen nicht. Sie sind in Arbeit. Aber sie wechseln, wenn das <em>richtige Angebot</em> vor ihnen liegt.') + ablauf() + faq(fr, 'Fragen zum <span class="em k">Recruiting.</span>') + kontakt('Reden wir über <span class="em k">die Stelle.</span>')
+    body += kaskade('ess') + reels() + statement('Die guten Monteure suchen nicht. Sie sind in Arbeit. Aber sie wechseln, wenn das <em>richtige Angebot</em> vor ihnen liegt.') + ablauf() + faq(fr, 'Fragen zum <span class="em k">Recruiting.</span>') + kontakt('Reden wir über <span class="em k">die Stelle.</span>')
     return h + body + fuss()
 
 def seite_auftraege():
@@ -522,7 +553,7 @@ def seite_auftraege():
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Fallstudie · Auftrags-Funnel Badsanierung</p><h2 class="d rv">„Dass so schnell so viele Anfragen kommen, <span class="em w">hätte ich nicht gedacht.</span>"</h2></div><p class="lead rv">Senftleben Haustechnik, Ehingen. Ausgelastet, und trotzdem laufen die Anzeigen weiter, damit der Name im Kopf bleibt.</p></div>{FALL_SEN()}
   <div class="fall-grid" style="margin-top:20px">{sussmann_karte()}<article class="fall-karte rv" data-d="2" style="justify-content:center;background:var(--night);color:#fff;border-color:var(--night)"><div class="txt" style="justify-content:center"><p class="kick" style="color:var(--night-sub)">Nach dem Startpaket</p><blockquote>Werbung macht man nicht nur, wenn es gut läuft.</blockquote><p style="color:var(--night-sub)">Benjamin Senftleben hat nach dem Startpaket verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Das hat er schon in der Meisterschule gelernt.</p><p><a class="btn btn-warm" href="{CAL_LEAD}" target="_blank" rel="noopener">{ic('target','ic')}Potenzial durchrechnen</a></p></div></article></div>
 </div></section>'''
-    body += statement('Ein Komplettbad oder eine Wärmepumpe bringt 20.000 bis 50.000 €. Nur kommen die Projekte, <em>wann sie wollen.</em>') + ablauf() + faq(fr, 'Fragen zum <span class="em w">Auftrags-Funnel.</span>') + kontakt('Sehen wir uns <span class="em w">deinen Umkreis</span> an.')
+    body += kaskade('senftleben') + statement('Ein Komplettbad oder eine Wärmepumpe bringt 20.000 bis 50.000 €. Nur kommen die Projekte, <em>wann sie wollen.</em>') + ablauf() + faq(fr, 'Fragen zum <span class="em w">Auftrags-Funnel.</span>') + kontakt('Sehen wir uns <span class="em w">deinen Umkreis</span> an.')
     return h + body + fuss()
 
 def seite_fallstudien():

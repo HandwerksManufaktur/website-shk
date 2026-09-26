@@ -6,49 +6,48 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SHK Onboarding – HandwerksManufaktur</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F3F6FA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --accent:#0ca4c2;--accent2:#2ecd6f;--accent-dim:rgba(12,164,194,0.1);
-  --text:#0b2044;--muted:#6b8ba4;--label:#4a6a85;
-  --surface:#f1f6fb;--border:#c4d8e9;--card:#fff;
-  --radius:10px;--font-head:'Playfair Display',serif;--font-body:'Inter',sans-serif;
-  --shadow:0 4px 24px rgba(11,32,68,0.1);
+  /* Palette der SHK-Seite v3 (firma/website-shk/neu/styles.css), Logo Fassung C */
+  --accent:#146FB8;--accent2:#1E90E8;--accent-dim:#E3F1FC;--warm-deep:#B44E15;
+  --regler:linear-gradient(90deg,#1E90E8 0%,#7A7EC8 50%,#F5762B 100%);
+  --ink:#0B1424;--text:#0B1424;--muted:#4A5666;--label:#4A5666;--faint:#65717F;
+  --surface:#F3F6FA;--border:#C9D3DF;--line:#DCE3EC;--card:#fff;--err:#C62828;
+  --radius:12px;--font-head:'Archivo','Inter',system-ui,sans-serif;--font-body:'Inter',system-ui,-apple-system,sans-serif;
+  --shadow:0 1px 2px rgba(11,20,36,.04),0 12px 36px rgba(11,20,36,.08);
 }
 html{scroll-behavior:smooth}
-body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(--text)}
+body{background:#F3F6FA;min-height:100vh;font-family:var(--font-body);color:var(--text)}
 
 /* HEADER */
-.header{background:#fff;border-bottom:1px solid #dde8f0;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(11,32,68,0.06)}
-.logo-bars{display:flex;gap:3px;align-items:flex-end}
-.logo-bars span{display:block;width:4px;background:var(--accent);border-radius:2px}
-.logo-bars span:nth-child(1){height:11px}
-.logo-bars span:nth-child(2){height:17px}
-.logo-bars span:nth-child(3){height:9px}
-.logo-text{font-weight:500;font-size:13px;letter-spacing:0.3px;line-height:1.25;color:var(--text);margin-left:10px}
+.header{background:#fff;border-bottom:1px solid var(--line);padding:16px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(11,20,36,0.06)}
 .header-left{display:flex;align-items:center}
-.header-badge{border:1px solid rgba(12,164,194,0.3);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--accent);background:rgba(12,164,194,0.06)}
+.header-badge{border:1px solid rgba(30,144,232,0.3);border-radius:20px;padding:5px 14px;font-size:13px;font-weight:500;color:var(--accent);background:rgba(30,144,232,0.06)}
 
 /* PROGRESS */
-.progress-track{height:3px;background:#dde8f0}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;transition:width 0.5s ease}
+.progress-track{height:3px;background:var(--line)}
+.progress-fill{height:100%;background:var(--regler);width:0%;transition:width 0.5s ease}
 
 /* STEP DOTS */
 .step-dots{display:flex;align-items:center;justify-content:center;padding:26px 24px 0;max-width:680px;margin:0 auto}
 .step-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;z-index:1;min-width:44px}
-.step-dot{width:30px;height:30px;border-radius:50%;background:#eaf1f7;border:2px solid #c4d8e9;color:#9ab5ca;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.step-dot{width:30px;height:30px;border-radius:50%;background:#F3F6FA;border:2px solid var(--border);color:var(--faint);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
 .step-dot.done{background:var(--accent);border-color:var(--accent);color:#fff}
-.step-dot.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 0 4px rgba(12,164,194,0.15)}
-.step-dot-label{font-size:9px;color:#9ab5ca;font-weight:500;letter-spacing:0.2px;text-align:center;white-space:nowrap;transition:color 0.3s}
+.step-dot.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 0 4px rgba(30,144,232,0.15)}
+.step-dot-label{font-size:13px;color:var(--faint);font-weight:500;letter-spacing:0.2px;text-align:center;white-space:nowrap;transition:color 0.3s}
 .step-dot-wrap.active .step-dot-label{color:var(--accent);font-weight:600}
 .step-dot-wrap.done .step-dot-label{color:var(--muted)}
-.step-connector{flex:1;height:2px;background:#dde8f0;margin-bottom:20px;transition:background 0.3s;min-width:8px}
+.step-connector{flex:1;height:2px;background:var(--line);margin-bottom:20px;transition:background 0.3s;min-width:8px}
 .step-connector.done{background:var(--accent)}
 
 /* MOTIVATION BANNER */
 .motiv-wrap{max-width:680px;margin:18px auto 0;padding:0 24px}
-.motiv-inner{background:rgba(12,164,194,0.07);border:1px solid rgba(12,164,194,0.2);border-radius:12px;padding:13px 18px;display:flex;align-items:center;gap:12px;animation:fadeUp 0.4s ease both}
+.motiv-inner{background:rgba(30,144,232,0.07);border:1px solid rgba(30,144,232,0.2);border-radius:12px;padding:13px 18px;display:flex;align-items:center;gap:12px;animation:fadeUp 0.4s ease both}
 .motiv-emoji{font-size:20px;flex-shrink:0}
 .motiv-text{font-size:13px;color:var(--label);line-height:1.45;font-weight:500}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -63,7 +62,7 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 
 /* CARD */
 .step-card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px}
-.card-head{padding:22px 26px 18px;border-bottom:1px solid #eef3f8}
+.card-head{padding:22px 26px 18px;border-bottom:1px solid var(--line)}
 .card-title{font-family:var(--font-head);font-size:21px;font-weight:800;color:var(--text);margin-bottom:3px}
 .card-sub{font-size:13px;color:var(--muted);line-height:1.5}
 .card-body{padding:22px 26px}
@@ -72,34 +71,34 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 .fg{display:grid;gap:16px}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .field{display:flex;flex-direction:column;gap:6px}
-.field label{font-size:10px;font-weight:600;letter-spacing:0.9px;text-transform:uppercase;color:var(--label)}
+.field label{font-size:13px;font-weight:600;color:var(--label)}
 .field label .req{color:var(--accent);margin-left:2px}
 .field input,.field select,.field textarea{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font-body);font-size:14px;font-weight:400;padding:11px 15px;outline:none;transition:all 0.2s;width:100%}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(12,164,194,0.1)}
-.field input::placeholder,.field textarea::placeholder{color:#b8cdd9;font-weight:300}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(30,144,232,0.1)}
+.field input::placeholder,.field textarea::placeholder{color:var(--border);font-weight:400}
 .field textarea{resize:vertical;min-height:84px;line-height:1.6}
 .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8ba4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px;cursor:pointer}
-.hint{font-size:11px;color:var(--muted);line-height:1.5;display:flex;gap:5px}
+.hint{font-size:13px;color:var(--muted);line-height:1.5;display:flex;gap:5px}
 .hint::before{content:'→';color:var(--accent);flex-shrink:0}
-.divider{height:1px;background:#eef3f8;margin:4px 0}
+.divider{height:1px;background:var(--line);margin:4px 0}
 
 /* SERVICE CARDS */
 .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .service-card{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:22px 18px;cursor:pointer;transition:all 0.2s;user-select:none;position:relative}
-.service-card:hover{border-color:#8ab8d4;background:#e6f1f8}
-.service-card.active{border-color:var(--accent);background:var(--accent-dim);box-shadow:0 0 0 3px rgba(12,164,194,0.1)}
+.service-card:hover{border-color:var(--faint);background:var(--line)}
+.service-card.active{border-color:var(--accent);background:var(--accent-dim);box-shadow:0 0 0 3px rgba(30,144,232,0.1)}
 .service-card input[type=checkbox]{position:absolute;top:14px;right:14px;width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
 .sc-icon{font-size:26px;margin-bottom:10px}
 .sc-label{font-family:var(--font-head);font-weight:700;font-size:17px;color:var(--text);margin-bottom:3px}
 .service-card.active .sc-label{color:var(--accent)}
-.sc-desc{font-size:12px;color:var(--muted);line-height:1.4}
-.service-hint{text-align:center;font-size:12px;color:var(--muted);margin-top:12px}
+.sc-desc{font-size:13px;color:var(--muted);line-height:1.4}
+.service-hint{text-align:center;font-size:13px;color:var(--muted);margin-top:12px}
 
 /* STELLE */
 .stelle-item{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:18px;margin-bottom:10px;position:relative}
-.stelle-num{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.stelle-num{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:12px}
 .remove-stelle{position:absolute;top:14px;right:14px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;width:26px;height:26px;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
-.remove-stelle:hover{border-color:#ff4444;color:#ff4444}
+.remove-stelle:hover{border-color:var(--err);color:var(--err)}
 .add-btn{width:100%;background:transparent;border:1.5px dashed var(--border);border-radius:8px;color:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:500;padding:12px;cursor:pointer;transition:all 0.2s;margin-top:6px}
 .add-btn:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -111,7 +110,7 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 
 /* TOGGLE */
 .toggle-field{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:13px 17px;cursor:pointer;user-select:none;gap:14px;transition:border-color 0.2s}
-.toggle-field:hover{border-color:#8ab8d4}
+.toggle-field:hover{border-color:var(--faint)}
 .toggle-field label{font-size:14px;color:var(--text);cursor:pointer;font-weight:400}
 .toggle{width:44px;height:24px;background:var(--border);border-radius:12px;position:relative;transition:background 0.2s;flex-shrink:0}
 .toggle::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
@@ -126,16 +125,16 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 .person-item input{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font-body);font-size:14px;padding:10px 13px;outline:none;transition:all 0.2s}
 .person-item input:focus{border-color:var(--accent);background:#fff}
 .remove-person{background:transparent;border:1.5px solid var(--border);border-radius:8px;color:var(--muted);width:40px;height:40px;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
-.remove-person:hover{border-color:#ff4444;color:#ff4444}
+.remove-person:hover{border-color:var(--err);color:var(--err)}
 
 /* UPLOAD */
 .upload-zone{border:2px dashed var(--border);border-radius:10px;padding:20px;text-align:center;cursor:pointer;background:var(--surface);position:relative;overflow:hidden;transition:all 0.2s}
-.upload-zone:hover{border-color:var(--accent);background:#e6f1f8}
+.upload-zone:hover{border-color:var(--accent);background:var(--line)}
 .upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .preview-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;min-width:0}
 /* Lange Dateinamen ohne Umbruch zogen die Grid-Spalte auf ihre min-content-Breite auf —
    die Karte wurde dadurch breiter als der Viewport und rechts abgeschnitten. */
-.preview-chip{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3px 9px;font-size:11px;color:var(--label);max-width:100%;overflow-wrap:anywhere}
+.preview-chip{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3px 9px;font-size:13px;color:var(--label);max-width:100%;overflow-wrap:anywhere}
 .leistung-item{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
 
 /* DSGVO */
@@ -147,16 +146,16 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 .dsgvo-text a{color:var(--accent);text-decoration:none}
 
 /* NAVIGATION */
-.wizard-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-top:1px solid #dde8f0;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;z-index:50;box-shadow:0 -4px 20px rgba(11,32,68,0.07)}
-.nav-info{font-size:11px;color:var(--muted);font-weight:500;text-align:center;line-height:1.3}
+.wizard-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;z-index:50;box-shadow:0 -4px 20px rgba(11,20,36,0.07)}
+.nav-info{font-size:13px;color:var(--muted);font-weight:500;text-align:center;line-height:1.3}
 .nav-info strong{font-size:16px;font-weight:700;color:var(--text);display:block}
 .btn-back{background:transparent;border:1.5px solid var(--border);border-radius:10px;color:var(--label);font-family:var(--font-body);font-size:14px;font-weight:500;padding:12px 22px;cursor:pointer;transition:all 0.2s}
 .btn-back:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
 .btn-back:disabled{opacity:0.25;cursor:not-allowed}
 .btn-next{background:var(--accent);border:none;border-radius:10px;color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;padding:12px 28px;cursor:pointer;transition:all 0.2s}
-.btn-next:hover{background:#0891ae;box-shadow:0 4px 12px rgba(12,164,194,0.3)}
-.btn-finish{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;padding:12px 28px;cursor:pointer;transition:all 0.2s}
-.btn-finish:hover{opacity:0.9;box-shadow:0 4px 14px rgba(46,205,111,0.3)}
+.btn-next:hover{background:#0F5A96;box-shadow:0 4px 12px rgba(30,144,232,0.3)}
+.btn-finish{background:var(--regler);border:none;border-radius:10px;color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;padding:12px 28px;cursor:pointer;transition:all 0.2s}
+.btn-finish:hover{opacity:0.9;box-shadow:0 4px 14px rgba(180,78,21,0.28)}
 
 /* SUCCESS */
 .success-screen{display:none;position:fixed;inset:0;z-index:300;background:#fff;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px}
@@ -166,17 +165,9 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 .success-screen p{color:var(--muted);font-size:15px;line-height:1.7;max-width:400px}
 
 /* UPLOAD OVERLAY */
-.upload-overlay{display:none;position:fixed;inset:0;background:#f4f8fc;z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center}
+.upload-overlay{display:none;position:fixed;inset:0;background:#F3F6FA;z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center}
 .upload-overlay.show{display:flex}
 @keyframes barPulse{0%,100%{opacity:1}50%{opacity:0.5}}
-@keyframes logoBounce{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.4)}}
-.upload-logo-bars{display:flex;gap:5px;align-items:flex-end;margin-bottom:28px}
-.upload-logo-bars span{display:block;width:6px;border-radius:3px;background:var(--accent)}
-.upload-logo-bars span:nth-child(1){height:14px;animation:logoBounce 1s ease-in-out 0s infinite}
-.upload-logo-bars span:nth-child(2){height:22px;animation:logoBounce 1s ease-in-out 0.15s infinite}
-.upload-logo-bars span:nth-child(3){height:12px;animation:logoBounce 1s ease-in-out 0.3s infinite}
-.upload-logo-bars span:nth-child(4){height:18px;animation:logoBounce 1s ease-in-out 0.1s infinite}
-.upload-logo-bars span:nth-child(5){height:10px;animation:logoBounce 1s ease-in-out 0.25s infinite}
 
 @media(max-width:600px){
   .header{padding:14px 18px}
@@ -188,7 +179,7 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
      margin-bottom, damit er ohne Label auf Punkt-Hoehe sitzt. */
   .step-dots{padding:24px 16px 0}
   .step-dot-wrap{min-width:0}
-  .step-dot{width:26px;height:26px;font-size:10px}
+  .step-dot{width:26px;height:26px;font-size:13px}
   .step-connector{min-width:4px;margin-bottom:0}
   .person-item{grid-template-columns:1fr 1fr auto}
   .wizard-wrap{padding:18px 16px 100px}
@@ -198,15 +189,53 @@ body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(
 /* 🔴 Sicherheitsnetz (11.09.2026): ohne html.js ist alles sofort sichtbar —
    sonst bleibt die Seite nach dem Hero leer, wenn das Skript nicht durchkommt. */
 html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!important;transform:none!important;}
+
+/* ── SHK v3 · Fassung C: Form und Schrift ── */
+body{-webkit-font-smoothing:antialiased}
+.header{background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);box-shadow:none}
+.header-left img{display:block;height:37px;width:auto}
+.header-badge{font-size:13px;font-weight:600;letter-spacing:0;color:var(--accent);background:var(--accent-dim);border-color:transparent}
+.progress-track{height:3px}
+.step-dot{border-width:1.5px;font-size:13px}
+.step-dot.done,.step-dot.active{background:var(--ink);border-color:var(--ink)}
+.step-dot.active{box-shadow:0 0 0 4px rgba(11,20,36,.10)}
+.step-connector.done{background:var(--ink)}
+.step-dot-label{font-size:13px;color:var(--faint)}
+.step-dot-wrap.active .step-dot-label{color:var(--ink)}
+.motiv-inner{background:var(--accent-dim);border-color:transparent}
+.motiv-text{font-size:14px;color:var(--ink)}
+.step-card{border-radius:24px;border:1px solid var(--line)}
+.card-title{font-size:24px;letter-spacing:-.015em;line-height:1.15}
+.card-sub{font-size:14px;color:var(--muted)}
+.sc-label{letter-spacing:-.01em}
+.field input,.field select,.field textarea{font-size:15px}
+.btn-back,.btn-next,.btn-finish,.add-btn{border-radius:999px;font-size:15px;min-height:44px}
+.btn-next{background:var(--ink)}
+.btn-next:hover{background:#1C2A42;box-shadow:0 10px 24px rgba(11,20,36,.2)}
+.btn-finish{background:var(--warm-deep)}
+.success-screen h2{letter-spacing:-.02em}
+.upload-signet{width:52px;height:57px;margin-bottom:28px;overflow:visible}
+.upload-signet path{fill:var(--ink);transform-box:fill-box;transform-origin:50% 100%;animation:saeule 1.1s cubic-bezier(.22,1,.36,1) infinite}
+.upload-signet path:nth-child(2){animation-delay:.14s}
+.upload-signet path:nth-child(3){animation-delay:.28s}
+@keyframes saeule{0%,100%{transform:scaleY(1)}45%{transform:scaleY(.72)}}
+@media (prefers-reduced-motion:reduce){.upload-signet path{animation:none}.step,.motiv-inner{animation:none}}
+@media(max-width:600px){.header{padding:12px 16px}.header-left img{height:30px}.header-badge{font-size:13px}.card-title{font-size:21px}}
+.hinweis-box{background:var(--accent-dim);border-radius:var(--radius);padding:14px 16px;font-size:14px;line-height:1.6;color:var(--ink)}
+.hinweis-box a{color:var(--accent);font-weight:600}
+.hinweis-leise{display:inline-block;margin-top:8px;color:var(--muted)}
+.step-dot-wrap.klickbar{cursor:pointer}
+.step-dot-wrap.klickbar:hover .step-dot{box-shadow:0 0 0 4px rgba(11,20,36,.10)}
+.step-dot-wrap.klickbar:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:8px}
+.field input.feld-fehlt{border-color:var(--err)}
+.step-card{border-radius:20px}
+.service-card,.hinweis-box,.motiv-inner{border-radius:20px}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-left">
-    <div class="logo-bars"><span></span><span></span><span></span></div>
-    <div class="logo-text">Handwerks<br>Manufaktur</div>
-  </div>
+  <a class="header-left" href="https://shk.handwerksmanufaktur.digital/" aria-label="HandwerksManufaktur"><img src="/assets/logo-hm-quer-schwarz.svg" alt="HandwerksManufaktur" width="137" height="37"></a>
   <div class="header-badge">SHK Onboarding</div>
 </div>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -216,27 +245,27 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
 <div class="motiv-wrap">
   <div class="motiv-inner" id="motivBanner">
     <div class="motiv-emoji" id="motivEmoji">👋</div>
-    <div class="motiv-text" id="motivText">Schön, dass du dabei bist! Lass uns gemeinsam loslegen.</div>
+    <div class="motiv-text" id="motivText">Schön, dass ihr dabei seid! Legen wir los.</div>
   </div>
 </div>
 
 <!-- UPLOAD OVERLAY -->
 <div class="upload-overlay" id="shkUploadOverlay">
-  <div class="upload-logo-bars"><span></span><span></span><span></span><span></span><span></span></div>
+  <svg class="upload-signet" viewBox="0 0 83 91" aria-hidden="true"><path d="M0,39.667 L22,25 L22,91 L0,91 Z"/><path d="M34,14.667 L56,0 L56,91 L34,91 L34,64.67 L27,68 L27,53.667 L34,49 Z"/><path d="M61,14.667 L83,0 L83,91 L61,91 Z"/></svg>
   <div style="font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-0.5px" id="shkUploadTitle">Wir richten alles ein</div>
-  <div style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.5" id="shkUploadStatus">Deine Google Drive-Ordnerstruktur wird angelegt…</div>
-  <div style="width:min(400px,80vw);background:#dde8f0;border-radius:100px;height:8px;overflow:hidden;margin-bottom:10px">
-    <div id="shkProgressBar" style="height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;border-radius:100px;transition:width 0.4s ease"></div>
+  <div style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.5" id="shkUploadStatus">Eure Google-Drive-Ordner werden angelegt…</div>
+  <div style="width:min(400px,80vw);background:var(--line);border-radius:100px;height:8px;overflow:hidden;margin-bottom:10px">
+    <div id="shkProgressBar" style="height:100%;background:var(--regler);width:0%;border-radius:100px;transition:width 0.4s ease"></div>
   </div>
-  <div style="font-size:12px;color:var(--accent);font-weight:600;margin-bottom:6px" id="shkProgressPct">Starte…</div>
-  <div style="font-size:11px;color:var(--muted)">Bitte Seite nicht schließen</div>
+  <div style="font-size:13px;color:var(--accent);font-weight:600;margin-bottom:6px" id="shkProgressPct">Starte…</div>
+  <div style="font-size:13px;color:var(--muted)">Bitte Seite nicht schließen</div>
 </div>
 
 <!-- SUCCESS -->
 <div class="success-screen" id="successScreen">
   <div style="font-size:56px;margin-bottom:20px">🎉</div>
   <h2>Alles <em>bereit!</em></h2>
-  <p>Deine Daten sind eingegangen. Wir melden uns innerhalb von 24 Stunden – dann geht's los!</p>
+  <p>Eure Daten sind eingegangen. Wir melden uns innerhalb von 24 Stunden – dann geht's los!</p>
 </div>
 
 <!-- WIZARD -->
@@ -247,7 +276,7 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
     <div class="step-card">
       <div class="card-head">
         <div class="card-title">Was haben wir gebucht?</div>
-        <div class="card-sub">Wähle eine oder beide Leistungen – du kannst mehreres anklicken.</div>
+        <div class="card-sub">Wählt eine oder beide Leistungen aus — mehrere anklicken geht.</div>
       </div>
       <div class="card-body">
         <div class="service-grid">
@@ -264,8 +293,8 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
             <div class="sc-desc">Mehr Aufträge & neue Kunden gewinnen</div>
           </label>
         </div>
-        <div style="background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;padding:12px 15px;margin-top:18px;font-size:12.5px;line-height:1.55;color:var(--text)">
-          <strong>Bevor ihr loslegt:</strong> Ihr müsst nicht alles vollständig ausfüllen. Wichtig für den Start sind die Textfelder und euer Logo. Wenn ihr bei einem Feld nicht wisst, was reinkommt — einfach leer lassen. Fotos könnt ihr auch später jederzeit noch nachschicken. Schickt das Formular am Ende einfach ab, auch wenn noch nicht alles beisammen ist.
+        <div class="hinweis-box" style="margin-top:18px">
+          <strong>Bevor ihr loslegt:</strong> Ihr müsst nicht alles vollständig ausfüllen. Wichtig für den Start sind die Textfelder und euer Logo. Wenn ihr bei einem Feld nicht wisst, was reinkommt — einfach leer lassen. Fotos könnt ihr auch später jederzeit noch nachschicken. Schickt das Formular am Ende einfach ab, auch wenn noch nicht alles beisammen ist.<br><span class="hinweis-leise">💾 Euer Stand wird auf diesem Gerät automatisch gespeichert — ihr könnt jederzeit pausieren und später weitermachen.</span>
         </div>
         <div class="service-hint">Beides gebucht? Einfach beide anklicken!</div>
       </div>
@@ -276,8 +305,8 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
   <div class="step" id="step-company">
     <div class="step-card">
       <div class="card-head">
-        <div class="card-title">🏢 Dein Betrieb</div>
-        <div class="card-sub">Grundlegende Infos zu deinem Unternehmen – einmalig für alle Leistungen.</div>
+        <div class="card-title">🏢 Euer Betrieb</div>
+        <div class="card-sub">Die Stammdaten eures Betriebs — einmal für alle Leistungen.</div>
       </div>
       <div class="card-body">
         <div class="fg">
@@ -407,6 +436,7 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
           </div>
           <div class="field"><label>Bevorzugtes Datum & Uhrzeit für den Videodreh</label><input type="text" id="videoDreh" placeholder="z.B. 15.04. Vormittag, 22.04. ab 14 Uhr"></div>
           <div class="divider"></div>
+          <div class="hinweis-box">📱 <strong>Für den Werbezugang:</strong> Bitte vor dem Onboarding-Call einmal unsere <a href="/vorbereitung/" target="_blank" rel="noopener">Vorbereitung</a> durchgehen (Authenticator, Facebook-Login, Zahlungsmethode — alles am Handy, ca. 10 Minuten). Dann starten wir im Call direkt.</div>
           <div class="toggle-field" onclick="toggleCond('fb-toggle','fb-cond')">
             <label>Facebook Seite vorhanden?</label><div class="toggle" id="fb-toggle"></div>
           </div>
@@ -445,10 +475,10 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
     <div class="step-card">
       <div class="card-head">
         <div class="card-title">📸 Fotos & Logo</div>
-        <div class="card-sub">Lade deine Unterlagen hoch – je mehr, desto besser für die Kampagne.</div>
+        <div class="card-sub">Ladet eure Unterlagen hoch — je mehr echtes Material, desto besser wird die Kampagne.</div>
       </div>
       <div class="card-body">
-        <div style="background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;padding:12px 15px;margin-bottom:18px;font-size:12.5px;line-height:1.55;color:var(--text)">
+        <div class="hinweis-box" style="margin-bottom:18px">
           <strong>Kurz zu den Fotos:</strong> Wenn ihr schon welche zur Hand habt — Team, Baustellen, Arbeitsalltag — ladet sie gerne direkt mit hoch. Die müssen nicht perfekt sein, authentisch reicht völlig. Was jetzt noch fehlt, könnt ihr später einfach in der Google Drive nachreichen, und beim Drehtermin machen wir ohnehin neues Material. Für den Start reichen die Textfelder und euer Logo — schickt das Formular am Ende einfach ab.
         </div>
         <div class="fg">
@@ -458,48 +488,48 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
               <input type="file" id="shkLogoInput" accept=".png,.svg,.jpg,.pdf,.heic,.heif" onchange="shkLogoFile(this.files)">
               <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
               <div style="font-size:13px;color:var(--text)"><span style="color:var(--accent);text-decoration:underline">Datei auswählen</span> oder reinziehen</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:3px">PNG, SVG, PDF · transparent bevorzugt</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:3px">PNG, SVG, PDF · transparent bevorzugt</div>
             </div>
             <div id="shkLogoPreview" class="preview-row"></div>
           </div>
           <div class="fr">
             <div class="field">
-              <label>📸 Inhaberfoto <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:10px">(falls vorhanden)</span></label>
+              <label>📸 Inhaberfoto <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:13px">(falls vorhanden)</span></label>
               <div class="upload-zone" ondragover="event.preventDefault()" ondrop="shkDrop(event,'inhaber')">
                 <input type="file" accept="image/*,.heic,.heif" multiple onchange="shkFile(this.files,'inhaber')">
                 <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
-                <div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Foto auswählen</span> oder reinziehen</div>
-                <div style="font-size:11px;color:var(--muted);margin-top:2px">Porträt oder auf der Baustelle</div>
+                <div style="font-size:13px;color:var(--text)"><span style="color:var(--accent)">Foto auswählen</span> oder reinziehen</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:2px">Porträt oder auf der Baustelle</div>
               </div>
               <div id="preview-inhaber" class="preview-row"></div>
             </div>
             <div class="field">
-              <label>👥 Teamfotos & Arbeitsalltag <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:10px">(falls vorhanden)</span></label>
+              <label>👥 Teamfotos & Arbeitsalltag <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:13px">(falls vorhanden)</span></label>
               <div class="upload-zone" ondragover="event.preventDefault()" ondrop="shkDrop(event,'team')">
                 <input type="file" accept="image/*,.heic,.heif" multiple onchange="shkFile(this.files,'team')">
                 <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
-                <div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Fotos auswählen</span> oder reinziehen</div>
-                <div style="font-size:11px;color:var(--muted);margin-top:2px">Team, Baustelle, Fahrzeuge</div>
+                <div style="font-size:13px;color:var(--text)"><span style="color:var(--accent)">Fotos auswählen</span> oder reinziehen</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:2px">Team, Baustelle, Fahrzeuge</div>
               </div>
               <div id="preview-team" class="preview-row"></div>
             </div>
             <div class="field" style="grid-column:1/-1">
               <label>✍️ Einwilligung der abgebildeten Personen</label>
-              <div style="font-size:11.5px;color:var(--muted);line-height:1.6;margin-bottom:8px">Sobald Mitarbeiter auf Fotos oder Videos zu sehen sind, brauchen wir von ihnen eine unterschriebene Einwilligung. Trage die Namen ein — wir erzeugen euch daraus das fertige Formular auf euren Briefkopf.</div>
+              <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:8px">Sobald Mitarbeiter auf Fotos oder Videos zu sehen sind, brauchen wir von ihnen eine unterschriebene Einwilligung. Trage die Namen ein — wir erzeugen euch daraus das fertige Formular auf euren Briefkopf.</div>
               <textarea id="shkMitarbeiterNamen" placeholder="Ein Name pro Zeile:&#10;Max Mustermann&#10;Erika Musterfrau" style="min-height:88px"></textarea>
-              <button type="button" onclick="oeffneEinwilligungSHK()" style="margin-top:9px;background:transparent;border:1.5px solid var(--border);color:var(--accent);border-radius:9px;padding:10px 16px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer">📄 Formular öffnen &amp; drucken</button>
-              <div style="font-size:11.5px;color:var(--muted);line-height:1.6;margin:9px 0 6px">Unterschriebene Formulare hier hochladen — oder später per Mail an info@handwerksmanufaktur.digital.</div>
+              <button type="button" onclick="oeffneEinwilligungSHK()" style="margin-top:9px;background:transparent;border:1.5px solid var(--border);color:var(--accent);border-radius:9px;padding:10px 16px;font:inherit;font-size:13px;font-weight:600;cursor:pointer">📄 Formular öffnen &amp; drucken</button>
+              <div style="font-size:13px;color:var(--muted);line-height:1.6;margin:9px 0 6px">Unterschriebene Formulare hier hochladen — oder später per Mail an info@handwerksmanufaktur.digital.</div>
               <div class="upload-zone" ondragover="event.preventDefault()" ondrop="shkDrop(event,'einwilligungen')">
                 <input type="file" accept="image/*,.pdf,.heic,.heif" multiple onchange="shkFile(this.files,'einwilligungen')">
                 <div style="font-size:22px;margin-bottom:5px;opacity:0.35">⬆</div>
-                <div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Unterschriebene Einwilligungen</span> hochladen</div>
-                <div style="font-size:11px;color:var(--muted);margin-top:2px">Scan oder Foto · PDF, JPG, PNG</div>
+                <div style="font-size:13px;color:var(--text)"><span style="color:var(--accent)">Unterschriebene Einwilligungen</span> hochladen</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:2px">Scan oder Foto · PDF, JPG, PNG</div>
               </div>
               <div id="preview-einwilligungen" class="preview-row"></div>
             </div>
           </div>
           <div id="leistungenSHK-wrap" style="display:none">
-            <label style="font-size:10px;font-weight:600;letter-spacing:0.9px;text-transform:uppercase;color:var(--label);display:block;margin-bottom:10px">🏗️ Fotos je Leistung</label>
+            <label style="font-size:13px;font-weight:600;color:var(--label);display:block;margin-bottom:10px">🏗️ Fotos je Leistung</label>
             <div id="leistungenSHK"></div>
             <button type="button" id="addLeistungBtn" class="add-btn">+ Leistung mit Fotos hinzufügen</button>
           </div>
@@ -525,13 +555,13 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
             <div class="dsgvo-check" id="bildrechteBoxSHK"></div>
             <div class="dsgvo-text">Ich erkläre für unseren Betrieb: Die HandwerksManufaktur darf die bei uns angefertigten Foto- und Videoaufnahmen, unseren Firmennamen und unser Logo sowie Kundenstimmen, die wir abgeben (z.B. Bewertungen, Interviews, Videos), als Referenz verwenden (z.B. Website, Portfolio, Präsentationen, Social Media). Ich stelle sicher, dass alle abgebildeten Personen – insbesondere unsere Mitarbeiter – vor den Aufnahmen eingewilligt haben, und stelle die HandwerksManufaktur von Ansprüchen Dritter frei. Details siehe <a href="https://shk.handwerksmanufaktur.digital/agb/" target="_blank">§ 16 AGB</a>. <span style="color:var(--accent)">*</span></div>
           </div>
-          <div style="margin-top:10px;padding:13px 16px;background:rgba(30,154,208,.07);border:1px solid rgba(30,154,208,.28);border-radius:10px;font-size:13.5px;line-height:1.55">
+          <div style="margin-top:10px;padding:13px 16px;background:rgba(30,144,232,.07);border:1px solid rgba(30,144,232,.28);border-radius:10px;font-size:13.5px;line-height:1.55">
             <b>📄 Vorlage für euer Team</b><br>
             Damit ihr die Einwilligungen sauber dokumentiert habt, stellen wir euch eine fertige Vorlage bereit — ausdrucken, beim Fototermin unterschreiben lassen, bei euch aufbewahren.<br>
-            <a href="#" id="einwLink" target="_blank" rel="noopener" style="display:inline-block;margin-top:7px;font-weight:600">→ Einwilligungs-Vorlage öffnen (mit eurem Betriebsnamen)</a>
+            <a href="#" id="einwLink" target="_blank" rel="noopener" style="display:inline-block;margin-top:7px;font-weight:600;color:var(--accent)">→ Einwilligungs-Vorlage öffnen (mit eurem Betriebsnamen)</a>
           </div>
-          <div style="background:rgba(12,164,194,0.07);border:1px solid rgba(12,164,194,0.18);border-radius:10px;padding:15px 17px;font-size:13px;color:var(--label);line-height:1.6">
-            Nach dem Absenden legen wir automatisch deine Google Drive-Ordnerstruktur an. Wir melden uns innerhalb von 24 Stunden – dann geht's los!
+          <div style="background:rgba(30,144,232,0.07);border:1px solid rgba(30,144,232,0.18);border-radius:10px;padding:15px 17px;font-size:13px;color:var(--label);line-height:1.6">
+            Nach dem Absenden legen wir automatisch eure Google-Drive-Ordner an. Wir melden uns innerhalb von 24 Stunden – dann geht's los!
           </div>
         </div>
       </div>
@@ -550,8 +580,8 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
 <script>
 // === CONFIG ===
 const STEP_MESSAGES = {
-  'step-welcome':     { emoji: '👋', text: 'Schön, dass du dabei bist! Wähle aus, was wir gemeinsam starten.' },
-  'step-company':     { emoji: '🏢', text: 'Super! Jetzt brauche ich ein paar Infos zu deinem Betrieb.' },
+  'step-welcome':     { emoji: '👋', text: 'Schön, dass ihr dabei seid! Wählt aus, was wir gemeinsam starten.' },
+  'step-company':     { emoji: '🏢', text: 'Super! Jetzt ein paar Infos zu eurem Betrieb.' },
   'step-positioning': { emoji: '💪', text: 'Richtig gut! Wie positioniert ihr euch am Markt?' },
   'step-recruiting':  { emoji: '🔧', text: 'Weiter so! Jetzt zu euren offenen Stellen.' },
   'step-leadgen':     { emoji: '📈', text: 'Toll gemacht! Jetzt noch die Infos zur Neukundengewinnung.' },
@@ -599,6 +629,7 @@ function renderDots() {
     lbl.textContent = STEP_LABELS[sid] || '';
     wrap.appendChild(dot);
     wrap.appendChild(lbl);
+    if (i < currentIdx) { wrap.classList.add('klickbar'); wrap.setAttribute('role','button'); wrap.tabIndex = 0; wrap.title = 'Zu „' + (STEP_LABELS[sid] || '') + '“ springen'; wrap.onclick = function(){ currentIdx = i; showStep(i); }; wrap.onkeydown = function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); currentIdx = i; showStep(i); } }; }
     c.appendChild(wrap);
   });
   document.getElementById('progressFill').style.width = (currentIdx / (stepSeq.length - 1) * 100) + '%';
@@ -634,7 +665,7 @@ function goNext() {
   if (currentIdx === 0) {
     const r = document.getElementById('cb-recruiting').checked;
     const l = document.getElementById('cb-leadgen').checked;
-    if (!r && !l) { alert('Bitte wähle mindestens eine Leistung aus.'); return; }
+    if (!r && !l) { alert('Bitte wählt mindestens eine Leistung aus.'); return; }
     stepSeq = buildSeq();
   }
   if (currentIdx < stepSeq.length - 1) { currentIdx++; showStep(currentIdx); }
@@ -710,6 +741,7 @@ function loadDraft() {
 }
 function clearDraft() { localStorage.removeItem(SAVE_KEY); }
 document.addEventListener('input', function(e) {
+  if (e.target.classList) e.target.classList.remove('feld-fehlt');
   if (['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) saveDraft();
 });
 // Schalter/Checkboxen feuern kein input-Event (Divs bzw. change) — sonst gehen sie beim Reload verloren
@@ -831,14 +863,14 @@ function addLeistungSHK() {
   if (!c) return;
   var div = document.createElement('div');
   div.className = 'leistung-item';
-  div.innerHTML = '<div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Leistung #' + id + '</div>' +
+  div.innerHTML = '<div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px">Leistung #' + id + '</div>' +
     '<input type="text" placeholder="Leistungsname z.B. Badsanierung" style="width:100%;background:#fff;border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font-body);font-size:14px;padding:10px 13px;outline:none;margin-bottom:10px;box-sizing:border-box">' +
-    '<div style="font-size:10px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--label);margin-bottom:7px">Fotos zu dieser Leistung</div>' +
+    '<div style="font-size:13px;font-weight:600;color:var(--label);margin-bottom:7px">Fotos zu dieser Leistung</div>' +
     '<div class="upload-zone" id="uz-' + key + '" ondragover="event.preventDefault()">' +
     '<input type="file" accept="image/*,.heic,.heif" multiple id="fi-' + key + '">' +
     '<div style="font-size:20px;opacity:0.3">⬆</div>' +
-    '<div style="font-size:12px;color:var(--text)"><span style="color:var(--accent)">Fotos auswählen</span> oder reinziehen</div>' +
-    '<div style="font-size:11px;color:var(--muted)">Ca. 10–15 Fotos falls möglich</div>' +
+    '<div style="font-size:13px;color:var(--text)"><span style="color:var(--accent)">Fotos auswählen</span> oder reinziehen</div>' +
+    '<div style="font-size:13px;color:var(--muted)">Ca. 10–15 Fotos falls möglich</div>' +
     '</div><div id="preview-' + key + '" class="preview-row"></div>';
   c.appendChild(div);
   var fi = document.getElementById('fi-' + key);
@@ -859,7 +891,7 @@ function toggleDsgvoSHK() {
   const box = document.getElementById('dsgvoBoxSHK');
   if (!box) return;
   box.classList.toggle('on', dsgvoSHK);
-  box.innerHTML = dsgvoSHK ? '<span style="color:#fff;font-size:12px;font-weight:700">✓</span>' : '';
+  box.innerHTML = dsgvoSHK ? '<span style="color:#fff;font-size:13px;font-weight:700">✓</span>' : '';
 }
 
 // === EINWILLIGUNGS-FORMULAR ===
@@ -872,7 +904,7 @@ function oeffneEinwilligungSHK() {
   var el = document.getElementById('firmaName');
   var betrieb = (el ? el.value : '').trim();
   if (!betrieb) {
-    alert('Bitte trage zuerst im Schritt „Betrieb" euren Firmennamen ein — das Formular läuft auf euren Namen.');
+    alert('Bitte tragt zuerst im Schritt „Betrieb" euren Firmennamen ein — das Formular läuft auf euren Namen.');
     return;
   }
   var url = 'https://handwerksmanufaktur.digital/einwilligung/?betrieb=' + encodeURIComponent(betrieb);
@@ -897,7 +929,7 @@ function toggleBildrechteSHK() {
   const box = document.getElementById('bildrechteBoxSHK');
   if (!box) return;
   box.classList.toggle('on', bildrechteSHK);
-  box.innerHTML = bildrechteSHK ? '<span style="color:#fff;font-size:12px;font-weight:700">✓</span>' : '';
+  box.innerHTML = bildrechteSHK ? '<span style="color:#fff;font-size:13px;font-weight:700">✓</span>' : '';
 }
 
 // === COLLECT DATA ===
@@ -1086,8 +1118,10 @@ let shkCreatedFolders = null;
 let shkUploadErrors = [];
 
 async function submitForm() {
-  if (!dsgvoSHK) { alert('Bitte stimme zuerst der Datenschutzerklärung zu.'); return; }
-  if (!bildrechteSHK) { alert('Bitte bestätige noch die Erklärung zu Bildrechten und Referenznutzung.'); return; }
+  var _fn = document.getElementById('firmaName');
+  if (!_fn || !_fn.value.trim()) { var _ci = stepSeq.indexOf('step-company'); if (_ci >= 0) { currentIdx = _ci; showStep(_ci); } setTimeout(function(){ if (_fn) { _fn.focus(); _fn.classList.add('feld-fehlt'); } }, 350); alert('Bitte tragt noch euren Firmennamen ein — ohne ihn können wir den Drive-Ordner nicht anlegen.'); return; }
+  if (!dsgvoSHK) { alert('Bitte stimmt zuerst der Datenschutzerklärung zu.'); return; }
+  if (!bildrechteSHK) { alert('Bitte bestätigt noch die Erklärung zu Bildrechten und Referenznutzung.'); return; }
   shkUploadErrors = [];
   const firmaName = (document.getElementById('firmaName') || {}).value || 'Neukunde';
   const leistungen = [...document.querySelectorAll('.leistung-item input[type=text]')].map(function(i) { return i.value.trim() || 'Leistung'; });
@@ -1110,13 +1144,13 @@ async function submitForm() {
   bar.style.width = '28%';
   if (pct) pct.textContent = 'Vorbereitung…';
   // Animierte Status-Dots
-  var _dotBase = 'Deine Google Drive-Ordnerstruktur wird angelegt';
+  var _dotBase = 'Eure Google-Drive-Ordner werden angelegt';
   var _dotN = 0;
   var _dotTimer = setInterval(function() { _dotN = (_dotN + 1) % 4; if (status) status.textContent = _dotBase + '.'.repeat(_dotN || 1); }, 600);
   try {
     const API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
     if (!shkCreatedFolders) {
-      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen), clientV: 4 }) });
+      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen), clientV: 5 }) });
       const created = await r.json();
       if (created.error) throw new Error(created.error);
       shkCreatedFolders = created.folderIds;

@@ -6,60 +6,78 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vorbereitung Onboarding-Call – HandwerksManufaktur</title>
 <meta name="robots" content="noindex">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F3F6FA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --accent:#0ca4c2;--accent2:#2ecd6f;--accent-dim:rgba(12,164,194,0.1);
-  --text:#0b2044;--muted:#6b8ba4;--label:#4a6a85;
-  --surface:#f1f6fb;--border:#c4d8e9;--card:#fff;
-  --radius:10px;--font-head:'Playfair Display',serif;--font-body:'Inter',sans-serif;
-  --shadow:0 4px 24px rgba(11,32,68,0.1);
+  /* Palette der SHK-Seite v3, Logo Fassung C */
+  --accent:#146FB8;--accent2:#1E90E8;--accent-dim:#E3F1FC;
+  --ink:#0B1424;--text:#0B1424;--muted:#4A5666;--label:#4A5666;--faint:#65717F;
+  --surface:#F3F6FA;--border:#C9D3DF;--line:#DCE3EC;--card:#fff;
+  --radius:24px;--font-head:'Archivo','Inter',system-ui,sans-serif;--font-body:'Inter',system-ui,-apple-system,sans-serif;
+  --shadow:0 1px 2px rgba(11,20,36,.04),0 12px 36px rgba(11,20,36,.08);
 }
-body{background:#f4f8fc;min-height:100vh;font-family:var(--font-body);color:var(--text)}
-.header{background:#fff;border-bottom:1px solid #dde8f0;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(11,32,68,0.06)}
+body{background:#F3F6FA;min-height:100vh;font-family:var(--font-body);color:var(--text)}
+.header{background:#fff;border-bottom:1px solid var(--line);padding:16px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(11,20,36,0.06)}
 .header-left{display:flex;align-items:center}
 .header-left img{height:34px;width:auto;display:block}
-@media (max-width:520px){.header{padding:14px 18px}.header-left img{height:28px}.header-badge{font-size:10px;padding:4px 10px}}
-.header-badge{border:1px solid rgba(12,164,194,0.3);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--accent);background:rgba(12,164,194,0.06)}
+@media (max-width:520px){.header{padding:14px 18px}.header-left img{height:28px}.header-badge{font-size:13px;padding:4px 10px}}
+.header-badge{border:1px solid rgba(30,144,232,0.3);border-radius:20px;padding:5px 14px;font-size:13px;font-weight:500;color:var(--accent);background:rgba(30,144,232,0.06)}
 .wrap{max-width:680px;margin:0 auto;padding:36px 24px 80px}
 h1{font-family:var(--font-head);font-size:clamp(26px,5vw,34px);line-height:1.2;margin-bottom:14px}
 .intro{font-size:14.5px;color:var(--label);line-height:1.65;margin-bottom:10px}
-.time-badge{display:inline-block;background:var(--accent-dim);border:1px solid rgba(12,164,194,0.3);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:30px}
-.card{background:var(--card);border:1px solid #dde8f0;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:18px}
+.time-badge{display:inline-block;background:var(--accent-dim);border:1px solid rgba(30,144,232,0.3);border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;color:var(--accent);margin-bottom:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:18px}
 .card-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;font-weight:600;margin-right:10px;flex-shrink:0}
 .card-head{display:flex;align-items:center;margin-bottom:10px}
 .card-title{font-size:16px;font-weight:600}
 .card p{font-size:13.5px;line-height:1.65;color:var(--label)}
 .card p+p{margin-top:8px}
-.card .why{background:var(--surface);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:10px 14px;margin-top:12px;font-size:12.5px;line-height:1.6;color:var(--label)}
+.card .why{background:var(--surface);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:10px 14px;margin-top:12px;font-size:13px;line-height:1.6;color:var(--label)}
 .card .why strong{color:var(--text)}
 .steps-inline{margin-top:12px;padding-left:0;list-style:none}
-.steps-inline li{font-size:13px;line-height:1.6;color:var(--label);padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed #e4edf4}
+.steps-inline li{font-size:13px;line-height:1.6;color:var(--label);padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line)}
 .steps-inline li:last-child{border-bottom:none}
 .steps-inline li::before{content:'→';position:absolute;left:4px;color:var(--accent);font-weight:600}
-.optional-tag{display:inline-block;background:#eef3f8;border-radius:12px;padding:2px 10px;font-size:10px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted);margin-left:8px;vertical-align:middle}
+.optional-tag{display:inline-block;background:#eef3f8;border-radius:12px;padding:2px 10px;font-size:13px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted);margin-left:8px;vertical-align:middle}
 .footer-note{background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;padding:14px 18px;font-size:13px;line-height:1.6;color:var(--text);margin-top:28px}
 .footer-note a{color:var(--accent);font-weight:600;text-decoration:none}
 .store-links{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
-.store-links a{display:inline-block;border:1.5px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--text);text-decoration:none;background:var(--surface)}
+.store-links a{display:inline-block;border:1.5px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;background:var(--surface)}
 .store-links a:hover{border-color:var(--accent);color:var(--accent)}
 .app-box{display:flex;align-items:center;gap:14px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;margin-top:12px}
-.app-box img{width:56px;height:56px;border-radius:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(11,32,68,0.12)}
+.app-box img{width:56px;height:56px;border-radius:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(11,20,36,0.12)}
 .app-box-text{font-size:13px;line-height:1.5;color:var(--label)}
 .app-box-text strong{color:var(--text);display:block;font-size:13.5px;margin-bottom:2px}
-.tap-hint{font-size:12px;color:var(--muted);margin-top:7px;line-height:1.5}
+.tap-hint{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.5}
 
 /* 🔴 Sicherheitsnetz (11.09.2026): ohne html.js ist alles sofort sichtbar —
    sonst bleibt die Seite nach dem Hero leer, wenn das Skript nicht durchkommt. */
 html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!important;transform:none!important;}
+
+/* ── SHK v3 · Fassung C ── */
+.header{background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:none}
+.header-left img{height:37px}
+.header-badge{font-size:13px;font-weight:600;border-color:transparent;background:var(--accent-dim)}
+h1{letter-spacing:-.02em;font-weight:800;text-wrap:balance}
+.card-num{background:var(--ink)}
+.card-title{font-family:var(--font-head);font-weight:800;font-size:17px;letter-spacing:-.01em}
+.card p,.intro{font-size:15px}
+@media (max-width:520px){.header-left img{height:30px}}
+.card{border-radius:20px}
+.card .why{border-radius:20px;border-left:0}
+.footer-note{border-radius:20px;border:0}
+.store-links a,.store-btn,a[class*=store]{border-radius:999px}
 </style>
 </head>
 <body>
 
 <header class="header">
   <a class="header-left" href="https://shk.handwerksmanufaktur.digital/">
-    <img src="logo.png" alt="HandwerksManufaktur">
+    <img src="/assets/logo-hm-quer-schwarz.svg" alt="HandwerksManufaktur" width="137" height="37">
   </a>
   <div class="header-badge">Vorbereitung Onboarding</div>
 </header>
@@ -99,7 +117,7 @@ html:not(.js) .reveal,html:not(.js) .stagger,html:not(.js) .word{opacity:1!impor
     </ul>
 
     <p style="margin-top:14px">Wenn ihr irgendwo hängen bleibt: nicht schlimm — machen wir zusammen im Call fertig.</p>
-    <p style="margin-top:10px;font-size:12px;color:var(--muted)">Nur falls es am Handy nicht klappt: Dann geht's auch am PC auf facebook.com mit denselben Schritten — Facebook zeigt dort einen QR-Code, den ihr mit der Authenticator-App („+" → „QR-Code scannen") mit der Handy-Kamera abscannt.</p>
+    <p style="margin-top:10px;font-size:13px;color:var(--muted)">Nur falls es am Handy nicht klappt: Dann geht's auch am PC auf facebook.com mit denselben Schritten — Facebook zeigt dort einen QR-Code, den ihr mit der Authenticator-App („+" → „QR-Code scannen") mit der Handy-Kamera abscannt.</p>
   </div>
 
   <div class="card">

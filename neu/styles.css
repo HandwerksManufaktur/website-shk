@@ -726,3 +726,22 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 /* R14: unter reduced-motion kein Puls, keine Drehung */
 @media(prefers-reduced-motion:reduce){.umkreis.an .puls,.zelle:hover .umkreis .puls,.zelle:hover .umkreis circle.r.aktiv{animation:none}.umkreis .puls{opacity:.5}}
 .play:active{opacity:.9;transition:opacity .1s}
+
+/* ── Runde 6 (26.09.2026): Bewertungen laufen durch, gleich hoch; Logos in einer Box; Sussmann-Foto ── */
+.stimmen-marq .spur{align-items:stretch}
+.stimmen-marq .stimme{flex:0 0 340px;height:auto;display:flex;flex-direction:column;gap:12px;padding:20px 22px}
+.stimme .kopf{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stimme .kopf .stern{font-size:14px}
+.stimme .lg{width:104px;height:36px;display:grid;place-items:center;padding:6px 10px;border-radius:var(--r-xs);background:var(--night);flex:none}
+.stimme .lg img{height:24px;max-width:88px;width:auto;object-fit:contain}
+.stimme blockquote{font-size:14.5px;line-height:1.5;color:var(--ink);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(4 * 1.5em)}
+.stimme .wer{margin-top:auto;display:flex;align-items:center;gap:12px}
+.stimme .wer b{font-size:14px} .stimme .wer small{font-size:13px}
+.fall-karte .betrieb .lg{width:112px;height:40px;display:grid;place-items:center;background:var(--night);border-radius:var(--r-xs);padding:6px 10px;flex:none}
+.fall-karte .betrieb .lg img{height:28px;max-width:92px;width:auto;object-fit:contain;background:none;padding:0;border-radius:0}
+.ik{stroke-width:2}
+@media(max-width:600px){.stimmen-marq .stimme{flex:0 0 300px}}
+/* Tickets dürfen nie breiter sein als ihre Zelle (mobil ragte der Haken 24 px über den Rand) */
+.tickets{min-width:0}.ticket{min-width:0}.ticket>span:not(.tic):not(.ok){min-width:0;flex:1}.ticket small{white-space:normal}
+/* Zahl läuft nicht unter das Icon */
+.zahl b{padding-right:26px}

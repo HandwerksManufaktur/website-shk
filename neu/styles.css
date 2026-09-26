@@ -880,4 +880,4 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 @media(prefers-reduced-motion:reduce){.phone .scroller img,.mini-phone img{animation:none}}
 .problem,.reels,.ueber,.praxis,.kontakt{padding-bottom:round(nearest,clamp(80px,9vw,136px),8px)}
 .fall-karte .txt p{letter-spacing:.01em}
-.btn-warm,.btn-warm:hover{color:var(--ink)} /* Weiß auf Orange = 4,3:1 — Tinte auf Orange = 8:1 (Regel Knopfschrift ≥ 4,5) */
+.btn-warm{background:var(--warm-ink)} /* Weiß auf --warm-deep = 4,3:1, Tinte darauf ebenfalls 4,3 — auf --warm-ink 6,0:1 (Regel Knopfschrift ≥ 4,5) */

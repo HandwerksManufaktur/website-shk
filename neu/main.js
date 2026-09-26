@@ -159,7 +159,7 @@
 
   /* Feed-Bühne: Phones parallaxen */
   const feedPhones = $$('.feed-innen .phone');
-  if (feedPhones.length && !rm) {
+  if (feedPhones.length && !rm && !$(".feed-innen.still")) {
     const fak = [.10, .05, 0, .05, .10];
     addEventListener('scroll', () => { const y = scrollY; feedPhones.forEach((p, k) => p.style.setProperty('--ty', (-y * fak[k]).toFixed(1) + 'px')); }, { passive: true });
   }

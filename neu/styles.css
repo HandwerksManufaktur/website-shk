@@ -911,3 +911,142 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .zahl,.stats{border-radius:var(--r-md)}
 .system{border-radius:var(--r-xl)} /* Bänder-Familie: dunkles Band trägt alle vier Ecken wie der Hero (Stil-Prüfer, 26.09.2026) */
 .wahl h3{display:block;font-size:17px;font-weight:700;line-height:1.3;margin:0;letter-spacing:-.01em;font-family:var(--f)}
+
+/* ── Runde 12 (27.09.2026): kein Kasten auf Kasten nach dem Hero — Logos in Tinte auf Papier, Laufschrift raus, die Wege als Plan (Hista-Vorbild) ── */
+.band.hell{padding:36px 0 0}
+.band.hell .band-innen{background:transparent;border-radius:0;color:var(--ink);padding:0 0 4px}
+.band.hell .band-innen::before{background:linear-gradient(90deg,var(--paper),transparent)}
+.band.hell .band-innen::after{background:linear-gradient(270deg,var(--paper),transparent)}
+.band.hell .band-t{color:var(--sub);margin-bottom:18px;font-size:14px;letter-spacing:.01em}
+.band.hell .band-t b{color:var(--ink)}
+.band.hell .marq{padding:10px 0;gap:64px}
+.band.hell .marq img{filter:invert(1);opacity:.6;height:30px}
+.band.hell .marq img.wide{height:24px}
+.band.hell .marq img:hover{opacity:1}
+/* Wege-Plan: Kopf-Pille → Querlinie → Reihe → Schiene mit ✕ → Ergebnis */
+.leiter.wege-plan{display:grid;grid-template-columns:1fr;justify-items:center;gap:0;margin-top:44px;position:relative}
+.wp-kopf{position:relative;padding-bottom:34px}
+.wp-kopf span{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:var(--r-pill);background:var(--card);border:1px solid var(--line2);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);position:relative;z-index:1}
+.wp-kopf::after{content:"";position:absolute;left:50%;top:44px;bottom:0;width:1px;background:var(--line2)}
+.wp-reihe{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;width:100%;position:relative;padding-top:24px;margin:0}
+.leiter.n4 .wp-reihe{grid-template-columns:repeat(4,1fr);max-width:960px}
+.wp-reihe::before{content:"";position:absolute;left:10%;right:10%;top:0;height:1px;background:var(--line2)}
+.leiter.n4 .wp-reihe::before{left:12.5%;right:12.5%}
+.leiter.wege-plan .weg{position:relative;background:transparent;border:0;border-radius:0;padding:0 8px 48px;text-align:center;overflow:visible;transition:none;transform:none;box-shadow:none}
+.leiter.wege-plan .weg::before{content:"";position:absolute;left:50%;top:-24px;height:24px;width:1px;background:var(--line2);opacity:1;transition:none}
+.leiter.wege-plan .weg::after{content:none}
+.leiter.wege-plan .weg .ic{width:64px;height:64px;margin:0 auto 14px;border-radius:50%;background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow-sm);display:grid;place-items:center;transition:transform .35s var(--spring),border-color .3s,filter .4s}
+.leiter.wege-plan .weg .ic .ik{width:26px;height:26px;color:var(--ink);stroke-width:1.6}
+.leiter.wege-plan .weg:hover .ic{transform:translateY(-3px) rotate(0) scale(1)}
+.leiter.wege-plan .weg h3{font-size:15.5px;margin-bottom:4px;letter-spacing:-.01em}
+.leiter.wege-plan .weg p{font-size:13.5px;color:var(--sub);line-height:1.45;letter-spacing:.01em;max-width:22ch;margin:0 auto}
+.leiter.wege-plan .weg .x{position:absolute;left:50%;right:auto;top:auto;bottom:0;width:30px;height:30px;font-size:14px;z-index:2;box-shadow:0 0 0 4px var(--paper);transform:translate(-50%,50%) scale(0) rotate(-30deg);transform-origin:center}
+.leiter.wege-plan .weg.gestempelt .x{transform:translate(-50%,50%) scale(1) rotate(0);opacity:1;animation:none}
+.leiter.wege-plan .weg.gestempelt .ic{background:var(--card);border-color:#E5484D;filter:grayscale(1);transform:none}
+.leiter.wege-plan .weg.gestempelt .ic .ik{color:#E5484D}
+.wp-schiene{width:80%;height:2px;background:var(--line2);position:relative}
+.leiter.n4 .wp-schiene{width:75%;max-width:720px}
+.wp-schiene::after{content:"";position:absolute;left:50%;top:2px;height:36px;width:1px;background:var(--line2)}
+.leiter.wege-plan .ende{grid-column:auto;grid-row:auto;margin-top:38px;display:inline-grid;place-items:center;padding:20px 32px;min-width:0;border-radius:var(--r-lg);font-size:26px;line-height:1.15;opacity:.4;transform:scale(.96)}
+.leiter.wege-plan.fertig .ende{opacity:1;transform:none}
+@media(max-width:760px){
+  .wp-reihe,.leiter.n4 .wp-reihe{grid-template-columns:1fr;gap:0;padding-top:0}
+  .wp-reihe::before,.wp-kopf::after,.wp-schiene{display:none}
+  .wp-kopf{padding-bottom:18px}
+  .leiter.wege-plan .weg{display:grid;grid-template-columns:56px 1fr;column-gap:14px;text-align:left;padding:8px 0 20px;align-items:start;justify-items:start}
+  .leiter.wege-plan .weg::before{left:27px;top:0;bottom:0;height:auto}
+  .leiter.wege-plan .weg .ic{width:56px;height:56px;margin:0;grid-row:1/3;position:relative;z-index:1}
+  .leiter.wege-plan .weg h3{margin-top:6px}
+  .leiter.wege-plan .weg p{margin:0;max-width:none}
+  .leiter.wege-plan .weg .x{left:42px;top:38px;bottom:auto;transform:scale(0) rotate(-30deg)}
+  .leiter.wege-plan .weg.gestempelt .x{transform:scale(1) rotate(0)}
+  .leiter.wege-plan .ende{margin-top:12px;font-size:22px;justify-self:stretch}
+}
+@media(prefers-reduced-motion:reduce){.leiter.wege-plan .weg .x{transform:translate(-50%,50%) scale(1);opacity:1}}
+
+/* ── Runde 13 (27.09.2026): ruhiger Hero, Logo-Wand statisch, Vergleich mit Icons, Ergebnis-Zeilen, Kalender allein, Über uns offen, Potenzialanalyse symmetrisch, engere Abstände ── */
+.hero-h1.zwei{font-size:clamp(36px,5.1vw,72px);letter-spacing:-.04em;line-height:1.02}
+.hero-h1.zwei .em{font-size:1.08em}
+.buehne.still .phone .scroller img,.uhero .phone .scroller img{animation:none!important}
+.buehne.still .phone .scroller img{transform:none}
+.logo-wand{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:22px 48px;padding:6px 0 4px}
+.logo-wand img{height:30px;width:auto;filter:invert(1);opacity:.58;transition:opacity .3s,transform .3s var(--spring)}
+.logo-wand img.wide{height:24px}
+.logo-wand img:hover{opacity:1;transform:translateY(-2px)}
+.band.hell .band-innen::before,.band.hell .band-innen::after{display:none}
+/* Vergleich: Icon + Titel je Lage */
+.vgl-tafel.drei{grid-template-columns:230px 1fr 1fr;background:linear-gradient(90deg,var(--card) 0 calc(50% + 115px),var(--night) calc(50% + 115px) 100%)}
+.vgl-h.leer{border-bottom:1px solid var(--line)}
+.vgl-t{display:flex;align-items:center;gap:12px;padding:22px 22px 22px 28px;border-bottom:1px solid var(--line)}
+.vgl-t .ic{width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:var(--card);display:grid;place-items:center;flex:none}
+.vgl-t .ic .ik{width:20px;height:20px;stroke-width:1.6;color:var(--ink)}
+.vgl-t b{font-size:15px;letter-spacing:-.01em;line-height:1.25}
+.vgl-tafel.drei .vgl-c{padding:22px 28px}
+.vgl-tafel.drei .vgl-c.heute{border-left:1px solid var(--line)}
+.vgl-tafel.drei>*:nth-last-child(-n+3){border-bottom:0}
+@media(max-width:760px){.vgl-tafel.drei{grid-template-columns:1fr;background:var(--card)}.vgl-t{border-bottom:0;padding:20px 20px 4px}.vgl-tafel.drei .vgl-c{padding:12px 20px 18px}.vgl-tafel.drei .vgl-c.heute{border-left:0}.vgl-tafel.drei .vgl-c.kanal{margin-bottom:8px}}
+/* Fallstudien: Ergebnis-Zeile statt Zitat */
+.fall-karte .erg{font-weight:800;font-size:19px;line-height:1.25;letter-spacing:-.02em;font-family:var(--fh)}
+/* Kalender allein: Farbe je Linie über die Klasse */
+.kal-tafel{margin-top:0}
+.kal-tafel.k .kal-raster i.an.voll{background:var(--kalt);box-shadow:0 6px 14px -7px rgba(30,144,232,.8)}
+.kal-tafel.k .kal-marke{color:var(--kalt-deep);background:var(--kalt-soft)}
+/* Über uns: offen, zwei Spalten, Bilder als Gruppe */
+.ueber.offen .ueber-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
+.ueber.offen .bilder{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ueber.offen .bilder figure{margin:0;border-radius:var(--r-lg);overflow:hidden;background:var(--line);aspect-ratio:4/3}
+.ueber.offen .bilder .gross{grid-column:1/-1;aspect-ratio:16/11}
+.ueber.offen .bilder img,.ueber.offen .bilder img[width][height]{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.ueber.offen .bilder figure:hover img{transform:scale(1.03)}
+.ueber.offen .bilder .kachel{border-radius:var(--r-lg);background:var(--night);color:#fff;display:grid;place-content:center;text-align:center;padding:20px}
+.ueber.offen .bilder .kachel b{font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1;display:block}
+.ueber.offen .bilder .kachel b span{color:var(--warm)}
+.ueber.offen .bilder .kachel small{display:block;color:var(--night-sub);font-size:13.5px;margin-top:8px;letter-spacing:.01em}
+.ueber.offen .txt{display:flex;flex-direction:column;gap:18px}
+.ueber.offen .txt p{color:var(--sub);font-size:16.5px}
+.ueber.offen .gruender{background:var(--card);border:1px solid var(--line);margin-top:0}
+.ueber.offen .gruender small{color:var(--sub)}
+.stats.hell{background:var(--card);border:1px solid var(--line);gap:0;margin-top:0}
+.stats.hell .stat{border-right:1px solid var(--line)} .stats.hell .stat:last-child{border-right:0}
+.stats.hell .stat small{color:var(--sub)}
+@media(max-width:900px){.ueber.offen .ueber-grid{grid-template-columns:1fr;gap:28px}}
+@media(max-width:600px){.stats.hell{grid-template-columns:1fr}.stats.hell .stat{border-right:0;border-bottom:1px solid var(--line)}.stats.hell .stat:last-child{border-bottom:0}}
+/* Potenzialanalyse: zwei gleiche Spalten, runde Bilder in fester Höhe */
+.kontakt-karte{grid-template-columns:1fr 1fr;align-items:center;padding:56px}
+.kontakt-karte p{max-width:44ch}
+.mit-wem{margin:24px 0 0}
+.kunden-reihe img,.kunden-reihe img[width][height]{width:52px;height:52px}
+.mit-wem img,.mit-wem img[width][height]{width:56px;height:56px}
+.kunden-reihe{margin:18px 0 0}
+.kontakt-zeile{display:flex;flex-wrap:wrap;gap:6px 22px;margin:8px 0 0}
+.kontakt-zeile a{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:600;color:var(--night-sub);transition:color .25s}
+.kontakt-zeile a:hover{color:#fff} .kontakt-zeile .ik{width:16px;height:16px;opacity:.85}
+.wahl h3{font-size:16px} .wahl small{font-size:13px}
+@media(max-width:900px){.kontakt-karte{grid-template-columns:1fr;padding:36px 26px}}
+/* Rhythmus: weniger Luft zwischen den Sektionen (Noah: „Ewigkeiten Pause") */
+.sec,.system,.fall,.stimmen,.faq,.vergleich,.probiert,.statement,.hebel{padding-top:round(nearest,clamp(56px,6vw,88px),8px);padding-bottom:round(nearest,clamp(56px,6vw,88px),8px)}
+.problem,.reels,.ueber,.praxis,.kontakt{padding-bottom:round(nearest,clamp(56px,6vw,88px),8px)}
+.sec-kopf{margin-bottom:40px}
+.buehne-wrap{margin-top:48px}
+/* Logo-Wand als festes Raster: 10 × 2 auf dem Desktop, 5 × 4 am Tablet, 4 × 5 am Handy — nie eine halb leere Reihe */
+.logo-wand{display:grid;grid-template-columns:repeat(10,1fr);gap:18px 20px;align-items:center;padding:6px 0 4px}
+.logo-wand span{display:grid;place-items:center;height:36px}
+.logo-wand img{max-height:30px;max-width:100%;width:auto}
+.logo-wand img.wide{max-height:24px}
+@media(max-width:900px){.logo-wand{grid-template-columns:repeat(5,1fr);gap:14px 14px}.logo-wand img{max-height:24px}.logo-wand img.wide{max-height:19px}}
+@media(max-width:600px){.logo-wand{grid-template-columns:repeat(4,1fr);gap:12px 12px}.logo-wand span{height:30px}.logo-wand img{max-height:22px}.logo-wand img.wide{max-height:17px}}
+.wahl-spalte{display:grid;gap:12px;align-content:center}
+.wahl-spalte .kunden-reihe{margin-top:6px}
+.kontakt-zeile a{letter-spacing:.01em}
+.kontakt-zeile a:active{transform:scale(.97);transition:transform .1s ease-out}
+/* ✕-Marke ganz in der Zelle (Prüfer: „ragt raus"), die Schiene läuft durch ihre Mitte */
+.leiter.wege-plan .weg{padding-bottom:52px}
+.leiter.wege-plan .weg .x{bottom:4px;transform:translate(-50%,0) scale(0) rotate(-30deg)}
+.leiter.wege-plan .weg.gestempelt .x{transform:translate(-50%,0) scale(1) rotate(0)}
+.wp-schiene{margin-top:-19px;z-index:0}
+@media(prefers-reduced-motion:reduce){.leiter.wege-plan .weg .x{transform:translate(-50%,0) scale(1)}}
+@media(max-width:760px){.leiter.wege-plan .weg{padding-bottom:20px}.leiter.wege-plan .weg .x{bottom:auto;transform:scale(0) rotate(-30deg)}.leiter.wege-plan .weg.gestempelt .x{transform:scale(1) rotate(0)}}
+/* Microcopy unter dem Knopf: Zeit und Preis des Klicks (Vorbild-Muster 5) */
+.hero .micro{margin:14px auto 0;font-size:14px;color:var(--sub);max-width:52ch;letter-spacing:.01em}
+.hero .trust{margin-top:18px}
+.uhero .h-xl{hyphens:manual;-webkit-hyphens:manual;font-size:clamp(34px,5.4vw,78px)}

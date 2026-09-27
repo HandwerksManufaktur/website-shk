@@ -88,7 +88,7 @@ def optimieren(seite, ohne_srcset=()):
                 tag = tag.replace(src.group(0), f'src="{varianten[-1][0]}"')
                 if len(varianten) > 1 and 'srcset=' not in tag and not any(t in pfad for t in ohne_srcset):
                     # feste sizes-Angabe; „auto" nicht, weil Bilder mit Breite aus dem Seitenverhältnis sonst auf 300 px fallen
-                    groesse = '280px' if '/funnels/' in pfad else '(max-width: 700px) 100vw, 50vw'
+                    groesse = '(max-width: 700px) 150px, 280px' if '/funnels/' in pfad else '(max-width: 700px) 100vw, 50vw'
                     tag = tag.replace('<img ', f'<img srcset="{", ".join(f"{v[0]} {v[1]}w" for v in varianten)}" sizes="{groesse}" ', 1)
         if lazy and 'loading=' not in tag: tag = tag.replace('<img ', '<img loading="lazy" ', 1)
         if 'decoding=' not in tag: tag = tag.replace('<img ', '<img decoding="async" ', 1)

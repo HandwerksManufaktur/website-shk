@@ -29,7 +29,11 @@ def css_klein(t):
 
 def fonts_css():
     """Lokale Schriften, auf Latein-Zeichen zugeschnitten (fonts/sub, pyftsubset): 418 → 149 KB, keine Verbindung zu Google."""
-    return css_klein((REPO / 'fonts' / 'fonts.css').read_text(encoding='utf-8').replace("url('", "url('/fonts/sub/")) + FALLBACK
+    css = css_klein((REPO / 'fonts' / 'fonts.css').read_text(encoding='utf-8').replace("url('", "url('/fonts/sub/"))
+    # Fließtext (Inter 400/500) mit „optional“: kommt die Schrift nicht sofort, bleibt beim Erstbesuch die vermessene
+    # Ersatzschrift stehen — kein Neuzeichnen des Textes, das PageSpeed als späten LCP zählte (27.09.2026, 2,5–2,8 s)
+    css = re.sub(r"(@font-face\{font-family:'Inter';font-style:normal;font-weight:(?:400|500);font-display:)swap", r"\1optional", css)
+    return css + FALLBACK
 
 
 # Ersatzschriften mit angeglichenen Maßen: bis die echte Schrift da ist, nimmt der Text schon denselben Platz ein —

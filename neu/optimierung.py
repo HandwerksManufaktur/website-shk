@@ -102,7 +102,7 @@ def webp(pfad, breite):
     ziel = OPT / f'{stamm(pfad)}-{w}.webp'
     if not ziel.exists() or ziel.stat().st_mtime < quelle.stat().st_mtime:
         im = im.convert('RGBA') if im.mode in ('RGBA', 'LA', 'P') else im.convert('RGB')
-        q = 70 if '/funnels/' in pfad else 78        # Funnel-Screenshots: Text bleibt bei 70 lesbar, 15 % kleiner
+        q = 56 if '/funnels/' in pfad else 78        # Funnel-Screenshots im Handy-Rahmen (lang, klein angezeigt): 56 hält sie lesbar, spart ~40 % (27.09.2026: 447 KB bremsten den LCP)
         im.resize((w, h), Image.LANCZOS).save(ziel, 'WEBP', quality=q, method=6)
     return f'/assets/opt/{ziel.name}', w, h
 

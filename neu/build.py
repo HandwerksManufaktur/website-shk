@@ -109,13 +109,9 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <meta property="og:image" content="{DOMAIN}{og or '/og-image-hm.jpg'}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="{'#0B1424' if dunkel else '#F3F6FA'}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<!-- Vorab nur die drei Schriften des ersten Bildschirms (Überschrift, Text, Kursiv) — acht Preloads teilten sich die Leitung, LCP wartete auf den Schrifttausch (27.09.2026) -->
 <link rel="preload" href="/fonts/sub/archivo-latin-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/sub/archivo-latin-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/sub/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>{CSS_INLINE}</style>
 {MESSUNG_KOPF}

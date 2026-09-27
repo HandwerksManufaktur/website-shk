@@ -617,7 +617,7 @@ def seite_start():
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
     <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
-    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span><span class="wechsel"><span class="an">Monteure</span><span>Bad-Aufträge</span><span>Heizungs-Aufträge</span></span></span></span><span class="zl" aria-hidden="true"><span>aus deinem Umkreis.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Live in unter 2 Wochen.</span></span><span class="sr">Monteure und Aufträge aus deinem Umkreis. Live in unter 2 Wochen.</span></h1>
+    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Mehr <span class="wechsel"><span class="an">Monteure</span><span>Bad-Aufträge</span><span>Heizungs-Aufträge</span><i class="wechsel-lauf"></i></span></span></span><span class="zl" aria-hidden="true"><span>aus deinem Umkreis.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Live in unter 2 Wochen.</span></span><span class="sr">Mehr Monteure und Aufträge aus deinem Umkreis. Live in unter 2 Wochen.</span></h1>
     <p class="lead rv" data-d="2">Anzeigen mit deinen Leuten, nur in deinem Einzugsgebiet, Filterfragen vor jeder Bewerbung und Anfrage. Du führst nur noch die Gespräche, den Rest machen wir.</p>
     <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzialanalyse für meinen Umkreis</a><a class="btn btn-white btn-lg" href="#fallstudien">Was bei Kunden rauskam</a></div>
     <div class="rv" data-d="4">{trust()}</div>

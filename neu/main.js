@@ -11,7 +11,7 @@
   if (intro) {
     let gesehen = false; try { gesehen = sessionStorage.getItem('shk-intro') === '1'; } catch (e) {}
     if (gesehen || rm) intro.remove();
-    else { requestAnimationFrame(() => intro.classList.add('los')); setTimeout(() => { intro.classList.add('weg'); try { sessionStorage.setItem('shk-intro', '1'); } catch (e) {} }, 1450); setTimeout(() => intro.remove(), 2100); }
+    else { requestAnimationFrame(() => intro.classList.add('los')); setTimeout(() => { intro.classList.add('aus'); try { sessionStorage.setItem('shk-intro', '1'); } catch (e) {} }, 1450); setTimeout(() => intro.remove(), 2100); }
   }
 
   /* Nav */
@@ -199,15 +199,26 @@
     new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeig(i); lauf(); } else clearInterval(timer); }), { threshold: .35 }).observe(vb);
   }
 
-  /* Hero: wechselndes Wort — steht allein in der Zeile, nur Wechsel von unten nach oben, keine Breitenrechnung */
+  /* Hero: „Mehr [Wort]" — Breite folgt dem Wort, Regler-Strich zeigt den Takt. Alle Wörter liegen im selben Rasterfeld,
+     gemessen wird die Breite des Worts (offsetWidth, unberührt vom Transform) — nichts wechselt zwischen absolut/relativ. */
   const we = $('.wechsel');
-  if (we && !rm) {
-    const w = $$(':scope > span', we); let k = 0;
-    setInterval(() => {
-      const alt = w[k]; k = (k + 1) % w.length; const neu = w[k];
-      alt.classList.remove('an'); alt.classList.add('weg'); neu.classList.remove('weg'); neu.classList.add('an');
-      setTimeout(() => alt.classList.remove('weg'), 700);
-    }, 2600);
+  if (we) {
+    const w = $$(':scope > span', we), T = 2600; let k = 0;
+    we.style.setProperty('--wtakt', T / 1000 + 's');
+    const breite = () => { we.style.width = w[k].offsetWidth + 'px'; };
+    const takt = () => { we.classList.remove('laeuft'); void we.offsetWidth; we.classList.add('laeuft'); };
+    we.style.transition = 'none'; breite(); void we.offsetWidth; we.style.transition = '';
+    addEventListener('resize', breite);
+    if (document.fonts) document.fonts.ready.then(breite);
+    if (!rm) {
+      takt();
+      setInterval(() => {
+        const alt = w[k]; k = (k + 1) % w.length; const neu = w[k];
+        alt.classList.remove('an'); alt.classList.add('raus'); neu.classList.remove('raus'); neu.classList.add('an');
+        breite(); takt();
+        setTimeout(() => alt.classList.remove('raus'), 650);
+      }, T);
+    }
   }
 
   /* Potenzial-Rechner als Pop-up: eine Frage je Schritt, dann PLZ, dann Kontakt, abschicken (Web3Forms → info@) */
@@ -266,7 +277,7 @@
     const tausch = () => {
       if (!pool.length) return; const f = felder[Math.floor(Math.random() * felder.length)];
       const bild = new Image(); bild.src = pool[naechstes % pool.length]; naechstes++;
-      bild.onload = () => { f.classList.add('weg'); setTimeout(() => { f.src = bild.src; f.removeAttribute('srcset'); f.classList.remove('weg'); }, 350); };
+      bild.onload = () => { f.classList.add('raus'); setTimeout(() => { f.src = bild.src; f.removeAttribute('srcset'); f.classList.remove('raus'); }, 350); };
     };
     new IntersectionObserver(es => es.forEach(e => { clearInterval(timer); if (e.isIntersecting) timer = setInterval(tausch, 1400); }), { threshold: .2 }).observe(col);
   }

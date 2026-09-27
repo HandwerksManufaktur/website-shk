@@ -1209,3 +1209,10 @@ svg.vb .haus{fill:var(--ink)} svg.vb .haus.an{fill:#fff}
 .vgl-seite{border-radius:var(--r-lg)}
 .vgl-seite.heute{border:1px solid var(--line)}
 .soll em{font-size:13px}
+@media(max-width:1000px){.kontakt-bild{aspect-ratio:auto;overflow:visible;border-radius:0}.kontakt-bild img{position:static;height:auto!important;aspect-ratio:4/3;border-radius:var(--r-lg)}.kontakt-bild figcaption{position:static;margin-top:12px;background:rgba(255,255,255,.08);backdrop-filter:none;-webkit-backdrop-filter:none}}
+/* Bildunterschrift unter dem Foto statt darüber (Überlappungs-Prüfer, alle Breiten) */
+.kontakt-bild{display:flex;flex-direction:column;gap:12px;overflow:visible;border-radius:0}
+.kontakt-bild img{position:relative;inset:auto;flex:1;min-height:0;border-radius:var(--r-lg)}
+.kontakt-bild img[width][height]{height:100%}
+.kontakt-bild figcaption{position:static;align-self:flex-start;background:rgba(255,255,255,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
+@media(max-width:1000px){.kontakt-bild img[width][height]{height:auto}}

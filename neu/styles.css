@@ -1396,3 +1396,7 @@ html.rd-offen{overflow:hidden}
 .szene .sz-linie{flex:0 0 22px;height:0;border-top:1.5px dashed var(--line2)}
 .vorteil.mit-szene:hover .sz-linie{border-top-color:var(--kalt)}
 .gruender{border-radius:var(--r-lg)}
+/* Wege-Ende: Florian als echtes Porträt, größer, gleiche Abstände rundum (Noah, 27.09.2026) */
+.leiter .ende.schlicht{padding:12px 24px 12px 12px;gap:16px}
+.leiter .ende.schlicht .gesicht{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:50% 45%}
+@media(max-width:600px){.leiter .ende.schlicht{padding:13px 20px 13px 16px}.leiter .ende.schlicht .gesicht{width:72px;height:72px}}

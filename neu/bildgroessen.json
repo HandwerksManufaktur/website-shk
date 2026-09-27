@@ -1,31 +1,47 @@
 {
  "assets-fotos-erwin-schmidt-monteur": [
-  360,
+  320,
   480
  ],
  "assets-fotos-erwin-schmidt-team": [
-  360,
+  320,
   480
  ],
- "assets-fotos-erwin-schmidt-van": [
-  360,
-  520
+ "assets-fotos-florian-kopf": [
+  50,
+  50
  ],
  "assets-fotos-klass-beratung": [
+  320,
+  480
+ ],
+ "assets-fotos-klass-hebel-auftraege": [
   360,
-  520
+  300
+ ],
+ "assets-fotos-klass-hebel-monteure": [
+  360,
+  230
  ],
  "assets-fotos-klass-monteur": [
-  360,
-  390
+  170,
+  260
  ],
  "assets-fotos-klass-team-van": [
   360,
   590
  ],
+ "assets-fotos-klass-team-van-scharf": [
+  360,
+  390
+ ],
  "assets-fotos-klass-werkbank": [
   360,
   580
+ ],
+ "assets-fotos-noah-koller-kopf": [
+  50,
+  50
  ],
  "assets-fotos-noah-kopf": [
   60,
@@ -48,47 +64,47 @@
   480
  ],
  "assets-fotos-senftleben-team": [
-  370,
-  580
+  320,
+  490
+ ],
+ "assets-fotos-senftleben-team-2026": [
+  360,
+  630
  ],
  "assets-fotos-shk-01": [
-  200,
-  280
+  170,
+  260
  ],
  "assets-fotos-shk-02": [
   360,
   480
  ],
  "assets-fotos-shk-04": [
-  320,
-  460
+  280,
+  430
  ],
  "assets-fotos-shk-06": [
-  160,
-  230
+  140,
+  220
  ],
  "assets-fotos-shk-07": [
   320,
   480
  ],
  "assets-fotos-shk-08": [
-  360,
-  520
+  320,
+  480
  ],
- "assets-fotos-sussmann-patrick-mirjana": [
+ "assets-fotos-sussmann-lager-scharf": [
   360,
   580
  ],
  "assets-fotos-sussmann-patrick-mirjana-van": [
   360,
-  300
- ],
- "assets-fotos-sussmann-team-2026": [
-  330,
-  550
+  630
  ],
  "assets-funnels-erwin-schmidt-jobs-full": [
-  320,
+  310,
   680
  ],
  "assets-funnels-erwin-schmidt-jobs-hero": [
@@ -100,7 +116,7 @@
   830
  ],
  "assets-funnels-senftleben-leadgen-full": [
-  440,
+  420,
   950
  ],
  "assets-funnels-senftleben-leadgen-hero": [
@@ -168,16 +184,16 @@
   390
  ],
  "assets-projekte-wp-herbst": [
-  360,
-  390
+  180,
+  370
  ],
  "assets-team-noah": [
-  70,
-  100
+  90,
+  120
  ],
  "assets-team-robert": [
-  70,
-  100
+  90,
+  120
  ],
  "logos-shk-logo-autohaus-ressle-weiss": [
   50,
@@ -232,8 +248,8 @@
   50
  ],
  "logos-shk-logo-kramer-heizungsbau-weiss": [
-  190,
-  190
+  180,
+  180
  ],
  "logos-shk-logo-lanzinger-gmbh-weiss": [
   80,
@@ -268,7 +284,10 @@
    "assets-funnels-erwin-schmidt-jobs-hero",
    "logos-shk-logo-handwerksmanufaktur-weiss"
   ],
-  "/neu/": [],
+  "/neu/": [
+   "assets-funnels-erwin-schmidt-jobs-full",
+   "assets-funnels-sussmann-leadgen-hero"
+  ],
   "/neu/monteure/": [
    "assets-funnels-erwin-schmidt-jobs-full",
    "assets-funnels-senftleben-jobs-full"
@@ -281,8 +300,6 @@
   "/neu/ueber-uns/": [
    "assets-fotos-noah-ueber"
   ],
-  "/neu/potenzialanalyse/": [
-   "assets-fotos-sussmann-team-2026"
-  ]
+  "/neu/potenzialanalyse/": []
  }
 }

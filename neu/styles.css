@@ -1282,3 +1282,103 @@ svg.vb .haus{fill:var(--ink)} svg.vb .haus.an{fill:#fff}
 @media(max-width:860px){.rechner .btn{align-self:stretch;justify-content:center;white-space:normal;text-align:center}}
 .leiter .ende.schlicht{border-radius:var(--r-lg)}
 .gruender.ohne-bild{border-radius:var(--r-lg)}
+
+/* ── Runde 12 (Noah, 27.09.2026) ── */
+/* Hero: Wort steht allein, wechselt ruhig von unten nach oben */
+.wechsel{display:inline-grid!important;clip-path:none;height:auto;width:auto!important;margin:0;vertical-align:baseline;overflow:hidden;padding:.06em .1em .14em;margin:-.06em -.1em -.14em}
+.wechsel>span{grid-area:1/1;position:static!important;justify-self:center;transform:translateY(70%);opacity:0;filter:blur(6px);transition:transform .7s var(--ease),opacity .5s var(--ease),filter .5s var(--ease)}
+.wechsel>span.an{transform:none;opacity:1;filter:none}
+.wechsel>span.weg{transform:translateY(-70%);opacity:0;filter:blur(6px)}
+@media(max-width:600px){.wechsel{display:inline-grid!important;margin:-.06em -.1em -.14em}}
+@media(prefers-reduced-motion:reduce){.wechsel>span{transition:none}}
+/* Kramer klein und am Ende */
+.band.hell .marq img.klein{height:22px}
+/* Wege-Ende mit Florians Gesicht */
+.leiter .ende.schlicht .gesicht{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none}
+/* Team: nur der ausgeschnittene Kreis, kein zweiter Rahmen */
+.person figure:not(.initiale),.person .initiale{background:none!important;padding:0}
+.person .initiale::before{display:none}
+.person figure:not(.initiale) img,.person figure:not(.initiale) img[width][height]{width:84%}
+.person .initiale span{width:84%}
+/* Kontakt: Collage aus Shooting-Fotos */
+.kontakt-bild.collage-feld{display:flex;flex-direction:column;gap:12px}
+.collage{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;border-radius:var(--r-lg);overflow:hidden;min-height:0}
+.collage img,.collage img[width][height]{width:100%;height:100%;aspect-ratio:1;object-fit:cover;border-radius:0;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.collage img.weg{opacity:0;transform:scale(.94)}
+@media(max-width:1000px){.collage{grid-template-columns:repeat(4,1fr)}.collage img:nth-child(n+13){display:none}}
+/* Vorteile mit Bild statt Icon */
+.vorteile.bilder-v .vorteil.mit-bild{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.vorteil.mit-bild .v-bild{height:230px;background:var(--paper);display:grid;place-items:center;overflow:hidden;position:relative;border-bottom:1px solid var(--line)}
+.vorteil.mit-bild .v-bild>img{width:100%;height:100%;object-fit:cover}
+.vorteil.mit-bild .v-bild .tickets{margin:0;width:88%;transform:scale(.92)}
+.vorteil.mit-bild .v-bild svg.vb{width:86%;min-height:0;height:auto}
+.vorteil.mit-bild .v-bild .vb-last{width:86%}
+.vorteil.mit-bild .v-bild .saeulen{height:140px}
+.vorteil.mit-bild .v-phone{position:relative;right:auto;top:auto;width:150px;margin-top:28px;aspect-ratio:480/1038;border-radius:20px;overflow:hidden;border:2px solid #2A3852;background:#000;transform:none}
+.vorteil.mit-bild .v-phone img{width:100%}
+.vorteil.mit-bild h3{margin:22px 24px 6px}
+.vorteil.mit-bild p{margin:0 24px 24px}
+.vorteil.mit-bild .v-bild .saeulen i{background:#3DDC84}
+.vorteil.mit-bild .v-bild svg.vb .strahl.gut{stroke:#1A9E5A;stroke-dasharray:none;stroke-dashoffset:0}
+.vorteil.mit-bild .v-bild svg.vb .du{transform:none}
+.vorteil.mit-bild .v-bild .saeulen i{transform:none}
+/* Fallstudien: mehr Luft, Karten führen zur Fallstudie */
+.fall-abstand{margin-top:56px}
+a.fall-karte.klickbar{color:inherit;text-decoration:none}
+a.fall-karte.klickbar:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.fall-karte .mehr{display:inline-flex;align-items:center;gap:6px;margin:0 24px 22px;font-weight:700;font-size:15px;color:var(--ink)}
+.fall-gross .vid.bild-nur img{width:100%;height:100%;object-fit:cover}
+/* Potenzial-Rechner als Pop-up */
+.rd{width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);border:0;padding:0;border-radius:var(--r-lg);background:var(--card);color:var(--ink);box-shadow:var(--shadow-lg);overflow:auto}
+.rd::backdrop{background:rgba(11,20,36,.55);backdrop-filter:blur(4px)}
+.rd[open]{animation:rdAuf .35s var(--ease)}
+@keyframes rdAuf{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.rd-form{padding:22px 26px 26px;position:relative}
+.rd-kopf{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rd-kick{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--warm-ink)}
+.rd-kick .ik{width:18px;height:18px}
+.rd-zu{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--paper)}
+.rd-zu .ik{width:18px;height:18px}
+.rd-zu:active{transform:scale(.94)}
+.rd-balken{height:4px;border-radius:99px;background:var(--line);margin:14px 0 22px;overflow:hidden}
+.rd-balken i{display:block;height:100%;background:var(--regler);transform-origin:left;transform:scaleX(.14);transition:transform .4s var(--ease)}
+.rd-schritt h3{font-size:clamp(22px,3vw,28px);line-height:1.2;letter-spacing:-.02em;margin-bottom:18px}
+.rd-schritt.an{animation:rdSchritt .35s var(--ease)}
+@keyframes rdSchritt{from{opacity:0;transform:translateX(14px)}}
+.rd-wahl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rd-wahl button{display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:10px 14px;border-radius:var(--r-sm);border:1.5px solid var(--line2);background:var(--card);font-weight:700;font-size:16px;text-align:center;transition:border-color .2s,background .2s,transform .2s var(--spring)}
+.rd-wahl button:hover{border-color:var(--ink)}
+.rd-wahl button:active{transform:scale(.97)}
+.rd-wahl button.an{background:var(--night);border-color:var(--night);color:#fff}
+.rd-wahl button .ik{width:20px;height:20px}
+.rd-ergebnis{background:var(--night);color:#fff;border-radius:var(--r-sm);padding:22px 22px 20px;margin-bottom:16px}
+.rd-ergebnis small{display:block;font-size:14px;color:var(--night-sub);font-weight:600}
+.rd-ergebnis b{display:block;font-family:var(--fh);font-size:clamp(40px,6vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:4px 0 10px}
+.rd-ergebnis p{font-size:15px;color:#DCE3EC}
+.rd-fuss{display:block;font-size:13px;color:var(--night-sub);margin-top:10px}
+.rd-feld{display:block;margin-bottom:12px}
+.rd-feld span{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.rd-feld em{font-style:normal;color:var(--faint);font-weight:500}
+.rd-feld input{width:100%;min-height:50px;padding:12px 14px;border-radius:var(--r-xs);border:1.5px solid var(--line2);font:inherit;font-size:16px;background:var(--card);color:var(--ink)}
+.rd-feld input:focus{outline:none;border-color:var(--kalt)}
+.rd-feld input.fehlt{border-color:#E5484D}
+.rd-weiter{width:100%;justify-content:center;margin-top:6px}
+.rd-hinweis{font-size:13px;color:var(--sub);margin:4px 0 12px}
+.rd-hinweis a{text-decoration:underline}
+.rd-fehler{color:#B42318;font-size:14px;font-weight:600;margin-bottom:10px}
+.rd-zurueck{margin-top:14px;min-height:44px;font-weight:600;color:var(--sub)}
+.rd-danke{text-align:center;padding:10px 0}
+.rd-ok{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:rgba(61,220,132,.16);margin:0 auto 14px}
+.rd-ok .ik{width:30px;height:30px;color:#1A9E5A;stroke-width:2.6}
+.rd-danke p{color:var(--sub);margin:8px 0 18px}
+html.rd-offen{overflow:hidden}
+@media(max-width:480px){.rd-form{padding:18px 18px 20px}.rd-wahl{grid-template-columns:1fr}}
+.rd{margin:auto;position:fixed;inset:0;height:fit-content}
+.vorteil.mit-bild .v-bild:has(.tickets){background:var(--night);color:#fff;border-bottom-color:var(--night)}
+.vorteil.mit-bild.an .ticket,.vorteil.mit-bild .ticket{opacity:1;transform:none}
+.vorteil.mit-bild .v-bild:has(.tickets) .ticket small{color:var(--night-sub)}
+.vorteil.mit-bild .v-bild:has(.v-phone){align-items:start}
+.vorteil.mit-bild .v-bild .tickets{transform:scale(.88)}
+.vorteil.mit-bild .v-bild{margin:8px 8px 0;border-radius:var(--r-lg);border-bottom:0}
+.collage{gap:8px;border-radius:0}
+.collage img,.collage img[width][height]{border-radius:var(--r-lg)}

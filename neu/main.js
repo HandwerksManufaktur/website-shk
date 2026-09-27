@@ -199,44 +199,76 @@
     new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeig(i); lauf(); } else clearInterval(timer); }), { threshold: .35 }).observe(vb);
   }
 
-  /* Hero: wechselndes Wort, Breite folgt dem Wort, Regler-Strich zeigt den Takt */
+  /* Hero: wechselndes Wort — steht allein in der Zeile, nur Wechsel von unten nach oben, keine Breitenrechnung */
   const we = $('.wechsel');
   if (we && !rm) {
-    const w = $$(':scope > span', we), T = 2600; let k = 0;
-    we.style.setProperty('--wtakt', T / 1000 + 's');
-    const breite = el => { const r = el.getBoundingClientRect().width; we.style.width = Math.ceil(r) + 'px'; };
-    const takt = () => { we.classList.remove('laeuft'); void we.offsetWidth; we.classList.add('laeuft'); };
-    requestAnimationFrame(() => { breite(w[0]); takt(); });
+    const w = $$(':scope > span', we); let k = 0;
     setInterval(() => {
       const alt = w[k]; k = (k + 1) % w.length; const neu = w[k];
-      alt.classList.remove('an'); alt.classList.add('weg');
-      neu.classList.remove('weg'); neu.style.transition = 'none'; neu.style.transform = 'translateY(105%)'; void neu.offsetWidth; neu.style.transition = ''; neu.style.transform = '';
-      neu.classList.add('an'); breite(neu); takt();
-      setTimeout(() => alt.classList.remove('weg'), 600);
-    }, T);
-    addEventListener('resize', () => breite(w[k]));
-    if (document.fonts) document.fonts.ready.then(() => breite(w[k]));
+      alt.classList.remove('an'); alt.classList.add('weg'); neu.classList.remove('weg'); neu.classList.add('an');
+      setTimeout(() => alt.classList.remove('weg'), 700);
+    }, 2600);
   }
 
-  /* Potenzial-Rechner: Ziel wählen, zwei Regler, Summe; Link trägt das Ziel mit */
-  const rech = $('.rechner');
-  if (rech) {
-    const eur = n => n.toLocaleString('de-DE') + ' €';
-    const std = { monteure: { anzahl: 2, wert: 15000 }, auftraege: { anzahl: 3, wert: 20000 } };
-    let ziel = 'monteure';
-    const rA = $('[data-regler="anzahl"]', rech), rW = $('[data-regler="wert"]', rech), link = $('[data-link]', rech);
-    const rechne = () => { $('[data-wert="anzahl"]', rech).textContent = rA.value; $('[data-wert="wert"]', rech).textContent = eur(+rW.value); $('[data-wert="summe"]', rech).textContent = eur(rA.value * rW.value); };
-    const wahl = z => {
-      ziel = z; rech.dataset.ziel = z;
-      $$('.rechner-wahl button', rech).forEach(b => { const an = b.dataset.ziel === z; b.classList.toggle('an', an); b.setAttribute('aria-selected', an); });
-      $$('[data-fuer]', rech).forEach(el => el.hidden = el.dataset.fuer !== z);
-      rA.value = std[z].anzahl; rW.value = std[z].wert; rW.min = z === 'auftraege' ? 10000 : 5000;
-      link.href = link.href.split('#')[0].split('?')[0] + '?ziel=' + z;
-      rechne();
+  /* Potenzial-Rechner als Pop-up: eine Frage je Schritt, dann PLZ, dann Kontakt, abschicken (Web3Forms → info@) */
+  const dlg = $('#rechner-dialog');
+  if (dlg) {
+    const form = $('.rd-form', dlg), schritte = $$('.rd-schritt', dlg), balken = $('.rd-balken i', dlg), zurueck = $('.rd-zurueck', dlg);
+    const d = {}; let akt = 1; const MAX = 7;
+    const eur = n => Math.round(n).toLocaleString('de-DE') + ' €';
+    const spur = (name, extra) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, extra || {})); } catch (e) {} };
+    const zeig = n => {
+      akt = n; schritte.forEach(s => { const an = +s.dataset.schritt === n; s.hidden = !an; s.classList.toggle('an', an); });
+      balken.style.transform = `scaleX(${Math.min(n, MAX) / MAX})`;
+      zurueck.hidden = n === 1 || n === 8;
+      const auf = d.ziel === 'Aufträge';
+      $$('[data-text-monteure]', dlg).forEach(el => el.textContent = auf ? el.dataset.textAuftraege : el.dataset.textMonteure);
+      $$('[data-fuer]', dlg).forEach(el => el.hidden = el.dataset.fuer !== (d.ziel || 'Monteure'));
+      if (n === 5) { $('[data-summe]', dlg).textContent = eur((+d.anzahl || 1) * (+d.wert || 5000)); const b = $('[data-beleg-monteure]', dlg); b.textContent = auf ? b.dataset.belegAuftraege : b.dataset.belegMonteure; }
+      const f = $('.rd-schritt.an input', dlg); if (f) setTimeout(() => f.focus(), 60);
+      spur('rechner_schritt', { schritt: n });
     };
-    $$('.rechner-wahl button', rech).forEach(b => b.addEventListener('click', () => wahl(b.dataset.ziel)));
-    [rA, rW].forEach(r => r.addEventListener('input', rechne));
-    wahl('monteure');
+    const oeffne = () => { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', ''); document.documentElement.classList.add('rd-offen'); zeig(1); spur('rechner_offen'); };
+    const zu = () => { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); document.documentElement.classList.remove('rd-offen'); };
+    $$('[data-rechner], a[href="#rechner-auf"]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); oeffne(); }));
+    $('.rd-zu', dlg).addEventListener('click', zu);
+    dlg.addEventListener('click', e => { if (e.target === dlg) zu(); });
+    dlg.addEventListener('close', () => document.documentElement.classList.remove('rd-offen'));
+    zurueck.addEventListener('click', () => zeig(Math.max(1, akt - 1)));
+    $$('.rd-wahl button', dlg).forEach(b => b.addEventListener('click', () => {
+      d[b.dataset.feld] = b.dataset.wert;
+      $$(`.rd-wahl button[data-feld="${b.dataset.feld}"]`, dlg).forEach(x => x.classList.toggle('an', x === b));
+      setTimeout(() => zeig(akt + 1), 180);
+    }));
+    $$('[data-weiter]', dlg).forEach(b => b.addEventListener('click', () => {
+      const f = $('.rd-schritt.an input[required]', dlg);
+      if (f && !f.value.trim()) { f.focus(); f.classList.add('fehlt'); return; }
+      zeig(akt + 1);
+    }));
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const name = form.elements.name.value.trim(), tel = form.elements.telefon.value.trim(), fehler = $('.rd-fehler', dlg);
+      if (!name || !tel) { fehler.hidden = false; return; } fehler.hidden = true;
+      const fd = new FormData(form);
+      fd.append('Ziel', d.ziel || ''); fd.append('Stelle / Leistung', d.stelle || ''); fd.append('Anzahl je Monat', d.anzahl || ''); fd.append('Wert je Auftrag', d.wert ? eur(+d.wert) : ''); fd.append('Seite', location.pathname);
+      const knopf = $('button[type=submit]', form); knopf.disabled = true;
+      try { const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd }); if (!r.ok) throw 0; } catch (x) { knopf.disabled = false; fehler.textContent = 'Das hat nicht geklappt. Ruf gern direkt an: +49 8194 7174990'; fehler.hidden = false; return; }
+      const cal = $('[data-cal]', dlg); if (d.ziel === 'Aufträge') cal.href = 'https://calendly.com/noahseelau/leadgen-potenzial';
+      spur('rechner_abgeschickt', { ziel: d.ziel }); zeig(8);
+    });
+  }
+
+  /* Kontakt: Collage aus Shooting-Fotos, alle 1,4 s wechselt ein Feld */
+  const col = $('.collage');
+  if (col && !rm) {
+    let pool = []; try { pool = JSON.parse(col.dataset.pool); } catch (e) {}
+    const felder = $$('img', col); let naechstes = felder.length, timer = null;
+    const tausch = () => {
+      if (!pool.length) return; const f = felder[Math.floor(Math.random() * felder.length)];
+      const bild = new Image(); bild.src = pool[naechstes % pool.length]; naechstes++;
+      bild.onload = () => { f.classList.add('weg'); setTimeout(() => { f.src = bild.src; f.removeAttribute('srcset'); f.classList.remove('weg'); }, 350); };
+    };
+    new IntersectionObserver(es => es.forEach(e => { clearInterval(timer); if (e.isIntersecting) timer = setInterval(tausch, 1400); }), { threshold: .2 }).observe(col);
   }
 
   /* Aktiver Menüpunkt */

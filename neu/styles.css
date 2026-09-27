@@ -1400,3 +1400,24 @@ html.rd-offen{overflow:hidden}
 .leiter .ende.schlicht{padding:12px 24px 12px 12px;gap:16px}
 .leiter .ende.schlicht .gesicht{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:50% 45%}
 @media(max-width:600px){.leiter .ende.schlicht{padding:13px 20px 13px 16px}.leiter .ende.schlicht .gesicht{width:72px;height:72px}}
+
+/* Bilder mit festen Maßen (seit 27.09.2026 an jedem <img>) behalten ihre Füllhöhe — img[width][height]{height:auto} würde sie sonst überstimmen */
+.collage img[width][height],
+.fall-gross .vid img[width][height],
+.fall-gross .vid.bild-nur img[width][height],
+.fall-karte .betrieb .lg img[width][height],
+.fall-karte .vid img[width][height],
+.galerie img[width][height],
+.hebel-karte .bild img[width][height],
+.hebel-karte img[width][height],
+.insel .foto img[width][height],
+.kontakt-bild img[width][height],
+.stimme .lg img[width][height],
+.stimme .wer .lg img[width][height],
+.stimme-logo img[width][height],
+.streifen img[width][height],
+.ueber.offen .bilder img[width][height],
+.ueber.offen .bilder.nur-noah .gross img[width][height],
+.uhero .foto-frei img[width][height],
+.vorteil.mit-bild .v-bild>img[width][height],
+.zelle .bild img[width][height]{height:100%}

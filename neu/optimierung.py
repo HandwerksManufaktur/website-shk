@@ -147,6 +147,16 @@ def optimieren(seite, ohne_srcset=(), pfad='/'):
                     else:
                         groesse = '(max-width: 700px) 150px, 280px' if '/funnels/' in pfad else '(max-width: 700px) 100vw, 50vw'
                     tag = tag.replace('<img ', f'<img srcset="{", ".join(f"{v[0]} {v[1]}w" for v in varianten)}" sizes="{groesse}" ', 1)
+        # Feste Maße an jedes Bild (PageSpeed „Image elements do not have explicit width and height“, 27.09.2026):
+        # das Grund-CSS img{max-width:100%} + img[width][height]{height:auto} hält das Layout dabei unverändert
+        if src and not (re.search(r'\swidth=', tag) and re.search(r'\sheight=', tag)):
+            try:
+                q = REPO / unquote(src.group(1).lstrip('/'))
+                w0, h0 = ImageOps.exif_transpose(Image.open(q)).size
+                tag = re.sub(r'\s(?:width|height)="[^"]*"', '', tag)
+                tag = tag.replace('<img ', f'<img width="{w0}" height="{h0}" ', 1)
+            except Exception:
+                pass
         # Funnel-Screenshots in den Handy-Rahmen sind nie das Wichtigste im Bild: immer lazy, niedrige Priorität
         funnel = src is not None and '/funnels/' in src.group(1)
         if (lazy or funnel) and 'loading=' not in tag: tag = tag.replace('<img ', '<img loading="lazy" ', 1)

@@ -68,6 +68,9 @@ MESSUNG_KOPF = messung_kopf('shk-v3')
 # ── Bausteine ─────────────────────────────────────────────────────────────
 NAV = [('/monteure/', IK['users'], 'Monteure'), ('/auftraege/', IK['bath'], 'Aufträge'), ('/ueber-uns/', IK['handshake'], 'Über uns')]
 
+# Logo-Intro nur auf der Startseite: auf Unterseiten verdeckte es beim Erstbesuch den Inhalt ~2,2 s (LCP mobil 2,8–3,0 s, 27.09.2026)
+INTRO = '<div id="intro" aria-hidden="true"><img src="/assets/logo-hm-quer-weiss.svg" alt="" width="340" height="91"><span class="strich"><i></i></span></div>'
+
 def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
     canon = f'{DOMAIN}{pfad}'
     robots = 'noindex, nofollow' if NOINDEX else 'index, follow, max-image-preview:large, max-snippet:-1'
@@ -119,7 +122,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
-<div id="intro" aria-hidden="true"><img src="/assets/logo-hm-quer-weiss.svg" alt="" width="340" height="91"><span class="strich"><i></i></span></div>
+{INTRO if pfad == '/' else ''}
 <div class="regler-leiste" aria-hidden="true"></div>
 <header class="nav{' dunkel' if dunkel else ''}">
   <div class="wrap">
@@ -625,7 +628,7 @@ def galerie():
 
 # ── Seiten ────────────────────────────────────────────────────────────────
 def seite_start():
-    h = kopf('Monteure und Aufträge für SHK-Betriebe: Anzeigen im eigenen Umkreis', 'Monteure, die anfangen wollen, und Bad-Anfragen, die nur du bekommst: Anzeigen mit deinen Leuten in deinem Einzugsgebiet, Filterfragen vor jeder Bewerbung. 130+ Betriebe, 5,0 auf Google.', '/', schema_extra=faq_schema(FAQ_START))
+    h = kopf('Monteure und Aufträge für SHK-Betriebe aus deinem Umkreis', 'Monteure und Bad-Anfragen, die nur du bekommst: Anzeigen mit deinen Leuten im eigenen Umkreis, Filterfragen vor jeder Bewerbung. 130+ Betriebe, 5,0 auf Google.', '/', schema_extra=faq_schema(FAQ_START))
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
     <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
@@ -657,7 +660,7 @@ def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):
 
 def seite_monteure():
     fr = [FAQ_ALLE[0], FAQ_ALLE[7], FAQ_ALLE[3], FAQ_ALLE[2], FAQ_ALLE[1]]
-    h = kopf('Mitarbeitergewinnung für SHK-Betriebe: Monteure über Social Recruiting', 'Anlagenmechaniker SHK und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert, mit Fotos aus deinem Betrieb. Fallstudie: 25 Bewerbungen in 4 Wochen.', '/monteure/', dunkel=True, schema_extra='')
+    h = kopf('Monteure finden für SHK-Betriebe: Social Recruiting im Umkreis', 'Anlagenmechaniker und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert. Fallstudie: 25 Bewerbungen in 4 Wochen.', '/monteure/', dunkel=True, schema_extra='')
     body = uhero('Für SHK-Betriebe, die einen Monteur suchen', 'Monteure, die anfangen wollen. <span class="em k">Aus deinem Umkreis.</span>', 'Die guten Monteure suchen nicht, sie sind in Arbeit. Sie wechseln, wenn das richtige Angebot vor ihnen liegt. Wir bringen deins dorthin, wo sie jeden Abend sind: in ihren Feed. Du führst nur noch die Gespräche.', 'Recruiting besprechen', CAL_REC, 'btn-kalt',
         phone('/assets/funnels/senftleben-jobs-full.jpg', 'Recruiting · Senftleben Haustechnik', '#1E90E8', 'links', '2s') + phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'rechts', '0s'))
     body += f'''<section class="sec" id="vorteile"><div class="wrap">
@@ -672,7 +675,7 @@ def seite_monteure():
 
 def seite_auftraege():
     fr = [FAQ_ALLE[0], FAQ_ALLE[5], FAQ_ALLE[1], FAQ_ALLE[4], FAQ_ALLE[2]]
-    h = kopf('Auftrags-Funnel für Badsanierung & Wärmepumpe: Anfragen für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Einzugsgebiet, exklusiv für deinen Betrieb, vorqualifiziert nach Objekt, Baujahr und Eigentum. Fallstudie: 21 Bad-Anfragen in 2 Monaten.', '/auftraege/', dunkel=True, schema_extra='')
+    h = kopf('Bad- und Wärmepumpen-Aufträge für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Umkreis, nur für deinen Betrieb, vorqualifiziert nach Objekt und Eigentum. Fallstudie: 21 Anfragen in 2 Monaten.', '/auftraege/', dunkel=True, schema_extra='')
     body = uhero('Für SHK-Betriebe, die Bäder und Wärmepumpen bauen', 'Bad-Aufträge, die nur du bekommst. <span class="em w">Aus deinem Umkreis.</span>', 'Anzeigen auf deinen Namen, nur in deinem Einzugsgebiet, Filterfragen vor jeder Anfrage. Jede Anfrage gehört dir allein, nicht vier Wettbewerbern gleichzeitig. Du fährst nur noch zum Termin.', 'Potenzial durchrechnen', '#rechner-auf', 'btn-warm',
         phone('/assets/funnels/sussmann-leadgen-hero.jpg', 'Aufträge · Sussmann GmbH', '#F5762B', 'links', '1s') + phone('/assets/funnels/senftleben-leadgen-full.jpg', 'Aufträge · Senftleben Haustechnik', '#F5762B', 'rechts', '0s'), warm=True)
     body += f'''<section class="sec" id="vorteile"><div class="wrap">
@@ -697,7 +700,7 @@ def seite_fallstudien():
     return h + body + fuss()
 
 def seite_ueber():
-    h = kopf('Über uns: HandwerksManufaktur, Marketing nur für Handwerksbetriebe', 'Seit über sechs Jahren nur Handwerk, über 130 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
+    h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit über sechs Jahren nur Handwerk, über 130 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
     body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Eine Branche. <span class="em w">Seit über sechs Jahren.</span></h1><p class="lead rv" data-d="2">Kein Account-Manager dazwischen, keine Ticketnummer. Du weißt immer, wer an deiner Kampagne sitzt.</p></div></section>
 <div style="height:64px"></div>'''
     body += ueber_offen(kurz=False) + team()
@@ -709,7 +712,7 @@ def seite_ueber():
     return h + body + fuss()
 
 def seite_potenzial():
-    h = kopf('Potenzialanalyse für SHK-Betriebe: in 30 Minuten durchgerechnet', 'Kostenlos und unverbindlich: Wir rechnen durch, was in deiner Region an Bewerbungen von Monteuren oder Anfragen für Bäder und Wärmepumpen drin ist. Termin online aussuchen.', '/potenzialanalyse/')
+    h = kopf('Potenzialanalyse für SHK-Betriebe: in 30 Minuten durchgerechnet', 'Kostenlos: Wir rechnen in 30 Minuten durch, was in deiner Region an Bewerbungen oder Bad- und Wärmepumpen-Anfragen drin ist. Termin online aussuchen.', '/potenzialanalyse/')
     body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Potenzialanalyse · 30 Minuten · kostenlos</p><h1 class="h-xl rv" data-d="1">Was ist in deiner Region <span class="em w">drin?</span></h1><p class="lead rv" data-d="2">30 Minuten, kostenlos: Wir rechnen durch, was in deinem Umkreis an Bewerbungen oder Bad-Anfragen drin ist.</p></div></section>
 <div style="height:56px"></div>
 {kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')}

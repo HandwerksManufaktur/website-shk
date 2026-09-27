@@ -106,6 +106,9 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <meta name="theme-color" content="{'#0B1424' if dunkel else '#F3F6FA'}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/fonts/sub/archivo-latin-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/archivo-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -410,6 +413,18 @@ def ueber_offen(kurz=True):
   </div></div>
 </section>'''
 
+TEAM = [('noah', 'Noah', 'Gründer · Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 20%'),
+        ('robert', 'Robert', 'Creative&nbsp;&amp;&nbsp;Schnitt', '50% 18%'),
+        ('rudolf', 'Rudolf', 'Umsetzung · Funnels&nbsp;&amp;&nbsp;Websites', '50% 20%')]
+
+def team():
+    """Wer wir sind — auf jeder Seite (Noah, 27.09.2026: „bau überall noch ne team sektion … nicht so detailreich")."""
+    k = ''.join(f'''<article class="person rv" data-d="{i+1}"><figure><img src="/assets/team/{d}.jpg" alt="{n}, {r.replace('&nbsp;', ' ').replace('&amp;', '&')}" loading="lazy" width="800" height="1000" style="object-position:{pos}"></figure><div class="txt"><h3>{n}</h3><p>{r}</p></div></article>''' for i, (d, n, r, pos) in enumerate(TEAM))
+    return f'''<section class="sec team" id="team"><div class="wrap">
+  <div class="sec-kopf"><div><p class="kick rv">Das Team</p><h2 class="d rv">Drei Leute. <span class="em k">Ein Team.</span></h2></div><p class="lead rv">Wer mit dir spricht, sitzt mit denen am Tisch, die deine Kampagne bauen.</p></div>
+  <div class="team-grid">{k}</div>
+</div></section>'''
+
 def statement(text_html, mitte=False, von=''):
     # Wörter einzeln, damit sich der Satz beim Scrollen füllt; <em> bleibt als Akzent
     teile = re.split(r'(<em>.*?</em>)', text_html)
@@ -506,7 +521,7 @@ def seite_start():
     </div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + leiter() + vergleich() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + kontakt()
+    body = hero + logo_band() + leiter() + vergleich() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ueber_offen() + team() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + kontakt()
     return h + body + fuss()
 
 def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):
@@ -541,7 +556,7 @@ def seite_monteure():
 </div></section>'''
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Fallstudie · Recruiting</p><h2 class="d rv">„Wir haben nur nicht gedacht, dass es <span class="em k">so viele</span> sind."</h2></div><p class="lead rv">Erwin Schmidt &amp; Sohn, Sindelfingen. Ein Anlagenmechaniker gesucht, 25 Bewerbungen bekommen, Stelle besetzt.</p></div>{FALL_ESS()}
   <div class="fall-grid" style="margin-top:20px">{senftleben_recruiting_karte()}<article class="fall-karte rv" data-d="2"><div class="vid"><img src="/assets/fotos/klass-werkbank.jpg" alt="Monteur an der Werkbank, Shooting bei Heizung Sanitär Klaß" loading="lazy" width="1100" height="733" style="object-position:50% 40%"></div><div class="txt"><span class="chip"><i aria-hidden="true"></i>Nächster Schritt</span><p class="erg">Welche Stelle ist bei dir offen?</p><p style="color:var(--sub);font-size:15px;margin-top:-4px">In 30 Minuten rechnen wir durch, was in deinem Umkreis an Bewerbungen drin ist.</p><p style="margin-top:auto"><a class="btn btn-kalt" href="{CAL_REC}" target="_blank" rel="noopener">{ic('target','ic')}Recruiting besprechen</a></p></div></article></div></div></section>'''
-    body += kaskade('ess') + reels() + statement('Die guten Monteure suchen nicht. Sie sind in Arbeit. Aber sie wechseln, wenn das <em>richtige Angebot</em> vor ihnen liegt.') + faq(fr, 'Fragen zum <span class="em k">Recruiting.</span>') + kontakt('Reden wir über <span class="em k">deine Stelle.</span>')
+    body += kaskade('ess') + reels() + statement('Die guten Monteure suchen nicht. Sie sind in Arbeit. Aber sie wechseln, wenn das <em>richtige Angebot</em> vor ihnen liegt.') + team() + faq(fr, 'Fragen zum <span class="em k">Recruiting.</span>') + kontakt('Reden wir über <span class="em k">deine Stelle.</span>')
     return h + body + fuss()
 
 def seite_auftraege():
@@ -567,7 +582,7 @@ def seite_auftraege():
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Fallstudie · Auftrags-Funnel Badsanierung</p><h2 class="d rv">„Dass so schnell so viele Anfragen kommen, <span class="em w">hätte ich nicht gedacht.</span>"</h2></div><p class="lead rv">Senftleben Haustechnik, Ehingen. Ausgelastet, und trotzdem laufen die Anzeigen weiter, damit der Name im Kopf bleibt.</p></div>{FALL_SEN()}
   <div class="fall-grid" style="margin-top:20px">{sussmann_karte()}<article class="fall-karte rv" data-d="2" style="justify-content:center;background:var(--night);color:#fff;border-color:var(--night)"><div class="txt" style="justify-content:center"><p class="kick" style="color:var(--night-sub)">Nach dem Startpaket</p><p class="erg">Werbung macht man nicht nur, wenn es gut läuft.</p><p style="color:var(--night-sub)">Benjamin Senftleben hat nach dem Startpaket verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Das hat er schon in der Meisterschule gelernt.</p><p><a class="btn btn-warm" href="{CAL_LEAD}" target="_blank" rel="noopener">{ic('target','ic')}Potenzial durchrechnen</a></p></div></article></div>
 </div></section>'''
-    body += kaskade('senftleben') + statement('Ein Komplettbad oder eine Wärmepumpe bringt 20.000 bis 50.000 €. Nur kommen die Projekte, <em>wann sie wollen.</em>') + faq(fr, 'Fragen zur <span class="em w">Badsanierung.</span>') + kontakt('Sehen wir uns <span class="em w">deinen Umkreis</span> an.')
+    body += kaskade('senftleben') + statement('Ein Komplettbad oder eine Wärmepumpe bringt 20.000 bis 50.000 €. Nur kommen die Projekte, <em>wann sie wollen.</em>') + team() + faq(fr, 'Fragen zur <span class="em w">Badsanierung.</span>') + kontakt('Sehen wir uns <span class="em w">deinen Umkreis</span> an.')
     return h + body + fuss()
 
 def seite_fallstudien():
@@ -576,14 +591,14 @@ def seite_fallstudien():
 <section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">Recruiting · Erwin Schmidt &amp; Sohn, Sindelfingen</p><h2 class="d rv">Ein Anlagenmechaniker gesucht. <span class="em k">25 Bewerbungen.</span></h2></div></div>{FALL_ESS()}</div></section>
 <section class="sec" id="senftleben" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Auftrags-Funnel · Senftleben Haustechnik, Ehingen</p><h2 class="d rv">Ausgelastet, und trotzdem <span class="em w">21 Bad-Anfragen.</span></h2></div></div>{FALL_SEN()}
 <div class="fall-grid" style="margin-top:20px">{sussmann_karte()}{senftleben_recruiting_karte()}</div></div></section>'''
-    body += reels() + stimmen() + kontakt()
+    body += reels() + stimmen() + team() + kontakt()
     return h + body + fuss()
 
 def seite_ueber():
     h = kopf('Über uns: HandwerksManufaktur, Marketing nur für Handwerksbetriebe', 'Seit über sechs Jahren nur Handwerk, über 130 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
     body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Eine Branche. <span class="em w">Seit über sechs Jahren.</span></h1><p class="lead rv" data-d="2">Kein Account-Manager dazwischen, keine Ticketnummer. Du weißt immer, wer an deiner Kampagne sitzt.</p></div></section>
 <div style="height:64px"></div>'''
-    body += ueber_offen(kurz=False) + praxis_streifen()
+    body += ueber_offen(kurz=False) + team() + praxis_streifen()
     body += f'''<section class="sec" id="wie" style="padding-top:0"><div class="wrap">
   <div class="sec-kopf"><div><p class="kick k rv">Wie wir arbeiten</p><h2 class="d rv">Kleines Team. <span class="em k">Kurze Wege.</span></h2></div><p class="lead rv">Erstgespräch, Strategie und Kampagnenaufbau laufen über einen Tisch. Vom ersten Call bis zum Reporting.</p></div>
   {vorteile([('', IK['compass'], 'Eine Branche, seit über sechs Jahren', 'Nur Handwerk. Wir kennen dein Gewerk, bevor du es erklären musst, und wissen, was einen Monteur zum Wechseln bringt.'), ('', IK['camera'], 'Shooting bei dir im Betrieb', 'Heizungskeller, Lager, Baustelle: Wir kommen zu dir und fotografieren dein Team. Das ist das Material der Kampagne.'), ('', IK['bars'], 'Zahlen statt Bauchgefühl', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet, und regeln nach, wenn etwas nicht läuft.')])}
@@ -600,7 +615,7 @@ def seite_potenzial():
   <div class="sec-kopf"><div><p class="kick k rv">Was in den 30 Minuten passiert</p><h2 class="d rv">Drei Dinge schauen wir uns an.</h2></div><p class="lead rv">Kein Verkaufsgespräch, sondern eine Rechnung für deine Region. Danach weißt du, ob es sich lohnt.</p></div>
   {vorteile([('', IK['map'], 'Dein Einzugsgebiet', 'Wie viele Leute erreichen wir im Umkreis deines Betriebs, und wie viele davon passen zur Stelle oder zum Projekt.'), ('', IK['search'], 'Wer dort schon wirbt', 'Welche Betriebe in deiner Region bereits Anzeigen schalten, und was das für deine Kampagne bedeutet.'), ('w', IK['calculator'], 'Was realistisch drin ist', 'Was eine Bewerbung oder eine Anfrage in deiner Region kostet, und was Setup und Betreuung für dich bedeuten.')])}
 </div></section>'''
-    body += statement('Kein Verkaufsgespräch. Eine Rechnung für <em>deine Region.</em>') + faq([FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[4], FAQ_ALLE[6]], 'Vor dem <span class="em k">Termin.</span>')
+    body += team() + statement('Kein Verkaufsgespräch. Eine Rechnung für <em>deine Region.</em>') + faq([FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[4], FAQ_ALLE[6]], 'Vor dem <span class="em k">Termin.</span>')
     return h + body + fuss()
 
 # ── Schreiben ─────────────────────────────────────────────────────────────
@@ -609,7 +624,7 @@ SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_a
 for pfad, fn in SEITEN.items():
     ziel = AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html'
     ziel.parent.mkdir(parents=True, exist_ok=True)
-    ziel.write_text(optimieren(fn()), encoding='utf-8')
+    ziel.write_text(optimieren(fn(), pfad=u(pfad)), encoding='utf-8')
     print('✓', ziel.relative_to(REPO))
 if LIVE:
     sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc><changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else "0.8"}</priority></url>' for p in SEITEN)

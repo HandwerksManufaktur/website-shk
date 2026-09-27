@@ -107,7 +107,7 @@ def breiten(pfad):
     return [320, 480, 640, 960, 1100]                             # Fotos: der Browser nimmt die kleinste, die reicht
 
 
-def optimieren(seite, ohne_srcset=()):
+def optimieren(seite, ohne_srcset=(), pfad='/'):
     """Jedes JPG/PNG-Bild als passend großes WebP (+ srcset), alles unterhalb der ersten Sektion lazy.
     `ohne_srcset`: Pfad-Teile, deren Bilder per Skript ausgetauscht werden — srcset würde den Tausch überstimmen."""
     teile = seite.split('</section>', 1)                          # bis zum Ende der ersten Sektion = Hero, bleibt eager
@@ -147,6 +147,26 @@ def optimieren(seite, ohne_srcset=()):
 
     vorn = re.sub(r'<img [^>]+>', lambda m: img(m, False), teile[0])
     rest = re.sub(r'<img [^>]+>', lambda m: img(m, True), teile[1]) if len(teile) > 1 else ''
+    # Im Hero nie „später laden" (außer Funnel-Screenshots); das erste Foto ist meist das LCP-Element → hohe Priorität
+    def hero_img(m):
+        tag = m.group(0)
+        if '/funnels/' in tag or 'logo' in tag: return tag
+        return tag.replace(' loading="lazy"', '')
+    vorn = re.sub(r'<img [^>]+>', hero_img, vorn)
+    ganz_ = vorn + ('</section>' + rest if len(teile) > 1 else '')
+    # Gemessen (bildgroessen_messen.py): Fotos, die auf DIESER Seite im ersten Bildschirm stehen, laden sofort,
+    # das erste davon mit hoher Priorität — es ist meist das LCP-Element (Über uns: Noahs Porträt, 27.09.2026)
+    oben = set(gemessen.get('_oben', {}).get(pfad, []))
+    erstes = [True]
+    def oben_img(m):
+        tag = m.group(0); k = re.search(r'src="/assets/opt/(.+?)-\d+\.webp"', tag)
+        if not k or k.group(1) not in oben or 'funnels' in k.group(1) or 'logo' in k.group(1): return tag
+        tag = tag.replace(' loading="lazy"', '')
+        if erstes[0] and 'fetchpriority=' not in tag:
+            tag = tag.replace('<img ', '<img fetchpriority="high" ', 1); erstes[0] = False
+        return tag
+    ganz_ = re.sub(r'<img [^>]+>', oben_img, ganz_)
+    vorn, _, rest = ganz_.partition('</section>')
     ganz = vorn + ('</section>' + rest if len(teile) > 1 else '')
 
     def ersetze(m, breite):
@@ -183,7 +203,7 @@ def statische_seite(datei, gruppe='shk-live'):
         s = s.replace('</body>', f'<script src="/messung.js?v={messung_js_version()}" defer></script>\n</body>', 1)
     else:
         s = re.sub(r'src="/messung\.js\?v=[0-9a-f]+"', f'src="/messung.js?v={messung_js_version()}"', s)
-    s = optimieren(s, ohne_srcset=('/assets/projekte/',))
+    s = optimieren(s, ohne_srcset=('/assets/projekte/',), pfad='/')
     p.write_text(s, encoding='utf-8')
     print(f'✓ {p.name}: Google-Schriften {"ersetzt" if n1 else "schon lokal"} · Messung {"verzögert" if n2 else "schon umgestellt"} · '
           f'{"geändert" if s != vorher else "unverändert"}')

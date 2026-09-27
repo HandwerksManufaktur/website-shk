@@ -9,11 +9,11 @@
  ],
  "assets-fotos-erwin-schmidt-van": [
   360,
-  510
+  520
  ],
  "assets-fotos-klass-beratung": [
   360,
-  510
+  520
  ],
  "assets-fotos-klass-monteur": [
   360,
@@ -45,7 +45,7 @@
  ],
  "assets-fotos-senftleben-lager": [
   320,
-  490
+  480
  ],
  "assets-fotos-senftleben-team": [
   370,
@@ -77,7 +77,7 @@
  ],
  "assets-fotos-shk-08": [
   360,
-  510
+  520
  ],
  "assets-fotos-sussmann-patrick-mirjana": [
   360,
@@ -167,6 +167,18 @@
   360,
   390
  ],
+ "assets-team-noah": [
+  120,
+  390
+ ],
+ "assets-team-robert": [
+  120,
+  390
+ ],
+ "assets-team-rudolf": [
+  120,
+  390
+ ],
  "logos-shk-logo-autohaus-ressle-weiss": [
   50,
   50
@@ -176,8 +188,8 @@
   140
  ],
  "logos-shk-logo-entenmann-haustechnik-weiss": [
-  110,
-  110
+  100,
+  100
  ],
  "logos-shk-logo-erwin-schmidt-weiss": [
   110,
@@ -208,7 +220,7 @@
   110
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
-  150,
+  160,
   150
  ],
  "logos-shk-logo-irlbacher-weiss": [
@@ -245,10 +257,33 @@
  ],
  "logos-shk-logo-sussmann-weiss": [
   150,
-  150
+  160
  ],
  "logos-shk-logo-yannick-stimpfle-weiss": [
   70,
   70
- ]
+ ],
+ "_oben": {
+  "/": [
+   "assets-funnels-erwin-schmidt-jobs-hero",
+   "logos-shk-logo-handwerksmanufaktur-weiss"
+  ],
+  "/neu/": [
+   "assets-funnels-senftleben-leadgen-full"
+  ],
+  "/neu/monteure/": [
+   "assets-funnels-erwin-schmidt-jobs-full",
+   "assets-funnels-senftleben-jobs-full"
+  ],
+  "/neu/auftraege/": [
+   "assets-funnels-senftleben-leadgen-full",
+   "assets-funnels-sussmann-leadgen-hero"
+  ],
+  "/neu/fallstudien/": [],
+  "/neu/ueber-uns/": [
+   "assets-fotos-erwin-schmidt-team",
+   "assets-fotos-noah-portrait"
+  ],
+  "/neu/potenzialanalyse/": []
+ }
 }

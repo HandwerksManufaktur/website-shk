@@ -17,20 +17,22 @@ SEITEN = ['/', '/neu/', '/neu/monteure/', '/neu/auftraege/', '/neu/fallstudien/'
 MESSEN = '''async () => {
   document.querySelectorAll('img').forEach(i => i.loading = 'eager');
   await Promise.all([...document.images].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 8000); })));
-  const m = {};
+  const m = {}, oben = [];
   for (const i of document.images) {
     const src = i.currentSrc || i.src || '';
     const k = (src.match(/\\/assets\\/opt\\/(.+)-\\d+\\.webp/) || [])[1];
     const w = i.getBoundingClientRect().width;
     if (k && w > 0) m[k] = Math.max(m[k] || 0, w);
+    const r = i.getBoundingClientRect();
+    if (k && w > 40 && r.top < innerHeight && r.bottom > 0) oben.push(k);   // im ersten Bildschirm sichtbar
   }
-  return m;
+  return {m, oben};
 }'''
 
 
 async def main():
     from playwright.async_api import async_playwright
-    breite = {}
+    breite, oben = {}, {}
     async with async_playwright() as p:
         b = await p.chromium.launch()
         for nr, (w, h) in enumerate(((390, 844), (1440, 900))):
@@ -38,7 +40,9 @@ async def main():
             for s in SEITEN:
                 pg = await ctx.new_page()
                 await pg.goto(BASIS + s, wait_until='networkidle')
-                for k, v in (await pg.evaluate(MESSEN)).items():
+                erg = await pg.evaluate(MESSEN)
+                oben.setdefault(s, set()).update(erg['oben'])
+                for k, v in erg['m'].items():
                     breite.setdefault(k, [0, 0])
                     breite[k][nr] = max(breite[k][nr], math.ceil(v / 10) * 10)
                 await pg.close()
@@ -47,7 +51,9 @@ async def main():
     # Nur am Handy oder nur am Desktop sichtbar: die andere Seite erbt den gemessenen Wert
     for k, (m, d) in breite.items():
         breite[k] = [m or d, d or m]
-    (HIER / 'bildgroessen.json').write_text(json.dumps(dict(sorted(breite.items())), indent=1), encoding='utf-8')
+    daten = dict(sorted(breite.items()))
+    daten['_oben'] = {s: sorted(v) for s, v in oben.items()}     # je Seite: Bilder im ersten Bildschirm (Handy oder Desktop)
+    (HIER / 'bildgroessen.json').write_text(json.dumps(daten, indent=1), encoding='utf-8')
     print(f'✓ {len(breite)} Bilder gemessen → neu/bildgroessen.json')
 
 

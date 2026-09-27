@@ -66,7 +66,7 @@ def _css_klein(t):
     t = re.sub(r'/\*.*?\*/', '', t, flags=re.S)
     t = re.sub(r'\s*\n\s*', ' ', t)          # Zeilen zusammen, nie zwei Wörter verkleben (calc, grid-areas)
     return t.strip()
-_FONTS = (REPO/'fonts'/'fonts.css').read_text(encoding='utf-8').replace("url('", "url('/fonts/")
+_FONTS = (REPO/'fonts'/'fonts.css').read_text(encoding='utf-8').replace("url('", "url('/fonts/sub/")   # sub/ = auf Latein-Zeichen zugeschnitten (pyftsubset, 27.09.2026): ~45 % kleiner
 CSS_INLINE = _css_klein(_FONTS) + _css_klein((HIER/'styles.css').read_text(encoding='utf-8'))
 # GA4 + Contentsquare laden erst bei der ersten Berührung (Scroll, Tipp, Maus, Taste) oder 3,5 s nach dem Laden.
 # Bis dahin sammelt dataLayer jedes Ereignis — es geht nichts verloren, aber die Seite ist zuerst da.
@@ -170,9 +170,9 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <meta property="og:image" content="{DOMAIN}{og or '/og-image-hm.jpg'}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="{'#0B1424' if dunkel else '#F3F6FA'}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/fonts/archivo-latin-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/inter-v20-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/archivo-latin-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>{CSS_INLINE}</style>
 {MESSUNG_KOPF}
 <script type="application/ld+json">{ld}</script>

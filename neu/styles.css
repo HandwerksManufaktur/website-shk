@@ -1378,3 +1378,21 @@ html.rd-offen{overflow:hidden}
    Ursache war die Klasse .weg (gehört den Wege-Karten: 24 px Innenabstand + Rahmen) — heißt jetzt .raus. Erste Zeile bricht nie um; am Handy ist die Schrift so bemessen, dass „Mehr Heizungs-Aufträge" in eine Zeile passt. */
 .hero-h1 .zl:first-child>span{white-space:nowrap}
 @media(max-width:600px){.hero-h1.zwei{font-size:min(36px,7.8vw)}}
+
+/* ── Runde 13 (Noah, 27.09.2026) ── */
+/* Leitsatz mit Knopf darunter — ein Leitsatz am Seitenende ohne nächsten Schritt lässt den Leser stehen */
+.statement-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.statement.mitte .statement-cta{justify-content:center}
+@media(max-width:600px){.statement-cta .btn{flex:1 1 100%;justify-content:center}}
+/* Gründer: mehr vom Foto, der Firmenwagen erzählt das Handwerk */
+.gruender img,.ueber.offen .gruender img{width:120px;height:96px;border-radius:var(--r-md);object-fit:cover;object-position:30% 30%;flex:none}
+@media(max-width:600px){.gruender img,.ueber.offen .gruender img{width:96px;height:78px}}
+/* Icons, die erzählen: drei Stationen mit Linie */
+.vorteil.mit-szene .szene{display:flex;align-items:center;gap:0;margin-bottom:20px}
+.szene .sz{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line2);background:var(--card);flex:none}
+.szene .sz .ik{width:20px;height:20px;color:var(--ink);stroke-width:1.6}
+.szene .sz.ziel{background:var(--ink);border-color:var(--ink)}
+.szene .sz.ziel .ik{color:#fff}
+.szene .sz-linie{flex:0 0 22px;height:0;border-top:1.5px dashed var(--line2)}
+.vorteil.mit-szene:hover .sz-linie{border-top-color:var(--kalt)}
+.gruender{border-radius:var(--r-lg)}

@@ -11,7 +11,7 @@ Wirkt idempotent: ein zweiter Lauf ändert nichts mehr.
 import hashlib, re, sys
 from pathlib import Path
 from urllib.parse import unquote
-from PIL import Image
+from PIL import Image, ImageOps
 
 HIER = Path(__file__).resolve().parent
 REPO = HIER.parent
@@ -97,7 +97,7 @@ def webp(pfad, breite):
         return None
     OPT.mkdir(exist_ok=True)
     _quelle_merken(pfad)
-    im = Image.open(quelle); w0, h0 = im.size
+    im = ImageOps.exif_transpose(Image.open(quelle)); w0, h0 = im.size   # Handyfotos tragen die Drehung nur im EXIF — WebP verliert sie (bad-wanne stand quer, 27.09.2026)
     w = min(breite, w0); h = round(h0 * w / w0)
     ziel = OPT / f'{stamm(pfad)}-{w}.webp'
     if not ziel.exists() or ziel.stat().st_mtime < quelle.stat().st_mtime:

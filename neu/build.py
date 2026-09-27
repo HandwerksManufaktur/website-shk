@@ -94,7 +94,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <meta charset="UTF-8">
 <meta name="version" content="{V}">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<script>(function(){{try{{var v='{V}';fetch('{u("/version.json")}?t='+Date.now(),{{cache:'no-store'}}).then(function(r){{return r.json()}}).then(function(j){{if(j&&j.v&&j.v!==v&&sessionStorage.getItem('shk-reload')!==j.v){{sessionStorage.setItem('shk-reload',j.v);location.replace(location.pathname+'?v='+j.v+location.hash)}}}}).catch(function(){{}})}}catch(e){{}}}})()</script>
+<script>addEventListener('load',function(){{try{{var v='{V}';fetch('{u("/version.json")}?t='+Date.now(),{{cache:'no-store'}}).then(function(r){{return r.json()}}).then(function(j){{if(j&&j.v&&j.v!==v&&sessionStorage.getItem('shk-reload')!==j.v){{sessionStorage.setItem('shk-reload',j.v);location.replace(location.pathname+'?v='+j.v+location.hash)}}}}).catch(function(){{}})}}catch(e){{}}}})</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(titel)}</title>
 <meta name="description" content="{html.escape(beschreibung)}">
@@ -106,7 +106,9 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <meta name="theme-color" content="{'#0B1424' if dunkel else '#F3F6FA'}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/fonts/sub/archivo-latin-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/sub/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>{CSS_INLINE}</style>
 {MESSUNG_KOPF}

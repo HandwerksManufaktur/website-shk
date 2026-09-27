@@ -48,37 +48,81 @@ def messung_js_version():
     return hashlib.md5((REPO / 'messung.js').read_bytes()).hexdigest()[:8]
 
 
+GROESSEN = HIER / 'bildgroessen.json'   # gemessene Anzeigebreiten je Bild (bildgroessen_messen.py) → passende sizes
+
+
+def stamm(pfad):
+    return re.sub(r'[^a-z0-9]+', '-', unquote(pfad).lower().strip('/').rsplit('.', 1)[0])
+
+
+def groessen():
+    import json
+    try:
+        return json.loads(GROESSEN.read_text(encoding='utf-8'))
+    except Exception:
+        return {}
+
+
+QUELLEN = OPT / '_quellen.json'           # opt-Stamm → Originalpfad; damit lässt sich eine schon umgestellte Seite neu rechnen
+
+
+def _quellen():
+    import json
+    try:
+        return json.loads(QUELLEN.read_text(encoding='utf-8'))
+    except Exception:
+        return {}
+
+
+def _quelle_merken(pfad):
+    import json
+    q = _quellen()
+    if q.get(stamm(pfad)) != pfad:
+        q[stamm(pfad)] = pfad
+        QUELLEN.write_text(json.dumps(dict(sorted(q.items())), indent=1), encoding='utf-8')
+
+
 def webp(pfad, breite):
     """Bild → WebP in assets/opt/, höchstens `breite` px breit. Gibt (url, w, h) zurück; baut nur neu, wenn die Quelle neuer ist."""
     quelle = REPO / unquote(pfad.lstrip('/'))
     if not quelle.exists():
         return None
     OPT.mkdir(exist_ok=True)
-    stamm = re.sub(r'[^a-z0-9]+', '-', unquote(pfad).lower().strip('/').rsplit('.', 1)[0])
+    _quelle_merken(pfad)
     im = Image.open(quelle); w0, h0 = im.size
     w = min(breite, w0); h = round(h0 * w / w0)
-    ziel = OPT / f'{stamm}-{w}.webp'
+    ziel = OPT / f'{stamm(pfad)}-{w}.webp'
     if not ziel.exists() or ziel.stat().st_mtime < quelle.stat().st_mtime:
         im = im.convert('RGBA') if im.mode in ('RGBA', 'LA', 'P') else im.convert('RGB')
-        im.resize((w, h), Image.LANCZOS).save(ziel, 'WEBP', quality=78, method=6)
+        q = 70 if '/funnels/' in pfad else 78        # Funnel-Screenshots: Text bleibt bei 70 lesbar, 15 % kleiner
+        im.resize((w, h), Image.LANCZOS).save(ziel, 'WEBP', quality=q, method=6)
     return f'/assets/opt/{ziel.name}', w, h
 
 
 def breiten(pfad):
     p = pfad.lower()
-    if 'logos' in p or '/logo' in p: return [360]                 # Logo-Kacheln ≤ 336 px
-    if '/funnels/' in p: return [320, 480]                       # Funnel-Screenshots: Mini-Handy 150 px, großes Handy 280 px
-    if 'rund' in p or 'poster' in p: return [640]
-    return [640, 1100]                                            # Fotos: Handy + groß
+    if 'logos' in p or '/logo' in p: return [180, 360]            # Logo-Kacheln ≤ 336 px
+    if '/funnels/' in p: return [200, 320, 480]                  # Funnel-Screenshots: Mini-Handy 96–150 px, großes Handy 280 px
+    if 'rund' in p or 'poster' in p: return [320, 640]
+    return [320, 480, 640, 960, 1100]                             # Fotos: der Browser nimmt die kleinste, die reicht
 
 
 def optimieren(seite, ohne_srcset=()):
     """Jedes JPG/PNG-Bild als passend großes WebP (+ srcset), alles unterhalb der ersten Sektion lazy.
     `ohne_srcset`: Pfad-Teile, deren Bilder per Skript ausgetauscht werden — srcset würde den Tausch überstimmen."""
     teile = seite.split('</section>', 1)                          # bis zum Ende der ersten Sektion = Hero, bleibt eager
+    gemessen = groessen()
+
+    quellen = _quellen()
 
     def img(m, lazy):
         tag = m.group(0)
+        # schon umgestellt? Original zurückholen, eigene srcset/sizes weg — dann wie neu rechnen (idempotent, auch nach Layout-Änderungen)
+        alt = re.search(r'src="/assets/opt/(.+?)-\d+\.webp"', tag)
+        if alt and alt.group(1) in quellen:
+            tag = tag.replace(alt.group(0), f'src="{quellen[alt.group(1)]}"')
+            tag = re.sub(r' srcset="/assets/opt/[^"]*"', '', tag)
+            tag = re.sub(r' sizes="[^"]*"', '', tag)
         src = re.search(r'src="(/[^"]+\.(?:jpe?g|png))"', tag, re.I)
         if src:
             pfad = src.group(1)
@@ -88,9 +132,16 @@ def optimieren(seite, ohne_srcset=()):
                 tag = tag.replace(src.group(0), f'src="{varianten[-1][0]}"')
                 if len(varianten) > 1 and 'srcset=' not in tag and not any(t in pfad for t in ohne_srcset):
                     # feste sizes-Angabe; „auto" nicht, weil Bilder mit Breite aus dem Seitenverhältnis sonst auf 300 px fallen
-                    groesse = '(max-width: 700px) 150px, 280px' if '/funnels/' in pfad else '(max-width: 700px) 100vw, 50vw'
+                    g = gemessen.get(stamm(pfad))
+                    if g:   # gemessene Anzeigebreite (Handy 390 px / Desktop 1440 px), aufgerundet auf 10 px
+                        groesse = f'(max-width: 700px) {g[0]}px, {g[1]}px'
+                    else:
+                        groesse = '(max-width: 700px) 150px, 280px' if '/funnels/' in pfad else '(max-width: 700px) 100vw, 50vw'
                     tag = tag.replace('<img ', f'<img srcset="{", ".join(f"{v[0]} {v[1]}w" for v in varianten)}" sizes="{groesse}" ', 1)
-        if lazy and 'loading=' not in tag: tag = tag.replace('<img ', '<img loading="lazy" ', 1)
+        # Funnel-Screenshots in den Handy-Rahmen sind nie das Wichtigste im Bild: immer lazy, niedrige Priorität
+        funnel = src is not None and '/funnels/' in src.group(1)
+        if (lazy or funnel) and 'loading=' not in tag: tag = tag.replace('<img ', '<img loading="lazy" ', 1)
+        if funnel and 'fetchpriority=' not in tag: tag = tag.replace('<img ', '<img fetchpriority="low" ', 1)
         if 'decoding=' not in tag: tag = tag.replace('<img ', '<img decoding="async" ', 1)
         return tag
 
@@ -101,6 +152,9 @@ def optimieren(seite, ohne_srcset=()):
     def ersetze(m, breite):
         v = webp(m.group(2), breite)
         return f'{m.group(1)}{v[0]}{m.group(3)}' if v else m.group(0)
+    def zurueck(m):
+        return f'{m.group(1)}{quellen.get(m.group(2), m.group(0))}{m.group(3)}' if m.group(2) in quellen else m.group(0)
+    ganz = re.sub(r'(poster="|<link rel="preload" as="image" href="|src:\')/assets/opt/(.+?)-\d+\.webp("|\')', zurueck, ganz)
     ganz = re.sub(r'(poster=")(/[^"]+\.(?:jpe?g|png))(")', lambda m: ersetze(m, 960), ganz)
     ganz = re.sub(r'(<link rel="preload" as="image" href=")(/[^"]+\.(?:jpe?g|png))(")', lambda m: ersetze(m, max(breiten(m.group(2)))), ganz)
     # Bildlisten in Skripten (z. B. die rotierende Projekt-Galerie): dieselbe große Fassung wie im <img>

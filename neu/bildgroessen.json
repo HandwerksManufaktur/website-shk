@@ -27,6 +27,10 @@
   360,
   580
  ],
+ "assets-fotos-noah-bei-klass": [
+  330,
+  550
+ ],
  "assets-fotos-noah-kopf": [
   60,
   60
@@ -36,10 +40,6 @@
   540
  ],
  "assets-fotos-noah-rund": [
-  60,
-  60
- ],
- "assets-fotos-senftleben-benjamin-van": [
   60,
   60
  ],
@@ -62,10 +62,6 @@
  "assets-fotos-shk-04": [
   320,
   460
- ],
- "assets-fotos-shk-05": [
-  60,
-  60
  ],
  "assets-fotos-shk-06": [
   160,
@@ -228,8 +224,8 @@
   60
  ],
  "logos-shk-logo-kirchner-weiss": [
-  120,
-  120
+  50,
+  50
  ],
  "logos-shk-logo-kramer-heizungsbau-weiss": [
   190,
@@ -282,6 +278,8 @@
    "assets-fotos-erwin-schmidt-team",
    "assets-fotos-noah-portrait"
   ],
-  "/neu/potenzialanalyse/": []
+  "/neu/potenzialanalyse/": [
+   "assets-fotos-noah-bei-klass"
+  ]
  }
 }

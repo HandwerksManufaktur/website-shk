@@ -1103,3 +1103,109 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .person figure{border-radius:var(--r-md);overflow:hidden;position:relative}
 .person .txt{padding:10px 18px}
 @media(max-width:1180px){.team-grid{grid-template-columns:minmax(0,1fr);max-width:560px}}
+
+/* ── Vergleich als Bühne: fünf Lagen, je ein Bild heute / mit Anzeigen (Noah, 27.09.2026: „optimierter bzw. auch veranschaulichter") ── */
+.vgl-buehne{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px;margin-top:40px;align-items:stretch}
+.vgl-tabs{display:flex;flex-direction:column;gap:10px}
+.vgl-tab{position:relative;display:flex;align-items:center;gap:14px;min-height:64px;padding:10px 22px 10px 12px;border-radius:var(--r-pill);background:var(--card);border:1px solid var(--line);text-align:left;overflow:hidden;transition:background .25s,border-color .25s,transform .3s var(--spring)}
+.vgl-tab:hover{border-color:var(--line2);transform:translateX(4px)}
+.vgl-tab:active{transform:scale(.98)}
+.vgl-tab .ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--paper);flex:none;transition:background .25s,color .25s}
+.vgl-tab .ic .ik{width:20px;height:20px;stroke-width:1.7}
+.vgl-tab b{font-size:16px;letter-spacing:-.01em;line-height:1.25}
+.vgl-tab .lauf{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--regler);transform:scaleX(0);transform-origin:left}
+.vgl-tab.an{background:var(--night);border-color:var(--night);color:#fff}
+.vgl-tab.an .ic{background:rgba(255,255,255,.1);color:#fff}
+.vgl-tab.an .lauf{animation:vglLauf var(--takt,6s) linear forwards}
+.vgl-buehne.steht .vgl-tab.an .lauf{animation:none;transform:scaleX(1)}
+@keyframes vglLauf{to{transform:scaleX(1)}}
+.vgl-panels{position:relative;min-width:0}
+.vgl-panel{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);height:100%}
+.vgl-panel[hidden]{display:none}
+.vgl-seite{display:flex;flex-direction:column;gap:18px;padding:26px 28px 30px;min-height:360px}
+.vgl-seite.heute{background:var(--card)}
+.vgl-seite.kanal{background:var(--night);color:#fff}
+.vgl-etikett{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.vgl-etikett .ik{width:18px;height:18px;stroke-width:2.4}
+.heute .vgl-etikett{color:var(--sub)} .heute .vgl-etikett .ik{color:#E5484D}
+.kanal .vgl-etikett{color:var(--warm)} .kanal .vgl-etikett .ik{color:#3DDC84}
+.vgl-seite p{margin-top:auto;font-size:19px;line-height:1.4;font-weight:600;letter-spacing:-.01em}
+.vgl-seite.heute p{color:var(--ink)}
+.vb{width:100%;height:auto;flex:1;min-height:150px;display:block}
+svg.vb text{font:600 13px var(--f);fill:var(--faint)}
+.kanal svg.vb text{fill:var(--night-sub)}
+svg.vb text.schlecht{fill:#D13438} svg.vb text.gut{fill:#3DDC84} svg.vb text.gross{font-size:20px;font-weight:800}
+svg.vb .achse{stroke:var(--line2);stroke-width:4;stroke-linecap:round}
+svg.vb .achse.gut{stroke:#3DDC84;stroke-dasharray:300;stroke-dashoffset:300}
+svg.vb .luecke{stroke:#E5484D;stroke-width:4;stroke-dasharray:6 8}
+svg.vb .rot{fill:#E5484D} svg.vb .grau{fill:var(--line2)}
+.kanal svg.vb .grau{fill:var(--night-line)}
+svg.vb .mark{stroke:var(--night-sub);stroke-width:2}
+svg.vb .pkt{fill:#3DDC84;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3)}
+svg.vb .knoten{fill:var(--paper);stroke:var(--line2)}
+.kanal svg.vb .knoten{fill:var(--night2);stroke:var(--night-line)}
+svg.vb .strahl{stroke:var(--line2);stroke-width:2.5;stroke-dasharray:140;stroke-dashoffset:140}
+svg.vb .strahl.gut{stroke:#3DDC84;stroke-width:3.5}
+svg.vb .du{fill:var(--warm);transform-box:fill-box;transform-origin:center;transform:scale(0)} svg.vb .du-t{fill:#fff;font-size:16px;font-weight:800}
+svg.vb .ring{fill:none;stroke:var(--night-line);stroke-dasharray:4 6}
+svg.vb .pin{fill:var(--line2)} .kanal svg.vb .pin{fill:var(--night-line)}
+svg.vb .pin.an{fill:var(--warm);opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.2)}
+.heute svg.vb .pin.an{fill:var(--sub)}
+svg.vb .haus{fill:var(--ink)} svg.vb .haus.an{fill:#fff}
+.vb-team{display:flex;flex-direction:column;justify-content:center;gap:18px}
+.slots{display:flex;gap:12px}
+.kopf{width:48px;height:48px;border-radius:50%;background:var(--ink);position:relative;flex:none}
+.kopf::after{content:"";position:absolute;left:50%;top:22%;width:34%;height:34%;border-radius:50%;background:var(--card);transform:translateX(-50%)}
+.kanal .kopf{background:#fff} .kanal .kopf::after{background:var(--night)}
+.kopf.leer{background:none;border:2px dashed #E5484D} .kopf.leer::after{display:none}
+.chips{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.vb .chip{display:inline-flex;align-items:center;min-height:34px;padding:6px 14px;border-radius:var(--r-pill);font-size:14px;font-weight:600;opacity:0;transform:translateY(10px)}
+.vb .chip.schlecht{background:#FDECEC;color:#B42318;text-decoration:line-through;text-decoration-thickness:2px}
+.vb .chip.gut{background:rgba(61,220,132,.14);color:#6EE7A8}
+.vb-last{display:flex;align-items:flex-end}
+.saeulen{position:relative;display:flex;align-items:flex-end;gap:8px;height:150px;width:100%}
+.saeulen i{flex:1;height:var(--h);border-radius:6px 6px 0 0;background:var(--line2);transform-origin:bottom;transform:scaleY(.05)}
+.kanal .saeulen i{background:#3DDC84}
+.soll{position:absolute;left:0;right:0;bottom:75%;border-top:2px dashed var(--faint);pointer-events:none}
+.kanal .soll{border-color:var(--night-sub)}
+.soll em{position:absolute;right:0;top:-24px;font-style:normal;font-size:12px;font-weight:600;color:var(--faint)}
+.kanal .soll em{color:var(--night-sub)}
+/* Auftritt, wenn die Lage aktiv wird */
+.vgl-panel.an .vb .chip{animation:vglRein .5s var(--spring) forwards;animation-delay:calc(var(--i) * .18s + .15s)}
+.vgl-panel.an .saeulen i{animation:vglSaeule .6s var(--spring) forwards;animation-delay:calc(var(--i) * .05s)}
+.vgl-panel.an svg.vb .achse.gut{animation:vglStrich .9s var(--ease) forwards}
+.vgl-panel.an svg.vb .strahl{animation:vglStrich .6s var(--ease) forwards;animation-delay:calc(var(--i,0) * .12s)}
+.vgl-panel.an svg.vb .pkt,.vgl-panel.an svg.vb .pin.an{animation:vglPunkt .45s var(--spring) forwards;animation-delay:calc(var(--i) * .1s + .3s)}
+.vgl-panel.an svg.vb .du{animation:vglPunkt .5s var(--spring) .45s forwards}
+@keyframes vglRein{to{opacity:1;transform:none}}
+@keyframes vglSaeule{to{transform:scaleY(1)}}
+@keyframes vglStrich{to{stroke-dashoffset:0}}
+@keyframes vglPunkt{to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.vgl-panel .vb .chip,.saeulen i,svg.vb .pkt,svg.vb .pin.an,svg.vb .du{animation:none!important;opacity:1;transform:none}svg.vb .achse.gut,svg.vb .strahl{stroke-dashoffset:0}.vgl-tab.an .lauf{animation:none;transform:scaleX(1)}}
+@media(max-width:1000px){.vgl-buehne{grid-template-columns:minmax(0,1fr)}.vgl-tabs{flex-direction:row;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 4px}.vgl-tabs::-webkit-scrollbar{display:none}.vgl-tab{flex:none;min-height:52px;padding:6px 18px 6px 6px}.vgl-tab .ic{width:38px;height:38px}.vgl-tab b{font-size:15px;white-space:nowrap}.vgl-tab:hover{transform:none}}
+@media(max-width:700px){.vgl-panel{grid-template-columns:minmax(0,1fr)}.vgl-seite{min-height:0;padding:22px 20px 24px;gap:14px}.vgl-seite p{font-size:17px}.vb{min-height:120px}.saeulen{height:120px}}
+
+/* ── Potenzialanalyse neu: zwei gleiche Hälften, Foto aus einem Kundenbetrieb (Noah, 27.09.2026) ── */
+.kontakt-neu{grid-template-columns:1fr 1fr;gap:48px;padding:24px;align-items:stretch}
+.kontakt-bild{position:relative;margin:0;border-radius:var(--r-lg);overflow:hidden;min-height:100%}
+.kontakt-bild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.kontakt-bild figcaption{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;min-height:34px;padding:6px 14px;border-radius:var(--r-pill);background:rgba(11,20,36,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:13.5px;font-weight:600;letter-spacing:.01em}
+.kontakt-text{display:flex;flex-direction:column;justify-content:center;padding:40px 32px 40px 0}
+.kontakt-neu .kontakt-satz{margin-top:16px;font-size:18px;color:var(--night-sub)}
+.kontakt-neu .wahl{margin-top:28px}
+.kontakt-neu .kontakt-zeile{margin-top:22px}
+@media(max-width:1000px){.kontakt-neu{grid-template-columns:minmax(0,1fr);gap:0;padding:16px}.kontakt-bild{min-height:0;aspect-ratio:4/3}.kontakt-text{padding:28px 10px 14px}}
+.kopf{background:var(--paper);display:grid;place-items:center;overflow:hidden}
+.kopf::after{display:none}
+.kopf svg{width:30px;height:30px;fill:var(--ink);margin-top:6px}
+.kanal .kopf{background:rgba(255,255,255,.1)} .kanal .kopf svg{fill:#fff}
+.kopf.leer{background:none}
+.vb .chip.schlecht{text-decoration:none}
+.vb .chip.schlecht::before{content:"✕";margin-right:8px;font-weight:800}
+.vb .chip.gut::before{content:"✓";margin-right:8px;font-weight:800}
+.kontakt-bild img[width][height]{height:100%}
+/* Zwei eigene Karten statt einer geteilten (Stil-Prüfer: jede Karte 24 px) */
+.vgl-panel{border:0;border-radius:0;overflow:visible;gap:12px}
+.vgl-seite{border-radius:var(--r-lg)}
+.vgl-seite.heute{border:1px solid var(--line)}
+.soll em{font-size:13px}

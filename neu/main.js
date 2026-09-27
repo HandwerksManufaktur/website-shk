@@ -180,6 +180,25 @@
     takt();
   }
 
+  /* Vergleich: fünf Lagen, wechseln alle 6 s, solange die Bühne im Bild ist; Klick hält an */
+  const vb = $('.vgl-buehne');
+  if (vb) {
+    const tabs = $$('.vgl-tab', vb), pan = $$('.vgl-panel', vb), TAKT = 6000;
+    let i = 0, timer = null, steht = rm;
+    vb.style.setProperty('--takt', TAKT / 1000 + 's');
+    const zeig = (k, fokus) => {
+      i = (k + tabs.length) % tabs.length;
+      tabs.forEach((t, n) => { const an = n === i; t.classList.toggle('an', an); t.setAttribute('aria-selected', an ? 'true' : 'false'); t.tabIndex = an ? 0 : -1; const l = $('.lauf', t); if (l && an) { l.style.animation = 'none'; void l.offsetWidth; l.style.animation = ''; } });
+      pan.forEach((p, n) => { const an = n === i; p.hidden = !an; p.classList.remove('an'); if (an) { void p.offsetWidth; p.classList.add('an'); } });
+      if (fokus) tabs[i].focus();
+    };
+    const lauf = () => { clearInterval(timer); if (!steht) timer = setInterval(() => zeig(i + 1), TAKT); };
+    tabs.forEach((t, n) => t.addEventListener('click', () => { steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(n); }));
+    vb.addEventListener('keydown', e => { if (!e.target.classList.contains('vgl-tab')) return; if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i + 1, true); } if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i - 1, true); } });
+    if (rm) vb.classList.add('steht');
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeig(i); lauf(); } else clearInterval(timer); }), { threshold: .35 }).observe(vb);
+  }
+
   /* Aktiver Menüpunkt */
   const pfad = location.pathname.replace(/index\.html$/, '');
   $$('.nav-links a').forEach(a => { const h = a.getAttribute('href'); if (h && h !== '/' && pfad.startsWith(h.replace(/index\.html$/, '')) && !a.classList.contains('nav-cta')) a.classList.add('aktiv'); });

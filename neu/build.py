@@ -20,6 +20,7 @@ NOINDEX = not LIVE
 
 TEL = '+49 8194 7174990'; TEL_HREF = 'tel:+4981947174990'
 MAIL = 'info@handwerksmanufaktur.digital'
+INSTA = 'https://www.instagram.com/handwerks.manufaktur/'   # neues Konto seit 27.09.2026 (marketing/instagram/README.md)
 CAL_REC = 'https://calendly.com/noahseelau/recruiting-potenzial'
 CAL_LEAD = 'https://calendly.com/noahseelau/leadgen-potenzial'
 
@@ -80,7 +81,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
         "founder": {"@type": "Person", "name": "Noah Seelau"},
         "areaServed": [{"@type": "Country", "name": "Deutschland"}, {"@type": "Country", "name": "Österreich"}, {"@type": "Country", "name": "Schweiz"}],
         "knowsAbout": ["Mitarbeitergewinnung im SHK-Handwerk", "Social Recruiting für Anlagenmechaniker SHK", "Leadgenerierung Badsanierung", "Leadgenerierung Wärmepumpe", "Marketing für Handwerksbetriebe"],
-        "sameAs": ["https://handwerksmanufaktur.digital/"],
+        "sameAs": ["https://handwerksmanufaktur.digital/", "https://www.instagram.com/handwerks.manufaktur/"],
     }
     graph = [org, {"@type": "WebPage", "url": canon, "name": titel, "description": beschreibung, "inLanguage": "de-DE", "isPartOf": {"@type": "WebSite", "url": f"{DOMAIN}/", "name": "HandwerksManufaktur SHK"}}]
     if schema_extra: graph += schema_extra
@@ -156,6 +157,7 @@ def fuss():
       <div><h4>Kontakt</h4><ul>
         <li><a href="{TEL_HREF}">{ic('phone')}{TEL}</a></li>
         <li><a href="mailto:{MAIL}">{ic('mail')}{MAIL}</a></li>
+        <li><a href="{INSTA}" target="_blank" rel="noopener">{ic('instagram')}Instagram</a></li>
         <li><a href="/impressum/">{ic('doc')}Impressum</a></li>
         <li><a href="/datenschutz/">{ic('lock')}Datenschutz</a></li>
         <li><a href="/agb/">{ic('docs')}AGB</a></li>
@@ -188,7 +190,7 @@ def hero_zettel():
 
 def logo_band():
     """Kundenlogos laufen durch (Noah, 27.09.2026: „die Kundenlogos sollen schon trotzdem weiter durchlaufen")."""
-    wand = [l for l in LOGOS if 'Ressle' not in l[1]]
+    wand = [l for l in LOGOS if 'Ressle' not in l[1] and 'Kirchner' not in l[1]]   # beide kein SHK (Noah, 27.09.2026: „lass auch kirchner … oben bei den logos raus")
     def reihe(liste, rueck=''):
         imgs = ''.join(f'<img src="{src}" alt="{html.escape(name)}"{" class=wide" if r >= 3.6 else ""}>' for src, name, r in liste)
         leer = ''.join(f'<img src="{src}" alt=""{" class=wide" if r >= 3.6 else ""} aria-hidden="true">' for src, name, r in liste)
@@ -196,7 +198,7 @@ def logo_band():
     halb = (len(wand) + 1) // 2
     return f'''<section class="band hell" aria-label="Betriebe, mit denen wir arbeiten">
   <div class="wrap"><div class="band-innen rv">
-    <p class="band-t">Über <b>130 Betriebe</b> setzen auf uns. Ein Ausschnitt, fast alle SHK</p>
+    <p class="band-t">Über <b>130 Betriebe</b> setzen auf uns.</p>
     {reihe(wand[:halb])}{reihe(wand[halb:], ' rueck')}
   </div></div>
 </section>'''
@@ -219,18 +221,61 @@ def leiter(wege=WEGE_ALLE, kick='Was du wahrscheinlich schon probiert hast', h2=
 </section>'''
 
 VERGLEICH = [
-    (IK['users'], 'Aufträge ablehnen', 'Bad abgesagt, weil der Monteur fehlt.', 'Bewerbungen kommen, bevor die Stelle frei wird.'),
-    (IK['clock'], 'Zu spät gesucht', 'Gesucht wird erst, wenn einer kündigt.', 'Die Anzeigen laufen durch. Wechselwillige sehen dich zuerst.'),
-    (IK['cards'], 'Portal-Leads', 'Dieselbe Anfrage ging an vier Betriebe.', 'Jede Anfrage gehört dir allein.'),
-    (IK['calendar'], 'Auslastung schwankt', 'Drei Wochen voll, danach Zufall.', 'Aufträge im Tempo, das dein Team stemmt.'),
-    (IK['eye'], 'Übersehen im Umkreis', 'Guter Betrieb, nur kennt ihn keiner.', 'Dein Team auf jedem Handy im Umkreis.'),
+    ('team', IK['users'], 'Aufträge ablehnen', 'Bad abgesagt, weil der Monteur fehlt.', 'Bewerbungen kommen, bevor die Stelle frei wird.'),
+    ('zeit', IK['clock'], 'Zu spät gesucht', 'Gesucht wird erst, wenn einer kündigt.', 'Die Anzeigen laufen durch. Der Nachfolger ist schon da.'),
+    ('portal', IK['cards'], 'Portal-Leads', 'Dieselbe Anfrage ging an vier Betriebe.', 'Jede Anfrage gehört dir allein.'),
+    ('last', IK['calendar'], 'Auslastung schwankt', 'Drei Wochen voll, danach Zufall.', 'Aufträge im Tempo, das dein Team stemmt.'),
+    ('umkreis', IK['eye'], 'Übersehen im Umkreis', 'Guter Betrieb, nur kennt ihn keiner.', 'Dein Team auf jedem Handy im Umkreis.'),
 ]
+
+def vgl_bild(art, kanal):
+    """Ein Bild je Lage, links heute, rechts mit Anzeigen (Noah, 27.09.2026: „die sektion etwas optimierter bzw. auch veranschaulichter")."""
+    if art == 'team':
+        m = '<i class="kopf"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="4.2"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0z"/></svg></i>'
+        koepfe = m * 4 if kanal else m * 2 + '<i class="kopf leer"></i>' * 2
+        chips = ('<span class="chip gut" style="--i:1">Bewerbung · Anlagenmechaniker</span><span class="chip gut" style="--i:2">Bewerbung · Kundendienst</span>' if kanal
+                 else '<span class="chip schlecht" style="--i:1">Komplettbad · abgesagt</span><span class="chip schlecht" style="--i:2">Wärmepumpe · verschoben</span>')
+        return f'<div class="vb vb-team"><div class="slots">{koepfe}</div><div class="chips">{chips}</div></div>'
+    if art == 'zeit':
+        if kanal:
+            dots = ''.join(f'<circle class="pkt" style="--i:{i}" cx="{x}" cy="46" r="6"/>' for i, x in enumerate((40, 90, 140, 195, 250)))
+            return ('<svg class="vb" viewBox="0 0 300 120" aria-hidden="true"><line class="achse gut" x1="10" y1="70" x2="290" y2="70"/>' + dots
+                    + '<line class="mark" x1="165" y1="58" x2="165" y2="82"/><text x="165" y="106" text-anchor="middle">Kündigung</text>'
+                    + '<text class="gut" x="150" y="22" text-anchor="middle">Bewerbungen laufen weiter</text></svg>')
+        return ('<svg class="vb" viewBox="0 0 300 120" aria-hidden="true"><line class="achse" x1="10" y1="70" x2="110" y2="70"/>'
+                '<line class="luecke" x1="110" y1="70" x2="230" y2="70"/><line class="achse" x1="230" y1="70" x2="290" y2="70"/>'
+                '<circle class="rot" cx="110" cy="70" r="7"/><circle class="grau" cx="230" cy="70" r="7"/>'
+                '<text x="110" y="46" text-anchor="middle">Kündigung</text><text x="230" y="46" text-anchor="middle">Suche startet</text>'
+                '<text class="schlecht" x="170" y="104" text-anchor="middle">Monate ohne Monteur</text></svg>')
+    if art == 'portal':
+        kopf = '<svg class="vb" viewBox="0 0 300 120" aria-hidden="true"><rect class="knoten" x="8" y="46" width="92" height="28" rx="14"/><text x="54" y="65" text-anchor="middle">Anfrage</text>'
+        if kanal:
+            return kopf + '<line class="strahl gut" x1="100" y1="60" x2="220" y2="60"/><circle class="du" cx="248" cy="60" r="27"/><text class="du-t" x="248" y="66" text-anchor="middle">Du</text></svg>'
+        ys = (16, 45, 75, 104)
+        linien = ''.join(f'<line class="strahl" style="--i:{i}" x1="100" y1="60" x2="226" y2="{y}"/>' for i, y in enumerate(ys))
+        betriebe = ''.join(f'<circle class="grau" cx="238" cy="{y}" r="11"/>' for y in ys)
+        return kopf + linien + betriebe + '<text class="schlecht gross" x="276" y="67" text-anchor="middle">×4</text></svg>'
+    if art == 'last':
+        h = (68, 70, 66, 71, 69, 67, 70, 68, 71, 69) if kanal else (96, 100, 92, 34, 18, 62, 100, 28, 12, 88)
+        bars = ''.join(f'<i style="--h:{v}%;--i:{i}"></i>' for i, v in enumerate(h))
+        return f'<div class="vb vb-last"><div class="saeulen">{bars}<span class="soll"><em>dein Team schafft</em></span></div></div>'
+    if art == 'umkreis':
+        pins = ((80, 40), (220, 34), (250, 84), (70, 92), (190, 104), (120, 20), (40, 62), (262, 48), (110, 104), (205, 62))
+        p = ''.join(f'<circle class="{"pin an" if (kanal or i == 0) else "pin"}" style="--i:{i}" cx="{x}" cy="{y}" r="6"/>' for i, (x, y) in enumerate(pins))
+        ring = '<circle class="ring" cx="150" cy="62" r="118"/><circle class="ring" cx="150" cy="62" r="66"/>' if kanal else ''
+        return f'<svg class="vb" viewBox="0 0 300 124" aria-hidden="true">{ring}{p}<circle class="haus{" an" if kanal else ""}" cx="150" cy="62" r="11"/></svg>'
+    return ''
+
 def vergleich():
-    zellen = ''.join(f'<div class="vgl-t rv" data-d="{i%3+1}"><span class="ic" aria-hidden="true">{ic}</span><b>{t}</b></div><div class="vgl-c heute rv" data-d="{i%3+1}">{IK["x"]}<p>{h}</p></div><div class="vgl-c kanal rv" data-d="{i%3+2}">{IK["checkmark"]}<p>{k}</p></div>' for i, (ic, t, h, k) in enumerate(VERGLEICH))
+    tabs = ''.join(f'<button type="button" class="vgl-tab{" an" if i == 0 else ""}" role="tab" id="vgl-t{i}" aria-controls="vgl-p{i}" aria-selected="{"true" if i == 0 else "false"}"><span class="ic" aria-hidden="true">{icn}</span><b>{t}</b><i class="lauf" aria-hidden="true"></i></button>' for i, (a, icn, t, h, k) in enumerate(VERGLEICH))
+    panels = ''.join(f'''<div class="vgl-panel{" an" if i == 0 else ""}" role="tabpanel" id="vgl-p{i}" aria-labelledby="vgl-t{i}"{"" if i == 0 else " hidden"}>
+      <div class="vgl-seite heute"><span class="vgl-etikett">{IK["x"]}Heute</span>{vgl_bild(a, False)}<p>{h}</p></div>
+      <div class="vgl-seite kanal"><span class="vgl-etikett">{IK["checkmark"]}Mit eigenen Anzeigen</span>{vgl_bild(a, True)}<p>{k}</p></div>
+    </div>''' for i, (a, icn, t, h, k) in enumerate(VERGLEICH))
     return f'''<section class="vergleich" id="vergleich">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick k rv">Erkennst du dich wieder?</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Lagen aus Gesprächen mit SHK-Inhabern. Links heute, rechts mit eigenen Anzeigen im Umkreis.</p></div>
-    <div class="vgl-tafel drei rv"><div class="vgl-h leer" aria-hidden="true"></div><div class="vgl-h heute">Heute</div><div class="vgl-h kanal">Mit eigenen Anzeigen</div>{zellen}</div>
+    <div class="sec-kopf"><div><p class="kick k rv">Erkennst du dich wieder?</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Lagen aus Gesprächen mit SHK-Inhabern. Tipp auf deine.</p></div>
+    <div class="vgl-buehne rv"><div class="vgl-tabs" role="tablist" aria-label="Lagen">{tabs}</div><div class="vgl-panels">{panels}</div></div>
     <p class="rv" style="margin-top:28px"><a class="btn btn-ink" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzial durchrechnen</a></p>
   </div>
 </section>'''
@@ -417,7 +462,7 @@ def ueber_offen(kurz=True):
   </div></div>
 </section>'''
 
-TEAM = [('noah', 'Noah', 'Gründer · Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 40%'),   # Lächel-Porträt wie auf der HWM-Seite (Noah, 27.09.2026)
+TEAM = [('noah', 'Noah', 'Gründer · Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 50%'),   # Kopf ganz mit Luft nach oben, Ausschnitt aus noah-portrait.jpg (Noah, 27.09.2026: „mein gesicht … voll abgeschnitten“ — das runde Lächel-Porträt lässt keinen Quadrat-Ausschnitt ohne Kappe zu)
         ('robert', 'Robert', 'Videoschnitt&nbsp;&amp;&nbsp;Creative', '50% 18%'),
         (None, 'Rudolf', 'Websites&nbsp;&amp;&nbsp;Anzeigen', '')]   # Noah, 27.09.2026: „mach gesicht von rudolf raus!!! und einfach n R rein … füll die kreise aus"
 
@@ -426,7 +471,7 @@ def team():
     def bild(d, n, r, pos):
         if d is None:   # kein Foto: ausgefüllter Kreis mit Initiale
             return f'<figure class="initiale" aria-hidden="true"><span>{n[0]}</span></figure>'
-        return f'''<figure><img src="/assets/team/{d}.jpg" alt="{n}, {r.replace('&nbsp;', ' ').replace('&amp;', '&')}" loading="lazy" width="{800 if d != 'noah' else 312}" height="{1000 if d != 'noah' else 390}" style="object-position:{pos}"></figure>'''
+        return f'''<figure><img src="/assets/team/{d}.jpg" alt="{n}, {r.replace('&nbsp;', ' ').replace('&amp;', '&')}" loading="lazy" width="{800 if d != 'noah' else 480}" height="{1000 if d != 'noah' else 480}" style="object-position:{pos}"></figure>'''
     k = ''.join(f'''<article class="person rv" data-d="{i+1}">{bild(d, n, r, pos)}<div class="txt"><h3>{n}</h3><p>{r}</p></div></article>''' for i, (d, n, r, pos) in enumerate(TEAM))
     return f'''<section class="sec team" id="team"><div class="wrap">
   <div class="sec-kopf"><div><p class="kick rv">Das Team</p><h2 class="d rv">Drei Leute. <span class="em k">Ein Team.</span></h2></div><p class="lead rv">Wer mit dir spricht, sitzt mit denen am Tisch, die deine Kampagne bauen.</p></div>
@@ -470,22 +515,21 @@ def faq(fragen=FAQ_START, h2='Bevor du <span class="em k">fragst.</span>'):
 def faq_schema(fragen):
     return [{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": html.unescape(q), "acceptedAnswer": {"@type": "Answer", "text": html.unescape(re.sub('<[^>]+>', '', a))}} for q, a in fragen]}]
 
-def kontakt(h2='Jede Woche ohne zweiten Monteur ist <span class="em w">ein Bad, das ein anderer baut.</span>'):
+def kontakt(h2='Was ist in deinem Umkreis <span class="em w">drin?</span>'):
+    """Potenzialanalyse — neu angesetzt (Noah, 27.09.2026, vierte Ansage: „immer noch gleich … pass es endlich an"):
+    zwei gleich breite Hälften, links ein echtes Foto aus einem Kundenbetrieb, rechts drei Zeilen und die zwei Wege. Kein Avatar-Band, keine Häkchen-Liste."""
     return f'''<section class="kontakt" id="kontakt">
-  <div class="wrap"><div class="kontakt-karte rv">
-    <div>
-      <p class="kick">Potenzialanalyse · 30 Minuten · kostenlos</p>
+  <div class="wrap"><div class="kontakt-karte kontakt-neu rv">
+    <figure class="kontakt-bild"><img src="/assets/fotos/noah-bei-klass.jpg" alt="Noah mit dem Team von Heizung Sanitär Klaß am Firmenwagen" width="1100" height="1100" loading="lazy"><figcaption>Noah beim Dreh bei Heizung Sanitär Klaß</figcaption></figure>
+    <div class="kontakt-text">
+      <p class="kick">Potenzialanalyse · 30 Min. · kostenlos</p>
       <h2 class="d">{h2}</h2>
-      <p style="margin-top:18px">Das Gespräch kostet nichts und endet mit einer Zahl für deinen Umkreis. Reicht er nicht für Bewerbungen oder Bad-Anfragen, sagen wir es dir. Passt es, bist du in unter 2 Wochen live.</p>
-      <div class="mit-wem"><img src="/assets/fotos/noah-kopf.jpg" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>rechnet selbst mit dir, kein Callcenter dazwischen</small></span></div>
-    </div>
-    <div class="wahl-spalte">
+      <p class="kontakt-satz">Am Ende steht eine Zahl für deinen Umkreis. Reicht sie nicht, sagen wir es dir.</p>
       <div class="wahl">
         <a href="{CAL_REC}" target="_blank" rel="noopener">{ic('users','ic')}<span><h3>Monteure finden</h3><small>Recruiting-Potenzial deiner Region</small></span><span class="pfeil" aria-hidden="true">→</span></a>
         <a class="w" href="{CAL_LEAD}" target="_blank" rel="noopener">{ic('bath','ic')}<span><h3>Aufträge gewinnen</h3><small>Bad- und Wärmepumpen-Potenzial</small></span><span class="pfeil" aria-hidden="true">→</span></a>
       </div>
       <p class="kontakt-zeile"><a href="{TEL_HREF}">{ic('phone')}{TEL}</a><a href="mailto:{MAIL}">{ic('mail')}{MAIL}</a></p>
-      <div class="kunden-reihe" aria-label="Betriebe, mit denen wir arbeiten"><img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="" width="1100" height="733" style="object-position:40% 20%"><img src="/assets/fotos/sussmann-patrick-mirjana.jpg" alt="" width="1100" height="734" style="object-position:35% 25%"><img src="/assets/fotos/senftleben-benjamin-van.jpg" alt="" width="1100" height="733" style="object-position:62% 22%"><img src="/assets/fotos/shk-05.jpg" alt="" width="1100" height="733" style="object-position:62% 25%"><img src="/assets/fotos/klass-monteur.jpg" alt="" width="880" height="1100" style="object-position:50% 18%"><span>130+ SHK-Betriebe · 5,0 auf Google · erste Bewerbung oft binnen 24 h</span></div>
     </div>
   </div></div>
 </section>'''

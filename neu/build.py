@@ -158,7 +158,7 @@ def fuss():
         <li><a href="{INSTA}" target="_blank" rel="noopener">{ic('instagram')}Instagram</a></li>
       </ul></div>
     </div>
-    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur<span class="punkt"> · </span><span class="gebiet">Einsatzgebiet: Deutschland, Österreich, Schweiz</span></span><nav class="recht" aria-label="Rechtliches"><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/agb/">AGB</a></nav></div>
+    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur<span class="punkt"> · </span><span class="gebiet">Einsatzgebiet: Deutschland, Österreich, Schweiz</span></span><nav class="recht" aria-label="Rechtliches"><a href="{u('/impressum/')}">Impressum</a><a href="{u('/datenschutz/')}">Datenschutz</a><a href="{u('/agb/')}">AGB</a></nav></div>
   </div>
 </footer>
 {rechner_dialog()}
@@ -713,9 +713,21 @@ def seite_potenzial():
     body += faq([FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[4]], 'Vor dem <span class="em k">Termin.</span>')
     return h + body + fuss()
 
+RECHT = {'/impressum/': ('Impressum', 'Impressum der HandwerksManufaktur LTD: Anschrift, Registernummer, Umsatzsteuer-ID und Kontakt.'),
+         '/datenschutz/': ('Datenschutzerklärung', 'Datenschutzerklärung der HandwerksManufaktur: welche Daten wir erheben, wofür und welche Rechte du hast.'),
+         '/agb/': ('Allgemeine Geschäftsbedingungen', 'Allgemeine Geschäftsbedingungen der HandwerksManufaktur LTD für Kampagnen, Recruiting und Webdesign.')}
+def seite_recht(pfad):
+    """Impressum, Datenschutz, AGB im Design der Seite (28.09.2026 — vorher alte dunkle Einzeldateien mit Google Fonts und
+    „USt-ID wird nachgetragen"). Text = Stand der Hauptseite, abgelegt in neu/recht/."""
+    titel, beschr = RECHT[pfad]
+    text = (HIER / 'recht' / (pfad.strip('/') + '.html')).read_text(encoding='utf-8')
+    text = re.sub(r'<!--.*?-->', '', text, flags=re.S)
+    return kopf(f'{titel} · HandwerksManufaktur SHK', beschr, pfad) + f'<section class="recht-seite"><div class="wrap"><article class="recht-text">{text}</article></div></section>' + fuss()
+
 # ── Schreiben ─────────────────────────────────────────────────────────────
 # /fallstudien/ ist ausgeblendet (Noah, 27.09.2026: „die Seite Fallstudien können wir aktuell noch rausnehmen“) — die alte Adresse leitet auf die Fallstudien der Startseite
 SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial}
+for _p in RECHT: SEITEN[_p] = (lambda p: lambda: seite_recht(p))(_p)
 (AUS/'version.json').write_text('{"v":"%s"}\n' % V, encoding='utf-8')
 for pfad, fn in SEITEN.items():
     ziel = AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html'
@@ -726,6 +738,6 @@ _weg = AUS / 'fallstudien' / 'index.html'
 _weg.parent.mkdir(parents=True, exist_ok=True)
 _weg.write_text(f'<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={u("/")}#fallstudien"><link rel="canonical" href="{u("/")}"><title>Fallstudien</title></head><body><a href="{u("/")}#fallstudien">Zu den Fallstudien</a></body></html>\n', encoding='utf-8')
 if LIVE:
-    sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc><changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else "0.8"}</priority></url>' for p in SEITEN)
+    sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc><changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else "0.8"}</priority></url>' for p in SEITEN if p not in RECHT)
     (REPO/'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding='utf-8')
     print('✓ sitemap.xml')

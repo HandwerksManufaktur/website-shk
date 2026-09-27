@@ -45,15 +45,11 @@ FALLBACK = ("@font-face{font-family:'Inter Fallback';src:local('Arial');size-adj
 
 
 def messung_kopf(gruppe):
-    """GA4 + Contentsquare laden erst bei der ersten Berührung (Scroll, Tipp, Maus, Taste) oder 3,5 s nach dem Laden.
-    Bis dahin sammelt dataLayer jedes Ereignis — es geht nichts verloren, aber die Seite ist zuerst da."""
-    return ("<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());"
-            f"gtag('config','{GA4}',{{content_group:'{gruppe}'}});window._uxa=window._uxa||[];"
-            "(function(){var da=0;function los(){if(da)return;da=1;"
-            f"['https://www.googletagmanager.com/gtag/js?id={GA4}','https://t.contentsquare.net/uxa/{CS_TAG}.js']"
-            ".forEach(function(q){var e=document.createElement('script');e.async=true;e.src=q;document.head.appendChild(e)})}"
-            "['pointerdown','keydown','scroll','touchstart','mousemove'].forEach(function(t){addEventListener(t,los,{once:true,passive:true})});"
-            "addEventListener('load',function(){setTimeout(los,3500)})})()</script>")
+    """GA4 + Contentsquare laden NUR nach „Alle akzeptieren" (/zustimmung.js, § 25 TDDDG — 28.09.2026; vorher lud es ohne
+    Einwilligung beim ersten Scrollen). Bis dahin sammelt dataLayer die Ereignisse von messung.js; ohne Zustimmung geht nichts raus."""
+    v = hashlib.md5((REPO / 'zustimmung.js').read_bytes()).hexdigest()[:8]
+    return ("<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}"
+            f"window.HM_GRUPPE='{gruppe}'</script><script src=\"/zustimmung.js?v={v}\" defer></script>")
 
 
 def messung_js_version():

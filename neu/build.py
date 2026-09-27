@@ -29,7 +29,7 @@ def u(p):  # Seiten-Link
 # ── Assets ────────────────────────────────────────────────────────────────
 def css_js_version():
     import hashlib
-    h = hashlib.md5((HIER/'styles.css').read_bytes() + (HIER/'main.js').read_bytes() + Path(__file__).read_bytes()).hexdigest()[:8]
+    h = hashlib.md5((HIER/'styles.css').read_bytes() + (HIER/'main.js').read_bytes() + (HIER/'messung.js').read_bytes() + Path(__file__).read_bytes()).hexdigest()[:8]
     return h
 V = css_js_version()
 
@@ -57,6 +57,77 @@ def logos_box():
         box = Image.new('RGBA', (W, H), (0, 0, 0, 0)); box.alpha_composite(weiss, dest=((W - im.width) // 2, (H - im.height) // 2))
         box.save(ziel / f'{slug}.png')
 logos_box()
+
+
+# ── Ladezeit + Messung (27.09.2026, Noah: „mobile speed, pagespeed, muss alles optimiert sein … hotjar … analytics") ──
+GA4 = 'G-STBDT88H69'                       # dieselbe Property wie die bisherige SHK-Seite
+CS_TAG = '99d8993a2bc41'                   # Contentsquare (ehemals Hotjar): Heatmaps, Klick-Karten, Aufzeichnungen
+def _css_klein(t):
+    t = re.sub(r'/\*.*?\*/', '', t, flags=re.S)
+    t = re.sub(r'\s*\n\s*', ' ', t)          # Zeilen zusammen, nie zwei Wörter verkleben (calc, grid-areas)
+    return t.strip()
+_FONTS = (REPO/'fonts'/'fonts.css').read_text(encoding='utf-8').replace("url('", "url('/fonts/")
+CSS_INLINE = _css_klein(_FONTS) + _css_klein((HIER/'styles.css').read_text(encoding='utf-8'))
+# GA4 + Contentsquare laden erst bei der ersten Berührung (Scroll, Tipp, Maus, Taste) oder 3,5 s nach dem Laden.
+# Bis dahin sammelt dataLayer jedes Ereignis — es geht nichts verloren, aber die Seite ist zuerst da.
+MESSUNG_KOPF = ("<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());"
+    f"gtag('config','{GA4}',{{content_group:'shk-v3'}});window._uxa=window._uxa||[];"
+    "(function(){var da=0;function los(){if(da)return;da=1;"
+    f"['https://www.googletagmanager.com/gtag/js?id={GA4}','https://t.contentsquare.net/uxa/{CS_TAG}.js']"
+    ".forEach(function(q){var e=document.createElement('script');e.async=true;e.src=q;document.head.appendChild(e)})}"
+    "['pointerdown','keydown','scroll','touchstart','mousemove'].forEach(function(t){addEventListener(t,los,{once:true,passive:true})});"
+    "addEventListener('load',function(){setTimeout(los,3500)})})()</script>")
+
+OPT = REPO / 'assets' / 'opt'
+def _webp(pfad, breite):
+    """Bild → WebP in assets/opt/, höchstens `breite` px breit. Gibt (url, w, h) zurück; baut nur neu, wenn die Quelle neuer ist."""
+    from urllib.parse import unquote
+    quelle = REPO / unquote(pfad.lstrip('/'))
+    if not quelle.exists(): return None
+    OPT.mkdir(exist_ok=True)
+    stamm = re.sub(r'[^a-z0-9]+', '-', unquote(pfad).lower().strip('/').rsplit('.', 1)[0])
+    im = Image.open(quelle); w0, h0 = im.size
+    w = min(breite, w0); h = round(h0 * w / w0)
+    ziel = OPT / f'{stamm}-{w}.webp'
+    if not ziel.exists() or ziel.stat().st_mtime < quelle.stat().st_mtime:
+        im = im.convert('RGBA') if im.mode in ('RGBA', 'LA', 'P') else im.convert('RGB')
+        im.resize((w, h), Image.LANCZOS).save(ziel, 'WEBP', quality=78, method=6)
+    return f'/assets/opt/{ziel.name}', w, h
+
+def _breiten(pfad):
+    p = pfad.lower()
+    if 'logos' in p or '/logo' in p: return [360]                 # Logo-Kacheln ≤ 336 px
+    if '/funnels/' in p: return [320, 480]                       # Funnel-Screenshots: Mini-Handy 150 px, großes Handy 280 px
+    if 'rund' in p or 'poster' in p: return [640]
+    return [640, 1100]                                            # Fotos: Handy + groß
+
+def optimieren(seite):
+    """Nach dem Bau: jedes JPG/PNG-Bild als passend großes WebP (+ srcset), alles unterhalb des ersten Bildschirms lazy."""
+    teile = seite.split('</section>', 1)                          # erste Sektion = Hero, bleibt eager
+    def img(m, lazy):
+        tag = m.group(0)
+        src = re.search(r'src="(/[^"]+\.(?:jpe?g|png))"', tag, re.I)
+        if src:
+            varianten = [v for v in (_webp(src.group(1), b) for b in _breiten(src.group(1))) if v]
+            varianten = list({v[0]: v for v in varianten}.values())
+            if varianten:
+                gross = varianten[-1]
+                tag = tag.replace(src.group(0), f'src="{gross[0]}"')
+                if len(varianten) > 1 and 'srcset=' not in tag:
+                    # feste sizes-Angabe; „auto" nicht, weil Bilder mit Breite aus dem Seitenverhältnis sonst auf 300 px fallen
+                    groesse = ('280px' if '/funnels/' in src.group(1) else '(max-width: 700px) 100vw, 50vw')
+                    tag = tag.replace('<img ', f'<img srcset="{", ".join(f"{v[0]} {v[1]}w" for v in varianten)}" sizes="{groesse}" ', 1)
+        if lazy and 'loading=' not in tag: tag = tag.replace('<img ', '<img loading="lazy" ', 1)
+        if 'decoding=' not in tag: tag = tag.replace('<img ', '<img decoding="async" ', 1)
+        return tag
+    kopf_teil = re.sub(r'<img [^>]+>', lambda m: img(m, False), teile[0].split('<main>', 1)[1]) if '<main>' in teile[0] else None
+    vorn = teile[0].split('<main>', 1)[0] + '<main>' + kopf_teil if kopf_teil is not None else teile[0]
+    rest = re.sub(r'<img [^>]+>', lambda m: img(m, True), teile[1]) if len(teile) > 1 else ''
+    ganz = vorn + ('</section>' + rest if len(teile) > 1 else '')
+    def poster(m):
+        v = _webp(m.group(1), 960)
+        return f'poster="{v[0]}"' if v else m.group(0)
+    return re.sub(r'poster="(/[^"]+\.(?:jpe?g|png))"', poster, ganz)
 
 # ── Bausteine ─────────────────────────────────────────────────────────────
 NAV = [('/monteure/', IK['users'], 'Monteure'), ('/auftraege/', IK['bath'], 'Aufträge'), ('/fallstudien/', IK['film'], 'Fallstudien'), ('/ueber-uns/', IK['handshake'], 'Über uns')]
@@ -102,8 +173,8 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <link rel="preload" href="/fonts/archivo-latin-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-v20-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="{u('/styles.css')}?v={V}">
+<style>{CSS_INLINE}</style>
+{MESSUNG_KOPF}
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
@@ -154,6 +225,7 @@ def fuss():
   </div>
 </footer>
 <script src="{u('/main.js')}?v={V}" defer></script>
+<script src="{u('/messung.js')}?v={V}" defer></script>
 </body>
 </html>
 '''
@@ -600,7 +672,7 @@ SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_a
 for pfad, fn in SEITEN.items():
     ziel = AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html'
     ziel.parent.mkdir(parents=True, exist_ok=True)
-    ziel.write_text(fn(), encoding='utf-8')
+    ziel.write_text(optimieren(fn()), encoding='utf-8')
     print('✓', ziel.relative_to(REPO))
 if LIVE:
     sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc><changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else "0.8"}</priority></url>' for p in SEITEN)

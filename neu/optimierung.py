@@ -8,7 +8,7 @@ Aufruf für eine fertige, handgeschriebene Seite (z. B. die Live-Startseite):
     python3 neu/optimierung.py index.html
 Wirkt idempotent: ein zweiter Lauf ändert nichts mehr.
 """
-import re, sys, hashlib
+import hashlib, re, sys
 from pathlib import Path
 from urllib.parse import unquote
 from PIL import Image
@@ -118,6 +118,7 @@ def breiten(pfad):
 def optimieren(seite, ohne_srcset=(), pfad='/'):
     """Jedes JPG/PNG-Bild als passend großes WebP (+ srcset), alles unterhalb der ersten Sektion lazy.
     `ohne_srcset`: Pfad-Teile, deren Bilder per Skript ausgetauscht werden — srcset würde den Tausch überstimmen."""
+    seite = re.sub(r'(/assets/[^"\'\s,)?]+)\?v=[0-9a-f]{6,12}', r'\1', seite)   # alte Fingerabdrücke weg, am Ende neu rechnen
     teile = seite.split('</section>', 1)                          # bis zum Ende der ersten Sektion = Hero, bleibt eager
     gemessen = groessen()
 
@@ -187,7 +188,23 @@ def optimieren(seite, ohne_srcset=(), pfad='/'):
     ganz = re.sub(r'(<link rel="preload" as="image" href=")(/[^"]+\.(?:jpe?g|png))(")', lambda m: ersetze(m, max(breiten(m.group(2)))), ganz)
     # Bildlisten in Skripten (z. B. die rotierende Projekt-Galerie): dieselbe große Fassung wie im <img>
     ganz = re.sub(r"(src:')(/assets/[^']+\.(?:jpe?g|png))(')", lambda m: ersetze(m, max(breiten(m.group(2)))), ganz)
-    return ganz
+    return versionieren(ganz)
+
+
+_FP = {}
+def fingerabdruck(url):
+    """8 Zeichen aus dem Dateiinhalt. Der Worker lässt Bilder/Videos 30 Tage im Browser liegen — ohne neuen
+    Adressteil sah Noah nach einer Änderung weiter die alte Datei (27.09.2026: Irlbacher fehlte im Hero-Video)."""
+    if url not in _FP:
+        f = REPO / unquote(url.lstrip('/'))
+        _FP[url] = hashlib.md5(f.read_bytes()).hexdigest()[:8] if f.is_file() else ''
+    return _FP[url]
+
+def versionieren(html):
+    def fp(m):
+        v = fingerabdruck(m.group(1))
+        return f'{m.group(1)}?v={v}' if v else m.group(1)
+    return re.sub(r'(/assets/[^"\'\s,)?]+\.(?:webp|jpe?g|png|mp4|svg|gif))(?!\?)', fp, html)
 
 
 # ── Handgeschriebene Seite (Live-Startseite) ──────────────────────────────

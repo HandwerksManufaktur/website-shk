@@ -199,6 +199,46 @@
     new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeig(i); lauf(); } else clearInterval(timer); }), { threshold: .35 }).observe(vb);
   }
 
+  /* Hero: wechselndes Wort, Breite folgt dem Wort, Regler-Strich zeigt den Takt */
+  const we = $('.wechsel');
+  if (we && !rm) {
+    const w = $$(':scope > span', we), T = 2600; let k = 0;
+    we.style.setProperty('--wtakt', T / 1000 + 's');
+    const breite = el => { const r = el.getBoundingClientRect().width; we.style.width = Math.ceil(r) + 'px'; };
+    const takt = () => { we.classList.remove('laeuft'); void we.offsetWidth; we.classList.add('laeuft'); };
+    requestAnimationFrame(() => { breite(w[0]); takt(); });
+    setInterval(() => {
+      const alt = w[k]; k = (k + 1) % w.length; const neu = w[k];
+      alt.classList.remove('an'); alt.classList.add('weg');
+      neu.classList.remove('weg'); neu.style.transition = 'none'; neu.style.transform = 'translateY(105%)'; void neu.offsetWidth; neu.style.transition = ''; neu.style.transform = '';
+      neu.classList.add('an'); breite(neu); takt();
+      setTimeout(() => alt.classList.remove('weg'), 600);
+    }, T);
+    addEventListener('resize', () => breite(w[k]));
+    if (document.fonts) document.fonts.ready.then(() => breite(w[k]));
+  }
+
+  /* Potenzial-Rechner: Ziel wählen, zwei Regler, Summe; Link trägt das Ziel mit */
+  const rech = $('.rechner');
+  if (rech) {
+    const eur = n => n.toLocaleString('de-DE') + ' €';
+    const std = { monteure: { anzahl: 2, wert: 15000 }, auftraege: { anzahl: 3, wert: 20000 } };
+    let ziel = 'monteure';
+    const rA = $('[data-regler="anzahl"]', rech), rW = $('[data-regler="wert"]', rech), link = $('[data-link]', rech);
+    const rechne = () => { $('[data-wert="anzahl"]', rech).textContent = rA.value; $('[data-wert="wert"]', rech).textContent = eur(+rW.value); $('[data-wert="summe"]', rech).textContent = eur(rA.value * rW.value); };
+    const wahl = z => {
+      ziel = z; rech.dataset.ziel = z;
+      $$('.rechner-wahl button', rech).forEach(b => { const an = b.dataset.ziel === z; b.classList.toggle('an', an); b.setAttribute('aria-selected', an); });
+      $$('[data-fuer]', rech).forEach(el => el.hidden = el.dataset.fuer !== z);
+      rA.value = std[z].anzahl; rW.value = std[z].wert; rW.min = z === 'auftraege' ? 10000 : 5000;
+      link.href = link.href.split('#')[0].split('?')[0] + '?ziel=' + z;
+      rechne();
+    };
+    $$('.rechner-wahl button', rech).forEach(b => b.addEventListener('click', () => wahl(b.dataset.ziel)));
+    [rA, rW].forEach(r => r.addEventListener('input', rechne));
+    wahl('monteure');
+  }
+
   /* Aktiver Menüpunkt */
   const pfad = location.pathname.replace(/index\.html$/, '');
   $$('.nav-links a').forEach(a => { const h = a.getAttribute('href'); if (h && h !== '/' && pfad.startsWith(h.replace(/index\.html$/, '')) && !a.classList.contains('nav-cta')) a.classList.add('aktiv'); });

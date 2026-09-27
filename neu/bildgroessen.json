@@ -27,21 +27,21 @@
   360,
   580
  ],
- "assets-fotos-noah-bei-klass": [
-  330,
-  550
- ],
  "assets-fotos-noah-kopf": [
   60,
   60
  ],
  "assets-fotos-noah-portrait": [
-  360,
-  540
+  320,
+  440
  ],
  "assets-fotos-noah-rund": [
   60,
   60
+ ],
+ "assets-fotos-noah-ueber": [
+  360,
+  540
  ],
  "assets-fotos-senftleben-lager": [
   320,
@@ -75,13 +75,17 @@
   360,
   520
  ],
- "assets-fotos-sussmann-lager": [
-  360,
-  300
- ],
  "assets-fotos-sussmann-patrick-mirjana": [
   360,
   580
+ ],
+ "assets-fotos-sussmann-patrick-mirjana-van": [
+  360,
+  300
+ ],
+ "assets-fotos-sussmann-team-2026": [
+  330,
+  550
  ],
  "assets-funnels-erwin-schmidt-jobs-full": [
   320,
@@ -168,12 +172,12 @@
   390
  ],
  "assets-team-noah": [
-  100,
-  140
+  70,
+  100
  ],
  "assets-team-robert": [
-  100,
-  140
+  70,
+  100
  ],
  "logos-shk-logo-autohaus-ressle-weiss": [
   50,
@@ -275,11 +279,10 @@
   ],
   "/neu/fallstudien/": [],
   "/neu/ueber-uns/": [
-   "assets-fotos-erwin-schmidt-team",
-   "assets-fotos-noah-portrait"
+   "assets-fotos-noah-ueber"
   ],
   "/neu/potenzialanalyse/": [
-   "assets-fotos-noah-bei-klass"
+   "assets-fotos-sussmann-team-2026"
   ]
  }
 }

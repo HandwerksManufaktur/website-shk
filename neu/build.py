@@ -175,7 +175,7 @@ def fuss():
 GOOGLE_G = '<svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.8 6.1C12.3 13.5 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.6h12.7c-.6 3-2.2 5.5-4.7 7.2l7.5 5.8c4.4-4.1 7-10.1 7-17.1z"/><path fill="#FBBC05" d="M10.4 28.6A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.8-4.6l-7.8-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.8-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.7-4-13.6-9.9l-7.8 6.1C6.5 42.6 14.6 48 24 48z"/></svg>'
 
 def trust(hell=True):
-    return f'<p class="trust"><span><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span> <b>5,0</b> auf Google</span><span>·</span><span><b>130+</b> Betriebe</span><span>·</span><span><b>Nur</b> SHK-Betriebe</span></p>'
+    return f'<p class="trust"><span><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span> <b>5,0</b> auf Google</span><span>·</span><span><b>130+</b> Betriebe</span><span>·</span><span><b>Spezialisiert</b> auf SHK</span></p>'
 
 def phone(img, etikett, farbe, klasse='', delay='0s'):
     return f'''<div class="phone {klasse}" aria-hidden="true"><div class="scroller"><img src="{img}" alt="" loading="lazy" style="--d:{delay}"></div><span class="etikett"><i style="background:{farbe}"></i>{etikett}</span></div>'''
@@ -191,6 +191,8 @@ def hero_zettel():
 def logo_band():
     """Kundenlogos laufen durch (Noah, 27.09.2026: „die Kundenlogos sollen schon trotzdem weiter durchlaufen")."""
     wand = [l for l in LOGOS if 'Ressle' not in l[1] and 'Kirchner' not in l[1]]   # beide kein SHK (Noah, 27.09.2026: „lass auch kirchner … oben bei den logos raus")
+    k = next(i for i, l in enumerate(wand) if 'Kramer' in l[1]); s = next(i for i, l in enumerate(wand) if 'Suessmeier' in l[1])
+    wand[k], wand[s] = wand[s], wand[k]   # Kramer ans Ende, Süßmeier nach vorn (Noah, 27.09.2026: „dass der mit Süßmayer tauscht")
     def reihe(liste, rueck=''):
         imgs = ''.join(f'<img src="{src}" alt="{html.escape(name)}"{" class=wide" if r >= 3.6 else ""}>' for src, name, r in liste)
         leer = ''.join(f'<img src="{src}" alt=""{" class=wide" if r >= 3.6 else ""} aria-hidden="true">' for src, name, r in liste)
@@ -216,7 +218,7 @@ def leiter(wege=WEGE_ALLE, kick='Was du wahrscheinlich schon probiert hast', h2=
     return f'''<section class="probiert" id="probiert">
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick k rv">{kick}</p><h2 class="d rv">{h2}</h2></div><p class="lead rv">{lead}</p></div>
-    <div class="leiter wege-plan n{len(wege)} rv"><div class="wp-kopf"><span>So wird bisher gesucht</span></div><ol class="wp-reihe">{knoten}</ol><div class="wp-schiene" aria-hidden="true"></div><div class="ende" data-d="{len(wege)+1}"><span>{ende}<small>{von}</small></span></div></div>
+    <div class="leiter wege-plan n{len(wege)} rv"><div class="wp-kopf"><span>So wird bisher gesucht</span></div><ol class="wp-reihe">{knoten}</ol><div class="wp-schiene" aria-hidden="true"></div><div class="ende schlicht" data-d="{len(wege)+1}"><span class="ic" aria-hidden="true">{IK["x"]}</span><span><b>{ende}</b><small>{von}</small></span></div></div>
   </div>
 </section>'''
 
@@ -266,6 +268,33 @@ def vgl_bild(art, kanal):
         return f'<svg class="vb" viewBox="0 0 300 124" aria-hidden="true">{ring}{p}<circle class="haus{" an" if kanal else ""}" cx="150" cy="62" r="11"/></svg>'
     return ''
 
+def potenzial_rechner():
+    """Mini-Rechner unter dem Vergleich (Noah, 27.09.2026: „wo man theoretisch das Potenzial durchrechnet … super simpel …
+    und dann wird weitergeleitet zu einer Potenzialanalyse"). Die Mengen sind belegt (Fallstudien auf dieser Seite),
+    Umsatz rechnet der Besucher mit seinen eigenen Werten — kein Versprechen."""
+    return f'''<div class="rechner rv" id="rechner" data-ziel="monteure">
+      <div class="rechner-kopf">
+        <p class="rechner-titel">{ic('target','ic')}Kurz durchgerechnet</p>
+        <div class="rechner-wahl" role="tablist" aria-label="Was fehlt dir?">
+          <button type="button" class="an" role="tab" aria-selected="true" data-ziel="monteure">{ic('users','ic')}Monteure</button>
+          <button type="button" role="tab" aria-selected="false" data-ziel="auftraege">{ic('bath','ic')}Aufträge</button>
+        </div>
+      </div>
+      <div class="rechner-leib">
+        <div class="rechner-beleg">
+          <div data-fuer="monteure"><b class="rechner-zahl">20–25</b><span class="rechner-einheit">Bewerbungen in 3–4 Wochen</span><p>So lief es bei zwei unserer Kunden: 25 Bewerbungen in 4 Wochen bei Erwin Schmidt &amp; Sohn, 21 in 18 Tagen bei Senftleben Haustechnik.</p></div>
+          <div data-fuer="auftraege" hidden><b class="rechner-zahl">21</b><span class="rechner-einheit">Bad-Anfragen in 2 Monaten</span><p>So lief es bei Senftleben Haustechnik im 25-km-Umkreis, daraus mehr als 10 Vor-Ort-Termine.</p></div>
+        </div>
+        <div class="rechner-regler">
+          <label><span data-fuer="monteure">Aufträge, die du im Monat ablehnst, weil ein Monteur fehlt</span><span data-fuer="auftraege" hidden>Davon machst du zum Auftrag</span><output data-wert="anzahl">2</output><input type="range" min="1" max="10" step="1" value="2" data-regler="anzahl"></label>
+          <label><span>Wert je Auftrag</span><output data-wert="wert">15.000 €</output><input type="range" min="5000" max="50000" step="1000" value="15000" data-regler="wert"></label>
+          <p class="rechner-ergebnis"><span data-fuer="monteure">bleiben jeden Monat liegen</span><span data-fuer="auftraege" hidden>Auftragsvolumen aus zwei Monaten</span><b data-wert="summe">30.000 €</b></p>
+          <a class="btn btn-ink" data-link href="{u('/potenzialanalyse/')}">{ic('target','ic')}Für meinen Umkreis durchrechnen <span aria-hidden="true">→</span></a>
+          <p class="rechner-fuss">Rechenbeispiel mit deinen Werten, keine Zusage. Was in deinem Umkreis drin ist, rechnen wir in 30 Minuten durch.</p>
+        </div>
+      </div>
+    </div>'''
+
 def vergleich():
     tabs = ''.join(f'<button type="button" class="vgl-tab{" an" if i == 0 else ""}" role="tab" id="vgl-t{i}" aria-controls="vgl-p{i}" aria-selected="{"true" if i == 0 else "false"}"><span class="ic" aria-hidden="true">{icn}</span><b>{t}</b><i class="lauf" aria-hidden="true"></i></button>' for i, (a, icn, t, h, k) in enumerate(VERGLEICH))
     panels = ''.join(f'''<div class="vgl-panel{" an" if i == 0 else ""}" role="tabpanel" id="vgl-p{i}" aria-labelledby="vgl-t{i}"{"" if i == 0 else " hidden"}>
@@ -276,7 +305,7 @@ def vergleich():
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick k rv">Erkennst du dich wieder?</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Lagen aus Gesprächen mit SHK-Inhabern. Tipp auf deine.</p></div>
     <div class="vgl-buehne rv"><div class="vgl-tabs" role="tablist" aria-label="Lagen">{tabs}</div><div class="vgl-panels">{panels}</div></div>
-    <p class="rv" style="margin-top:28px"><a class="btn btn-ink" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzial durchrechnen</a></p>
+    {potenzial_rechner()}
   </div>
 </section>'''
 
@@ -313,7 +342,7 @@ def hebel():
     <div class="sec-kopf mitte"><p class="kick rv">Zwei Hebel, ein System</p><h2 class="d rv">Was fehlt dir gerade: <span class="em k">Leute</span> oder <span class="em w">Aufträge</span>?</h2></div>
     <div class="hebel-grid">
       <a class="hebel-karte rv" href="{u('/monteure/')}"><div class="txt"><span class="chip">{ic('users')}Hebel 1 · Recruiting</span><h3>Mitarbeitergewinnung für SHK-Monteure.</h3><ul><li>{ic("checkmark")}Bewerbung in 60 Sekunden, ohne Lebenslauf</li><li>{ic("checkmark")}Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li><li>{ic("checkmark")}Dein Betrieb als Marke, mit Fotos aus deinem Betrieb</li></ul><span class="btn btn-white">Recruiting ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="Monteur eines SHK-Betriebs mit Werkzeug" loading="lazy" width="1100" height="733" style="object-position:55% 25%"></div></a>
-      <a class="hebel-karte w rv" data-d="1" href="{u('/auftraege/')}"><div class="txt"><span class="chip">{ic('bath')}Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><ul><li>{ic("checkmark")}Exklusiv für deinen Betrieb</li><li>{ic("checkmark")}Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>{ic("checkmark")}Regelbar, auf Wunsch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/sussmann-lager.jpg" alt="Patrick Wähnl und Mirjana Sussmann im Lager der Erich Sussmann GmbH" loading="lazy" width="1200" height="800" style="object-position:56% 30%"></div></a>
+      <a class="hebel-karte w rv" data-d="1" href="{u('/auftraege/')}"><div class="txt"><span class="chip">{ic('bath')}Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><ul><li>{ic("checkmark")}Exklusiv für deinen Betrieb</li><li>{ic("checkmark")}Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>{ic("checkmark")}Regelbar, auf Wunsch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/sussmann-patrick-mirjana-van.jpg" alt="Patrick und Mirjana Wähnl am Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:40% 30%"></div></a>
     </div>
   </div>
 </section>'''
@@ -446,24 +475,22 @@ def stimmen():
 def ueber_offen(kurz=True):
     return f'''<section class="ueber offen" id="ueber-uns">
   <div class="wrap"><div class="ueber-grid rv">
-    <div class="bilder">
-      <figure class="gross"><img src="/assets/fotos/noah-portrait.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="2000" height="1333" style="object-position:68% 30%"></figure>
-      <figure class="klein"><img src="/assets/fotos/erwin-schmidt-team.jpg" alt="Das Team von Erwin Schmidt &amp; Sohn beim Shooting" loading="lazy" width="1100" height="733" style="object-position:50% 35%"></figure>
-      <div class="kachel"><b>130<span>+</span></b><small>Betriebe seit 2019</small></div>
+    <div class="bilder nur-noah">
+      <figure class="gross"><img src="/assets/fotos/noah-ueber.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 25%"></figure>
     </div>
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
       <p>Ich bin Noah. Seit über sechs Jahren nur Handwerk, über 130 Betriebe, die meisten davon SHK. Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer sein neues Bad plant, und bauen deine Kampagne genau darauf. Und wenn dein Umkreis dafür zu klein ist, sagen wir es dir im ersten Gespräch.</p>
-      <div class="gruender"><img src="/assets/fotos/noah-kopf.jpg" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>Gründer · dein direkter Draht vom ersten Call bis zum Reporting</small></span></div>
+      <div class="gruender ohne-bild"><span><b>Noah Seelau</b><small>Gründer · dein direkter Draht vom ersten Call bis zum Reporting</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>24<span>h</span></b><small>oft bis zur ersten Bewerbung oder Anfrage</small></div><div class="stat"><b>25<span>km</span></b><small>Umkreis, in dem die Anzeigen laufen</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
   </div></div>
 </section>'''
 
-TEAM = [('noah', 'Noah', 'Gründer · Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 50%'),   # Kopf ganz mit Luft nach oben, Ausschnitt aus noah-portrait.jpg (Noah, 27.09.2026: „mein gesicht … voll abgeschnitten“ — das runde Lächel-Porträt lässt keinen Quadrat-Ausschnitt ohne Kappe zu)
-        ('robert', 'Robert', 'Videoschnitt&nbsp;&amp;&nbsp;Creative', '50% 18%'),
+TEAM = [('noah', 'Noah', 'Gründer · Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 50%'),   # rundes Lächel-Porträt 03/2026 als Kreis — ganzer Kopf, und kein zweites Mal das Laptop-Foto aus „Wer dahinter steht" (Noah, 27.09.2026)
+        ('robert', 'Robert', 'Videoschnitt&nbsp;&amp;&nbsp;Creative', '50% 6%'),
         (None, 'Rudolf', 'Websites&nbsp;&amp;&nbsp;Anzeigen', '')]   # Noah, 27.09.2026: „mach gesicht von rudolf raus!!! und einfach n R rein … füll die kreise aus"
 
 def team():
@@ -520,7 +547,7 @@ def kontakt(h2='Was ist in deinem Umkreis <span class="em w">drin?</span>'):
     zwei gleich breite Hälften, links ein echtes Foto aus einem Kundenbetrieb, rechts drei Zeilen und die zwei Wege. Kein Avatar-Band, keine Häkchen-Liste."""
     return f'''<section class="kontakt" id="kontakt">
   <div class="wrap"><div class="kontakt-karte kontakt-neu rv">
-    <figure class="kontakt-bild"><img src="/assets/fotos/noah-bei-klass.jpg" alt="Noah mit dem Team von Heizung Sanitär Klaß am Firmenwagen" width="1100" height="1100" loading="lazy"><figcaption>Noah beim Dreh bei Heizung Sanitär Klaß</figcaption></figure>
+    <figure class="kontakt-bild"><img src="/assets/fotos/senftleben-team.jpg" alt="Das Team von Senftleben Haustechnik vor den Firmenwagen" width="1100" height="725" loading="lazy" style="object-position:50% 50%"><figcaption>Das Team von Senftleben Haustechnik, Ehingen</figcaption></figure>
     <div class="kontakt-text">
       <p class="kick">Potenzialanalyse · 30 Min. · kostenlos</p>
       <h2 class="d">{h2}</h2>
@@ -558,8 +585,8 @@ def seite_start():
     h = kopf('Monteure und Aufträge für SHK-Betriebe: Anzeigen im eigenen Umkreis', 'Monteure, die anfangen wollen, und Bad-Anfragen, die nur du bekommst: Anzeigen mit deinen Leuten in deinem Einzugsgebiet, Filterfragen vor jeder Bewerbung. 130+ Betriebe, 5,0 auf Google.', '/', schema_extra=faq_schema(FAQ_START))
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
-    <p class="kick rv">Für inhabergeführte SHK-Betriebe</p>
-    <h1 class="h-xl hero-h1 zwei"><span class="zl"><span>Monteure und Bad-Aufträge</span></span><span class="zl"><span>aus deinem Umkreis.</span></span><span class="zl"><span class="em w glut">Live in unter 2 Wochen.</span></span></h1>
+    <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
+    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Mehr <span class="wechsel"><span class="an">Monteure</span><span>Bad-Aufträge</span><span>Heizungs-Aufträge</span><i class="wechsel-lauf"></i></span></span></span><span class="zl" aria-hidden="true"><span>aus deinem Umkreis.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Live in unter 2 Wochen.</span></span><span class="sr">Mehr Monteure und Aufträge aus deinem Umkreis. Live in unter 2 Wochen.</span></h1>
     <p class="lead rv" data-d="2">Anzeigen mit deinen Leuten, nur in deinem Einzugsgebiet, Filterfragen vor jeder Bewerbung und Anfrage. Du führst nur noch die Gespräche, den Rest machen wir.</p>
     <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzialanalyse für meinen Umkreis</a><a class="btn btn-white btn-lg" href="#fallstudien">Was bei Kunden rauskam</a></div>
     <p class="micro rv" data-d="3">30 Minuten, kostenlos, kein Vertrag. Wir sagen dir vorher, ob dein Umkreis genug hergibt.</p>

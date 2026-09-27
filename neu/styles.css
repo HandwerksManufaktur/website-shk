@@ -1216,3 +1216,69 @@ svg.vb .haus{fill:var(--ink)} svg.vb .haus.an{fill:#fff}
 .kontakt-bild img[width][height]{height:100%}
 .kontakt-bild figcaption{position:static;align-self:flex-start;background:rgba(255,255,255,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
 @media(max-width:1000px){.kontakt-bild img[width][height]{height:auto}}
+
+/* Alte Wege ruhig: kein Rütteln, kein Stempel; das Ergebnis ist ein schlichter Schritt (Noah, 27.09.2026: „wie das so rüttelt, schaut ein bisschen veraltet aus … in einen normalen Schritt, schlicht") */
+.weg.gestempelt,.leiter .weg.gestempelt{animation:none!important}
+.leiter.wege-plan .weg .x{transition:opacity .4s var(--ease)}
+.leiter.wege-plan .weg.gestempelt .x{animation:none!important}
+.leiter.wege-plan .weg.gestempelt .ic{transform:none;filter:none}
+.leiter .ende.schlicht{display:flex;align-items:center;gap:14px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-pill);padding:10px 26px 10px 10px;min-width:0;font-family:var(--f);font-style:normal;font-size:17px;line-height:1.3;text-align:left;opacity:1;transform:none}
+.leiter .ende.schlicht .ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#FDECEC;flex:none}
+.leiter .ende.schlicht .ic .ik{width:18px;height:18px;color:#E5484D;stroke-width:2.4}
+.leiter .ende.schlicht b{display:block;font-weight:700}
+.leiter .ende.schlicht small{display:block;margin-top:2px;font-size:13px;color:var(--sub);font-weight:500}
+.leiter.fertig .ende.schlicht::before{display:none}
+.leiter.fertig .ende.schlicht span{animation:none}
+
+/* Hero: das wechselnde Wort (Noah, 27.09.2026: „die ganz obere Überschrift … cooler darstellen") */
+.wechsel{position:relative;display:inline-block;vertical-align:bottom;height:1.12em;overflow:hidden;color:var(--kalt);transition:width .55s var(--ease);padding-bottom:.08em}
+.wechsel>span{position:absolute;left:0;top:0;white-space:nowrap;transform:translateY(105%);opacity:0;transition:transform .55s var(--ease),opacity .4s}
+.wechsel>span.an{position:relative;transform:none;opacity:1}
+.wechsel>span.weg{transform:translateY(-105%);opacity:0}
+.wechsel-lauf{position:absolute;left:0;right:0;bottom:0;height:.07em;border-radius:99px;background:var(--regler);transform:scaleX(0);transform-origin:left}
+.wechsel.laeuft .wechsel-lauf{animation:wechselLauf var(--wtakt,2.6s) linear forwards}
+@keyframes wechselLauf{to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.wechsel>span{transition:none}.wechsel-lauf{display:none}}
+
+/* Über uns: links nur Noah, näher am Gesicht, so hoch wie die Textspalte (Noah, 27.09.2026) */
+.ueber.offen .ueber-grid{align-items:stretch}
+.ueber.offen .bilder.nur-noah{display:block;height:100%}
+.ueber.offen .bilder.nur-noah .gross{aspect-ratio:auto;height:100%;min-height:520px;margin:0;border-radius:var(--r-lg);overflow:hidden}
+.ueber.offen .bilder.nur-noah .gross img,.ueber.offen .bilder.nur-noah .gross img[width][height]{width:100%;height:100%;object-fit:cover}
+@media(max-width:900px){.ueber.offen .bilder.nur-noah .gross{min-height:0;aspect-ratio:4/5;max-height:560px}}
+
+/* Team: jedes Gesicht als Kreis auf grauer Fläche — dieselbe Form wie Rudolfs „R" (Noah, 27.09.2026) */
+.person figure:not(.initiale){display:grid;place-items:center;background:#E6E9EE}
+.person figure:not(.initiale) img,.person figure:not(.initiale) img[width][height]{width:70%;height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover}
+.person:hover figure:not(.initiale) img{transform:scale(1.03)}
+
+/* Potenzial-Rechner unter dem Vergleich (Noah, 27.09.2026) */
+.rechner{margin-top:24px;background:var(--night);color:#fff;border-radius:var(--r-lg);padding:28px 32px 32px}
+.rechner-kopf{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rechner-titel{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--warm)}
+.rechner-titel .ik{width:18px;height:18px}
+.rechner-wahl{display:inline-flex;gap:6px;padding:5px;border-radius:var(--r-pill);background:rgba(255,255,255,.08)}
+.rechner-wahl button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:var(--r-pill);font-weight:700;font-size:15px;color:var(--night-sub);transition:background .25s,color .25s}
+.rechner-wahl button .ik{width:18px;height:18px}
+.rechner-wahl button.an{background:#fff;color:var(--ink)}
+.rechner-wahl button:active{transform:scale(.97)}
+.rechner-leib{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;margin-top:26px;align-items:start}
+.rechner-zahl{display:block;font-family:var(--fh);font-size:clamp(56px,6vw,88px);font-weight:800;letter-spacing:-.04em;line-height:.95}
+.rechner-einheit{display:block;margin-top:8px;font-size:18px;font-weight:700}
+.rechner-beleg p{margin-top:14px;color:var(--night-sub);font-size:15px;max-width:40ch}
+.rechner-regler{display:flex;flex-direction:column;gap:18px}
+.rechner-regler label{display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:center;font-size:15px;color:var(--night-sub)}
+.rechner-regler output{font-weight:800;color:#fff;font-size:18px}
+.rechner-regler input[type=range]{grid-column:1/-1;width:100%;height:44px;accent-color:var(--warm);cursor:pointer}
+.rechner-ergebnis{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--night-line);color:var(--night-sub);font-size:15px}
+.rechner-ergebnis b{font-family:var(--fh);font-size:clamp(32px,3.4vw,44px);font-weight:800;color:#fff;letter-spacing:-.03em}
+.rechner .btn{align-self:flex-start;background:#fff;color:var(--ink)}
+.rechner-fuss{font-size:13px;color:var(--night-sub)}
+[data-fuer][hidden]{display:none!important}
+@media(max-width:860px){.rechner{padding:22px 20px 24px}.rechner-leib{grid-template-columns:minmax(0,1fr);gap:24px}}
+.wechsel{overflow:visible;vertical-align:baseline;height:auto;padding-bottom:0;clip-path:inset(-.12em -.3em -.2em -.3em)}
+.wechsel-lauf{bottom:-.1em}
+@media(max-width:600px){.wechsel{display:table;margin:0 auto}}
+@media(max-width:860px){.rechner .btn{align-self:stretch;justify-content:center;white-space:normal;text-align:center}}
+.leiter .ende.schlicht{border-radius:var(--r-lg)}
+.gruender.ohne-bild{border-radius:var(--r-lg)}

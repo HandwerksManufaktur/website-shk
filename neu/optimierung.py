@@ -29,7 +29,15 @@ def css_klein(t):
 
 def fonts_css():
     """Lokale Schriften, auf Latein-Zeichen zugeschnitten (fonts/sub, pyftsubset): 418 → 149 KB, keine Verbindung zu Google."""
-    return css_klein((REPO / 'fonts' / 'fonts.css').read_text(encoding='utf-8').replace("url('", "url('/fonts/sub/"))
+    return css_klein((REPO / 'fonts' / 'fonts.css').read_text(encoding='utf-8').replace("url('", "url('/fonts/sub/")) + FALLBACK
+
+
+# Ersatzschriften mit angeglichenen Maßen: bis die echte Schrift da ist, nimmt der Text schon denselben Platz ein —
+# sonst springen Zeilen und Knöpfe beim Tausch (PageSpeed „Layout Shift"). Werte mit fontTools aus den Dateien
+# gemessen (Breite eines deutschen Satzes, hhea-Maße), 27.09.2026.
+FALLBACK = ("@font-face{font-family:'Inter Fallback';src:local('Arial');size-adjust:107.09%;ascent-override:90.46%;descent-override:22.52%;line-gap-override:0%}"
+            "@font-face{font-family:'Archivo Fallback';src:local('Arial');size-adjust:111.04%;ascent-override:79.07%;descent-override:18.91%;line-gap-override:0%}"
+            "@font-face{font-family:'Instrument Serif Fallback';src:local('Times New Roman');size-adjust:87.40%;ascent-override:113.28%;descent-override:35.47%;line-gap-override:0%}")
 
 
 def messung_kopf(gruppe):

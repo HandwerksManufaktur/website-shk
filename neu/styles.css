@@ -11,7 +11,7 @@
   --warm:#F5762B; --warm-deep:#C9581A; --warm-soft:#FDEBDF;
   --night:#0B1424; --night2:#111D31; --night-line:#22314A; --night-sub:#9AA8BC;
   --regler:linear-gradient(90deg,var(--kalt) 0%,#7A7EC8 50%,var(--warm) 100%);
-  --f:'Inter',system-ui,sans-serif; --fh:'Archivo','Inter',system-ui,sans-serif; --serif:'Instrument Serif',Georgia,serif;
+  --f:'Inter','Inter Fallback',system-ui,sans-serif; --fh:'Archivo','Archivo Fallback','Inter',system-ui,sans-serif; --serif:'Instrument Serif','Instrument Serif Fallback',Georgia,serif;
   --r-xl:40px; --r-lg:24px; --r-md:24px; /* eine Rundung je Familie: alle Karten 24 (Stil-Prüfer, 26.09.2026) */ --r-sm:16px; --r-xs:12px; --r-pill:999px;
   --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px;
   --ease:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.2,.7,.3,1);
@@ -1064,4 +1064,7 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .person .txt{padding:20px 24px 24px}
 .person h3{font-size:19px;margin-bottom:4px}
 .person p{color:var(--sub);font-size:15px}
-@media(max-width:760px){.team-grid{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:32px}.person{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center}.person figure{aspect-ratio:1;height:100%}.person .txt{padding:16px 20px}}
+.person .initiale{display:grid;place-items:center;background:#E6E9EE}
+.person .initiale span{display:grid;place-items:center;width:62%;aspect-ratio:1;border-radius:50%;background:var(--night);color:#fff;font-family:var(--fh);font-weight:800;font-size:clamp(56px,7vw,112px);line-height:1;transition:transform .4s var(--spring)}
+.person:hover .initiale span{transform:scale(1.03)}
+@media(max-width:760px){.team-grid{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:32px}.person{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center}.person figure{aspect-ratio:1;height:100%}.person .initiale span{width:72%;font-size:40px}.person .txt{padding:16px 20px}}

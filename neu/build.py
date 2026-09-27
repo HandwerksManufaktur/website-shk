@@ -413,7 +413,7 @@ def ueber_offen(kurz=True):
   </div></div>
 </section>'''
 
-TEAM = [('noah', 'Noah', 'Gründer · Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 20%'),
+TEAM = [('noah', 'Noah', 'Gründer · Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 40%'),   # Lächel-Porträt wie auf der HWM-Seite (Noah, 27.09.2026)
         ('robert', 'Robert', 'Videoschnitt&nbsp;&amp;&nbsp;Creative', '50% 18%'),
         (None, 'Rudolf', 'Websites&nbsp;&amp;&nbsp;Anzeigen', '')]   # Noah, 27.09.2026: „mach gesicht von rudolf raus!!! und einfach n R rein … füll die kreise aus"
 
@@ -422,7 +422,7 @@ def team():
     def bild(d, n, r, pos):
         if d is None:   # kein Foto: ausgefüllter Kreis mit Initiale
             return f'<figure class="initiale" aria-hidden="true"><span>{n[0]}</span></figure>'
-        return f'''<figure><img src="/assets/team/{d}.jpg" alt="{n}, {r.replace('&nbsp;', ' ').replace('&amp;', '&')}" loading="lazy" width="800" height="1000" style="object-position:{pos}"></figure>'''
+        return f'''<figure><img src="/assets/team/{d}.jpg" alt="{n}, {r.replace('&nbsp;', ' ').replace('&amp;', '&')}" loading="lazy" width="{800 if d != 'noah' else 312}" height="{1000 if d != 'noah' else 390}" style="object-position:{pos}"></figure>'''
     k = ''.join(f'''<article class="person rv" data-d="{i+1}">{bild(d, n, r, pos)}<div class="txt"><h3>{n}</h3><p>{r}</p></div></article>''' for i, (d, n, r, pos) in enumerate(TEAM))
     return f'''<section class="sec team" id="team"><div class="wrap">
   <div class="sec-kopf"><div><p class="kick rv">Das Team</p><h2 class="d rv">Drei Leute. <span class="em k">Ein Team.</span></h2></div><p class="lead rv">Wer mit dir spricht, sitzt mit denen am Tisch, die deine Kampagne bauen.</p></div>

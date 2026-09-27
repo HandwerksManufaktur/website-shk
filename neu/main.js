@@ -243,6 +243,7 @@
     const zu = () => { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); document.documentElement.classList.remove('rd-offen'); };
     $$('[data-rechner], a[href="#rechner-auf"]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); oeffne(); }));
     $('.rd-zu', dlg).addEventListener('click', zu);
+    if (location.hash === '#rechner') setTimeout(oeffne, 300);   // Direktlink zum Formular (28.09.2026, zum Testen und für Mails)
     dlg.addEventListener('click', e => { if (e.target === dlg) zu(); });
     dlg.addEventListener('close', () => document.documentElement.classList.remove('rd-offen'));
     zurueck.addEventListener('click', () => zeig(Math.max(1, akt - 1)));

@@ -202,6 +202,14 @@ def optimieren(seite, ohne_srcset=(), pfad='/'):
     ganz = re.sub(r'(<link rel="preload" as="image" href=")(/[^"]+\.(?:jpe?g|png))(")', lambda m: ersetze(m, max(breiten(m.group(2)))), ganz)
     # Bildlisten in Skripten (z. B. die rotierende Projekt-Galerie): dieselbe große Fassung wie im <img>
     ganz = re.sub(r"(src:')(/assets/[^']+\.(?:jpe?g|png))(')", lambda m: ersetze(m, max(breiten(m.group(2)))), ganz)
+    # Das Bild mit fetchpriority="high" ist das LCP-Kandidat der Seite: schon im Kopf ankündigen, mit derselben srcset/sizes,
+    # damit der Browser es nicht erst beim Lesen des Körpers entdeckt (Über uns: 1,6 s Ladeverzögerung, LCP 2,8 s — 27.09.2026)
+    if 'rel="preload" as="image"' not in ganz:
+        m = re.search(r'<img [^>]*fetchpriority="high"[^>]*>', ganz)
+        if m and 'srcset="' in m.group(0):
+            ss = re.search(r'srcset="([^"]+)"', m.group(0)).group(1); sz = re.search(r'sizes="([^"]+)"', m.group(0))
+            link = f'<link rel="preload" as="image" imagesrcset="{ss}"' + (f' imagesizes="{sz.group(1)}"' if sz else '') + ' fetchpriority="high">'
+            ganz = ganz.replace('</head>', link + '\n</head>', 1)
     return versionieren(ganz)
 
 

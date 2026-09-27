@@ -1068,3 +1068,38 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .person .initiale span{display:grid;place-items:center;width:62%;aspect-ratio:1;border-radius:50%;background:var(--night);color:#fff;font-family:var(--fh);font-weight:800;font-size:clamp(56px,7vw,112px);line-height:1;transition:transform .4s var(--spring)}
 .person:hover .initiale span{transform:scale(1.03)}
 @media(max-width:760px){.team-grid{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:32px}.person{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center}.person figure{aspect-ratio:1;height:100%}.person .initiale span{width:72%;font-size:40px}.person .txt{padding:16px 20px}}
+
+/* ── Runde 27.09.2026 abends (Noah) ─────────────────────────────────────────── */
+/* Kundenlogos laufen wieder durch — zwei Reihen gegenläufig, Rand weich ausgeblendet */
+.band.hell .band-innen::before,.band.hell .band-innen::after{display:block;width:96px}
+.band.hell .marq{gap:56px;padding:12px 0}
+.band.hell .marq img{height:30px;width:auto;max-width:none;filter:invert(1);opacity:.6}
+.band.hell .marq img.wide{height:24px}
+/* Durchgestrichene Wege: der Strich zieht sich, der Stempel knallt, die Karte zuckt kurz */
+.weg.gestempelt h3{text-decoration:none}
+.weg h3 .strich{background:linear-gradient(#E5484D,#E5484D) no-repeat 0 58%/0% 2px;transition:background-size .4s var(--ease)}
+.weg.gestempelt h3 .strich{background-size:100% 2px}
+.weg p{transition:color .4s}
+.weg.gestempelt p{color:var(--faint)}
+.weg.gestempelt .x{animation:stempel .4s var(--spring) both}
+.weg.gestempelt{animation:ruckeln .35s .15s}
+/* Vergleich: kurze Zeilen, die rechte Seite leuchtet beim Drüberfahren */
+.vgl-c p{font-size:16px}
+.vgl-c.kanal p{font-weight:600}
+.vgl-c.kanal{transition:background .3s}
+.vgl-c.kanal:hover{background:rgba(255,255,255,.06)}
+.vgl-c .ik{transition:transform .3s var(--spring)}
+.vgl-c:hover .ik{transform:scale(1.25)}
+/* Fallstudien: drei gleich gebaute Karten — Überschrift immer drei Zeilen hoch, damit Logo und Zahlen auf einer Linie stehen */
+@media(min-width:1181px){.fall-grid.drei .erg{min-height:calc(3 * 1.25em)}}
+/* Team kleiner: Porträt als Quadrat neben Name und Rolle */
+.person{display:grid;grid-template-columns:132px minmax(0,1fr);align-items:center}
+.person figure{aspect-ratio:1;height:100%}
+.person .initiale span{width:70%;font-size:44px}
+.person .txt{padding:16px 22px}
+@media(max-width:760px){.person{grid-template-columns:96px minmax(0,1fr)}.person .initiale span{font-size:34px}.person .txt{padding:14px 18px}}
+/* Porträt als abgerundete Kachel IN der Karte (Bilder-Familie = 24 px), unter 1181 px eine Spalte, damit die Rolle nie abgeschnitten wird */
+.person{padding:10px;gap:0}
+.person figure{border-radius:var(--r-md);overflow:hidden;position:relative}
+.person .txt{padding:10px 18px}
+@media(max-width:1180px){.team-grid{grid-template-columns:minmax(0,1fr);max-width:560px}}

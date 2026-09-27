@@ -178,20 +178,26 @@ def trust(hell=True):
 def phone(img, etikett, farbe, klasse='', delay='0s'):
     return f'''<div class="phone {klasse}" aria-hidden="true"><div class="scroller"><img src="{img}" alt="" loading="lazy" style="--d:{delay}"></div><span class="etikett"><i style="background:{farbe}"></i>{etikett}</span></div>'''
 
-def reel_phone(f, etikett, klasse):
-    return f'''<div class="phone reel {klasse}" aria-hidden="true"><video muted loop playsinline preload="none" data-quelle="/assets/reels/{f}.mp4"></video><span class="etikett"><i style="background:#3DDC84"></i>{etikett}</span></div>'''
+def reel_phone(f, etikett, klasse, poster=''):
+    p = f' poster="/assets/reels/{poster}"' if poster else ''
+    return f'''<div class="phone reel {klasse}" aria-hidden="true"><video muted loop playsinline preload="none"{p} data-quelle="/assets/reels/{f}.mp4"></video><span class="etikett"><i style="background:#3DDC84"></i>{etikett}</span></div>'''
 
 def hero_zettel():
     z = [(IK['inbox'], 'Neue Bewerbung', 'Anlagenmechaniker SHK · 8 Jahre · 12 km', 'qualifiziert'+IK['checkmark']), (IK['bath'], 'Neue Anfrage', 'Komplettbad · EFH Bj. 1994 · Eigentümer', 'vorqualifiziert'+IK['checkmark']), (IK['inbox'], 'Neue Bewerbung', 'Kundendiensttechniker · ab sofort · 7 km', 'qualifiziert'+IK['checkmark']), (IK['flame'], 'Neue Anfrage', 'Wärmepumpe · Ölheizung Bj. 2001 · 160 m²', 'vorqualifiziert'+IK['checkmark']), (IK['inbox'], 'Neue Bewerbung', 'Bäderbauer · Führerschein BE · 15 km', 'qualifiziert'+IK['checkmark']), (IK['bath'], 'Neue Anfrage', 'Bad barrierefrei · Eigentumswohnung · zeitnah', 'vorqualifiziert'+IK['checkmark'])]
     return ''.join(f'<div class="ticket"><span class="tic">{ic}</span><span><b>{t}</b><small>{sub}</small></span><span class="ok">{ok}</span></div>' for ic, t, sub, ok in z)
 
 def logo_band():
-    wand = [l for l in LOGOS if 'Ressle' not in l[1]][:20]
-    imgs = ''.join(f'<span><img src="{src}" alt="{html.escape(name)}"{" class=wide" if r >= 3.6 else ""}></span>' for src, name, r in wand)
+    """Kundenlogos laufen durch (Noah, 27.09.2026: „die Kundenlogos sollen schon trotzdem weiter durchlaufen")."""
+    wand = [l for l in LOGOS if 'Ressle' not in l[1]]
+    def reihe(liste, rueck=''):
+        imgs = ''.join(f'<img src="{src}" alt="{html.escape(name)}"{" class=wide" if r >= 3.6 else ""}>' for src, name, r in liste)
+        leer = ''.join(f'<img src="{src}" alt=""{" class=wide" if r >= 3.6 else ""} aria-hidden="true">' for src, name, r in liste)
+        return f'<div class="marq{rueck}">{imgs}{leer}</div>'
+    halb = (len(wand) + 1) // 2
     return f'''<section class="band hell" aria-label="Betriebe, mit denen wir arbeiten">
   <div class="wrap"><div class="band-innen rv">
     <p class="band-t">Über <b>130 Betriebe</b> setzen auf uns. Ein Ausschnitt, fast alle SHK</p>
-    <div class="logo-wand">{imgs}</div>
+    {reihe(wand[:halb])}{reihe(wand[halb:], ' rueck')}
   </div></div>
 </section>'''
 
@@ -204,7 +210,7 @@ WEGE_ALLE = [
 ]
 def leiter(wege=WEGE_ALLE, kick='Was du wahrscheinlich schon probiert hast', h2='Funktionieren die alten Wege <span class="em k">2026 noch?</span>', lead='Stellenportal, Aufkleber, eigene Seite: Das erreicht nur, wer gerade aktiv sucht. Das sind die wenigsten, und oft die, die alle paar Monate wechseln. Wer bleiben soll, ist in Arbeit und sucht nicht.', ende='„Kam kaum was zurück."', von='Florian Schmidt, Erwin Schmidt &amp; Sohn, über die Suche vor der Kampagne'):
     # Bauform nach dem Hista-Vorbild (firma/referenzen/hista-digital): Kopf-Pille, eine Reihe Wege, Schiene mit ✕-Marken, Ergebnis-Pille
-    knoten = ''.join(f'''<li class="weg rv" data-d="{i+1}"><div class="ic" aria-hidden="true">{ic}</div><h3>{t}</h3><p>{p}</p><span class="x" aria-hidden="true">{IK["x"]}</span></li>''' for i, (ic, t, p) in enumerate(wege))
+    knoten = ''.join(f'''<li class="weg rv" data-d="{i+1}"><div class="ic" aria-hidden="true">{ic}</div><h3><span class="strich">{t}</span></h3><p>{p}</p><span class="x" aria-hidden="true">{IK["x"]}</span></li>''' for i, (ic, t, p) in enumerate(wege))
     return f'''<section class="probiert" id="probiert">
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick k rv">{kick}</p><h2 class="d rv">{h2}</h2></div><p class="lead rv">{lead}</p></div>
@@ -213,17 +219,17 @@ def leiter(wege=WEGE_ALLE, kick='Was du wahrscheinlich schon probiert hast', h2=
 </section>'''
 
 VERGLEICH = [
-    (IK['users'], 'Aufträge ablehnen', 'Du sagst ein Bad ab, weil der Monteur dafür fehlt, und der Kunde bucht beim Betrieb zwei Orte weiter?', 'Bewerbungen kommen, bevor die Stelle frei wird. Du stellst ein, wenn es passt, nicht wenn es brennt.'),
-    (IK['clock'], 'Zu spät gesucht', 'Die Suche beginnt erst, wenn einer kündigt, und das Team fährt wochenlang auf Reserve?', 'Die Anzeigen laufen durch. Wer im Umkreis wechseln will, sieht zuerst deinen Betrieb, nicht ein Portal.'),
-    (IK['cards'], 'Portal-Leads', 'Die Bad-Anfrage aus dem Portal ging an vier Betriebe, und du fährst zu einem Termin, den drei andere auch haben?', 'Jede Anfrage gehört dir allein: mit Adresse, Baujahr, Eigentum und Zeitrahmen. Du rufst an, die anderen nicht.'),
-    (IK['calendar'], 'Auslastung schwankt', 'Drei Wochen voll, und was nach der nächsten Baustelle kommt, entscheidet der Zufall?', 'Bäder und Wärmepumpen in dem Tempo, das dein Team stemmt. Auf Wunsch gedrosselt auf ein, zwei im Monat.'),
-    (IK['eye'], 'Übersehen im Umkreis', 'Dein Betrieb ist gut, nur weiß es im Umkreis keiner, weil „Wir suchen dich" bei allen steht?', 'Deine Leute, deine Fotos, dein Name, auf jedem Handy in deinem Einzugsgebiet. Das schreibt sich kein Wettbewerber ab.'),
+    (IK['users'], 'Aufträge ablehnen', 'Bad abgesagt, weil der Monteur fehlt.', 'Bewerbungen kommen, bevor die Stelle frei wird.'),
+    (IK['clock'], 'Zu spät gesucht', 'Gesucht wird erst, wenn einer kündigt.', 'Die Anzeigen laufen durch. Wechselwillige sehen dich zuerst.'),
+    (IK['cards'], 'Portal-Leads', 'Dieselbe Anfrage ging an vier Betriebe.', 'Jede Anfrage gehört dir allein.'),
+    (IK['calendar'], 'Auslastung schwankt', 'Drei Wochen voll, danach Zufall.', 'Aufträge im Tempo, das dein Team stemmt.'),
+    (IK['eye'], 'Übersehen im Umkreis', 'Guter Betrieb, nur kennt ihn keiner.', 'Dein Team auf jedem Handy im Umkreis.'),
 ]
 def vergleich():
     zellen = ''.join(f'<div class="vgl-t rv" data-d="{i%3+1}"><span class="ic" aria-hidden="true">{ic}</span><b>{t}</b></div><div class="vgl-c heute rv" data-d="{i%3+1}">{IK["x"]}<p>{h}</p></div><div class="vgl-c kanal rv" data-d="{i%3+2}">{IK["checkmark"]}<p>{k}</p></div>' for i, (ic, t, h, k) in enumerate(VERGLEICH))
     return f'''<section class="vergleich" id="vergleich">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick k rv">Erkennst du dich wieder?</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Lagen aus hunderten Gesprächen mit SHK-Inhabern. Links, wie es heute läuft. Rechts, was sich mit eigenen Anzeigen im Umkreis an jeder davon ändert.</p></div>
+    <div class="sec-kopf"><div><p class="kick k rv">Erkennst du dich wieder?</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Lagen aus Gesprächen mit SHK-Inhabern. Links heute, rechts mit eigenen Anzeigen im Umkreis.</p></div>
     <div class="vgl-tafel drei rv"><div class="vgl-h leer" aria-hidden="true"></div><div class="vgl-h heute">Heute</div><div class="vgl-h kanal">Mit eigenen Anzeigen</div>{zellen}</div>
     <p class="rv" style="margin-top:28px"><a class="btn btn-ink" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzial durchrechnen</a></p>
   </div>
@@ -262,7 +268,7 @@ def hebel():
     <div class="sec-kopf mitte"><p class="kick rv">Zwei Hebel, ein System</p><h2 class="d rv">Was fehlt dir gerade: <span class="em k">Leute</span> oder <span class="em w">Aufträge</span>?</h2></div>
     <div class="hebel-grid">
       <a class="hebel-karte rv" href="{u('/monteure/')}"><div class="txt"><span class="chip">{ic('users')}Hebel 1 · Recruiting</span><h3>Mitarbeitergewinnung für SHK-Monteure.</h3><ul><li>{ic("checkmark")}Bewerbung in 60 Sekunden, ohne Lebenslauf</li><li>{ic("checkmark")}Vorqualifiziert: Gewerk, Erfahrung, Führerschein</li><li>{ic("checkmark")}Dein Betrieb als Marke, mit Fotos aus deinem Betrieb</li></ul><span class="btn btn-white">Recruiting ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="Monteur eines SHK-Betriebs mit Werkzeug" loading="lazy" width="1100" height="733" style="object-position:55% 25%"></div></a>
-      <a class="hebel-karte w rv" data-d="1" href="{u('/auftraege/')}"><div class="txt"><span class="chip">{ic('bath')}Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><ul><li>{ic("checkmark")}Exklusiv für deinen Betrieb</li><li>{ic("checkmark")}Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>{ic("checkmark")}Regelbar, auf Wunsch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/senftleben-benjamin-fenster.jpg" alt="Benjamin Senftleben im Firmenwagen von Senftleben Haustechnik" loading="lazy" width="1100" height="733" style="object-position:78% 30%"></div></a>
+      <a class="hebel-karte w rv" data-d="1" href="{u('/auftraege/')}"><div class="txt"><span class="chip">{ic('bath')}Hebel 2 · Aufträge</span><h3>Auftrags-Funnel für Bad &amp; Wärmepumpe.</h3><ul><li>{ic("checkmark")}Exklusiv für deinen Betrieb</li><li>{ic("checkmark")}Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen</li><li>{ic("checkmark")}Regelbar, auf Wunsch nur 1–2 Aufträge im Monat</li></ul><span class="btn btn-white">Aufträge ansehen <span aria-hidden="true">→</span></span></div><div class="bild"><img src="/assets/fotos/sussmann-lager.jpg" alt="Patrick Wähnl und Mirjana Sussmann im Lager der Erich Sussmann GmbH" loading="lazy" width="1200" height="800" style="object-position:56% 30%"></div></a>
     </div>
   </div>
 </section>'''
@@ -285,9 +291,8 @@ def fall_karte(logo, name, ort, chip, chipk, poster, video, dauer, zitat, zahlen
   <div class="txt">
     <span class="chip {chipk}"><i aria-hidden="true"></i>{chip}</span>
     <p class="erg">{zitat}</p>
-    <div class="betrieb"><span class="lg"><img src="{logo}" alt="{html.escape(name)}"></span><span><b>{name}</b><small>{ort}</small></span></div>
+    <div class="betrieb"><span class="lg"><img src="{logo}" alt="{html.escape(name)}"></span><span><b>{name}</b></span></div>
     <div class="zahlen">{z}</div>
-    <p class="zeit">{zeit}</p>
   </div>
 </article>'''
 
@@ -356,9 +361,8 @@ def sussmann_karte(d=1):
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung · läuft</span>
     <p class="erg">14 Bad-Anfragen, 7+ Termine, erster Auftrag 10.000 € nach 2 Wochen.</p>
-    <div class="betrieb"><span class="lg"><img src="{SUS_LOGO}" alt="Sussmann GmbH"></span><span><b>Sussmann GmbH</b><small>Kirchheim · Badsanierung</small></span></div>
+    <div class="betrieb"><span class="lg"><img src="{SUS_LOGO}" alt="Sussmann GmbH"></span><span><b>Sussmann GmbH</b></span></div>
     <div class="zahlen">{zahl_html('14', 'Bad-Anfragen', 'w')}{zahl_html('7<span class="plus">+</span>', 'Vor-Ort-Termine', 'w')}{zahl_html('10.000 €', 'Erster Auftrag', 'w')}</div>
-    <p class="zeit">Patrick Wähnl, Inhaber · Zahlen aus den ersten 2 Wochen</p>
   </div>
 </article>'''
 
@@ -520,7 +524,7 @@ def seite_start():
   <div class="wrap weit buehne-wrap"><div class="buehne feed still"><div class="raster" aria-hidden="true"></div>
     <div class="feed-innen still">
       {phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'p2')}
-      {phone('/assets/funnels/senftleben-leadgen-full.jpg', 'Badsanierung · Senftleben Haustechnik', '#F5762B', 'p3')}
+      {reel_phone('kunden-szenen', 'Gedreht bei unseren Kunden', 'p3', 'kunden-szenen-poster.jpg')}   
       {phone('/assets/funnels/sussmann-leadgen-hero.jpg', 'Badsanierung · Sussmann GmbH', '#F5762B', 'p4')}
     </div>
   </div></div>
@@ -612,14 +616,11 @@ def seite_ueber():
 
 def seite_potenzial():
     h = kopf('Potenzialanalyse für SHK-Betriebe: in 30 Minuten durchgerechnet', 'Kostenlos und unverbindlich: Wir rechnen durch, was in deiner Region an Bewerbungen von Monteuren oder Anfragen für Bäder und Wärmepumpen drin ist. Termin online aussuchen.', '/potenzialanalyse/')
-    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Potenzialanalyse · 30 Minuten · kostenlos</p><h1 class="h-xl rv" data-d="1">Was ist in deiner Region <span class="em w">drin?</span></h1><p class="lead rv" data-d="2">In 30 Minuten rechnen wir durch, was in deinem Einzugsgebiet möglich ist: Bewerbungen von Monteuren oder Anfragen für Bäder und Wärmepumpen. Kostenlos und unverbindlich.</p></div></section>
+    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Potenzialanalyse · 30 Minuten · kostenlos</p><h1 class="h-xl rv" data-d="1">Was ist in deiner Region <span class="em w">drin?</span></h1><p class="lead rv" data-d="2">30 Minuten, kostenlos: Wir rechnen durch, was in deinem Umkreis an Bewerbungen oder Bad-Anfragen drin ist.</p></div></section>
 <div style="height:56px"></div>
 {kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')}
-<section class="sec" id="was" style="padding-top:0"><div class="wrap">
-  <div class="sec-kopf"><div><p class="kick k rv">Was in den 30 Minuten passiert</p><h2 class="d rv">Drei Dinge schauen wir uns an.</h2></div><p class="lead rv">Kein Verkaufsgespräch, sondern eine Rechnung für deine Region. Danach weißt du, ob es sich lohnt.</p></div>
-  {vorteile([('', IK['map'], 'Dein Einzugsgebiet', 'Wie viele Leute erreichen wir im Umkreis deines Betriebs, und wie viele davon passen zur Stelle oder zum Projekt.'), ('', IK['search'], 'Wer dort schon wirbt', 'Welche Betriebe in deiner Region bereits Anzeigen schalten, und was das für deine Kampagne bedeutet.'), ('w', IK['calculator'], 'Was realistisch drin ist', 'Was eine Bewerbung oder eine Anfrage in deiner Region kostet, und was Setup und Betreuung für dich bedeuten.')])}
-</div></section>'''
-    body += team() + statement('Kein Verkaufsgespräch. Eine Rechnung für <em>deine Region.</em>') + faq([FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[4], FAQ_ALLE[6]], 'Vor dem <span class="em k">Termin.</span>')
+'''
+    body += team() + faq([FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[4]], 'Vor dem <span class="em k">Termin.</span>')
     return h + body + fuss()
 
 # ── Schreiben ─────────────────────────────────────────────────────────────

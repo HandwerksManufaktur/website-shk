@@ -39,10 +39,6 @@
   60,
   60
  ],
- "assets-fotos-senftleben-benjamin-fenster": [
-  360,
-  300
- ],
  "assets-fotos-senftleben-benjamin-van": [
   60,
   60
@@ -82,6 +78,10 @@
  "assets-fotos-shk-08": [
   360,
   520
+ ],
+ "assets-fotos-sussmann-lager": [
+  360,
+  300
  ],
  "assets-fotos-sussmann-patrick-mirjana": [
   360,
@@ -172,12 +172,12 @@
   390
  ],
  "assets-team-noah": [
-  120,
-  390
+  100,
+  140
  ],
  "assets-team-robert": [
-  120,
-  390
+  100,
+  140
  ],
  "logos-shk-logo-autohaus-ressle-weiss": [
   50,
@@ -220,20 +220,20 @@
   110
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
-  150,
-  150
+  160,
+  160
  ],
  "logos-shk-logo-irlbacher-weiss": [
   60,
   60
  ],
  "logos-shk-logo-kirchner-weiss": [
-  80,
-  110
+  120,
+  120
  ],
  "logos-shk-logo-kramer-heizungsbau-weiss": [
-  80,
-  110
+  190,
+  190
  ],
  "logos-shk-logo-lanzinger-gmbh-weiss": [
   80,
@@ -252,12 +252,12 @@
   110
  ],
  "logos-shk-logo-suessmeier-heizungstechnik-weiss": [
-  150,
-  150
+  170,
+  170
  ],
  "logos-shk-logo-sussmann-weiss": [
   150,
-  160
+  150
  ],
  "logos-shk-logo-yannick-stimpfle-weiss": [
   70,
@@ -268,9 +268,7 @@
    "assets-funnels-erwin-schmidt-jobs-hero",
    "logos-shk-logo-handwerksmanufaktur-weiss"
   ],
-  "/neu/": [
-   "assets-funnels-senftleben-leadgen-full"
-  ],
+  "/neu/": [],
   "/neu/monteure/": [
    "assets-funnels-erwin-schmidt-jobs-full",
    "assets-funnels-senftleben-jobs-full"

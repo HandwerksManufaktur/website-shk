@@ -96,8 +96,8 @@
     const wege = $$('.weg', leiter);
     const ioL = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return; ioL.disconnect();
-      wege.forEach((w, i) => setTimeout(() => w.classList.add('gestempelt'), rm ? 0 : 380 + i * 260));
-      setTimeout(() => leiter.classList.add('fertig'), rm ? 0 : 380 + wege.length * 260 + 100);
+      wege.forEach((w, i) => setTimeout(() => w.classList.add('gestempelt'), rm ? 0 : 300 + i * 420));
+      setTimeout(() => leiter.classList.add('fertig'), rm ? 0 : 300 + wege.length * 420 + 150);
     }), { threshold: .35 });
     ioL.observe(leiter);
   }

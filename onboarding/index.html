@@ -688,6 +688,7 @@ function onServiceChange(val, on) {
   }
   stepSeq = buildSeq();
   renderDots();
+  document.getElementById('navStepTotal').textContent = stepSeq.length;
 }
 
 // === AUTOSAVE ===

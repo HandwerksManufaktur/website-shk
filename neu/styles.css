@@ -1064,7 +1064,7 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .person .txt{padding:20px 24px 24px}
 .person h3{font-size:19px;margin-bottom:4px}
 .person p{color:var(--sub);font-size:15px}
-.person .initiale{display:grid;place-items:center;background:#E6E9EE}
+.person .initiale{display:grid;place-items:center;position:relative;background:none}.person .initiale::before{content:"";position:absolute;inset:0;background:#E6E9EE}.person .initiale span{position:relative}
 .person .initiale span{display:grid;place-items:center;width:62%;aspect-ratio:1;border-radius:50%;background:var(--night);color:#fff;font-family:var(--fh);font-weight:800;font-size:clamp(56px,7vw,112px);line-height:1;transition:transform .4s var(--spring)}
 .person:hover .initiale span{transform:scale(1.03)}
 @media(max-width:760px){.team-grid{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:32px}.person{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center}.person figure{aspect-ratio:1;height:100%}.person .initiale span{width:72%;font-size:40px}.person .txt{padding:16px 20px}}

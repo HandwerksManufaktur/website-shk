@@ -406,7 +406,7 @@ def ueber_offen(kurz=True):
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
       <p>Ich bin Noah. Seit über sechs Jahren nur Handwerk, über 130 Betriebe, die meisten davon SHK. Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer sein neues Bad plant, und bauen deine Kampagne genau darauf. Und wenn dein Umkreis dafür zu klein ist, sagen wir es dir im ersten Gespräch.</p>
-      <div class="gruender"><img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>Gründer · dein direkter Draht vom ersten Call bis zum Reporting</small></span></div>
+      <div class="gruender"><img src="/assets/fotos/noah-kopf.jpg" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>Gründer · dein direkter Draht vom ersten Call bis zum Reporting</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>24<span>h</span></b><small>oft bis zur ersten Bewerbung oder Anfrage</small></div><div class="stat"><b>25<span>km</span></b><small>Umkreis, in dem die Anzeigen laufen</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
@@ -457,7 +457,7 @@ def faq(fragen=FAQ_START, h2='Bevor du <span class="em k">fragst.</span>'):
     return f'''<section class="faq" id="faq">
   <div class="wrap"><div class="faq-grid">
     <div class="links rv"><p class="kick">Häufige Fragen</p><h2 class="d">{h2}</h2><p>Die Einwände aus fast jedem Erstgespräch, kurz beantwortet. Alles andere klären wir in der Potenzialanalyse.</p>
-      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" width="500" height="500"><span><b>Deine Frage steht nicht dabei?</b><small>Am Telefon bist du direkt bei mir.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
+      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-kopf.jpg" alt="Noah Seelau" width="500" height="500"><span><b>Deine Frage steht nicht dabei?</b><small>Am Telefon bist du direkt bei mir.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
     </div>
     <div class="faq-liste rv" data-d="1">{items}</div>
   </div></div>
@@ -473,7 +473,7 @@ def kontakt(h2='Jede Woche ohne zweiten Monteur ist <span class="em w">ein Bad, 
       <p class="kick">Potenzialanalyse · 30 Minuten · kostenlos</p>
       <h2 class="d">{h2}</h2>
       <p style="margin-top:18px">Das Gespräch kostet nichts und endet mit einer Zahl für deinen Umkreis. Reicht er nicht für Bewerbungen oder Bad-Anfragen, sagen wir es dir. Passt es, bist du in unter 2 Wochen live.</p>
-      <div class="mit-wem"><img src="/assets/fotos/noah-rund.png" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>rechnet selbst mit dir, kein Callcenter dazwischen</small></span></div>
+      <div class="mit-wem"><img src="/assets/fotos/noah-kopf.jpg" alt="Noah Seelau" width="500" height="500"><span><b>Noah Seelau</b><small>rechnet selbst mit dir, kein Callcenter dazwischen</small></span></div>
     </div>
     <div class="wahl-spalte">
       <div class="wahl">

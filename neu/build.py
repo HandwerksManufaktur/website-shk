@@ -156,12 +156,9 @@ def fuss():
         <li><a href="{TEL_HREF}">{ic('phone')}{TEL}</a></li>
         <li><a href="mailto:{MAIL}">{ic('mail')}{MAIL}</a></li>
         <li><a href="{INSTA}" target="_blank" rel="noopener">{ic('instagram')}Instagram</a></li>
-        <li><a href="/impressum/">{ic('doc')}Impressum</a></li>
-        <li><a href="/datenschutz/">{ic('lock')}Datenschutz</a></li>
-        <li><a href="/agb/">{ic('docs')}AGB</a></li>
       </ul></div>
     </div>
-    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur LTD · Alle Rechte vorbehalten.</span><span>Einsatzgebiet: Deutschland · Österreich · Schweiz</span></div>
+    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur<span class="punkt"> · </span><span class="gebiet">Einsatzgebiet: Deutschland, Österreich, Schweiz</span></span><nav class="recht" aria-label="Rechtliches"><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/agb/">AGB</a></nav></div>
   </div>
 </footer>
 {rechner_dialog()}
@@ -218,7 +215,7 @@ def leiter(wege=WEGE_ALLE, kick='Was du wahrscheinlich schon probiert hast', h2=
     return f'''<section class="probiert" id="probiert">
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick k rv">{kick}</p><h2 class="d rv">{h2}</h2></div><p class="lead rv">{lead}</p></div>
-    <div class="leiter wege-plan n{len(wege)} rv"><div class="wp-kopf"><span>So wird bisher gesucht</span></div><ol class="wp-reihe">{knoten}</ol><div class="wp-schiene" aria-hidden="true"></div><div class="ende schlicht" data-d="{len(wege)+1}"><img class="gesicht" src="/assets/fotos/florian-portrait.jpg" alt="Florian Schmidt, Geschäftsführer Erwin Schmidt &amp; Sohn" width="400" height="400" loading="lazy"><span><b>{ende}</b><small>{von}</small></span></div></div>
+    <div class="leiter wege-plan n{len(wege)} rv"><div class="wp-kopf"><span>So wird bisher gesucht</span></div><ol class="wp-reihe">{knoten}</ol><div class="wp-schiene" aria-hidden="true"></div><div class="ende schlicht" data-d="{len(wege)+1}"><img class="gesicht" src="/assets/fotos/florian-neutral.jpg" alt="Florian Schmidt, Geschäftsführer Erwin Schmidt &amp; Sohn" width="400" height="400" loading="lazy"><span><b>{ende}</b><small>{von}</small></span></div></div>
   </div>
 </section>'''
 
@@ -404,7 +401,7 @@ def kaskade(variante='senftleben'):
 def fallstudien_teaser():
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Drei von über 130 <span class="em w">Betrieben.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bad-Anfragen in 2&nbsp;Monaten, ein Auftrag über 10.000&nbsp;€ nach 14&nbsp;Tagen. Die Inhaber erzählen es selbst im Video.</p></div>
+    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bad-Anfragen in 2&nbsp;Monaten, ein Auftrag über 10.000&nbsp;€ nach 14&nbsp;Tagen. Die Zahlen stammen aus den laufenden Kampagnen.</p></div>
     <div class="fall-grid drei">
       {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting · läuft', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen')}
       {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Badsanierung · läuft', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '21 Bad-Anfragen und 10+ Vor-Ort-Termine in 2 Monaten.', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 1)}
@@ -425,7 +422,7 @@ def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, 
   </div>
 </article>'''
     return f'''<article class="fall-gross rv">
-  <div class="vid"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:50% {'8%' if 'senftleben' in poster else '50%'}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
+  <div class="vid"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:{'50% 8%' if 'senftleben' in poster else ('96% 50%' if 'ess-' in poster else '50% 50%')}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
   <div class="txt">
     <div><blockquote>{zitat}</blockquote><p style="margin-top:18px">{absatz}</p></div>
     <div class="zahlen">{z}</div>
@@ -433,11 +430,11 @@ def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, 
   </div>
 </article>'''
 
-FALL_ESS = lambda: fall_gross(ESS_LOGO, 'Florian Schmidt', 'Geschäftsführer, Erwin Schmidt &amp; Sohn GmbH, Sindelfingen', 'Erwin Schmidt & Sohn', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht."', 'Erwin Schmidt &amp; Sohn in Sindelfingen, SHK-Familienbetrieb in dritter Generation, suchte einen Anlagenmechaniker für den Kundendienst. Probiert war schon einiges: Aufkleber mit QR-Code auf den Firmenwagen, die Stelle auf der eigenen Webseite. Gebracht hat das wenig. Dann liefen 4 Wochen lang Anzeigen im Umkreis, mit Fotos aus dem Betrieb und Filterfragen vor der Bewerbung.', [('25', 'Bewerbungen'), ('4', 'Wochen Kampagnen-Laufzeit'), ('1', 'Stelle besetzt: Anlagenmechaniker SHK')], '', 'Fallstudie Erwin Schmidt & Sohn: 25 Bewerbungen in 4 Wochen')
-FALL_SEN = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Also die Zusammenarbeit würde ich auf jeden Fall jedem empfehlen, weil das auch immer unkompliziert ist."', '„Aufträge haben wir jetzt aktuell genügend", sagt Benjamin Senftleben. Sein Meisterbetrieb in Ehingen, dritte Generation, ist ausgelastet. Trotzdem laufen seit Juli Anzeigen für Badsanierung im Umkreis von 25 km, mit ihm selbst vor der Kamera und Filterfragen vor der Anfrage. Nach dem Startpaket hat er verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Werbung macht man nicht nur, wenn es gut läuft. Das hat er schon in der Meisterschule gelernt.', [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine in 2 Monaten')], 'w', 'Fallstudie Senftleben Haustechnik: 21 Bad-Anfragen in 2 Monaten')
+FALL_ESS = lambda: fall_gross(ESS_LOGO, 'Florian Schmidt', 'Geschäftsführer, Erwin Schmidt &amp; Sohn GmbH, Sindelfingen', 'Erwin Schmidt & Sohn', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.“', 'Erwin Schmidt &amp; Sohn in Sindelfingen, SHK-Familienbetrieb in dritter Generation, suchte einen Anlagenmechaniker für den Kundendienst. Probiert war schon einiges: Aufkleber mit QR-Code auf den Firmenwagen, die Stelle auf der eigenen Webseite. Gebracht hat das wenig. Dann liefen 4 Wochen lang Anzeigen im Umkreis, mit Fotos aus dem Betrieb und Filterfragen vor der Bewerbung.', [('25', 'Bewerbungen'), ('4', 'Wochen Kampagnen-Laufzeit'), ('1', 'Stelle besetzt: Anlagenmechaniker SHK')], '', 'Fallstudie Erwin Schmidt & Sohn: 25 Bewerbungen in 4 Wochen')
+FALL_SEN = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Also die Zusammenarbeit würde ich auf jeden Fall jedem empfehlen, weil das auch immer unkompliziert ist.“', '„Aufträge haben wir jetzt aktuell genügend“, sagt Benjamin Senftleben. Sein Meisterbetrieb in Ehingen, dritte Generation, ist ausgelastet. Trotzdem laufen seit Juli Anzeigen für Badsanierung im Umkreis von 25 km, mit ihm selbst vor der Kamera und Filterfragen vor der Anfrage. Nach dem Startpaket hat er verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Werbung macht man nicht nur, wenn es gut läuft. Das hat er schon in der Meisterschule gelernt.', [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine in 2 Monaten')], 'w', 'Fallstudie Senftleben Haustechnik: 21 Bad-Anfragen in 2 Monaten')
 
-FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-patrick-mirjana-van.jpg', '', '', '„So sind wir super zufrieden."', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Seit Anfang September laufen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem", sagt Patrick über die ersten Tage. Nach zwei Wochen kam der erste Auftrag. Als Nächstes folgen Wärmepumpe und Klima, vor der Heizperiode.', [('14', 'Bad-Anfragen'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Firmenwagen der Erich Sussmann GmbH', '40% 30%')
-FALL_SEN_REC = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/fotos/senftleben-team-2026.jpg', '', '', '„21 Bewerbungen in 18 Tagen, diesmal fürs Büro."', 'Nach dem Auftrags-Funnel ging Senftleben Haustechnik denselben Weg für eine Stelle in Lohn- und Buchhaltung: Anzeigen im Umkreis, mit dem eigenen Team im Bild, Bewerbung in 60 Sekunden ohne Lebenslauf. Nach 18 Tagen lagen 21 Bewerbungen vor, die Stelle ist besetzt.', [('21', 'Bewerbungen'), ('18', 'Tage Kampagne'), ('1', 'Stelle: Lohn &amp; Buchhaltung')], 'k', 'Das Team von Senftleben Haustechnik im Lager', '50% 40%')
+FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-empfang-nah.jpg', '', '', '„So sind wir super zufrieden.“', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Seit Anfang September laufen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Nach zwei Wochen kam der erste Auftrag. Als Nächstes folgen Wärmepumpe und Klima, vor der Heizperiode.', [('14', 'Bad-Anfragen'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH', '40% 35%')
+FALL_SEN_REC = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/fotos/senftleben-team-2026.jpg', '', '', '„21 Bewerbungen in 18 Tagen, diesmal fürs Büro.“', 'Nach dem Auftrags-Funnel ging Senftleben Haustechnik denselben Weg für eine Stelle in Lohn- und Buchhaltung: Anzeigen im Umkreis, mit dem eigenen Team im Bild, Bewerbung in 60 Sekunden ohne Lebenslauf. Nach 18 Tagen lagen 21 Bewerbungen vor, die Stelle ist besetzt.', [('21', 'Bewerbungen'), ('18', 'Tage Kampagne'), ('1', 'Stelle: Lohn &amp; Buchhaltung')], 'k', 'Das Team von Senftleben Haustechnik im Lager', '50% 40%')
 
 def senftleben_recruiting_karte():
     return f'''<a class="fall-karte klickbar rv" data-d="1" href="{u('/fallstudien/')}#senftleben-recruiting">
@@ -449,7 +446,7 @@ def senftleben_recruiting_karte():
 
 def sussmann_karte(d=1):
     return f'''<article class="fall-karte rv" data-d="{d}">
-  <div class="vid"><img src="/assets/fotos/sussmann-lager-scharf.jpg" alt="Patrick und Mirjana Wähnl im Lager der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:50% 30%"></div>
+  <div class="vid"><img src="/assets/fotos/sussmann-empfang-quer.jpg" alt="Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH" loading="lazy" width="1600" height="900" style="object-position:40% 30%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung · läuft</span>
     <p class="erg">14 Bad-Anfragen, 7+ Termine, erster Auftrag 10.000 € nach 2 Wochen.</p>
@@ -494,7 +491,7 @@ def ueber_offen(kurz=True):
     return f'''<section class="ueber offen" id="ueber-uns">
   <div class="wrap"><div class="ueber-grid rv">
     <div class="bilder nur-noah">
-      <figure class="gross"><img src="/assets/fotos/noah-ueber.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 25%"></figure>
+      <figure class="gross"><img src="/assets/fotos/noah-ueber-studio.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 30%"></figure>
     </div>
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
@@ -552,7 +549,7 @@ def faq(fragen=FAQ_START, h2='Bevor du <span class="em k">fragst.</span>'):
     return f'''<section class="faq" id="faq">
   <div class="wrap"><div class="faq-grid">
     <div class="links rv"><p class="kick">Häufige Fragen</p><h2 class="d">{h2}</h2><p>Die Einwände aus fast jedem Erstgespräch, kurz beantwortet. Alles andere klären wir in der Potenzialanalyse.</p>
-      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-kopf.jpg" alt="Noah Seelau" width="500" height="500"><span><b>Deine Frage steht nicht dabei?</b><small>Am Telefon bist du direkt bei mir.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
+      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-kopf-nah.jpg" alt="Noah Seelau" width="400" height="400"><span><b>Deine Frage steht nicht dabei?</b><small>Am Telefon bist du direkt bei mir.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
     </div>
     <div class="faq-liste rv" data-d="1">{items}</div>
   </div></div>
@@ -664,7 +661,7 @@ def seite_monteure():
   {vorteile_bild([('', v_phone('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Bewerbung in 60 Sekunden, ohne Lebenslauf', 'Ein paar Fragen im Handy, fertig. Wer sich abends auf der Couch bewirbt, lädt keinen Lebenslauf hoch.'), ('', tickets(TICKETS_REC[:2]), 'Vorqualifiziert: Gewerk, Erfahrung, Führerschein', 'Filterfragen vor der Bewerbung. Bei dir kommt an, wer zur Stelle passt, mit Kontaktdaten.'), ('', '<img src="/assets/fotos/klass-team-van-scharf.jpg" alt="" loading="lazy" width="1600" height="1067" style="object-position:50% 40%">', 'Dein Betrieb als Marke', 'Mit Fotos aus deinem Betrieb: dein Team, dein Lager, deine Baustellen. Kein Stockbild, das jeder hat.')])}
 </div></section>'''
     body += leiter(WEGE_ALLE[:4], 'Was du wahrscheinlich schon probiert hast', 'Vier Wege, die <span class="em k">kalt</span> bleiben.', 'Aufkleber, Portal, eigene Seite, Mundpropaganda: Alles erreicht nur die, die schon suchen. Und wer sich über ein Portal bewirbt, ist oft nach ein paar Monaten wieder weg.')
-    body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Fallstudie · Recruiting</p><h2 class="d rv">„Wir haben nur nicht gedacht, dass es <span class="em k">so viele</span> sind."</h2></div><p class="lead rv">Erwin Schmidt &amp; Sohn, Sindelfingen. Ein Anlagenmechaniker gesucht, 25 Bewerbungen bekommen, Stelle besetzt.</p></div>{FALL_ESS()}
+    body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Fallstudie · Recruiting</p><h2 class="d rv">„Wir haben nur nicht gedacht, dass es <span class="em k">so viele</span> sind.“</h2></div><p class="lead rv">Erwin Schmidt &amp; Sohn, Sindelfingen. Ein Anlagenmechaniker gesucht, 25 Bewerbungen bekommen, Stelle besetzt.</p></div>{FALL_ESS()}
   <div class="fall-abstand">{FALL_SEN_REC()}</div></div></section>'''
     body += kaskade('ess') + reels() + statement('„… der war schon eine Woche bei uns, der ist <em>echt gut.“</em>', mitte=True, von='Florian Schmidt · Geschäftsführer, Erwin Schmidt &amp; Sohn, über den Monteur aus der Kampagne') + kontakt('Such dir den Termin aus, <span class="em k">der passt.</span>')
     return h + body + fuss()
@@ -679,7 +676,7 @@ def seite_auftraege():
   {vorteile_bild([('w', vgl_bild('portal', True), 'Exklusiv für deinen Betrieb', 'Keine Portal-Leads, die parallel an vier Betriebe gehen. Deine Fotos, dein Gebiet, deine Anfragen.'), ('w', tickets(TICKETS_LEAD[:2]), 'Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen', 'Filterfragen vor der Anfrage. Eine Anfrage ohne Adresse und Rückrufnummer zählt bei uns nicht als Anfrage.'), ('w', vgl_bild('last', True), 'Regelbar', 'Auf Wunsch auch nur ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team stemmen kann.')])}
 </div></section>'''
     body += galerie()
-    body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Fallstudie · Auftrags-Funnel Badsanierung</p><h2 class="d rv">„Dass so schnell so viele Anfragen kommen, <span class="em w">hätte ich nicht gedacht.</span>"</h2></div><p class="lead rv">Senftleben Haustechnik, Ehingen. Ausgelastet, und trotzdem laufen die Anzeigen weiter, damit der Name im Kopf bleibt.</p></div>{FALL_SEN()}
+    body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Fallstudie · Auftrags-Funnel Badsanierung</p><h2 class="d rv">„Dass so schnell so viele Anfragen kommen, <span class="em w">hätte ich nicht gedacht.</span>“</h2></div><p class="lead rv">Senftleben Haustechnik, Ehingen. Ausgelastet, und trotzdem laufen die Anzeigen weiter, damit der Name im Kopf bleibt.</p></div>{FALL_SEN()}
   <div class="fall-abstand">{FALL_SUS()}</div>
 </div></section>'''
     body += kaskade('senftleben') + reels() + statement('„Wieso macht Coca‑Cola Werbung? … Weil der Name sich in die Köpfe <em>einbrennen soll.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')

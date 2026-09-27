@@ -1421,3 +1421,20 @@ html.rd-offen{overflow:hidden}
 .uhero .foto-frei img[width][height],
 .vorteil.mit-bild .v-bild>img[width][height],
 .zelle .bild img[width][height]{height:100%}
+
+/* ── Runde 15 (Noah, 28.09.2026) ── */
+/* Wege-Ende: Florians Kreis sitzt konzentrisch in der Rundung — rundum derselbe Abstand (Radius = Abstand + halber Kreis) */
+.leiter .ende.schlicht{padding:12px 28px 12px 12px;border-radius:42px;align-items:center}
+@media(max-width:600px){.leiter .ende.schlicht{padding:14px 18px 14px 14px;border-radius:55px}.leiter .ende.schlicht .gesicht{width:80px;height:80px}}
+/* FAQ: Kopf ein Tick größer */
+.faq-anker .wer img,.faq-anker .wer img[width][height]{width:60px;height:60px}
+/* Fuß: Impressum · Datenschutz · AGB unten in der letzten Zeile */
+.fuss .unten{align-items:center}
+.fuss .unten .gebiet{white-space:nowrap}
+@media(max-width:600px){.fuss .unten .punkt{display:none}.fuss .unten .gebiet{display:block;margin-top:6px}}
+.fuss .unten .recht{display:flex;flex-wrap:wrap;gap:4px 20px}
+.fuss .unten .recht a{min-height:44px;display:inline-flex;align-items:center;color:var(--sub);transition:color .25s}
+.fuss .unten .recht a:hover{color:var(--kalt-deep)}
+.fuss .unten .recht a:active{transform:scale(.96);transition-duration:.1s}
+@media(max-width:380px){.leiter .ende.schlicht{gap:12px;padding-right:14px}.leiter .ende.schlicht b{font-size:15px;line-height:1.3}}
+.fuss .unten .recht a{min-width:44px;justify-content:center}

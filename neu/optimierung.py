@@ -187,6 +187,10 @@ def optimieren(seite, ohne_srcset=(), pfad='/'):
             tag = tag.replace('<img ', '<img fetchpriority="high" ', 1); erstes[0] = False
         return tag
     ganz_ = re.sub(r'<img [^>]+>', oben_img, ganz_)
+    # Veraltete Messung laut melden (28.09.2026: zweimal an einem Tag fehlte das LCP-Bild, weil ein neues Foto nicht in bildgroessen.json stand)
+    if oben and not any(k in ganz_ for k in oben):
+        import sys
+        print(f'⚠️  {pfad}: kein Bild aus der Erste-Bildschirm-Messung steht mehr auf der Seite → neu/bildgroessen_messen.py laufen lassen', file=sys.stderr)
     vorn, _, rest = ganz_.partition('</section>')
     ganz = vorn + ('</section>' + rest if len(teile) > 1 else '')
 

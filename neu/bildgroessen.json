@@ -1,4 +1,8 @@
 {
+ "assets-fotos-erwin-schmidt-monteur": [
+  340,
+  370
+ ],
  "assets-fotos-florian-neutral": [
   80,
   60
@@ -27,9 +31,13 @@
   60,
   60
  ],
- "assets-fotos-noah-ueber-studio": [
+ "assets-fotos-noah-studio-ernst": [
   360,
   540
+ ],
+ "assets-fotos-noah-ueber": [
+  360,
+  510
  ],
  "assets-fotos-senftleben-team-2026": [
   360,
@@ -43,7 +51,7 @@
   360,
   630
  ],
- "assets-fotos-sussmann-empfang-quer": [
+ "assets-fotos-sussmann-wagen-nebeneinander": [
   360,
   380
  ],
@@ -221,14 +229,14 @@
    "assets-funnels-sussmann-leadgen-hero"
   ],
   "/neu/fallstudien/": [
-   "assets-fotos-sussmann-empfang-quer",
+   "assets-fotos-sussmann-wagen-nebeneinander",
    "assets-funnels-erwin-schmidt-jobs-full",
    "assets-logos-box-erwin-schmidt",
    "assets-logos-box-senftleben",
    "assets-logos-box-sussmann"
   ],
   "/neu/ueber-uns/": [
-   "assets-fotos-noah-ueber-studio"
+   "assets-fotos-noah-ueber"
   ],
   "/neu/potenzialanalyse/": []
  }

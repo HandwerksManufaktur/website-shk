@@ -382,7 +382,7 @@ ESS_LOGO = '/assets/logos-box/erwin-schmidt.png'
 SEN_LOGO = '/assets/logos-box/senftleben.png'
 SUS_LOGO = '/assets/logos-box/sussmann.png'
 
-ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker SHK': IK['hardhat'], 'Erster Auftrag nach 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro']}
+ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker': IK['hardhat'], 'Erster Auftrag nach 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro']}
 def zahl_html(b, s, k):
     ic = ICON.get(s, '')
     zi = f'<span class="zi" aria-hidden="true">{ic}</span>' if ic else ''
@@ -448,8 +448,11 @@ def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, 
     <div class="person"><img src="{logo}" alt="{html.escape(betrieb)}"><span><b>{name}</b>{rolle}</span></div>
   </div>
 </article>'''
-    return f'''<article class="fall-gross rv">
-  <div class="vid"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:{'50% 8%' if 'senftleben' in poster else ('96% 50%' if 'ess-' in poster else '50% 50%')}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
+    # Erwin Schmidt: beide im Video (Florian und Meike) — das 16:9-Bild steht in voller Breite oben, der Text darunter
+    # (Noah, 28.09.2026: „zeig gerne beide, jetzt ist grade nur flo zu sehen“)
+    breit = 'ess-' in poster
+    return f'''<article class="fall-gross rv{' breit' if breit else ''}">
+  <div class="vid"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:{'50% 8%' if 'senftleben' in poster else '50% 50%'}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
   <div class="txt">
     <div><blockquote>{zitat}</blockquote><p style="margin-top:18px">{absatz}</p></div>
     <div class="zahlen">{z}</div>
@@ -466,7 +469,7 @@ FALL_SEN_REC = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Sen
 KLASS_LOGO = '/assets/logos-box/klass.png'
 # Zahlen aus der „Bewerbertabelle Klaß Heizungsbauer“ im Drive (Kunden → Klaß GmbH): 35 Bewerbungen ohne Testeintrag,
 # 16 mit „Ja“ bei Vorerfahrung Heizungsbau/Anlagenmechanik/Elektrik (Noah, 28.09.2026: „beim Recruiting mit draufnehmen“)
-FALL_KLASS = lambda: fall_gross(KLASS_LOGO, 'Heizung-Sanitär Klaß GmbH', 'Türkenfeld · Recruiting 2024', 'Heizung-Sanitär Klaß', '/assets/fotos/klass-monteur.jpg', '', '', '35 Bewerbungen für einen Heizungsbauer.', 'Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker für Sanitär-, Heizungs- und Klimatechnik, als Obermonteur mit Bauleitung. Fotografiert haben wir im Betrieb, mit dem eigenen Team. Die Anzeigen liefen im Umkreis und zeigten, was der Betrieb bietet: eigene Projekte, festes Team, 4-Tage-Woche. Vor der Bewerbung stand eine Frage: Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?', [('35', 'Bewerbungen'), ('16', 'mit Erfahrung im Fach'), ('1', 'Stelle: Anlagenmechaniker SHK')], 'k', 'Monteur von Heizung-Sanitär Klaß auf der Baustelle', '50% 22%')
+FALL_KLASS = lambda: fall_gross(KLASS_LOGO, 'Heizung-Sanitär Klaß GmbH', 'Türkenfeld · Recruiting 2024', 'Heizung-Sanitär Klaß', '/assets/fotos/klass-monteur.jpg', '', '', '35 Bewerbungen für einen Heizungsbauer.', 'Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker für Sanitär-, Heizungs- und Klimatechnik, als Obermonteur mit Bauleitung. Fotografiert haben wir im Betrieb, mit dem eigenen Team. Die Anzeigen liefen im Umkreis und zeigten, was der Betrieb bietet: eigene Projekte, festes Team, 4-Tage-Woche. Vor der Bewerbung stand eine Frage: Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?', [('35', 'Bewerbungen'), ('16', 'mit Erfahrung im Fach'), ('SHK', 'Stelle: Anlagenmechaniker')], 'k', 'Monteur von Heizung-Sanitär Klaß auf der Baustelle', '50% 22%')
 
 def senftleben_recruiting_karte():
     return f'''<a class="fall-karte klickbar rv" data-d="1" href="{u('/fallstudien/')}#senftleben-recruiting">

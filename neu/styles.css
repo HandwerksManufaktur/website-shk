@@ -287,6 +287,12 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .fall-gross .person{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--sub)}
 .fall-gross .person img{height:34px;width:auto;background:var(--night);padding:6px 10px;border-radius:var(--r-xs)}
 .fall-gross .person b{display:block;color:var(--ink);font-size:15px}
+/* Breite Fallstudie: 16:9-Video über die ganze Karte, damit alle Personen im Bild sind (Erwin Schmidt, 28.09.2026) */
+.fall-gross.breit{grid-template-columns:minmax(0,1fr);gap:0}
+.fall-gross.breit .vid{aspect-ratio:16/9;min-height:0}
+.fall-gross.breit .txt{padding:36px 40px 40px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:24px 44px;align-items:start}
+.fall-gross.breit .txt>div:first-child{grid-row:span 2}
+@media(max-width:900px){.fall-gross.breit .txt{grid-template-columns:minmax(0,1fr);padding:28px 26px 30px}.fall-gross.breit .txt>div:first-child{grid-row:auto}}
 
 /* ── Reels ──────────────────────────────────────── */
 .reels{padding:0 0 clamp(80px,9vw,140px)}

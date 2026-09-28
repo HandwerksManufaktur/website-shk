@@ -448,11 +448,8 @@ def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, 
     <div class="person"><img src="{logo}" alt="{html.escape(betrieb)}"><span><b>{name}</b>{rolle}</span></div>
   </div>
 </article>'''
-    # Erwin Schmidt: beide im Video (Florian und Meike) — das 16:9-Bild steht in voller Breite oben, der Text darunter
-    # (Noah, 28.09.2026: „zeig gerne beide, jetzt ist grade nur flo zu sehen“)
-    breit = 'ess-' in poster
-    return f'''<article class="fall-gross rv{' breit' if breit else ''}">
-  <div class="vid"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:{'50% 8%' if 'senftleben' in poster else '50% 50%'}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
+    return f'''<article class="fall-gross rv">
+  <div class="vid"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:{'50% 8%' if 'senftleben' in poster else ('96% 50%' if 'ess-' in poster else '50% 50%')}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
   <div class="txt">
     <div><blockquote>{zitat}</blockquote><p style="margin-top:18px">{absatz}</p></div>
     <div class="zahlen">{z}</div>
@@ -469,7 +466,7 @@ FALL_SEN_REC = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Sen
 KLASS_LOGO = '/assets/logos-box/klass.png'
 # Zahlen aus der „Bewerbertabelle Klaß Heizungsbauer“ im Drive (Kunden → Klaß GmbH): 35 Bewerbungen ohne Testeintrag,
 # 16 mit „Ja“ bei Vorerfahrung Heizungsbau/Anlagenmechanik/Elektrik (Noah, 28.09.2026: „beim Recruiting mit draufnehmen“)
-FALL_KLASS = lambda: fall_gross(KLASS_LOGO, 'Heizung-Sanitär Klaß GmbH', 'Türkenfeld · Recruiting 2024', 'Heizung-Sanitär Klaß', '/assets/fotos/klass-monteur.jpg', '', '', '35 Bewerbungen für einen Heizungsbauer.', 'Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker für Sanitär-, Heizungs- und Klimatechnik, als Obermonteur mit Bauleitung. Fotografiert haben wir im Betrieb, mit dem eigenen Team. Die Anzeigen liefen im Umkreis und zeigten, was der Betrieb bietet: eigene Projekte, festes Team, 4-Tage-Woche. Vor der Bewerbung stand eine Frage: Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?', [('35', 'Bewerbungen'), ('16', 'mit Erfahrung im Fach'), ('SHK', 'Stelle: Anlagenmechaniker')], 'k', 'Monteur von Heizung-Sanitär Klaß auf der Baustelle', '50% 22%')
+FALL_KLASS = lambda: fall_gross(KLASS_LOGO, 'Heizung-Sanitär Klaß GmbH', 'Türkenfeld · Recruiting 2024', 'Heizung-Sanitär Klaß', '/assets/fotos/klass-werkbank.jpg', '', '', '35 Bewerbungen für einen Heizungsbauer.', 'Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker für Sanitär-, Heizungs- und Klimatechnik, als Obermonteur mit Bauleitung. Fotografiert haben wir im Betrieb, mit dem eigenen Team. Die Anzeigen liefen im Umkreis und zeigten, was der Betrieb bietet: eigene Projekte, festes Team, 4-Tage-Woche. Vor der Bewerbung stand eine Frage: Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?', [('35', 'Bewerbungen'), ('16', 'mit Erfahrung im Fach'), ('SHK', 'Stelle: Anlagenmechaniker')], 'k', 'Zwei Monteure von Heizung-Sanitär Klaß am Firmenwagen', '50% 30%')
 
 def senftleben_recruiting_karte():
     return f'''<a class="fall-karte klickbar rv" data-d="1" href="{u('/fallstudien/')}#senftleben-recruiting">

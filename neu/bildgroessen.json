@@ -15,10 +15,6 @@
   360,
   230
  ],
- "assets-fotos-klass-monteur": [
-  360,
-  630
- ],
  "assets-fotos-klass-team-van": [
   360,
   590
@@ -26,6 +22,10 @@
  "assets-fotos-klass-team-van-scharf": [
   340,
   370
+ ],
+ "assets-fotos-klass-werkbank": [
+  360,
+  630
  ],
  "assets-fotos-noah-bei-klass": [
   360,

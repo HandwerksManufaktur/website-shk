@@ -1,19 +1,7 @@
 {
- "assets-fotos-erwin-schmidt-monteur": [
-  320,
-  480
- ],
- "assets-fotos-erwin-schmidt-team": [
-  320,
-  480
- ],
- "assets-fotos-florian-kopf": [
-  50,
-  50
- ],
- "assets-fotos-klass-beratung": [
-  320,
-  480
+ "assets-fotos-florian-neutral": [
+  80,
+  60
  ],
  "assets-fotos-klass-hebel-auftraege": [
   360,
@@ -23,93 +11,45 @@
   360,
   230
  ],
- "assets-fotos-klass-monteur": [
-  170,
-  260
- ],
  "assets-fotos-klass-team-van": [
   360,
   590
  ],
  "assets-fotos-klass-team-van-scharf": [
-  360,
-  390
+  340,
+  370
  ],
- "assets-fotos-klass-werkbank": [
-  360,
-  580
+ "assets-fotos-noah-koller-werkstatt": [
+  100,
+  120
  ],
- "assets-fotos-noah-koller-kopf": [
-  50,
-  50
- ],
- "assets-fotos-noah-kopf": [
+ "assets-fotos-noah-kopf-nah": [
   60,
   60
  ],
- "assets-fotos-noah-portrait": [
-  320,
-  440
- ],
- "assets-fotos-noah-rund": [
-  60,
-  60
- ],
- "assets-fotos-noah-ueber": [
+ "assets-fotos-noah-ueber-studio": [
   360,
   540
- ],
- "assets-fotos-senftleben-lager": [
-  320,
-  480
- ],
- "assets-fotos-senftleben-team": [
-  320,
-  490
  ],
  "assets-fotos-senftleben-team-2026": [
   360,
   630
  ],
- "assets-fotos-shk-01": [
-  170,
-  260
- ],
  "assets-fotos-shk-02": [
   360,
-  480
+  390
  ],
- "assets-fotos-shk-04": [
-  280,
-  430
- ],
- "assets-fotos-shk-06": [
-  140,
-  220
- ],
- "assets-fotos-shk-07": [
-  320,
-  480
- ],
- "assets-fotos-shk-08": [
-  320,
-  480
- ],
- "assets-fotos-sussmann-lager-scharf": [
-  360,
-  580
- ],
- "assets-fotos-sussmann-patrick-mirjana-van": [
+ "assets-fotos-sussmann-empfang-nah": [
   360,
   630
+ ],
+ "assets-fotos-sussmann-empfang-quer": [
+  360,
+  380
  ],
  "assets-funnels-erwin-schmidt-jobs-full": [
   310,
   680
- ],
- "assets-funnels-erwin-schmidt-jobs-hero": [
-  200,
-  220
  ],
  "assets-funnels-senftleben-jobs-full": [
   100,
@@ -119,12 +59,8 @@
   420,
   950
  ],
- "assets-funnels-senftleben-leadgen-hero": [
-  180,
-  220
- ],
  "assets-funnels-sussmann-leadgen-hero": [
-  180,
+  140,
   330
  ],
  "assets-logos-box-erwin-schmidt": [
@@ -173,7 +109,7 @@
  ],
  "assets-projekte-bad-wanne": [
   360,
-  790
+  390
  ],
  "assets-projekte-wp-garten": [
   360,
@@ -184,105 +120,93 @@
   390
  ],
  "assets-projekte-wp-herbst": [
-  180,
-  370
+  360,
+  390
  ],
  "assets-team-noah": [
   90,
   120
  ],
- "assets-team-robert": [
+ "assets-team-robert-rund": [
   90,
   120
  ],
- "logos-shk-logo-autohaus-ressle-weiss": [
-  50,
-  50
- ],
  "logos-shk-logo-azemi-hausrenovierungen-weiss": [
-  140,
-  140
- ],
- "logos-shk-logo-entenmann-haustechnik-weiss": [
-  100,
-  100
- ],
- "logos-shk-logo-erwin-schmidt-weiss": [
   110,
   110
  ],
- "logos-shk-logo-franticonstruct-weiss": [
-  50,
-  50
- ],
- "logos-shk-logo-franz-gallenberger-weiss": [
-  60,
-  60
- ],
- "logos-shk-logo-goldacker-weiss": [
+ "logos-shk-logo-entenmann-haustechnik-weiss": [
   80,
   80
  ],
- "logos-shk-logo-handwerksmanufaktur-weiss": [
-  110,
-  100
+ "logos-shk-logo-erwin-schmidt-weiss": [
+  60,
+  60
  ],
- "logos-shk-logo-hannes-schmidt-gmbh-weiss": [
+ "logos-shk-logo-franticonstruct-weiss": [
+  40,
+  40
+ ],
+ "logos-shk-logo-franz-gallenberger-weiss": [
   50,
   50
  ],
+ "logos-shk-logo-goldacker-weiss": [
+  60,
+  60
+ ],
+ "logos-shk-logo-hannes-schmidt-gmbh-weiss": [
+  40,
+  40
+ ],
  "logos-shk-logo-haustechnik-buchschmid-weiss": [
-  110,
-  110
+  90,
+  90
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
   160,
   160
  ],
  "logos-shk-logo-irlbacher-weiss": [
-  60,
-  60
- ],
- "logos-shk-logo-kirchner-weiss": [
-  50,
-  50
+  40,
+  40
  ],
  "logos-shk-logo-kramer-heizungsbau-weiss": [
   180,
   180
  ],
  "logos-shk-logo-lanzinger-gmbh-weiss": [
-  80,
-  80
+  60,
+  60
  ],
  "logos-shk-logo-lueders-fliesen-weiss": [
-  120,
-  120
+  90,
+  90
  ],
  "logos-shk-logo-markus-ditsch-weiss": [
   30,
   30
  ],
  "logos-shk-logo-senftleben-haustechnik-weiss": [
-  110,
-  110
+  60,
+  60
  ],
  "logos-shk-logo-suessmeier-heizungstechnik-weiss": [
   170,
   170
  ],
  "logos-shk-logo-sussmann-weiss": [
-  150,
-  150
+  110,
+  110
  ],
  "logos-shk-logo-yannick-stimpfle-weiss": [
-  70,
-  70
+  50,
+  50
  ],
  "_oben": {
   "/": [
-   "assets-funnels-erwin-schmidt-jobs-hero",
-   "logos-shk-logo-handwerksmanufaktur-weiss"
+   "assets-funnels-erwin-schmidt-jobs-full",
+   "assets-funnels-sussmann-leadgen-hero"
   ],
   "/neu/": [
    "assets-funnels-erwin-schmidt-jobs-full",
@@ -296,9 +220,15 @@
    "assets-funnels-senftleben-leadgen-full",
    "assets-funnels-sussmann-leadgen-hero"
   ],
-  "/neu/fallstudien/": [],
+  "/neu/fallstudien/": [
+   "assets-fotos-sussmann-empfang-quer",
+   "assets-funnels-erwin-schmidt-jobs-full",
+   "assets-logos-box-erwin-schmidt",
+   "assets-logos-box-senftleben",
+   "assets-logos-box-sussmann"
+  ],
   "/neu/ueber-uns/": [
-   "assets-fotos-noah-ueber"
+   "assets-fotos-noah-ueber-studio"
   ],
   "/neu/potenzialanalyse/": []
  }

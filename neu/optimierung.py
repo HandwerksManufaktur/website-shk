@@ -175,7 +175,9 @@ def optimieren(seite, ohne_srcset=(), pfad='/'):
     ganz_ = vorn + ('</section>' + rest if len(teile) > 1 else '')
     # Gemessen (bildgroessen_messen.py): Fotos, die auf DIESER Seite im ersten Bildschirm stehen, laden sofort,
     # das erste davon mit hoher Priorität — es ist meist das LCP-Element (Über uns: Noahs Porträt, 27.09.2026)
-    oben = set(gemessen.get('_oben', {}).get(pfad, []))
+    # gemessen wird an der Vorschau (/neu/…); der Live-Bau heißt /ueber-uns/ — ohne diese Brücke bekam live keine Seite ihr LCP-Bild vorgeladen (28.09.2026)
+    _ob = gemessen.get('_oben', {})
+    oben = set(_ob.get(pfad if pfad.startswith('/neu/') else '/neu' + pfad, _ob.get(pfad, [])))
     erstes = [True]
     def oben_img(m):
         tag = m.group(0); k = re.search(r'src="/assets/opt/(.+?)-\d+\.webp"', tag)

@@ -158,7 +158,7 @@ def fuss():
         <li><a href="{INSTA}" target="_blank" rel="noopener">{ic('instagram')}Instagram</a></li>
       </ul></div>
     </div>
-    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur<span class="punkt"> · </span><span class="gebiet">Einsatzgebiet: Deutschland, Österreich, Schweiz</span></span><nav class="recht" aria-label="Rechtliches"><a href="{u('/impressum/')}">Impressum</a><a href="{u('/datenschutz/')}">Datenschutz</a><a href="{u('/agb/')}">AGB</a></nav></div>
+    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur</span><nav class="recht" aria-label="Rechtliches"><a href="{u('/impressum/')}">Impressum</a><a href="{u('/datenschutz/')}">Datenschutz</a><a href="{u('/agb/')}">AGB</a></nav></div>
   </div>
 </footer>
 {rechner_dialog()}
@@ -382,7 +382,7 @@ ESS_LOGO = '/assets/logos-box/erwin-schmidt.png'
 SEN_LOGO = '/assets/logos-box/senftleben.png'
 SUS_LOGO = '/assets/logos-box/sussmann.png'
 
-ICON = {'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro']}
+ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker SHK': IK['hardhat'], 'Erster Auftrag nach 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro']}
 def zahl_html(b, s, k):
     ic = ICON.get(s, '')
     zi = f'<span class="zi" aria-hidden="true">{ic}</span>' if ic else ''
@@ -462,6 +462,11 @@ FALL_SEN = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftle
 
 FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-empfang-nah.jpg', '', '', '„So sind wir super zufrieden.“', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Seit Anfang September laufen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Nach zwei Wochen kam der erste Auftrag. Als Nächstes folgen Wärmepumpe und Klima, vor der Heizperiode.', [('14', 'Bad-Anfragen'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH', '40% 35%')
 FALL_SEN_REC = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/fotos/senftleben-team-2026.jpg', '', '', '„21 Bewerbungen in 18 Tagen, diesmal fürs Büro.“', 'Nach dem Auftrags-Funnel ging Senftleben Haustechnik denselben Weg für eine Stelle in Lohn- und Buchhaltung: Anzeigen im Umkreis, mit dem eigenen Team im Bild, Bewerbung in 60 Sekunden ohne Lebenslauf. Nach 18 Tagen lagen 21 Bewerbungen vor, die Stelle ist besetzt.', [('21', 'Bewerbungen'), ('18', 'Tage Kampagne'), ('1', 'Stelle: Lohn &amp; Buchhaltung')], 'k', 'Das Team von Senftleben Haustechnik im Lager', '50% 40%')
+
+KLASS_LOGO = '/assets/logos-box/klass.png'
+# Zahlen aus der „Bewerbertabelle Klaß Heizungsbauer“ im Drive (Kunden → Klaß GmbH): 35 Bewerbungen ohne Testeintrag,
+# 16 mit „Ja“ bei Vorerfahrung Heizungsbau/Anlagenmechanik/Elektrik (Noah, 28.09.2026: „beim Recruiting mit draufnehmen“)
+FALL_KLASS = lambda: fall_gross(KLASS_LOGO, 'Heizung-Sanitär Klaß GmbH', 'Türkenfeld · Recruiting 2024', 'Heizung-Sanitär Klaß', '/assets/fotos/klass-monteur.jpg', '', '', '35 Bewerbungen für einen Heizungsbauer.', 'Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker für Sanitär-, Heizungs- und Klimatechnik, als Obermonteur mit Bauleitung. Fotografiert haben wir im Betrieb, mit dem eigenen Team. Die Anzeigen liefen im Umkreis und zeigten, was der Betrieb bietet: eigene Projekte, festes Team, 4-Tage-Woche. Vor der Bewerbung stand eine Frage: Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?', [('35', 'Bewerbungen'), ('16', 'mit Erfahrung im Fach'), ('1', 'Stelle: Anlagenmechaniker SHK')], 'k', 'Monteur von Heizung-Sanitär Klaß auf der Baustelle', '50% 22%')
 
 def senftleben_recruiting_karte():
     return f'''<a class="fall-karte klickbar rv" data-d="1" href="{u('/fallstudien/')}#senftleben-recruiting">
@@ -689,7 +694,8 @@ def seite_monteure():
 </div></section>'''
     body += leiter(WEGE_ALLE[:4], 'Was du wahrscheinlich schon probiert hast', 'Vier Wege, die <span class="em k">kalt</span> bleiben.', 'Aufkleber, Portal, eigene Seite, Mundpropaganda: Alles erreicht nur die, die schon suchen. Und wer sich über ein Portal bewirbt, ist oft nach ein paar Monaten wieder weg.')
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Fallstudie · Recruiting</p><h2 class="d rv">„Wir haben nur nicht gedacht, dass es <span class="em k">so viele</span> sind.“</h2></div><p class="lead rv">Erwin Schmidt &amp; Sohn, Sindelfingen. Ein Anlagenmechaniker gesucht, 25 Bewerbungen bekommen, Stelle besetzt.</p></div>{FALL_ESS()}
-  <div class="fall-abstand">{FALL_SEN_REC()}</div></div></section>'''
+  <div class="fall-abstand">{FALL_SEN_REC()}</div>
+  <div class="fall-abstand">{FALL_KLASS()}</div></div></section>'''
     body += kaskade('ess') + reels() + statement('„… der war schon eine Woche bei uns, der ist <em>echt gut.“</em>', mitte=True, von='Florian Schmidt · Geschäftsführer, Erwin Schmidt &amp; Sohn, über den Monteur aus der Kampagne') + kontakt('Such dir den Termin aus, <span class="em k">der passt.</span>')
     return h + body + fuss()
 
@@ -711,11 +717,12 @@ def seite_auftraege():
 
 def seite_fallstudien():
     h = kopf('Fallstudien: Recruiting und Auftrags-Funnel für SHK-Betriebe', 'Erwin Schmidt & Sohn: 25 Bewerbungen in 4 Wochen. Senftleben Haustechnik: 21 Bad-Anfragen in 2 Monaten. Beide Inhaber im Video, mit den Zahlen aus den ersten Wochen.', '/fallstudien/')
-    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Fallstudien</p><h1 class="h-xl rv" data-d="1">Vier Kampagnen, <span class="em w">die gerade laufen.</span></h1><p class="lead rv" data-d="2">Mit den Zahlen aus den ersten Wochen und den Inhabern vor der Kamera. Keine Hochrechnung, kein „bis zu".</p></div></section>
+    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Fallstudien</p><h1 class="h-xl rv" data-d="1">Fünf Kampagnen, <span class="em w">fünf SHK-Betriebe.</span></h1><p class="lead rv" data-d="2">Mit den Zahlen aus den Kampagnen und den Inhabern vor der Kamera. Keine Hochrechnung, kein „bis zu".</p></div></section>
 <section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">Recruiting · Erwin Schmidt &amp; Sohn, Sindelfingen</p><h2 class="d rv">Ein Anlagenmechaniker gesucht. <span class="em k">25 Bewerbungen.</span></h2></div></div>{FALL_ESS()}</div></section>
 <section class="sec" id="senftleben" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Auftrags-Funnel · Senftleben Haustechnik, Ehingen</p><h2 class="d rv">Ausgelastet, und trotzdem <span class="em w">21 Bad-Anfragen.</span></h2></div></div>{FALL_SEN()}</div></section>
 <section class="sec" id="sussmann" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Auftrags-Funnel · Erich Sussmann GmbH, Kirchheim bei München</p><h2 class="d rv">Erster Auftrag <span class="em w">nach zwei Wochen.</span></h2></div></div>{FALL_SUS()}</div></section>
-<section class="sec" id="senftleben-recruiting" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">Recruiting · Senftleben Haustechnik, Ehingen</p><h2 class="d rv">Eine Bürostelle, <span class="em k">21 Bewerbungen.</span></h2></div></div>{FALL_SEN_REC()}</div></section>'''
+<section class="sec" id="senftleben-recruiting" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">Recruiting · Senftleben Haustechnik, Ehingen</p><h2 class="d rv">Eine Bürostelle, <span class="em k">21 Bewerbungen.</span></h2></div></div>{FALL_SEN_REC()}</div></section>
+<section class="sec" id="klass" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">Recruiting · Heizung-Sanitär Klaß, Türkenfeld</p><h2 class="d rv">Ein Heizungsbauer gesucht. <span class="em k">35 Bewerbungen.</span></h2></div></div>{FALL_KLASS()}</div></section>'''
     body += reels() + stimmen()
     return h + body + fuss()
 

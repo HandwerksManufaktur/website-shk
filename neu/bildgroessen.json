@@ -15,6 +15,10 @@
   360,
   230
  ],
+ "assets-fotos-klass-monteur": [
+  360,
+  630
+ ],
  "assets-fotos-klass-team-van": [
   360,
   590
@@ -60,7 +64,7 @@
   680
  ],
  "assets-funnels-erwin-schmidt-jobs-full-oben": [
-  150,
+  270,
   330
  ],
  "assets-funnels-senftleben-jobs-full": [
@@ -76,7 +80,7 @@
   290
  ],
  "assets-funnels-senftleben-leadgen-full-oben": [
-  150,
+  270,
   330
  ],
  "assets-funnels-sussmann-leadgen-hero": [
@@ -98,6 +102,10 @@
  "assets-logos-box-kirchner": [
   100,
   100
+ ],
+ "assets-logos-box-klass": [
+  90,
+  90
  ],
  "assets-logos-box-lanzinger": [
   100,
@@ -185,7 +193,7 @@
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
   170,
-  160
+  170
  ],
  "logos-shk-logo-irlbacher-weiss": [
   40,

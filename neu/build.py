@@ -173,6 +173,19 @@ GOOGLE_G = '<svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#E
 def trust(hell=True):
     return f'<p class="trust"><span><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span> <b>5,0</b> auf Google</span><span>·</span><span><b>130+</b> Betriebe</span><span>·</span><span><b>Spezialisiert</b> auf SHK</span></p>'
 
+def bildschirm_oben(img, verh=2.3):
+    """Nur der obere Bildschirm eines langen Funnel-Screenshots. Im Unterseiten-Hero steht das Handy still
+    (.uhero … animation:none) — die übrigen 13.000 px lud das Handy umsonst und hielten den LCP bei 2,7 s (28.09.2026)."""
+    quelle = REPO / img.lstrip('/')
+    ziel = quelle.with_name(quelle.stem + '-oben' + quelle.suffix)
+    with Image.open(quelle) as im:
+        w, h = im.size
+        if h <= w * verh:
+            return img
+        if not ziel.exists() or ziel.stat().st_mtime < quelle.stat().st_mtime:
+            im.convert('RGB').crop((0, 0, w, round(w * verh))).save(ziel, quality=88, optimize=True)
+    return img.rsplit('/', 1)[0] + '/' + ziel.name
+
 def phone(img, etikett, farbe, klasse='', delay='0s'):
     return f'''<div class="phone {klasse}" aria-hidden="true"><div class="scroller"><img src="{img}" alt="" loading="lazy" style="--d:{delay}"></div><span class="etikett"><i style="background:{farbe}"></i>{etikett}</span></div>'''
 
@@ -669,7 +682,7 @@ def seite_monteure():
     fr = [FAQ_ALLE[0], FAQ_ALLE[7], FAQ_ALLE[3], FAQ_ALLE[2], FAQ_ALLE[1]]
     h = kopf('Monteure finden für SHK-Betriebe: Social Recruiting im Umkreis', 'Anlagenmechaniker und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert. Fallstudie: 25 Bewerbungen in 4 Wochen.', '/monteure/', dunkel=True, schema_extra='')
     body = uhero('Für SHK-Betriebe, die einen Monteur suchen', 'Monteure, die anfangen wollen. <span class="em k">Aus deinem Umkreis.</span>', 'Die guten Monteure suchen nicht, sie sind in Arbeit. Sie wechseln, wenn das richtige Angebot vor ihnen liegt. Wir bringen deins dorthin, wo sie jeden Abend sind: in ihren Feed. Du führst nur noch die Gespräche.', 'Recruiting besprechen', CAL_REC, 'btn-kalt',
-        phone('/assets/funnels/senftleben-jobs-full.jpg', 'Recruiting · Senftleben Haustechnik', '#1E90E8', 'links', '2s') + phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'rechts', '0s'))
+        phone(bildschirm_oben('/assets/funnels/senftleben-jobs-full.jpg'), 'Recruiting · Senftleben Haustechnik', '#1E90E8', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'rechts', '0s'))
     body += f'''<section class="sec" id="vorteile"><div class="wrap">
   <div class="sec-kopf"><div><p class="kick k rv">Was anders läuft</p><h2 class="d rv">Bewerbungen von Leuten, die <span class="em k">gerade nicht suchen.</span></h2></div><p class="lead rv">Social Recruiting erreicht Anlagenmechaniker SHK und Kundendiensttechniker dort, wo sie ohnehin sind: auf Instagram und Facebook, nicht auf Stellenportalen, die nur aktiv Suchende sehen.</p></div>
   {vorteile_bild([('', v_phone('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Bewerbung in 60 Sekunden, ohne Lebenslauf', 'Ein paar Fragen im Handy, fertig. Wer sich abends auf der Couch bewirbt, lädt keinen Lebenslauf hoch.'), ('', tickets(TICKETS_REC[:2]), 'Vorqualifiziert: Gewerk, Erfahrung, Führerschein', 'Filterfragen vor der Bewerbung. Bei dir kommt an, wer zur Stelle passt, mit Kontaktdaten.'), ('', '<img src="/assets/fotos/klass-team-van-scharf.jpg" alt="" loading="lazy" width="1600" height="1067" style="object-position:50% 40%">', 'Dein Betrieb als Marke', 'Mit Fotos aus deinem Betrieb: dein Team, dein Lager, deine Baustellen. Kein Stockbild, das jeder hat.')])}
@@ -684,7 +697,7 @@ def seite_auftraege():
     fr = [FAQ_ALLE[0], FAQ_ALLE[5], FAQ_ALLE[1], FAQ_ALLE[4], FAQ_ALLE[2]]
     h = kopf('Bad- und Wärmepumpen-Aufträge für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Umkreis, nur für deinen Betrieb, vorqualifiziert nach Objekt und Eigentum. Fallstudie: 21 Anfragen in 2 Monaten.', '/auftraege/', dunkel=True, schema_extra='')
     body = uhero('Für SHK-Betriebe, die Bäder und Wärmepumpen bauen', 'Bad-Aufträge, die nur du bekommst. <span class="em w">Aus deinem Umkreis.</span>', 'Anzeigen auf deinen Namen, nur in deinem Einzugsgebiet, Filterfragen vor jeder Anfrage. Jede Anfrage gehört dir allein, nicht vier Wettbewerbern gleichzeitig. Du fährst nur noch zum Termin.', 'Potenzial durchrechnen', '#rechner-auf', 'btn-warm',
-        phone('/assets/funnels/sussmann-leadgen-hero.jpg', 'Aufträge · Sussmann GmbH', '#F5762B', 'links', '1s') + phone('/assets/funnels/senftleben-leadgen-full.jpg', 'Aufträge · Senftleben Haustechnik', '#F5762B', 'rechts', '0s'), warm=True)
+        phone(bildschirm_oben('/assets/funnels/sussmann-leadgen-hero.jpg'), 'Aufträge · Sussmann GmbH', '#F5762B', 'links', '1s') + phone(bildschirm_oben('/assets/funnels/senftleben-leadgen-full.jpg'), 'Aufträge · Senftleben Haustechnik', '#F5762B', 'rechts', '0s'), warm=True)
     body += f'''<section class="sec" id="vorteile"><div class="wrap">
   <div class="sec-kopf"><div><p class="kick w rv">Was anders läuft</p><h2 class="d rv">Bäder und Wärmepumpen, <span class="em w">wenn du sie brauchst.</span></h2></div><p class="lead rv">Ein Komplettbad oder eine Wärmepumpe bringt 20.000 bis 50.000 €. Über Mundpropaganda kommen die Projekte, wann sie wollen. Über deinen eigenen Kanal kommen sie, wenn du Kapazität hast.</p></div>
   {vorteile_bild([('w', vgl_bild('portal', True), 'Exklusiv für deinen Betrieb', 'Keine Portal-Leads, die parallel an vier Betriebe gehen. Deine Fotos, dein Gebiet, deine Anfragen.'), ('w', tickets(TICKETS_LEAD[:2]), 'Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen', 'Filterfragen vor der Anfrage. Eine Anfrage ohne Adresse und Rückrufnummer zählt bei uns nicht als Anfrage.'), ('w', vgl_bild('last', True), 'Regelbar', 'Auf Wunsch auch nur ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team stemmen kann.')])}

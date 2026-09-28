@@ -525,6 +525,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
   .uhero .txt{padding-bottom:36px}
   .uhero .buehne-phones{padding-bottom:0}
   .uhero .phone.links{display:none}
+  .uhero .phone.rechts{width:min(240px,62vw);transform:rotate(3deg)}   /* 32vw = 148 px war zu klein, das Etikett brach in drei Zeilen über den Bildschirm (28.09.2026) */
+  .uhero .phone .etikett{left:12px;right:12px;bottom:12px;justify-content:center;text-align:center}
   .zelle.mit-phone{padding-right:28px;padding-top:330px}
   .umkreis{right:-80px;top:-60px;opacity:.55}
   .h-xl{font-size:clamp(42px,12vw,72px)}

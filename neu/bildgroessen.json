@@ -59,13 +59,25 @@
   310,
   680
  ],
+ "assets-funnels-erwin-schmidt-jobs-full-oben": [
+  150,
+  330
+ ],
  "assets-funnels-senftleben-jobs-full": [
   100,
-  830
+  120
+ ],
+ "assets-funnels-senftleben-jobs-full-oben": [
+  330,
+  330
  ],
  "assets-funnels-senftleben-leadgen-full": [
-  420,
-  950
+  230,
+  290
+ ],
+ "assets-funnels-senftleben-leadgen-full-oben": [
+  150,
+  330
  ],
  "assets-funnels-sussmann-leadgen-hero": [
   140,
@@ -172,7 +184,7 @@
   90
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
-  160,
+  170,
   160
  ],
  "logos-shk-logo-irlbacher-weiss": [
@@ -221,11 +233,11 @@
    "assets-funnels-sussmann-leadgen-hero"
   ],
   "/neu/monteure/": [
-   "assets-funnels-erwin-schmidt-jobs-full",
-   "assets-funnels-senftleben-jobs-full"
+   "assets-funnels-erwin-schmidt-jobs-full-oben",
+   "assets-funnels-senftleben-jobs-full-oben"
   ],
   "/neu/auftraege/": [
-   "assets-funnels-senftleben-leadgen-full",
+   "assets-funnels-senftleben-leadgen-full-oben",
    "assets-funnels-sussmann-leadgen-hero"
   ],
   "/neu/fallstudien/": [

@@ -486,7 +486,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .js .rv{transition:opacity .4s var(--ease),transform .4s var(--ease)}
 .js .rv:not(.an){opacity:0;transform:translateY(26px)}
 /* Hero: Text ist ab dem ersten Bild sichtbar (PageSpeed/LCP wartete sonst auf das Skript), nur das Hochgleiten bleibt — 27.09.2026 */
-.js .hero .rv:not(.an),.js .uhero .rv:not(.an){opacity:1}
+/* Erster Bildschirm wartet nie auf die Einblendung: kein Versatz im Hero, und der Werdegang (erstes Bild auf „Über uns“ am Handy) steht sofort — sonst misst Lighthouse 2 s Render-Verzug (28.09.2026) */
+.js .hero .rv:not(.an),.js .uhero .rv:not(.an),.js .werdegang .rv:not(.an){opacity:1;transform:none}
 .js .rv[data-d="1"]{transition-delay:.1s}.js .rv[data-d="2"]{transition-delay:.2s}.js .rv[data-d="3"]{transition-delay:.3s}.js .rv[data-d="4"]{transition-delay:.4s}.js .rv[data-d="5"]{transition-delay:.5s}
 
 /* ── Responsiv ──────────────────────────────────── */

@@ -505,13 +505,13 @@ def ueber_offen(kurz=True):
     return f'''<section class="ueber offen" id="ueber-uns">
   <div class="wrap"><div class="ueber-grid rv">
     <div class="bilder nur-noah">
-      <figure class="gross"><img src="/assets/fotos/noah-studio-ernst.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 25%"></figure>
+      <figure class="gross"><img src="/assets/fotos/noah-laptop.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="900" height="1125" style="object-position:60% 40%"></figure>
     </div>
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
       <p>Ich bin Noah. Seit 2019 arbeiten wir nur für Handwerksbetriebe, über 130 waren es bisher. Für SHK-Betriebe drehen wir bei dir vor Ort, mit deinen Leuten vor der Kamera, und fragen vor jeder Bewerbung und jeder Anfrage ab, ob sie zu dir passt. Ist dein Umkreis zu klein, hörst du das im ersten Gespräch.</p>
-      <div class="gruender"><img src="/assets/fotos/noah-koller-werkstatt.jpg" alt="Noah Seelau vor dem Firmenwagen eines Kundenbetriebs" width="400" height="320" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
+      <div class="gruender"><img src="/assets/fotos/noah-gruender-portrait.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="400" height="320" loading="lazy" style="object-position:50% 40%"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>24<span>h</span></b><small>oft bis zur ersten Bewerbung oder Anfrage</small></div><div class="stat"><b>25<span>km</span></b><small>Umkreis, in dem die Anzeigen laufen</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
@@ -716,7 +716,7 @@ def ueber_werdegang():
     sollte auch nicht einfach komplett gedoppelt sein … der Text da ist richtig scheiße"). Eigenes Foto, Werdegang am Regler."""
     schritte = ''.join(f'<li class="rv" data-d="{i+1}"><b>{z}</b><span><strong>{t}</strong> {p}</span></li>' for i, (z, t, p) in enumerate(WERDEGANG))
     return f'''<section class="sec werdegang" id="werdegang"><div class="wrap"><div class="werdegang-grid">
-  <figure class="werdegang-bild rv"><img src="/assets/fotos/noah-ueber.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 30%"></figure>
+  <figure class="werdegang-bild rv"><img src="/assets/fotos/noah-bei-klass.jpg" alt="Noah Seelau mit zwei Monteuren vor ihrem Firmenwagen" loading="lazy" width="1100" height="1100" style="object-position:50% 40%"></figure>
   <div class="werdegang-text">
     <p class="kick rv">Wie es angefangen hat</p>
     <h2 class="d rv">Die erste Website war für einen Handwerker. <span class="em w">Dabei ist es geblieben.</span></h2>

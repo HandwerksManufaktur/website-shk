@@ -862,6 +862,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 @media(max-width:900px){.k-stufe{grid-template-columns:1fr auto;gap:10px 14px}.k-text{grid-column:1/-1}.kal-raster{gap:4px}.kal-raster i{border-radius:4px}}
 @media(prefers-reduced-motion:reduce){#intro{display:none}.k-balken{transform:none;transition:none}.kal-raster i.an{background:var(--warm)}.ablauf{--p:1}}
 @media(prefers-reduced-transparency:reduce){#intro{display:none}}
+/* Handy ohne Logo-Intro: es hielt den Hero-Text ~2 s zurück, mobil LCP bis 3,4 s (Noah, 28.09.2026: „Mobil komplett optimiert“) */
+@media(max-width:760px){#intro{display:none}}
 
 /* ── Runde 10 (26.09.2026): Apple-/OS-Selbstprüfung — Glyphen → SVG, Tracking je Größe, Kontrast ≥ 4,5, 8er-Raster, Loops nur im Bild ── */
 .ik.voll{fill:currentColor;stroke:none}

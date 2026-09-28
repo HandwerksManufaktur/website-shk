@@ -23,7 +23,11 @@
   340,
   370
  ],
- "assets-fotos-noah-koller-werkstatt": [
+ "assets-fotos-noah-bei-klass": [
+  360,
+  510
+ ],
+ "assets-fotos-noah-gruender-portrait": [
   100,
   120
  ],
@@ -31,13 +35,9 @@
   60,
   60
  ],
- "assets-fotos-noah-studio-ernst": [
+ "assets-fotos-noah-laptop": [
   360,
   540
- ],
- "assets-fotos-noah-ueber": [
-  360,
-  510
  ],
  "assets-fotos-senftleben-team-2026": [
   360,
@@ -236,7 +236,7 @@
    "assets-logos-box-sussmann"
   ],
   "/neu/ueber-uns/": [
-   "assets-fotos-noah-ueber"
+   "assets-fotos-noah-bei-klass"
   ],
   "/neu/potenzialanalyse/": []
  }

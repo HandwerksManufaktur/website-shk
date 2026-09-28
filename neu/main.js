@@ -10,7 +10,7 @@
   const intro = $('#intro');
   if (intro) {
     let gesehen = false; try { gesehen = sessionStorage.getItem('shk-intro') === '1'; } catch (e) {}
-    if (gesehen || rm) intro.remove();
+    if (gesehen || rm || matchMedia('(max-width:760px)').matches) intro.remove();
     else { requestAnimationFrame(() => intro.classList.add('los')); setTimeout(() => { intro.classList.add('aus'); try { sessionStorage.setItem('shk-intro', '1'); } catch (e) {} }, 1450); setTimeout(() => intro.remove(), 2100); }
   }
 

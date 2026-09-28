@@ -1450,7 +1450,13 @@ html.rd-offen{overflow:hidden}
 .recht-text ul,.recht-text ol{padding-left:20px;margin-bottom:12px}
 .recht-text strong{color:var(--ink)}
 .recht-text a{color:var(--kalt-deep);text-decoration:underline;text-underline-offset:3px;word-break:break-word}
+/* Impressum: links ein Bild von Noah neben „Vertreten durch“ (Noah, 28.09.2026) */
+.vertreter{display:grid;grid-template-columns:168px 1fr;gap:28px;align-items:start}
+.vertreter figure{margin:0}
+.vertreter img{display:block;width:168px;height:206px;object-fit:cover;border-radius:var(--r-md)}
+.vertreter address{margin:0}
 @media(max-width:600px){.recht-seite{padding:112px 0 64px}.recht-text h2{font-size:18px}}
+@media(max-width:600px){.vertreter{grid-template-columns:1fr;gap:16px}.vertreter img{width:120px;height:148px}}
 .fuss .unten .recht .hmc-link{margin:0;font-size:13px;color:var(--sub);opacity:1;min-height:44px;letter-spacing:.01em}
 .fuss .unten .recht .hmc-link:hover{color:var(--kalt-deep);text-decoration:none}
 .recht-text a:active,.fuss .unten .recht .hmc-link:active{opacity:.6;transition-duration:.1s}

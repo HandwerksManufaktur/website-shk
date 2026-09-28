@@ -285,16 +285,30 @@ def rechner_dialog():
     <section class="rd-schritt" data-schritt="4" hidden><h3>Was ist ein Auftrag bei dir im Schnitt wert?</h3>{wahl('wert', [('5000', '5.000 €'), ('10000', '10.000 €'), ('20000', '20.000 €'), ('35000', '35.000 € +')])}</section>
     <section class="rd-schritt" data-schritt="5" hidden><div class="rd-ergebnis"><small data-text-monteure="Liegen bei dir jeden Monat" data-text-auftraege="Wären jeden Monat zusätzlich drin">Liegen bei dir jeden Monat</small><b data-summe>0 €</b><p data-beleg-monteure="Bei Erwin Schmidt &amp; Sohn kamen 25 Bewerbungen in 4 Wochen, bei Senftleben Haustechnik 21 in 18 Tagen." data-beleg-auftraege="Bei Senftleben Haustechnik kamen 21 Bad-Anfragen in 2 Monaten, bei Sussmann der erste Auftrag nach 2 Wochen."></p><span class="rd-fuss">Rechenbeispiel mit deinen Angaben, keine Zusage.</span></div>
       <button type="button" class="btn btn-ink rd-weiter" data-weiter>Für meinen Umkreis prüfen lassen <span aria-hidden="true">→</span></button></section>
-    <section class="rd-schritt" data-schritt="6" hidden><h3>Wo sitzt dein Betrieb?</h3><label class="rd-feld"><span>PLZ oder Ort</span><input name="plz" autocomplete="postal-code" inputmode="text" placeholder="z. B. 89584 Ehingen" required></label><button type="button" class="btn btn-ink rd-weiter" data-weiter>Weiter <span aria-hidden="true">→</span></button></section>
-    <section class="rd-schritt" data-schritt="7" hidden><h3>Wie erreichen wir dich?</h3>
+    <section class="rd-schritt" data-schritt="6" hidden><h3>Wo sitzt dein Betrieb?</h3>
+      <div class="rd-zeile"><label class="rd-feld rd-plz"><span>PLZ</span><input name="plz" autocomplete="postal-code" inputmode="numeric" maxlength="5" pattern="[0-9]{4,5}" placeholder="89584" required></label>
+      <label class="rd-feld"><span>Ort</span><input name="ort" autocomplete="address-level2" placeholder="Ehingen" required></label></div>
+      <p class="rd-fehler" data-fehler-ort hidden>Bitte Postleitzahl und Ort eintragen.</p>
+      <button type="button" class="btn btn-ink rd-weiter" data-weiter>Umkreis prüfen <span aria-hidden="true">→</span></button></section>
+    <section class="rd-schritt" data-schritt="7" hidden><div class="rd-radar" data-radar>
+      <svg viewBox="0 0 220 220" aria-hidden="true"><defs><radialGradient id="rdSweep" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#1E90E8" stop-opacity=".0"/><stop offset="1" stop-color="#1E90E8" stop-opacity=".35"/></radialGradient></defs>
+        <circle class="rr" cx="110" cy="110" r="100"/><circle class="rr" cx="110" cy="110" r="68"/><circle class="rr" cx="110" cy="110" r="36"/>
+        <path class="rd-sweep" d="M110 110 L110 10 A100 100 0 0 1 196.6 60 Z" fill="url(#rdSweep)"/>
+        <circle class="rp" style="--i:0" cx="66" cy="72" r="5"/><circle class="rp" style="--i:1" cx="158" cy="80" r="5"/><circle class="rp" style="--i:2" cx="146" cy="150" r="5"/><circle class="rp" style="--i:3" cx="72" cy="146" r="5"/><circle class="rp" style="--i:4" cx="112" cy="42" r="5"/><circle class="rp" style="--i:5" cx="182" cy="122" r="5"/>
+        <circle class="rd-mitte" cx="110" cy="110" r="9"/></svg>
+      <p class="rd-radar-t" data-radar-text>Umkreis wird geprüft …</p>
+      <div class="rd-radar-ok" hidden><h3 data-radar-titel>In deinem Umkreis ist das möglich.</h3><p>Die genaue Zahl für deinen Umkreis rechnen wir dir im Gespräch durch.</p>
+      <button type="button" class="btn btn-ink rd-weiter" data-weiter>Weiter <span aria-hidden="true">→</span></button></div></div></section>
+    <section class="rd-schritt" data-schritt="8" hidden><h3>Wie heißt dein Betrieb?</h3><label class="rd-feld"><span>Betrieb</span><input name="betrieb" autocomplete="organization" placeholder="z. B. Müller Haustechnik GmbH" required></label>
+      <button type="button" class="btn btn-ink rd-weiter" data-weiter>Weiter <span aria-hidden="true">→</span></button></section>
+    <section class="rd-schritt" data-schritt="9" hidden><h3>Wie erreichen wir dich?</h3>
       <label class="rd-feld"><span>Name</span><input name="name" autocomplete="name" required></label>
-      <label class="rd-feld"><span>Betrieb</span><input name="betrieb" autocomplete="organization"></label>
       <label class="rd-feld"><span>Telefon</span><input name="telefon" type="tel" autocomplete="tel" required></label>
       <label class="rd-feld"><span>E-Mail <em>(optional)</em></span><input name="email" type="email" autocomplete="email"></label>
       <p class="rd-hinweis">Mit dem Absenden meldet sich Noah bei dir wegen deines Umkreises. Deine Angaben nutzen wir nur dafür, mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>
-      <p class="rd-fehler" hidden>Bitte Name und Telefon ausfüllen.</p>
+      <p class="rd-fehler" data-fehler-kontakt hidden>Bitte Name und Telefon ausfüllen.</p>
       <button type="submit" class="btn btn-ink rd-weiter">{ic('target','ic')}Abschicken</button></section>
-    <section class="rd-schritt" data-schritt="8" hidden><div class="rd-danke"><span class="rd-ok">{IK['checkmark']}</span><h3>Danke, ist angekommen.</h3><p>Noah meldet sich in der Regel am selben oder nächsten Werktag bei dir. Lieber gleich einen Termin wählen?</p><a class="btn btn-ink" data-cal href="{CAL_REC}" target="_blank" rel="noopener">Termin wählen <span aria-hidden="true">→</span></a></div></section>
+    <section class="rd-schritt" data-schritt="10" hidden><div class="rd-danke"><span class="rd-ok">{IK['checkmark']}</span><h3>Danke, ist angekommen.</h3><p>Noah meldet sich in der Regel am selben oder nächsten Werktag bei dir. Lieber gleich einen Termin wählen?</p><a class="btn btn-ink" data-cal href="{CAL_REC}" target="_blank" rel="noopener">Termin wählen <span aria-hidden="true">→</span></a></div></section>
     <button type="button" class="rd-zurueck" hidden>← Zurück</button>
   </form>
 </dialog>'''
@@ -446,7 +460,7 @@ def senftleben_recruiting_karte():
 
 def sussmann_karte(d=1):
     return f'''<article class="fall-karte rv" data-d="{d}">
-  <div class="vid"><img src="/assets/fotos/sussmann-empfang-quer.jpg" alt="Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH" loading="lazy" width="1600" height="900" style="object-position:40% 30%"></div>
+  <div class="vid"><img src="/assets/fotos/sussmann-wagen-nebeneinander.jpg" alt="Patrick und Mirjana Wähnl am Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="900" style="object-position:40% 25%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung · läuft</span>
     <p class="erg">14 Bad-Anfragen, 7+ Termine, erster Auftrag 10.000 € nach 2 Wochen.</p>
@@ -491,13 +505,13 @@ def ueber_offen(kurz=True):
     return f'''<section class="ueber offen" id="ueber-uns">
   <div class="wrap"><div class="ueber-grid rv">
     <div class="bilder nur-noah">
-      <figure class="gross"><img src="/assets/fotos/noah-ueber-studio.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 30%"></figure>
+      <figure class="gross"><img src="/assets/fotos/noah-studio-ernst.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 25%"></figure>
     </div>
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
-      <p>Ich bin Noah. Seit über sechs Jahren nur Handwerk, über 130 Betriebe, die meisten davon SHK. Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer sein neues Bad plant, und bauen deine Kampagne genau darauf. Und wenn dein Umkreis dafür zu klein ist, sagen wir es dir im ersten Gespräch.</p>
-      <div class="gruender"><img src="/assets/fotos/noah-koller-werkstatt.jpg" alt="Noah Seelau vor dem Firmenwagen eines Kundenbetriebs" width="400" height="320" loading="lazy"><span><b>Noah Seelau</b><small>Gründer · dein direkter Draht</small></span></div>
+      <p>Ich bin Noah. Seit 2019 arbeiten wir nur für Handwerksbetriebe, über 130 waren es bisher. Für SHK-Betriebe drehen wir bei dir vor Ort, mit deinen Leuten vor der Kamera, und fragen vor jeder Bewerbung und jeder Anfrage ab, ob sie zu dir passt. Ist dein Umkreis zu klein, hörst du das im ersten Gespräch.</p>
+      <div class="gruender"><img src="/assets/fotos/noah-koller-werkstatt.jpg" alt="Noah Seelau vor dem Firmenwagen eines Kundenbetriebs" width="400" height="320" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>24<span>h</span></b><small>oft bis zur ersten Bewerbung oder Anfrage</small></div><div class="stat"><b>25<span>km</span></b><small>Umkreis, in dem die Anzeigen laufen</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
@@ -692,14 +706,46 @@ def seite_fallstudien():
     body += reels() + stimmen()
     return h + body + fuss()
 
+WERDEGANG = [('2019', 'Die erste Website', 'für einen Handwerksbetrieb. Dann kam der nächste und der nächste.'),
+             ('130+', 'Betriebe', 'in Deutschland, Österreich und der Schweiz, Websites und Anzeigen.'),
+             ('25', 'Bewerbungen in 4 Wochen', 'für Erwin Schmidt &amp; Sohn, die Stelle ist besetzt.'),
+             ('21', 'Bad-Anfragen in 2 Monaten', 'für Senftleben Haustechnik, dazu 10+ Vor-Ort-Termine.')]
+
+def ueber_werdegang():
+    """Über-uns-Seite: eigener Block, keine Kopie von „Du beherrschst dein Handwerk“ (Noah, 28.09.2026: „die Über-uns-Sektion
+    sollte auch nicht einfach komplett gedoppelt sein … der Text da ist richtig scheiße"). Eigenes Foto, Werdegang am Regler."""
+    schritte = ''.join(f'<li class="rv" data-d="{i+1}"><b>{z}</b><span><strong>{t}</strong> {p}</span></li>' for i, (z, t, p) in enumerate(WERDEGANG))
+    return f'''<section class="sec werdegang" id="werdegang"><div class="wrap"><div class="werdegang-grid">
+  <figure class="werdegang-bild rv"><img src="/assets/fotos/noah-ueber.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 30%"></figure>
+  <div class="werdegang-text">
+    <p class="kick rv">Wie es angefangen hat</p>
+    <h2 class="d rv">Die erste Website war für einen Handwerker. <span class="em w">Dabei ist es geblieben.</span></h2>
+    <p class="lead rv">Ich bin Noah. 2019 habe ich die erste Website für einen Handwerksbetrieb gebaut. Heute bauen wir für SHK-Betriebe auch die Anzeigen: für Monteure, für Bäder und für Wärmepumpen.</p>
+    <ol class="werdegang-weg">{schritte}</ol>
+  </div>
+</div></div></section>'''
+
+def v_logos():
+    namen = ['erwin-schmidt', 'senftleben', 'sussmann', 'gallenberger', 'hannes-schmidt', 'lanzinger']
+    return '<div class="v-logos">' + ''.join(f'<span><img src="/assets/logos-box/{n}.png" alt="" loading="lazy"></span>' for n in namen) + '</div>'
+
+def v_kurve():
+    """Kosten je Anfrage sinken, während nachgeregelt wird — Illustration ohne Zahlen."""
+    return ('<svg class="vb v-kurve" viewBox="0 0 300 150" aria-hidden="true"><text x="14" y="22">Kosten je Anfrage</text>'
+            '<line class="achse" x1="14" y1="128" x2="288" y2="128"/>'
+            '<path class="flaeche" d="M20 44 L70 58 L120 66 L170 88 L220 98 L280 108 L280 128 L20 128 Z"/>'
+            '<polyline class="linie" points="20,44 70,58 120,66 170,88 220,98 280,108"/>'
+            + ''.join(f'<circle class="punkt" cx="{x}" cy="{y}" r="4.5"/>' for x, y in ((20, 44), (70, 58), (120, 66), (170, 88), (220, 98), (280, 108)))
+            + '<text x="20" y="145">Start</text><text x="280" y="145" text-anchor="end">Woche 6</text></svg>')
+
 def seite_ueber():
-    h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit über sechs Jahren nur Handwerk, über 130 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
-    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Eine Branche. <span class="em w">Seit über sechs Jahren.</span></h1><p class="lead rv" data-d="2">Kein Account-Manager dazwischen, keine Ticketnummer. Du weißt immer, wer an deiner Kampagne sitzt.</p></div></section>
+    h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit 2019 nur Handwerk, über 130 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
+    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Eine Branche. <span class="em w">Seit 2019.</span></h1><p class="lead rv" data-d="2">Kein Account-Manager dazwischen, keine Ticketnummer. Du weißt immer, wer an deiner Kampagne sitzt.</p></div></section>
 <div style="height:64px"></div>'''
-    body += ueber_offen(kurz=False) + team()
+    body += ueber_werdegang() + team()
     body += f'''<section class="sec" id="wie" style="padding-top:0"><div class="wrap">
   <div class="sec-kopf"><div><p class="kick k rv">Wie wir arbeiten</p><h2 class="d rv">Kleines Team. <span class="em k">Kurze Wege.</span></h2></div><p class="lead rv">Erstgespräch, Strategie und Kampagnenaufbau laufen über einen Tisch.</p></div>
-  {vorteile_szene([('', szene('wrench', 'flame', 'bath'), 'Eine Branche, seit über sechs Jahren', 'Nur Handwerk. Wir kennen dein Gewerk, bevor du es erklären musst, und wissen, was einen Monteur zum Wechseln bringt.'), ('', szene('van', 'camera', 'phone'), 'Shooting bei dir im Betrieb', 'Heizungskeller, Lager, Baustelle: Wir kommen zu dir und fotografieren dein Team. Das ist das Material der Kampagne.'), ('', szene('euro', 'bars', 'checkmark'), 'Zahlen statt Bauchgefühl', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet, und regeln nach, wenn etwas nicht läuft.')])}
+  {vorteile_bild([('', v_logos(), 'Nur Handwerk, seit 2019', 'Wir kennen dein Gewerk, bevor du es erklären musst, und wissen, was einen Monteur zum Wechseln bringt.'), ('', '<img src="/assets/fotos/erwin-schmidt-monteur.jpg" alt="" loading="lazy" style="object-position:50% 30%">', 'Shooting bei dir im Betrieb', 'Heizungskeller, Lager, Baustelle: Wir kommen zu dir und fotografieren dein Team. Das ist das Material der Kampagne.'), ('', v_kurve(), 'Zahlen statt Bauchgefühl', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet, und regeln nach, wenn etwas nicht läuft.')])}
 </div></section>'''
     body += stimmen()
     return h + body + fuss()

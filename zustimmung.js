@@ -35,26 +35,34 @@ function ereignis(name, daten) {
   gtag('event', name, d);
 }
 
-/* ---- Aussehen: Tinte/Papier wie die Seite, eigene Klassen mit Präfix ---- */
-var css = '.hmc{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin-left:auto;background:#FAF7F1;color:#16130E;'
-  + 'border-radius:22px;padding:20px 22px;font:15px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;'
+/* ---- Aussehen: Tinte/Papier wie die Seite, eigene Klassen mit Präfix ----
+   28.09.2026 (Noah): Text über Cookies statt „Dürfen wir mitzählen?“, keine Dienstnamen im Hinweis, ein Cookie daneben,
+   „Akzeptieren“ groß, „Nur notwendige“ klein. */
+var css = '.hmc{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:440px;margin-left:auto;background:#FAF7F1;color:#16130E;'
+  + 'border-radius:22px;padding:18px 20px;font:15px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;'
   + 'box-shadow:0 0 0 1px rgba(22,19,14,.08),0 24px 60px -18px rgba(22,19,14,.45);opacity:0;transform:translateY(16px);transition:opacity .25s,transform .25s}'
-  + '.hmc.da{opacity:1;transform:none}.hmc p{margin:0;font-size:14.5px;letter-spacing:.01em}.hmc b{display:block;font-size:16px;margin-bottom:4px;letter-spacing:-.01em}'
-  + '.hmc a{color:inherit;text-decoration:underline;text-underline-offset:3px}.hmc a:active{opacity:.7}.hmc-k{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}'
-  + '.hmc-k button{flex:1 1 180px;min-height:48px;border-radius:999px;font-weight:600;font-size:15px;line-height:1;font-family:inherit;cursor:pointer;border:0;transition:transform .1s,background .2s,color .2s}'
-  + '.hmc-k button:active{transform:scale(.97)}.hmc-n{background:transparent;color:#16130E;box-shadow:inset 0 0 0 2px #16130E}.hmc-n:hover{background:#16130E;color:#FAF7F1}'
-  + '.hmc-j{background:#16130E;color:#FAF7F1}.hmc-j:hover{background:#2d2820}'
+  + '.hmc.da{opacity:1;transform:none}.hmc-oben{display:flex;gap:14px;align-items:flex-start}.hmc-keks{width:52px;height:52px;flex:none}'
+  + '.hmc p{margin:0;font-size:14.5px;letter-spacing:.01em}.hmc b{display:block;font-size:16px;margin-bottom:2px;letter-spacing:-.01em}'
+  + '.hmc a{color:inherit;text-decoration:underline;text-underline-offset:3px}.hmc a:active{opacity:.7}'
+  + '.hmc-k{display:flex;align-items:center;gap:6px;margin-top:14px}'
+  + '.hmc-j{flex:1;min-height:50px;border-radius:999px;border:0;background:#16130E;color:#FAF7F1;font-weight:600;font-size:16px;line-height:1;font-family:inherit;cursor:pointer;transition:transform .1s,background .2s}'
+  + '.hmc-j:hover{background:#2d2820}.hmc-j:active{transform:scale(.97)}'
+  + '.hmc-n{flex:none;min-height:44px;padding:0 12px;border:0;background:none;color:#5b5448;font-weight:500;font-size:13.5px;line-height:1;font-family:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color .2s}'
+  + '.hmc-n:hover{color:#16130E}.hmc-n:active{opacity:.6}'
   + '.hmc-link{background:none;border:0;padding:0;margin-left:16px;min-height:44px;font:inherit;color:inherit;opacity:.85;cursor:pointer;text-decoration:none}.hmc-link:hover{opacity:1;text-decoration:underline}.hmc-link:active{opacity:.6}'
-  + '@media(max-width:760px){.hmc{left:12px;right:12px;bottom:12px;padding:18px}}@media(prefers-reduced-motion:reduce){.hmc{transition:none}}';
+  + '@media(max-width:760px){.hmc{left:12px;right:12px;bottom:12px;padding:16px}}@media(prefers-reduced-motion:reduce){.hmc{transition:none}}';
 var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+var KEKS = '<svg class="hmc-keks" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="hmcBiss"><rect width="64" height="64" fill="#fff"/><circle cx="56" cy="10" r="11" fill="#000"/><circle cx="60" cy="24" r="6" fill="#000"/></mask></defs>'
+  + '<g mask="url(#hmcBiss)"><circle cx="32" cy="33" r="27" fill="#C98A45"/><circle cx="32" cy="33" r="23" fill="#DDA35E"/></g>'
+  + '<g fill="#5A3A22"><circle cx="22" cy="24" r="3.4"/><circle cx="36" cy="38" r="3.8"/><circle cx="22" cy="44" r="3"/><circle cx="41" cy="23" r="2.6"/><circle cx="30" cy="31" r="2.2"/><circle cx="46" cy="44" r="2.6"/></g></svg>';
 
 var box = null;
 function hinweis() {
   if (box) { box.hidden = false; requestAnimationFrame(function () { box.classList.add('da'); }); return; }
   box = document.createElement('div');
   box.className = 'hmc'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Cookie-Einstellungen');
-  box.innerHTML = '<p><b>Dürfen wir mitzählen?</b> Mit deiner Erlaubnis messen wir über Google Analytics und Hotjar, welche Seiten gelesen und welche Knöpfe genutzt werden. Mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>'
-    + '<div class="hmc-k"><button type="button" class="hmc-n" data-wahl="declined">Nur notwendige</button><button type="button" class="hmc-j" data-wahl="accepted">Alle akzeptieren</button></div>';
+  box.innerHTML = '<div class="hmc-oben">' + KEKS + '<p><b>Kurz zu Cookies</b>Wir setzen Cookies, damit wir sehen, welche Seiten gelesen und welche Knöpfe genutzt werden. Mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p></div>'
+    + '<div class="hmc-k"><button type="button" class="hmc-j" data-wahl="accepted">Akzeptieren</button><button type="button" class="hmc-n" data-wahl="declined">Nur notwendige</button></div>';
   document.body.appendChild(box);
   box.addEventListener('click', function (e) {
     var b = e.target.closest('[data-wahl]'); if (!b) return;

@@ -1455,3 +1455,53 @@ html.rd-offen{overflow:hidden}
 /* Rechtszeile: gleiche Abstände zwischen allen Links, jeder ≥ 44 px Klickfläche (statt Mindestbreite, die „AGB" aufzog) */
 .fuss .unten .recht{gap:0;margin:0 -10px}
 .fuss .unten .recht a,.fuss .unten .recht .hmc-link{padding:0 10px;min-width:0;justify-content:flex-start}
+
+/* ── Runde 16 (Noah, 28.09.2026) ── */
+/* Rechner: PLZ + Ort nebeneinander, Radar nach der Eingabe */
+.rd-zeile{display:grid;grid-template-columns:1fr;gap:0 10px}
+@media(min-width:420px){.rd-zeile{grid-template-columns:130px 1fr}}
+.rd-radar{text-align:center;padding:4px 0 2px}
+.rd-radar svg{width:200px;height:200px;display:block;margin:0 auto 14px}
+.rd-radar .rr{fill:none;stroke:var(--line2);stroke-width:1.2}
+.rd-radar .rd-sweep{transform-origin:110px 110px;animation:rdSweep 1.3s linear infinite}
+.rd-radar .rp{fill:var(--kalt);opacity:0;animation:rdPkt .4s var(--ease) forwards;animation-delay:calc(.35s + var(--i) * .33s)}
+.rd-radar .rd-mitte{fill:var(--warm)}
+.rd-radar.fertig .rd-sweep{animation:none;opacity:0;transition:opacity .3s}
+.rd-radar.fertig .rp{opacity:1;fill:#1A9E5A}
+.rd-radar-t{font-weight:600;color:var(--sub)}
+.rd-radar-ok h3{margin-bottom:8px}
+.rd-radar-ok p{color:var(--sub);margin-bottom:14px}
+@keyframes rdSweep{to{transform:rotate(360deg)}}
+@keyframes rdPkt{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+.rd-radar .rp{transform-box:fill-box;transform-origin:center}
+@media(prefers-reduced-motion:reduce){.rd-radar .rd-sweep{animation:none}.rd-radar .rp{animation:none;opacity:1}}
+/* Über-uns-Seite: Werdegang statt Kopie der Startseiten-Sektion */
+.werdegang-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+@media(min-width:900px){.werdegang-grid{grid-template-columns:.9fr 1.1fr;gap:64px}}
+.werdegang-bild{margin:0;border-radius:var(--r-lg);overflow:hidden;height:560px}
+.werdegang-bild img,.werdegang-bild img[width][height]{width:100%;height:100%;object-fit:cover}
+@media(max-width:899px){.werdegang-bild{height:440px}}
+.werdegang-text .lead{margin:14px 0 26px}
+.werdegang-weg{list-style:none;padding:0 0 0 26px;margin:0;position:relative;display:grid;gap:18px}
+.werdegang-weg::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:3px;border-radius:2px;background:linear-gradient(180deg,var(--kalt),#7A7EC8,var(--warm))}
+.werdegang-weg li{position:relative;display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:baseline}
+.werdegang-weg li::before{content:"";position:absolute;left:-26px;top:.55em;width:15px;height:15px;border-radius:50%;background:var(--card);border:3px solid var(--kalt)}
+.werdegang-weg li:nth-child(3)::before,.werdegang-weg li:nth-child(4)::before{border-color:var(--warm)}
+.werdegang-weg b{font-family:var(--fh);font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.werdegang-weg span{font-size:15.5px;color:var(--sub);line-height:1.5}
+.werdegang-weg strong{color:var(--ink)}
+/* Kleines Team: Bilder statt Symbolketten */
+.v-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:86%}
+.v-logos span{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--night);display:block;transition:transform .3s var(--spring)}
+.v-logos img,.v-logos img[width][height]{width:100%;height:100%;object-fit:cover;display:block}
+.vorteil.mit-bild:hover .v-logos span{transform:translateY(-2px)}
+.v-kurve{width:88%!important}
+.v-kurve text{font-size:13px;fill:var(--sub);font-weight:600}
+.v-kurve .achse{stroke:var(--line2);stroke-width:1.2}
+.v-kurve .flaeche{fill:var(--kalt-soft)}
+.v-kurve .linie{fill:none;stroke:var(--kalt);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.v-kurve .punkt{fill:var(--card);stroke:var(--kalt);stroke-width:2.5}
+.v-logos img,.v-logos img[width][height]{object-fit:contain}
+.werdegang-grid{align-items:stretch}
+.werdegang-bild{height:auto;min-height:480px}
+@media(max-width:899px){.werdegang-bild{height:440px;min-height:0}}

@@ -225,13 +225,13 @@
   const dlg = $('#rechner-dialog');
   if (dlg) {
     const form = $('.rd-form', dlg), schritte = $$('.rd-schritt', dlg), balken = $('.rd-balken i', dlg), zurueck = $('.rd-zurueck', dlg);
-    const d = {}; let akt = 1; const MAX = 7;
+    const d = {}; let akt = 1; const MAX = 9; let radarUhr = 0;
     const eur = n => Math.round(n).toLocaleString('de-DE') + ' €';
     const spur = (name, extra) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, extra || {})); } catch (e) {} };
     const zeig = n => {
       akt = n; schritte.forEach(s => { const an = +s.dataset.schritt === n; s.hidden = !an; s.classList.toggle('an', an); });
       balken.style.transform = `scaleX(${Math.min(n, MAX) / MAX})`;
-      zurueck.hidden = n === 1 || n === 8;
+      zurueck.hidden = n === 1 || n === 7 || n === 10;
       const auf = d.ziel === 'Aufträge';
       $$('[data-text-monteure]', dlg).forEach(el => el.textContent = auf ? el.dataset.textAuftraege : el.dataset.textMonteure);
       $$('[data-fuer]', dlg).forEach(el => el.hidden = el.dataset.fuer !== (d.ziel || 'Monteure'));
@@ -243,30 +243,49 @@
     const zu = () => { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); document.documentElement.classList.remove('rd-offen'); };
     $$('[data-rechner], a[href="#rechner-auf"]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); oeffne(); }));
     $('.rd-zu', dlg).addEventListener('click', zu);
-    if (location.hash === '#rechner') setTimeout(oeffne, 300);   // Direktlink zum Formular (28.09.2026, zum Testen und für Mails)
     dlg.addEventListener('click', e => { if (e.target === dlg) zu(); });
     dlg.addEventListener('close', () => document.documentElement.classList.remove('rd-offen'));
-    zurueck.addEventListener('click', () => zeig(Math.max(1, akt - 1)));
+    // Enter in einem Feld geht einen Schritt weiter statt das ganze Formular abzuschicken
+    form.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT' && akt < 9) { e.preventDefault(); const w = $('.rd-schritt.an [data-weiter]', dlg); if (w) w.click(); } });
+    zurueck.addEventListener('click', () => zeig(akt === 8 ? 6 : Math.max(1, akt - 1)));   // zurück über den Radar hinweg
     $$('.rd-wahl button', dlg).forEach(b => b.addEventListener('click', () => {
       d[b.dataset.feld] = b.dataset.wert;
       $$(`.rd-wahl button[data-feld="${b.dataset.feld}"]`, dlg).forEach(x => x.classList.toggle('an', x === b));
       setTimeout(() => zeig(akt + 1), 180);
     }));
+    // Radar nach PLZ + Ort (Noah, 28.09.2026: „nachdem der seine Postleitzahl eingibt, kommt so ein kurzer Radar … in deinem Umfeld ist es möglich“)
+    const radar = () => {
+      const r = $('[data-radar]', dlg), ok = $('.rd-radar-ok', r), t = $('[data-radar-text]', r);
+      const ort = form.elements.ort.value.trim(), plz = form.elements.plz.value.trim();
+      clearTimeout(radarUhr); r.classList.remove('fertig'); ok.hidden = true; t.hidden = false;
+      t.textContent = `Umkreis ${plz} ${ort} wird geprüft …`;
+      const ruhig = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      radarUhr = setTimeout(() => {
+        r.classList.add('fertig'); t.hidden = true; ok.hidden = false;
+        $('[data-radar-titel]', r).textContent = `Im Umkreis um ${ort} ist das möglich.`;
+        const k = $('button', ok); if (k) k.focus();
+        spur('rechner_radar', { plz });
+      }, ruhig ? 400 : 2600);
+    };
     $$('[data-weiter]', dlg).forEach(b => b.addEventListener('click', () => {
-      const f = $('.rd-schritt.an input[required]', dlg);
-      if (f && !f.value.trim()) { f.focus(); f.classList.add('fehlt'); return; }
+      const felder = $$('.rd-schritt.an input[required]', dlg);
+      let leer = null;
+      felder.forEach(f => { const falsch = !f.value.trim() || (f.name === 'plz' && !/^[0-9]{4,5}$/.test(f.value.trim())); f.classList.toggle('fehlt', falsch); if (falsch && !leer) leer = f; });
+      const hinweis = $('.rd-schritt.an [data-fehler-ort]', dlg); if (hinweis) hinweis.hidden = !leer;
+      if (leer) { leer.focus(); return; }
       zeig(akt + 1);
+      if (akt === 7) radar();
     }));
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      const name = form.elements.name.value.trim(), tel = form.elements.telefon.value.trim(), fehler = $('.rd-fehler', dlg);
+      const name = form.elements.name.value.trim(), tel = form.elements.telefon.value.trim(), fehler = $('[data-fehler-kontakt]', dlg);
       if (!name || !tel) { fehler.hidden = false; return; } fehler.hidden = true;
       const fd = new FormData(form);
       fd.append('Ziel', d.ziel || ''); fd.append('Stelle / Leistung', d.stelle || ''); fd.append('Anzahl je Monat', d.anzahl || ''); fd.append('Wert je Auftrag', d.wert ? eur(+d.wert) : ''); fd.append('Seite', location.pathname);
       const knopf = $('button[type=submit]', form); knopf.disabled = true;
       try { const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd }); if (!r.ok) throw 0; } catch (x) { knopf.disabled = false; fehler.textContent = 'Das hat nicht geklappt. Ruf gern direkt an: +49 8194 7174990'; fehler.hidden = false; return; }
       const cal = $('[data-cal]', dlg); if (d.ziel === 'Aufträge') cal.href = 'https://calendly.com/noahseelau/leadgen-potenzial';
-      spur('rechner_abgeschickt', { ziel: d.ziel }); zeig(8);
+      spur('rechner_abgeschickt', { ziel: d.ziel }); zeig(10);
     });
   }
 

@@ -1786,3 +1786,8 @@ html.rd-offen{overflow:hidden}
 @media(min-width:601px) and (max-width:900px){.sec,.system,.fall,.stimmen,.faq,.vergleich,.probiert,.hebel{padding-top:48px;padding-bottom:48px}.ueber.offen,.reels{padding-bottom:48px}.statement{padding-top:48px;padding-bottom:48px}}
 
 .rd-ergebnis .rd-grob{margin-top:6px;font-weight:500}
+
+/* Regionsseiten /bayern/ /muenchen/ /baden-wuerttemberg/ (30.09.2026) */
+.region-quer{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.region-text p+p{margin-top:14px}
+.region-extra .sec-kopf{align-items:start}

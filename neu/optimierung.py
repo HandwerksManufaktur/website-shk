@@ -41,7 +41,14 @@ def fonts_css():
 # gemessen (Breite eines deutschen Satzes, hhea-Maße), 27.09.2026.
 FALLBACK = ("@font-face{font-family:'Inter Fallback';src:local('Arial');size-adjust:107.09%;ascent-override:90.46%;descent-override:22.52%;line-gap-override:0%}"
             "@font-face{font-family:'Archivo Fallback';src:local('Arial');size-adjust:111.04%;ascent-override:79.07%;descent-override:18.91%;line-gap-override:0%}"
-            "@font-face{font-family:'Instrument Serif Fallback';src:local('Times New Roman');size-adjust:87.40%;ascent-override:113.28%;descent-override:35.47%;line-gap-override:0%}")
+            # Je Schnitt eine eigene Ersatzschrift (30.09.2026): Überschriften stehen in Archivo 700/800, Akzente in Instrument Serif
+            # kursiv. Mit nur einer Ersatzschrift je Familie rechnete der Browser fett/kursiv künstlich aus Arial/Times regular —
+            # die Zeilen waren anders breit, die H1 auf /wissen/ brach beim Tausch um (CLS mobil 0,45). Gegen Arial Bold bzw.
+            # Times New Roman Italic gemessen (fontTools, deutscher Satz): 800 → 103,47 %, 700 → 98,76 %, kursiv → 88,90 %; danach im Browser auf alle Seiten abgestimmt (verzögerte Schriften, 4 Breiten): 104,5 · 99,7 · 90,5 %.
+            "@font-face{font-family:'Archivo Fallback';font-weight:700;src:local('Arial Bold'),local('Arial-BoldMT');size-adjust:99.70%;ascent-override:88.06%;descent-override:21.06%;line-gap-override:0%}"
+            "@font-face{font-family:'Archivo Fallback';font-weight:800;src:local('Arial Bold'),local('Arial-BoldMT');size-adjust:104.50%;ascent-override:84.02%;descent-override:20.10%;line-gap-override:0%}"
+            "@font-face{font-family:'Instrument Serif Fallback';src:local('Times New Roman');size-adjust:87.40%;ascent-override:113.28%;descent-override:35.47%;line-gap-override:0%}"
+            "@font-face{font-family:'Instrument Serif Fallback';font-style:italic;src:local('Times New Roman Italic'),local('TimesNewRomanPS-ItalicMT');size-adjust:90.50%;ascent-override:109.39%;descent-override:34.25%;line-gap-override:0%}")
 
 
 def messung_kopf(gruppe):

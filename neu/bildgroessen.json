@@ -148,7 +148,7 @@
   330
  ],
  "assets-funnels-sussmann-leadgen-hero": [
-  140,
+  270,
   330
  ],
  "assets-logos-box-erwin-schmidt": [
@@ -256,7 +256,7 @@
   90
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
-  160,
+  170,
   170
  ],
  "logos-shk-logo-irlbacher-weiss": [
@@ -316,7 +316,6 @@
    "assets-fotos-klass-hebel-auftraege",
    "assets-fotos-klass-hebel-monteure",
    "assets-fotos-sussmann-wagen-nebeneinander",
-   "assets-funnels-erwin-schmidt-jobs-full",
    "assets-logos-box-erwin-schmidt",
    "assets-logos-box-senftleben",
    "assets-logos-box-sussmann"
@@ -325,6 +324,16 @@
    "assets-fotos-noah-laptop-hoch"
   ],
   "/neu/potenzialanalyse/": [],
+  "/neu/bayern/": [
+   "assets-funnels-sussmann-leadgen-hero"
+  ],
+  "/neu/muenchen/": [
+   "assets-funnels-sussmann-leadgen-hero"
+  ],
+  "/neu/baden-wuerttemberg/": [
+   "assets-funnels-erwin-schmidt-jobs-full-oben",
+   "assets-funnels-senftleben-leadgen-full-oben"
+  ],
   "/neu/wissen/": [],
   "/neu/wissen/ablauf-kampagne/": [
    "assets-team-noah"

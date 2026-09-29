@@ -114,7 +114,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/sub/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>{CSS_INLINE}</style>
-{MESSUNG_KOPF.replace("'shk-v3'", "'shk-wissen'") if pfad.startswith('/wissen/') else MESSUNG_KOPF}
+{MESSUNG_KOPF.replace("'shk-v3'", "'shk-wissen'") if pfad.startswith('/wissen/') else (MESSUNG_KOPF.replace("'shk-v3'", "'shk-region'") if pfad.strip('/') in ('bayern', 'muenchen', 'baden-wuerttemberg') else MESSUNG_KOPF)}
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
@@ -151,6 +151,7 @@ def fuss():
       <div><h4>HandwerksManufaktur</h4><ul>
         <li><a href="{u('/ueber-uns/')}">{ic('handshake')}Über uns</a></li>
         <li><a href="{u('/wissen/')}">{ic('docs')}Wissen &amp; Ratgeber</a></li>
+        <li><a href="{u('/bayern/')}">{ic('pin')}SHK-Betriebe in Bayern</a></li>
         <li><a href="https://handwerksmanufaktur.digital/">{ic('globe')}Webdesign für Handwerk</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
@@ -996,6 +997,150 @@ def seite_wissen_artikel(a):
     cta_s = a.get('cta_satz') or 'In 30 Minuten rechnen wir durch, was bei dir an Bewerbungen oder Anfragen drin ist.'
     return h + kopfteil + kern + weiter + wx_cta(cta_t, cta_s, a['leistung']) + fuss()
 
+# ── Regionen (30.09.2026) ──────────────────────────────────────────────────
+# Noah, 30.09.2026: „… mit Unterseiten … regional oder in Bayern … dasselbe Prinzip anwenden [wie die Stadt-/Gewerkseiten der
+# Hauptseite] … die bestehenden Seiten … nichts mehr unbedingt anfassen“. Prinzip (systeme/stadt-und-gewerkseiten.md): eigene Sätze je
+# Seite, nur belegte Zahlen und Namen (Senftleben, Erwin Schmidt & Sohn, Sussmann, Klaß; alle anderen anonym), Ortstext mit Substanz,
+# FAQ in Aussageform, Querverweise, nicht im Menü (nur Sitemap, llms.txt, eine Zeile im Fuß). Keine Klima-Seite: kein Kunde, kein Beleg.
+# Belege: Kundenzahlen aus clickup_kunden (121 Betriebe, 109 mit bayerischer PLZ; 38 im Umkreis von 40 km um München, 5 davon SHK),
+# Zitate aus den Close-Transkripten (voc_mine.py), Fallzahlen aus neu/wissen-daten/fallstudie-*.json.
+REGIONEN = [
+  {'slug': 'bayern', 'name': 'Bayern', 'krumen': 'Bayern',
+   'titel': 'SHK-Betriebe in Bayern: Monteure und Aufträge aus dem Umkreis',
+   'beschreibung': 'Monteure und Bad-Anfragen für SHK-Betriebe in Bayern: Anzeigen im eigenen Umkreis, Fotos aus dem Betrieb. Mit Zahlen aus Türkenfeld und Kirchheim.',
+   'gebiet': [{"@type": "State", "name": "Bayern"}],
+   'kick': 'Für SHK-Betriebe in Bayern', 'warm': False,
+   'h1': 'Monteure und Bad&#8209;Aufträge für SHK&#8209;Betriebe <span class="em k">in Bayern.</span>',
+   'lead': 'Wir drehen in deinem Betrieb, und die Anzeigen sehen nur Leute rund um deinen Firmensitz. Vor jeder Bewerbung und Anfrage stehen Filterfragen. So läuft es in Türkenfeld, in Kirchheim bei München und in der Oberpfalz.',
+   'phones': [('/assets/funnels/sussmann-leadgen-hero.jpg', 'Aufträge · Sussmann GmbH', '#F5762B', 'rechts', '0s')],
+   'ort_kick': 'Bayern aus unserer Arbeit', 'ort_h2': 'Neun von zehn unserer Kunden sitzen <span class="em k">in Bayern.</span>',
+   'ort_lead': 'Seit 2019 arbeiten wir mit Handwerksbetrieben, die meisten davon zwischen Augsburg und München. Für SHK-Betriebe suchen wir hier Monteure und holen Bad-Anfragen, direkt vor München genauso wie auf dem Land in der Oberpfalz.',
+   'karten': [('pin', 'Nur rund um deinen Betrieb', 'Bei Sussmann sehen die Anzeigen nur Leute im Umkreis von 30&nbsp;km um Kirchheim. Beim Betrieb in der Oberpfalz sind es ebenfalls 30&nbsp;km um den Firmensitz. Wie groß dein Kreis sein muss, rechnen wir für deine Postleitzahl aus.'),
+              ('camera', 'Fotos aus deinem Betrieb', 'In Türkenfeld standen die eigenen Monteure am Firmenwagen, in Kirchheim Patrick und Mirjana im Lager. Wer die Anzeige sieht, erkennt einen Betrieb aus seiner Gegend.'),
+              ('users', 'Wer passt, zeigt sich vorher', 'Klaß hat vor jeder Bewerbung gefragt, ob jemand schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet hat. 16 von 35 Bewerbern sagten Ja.')],
+   'fall_kick': 'Zwei Betriebe aus Oberbayern', 'fall_h2': '35 Bewerbungen in Türkenfeld, <span class="em w">ein Bad-Auftrag in Kirchheim.</span>',
+   'fall_lead': 'Ein Obermonteur für die Baustelle und Bad-Anfragen aus dem Osten von München. Die Zahlen stammen aus den Kampagnen selbst.',
+   'faelle': ['klass', 'sussmann'],
+   'fall_text': {'klass': 'Türkenfeld liegt im Landkreis Fürstenfeldbruck, zwischen Ammersee und München. Gesucht war 2024 ein Anlagenmechaniker, der als Obermonteur auch die Bauleitung übernimmt. Die Anzeigen liefen rund um Türkenfeld und zeigten eigene Projekte, ein festes Team und die 4-Tage-Woche. 16 der 35 Bewerber hatten schon im Fach gearbeitet.',
+                 'sussmann': 'Die Erich Sussmann GmbH in Kirchheim bei München wirbt seit dem 4. September für Badsanierung, im Umkreis von 30&nbsp;km. In den Anzeigen stehen Patrick und Mirjana Wähnl selbst. Der erste Auftrag über 10.000&nbsp;€ kam nach gut zwei Wochen. Als Nächstes plant der Betrieb eine eigene Strecke für Wärmepumpe und Klima.'},
+   'extra_kick': 'Abseits der Städte', 'extra_h2': 'Du musst nicht zahlen <span class="em k">wie in München.</span>',
+   'extra': '<p>Diesen Gedanken hören wir oft von Betrieben auf dem Land. Der Inhaber eines Metallbaubetriebs sagte uns im September: „(…) wir sind im ländlichen Raum, da verdient man natürlich auch nicht so viel wie in München oder in Stuttgart.“</p><p>Monteure wechseln trotzdem, wenn der Alltag passt. Klaß hat mit eigenen Projekten, festem Team und 4-Tage-Woche geworben. Im Landkreis Schwandorf in der Oberpfalz haben wir im September bei einem SHK-Betrieb gedreht. Dort suchen wir einen Anlagenmechaniker, mit dem eigenen Team im Bild und im Umkreis von 30&nbsp;km.</p>',
+   'mitte': ('Wie viele Monteure oder Bad-Anfragen sind in deinem Landkreis drin?', 'users'),
+   'fragen': [('Wir sitzen in Bayern, ihr in Paphos.', 'Unser Firmensitz ist Paphos auf Zypern. Für Fotos und Videos kommt unser Fotograf zu dir in den Betrieb, so wie nach Türkenfeld und Kirchheim bei München. Das Erstgespräch läuft am Telefon oder per Video.'),
+              ('Bei uns auf dem Land ist der Umkreis zu klein.', 'Das rechnen wir vor dem Start durch. In der Potenzialanalyse schauen wir für deine Postleitzahl, wie viele Leute im Umkreis erreichbar sind. Reicht es nicht, sagen wir es dir, bevor du einen Euro ausgibst.'),
+              ('Wir zahlen keine Münchner Löhne.', 'Für die Anzeige musst du das auch nicht. Ein Monteur schaut darauf, wer im Team ist, wie weit die Baustellen weg sind und wann Feierabend ist. Genau das zeigen wir mit deinen Leuten im Bild.'),
+              ('Wir wollen bald starten.', 'Zwischen Erstgespräch und erster Anzeige liegen rund zwei Wochen, dazwischen der Fototermin bei dir. Bewerbungen kommen oft schon in den ersten 24 Stunden nach dem Start.'),
+              ('Ich will erst die Zahl für meinen Umkreis sehen.', 'Dann nimm den Rechner auf dieser Seite: ein paar Fragen, deine Postleitzahl, fertig. Noah meldet sich am selben oder nächsten Werktag mit dem Ergebnis.')],
+   'lesen': ['anlagenmechaniker-finden', 'attraktiv-fuer-monteure', 'badsanierung-anfragen'], 'lesen_h2': 'Monteure und Bäder <span class="em k">zum Nachlesen.</span>',
+   'nachbarn': ['muenchen', 'baden-wuerttemberg'],
+   'schluss': ('Wie viel geht in deinem <span class="em w">Landkreis?</span>', 'In 30 Minuten rechnen wir für deine Postleitzahl durch, wie viele Monteure oder Bad-Anfragen im Umkreis erreichbar sind.')},
+
+  {'slug': 'muenchen', 'name': 'Raum München', 'krumen': 'Raum München',
+   'titel': 'SHK-Marketing München: Monteure und Bad-Aufträge im Umland',
+   'beschreibung': 'Für SHK-Betriebe in München, im Landkreis München und rund um Fürstenfeldbruck: Monteure und Bad-Anfragen aus dem Umkreis, den du anfahren willst.',
+   'gebiet': [{"@type": "City", "name": "München"}, {"@type": "AdministrativeArea", "name": "Landkreis München"}, {"@type": "AdministrativeArea", "name": "Landkreis Fürstenfeldbruck"}],
+   'kick': 'Für SHK-Betriebe im Raum München', 'warm': True,
+   'h1': 'Monteure und Bad&#8209;Aufträge im <span class="em w">Raum München.</span>',
+   'lead': 'Für SHK-Betriebe in der Stadt, im Landkreis München und rund um Fürstenfeldbruck. Die Anzeigen laufen nur so weit, wie du zum Kunden fahren willst, und zeigen deine eigenen Leute.',
+   'phones': [('/assets/funnels/sussmann-leadgen-hero.jpg', 'Badsanierung · Sussmann GmbH', '#F5762B', 'rechts', '0s')],
+   'ort_kick': 'Was im Raum München anders ist', 'ort_h2': 'Um jeden guten Monteur <span class="em k">wird geworben.</span>',
+   'ort_lead': 'Ein SHK-Inhaber aus München erzählte uns im März: „(…) hier in München gibt es Kopfgelder, bis zu 5000 Euro werden geboten (…)“. Wer hier sucht, braucht Leute, die gerade nicht suchen. Die erreichen wir abends am Handy, im Umkreis deines Betriebs.',
+   'karten': [('pin', 'Umkreis nach Fahrzeit', 'Patrick Wähnl von Sussmann: „Wenn es jetzt nur fünf Minuten weg ist, dann kann man das mal spontaner machen, als wenn es eine halbe Stunde weg ist.“ Seitdem fragt sein Formular nach Postleitzahl und Ort.'),
+              ('map', '38 Betriebe rund um München', 'Mit 38 Betrieben im Umkreis von 40&nbsp;km um München haben wir schon gearbeitet, fünf davon SHK. Von Türkenfeld im Westen bis Kirchheim im Osten.'),
+              ('bath', 'Anfragen, die nur dir gehören', 'Eine Anfrage aus deiner Kampagne geht an deinen Betrieb und an keinen zweiten. Bei Sussmann wurde rund jede zweite Anfrage zum Termin vor Ort.')],
+   'fall_kick': 'Aus dem Münchner Umland', 'fall_h2': 'Kirchheim im Osten, <span class="em w">Türkenfeld im Westen.</span>',
+   'fall_lead': 'Zwei SHK-Betriebe, rund 15 und rund 35 Kilometer vom Marienplatz entfernt. Der eine holt Bäder, der andere suchte einen Obermonteur.',
+   'faelle': ['sussmann', 'klass'],
+   'fall_text': {'sussmann': 'Kirchheim liegt östlich von München, der Umkreis von 30&nbsp;km reicht bis in die Stadt. Seit dem 4. September laufen dort Anzeigen für Badsanierung, mit Patrick und Mirjana Wähnl vor der Kamera. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. An einem einzigen Tag der ersten Woche gingen sechs Anfragen ein.',
+                 'klass': 'Heizung-Sanitär Klaß sitzt in Türkenfeld, am westlichen Rand des Landkreises Fürstenfeldbruck. Für die Stelle als Obermonteur mit Bauleitung zeigten die Anzeigen das eigene Team am Firmenwagen. Vor jeder Bewerbung stand die Frage nach Erfahrung im Heizungsbau, in der Anlagenmechanik oder Elektrik.'},
+   'extra_kick': '', 'extra_h2': '', 'extra': '',
+   'mitte': ('Wie viele Bad-Anfragen sind rund um deinen Betrieb drin?', 'bath'),
+   'fragen': [('In München sucht jeder Betrieb Monteure.', 'Deshalb zählt, wen du erreichst. Die Anzeigen sehen auch Monteure, die in Arbeit sind und keine Stellenportale öffnen. Vor der Bewerbung klären Filterfragen Erfahrung, Führerschein und Entfernung.'),
+              ('Ich will keine Anfragen aus der ganzen Stadt.', 'Der Umkreis richtet sich nach deiner Fahrzeit. Bei Sussmann sind es 30&nbsp;km um Kirchheim, und das Formular fragt nach Postleitzahl und Ort. So weißt du vor dem Rückruf, wie weit der Kunde weg wohnt.'),
+              ('Ihr kennt die Gegend doch gar nicht.', 'Mit 38 Betrieben im Umkreis von 40&nbsp;km um München haben wir schon gearbeitet, im Landkreis Fürstenfeldbruck seit 2024 auch mit SHK-Betrieben. Für die Fotos kommt unser Fotograf zu dir.'),
+              ('Wir haben gerade genug Aufträge.', 'Dann läuft die Kampagne klein, auf Wunsch mit ein, zwei Aufträgen im Monat. So kennen dich die Leute im Umkreis schon, wenn das nächste Bad ansteht.'),
+              ('Wir brauchen die Leute schnell.', 'Vom Erstgespräch bis zur ersten Anzeige vergehen rund zwei Wochen. Bei Sussmann stand der erste Auftrag über 10.000&nbsp;€ nach gut zwei Wochen Kampagne.')],
+   'lesen': ['kosten-mitarbeitergewinnung', 'passende-bewerber', 'waermepumpen-anfragen'], 'lesen_h2': 'Was Betriebe im Umland <span class="em k">noch fragen.</span>',
+   'nachbarn': ['bayern', 'baden-wuerttemberg'],
+   'schluss': ('Wie weit willst du <span class="em w">fahren?</span>', 'Sag uns deine Postleitzahl und wie weit du zum Kunden fährst. In 30 Minuten rechnen wir durch, was in diesem Umkreis an Monteuren und Bädern drin ist.')},
+
+  {'slug': 'baden-wuerttemberg', 'name': 'Baden-Württemberg', 'krumen': 'Baden-Württemberg',
+   'titel': 'SHK-Betriebe in Baden-Württemberg: Monteure und Bad-Aufträge',
+   'beschreibung': 'Recruiting und Bad-Anfragen für SHK-Betriebe in Baden-Württemberg: Senftleben in Ehingen und Erwin Schmidt & Sohn in Sindelfingen mit ihren Zahlen.',
+   'gebiet': [{"@type": "State", "name": "Baden-Württemberg"}],
+   'kick': 'Für SHK-Betriebe in Baden-Württemberg', 'warm': True,
+   'h1': 'Bad&#8209;Anfragen und Monteure <span class="em w">in Baden-Württemberg.</span>',
+   'lead': 'Senftleben Haustechnik in Ehingen holt so Bad-Anfragen aus 25&nbsp;km Umkreis. Erwin Schmidt &amp; Sohn in Sindelfingen hat so einen Anlagenmechaniker für den Kundendienst gefunden. Beide Inhaber erzählen es im Video.',
+   'phones': [(bildschirm_oben('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'links', '0s'),
+              (bildschirm_oben('/assets/funnels/senftleben-leadgen-full.jpg'), 'Aufträge · Senftleben Haustechnik', '#F5762B', 'rechts', '0s')],
+   'ort_kick': 'Zwei Lagen, ein Aufbau', 'ort_h2': 'Von der Donau bis <span class="em k">vor Stuttgart.</span>',
+   'ort_lead': 'Ehingen liegt im Alb-Donau-Kreis, Sindelfingen im Landkreis Böblingen. Meike Bürkle von Erwin Schmidt &amp; Sohn beschreibt ihre Lage so: „Stuttgart ist 20 Kilometer von hier weg, also wir sind hier nicht auf dem Dorf.“ Rund um Ehingen ist es ländlich, und trotzdem kamen in 25&nbsp;km Umkreis 125.000 Aufrufe zusammen.',
+   'karten': [('pin', '25 km um Ehingen', 'So weit laufen die Bad-Anzeigen von Senftleben. Eine Anfrage wurde abgesagt, weil sie über eine halbe Stunde entfernt lag. Der Umkreis richtet sich danach, wie weit du fahren willst.'),
+              ('van', 'Vorher: QR-Code am Firmenwagen', 'Erwin Schmidt &amp; Sohn hatte es mit Aufklebern auf den Firmenwagen und der Stelle auf der eigenen Webseite versucht. Florian Schmidt: „Hat aber nicht so wirklich was gebracht.“'),
+              ('users', 'Fragen vor der Bewerbung', 'In Sindelfingen fragte der Funnel nach Ausbildung, Führerschein und Vollzeit. So wusste der Betrieb vor dem ersten Anruf, mit wem er spricht.')],
+   'fall_kick': 'Zwei Betriebe aus Baden-Württemberg', 'fall_h2': 'Ausgelastet in Ehingen, <span class="em k">gesucht in Sindelfingen.</span>',
+   'fall_lead': 'Ein Betrieb mit vollem Kalender, der trotzdem wirbt, und einer, der einen Anlagenmechaniker für den Kundendienst brauchte. Beide Inhaber im Video.',
+   'faelle': ['senftleben', 'ess'],
+   'fall_text': {'senftleben': 'Senftleben Haustechnik ist Meisterbetrieb in dritter Generation in Ehingen an der Donau. Seit Juli 2026 laufen Anzeigen für Badsanierung im Umkreis von 25&nbsp;km, mit Benjamin Senftleben selbst vor der Kamera. Nach zwei Monaten standen 21 Bad-Anfragen und über 10 Vor-Ort-Termine. Danach ging der Betrieb denselben Weg für eine Bürostelle: 21 Bewerbungen in 18 Tagen.',
+                 'ess': 'Erwin Schmidt &amp; Sohn in Sindelfingen suchte im Sommer 2026 einen Anlagenmechaniker SHK, der allein zum Kunden fährt und Störungen findet. Die Anzeigen liefen im Juli vier Wochen lang rund um Sindelfingen, mit dem eigenen Team im Bild. Der neue Kollege hat Mitte August im Kundendienst angefangen.'},
+   'extra_kick': '', 'extra_h2': '', 'extra': '',
+   'mitte': ('Wie viele Bewerbungen sind rund um deinen Betrieb drin?', 'users'),
+   'fragen': [('Die meisten eurer Kunden sitzen in Bayern.', 'Stimmt, neun von zehn. Gearbeitet wird überall gleich: Fotos in deinem Betrieb, Anzeigen in deinem Umkreis. In Ehingen und Sindelfingen lief es genau so, mit den Zahlen auf dieser Seite.'),
+              ('Wir sitzen nah an Stuttgart, da ist der Markt leer.', 'In Sindelfingen kamen trotzdem 25 Bewerbungen in 4 Wochen. Dort zählt, dass man den Betrieb in der Anzeige erkennt, mit dem eigenen Team am Firmenwagen.'),
+              ('Wir sind ausgelastet.', 'Benjamin Senftleben auch. „Aufträge haben wir jetzt aktuell genügend“, sagt er, und wirbt weiter, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Die Menge regeln wir, auf Wunsch ein, zwei Aufträge im Monat.'),
+              ('Die Stelle ist im Büro, nicht auf der Baustelle.', 'Das geht genauso. Senftleben hat so eine Stelle in Lohn- und Buchhaltung besetzt, mit 21 Bewerbungen in 18 Tagen.'),
+              ('Wie läuft der Start?', 'Nach dem Erstgespräch kommt der Fototermin bei dir, die ersten Anzeigen laufen nach rund zwei Wochen. Fragst du über den Rechner an, ruft Noah am selben oder nächsten Werktag zurück.')],
+   'lesen': ['ausgelastet-werbung', 'anfragen-durch-werbung', 'kosten-offene-stelle'], 'lesen_h2': 'Weiter im <span class="em k">Ratgeber.</span>',
+   'nachbarn': ['bayern', 'muenchen'],
+   'schluss': ('Was geht in deinem <span class="em k">Umkreis?</span>', 'In 30 Minuten rechnen wir für deinen Ort durch, wie viele Bewerbungen oder Bad-Anfragen realistisch sind. Reicht es nicht, sagen wir es dir.')},
+]
+REGION_SLUGS = {r['slug']: r for r in REGIONEN}
+
+def region_fall(art, absatz):
+    """Fallstudie mit eigenem Absatz je Regionsseite (Zahlen gleich, Sätze eigen — Prinzip der Stadtseiten)."""
+    if art == 'klass':
+        return fall_gross(KLASS_LOGO, 'Heizung-Sanitär Klaß GmbH', 'Türkenfeld · Recruiting 2024', 'Heizung-Sanitär Klaß', '/assets/fotos/klass-werkbank.jpg', '', '', '35 Bewerbungen für einen Heizungsbauer.', absatz, [('35', 'Bewerbungen'), ('16', 'mit Erfahrung im Fach'), ('SHK', 'Stelle: Anlagenmechaniker')], 'k', 'Zwei Monteure von Heizung-Sanitär Klaß am Firmenwagen', '50% 30%')
+    if art == 'sussmann':
+        return fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-lager-scharf.jpg', '', '', '„So sind wir super zufrieden.“', absatz, [('14', 'Bad-Anfragen'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach gut 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl im Lager der Erich Sussmann GmbH', '40% 35%')
+    if art == 'senftleben':
+        return fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“', absatz, [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine in 2 Monaten')], 'w', 'Fallstudie Senftleben Haustechnik, Ehingen: 21 Bad-Anfragen in 2 Monaten')
+    return fall_gross(ESS_LOGO, 'Florian Schmidt', 'Geschäftsführer, Erwin Schmidt &amp; Sohn GmbH, Sindelfingen', 'Erwin Schmidt & Sohn', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Wir haben nur nicht gedacht, dass es so viele sind.“', absatz, [('25', 'Bewerbungen'), ('4', 'Wochen Kampagnen-Laufzeit'), ('1', 'Stelle besetzt: Anlagenmechaniker SHK')], '', 'Fallstudie Erwin Schmidt & Sohn, Sindelfingen: 25 Bewerbungen in 4 Wochen')
+
+def seite_region(r):
+    url = f"{DOMAIN}/{r['slug']}/"
+    schema = [{"@type": "Service", "name": f"Recruiting und Auftragsgewinnung für SHK-Betriebe: {r['name']}", "serviceType": "Marketing für SHK-Betriebe (Recruiting von Monteuren, Anfragen für Badsanierung und Wärmepumpe)",
+               "provider": {"@id": "https://handwerksmanufaktur.digital/#organization"}, "areaServed": r['gebiet'], "url": url, "description": r['beschreibung'],
+               "audience": {"@type": "BusinessAudience", "audienceType": "SHK-Betriebe (Sanitär, Heizung, Klima)"}}] + faq_schema(r['fragen']) + [
+              {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": f"{DOMAIN}/"},
+                                                              {"@type": "ListItem", "position": 2, "name": r['krumen'], "item": url}]}]
+    h = kopf(r['titel'], r['beschreibung'], f"/{r['slug']}/", dunkel=True, schema_extra=schema)
+    telefone = ''.join(phone(*p) for p in r['phones'])
+    body = uhero(r['kick'], r['h1'], r['lead'], 'Potenzial durchrechnen', '#rechner-auf', 'btn-warm' if r['warm'] else 'btn-kalt', telefone, warm=r['warm']).replace('target="_blank" rel="noopener">', 'data-cta="region-hero">', 1)
+    body += f'''<section class="sec" id="region"><div class="wrap">
+  <div class="sec-kopf"><div><p class="kick k rv">{r['ort_kick']}</p><h2 class="d rv">{r['ort_h2']}</h2></div><p class="lead rv">{r['ort_lead']}</p></div>
+  {vorteile([('', ic(k), t, p) for k, t, p in r['karten']])}
+</div></section>'''
+    faelle = ''.join(f'<div class="fall-abstand">{region_fall(a, r["fall_text"][a])}</div>' if i else region_fall(a, r['fall_text'][a]) for i, a in enumerate(r['faelle']))
+    t, i = r['mitte']
+    mitte = (f'<aside class="wx-mitte rv"><span class="wx-mitte-ic">{ic(i)}</span><div><b>{t}</b><p>Ein paar kurze Fragen zu deinem Betrieb und deiner Postleitzahl, das Ergebnis siehst du sofort.</p></div>'
+             f'<button type="button" class="btn btn-warm" data-rechner data-cta="region-mitte">{ic("target", "ic")}Durchrechnen</button></aside>')
+    body += f'''<section class="sec" id="fallstudie" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">{r['fall_kick']}</p><h2 class="d rv">{r['fall_h2']}</h2></div><p class="lead rv">{r['fall_lead']}</p></div>{faelle}{mitte}</div></section>'''
+    if r['extra']:
+        body += f'''<section class="sec region-extra" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">{r['extra_kick']}</p><h2 class="d rv">{r['extra_h2']}</h2></div><div class="lead rv region-text">{r['extra']}</div></div></div></section>'''
+    body += faq(r['fragen'], f'{r["krumen"].replace("Raum ", "")}: kurz <span class="em k">gefragt.</span>')
+    nach = {x['slug']: x for x in WISSEN}
+    karten = ''.join(wx_karte(nach[s]) for s in r['lesen'] if s in nach)
+    quer = ''.join(f'<a class="btn btn-white" href="{u("/" + s + "/")}">{ic("pin", "ic")}SHK-Betriebe {"im " + REGION_SLUGS[s]["name"] if s == "muenchen" else "in " + REGION_SLUGS[s]["name"]}</a>' for s in r['nachbarn'])
+    quer += f'<a class="btn btn-white" href="{u("/monteure/")}">{ic("users", "ic")}Monteure gewinnen</a><a class="btn btn-white" href="{u("/auftraege/")}">{ic("bath", "ic")}Aufträge gewinnen</a>'
+    body += f'''<section class="sec wx-weiter"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Weiterlesen</p><h2 class="d rv">{r['lesen_h2']}</h2></div></div>
+  <div class="wx-raster">{karten}</div>
+  <nav class="region-quer rv" aria-label="Weitere Seiten">{quer}</nav></div></section>'''
+    tt, satz = r['schluss']
+    body += (f'<section class="wx-cta"><div class="wrap"><div class="wx-cta-karte rv"><div><p class="kick"><span>Potenzialanalyse<span class="kick-pt"> · </span><span class="kick-rest">30&nbsp;Minuten&nbsp;·&nbsp;kostenlos</span></span></p><h2 class="d">{tt}</h2><p class="lead">{satz}</p></div>'
+             f'<div class="wx-cta-rechts"><div class="wx-cta-knoepfe"><button type="button" class="btn btn-warm" data-rechner data-cta="region-ende">{ic("target", "ic")}Potenzial durchrechnen</button><a class="btn btn-glass" data-cta="region-termin" href="{u("/potenzialanalyse/")}">{ic("calendar", "ic")}Termin aussuchen</a></div>'
+             f'<a class="wx-cta-noah" data-cta="region-telefon" href="{TEL_HREF}"><img src="/assets/team/noah.jpg" alt="" width="480" height="480"><span><b>Lieber gleich reden?</b><small>Noah direkt: {TEL}</small></span></a></div></div></div></section>')
+    return h + body + fuss()
+
 # ── Schreiben ─────────────────────────────────────────────────────────────
 # /fallstudien/ ist ausgeblendet (Noah, 27.09.2026: „die Seite Fallstudien können wir aktuell noch rausnehmen“) — die alte Adresse leitet auf die Fallstudien der Startseite
 SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial}
@@ -1003,6 +1148,7 @@ for _p in RECHT: SEITEN[_p] = (lambda p: lambda: seite_recht(p))(_p)
 if WISSEN:
     SEITEN['/wissen/'] = seite_wissen
     for _a in WISSEN: SEITEN[f'/wissen/{_a["slug"]}/'] = (lambda x: lambda: seite_wissen_artikel(x))(_a)
+for _r in REGIONEN: SEITEN[f'/{_r["slug"]}/'] = (lambda x: lambda: seite_region(x))(_r)
 import shutil
 for _d in (AUS / 'wissen').glob('*/') if (AUS / 'wissen').exists() else []:   # alte Artikel-Ordner weg, wenn die JSON gelöscht ist
     if _d.is_dir() and _d.name not in {x['slug'] for x in WISSEN}: shutil.rmtree(_d); print('− alt entfernt', _d.relative_to(REPO))
@@ -1018,6 +1164,7 @@ _weg.write_text(f'<!doctype html><html lang="de"><head><meta charset="utf-8"><me
 if LIVE:
     _wx_mod = {f'/wissen/{x["slug"]}/': x.get('aktualisiert') or x.get('veroeffentlicht', WX_STAND) for x in WISSEN}
     if WISSEN: _wx_mod['/wissen/'] = max(_wx_mod.values())
+    for _r in REGIONEN: _wx_mod[f'/{_r["slug"]}/'] = '2026-09-30'   # Regionsseiten (30.09.2026)
     sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc>' + (f'<lastmod>{_wx_mod[p]}</lastmod>' if p in _wx_mod else '') + f'<changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else ("0.7" if p.startswith("/wissen/") and p != "/wissen/" else "0.8")}</priority></url>' for p in SEITEN if p not in RECHT)
     (REPO/'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding='utf-8')
     print('✓ sitemap.xml')
@@ -1027,5 +1174,9 @@ if LIVE and WISSEN:
     _block = '## Wissen (Ratgeber für SHK-Betriebe)\n' + ''.join(f'- [{html.unescape(x["h1"])}]({DOMAIN}/wissen/{x["slug"]}/): {html.unescape(x["teaser"])}\n' for x in WISSEN) + '\n'
     _llms = re.sub(r'## Wissen \(Ratgeber für SHK-Betriebe\)\n.*?\n(?=## |\Z)', '', _llms, flags=re.S)
     _llms = _llms.replace('## Rechtliches', _block + '## Rechtliches') if '## Rechtliches' in _llms else _llms.rstrip() + '\n\n' + _block
+    # Regionen (30.09.2026): eigener Abschnitt vor „Wissen“, ersetzt sich bei jedem Livebau selbst
+    _reg = '## Regionen (SHK-Betriebe nach Gebiet)\n' + ''.join(f'- [{r["titel"]}]({DOMAIN}/{r["slug"]}/): {r["beschreibung"]}\n' for r in REGIONEN) + '\n'
+    _llms = re.sub(r'## Regionen \(SHK-Betriebe nach Gebiet\)\n.*?\n(?=## |\Z)', '', _llms, flags=re.S)
+    _llms = _llms.replace('## Wissen (Ratgeber', _reg + '## Wissen (Ratgeber', 1)
     (REPO / 'llms.txt').write_text(_llms, encoding='utf-8')
-    print('✓ llms.txt (Wissen)')
+    print('✓ llms.txt (Wissen, Regionen)')

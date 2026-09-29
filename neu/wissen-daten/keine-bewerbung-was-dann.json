@@ -1,0 +1,133 @@
+{
+ "slug": "keine-bewerbung-was-dann",
+ "titel": "Keine Bewerbung, keine Anfrage: Was du dann nachregelst",
+ "h1": "Was passiert, wenn keine Bewerbung oder Anfrage kommt?",
+ "beschreibung": "Wenn eine Kampagne nichts bringt: woran du siehst, wo es hakt, was du an Anzeige und Umkreis nachregelst und wann du drosselst.",
+ "kategorie": "Kosten & Ablauf",
+ "reihe": 4,
+ "top": false,
+ "teaser": "Eine feste Zahl an Bewerbungen kann dir niemand seriös zusagen. Wo es hakt, lässt sich aber an den Zahlen der Kampagne ablesen.",
+ "kurzantwort": "Dann wird nachgeregelt, der Reihe nach. Zuerst die Zahlen lesen: Sehen genug Leute im Umkreis die Anzeige, klicken sie, brechen sie im Formular ab? Daraus folgt, was du änderst, also Bild und Einstieg der Anzeige, die Filterfragen, den Umkreis oder das Budget. Eine feste Zahl an Bewerbungen oder Anfragen kann dir niemand seriös zusagen.",
+ "lesezeit": 8,
+ "leistung": "potenzial",
+ "zahlen": [
+  {
+   "zahl": "24",
+   "einheit": "Stunden",
+   "text": "nach dem Start kommen bei Stellenanzeigen oft schon die ersten Bewerbungen. Bäder brauchen länger.",
+   "quelle": "Erfahrung aus unseren Recruiting-Kampagnen"
+  },
+  {
+   "zahl": "2",
+   "einheit": "Wochen",
+   "text": "bis zum ersten Bad-Auftrag über 10.000 € bei der Erich Sussmann GmbH in Kirchheim.",
+   "quelle": "eigene Kampagne, Erich Sussmann GmbH, 2026"
+  },
+  {
+   "zahl": "26",
+   "einheit": "von 1.100",
+   "text": "Besuchern eines Bewerbungs-Formulars haben sich beworben, gut 2 Prozent.",
+   "quelle": "Beispiel aus unseren Kampagnen, 2026"
+  }
+ ],
+ "abschnitte": [
+  {
+   "h2": "Gibt es eine Garantie auf Bewerbungen oder Anfragen?",
+   "html": "<p>Nein. Ob sich jemand bewirbt oder ein Bad anfragt, entscheidet ein Mensch am Handy. Wie viele das in deinem Umkreis tun, weiß vorher niemand auf die Zahl genau. Sagt dir jemand eine feste Zahl zu, frag nach, was er als Bewerbung zählt und was passiert, wenn sie ausbleibt.</p><p>Was sich sagen lässt: wie es in anderen Betrieben lief, und woran man früh sieht, ob eine Kampagne läuft. Bewerbungen kommen bei uns oft in den ersten 24 Stunden nach dem Start. Bäder brauchen länger, weil ein Bad geplant wird. Bei der Erich Sussmann GmbH kam der erste Auftrag über 10.000 € nach 2 Wochen, Senftleben Haustechnik hatte 21 Bad-Anfragen in 2 Monaten.</p><p>Die Sorge, dass nichts kommt, hören wir oft vor dem Start. Ein Inhaber hat sie uns so beschrieben:</p>",
+   "zitat": {
+    "text": "Du denkst halt immer: Da zahle ich das Gold, und es kommt nichts.",
+    "wer": "Inhaber, SHK-Betrieb, vor dem Start (2026)"
+   }
+  },
+  {
+   "h2": "Woran erkennst du, wo es hakt?",
+   "html": "<p>Eine Kampagne ist eine Kette. Die Anzeige wird gesehen, jemand klickt, er beantwortet die Filterfragen, er schickt ab. Reißt die Kette irgendwo, siehst du es an den Zahlen. Frag nach genau diesen Werten, oder schau selbst in den Werbeanzeigenmanager von Meta.</p><p>Die Tabelle zeigt die typischen Bilder und was man daraufhin ändert. Wichtig ist die Reihenfolge. Erst die Stelle finden, an der Leute verloren gehen, dann dort ansetzen. Wer ohne Blick auf die Zahlen einfach mehr Budget gibt, bezahlt im schlechtesten Fall mehr Leute, die im Formular abbrechen.</p><p>Für Bäder und Wärmepumpen gilt dieselbe Kette, nur steht am Ende eine Anfrage. Wenige Besucher mit guter Abschlussquote brauchen etwas anderes als viele Besucher, die alle im Formular aussteigen. Im ersten Fall fehlt Reichweite, im zweiten stimmt etwas mit den Fragen nicht.</p>",
+   "tabelle": {
+    "titel": "Was die Zahlen sagen und was man ändert",
+    "kopf": [
+     "Was du siehst",
+     "Wahrscheinliche Ursache",
+     "Was man nachregelt"
+    ],
+    "zeilen": [
+     [
+      "Wenige sehen die Anzeige",
+      "Umkreis zu klein oder Budget zu niedrig",
+      "Umkreis erweitern, Budget prüfen"
+     ],
+     [
+      "Viele sehen sie, kaum einer klickt",
+      "Bild oder erster Satz packt nicht",
+      "Anderes Motiv, anderer Einstieg, eigene Leute zeigen"
+     ],
+     [
+      "Viele klicken, kaum einer schickt ab",
+      "Zu viele oder zu strenge Filterfragen",
+      "Fragen kürzen, Muss-Fragen prüfen"
+     ],
+     [
+      "Es kommt etwas, aber es passt nicht",
+      "Filterfragen zu weich, Anzeige zu allgemein",
+      "Muss-Frage schärfen, Stelle oder Leistung genauer beschreiben"
+     ],
+     [
+      "Anfragen kommen, aber du erreichst kaum jemanden",
+      "Rückruf kommt zu spät",
+      "Am selben oder nächsten Tag anrufen"
+     ]
+    ]
+   }
+  },
+  {
+   "h2": "Was lässt sich an der laufenden Kampagne nachregeln?",
+   "html": "<p>Fast jedes Problem sitzt an einem dieser Punkte, und jeder lässt sich in der laufenden Kampagne ändern:</p><ul><li><strong>Das Bild:</strong> In den ersten Sekunden entscheidet sich, ob jemand weiterwischt. Hol ein anderes Motiv aus dem Shooting nach vorn, zum Beispiel einen Monteur, der selbst in die Kamera spricht.</li><li><strong>Die Anzeige:</strong> Stelle oder Leistung beim Namen nennen, das Einsatzgebiet dazu und einen klaren nächsten Schritt.</li><li><strong>Die Filterfragen:</strong> Zu viele kosten Abschlüsse, zu weiche lassen die Falschen durch. Kurze Fragen zum Antippen, nur zu dem, was du vor dem Anruf wissen musst.</li><li><strong>Der Umkreis:</strong> Auf dem Land wohnen in einem kleinen Kreis manchmal zu wenige Leute. Dann wird er weiter gezogen, so weit, wie ein Monteur noch pendeln oder dein Team noch fahren will.</li><li><strong>Das Budget:</strong> In unseren Kampagnen liegt es meist bei 25 bis 33 € am Tag. Liegt es deutlich darunter, sehen im Umkreis entsprechend weniger Leute die Anzeige.</li></ul><p>Gib jeder Änderung ein paar Tage, bevor du die nächste machst. Wer täglich alles umwirft, weiß am Ende nicht, was geholfen hat. Wie gute Filterfragen für eine Monteursstelle aussehen, steht im Ratgeber <a href='/wissen/passende-bewerber/'>Wie bekomme ich passende Bewerber?</a></p>"
+  },
+  {
+   "h2": "Rechenbeispiel: Wie viele Besucher brauchst du für zehn Bewerbungen?",
+   "html": "<p>Die Formel ist einfach:</p><p><strong>Bewerbungen = Besucher des Formulars × Abschlussquote</strong></p><p>In einem unserer Bewerbungs-Formulare haben sich 26 von 1.100 Besuchern beworben. Das sind gut 2 Prozent, gerundet 26 ÷ 1.100 ≈ 2,4 Prozent. Damit gerechnet:</p><ul><li>Für 10 Bewerbungen brauchst du 10 ÷ 0,024 ≈ 420 Besucher.</li><li>Halbiert eine zu strenge Filterfrage die Quote auf 1,2 Prozent, sind es 10 ÷ 0,012 ≈ 830 Besucher.</li><li>Kommen nur 200 Besucher, weil der Umkreis klein ist, bleiben bei 2,4 Prozent 200 × 0,024 ≈ 5 Bewerbungen.</li></ul><p>Das ist ein Rechenbeispiel, keine Prognose. Deine Quote kann höher oder niedriger liegen. Es zeigt nur, warum man zuerst schaut, an welcher Stelle Leute verloren gehen. Liegt das Problem im Formular, bringt mehr Budget vor allem mehr Leute, die abbrechen. Liegt es am Umkreis, hilft keine noch so gute Filterfrage.</p>"
+  },
+  {
+   "h2": "Und wenn zu viel kommt? Drosseln und pausieren",
+   "html": "<p>Das Gegenteil kommt auch vor. Patrick Wähnl, Geschäftsführer der Erich Sussmann GmbH, sagt über die ersten Tage: „Am Anfang war es extrem.“ Schafft dein Team die Anfragen nicht mehr, wird gedrosselt. Du bekommst dann weniger, in einem Tempo, das deine Leute abarbeiten können. Sag früh Bescheid, wenn es zu viel wird, bevor Anfragen liegen bleiben.</p><p>Das Werbebudget läuft direkt über Meta und lässt sich herunterfahren oder ganz pausieren. Beim Recruiting liegt das nahe. Ist die Stelle besetzt, kannst du die Kampagne anhalten und später wieder anstellen.</p><p>Manche Betriebe lassen sie trotzdem weiterlaufen. Senftleben Haustechnik in Ehingen ist ausgelastet und hat die Bad-Kampagne verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Warum das sinnvoll sein kann, steht im Ratgeber <a href='/wissen/ausgelastet-werbung/'>Ich bin ausgelastet: Brauche ich trotzdem Werbung?</a></p>"
+  },
+  {
+   "h2": "Was solltest du vor dem Start klären?",
+   "html": "<p>Viel Ärger entsteht, weil vorher niemand gesagt hat, was als Erfolg zählt. Kläre diese Punkte, bevor die erste Anzeige läuft:</p><ul><li>Was zählt als Ergebnis: eine Bewerbung, eine passende Bewerbung, eine Anfrage oder ein Vor-Ort-Termin?</li><li>Wer regelt nach, wenn in den ersten Wochen wenig kommt, und ist das im Preis drin?</li><li>Wird das Werbebudget direkt mit Meta abgerechnet, und kannst du es stoppen?</li><li>Wie lange bist du gebunden? Bei uns sind es 3 Monate Anlaufzeit, danach monatlich kündbar.</li><li>Wer ruft Bewerber und Anfragen zurück, auch wenn du im Urlaub bist?</li></ul><p>Schreib dir die Antworten auf, bevor du unterschreibst. Dann kannst du nach ein paar Wochen nachlesen, was vereinbart war.</p><p>Woran du eine seriöse Agentur erkennst, steht im Ratgeber <a href='/wissen/agentur-pruefen/'>Woran erkenne ich eine seriöse Marketing-Agentur für SHK-Betriebe?</a></p>"
+  }
+ ],
+ "faq": [
+  [
+   "Was, wenn nach dem Start eine Woche lang nichts kommt?",
+   "Bei einer Stellenanzeige ist das ein Zeichen, genauer hinzuschauen, weil Bewerbungen oft in den ersten 24 Stunden kommen. Lies die Zahlen: Sehen genug Leute die Anzeige, klicken sie, brechen sie ab? Bei Bädern ist eine ruhige erste Woche eher normal, ein Bad wird geplant."
+  ],
+  [
+   "Muss ich weiterzahlen, wenn nichts kommt?",
+   "Das Werbebudget geht direkt an Meta, du kannst es herunterfahren oder pausieren. Bei uns gelten 3 Monate Anlaufzeit, danach ist die Zusammenarbeit monatlich kündbar. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch."
+  ],
+  [
+   "Liegt es an Facebook und Instagram, wenn keiner kommt?",
+   "Das ist selten die erste Stelle, an der man suchen sollte. 54 Prozent der 30- bis 49-Jährigen nutzen Instagram jede Woche, 48 Prozent Facebook (ARD/ZDF-Medienstudie 2025). Die Leute sind also da. Prüf zuerst Bild und Anzeige, danach die Filterfragen und den Umkreis."
+  ],
+  [
+   "Ist mein Umkreis auf dem Land zu klein?",
+   "Das lässt sich vorher rechnen. In der Potenzialanalyse schauen wir, ob dein Umkreis groß genug ist. Ist er zu klein, wird er weiter gezogen, so weit, wie ein Monteur noch pendeln oder dein Team noch fahren will. Auf dem Land wirbt dort oft kaum ein anderer Betrieb."
+  ],
+  [
+   "Was, wenn Anfragen kommen, aber keine Aufträge daraus werden?",
+   "Dann liegt es oft zwischen Anfrage und Termin. Ruf am selben oder nächsten Tag zurück. Filterfragen nach Eigentum und Zeitrahmen sortieren vorher aus, wer nur Preise vergleicht. Ganz verhindern lässt sich das nie."
+  ]
+ ],
+ "quellen": [
+  {
+   "name": "ARD/ZDF-Medienstudie 2025, Media Perspektiven 31/2025: Social Media zwischen Wachstum und Sättigung",
+   "url": "https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf"
+  }
+ ],
+ "verwandt": [
+  "passende-bewerber",
+  "anfragen-durch-werbung",
+  "agentur-pruefen"
+ ],
+ "cta_titel": "Was ist in deinem Umkreis <span class='em w'>drin?</span>",
+ "cta_satz": "In 30 Minuten schauen wir, wie viele Leute du im Umkreis erreichst und woran eine Kampagne bei dir hängen würde."
+}

@@ -150,6 +150,7 @@ def fuss():
       </ul></div>
       <div><h4>HandwerksManufaktur</h4><ul>
         <li><a href="{u('/ueber-uns/')}">{ic('handshake')}Über uns</a></li>
+        <li><a href="{u('/wissen/')}">{ic('docs')}Wissen &amp; Ratgeber</a></li>
         <li><a href="https://handwerksmanufaktur.digital/">{ic('globe')}Webdesign für Handwerk</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
@@ -786,10 +787,166 @@ def seite_recht(pfad):
     text = re.sub(r'<!--.*?-->', '', text, flags=re.S)
     return kopf(f'{titel} · HandwerksManufaktur SHK', beschr, pfad) + f'<section class="recht-seite"><div class="wrap"><article class="recht-text">{text}</article></div></section>' + fuss()
 
+# ── Wissen / Ratgeber (Noah, 29.09.2026: „healthflow-group.de/wissen … so eine Art Blog-Beiträge … die häufigsten Fragen …
+#    10, 20 Seiten … cleane Statistiken … FAQ … bei KI weit oben … verlinken unten im Footer, nicht oben").
+#    Je Artikel eine JSON-Datei in neu/wissen-daten/*.json (gleiches Format wie der Ratgeber der Hauptseite, kunden/handwerksmanufaktur/
+#    konzept/ratgeber/). Aufbau für KI-Antworten (marketing/ratgeber/recherche/geo-ki-sichtbarkeit.md): eine Frage je Seite, Antwort
+#    in den ersten 40–60 Wörtern („Kurz gesagt"), H2 als Fragen, Zahlen mit Quelle und Jahr, Tabelle, FAQ, Autor + Datum im HTML,
+#    Article + FAQPage + BreadcrumbList. URL: /wissen/<slug>/.
+WX_KAT = ['Monteure finden', 'Aufträge gewinnen', 'Kosten & Ablauf']
+WX_KAT_IC = {'Monteure finden': 'users', 'Aufträge gewinnen': 'bath', 'Kosten & Ablauf': 'calculator'}
+WX_STAND = '2026-09-29'
+# Querlinks auf den Ratgeber der Hauptseite (handwerksmanufaktur.digital/wissen/, gebaut im Chat „HWM Website Überarbeitung"):
+# gewerkeübergreifende Fassung desselben Themas — gegenseitig verlinkt statt doppelt geschrieben.
+WX_HWM = 'https://handwerksmanufaktur.digital'
+WX_QUER = {'Monteure finden': [('gesellen-monteure-finden', 'Wie findest du Gesellen und Monteure, wenn sich keiner bewirbt?'), ('stellenanzeige-bringt-nichts', 'Deine Stellenanzeige bringt nichts: Was funktioniert stattdessen?')],
+           'Aufträge gewinnen': [('groessere-auftraege-statt-kleinkram', 'Wie komme ich als Handwerker an größere Aufträge und weg vom Kleinkram?'), ('bringt-werbung-fuer-handwerker-etwas', 'Bringt Werbung für Handwerker etwas?')],
+           'Kosten & Ablauf': [('kosten-mitarbeitergewinnung-social-media', 'Was kostet Mitarbeitergewinnung über Facebook und Instagram?'), ('bringt-werbung-fuer-handwerker-etwas', 'Bringt Werbung für Handwerker etwas?')]}
+WX_LEISTUNG = {'monteure': ('/monteure/', 'users', 'Monteure gewinnen'), 'auftraege': ('/auftraege/', 'bath', 'Aufträge gewinnen'), 'potenzial': ('/potenzialanalyse/', 'target', 'Potenzialanalyse')}
+
+def wx_laden():
+    arts = [json.loads(p.read_text(encoding='utf-8')) for p in sorted((HIER / 'wissen-daten').glob('*.json')) if not p.name.startswith('_')]
+    pflicht = ('slug', 'titel', 'h1', 'beschreibung', 'kategorie', 'teaser', 'kurzantwort', 'lesezeit', 'abschnitte', 'faq', 'leistung')
+    for a in arts:
+        fehlt = [f for f in pflicht if not a.get(f)]
+        if fehlt: raise SystemExit(f'wissen/{a.get("slug")}.json: Feld fehlt {fehlt}')
+        if a['kategorie'] not in WX_KAT: raise SystemExit(f'wissen/{a["slug"]}.json: Kategorie unbekannt {a["kategorie"]}')
+        if len(a['titel']) > 65: raise SystemExit(f'wissen/{a["slug"]}.json: Titel über 65 Zeichen ({len(a["titel"])})')
+        if len(a['beschreibung']) > 160: raise SystemExit(f'wissen/{a["slug"]}.json: Beschreibung über 160 Zeichen ({len(a["beschreibung"])})')
+    arts.sort(key=lambda a: (WX_KAT.index(a['kategorie']), a.get('reihe', 50), a['slug']))
+    return arts
+WISSEN = wx_laden()
+
+def wx_datum(d):
+    j, m, t = d.split('-'); return f'{t}.{m}.{j}'
+
+def wx_anker(h):
+    s = html.unescape(re.sub('<[^>]+>', '', h)).lower().translate(str.maketrans({'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss'}))
+    return re.sub(r'-+', '-', re.sub(r'[^a-z0-9]+', '-', s)).strip('-')[:60]
+
+def wx_karte(a, gross=False, chip=True):
+    k = 'k' if a['kategorie'] == 'Monteure finden' else ('w' if a['kategorie'] == 'Aufträge gewinnen' else 'n')
+    kat = f'<span class="wx-kat">{ic(WX_KAT_IC[a["kategorie"]])}{a["kategorie"]}</span>' if chip else ''
+    return (f'<a class="wx-karte{" gross" if gross else ""} {k} rv" href="{u("/wissen/" + a["slug"] + "/")}">{kat}'
+            f'<h3>{a["h1"]}</h3><p>{a["teaser"]}</p><span class="wx-lese">{ic("clock")}{a["lesezeit"]} Min. Lesezeit<span class="wx-pfeil" aria-hidden="true">{ic("arrow")}</span></span></a>')
+
+def wx_zahlen(z):
+    if not z: return ''
+    def quelle(x):
+        q = x.get('quelle', '')
+        return f'<a href="{x["url"]}" target="_blank" rel="noopener">{q}</a>' if x.get('url') else q
+    k = ''.join(f'<figure class="wx-zahl rv"><b>{x["zahl"]}<small>{x.get("einheit", "")}</small></b>'
+                f'<figcaption>{x["text"]}<span class="wx-quelle">Quelle: {quelle(x)}</span></figcaption></figure>' for x in z)
+    return f'<div class="wx-zahlen n{len(z)}">{k}</div>'
+
+def wx_tabelle(t):
+    kopfz = ''.join(f'<th scope="col">{h}</th>' for h in t['kopf'])
+    lab = [html.escape(re.sub('<[^>]+>', '', h), quote=True) for h in t['kopf']]   # Spaltenname je Zelle: am Handy stapeln sich die Zeilen als Karten
+    zeilen = ''.join('<tr>' + ''.join((f'<th scope="row">{c}</th>' if i == 0 else f'<td data-label="{lab[i] if i < len(lab) else ""}">{c}</td>') for i, c in enumerate(z)) + '</tr>' for z in t['zeilen'])
+    unter = f'<caption>{t["titel"]}</caption>' if t.get('titel') else ''
+    quelle = f'<p class="wx-tab-quelle">{t["quelle"]}</p>' if t.get('quelle') else ''
+    return f'<div class="wx-tabelle rv"><div class="wx-tab-roll"><table>{unter}<thead><tr>{kopfz}</tr></thead><tbody>{zeilen}</tbody></table></div>{quelle}</div>'
+
+def wx_cta(titel, satz, ziel):
+    l = WX_LEISTUNG.get(ziel, WX_LEISTUNG['potenzial'])
+    zweit = '' if ziel == 'potenzial' else f'<a class="btn btn-glass" href="{u(l[0])}">{ic(l[1], "ic")}{l[2]}</a>'
+    return (f'<section class="wx-cta"><div class="wrap"><div class="wx-cta-karte rv"><div><p class="kick">Potenzialanalyse · 30 Minuten · kostenlos</p><h2 class="d">{titel}</h2><p class="lead">{satz}</p></div>'
+            f'<div class="wx-cta-knoepfe"><a class="btn btn-warm" href="{u("/potenzialanalyse/")}">{ic("target", "ic")}Termin aussuchen</a>{zweit}</div></div></div></section>')
+
+def seite_wissen():
+    # Keine Einstiegskarte über den Gruppen: sie ließ die Reihen darunter halb leer (3 + 2, 3 + 1). Jede Gruppe füllt ihre
+    # Reihen voll: 3er-Raster bei 3/6/9 Artikeln, sonst 2er (4 = 2 + 2). Kein Kategorie-Chip auf Karten innerhalb der Gruppe.
+    gruppen = ''
+    for kname in WX_KAT:
+        liste = [a for a in WISSEN if a['kategorie'] == kname]
+        if not liste: continue
+        spalten = 3 if len(liste) % 3 == 0 else 2
+        gruppen += (f'<section class="wx-gruppe" id="{wx_anker(kname)}"><h2 class="wx-gruppe-titel rv">{ic(WX_KAT_IC[kname])}{kname}</h2>'
+                    f'<div class="wx-raster s{spalten}">{"".join(wx_karte(a, chip=False) for a in liste)}</div></section>')
+    sprung = ''.join(f'<a href="#{wx_anker(k)}">{ic(WX_KAT_IC[k])}{k}</a>' for k in WX_KAT if any(a['kategorie'] == k for a in WISSEN))
+    schema = [{"@type": "CollectionPage", "name": "Wissen für SHK-Betriebe", "url": f"{DOMAIN}/wissen/", "inLanguage": "de-DE",
+               "hasPart": [{"@type": "Article", "headline": html.unescape(a['h1']), "url": f"{DOMAIN}/wissen/{a['slug']}/"} for a in WISSEN]},
+              {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": f"{DOMAIN}/"},
+                                                              {"@type": "ListItem", "position": 2, "name": "Wissen", "item": f"{DOMAIN}/wissen/"}]}]
+    h = kopf('Wissen für SHK-Betriebe: Monteure finden, Aufträge gewinnen', 'Ratgeber für SHK-Betriebe: wie du Anlagenmechaniker findest, woher Bad- und Wärmepumpen-Anfragen kommen und was Recruiting und Anzeigen kosten.', '/wissen/', schema_extra=schema)
+    body = (f'<section class="hero wx-hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Wissen</p>'
+            f'<h1 class="h-xl rv" data-d="1">Was SHK-Betriebe <span class="em k">am häufigsten fragen.</span></h1>'
+            f'<p class="lead rv" data-d="2">{WX_HUB_LEAD}</p></div></section>'
+            f'<section class="sec wx-uebersicht"><div class="wrap"><nav class="wx-sprung rv" aria-label="Themen">{sprung}</nav>{gruppen}</div></section>')
+    body += wx_cta('Deine Frage war <span class="em w">nicht dabei?</span>', 'In 30 Minuten klären wir, was in deinem Umkreis an Bewerbungen oder Anfragen drin ist. Die Antworten bekommst du von Noah.', 'potenzial')
+    return h + body + fuss()
+WX_HUB_LEAD = 'Die Fragen aus unseren Gesprächen mit SHK-Inhabern: wie du Monteure findest, woher Bad- und Wärmepumpen-Anfragen kommen und was das kostet. Mit Zahlen aus unseren Kampagnen und amtlichen Statistiken.'
+
+WX_MITTE = {'Monteure finden': ('Wie viele Bewerbungen sind in deinem Umkreis drin?', 'users'),
+            'Aufträge gewinnen': ('Wie viele Bad-Anfragen sind in deinem Umkreis drin?', 'bath'),
+            'Kosten & Ablauf': ('Was wäre in deinem Umkreis drin?', 'calculator')}
+def wx_mitte(kat):
+    t, i = WX_MITTE.get(kat, WX_MITTE['Kosten & Ablauf'])
+    return (f'<aside class="wx-mitte rv"><span class="wx-mitte-ic">{ic(i)}</span><div><b>{t}</b><p>Ein paar kurze Fragen zu deinem Betrieb und deinem Umkreis, das Ergebnis siehst du sofort.</p></div>'
+            f'<button type="button" class="btn btn-warm" data-rechner>{ic("target", "ic")}Durchrechnen</button></aside>')
+
+def seite_wissen_artikel(a):
+    nach_slug = {x['slug']: x for x in WISSEN}
+    abschnitte, inhalt = '', ''
+    for ab in a['abschnitte']:
+        an = wx_anker(ab['h2'])
+        inhalt += f'<li><a href="#{an}">{ab["h2"]}</a></li>'
+        teil = f'<h2 id="{an}">{ab["h2"]}</h2>{ab["html"]}'
+        if ab.get('zahlen'): teil += wx_zahlen(ab['zahlen'])
+        if ab.get('tabelle'): teil += wx_tabelle(ab['tabelle'])
+        if ab.get('zitat'): teil += f'<blockquote class="wx-zitat rv"><p>„{ab["zitat"]["text"]}“</p><cite>{ab["zitat"]["wer"]}</cite></blockquote>'
+        abschnitte += f'<section class="wx-teil">{teil}</section>'
+        if len(abschnitte) and ab is a['abschnitte'][min(1, len(a['abschnitte']) - 1)]:
+            abschnitte += wx_mitte(a['kategorie'])   # Handlungsaufforderung mitten im Artikel, öffnet den kurzen Rechner (Noah, 29.09.2026: „teils call to action oder kurzem Kontaktformular")
+    inhalt += '<li><a href="#fragen">Häufige Fragen</a></li>'
+    fragen = ''.join(f'<details class="faq-item"{" open" if i == 0 else ""}><summary>{q}<i aria-hidden="true">+</i></summary><div class="a"><p>{x}</p></div></details>' for i, (q, x) in enumerate(a['faq']))
+    l = WX_LEISTUNG.get(a['leistung'], WX_LEISTUNG['potenzial'])
+    verwandt = [nach_slug[s] for s in a.get('verwandt', []) if s in nach_slug and s != a['slug']][:3]
+    for x in [x for x in WISSEN if x['kategorie'] == a['kategorie']] + WISSEN:
+        if len(verwandt) >= 3: break
+        if x is not a and x not in verwandt: verwandt.append(x)
+    quellen = a.get('quellen', [])
+    qliste = ''.join(f'<li><a href="{q["url"]}" target="_blank" rel="noopener">{q["name"]}</a></li>' for q in quellen)
+    kopfteil = (f'<section class="wx-kopf"><div class="wrap wx-schmal"><nav class="wx-brot" aria-label="Brotkrumen"><a href="{u("/")}">Start</a><span aria-hidden="true">›</span><a href="{u("/wissen/")}">Wissen</a><span aria-hidden="true">›</span><span>{a["kategorie"]}</span></nav>'
+                f'<p class="kick">{a["kategorie"]}</p><h1 class="wx-h1">{a["h1"]}</h1><p class="lead">{a["teaser"]}</p>'
+                f'<div class="wx-meta"><img src="/assets/team/noah.jpg" alt="Noah Seelau" width="480" height="480"><span class="wx-autor"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur, seit 2019 nur Handwerk</small></span>'
+                f'<span class="wx-meta-rest"><span>{ic("calendar")}Aktualisiert {wx_datum(a.get("aktualisiert", WX_STAND))}</span><span>{ic("clock")}{a["lesezeit"]} Min. Lesezeit</span></span></div></div></section>')
+    kern = (f'<section class="wx-inhalt"><div class="wrap wx-raster-artikel"><aside class="wx-seite"><nav class="wx-toc" aria-label="Inhalt"><p>Inhalt</p><ol>{inhalt}</ol></nav>'
+            f'<a class="wx-leistung" href="{u(l[0])}">{ic(l[1])}<span><small>Passende Leistung</small><b>{l[2]}</b></span></a></aside>'
+            f'<article class="wx-text"><div class="wx-kurz rv"><b>Kurz gesagt</b><p>{a["kurzantwort"]}</p></div>{wx_zahlen(a.get("zahlen"))}{abschnitte}'
+            f'<section class="wx-teil wx-fragen" id="fragen"><h2>Häufige Fragen</h2><div class="faq-liste">{fragen}</div></section>'
+            + (f'<section class="wx-teil wx-quellen"><h2>Quellen</h2><ol>{qliste}</ol></section>' if qliste else '')
+            + '<section class="wx-teil wx-quer"><h2>Für alle Gewerke</h2><p>Dieselben Fragen aus Sicht aller Handwerksbetriebe, im Ratgeber der HandwerksManufaktur:</p><ul>' + ''.join(f'<li><a href="{WX_HWM}/{sl}/">{t}</a></li>' for sl, t in WX_QUER.get(a['kategorie'], [])) + f'<li><a href="{WX_HWM}/wissen/">Alle Ratgeber für Handwerksbetriebe</a></li></ul></section>'
+            + '<p class="wx-entstehung">Grundlage sind unsere Gespräche mit SHK-Inhabern und die Zahlen aus unseren Kampagnen, ergänzt um die genannten Quellen. Geschrieben von Noah Seelau mit Unterstützung von KI, jede Zahl ist geprüft.</p>'
+            + '</article></div></section>')
+    weiter = (f'<section class="sec wx-weiter"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Weiterlesen</p><h2 class="d rv">Das fragen Betriebe <span class="em k">als Nächstes.</span></h2></div></div>'
+              f'<div class="wx-raster">{"".join(wx_karte(x) for x in verwandt)}</div></div></section>')
+    url = f"{DOMAIN}/wissen/{a['slug']}/"
+    autor = {"@type": "Person", "name": "Noah Seelau", "jobTitle": "Gründer", "url": f"{DOMAIN}/ueber-uns/", "image": f"{DOMAIN}/assets/team/noah.jpg",
+             "worksFor": {"@id": "https://handwerksmanufaktur.digital/#organization"}}
+    art = {"@type": "Article", "headline": html.unescape(a['h1']), "description": a['beschreibung'], "author": autor, "publisher": {"@id": "https://handwerksmanufaktur.digital/#organization"},
+           "datePublished": a.get('veroeffentlicht', WX_STAND), "dateModified": a.get('aktualisiert', WX_STAND), "mainEntityOfPage": url, "inLanguage": "de-DE",
+           "image": f"{DOMAIN}/og-image-hm.jpg", "about": a['kategorie'], "audience": {"@type": "BusinessAudience", "audienceType": "SHK-Betriebe (Sanitär, Heizung, Klima)"}}
+    if quellen: art["citation"] = [q['url'] for q in quellen]
+    schema = [art] + faq_schema(a['faq']) + [
+              {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": f"{DOMAIN}/"},
+                                                              {"@type": "ListItem", "position": 2, "name": "Wissen", "item": f"{DOMAIN}/wissen/"},
+                                                              {"@type": "ListItem", "position": 3, "name": html.unescape(a['h1']), "item": url}]}]
+    h = kopf(a['titel'], a['beschreibung'], f"/wissen/{a['slug']}/", schema_extra=schema)
+    cta_t = a.get('cta_titel') or 'Was ist in deinem Umkreis <span class="em w">drin?</span>'
+    cta_s = a.get('cta_satz') or 'In 30 Minuten rechnen wir durch, was bei dir an Bewerbungen oder Anfragen drin ist.'
+    return h + kopfteil + kern + weiter + wx_cta(cta_t, cta_s, a['leistung']) + fuss()
+
 # ── Schreiben ─────────────────────────────────────────────────────────────
 # /fallstudien/ ist ausgeblendet (Noah, 27.09.2026: „die Seite Fallstudien können wir aktuell noch rausnehmen“) — die alte Adresse leitet auf die Fallstudien der Startseite
 SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial}
 for _p in RECHT: SEITEN[_p] = (lambda p: lambda: seite_recht(p))(_p)
+if WISSEN:
+    SEITEN['/wissen/'] = seite_wissen
+    for _a in WISSEN: SEITEN[f'/wissen/{_a["slug"]}/'] = (lambda x: lambda: seite_wissen_artikel(x))(_a)
+import shutil
+for _d in (AUS / 'wissen').glob('*/') if (AUS / 'wissen').exists() else []:   # alte Artikel-Ordner weg, wenn die JSON gelöscht ist
+    if _d.is_dir() and _d.name not in {x['slug'] for x in WISSEN}: shutil.rmtree(_d); print('− alt entfernt', _d.relative_to(REPO))
 (AUS/'version.json').write_text('{"v":"%s"}\n' % V, encoding='utf-8')
 for pfad, fn in SEITEN.items():
     ziel = AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html'
@@ -800,6 +957,16 @@ _weg = AUS / 'fallstudien' / 'index.html'
 _weg.parent.mkdir(parents=True, exist_ok=True)
 _weg.write_text(f'<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={u("/")}#fallstudien"><link rel="canonical" href="{u("/")}"><title>Fallstudien</title></head><body><a href="{u("/")}#fallstudien">Zu den Fallstudien</a></body></html>\n', encoding='utf-8')
 if LIVE:
-    sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc><changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else "0.8"}</priority></url>' for p in SEITEN if p not in RECHT)
+    _wx_mod = {f'/wissen/{x["slug"]}/': x.get('aktualisiert', WX_STAND) for x in WISSEN}
+    if WISSEN: _wx_mod['/wissen/'] = max(_wx_mod.values())
+    sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc>' + (f'<lastmod>{_wx_mod[p]}</lastmod>' if p in _wx_mod else '') + f'<changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else ("0.7" if p.startswith("/wissen/") and p != "/wissen/" else "0.8")}</priority></url>' for p in SEITEN if p not in RECHT)
     (REPO/'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding='utf-8')
     print('✓ sitemap.xml')
+if LIVE and WISSEN:
+    # llms.txt: Abschnitt „Wissen" aus den Artikeln (Ratgeber für KI-Suchen auffindbar, 29.09.2026)
+    _llms = (REPO / 'llms.txt').read_text(encoding='utf-8')
+    _block = '## Wissen (Ratgeber für SHK-Betriebe)\n' + ''.join(f'- [{html.unescape(x["h1"])}]({DOMAIN}/wissen/{x["slug"]}/): {html.unescape(x["teaser"])}\n' for x in WISSEN) + '\n'
+    _llms = re.sub(r'## Wissen \(Ratgeber für SHK-Betriebe\)\n.*?\n(?=## |\Z)', '', _llms, flags=re.S)
+    _llms = _llms.replace('## Rechtliches', _block + '## Rechtliches') if '## Rechtliches' in _llms else _llms.rstrip() + '\n\n' + _block
+    (REPO / 'llms.txt').write_text(_llms, encoding='utf-8')
+    print('✓ llms.txt (Wissen)')

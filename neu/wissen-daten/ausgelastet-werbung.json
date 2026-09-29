@@ -1,0 +1,73 @@
+{
+  "slug": "ausgelastet-werbung",
+  "titel": "Ausgelastet: Braucht mein SHK-Betrieb trotzdem Werbung?",
+  "h1": "Ich bin ausgelastet: Brauche ich trotzdem Werbung?",
+  "beschreibung": "Voll ist in vielen SHK-Betrieben normal. Wann Werbung trotzdem Sinn hat, wann nicht und warum ein voller Meisterbetrieb seine Anzeigen verlängert hat.",
+  "kategorie": "Aufträge gewinnen",
+  "reihe": 3,
+  "top": false,
+  "teaser": "„Wir sind voll“ hören wir öfter als jeden anderen Satz. Wann Werbung trotzdem Sinn hat und wann du dir das Geld sparst.",
+  "kurzantwort": "Bist du über Monate voll mit den Aufträgen, die du willst, brauchst du keine Werbung. Sinnvoll wird sie, wenn Kundendienst und Reparaturen den Kalender füllen und die großen Bäder und Heizungen fehlen, oder wenn die Arbeit in Wellen kommt. Dann geht es um bessere Aufträge und darum, bekannt zu sein, bevor es ruhiger wird.",
+  "lesezeit": 7,
+  "leistung": "auftraege",
+  "zahlen": [
+    {"zahl": "83", "einheit": "von 436", "text": "Gesprächen mit Handwerksbetrieben drehten sich um „wir sind ausgelastet“. Kein Thema kam öfter.", "quelle": "eigene Auswertung, Gespräche 10/2025 bis 09/2026"},
+    {"zahl": "59,1", "einheit": " Mrd. €", "text": "Umsatz im SHK-Handwerk 2025, leicht unter dem Vorjahr. Aufträge und Auslastung gingen laut ZVSHK zurück.", "quelle": "ZVSHK 2026", "url": "https://www.zvshk.de/presse/shk-handwerk-2025-umsatz-und-auftraege-ruecklaeufig-investitionsstau-bremst-branche"},
+    {"zahl": "21", "einheit": "Anfragen", "text": "Bad-Anfragen in 2 Monaten bei Senftleben Haustechnik, einem ausgelasteten Meisterbetrieb. Einzelfall, kein Versprechen.", "quelle": "eigene Kampagne, Senftleben Haustechnik, 2026"}
+  ],
+  "abschnitte": [
+    {
+      "h2": "Wie oft hören wir „Wir sind ausgelastet“?",
+      "html": "<p>Sehr viele. Wir haben 436 Gespräche mit Handwerksbetrieben ausgewertet, Telefonate und Videotermine von Oktober 2025 bis September 2026. In 83 davon ging es darum, dass der Betrieb voll ist. Kein anderes Thema kam so oft, auch der Preis nicht.</p><p>Meistens ist „wir sind voll“ eine Beschreibung der Lage und kein Nein. Die Kalender reichen bis in den Winter, die Monteure sind verplant, und neue Anfragen landen auf einem Stapel, den abends keiner mehr anfasst. Wer so arbeitet, will verständlicherweise keine Anzeigen, die noch mehr auf den Stapel legen.</p><p>Die Sorge ist berechtigt. Eine Anfrage, die du absagen musst, kostet Zeit und manchmal deinen Ruf. Deshalb steht vor jeder Werbung für einen vollen Betrieb eine andere Frage: Womit bist du voll, und womit willst du voll sein?</p>",
+      "zitat": {"text": "Bei Bädern muss ich sagen, will ich dieses Jahr eigentlich kein neues Bad mehr sehen, weil wir für dieses Jahr ausgelastet sind.", "wer": "Inhaber, SHK-Betrieb, Sachsen"}
+    },
+    {
+      "h2": "Mit welchen Aufträgen bist du voll?",
+      "html": "<p>Ob Werbung für dich Sinn hat, hängt weniger davon ab, wie voll du bist, als davon, womit. Ein Betrieb, der mit Badsanierungen und Heizungstausch bis Februar ausgebucht ist, braucht nichts. Ein Betrieb, der mit Kundendienst und Reparaturen voll ist, sieht die großen Aufträge vielleicht nur noch bei der Konkurrenz.</p><p>Such dir in der Tabelle die Zeile, die am besten passt. Mehrere Zeilen gleichzeitig sind auch möglich. Ein guter Test ist dein Kalender vom letzten Jahr: Wie viele Wochen waren mit großen Aufträgen belegt, und wie viele mit Kleinkram? Wer das einmal auszählt, sieht schnell, in welcher Zeile er steht.</p><p>Steckst du in der dritten Zeile, fang bei den Leuten an. Dazu gibt es den Artikel <a href='/wissen/anlagenmechaniker-finden/'>Wie finde ich einen Anlagenmechaniker SHK?</a> Für die anderen Fälle lies weiter.</p>",
+      "tabelle": {
+        "titel": "Welche Art von ausgelastet bist du?",
+        "kopf": ["Deine Lage", "Woran du es merkst", "Was sinnvoll ist"],
+        "zeilen": [
+          ["Voll mit Bädern und Heizungen, die du willst", "Projekte über Monate im Voraus, Preise gehen durch", "Nichts dazukaufen. Fotos und Google-Profil aktuell halten."],
+          ["Voll mit Kundendienst und Reparaturen", "Der Tag ist voll, die großen Anfragen bleiben aus", "Gezielt Bad oder Wärmepumpe bewerben, mit Filterfragen"],
+          ["Voll, weil Leute fehlen", "Du sagst Aufträge ab, weil Monteure fehlen", "Zuerst Monteure suchen, dann Kunden"],
+          ["Voll bis zum Winter, danach offen", "Ab Januar oder Februar ist der Kalender leer", "Jetzt anfangen, weil Bäder Vorlauf brauchen"],
+          ["Voll, aber die Preise gehen nicht durch", "Viele Angebote, wenig Zusagen, Kunden handeln", "Vorher filtern, damit du bei den passenden Kunden landest"]
+        ]
+      }
+    },
+    {
+      "h2": "Warum schaltet ein ausgelasteter Betrieb trotzdem Anzeigen?",
+      "html": "<p>Benjamin Senftleben führt Senftleben Haustechnik in Ehingen, einen Meisterbetrieb in dritter Generation. „Aufträge haben wir jetzt aktuell genügend“, sagt er. Seit Juli laufen trotzdem Anzeigen für Badsanierung im Umkreis von 25 km. In 2 Monaten kamen 21 Bad-Anfragen und über 10 Vor-Ort-Termine zusammen.</p><p>Nach dem Startpaket hat er verlängert. Sein Grund: Der Name soll im Kopf bleiben, wenn im Ort das nächste Bad ansteht. Werbung macht man nicht nur, wenn es gut läuft, das hat er schon in der Meisterschule gelernt.</p><p>Dahinter stecken zwei Dinge. Ein Bad wird Monate vorher geplant, die Anfrage von heute ist also die Baustelle im Frühjahr. Und die Lage kann sich drehen. Der ZVSHK meldet für 2025 rund 59,1 Mrd. € Umsatz, leicht unter dem Vorjahr, bei sinkenden Aufträgen und rückläufiger Auslastung. Schon 2024 war der Umsatz um etwa 4 % gefallen, der erste Rückgang nach über zehn Jahren Wachstum. Wer erst Werbung macht, wenn die Lücke da ist, wartet dann auf die ersten Anfragen, während die Monteure schon Zeit haben.</p>",
+      "zitat": {"text": "Aufträge haben wir jetzt aktuell genügend.", "wer": "Benjamin Senftleben, Inhaber, Senftleben Haustechnik, Ehingen"}
+    },
+    {
+      "h2": "Brauche ich mehr Aufträge oder bessere?",
+      "html": "<p>Für einen vollen Betrieb fast immer bessere. Viele unserer Kunden haben eine Grundauslastung über Wartungsverträge und Kundendienst. Was fehlt, sind die größeren Aufträge: das Komplettbad, der Heizungstausch, die Wärmepumpe im Einfamilienhaus. Dafür lohnt es sich zu werben, auch wenn der Kalender gut gefüllt ist.</p><p>Bessere Aufträge bekommst du, indem du vor der Anfrage aussortierst. Auf der Anfrageseite stehen Filterfragen, bevor jemand seine Nummer eingibt:</p><ul><li>Gehört dir das Haus oder die Wohnung?</li><li>Welches Objekt und welches Baujahr?</li><li>Wann soll es losgehen?</li><li>In welcher Postleitzahl?</li></ul><p>Wer dein Bad nicht in diesem Jahr bauen will oder außerhalb deines Umkreises wohnt, meldet sich gar nicht erst. So kommen weniger Anfragen, und die Rückrufe lohnen sich. Wie das für Bäder läuft, steht im Artikel <a href='/wissen/badsanierung-anfragen/'>Badsanierungs-Anfragen ohne Portale</a>.</p>"
+    },
+    {
+      "h2": "Was, wenn plötzlich zu viele Anfragen kommen?",
+      "html": "<p>Dann wird gedrosselt. Das ist die häufigste Sorge voller Betriebe, und sie lässt sich lösen, weil du bei Anzeigen jederzeit am Regler sitzt. Diese Stellschrauben gibt es:</p><ul><li><strong>Budget senken.</strong> Das Werbebudget läuft direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag. Weniger Budget heißt weniger Anfragen.</li><li><strong>Umkreis verkleinern.</strong> Von 30 auf 15 km, dann kommen nur noch die Kunden um die Ecke.</li><li><strong>Nur eine Leistung bewerben.</strong> Zum Beispiel nur Komplettbäder und keine Teilsanierungen.</li><li><strong>Pausieren.</strong> Anhalten, wenn die Monteure ausgebucht sind, und später wieder starten.</li></ul><p>Auf Wunsch drosseln wir auf ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team schafft. Wichtig ist nur, dass jede Anfrage einen Rückruf bekommt, auch wenn die Antwort „erst im Frühjahr“ lautet. Wer sich meldet, bleibt beim Kunden im Rennen, auch wenn das Bad erst später drankommt.</p>",
+      "zitat": {"text": "Wir sind über die Maßen ausgebucht. Ich habe jetzt alleine die Woche noch mal sechs Anfragen reingekriegt für Badumbauten.", "wer": "Inhaber, SHK-Betrieb, Sachsen"}
+    },
+    {
+      "h2": "Und wenn dir vor allem Leute fehlen?",
+      "html": "<p>Dann ist „ausgelastet“ oft ein anderes Wort für „zu wenig Monteure“. Du sagst Aufträge ab, die du mit einem Mann mehr bauen könntest. Laut ZVSHK meldet rund die Hälfte der SHK-Betriebe offene Stellen.</p><p>In dem Fall sind Anzeigen für Kunden der zweite Schritt. Der erste ist die Suche nach Leuten, und sie funktioniert nach demselben Muster: Anzeigen im Umkreis, Bilder aus deinem Betrieb, Filterfragen vor der Bewerbung. Senftleben Haustechnik hat nach dem Auftrags-Funnel so eine Stelle in Lohn und Buchhaltung besetzt, mit 21 Bewerbungen in 18 Tagen.</p><p>Wie das für Monteure läuft, steht auf der Seite <a href='/monteure/'>Monteure gewinnen</a>. Was dich eine offene Stelle jeden Monat kostet, rechnet der Artikel <a href='/wissen/kosten-offene-stelle/'>Was kostet eine unbesetzte Stelle im SHK-Betrieb?</a> vor.</p>"
+    }
+  ],
+  "faq": [
+    ["Ich bin bis Februar voll. Wann sollte ich mit Werbung anfangen?", "Eher jetzt als im Februar. Ein Bad wird Monate vorher geplant, und eine Kampagne braucht Anlauf. Bei uns sind die ersten 3 Monate Anlaufzeit, danach ist sie monatlich kündbar. Wer erst startet, wenn die Lücke da ist, hat ein paar ruhige Wochen."],
+    ["Kann ich die Anzeigen pausieren, wenn es zu viel wird?", "Ja. Du kannst das Budget senken, den Umkreis verkleinern oder ganz pausieren. Das Werbebudget läuft direkt an Meta, die Ausgaben lassen sich also sofort anpassen. Auf Wunsch drosseln wir auf ein, zwei Aufträge im Monat."],
+    ["Lohnt sich Werbung, wenn ich eh über Empfehlung arbeite?", "Empfehlungen bleiben der stärkste Weg. Rund 8 von 10 Deutschen holen sich bei der Handwerkersuche Rat im persönlichen Gespräch (Bitkom 2025). Aber sie lassen sich nicht planen. Anzeigen im Umkreis ergänzen sie, wenn du gezielt mehr Bäder oder Wärmepumpen willst."],
+    ["Holt mir Werbung nur Preisvergleicher ins Haus?", "Ganz verhindern lässt sich das nicht. Filterfragen zu Eigentum, Objekt, Baujahr und Zeitrahmen sortieren vorher aus. Benjamin Senftleben sagte nach den ersten Vor-Ort-Terminen auf die Frage nach Schnäppchenjägern: „Mir kam es bei den Kunden vor Ort nicht so vor.“"],
+    ["Was kostet es, Werbung laufen zu lassen, obwohl ich voll bin?", "Das Werbebudget liegt in unseren Kampagnen meist bei 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat, und geht direkt an Meta. Was das bei dir mit allen Posten kostet, rechnen wir im Erstgespräch durch."]
+  ],
+  "quellen": [
+    {"name": "ZVSHK: SHK-Handwerk 2025, Umsatz und Aufträge rückläufig, Investitionsstau bremst Branche (Pressemitteilung, 04.05.2026)", "url": "https://www.zvshk.de/presse/shk-handwerk-2025-umsatz-und-auftraege-ruecklaeufig-investitionsstau-bremst-branche"},
+    {"name": "ZVSHK: SHK-Handwerk mit verhaltener Bilanz 2024 (Pressemitteilung, 13.03.2025)", "url": "https://www.zvshk.de/presse/medien-center/pressemitteilungen/shk-handwerk-mit-verhaltener-bilanz-2024"},
+    {"name": "Bitkom: Handwerkersuche: Persönliches Gespräch schlägt Infos im Netz (Pressemitteilung, 12.06.2025)", "url": "https://www.bitkom.org/Presse/Presseinformation/Handwerkersuche-Gespraech-schlaegt-Netz"}
+  ],
+  "verwandt": ["badsanierung-anfragen", "anfragen-durch-werbung", "kosten-offene-stelle"],
+  "cta_titel": "Voll, aber mit den <span class='em w'>richtigen Aufträgen?</span>",
+  "cta_satz": "In 30 Minuten schauen wir, womit dein Kalender voll ist und ob sich Anzeigen für dich überhaupt lohnen."
+}

@@ -1,0 +1,42 @@
+{
+ "folge": [
+  1,
+  12,
+  11,
+  13,
+  10,
+  4,
+  9,
+  14,
+  5,
+  2,
+  16,
+  17,
+  15,
+  6,
+  3,
+  7,
+  18,
+  8
+ ],
+ "betriebe": [
+  "Sussmann",
+  "Erwin Schmidt",
+  "Sussmann",
+  "Senftleben",
+  "Erwin Schmidt",
+  "Senftleben",
+  "Sussmann",
+  "Irlbacher",
+  "Senftleben",
+  "Irlbacher",
+  "Sussmann",
+  "Senftleben",
+  "Erwin Schmidt",
+  "Senftleben",
+  "Sussmann",
+  "Irlbacher",
+  "Sussmann",
+  "Erwin Schmidt"
+ ]
+}

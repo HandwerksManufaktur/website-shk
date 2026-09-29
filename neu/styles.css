@@ -1159,10 +1159,10 @@ svg.vb .pin.an{fill:var(--warm);opacity:0;transform-box:fill-box;transform-origi
 svg.vb .haus{fill:var(--ink)} svg.vb .haus.an{fill:#fff}
 .vb-team{display:flex;flex-direction:column;justify-content:center;gap:18px}
 .slots{display:flex;gap:12px}
-.kopf{width:48px;height:48px;border-radius:50%;background:var(--ink);position:relative;flex:none}
-.kopf::after{content:"";position:absolute;left:50%;top:22%;width:34%;height:34%;border-radius:50%;background:var(--card);transform:translateX(-50%)}
-.kanal .kopf{background:#fff} .kanal .kopf::after{background:var(--night)}
-.kopf.leer{background:none;border:2px dashed #E5484D} .kopf.leer::after{display:none}
+i.kopf{width:48px;height:48px;border-radius:50%;background:var(--ink);position:relative;flex:none}
+i.kopf::after{content:"";position:absolute;left:50%;top:22%;width:34%;height:34%;border-radius:50%;background:var(--card);transform:translateX(-50%)}
+.kanal i.kopf{background:#fff} .kanal i.kopf::after{background:var(--night)}
+i.kopf.leer{background:none;border:2px dashed #E5484D} i.kopf.leer::after{display:none}
 .chips{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .vb .chip{display:inline-flex;align-items:center;min-height:34px;padding:6px 14px;border-radius:var(--r-pill);font-size:14px;font-weight:600;opacity:0;transform:translateY(10px)}
 .vb .chip.schlecht{background:#FDECEC;color:#B42318;text-decoration:line-through;text-decoration-thickness:2px}
@@ -1200,11 +1200,11 @@ svg.vb .haus{fill:var(--ink)} svg.vb .haus.an{fill:#fff}
 .kontakt-neu .wahl{margin-top:28px}
 .kontakt-neu .kontakt-zeile{margin-top:22px}
 @media(max-width:1000px){.kontakt-neu{grid-template-columns:minmax(0,1fr);gap:0;padding:16px}.kontakt-bild{min-height:0;aspect-ratio:4/3}.kontakt-text{padding:28px 10px 14px}}
-.kopf{background:var(--paper);display:grid;place-items:center;overflow:hidden}
-.kopf::after{display:none}
-.kopf svg{width:30px;height:30px;fill:var(--ink);margin-top:6px}
-.kanal .kopf{background:rgba(255,255,255,.1)} .kanal .kopf svg{fill:#fff}
-.kopf.leer{background:none}
+i.kopf{background:var(--paper);display:grid;place-items:center;overflow:hidden}
+i.kopf::after{display:none}
+i.kopf svg{width:30px;height:30px;fill:var(--ink);margin-top:6px}
+.kanal i.kopf{background:rgba(255,255,255,.1)} .kanal i.kopf svg{fill:#fff}
+i.kopf.leer{background:none}
 .vb .chip.schlecht{text-decoration:none}
 .vb .chip.schlecht::before{content:"✕";margin-right:8px;font-weight:800}
 .vb .chip.gut::before{content:"✓";margin-right:8px;font-weight:800}
@@ -1492,15 +1492,7 @@ html.rd-offen{overflow:hidden}
 .werdegang-bild{margin:0;border-radius:var(--r-lg);overflow:hidden;height:560px}
 .werdegang-bild img,.werdegang-bild img[width][height]{width:100%;height:100%;object-fit:cover}
 @media(max-width:899px){.werdegang-bild{height:440px}}
-.werdegang-text .lead{margin:14px 0 26px}
-.werdegang-weg{list-style:none;padding:0 0 0 26px;margin:0;position:relative;display:grid;gap:18px}
-.werdegang-weg::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:3px;border-radius:2px;background:linear-gradient(180deg,var(--kalt),#7A7EC8,var(--warm))}
-.werdegang-weg li{position:relative;display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:baseline}
-.werdegang-weg li::before{content:"";position:absolute;left:-26px;top:.55em;width:15px;height:15px;border-radius:50%;background:var(--card);border:3px solid var(--kalt)}
-.werdegang-weg li:nth-child(3)::before,.werdegang-weg li:nth-child(4)::before{border-color:var(--warm)}
-.werdegang-weg b{font-family:var(--fh);font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1}
-.werdegang-weg span{font-size:15.5px;color:var(--sub);line-height:1.5}
-.werdegang-weg strong{color:var(--ink)}
+.werdegang-text .lead{margin:14px 0 28px}
 /* Kleines Team: Bilder statt Symbolketten */
 .v-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:86%}
 .v-logos span{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--night);display:block;transition:transform .3s var(--spring)}
@@ -1516,3 +1508,7 @@ html.rd-offen{overflow:hidden}
 .werdegang-grid{align-items:stretch}
 .werdegang-bild{height:auto;min-height:480px}
 @media(max-width:899px){.werdegang-bild{height:440px;min-height:0}}
+/* Über uns ohne Zeitstrahl (29.09.2026): Text trägt die Spalte allein */
+
+.werdegang-name{display:flex;flex-direction:column;gap:2px;margin:0;padding-left:16px;border-left:3px solid var(--warm)}
+.werdegang-name b{font-size:16px;font-weight:700;color:var(--ink)} .werdegang-name small{font-size:14px;letter-spacing:.01em;color:var(--sub)}

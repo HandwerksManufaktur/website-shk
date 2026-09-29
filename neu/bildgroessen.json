@@ -27,10 +27,6 @@
   360,
   630
  ],
- "assets-fotos-noah-bei-klass": [
-  360,
-  510
- ],
  "assets-fotos-noah-gruender-portrait": [
   100,
   120
@@ -42,6 +38,10 @@
  "assets-fotos-noah-laptop": [
   360,
   540
+ ],
+ "assets-fotos-noah-ueber-studio": [
+  360,
+  510
  ],
  "assets-fotos-senftleben-team-2026": [
   360,
@@ -193,7 +193,7 @@
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
   170,
-  170
+  160
  ],
  "logos-shk-logo-irlbacher-weiss": [
   40,
@@ -256,7 +256,7 @@
    "assets-logos-box-sussmann"
   ],
   "/neu/ueber-uns/": [
-   "assets-fotos-noah-bei-klass"
+   "assets-fotos-noah-ueber-studio"
   ],
   "/neu/potenzialanalyse/": []
  }

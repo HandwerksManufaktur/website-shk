@@ -726,22 +726,17 @@ def seite_fallstudien():
     body += reels() + stimmen()
     return h + body + fuss()
 
-WERDEGANG = [('2019', 'Die erste Website', 'für einen Handwerksbetrieb. Dann kam der nächste und der nächste.'),
-             ('130+', 'Betriebe', 'in Deutschland, Österreich und der Schweiz, Websites und Anzeigen.'),
-             ('25', 'Bewerbungen in 4 Wochen', 'für Erwin Schmidt &amp; Sohn, die Stelle ist besetzt.'),
-             ('21', 'Bad-Anfragen in 2 Monaten', 'für Senftleben Haustechnik, dazu 10+ Vor-Ort-Termine.')]
-
 def ueber_werdegang():
-    """Über-uns-Seite: eigener Block, keine Kopie von „Du beherrschst dein Handwerk“ (Noah, 28.09.2026: „die Über-uns-Sektion
-    sollte auch nicht einfach komplett gedoppelt sein … der Text da ist richtig scheiße"). Eigenes Foto, Werdegang am Regler."""
-    schritte = ''.join(f'<li class="rv" data-d="{i+1}"><b>{z}</b><span><strong>{t}</strong> {p}</span></li>' for i, (z, t, p) in enumerate(WERDEGANG))
+    """Über-uns-Seite: eigener Block, keine Kopie von „Du beherrschst dein Handwerk" (Noah, 28.09.2026: „der Text da ist richtig
+    scheiße"). Seit 29.09.2026 ohne Zeitstrahl und ohne Kundenzahlen, Foto nur mit Noah (Noah: „25 Bewerbungen, 21 Badanfragen
+    … hat bei ‚Über uns' überhaupt nichts verloren" · „einfach nur ein Foto von mir")."""
     return f'''<section class="sec werdegang" id="werdegang"><div class="wrap"><div class="werdegang-grid">
-  <figure class="werdegang-bild rv"><img src="/assets/fotos/noah-bei-klass.jpg" alt="Noah Seelau mit zwei Monteuren vor ihrem Firmenwagen" loading="lazy" width="1100" height="1100" style="object-position:50% 40%"></figure>
+  <figure class="werdegang-bild rv"><img src="/assets/fotos/noah-ueber-studio.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 25%"></figure>
   <div class="werdegang-text">
     <p class="kick rv">Wie es angefangen hat</p>
     <h2 class="d rv">Die erste Website war für einen Handwerker. <span class="em w">Dabei ist es geblieben.</span></h2>
     <p class="lead rv">Ich bin Noah. 2019 habe ich die erste Website für einen Handwerksbetrieb gebaut. Heute bauen wir für SHK-Betriebe auch die Anzeigen: für Monteure, für Bäder und für Wärmepumpen.</p>
-    <ol class="werdegang-weg">{schritte}</ol>
+    <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
   </div>
 </div></div></section>'''
 

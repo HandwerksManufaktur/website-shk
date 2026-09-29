@@ -285,7 +285,7 @@
       const knopf = $('button[type=submit]', form); knopf.disabled = true;
       try { const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd }); if (!r.ok) throw 0; } catch (x) { knopf.disabled = false; fehler.textContent = 'Das hat nicht geklappt. Ruf gern direkt an: +49 8194 7174990'; fehler.hidden = false; return; }
       const cal = $('[data-cal]', dlg); if (d.ziel === 'Aufträge') cal.href = 'https://calendly.com/noahseelau/leadgen-potenzial';
-      spur('rechner_abgeschickt', { ziel: d.ziel }); zeig(10);
+      spur('rechner_abgeschickt', { ziel: d.ziel }); try { document.dispatchEvent(new CustomEvent('hwm:lead', { detail: { formular: 'rechner-' + (d.ziel || '').toLowerCase() } })); } catch (x) {} zeig(10);
     });
   }
 

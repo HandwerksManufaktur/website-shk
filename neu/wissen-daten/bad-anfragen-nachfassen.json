@@ -1,0 +1,199 @@
+{
+  "slug": "bad-anfragen-nachfassen",
+  "titel": "Bad-Anfragen nachfassen: So werden daraus Aufträge",
+  "h1": "Wie fasse ich Bad-Anfragen nach, damit daraus Aufträge werden?",
+  "beschreibung": "Wann du Bad-Anfragen zurückrufst, was dir die Filterantworten sagen und wie du den Vor-Ort-Termin vorbereitest. Mit Zahlen aus zwei SHK-Kampagnen.",
+  "kategorie": "Aufträge gewinnen",
+  "reihe": 5,
+  "top": false,
+  "veroeffentlicht": "2026-11-03",
+  "teaser": "Wann du anrufst, was du vorher aus den Filterantworten liest und wie du den Vor-Ort-Termin vorbereitest, damit aus einer Anfrage ein Auftrag wird.",
+  "kurzantwort": "Ruf eine Bad-Anfrage am selben oder nächsten Tag an, versuch es zwei- bis dreimal, bevor du eine Mail schickst, und leg im ersten Gespräch den Vor-Ort-Termin fest. Lies vorher die Filterantworten zu Vorhaben, Größe, Zeitplan und Wohnort. Bei Senftleben Haustechnik und der Erich Sussmann GmbH wurde rund jede zweite Anfrage zum Termin.",
+  "lesezeit": 8,
+  "leistung": "auftraege",
+  "bild": {
+    "src": "/assets/fotos/senftleben-benjamin-fenster.jpg",
+    "alt": "Benjamin Senftleben sitzt im roten Firmenwagen und schaut aus dem Seitenfenster",
+    "unter": "Benjamin Senftleben im Firmenwagen, Senftleben Haustechnik, Ehingen",
+    "pos": "55% 40%"
+  },
+  "zahlen": [
+    {
+      "zahl": "21",
+      "einheit": "Anfragen",
+      "text": "für Badsanierung in 2 Monaten, daraus über 10 Vor-Ort-Termine. Einzelfall, kein Versprechen.",
+      "quelle": "eigene Kampagne, Senftleben Haustechnik, 2026"
+    },
+    {
+      "zahl": "14",
+      "einheit": "Anfragen",
+      "text": "für Badsanierung im September, daraus über 7 Vor-Ort-Termine und nach gut 2 Wochen ein Auftrag über 10.000 €.",
+      "quelle": "eigene Kampagne, Erich Sussmann GmbH, 2026"
+    },
+    {
+      "zahl": "41",
+      "einheit": "%",
+      "text": "der Deutschen informieren sich vor Ort beim Betrieb, bevor sie einen Handwerker wählen. Über Websites der Betriebe tun es 26 %.",
+      "quelle": "Bitkom 2025",
+      "url": "https://www.bitkom.org/Presse/Presseinformation/Handwerkersuche-Gespraech-schlaegt-Netz"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Warum ist der erste Rückruf so wichtig?",
+      "html": "<p>Die Anfrage kommt am Samstagabend, am Montag ist die Baustelle dran, und am Mittwoch fällt sie dir wieder ein. Bis dahin hat der Kunde vielleicht schon mit einem anderen Betrieb gesprochen.</p><p>Wer ein Bad anfragt, hat sich gerade mit seinem Bad beschäftigt. Er weiß noch, welche Fragen er beantwortet hat, und er rechnet mit einem Anruf. Je länger du wartest, desto mehr musst du am Telefon erklären, wer du bist und warum du anrufst.</p><p>In unseren Bad-Kampagnen ist deshalb ein Rückruf binnen 24 Stunden der Standard. Schon vor dem Start klären wir mit dem Betrieb, wer auf Anfragen reagiert, auch im Urlaub. Bei Senftleben Haustechnik wurden aus 21 Bad-Anfragen über 10 Vor-Ort-Termine, bei der Erich Sussmann GmbH aus 14 Anfragen über 7. Rund jede zweite Anfrage wurde also zum Termin. Der Weg dahin fängt beim ersten Anruf an, und oft braucht es mehr als einen.</p>"
+    },
+    {
+      "h2": "Wie oft rufst du an, bevor du eine Mail schickst?",
+      "html": "<p>Meistens zwei- bis dreimal. Beim ersten Klingeln sitzt der Kunde vielleicht im Auto oder steht selbst auf der Arbeit. Eine Mail nach dem ersten verpassten Anruf wirkt schnell aufdringlich.</p><p>Bei einem unserer Kunden ist der Ablauf fest:</p><ol><li><strong>Anfrage kommt rein.</strong> Der Kunde bekommt automatisch eine Bestätigungsmail.</li><li><strong>Erster Anrufversuch.</strong> Klappt es nicht, geht noch keine Mail raus.</li><li><strong>Zweiter oder dritter Versuch.</strong> Erst jetzt kommt die Mail „Wir haben dich leider nicht erreicht“.</li><li><strong>Nicht erreicht.</strong> Eine letzte Mail geht raus, danach ist die Anfrage abgeschlossen.</li></ol><p>Auf der Anfrageseite steht dazu die Frage, wann der Kunde am besten erreichbar ist. Am Anfang konnte man dort auch „abends ab 18 Uhr“ wählen. Drei von acht Anfragenden taten das. Die Antwort wurde gestrichen, weil kaum jemand sie wählte und der Rückruf ohnehin am nächsten Tag lief. Frag nur Uhrzeiten ab, zu denen du auch anrufst.</p>",
+      "bild": {
+        "src": "/assets/fotos/sussmann-lager-scharf.jpg",
+        "alt": "Patrick und Mirjana Wähnl stehen im Lager der Erich Sussmann GmbH zwischen Regalen",
+        "unter": "Patrick und Mirjana Wähnl, Erich Sussmann GmbH, Kirchheim bei München",
+        "pos": "50% 35%"
+      }
+    },
+    {
+      "h2": "Was sagen dir die Filterantworten vor dem Anruf?",
+      "html": "<p>Die Filterfragen stehen auf der Anfrageseite, bevor der Kunde seine Kontaktdaten abschickt. Lies die Antworten vor dem Anruf. So fängst du das Gespräch beim Bad des Kunden an und fragst nichts doppelt.</p><p>Eine Angabe hat zwei Betrieben gleichzeitig gefehlt: der Wohnort. Benjamin Senftleben wollte vor dem Rückruf wissen, wo die Leute wohnen, Patrick Wähnl ging es genauso. Seit September 2026 fragen beide Anfrageseiten nach Postleitzahl und Ort. Die Tabelle zeigt, was dir die einzelnen Antworten sagen.</p><p>Ein später Zeitplan heißt übrigens nicht, dass die Anfrage schlecht ist. Die allererste Anfrage bei einem unserer Kunden wollte in drei bis sechs Monaten starten, der Vor-Ort-Termin war trotzdem kurz darauf vereinbart.</p>",
+      "tabelle": {
+        "titel": "Filterantworten und was du im Anruf damit machst",
+        "kopf": [
+          "Frage",
+          "Was sie dir sagt",
+          "Was du damit machst"
+        ],
+        "zeilen": [
+          [
+            "Vorhaben",
+            "Komplettbad, Teilsanierung oder etwas anderes",
+            "Du steigst im Gespräch direkt beim Vorhaben ein"
+          ],
+          [
+            "Größe",
+            "Wie viele Quadratmeter das Bad hat",
+            "Du weißt vor dem Termin grob, was auf dich zukommt"
+          ],
+          [
+            "Zeitplan",
+            "Ob es bald losgehen soll oder erst später",
+            "Frühe Starter rufst du zuerst an, späte kommen auf die Liste für später"
+          ],
+          [
+            "Erreichbarkeit",
+            "Wann der Kunde ans Telefon geht",
+            "Du rufst zu dieser Zeit an und sparst dir Versuche"
+          ],
+          [
+            "Postleitzahl und Ort",
+            "Wie weit der Kunde entfernt wohnt",
+            "Nahe Anfragen schiebst du spontan ein, weite planst du"
+          ]
+        ],
+        "quelle": "Fragen aus den Bad-Kampagnen von Senftleben Haustechnik und der Erich Sussmann GmbH, 2026."
+      },
+      "zitat": {
+        "text": "Dann wüsste man halt auch gleich, wo die wohnen, oder zumindest mal die Stadt … Ist das Prio 1 oder ist das jetzt irgendeiner, wo wieder von weiter weg kommt, wo man dann vielleicht zwei, drei Tage später kontaktieren kann?",
+        "wer": "Benjamin Senftleben, Inhaber, Senftleben Haustechnik, Ehingen"
+      }
+    },
+    {
+      "h2": "Wie legst du den Vor-Ort-Termin fest und bereitest ihn vor?",
+      "html": "<p>Ziel des ersten Anrufs ist ein Termin im Kalender. Die Einzelheiten zum Bad klärst du vor Ort, wo du es siehst. Drei Dinge helfen dabei:</p><ul><li><strong>Zwei Termine anbieten.</strong> „Passt Ihnen Dienstag oder Donnerstag besser?“ ist leichter zu beantworten als „Wann haben Sie Zeit?“.</li><li><strong>Fotos vorab erbitten.</strong> Bei einem unserer Kunden schicken manche Interessenten vor dem Termin Fotos vom Bad. Du siehst Fliesen und Platz, bevor du losfährst.</li><li><strong>Entfernung mitdenken.</strong> Nahe Anfragen lassen sich spontan einschieben, weite planst du mit Vorlauf.</li></ul><p>Manche Betriebe verlangen für die Besichtigung eine Gebühr, in unseren Gesprächen nannten Inhaber 100 bis 200 €. Ein Betrieb will eine Pauschale für das Angebot einführen, die bei Auftrag angerechnet wird. Das filtert Neugierige, kann aber auch ernsthafte Kunden kosten. Probier es erst, wenn du trotz Filterfragen zu oft umsonst fährst.</p>",
+      "zitat": {
+        "text": "Mir kam es bis jetzt bei den Kunden vor Ort nicht so vor.",
+        "wer": "Benjamin Senftleben auf die Frage, ob über Facebook nur Schnäppchenjäger kommen"
+      }
+    },
+    {
+      "h2": "Wie behältst du den Überblick, bis der Auftrag da ist?",
+      "html": "<p>Zwischen Anfrage und Auftrag liegen bei einem Bad oft Wochen. Im Kopf gehen da schnell welche verloren. Eine einfache Liste reicht, am Rechner oder auf Papier, solange jede Anfrage eine Stufe hat.</p><p>Bei einem unserer Kunden hat jede Anfrage einen Status, die Stufen stehen in der Tabelle. Die Liste zeigt dir auch, wo es hakt. Stehen viele Anfragen auf „Mehrfach versucht“, stimmt die Uhrzeit deiner Rückrufe nicht. Stehen viele auf „Angebot gesendet“, fehlt der zweite Anruf.</p><p>Nach dem Angebot ruf nach etwa einer Woche an und frag, ob noch etwas offen ist. Will der Kunde erst im Frühjahr starten, kommt die Anfrage auf „On Hold“, und du meldest dich rechtzeitig.</p>",
+      "tabelle": {
+        "titel": "Stufen einer Bad-Anfrage, Beispiel aus einem Kundenbetrieb",
+        "kopf": [
+          "Stufe",
+          "Was sie heißt"
+        ],
+        "zeilen": [
+          [
+            "Neu",
+            "Anfrage ist da, die Bestätigungsmail ist raus"
+          ],
+          [
+            "Versucht zu erreichen",
+            "Erster Anruf ohne Erfolg"
+          ],
+          [
+            "Mehrfach versucht",
+            "Zwei, drei Versuche, jetzt geht die Mail raus"
+          ],
+          [
+            "Vor-Ort-Termin vereinbart",
+            "Der Termin steht im Kalender"
+          ],
+          [
+            "Vor-Ort-Termin geführt",
+            "Du warst beim Kunden"
+          ],
+          [
+            "Angebot gesendet",
+            "Das Angebot liegt beim Kunden"
+          ],
+          [
+            "On Hold",
+            "Der Kunde will später starten"
+          ],
+          [
+            "Neuer Kunde",
+            "Der Auftrag ist da"
+          ]
+        ],
+        "quelle": "Quelle: Ablauf aus einer unserer Bad-Kampagnen, 2026"
+      }
+    },
+    {
+      "h2": "Was kannst du diese Woche selbst tun?",
+      "html": "<p>Nichts davon braucht eine Agentur oder ein Werbebudget. Diese Schritte kannst du sofort erledigen:</p><ul><li>Leg fest, wer bei dir neue Anfragen zurückruft und bis wann, auch in der Urlaubszeit.</li><li>Geh die offenen Bad-Anfragen der letzten drei Monate durch und ruf jede an, die noch keinen Termin hat.</li><li>Leg dir eine Liste mit Stufen an, so wie in der Tabelle oben.</li><li>Schreib dir zwei Sätze für den Rückruf auf: wer du bist, und dass du wegen der Bad-Anfrage anrufst.</li><li>Frag auf deiner Anfrageseite nach Postleitzahl und Ort, falls das noch fehlt.</li></ul><p>Wie viele Bad-Anfragen in deinem Umkreis drin wären, rechnen wir dir in der <a href='/potenzialanalyse/'>Potenzialanalyse</a> vor. Wie die Anfragen überhaupt zu dir kommen, steht im Artikel <a href='/wissen/badsanierung-anfragen/'>Wie bekomme ich Badsanierungs-Anfragen ohne Portale?</a></p>"
+    }
+  ],
+  "faq": [
+    [
+      "Wie schnell sollte ich eine Bad-Anfrage zurückrufen?",
+      "Am selben oder am nächsten Tag. In unseren Kampagnen gilt ein Rückruf binnen 24 Stunden als Standard, und schon vor dem Start legen wir fest, wer das übernimmt, auch im Urlaub. Je länger du wartest, desto mehr musst du am Telefon erklären, wer du bist."
+    ],
+    [
+      "Was, wenn ich den Kunden nicht erreiche?",
+      "Versuch es zwei- bis dreimal zu unterschiedlichen Zeiten, bevor du eine Mail schickst. Eine Mail nach dem ersten Klingeln wirkt aufdringlich. Frag auf der Anfrageseite nach der besten Uhrzeit, und biete dort nur Zeiten an, zu denen du auch anrufst."
+    ],
+    [
+      "Ich schaffe es nicht, alle Anfragen abzuarbeiten. Was tun?",
+      "Das hören wir öfter, ein Inhaber sagte uns: „Also ich muss, habe zu viel zu tun mit den aktuellen Anfragen.“ Dann wird die Kampagne gedrosselt, über Budget, Umkreis oder eine Pause. Das Rückrufen kann auch jemand im Büro übernehmen."
+    ],
+    [
+      "Soll ich für den Vor-Ort-Termin Geld verlangen?",
+      "Manche Betriebe tun das und nennen 100 bis 200 € als Besichtigungsgebühr. Das filtert Neugierige, kann aber auch ernsthafte Kunden kosten. Probier zuerst Filterfragen und Fotos vorab. Eine Gebühr lohnt sich eher, wenn du trotzdem zu oft umsonst fährst."
+    ],
+    [
+      "Wie viele Anfragen werden zum Auftrag?",
+      "Eine feste Quote können wir dir nicht nennen. In zwei Bad-Kampagnen wurde rund jede zweite Anfrage zum Vor-Ort-Termin, bei Sussmann kam der erste Auftrag über 10.000 € nach gut 2 Wochen. Wie viele Termine du für einen Auftrag brauchst, weißt du aus deinen eigenen Angeboten am besten."
+    ]
+  ],
+  "quellen": [
+    {
+      "name": "Bitkom: Handwerkersuche: Persönliches Gespräch schlägt Infos im Netz (Pressemitteilung, 12.06.2025)",
+      "url": "https://www.bitkom.org/Presse/Presseinformation/Handwerkersuche-Gespraech-schlaegt-Netz"
+    }
+  ],
+  "verwandt": [
+    "badsanierung-anfragen",
+    "anfragen-durch-werbung",
+    "fallstudie-sussmann"
+  ],
+  "cta_titel": "Aus wie vielen Anfragen <span class='em w'>werden bei dir Termine?</span>",
+  "cta_satz": "In 30 Minuten schauen wir auf deinen Umkreis und darauf, wie du Anfragen heute nachfasst.",
+  "intern_belege": [
+    "kunden/sussmann/README.md (Kontakt-Stages, Mail-Ablauf nach Versuchen, Erreichbarkeit 3 von 8 abends, PLZ & Ort, Stage „Schickt vorab Fotos“)",
+    "kunden/senftleben/README.md (Zitat Benjamin zum Wohnort, 09.09.2026)",
+    "marketing/ratgeber/recherche/fragen-aus-close.md L-2, L-6, 5.3 (Rückruf 24 h, Besichtigungsgebühr 100–200 €, Kundenstimme Kapazität)"
+  ]
+}

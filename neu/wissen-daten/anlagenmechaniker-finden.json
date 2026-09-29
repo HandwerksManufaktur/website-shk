@@ -11,35 +11,119 @@
   "lesezeit": 7,
   "leistung": "monteure",
   "zahlen": [
-    {"zahl": "242", "einheit": "Tage", "text": "war eine gemeldete Stelle im Handwerk 2025 im Schnitt offen. Über alle Berufe waren es 167 Tage.", "quelle": "Bundesagentur für Arbeit, Jahr 2025", "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"},
-    {"zahl": "70,6", "einheit": "%", "text": "der offenen Gesellenstellen in Sanitär, Heizung und Klimatechnik ließen sich 2025 rechnerisch nicht besetzen, weil passend qualifizierte Arbeitslose fehlten.", "quelle": "KOFA/IW 2026", "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"},
-    {"zahl": "35", "einheit": "Bewerbungen", "text": "für einen Anlagenmechaniker bei Heizung-Sanitär Klaß in Türkenfeld, 16 davon mit Erfahrung im Fach.", "quelle": "eigene Kampagne, Heizung-Sanitär Klaß, 2024"}
+    {
+      "zahl": "242",
+      "einheit": "Tage",
+      "text": "war eine gemeldete Stelle im Handwerk 2025 im Schnitt offen. Über alle Berufe waren es 167 Tage.",
+      "quelle": "Bundesagentur für Arbeit, Jahr 2025",
+      "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"
+    },
+    {
+      "zahl": "70,6",
+      "einheit": "%",
+      "text": "der offenen Gesellenstellen in Sanitär, Heizung und Klimatechnik ließen sich 2025 rechnerisch nicht besetzen, weil passend qualifizierte Arbeitslose fehlten.",
+      "quelle": "KOFA/IW 2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    },
+    {
+      "zahl": "35",
+      "einheit": "Bewerbungen",
+      "text": "für einen Anlagenmechaniker bei Heizung-Sanitär Klaß in Türkenfeld, 16 davon mit Erfahrung im Fach.",
+      "quelle": "eigene Kampagne, Heizung-Sanitär Klaß, 2024"
+    }
   ],
   "abschnitte": [
     {
       "h2": "Warum meldet sich auf deine Stellenanzeige kein Anlagenmechaniker?",
-      "html": "<p>Die Anzeige steht seit Wochen bei der Arbeitsagentur und auf zwei Portalen. Angerufen hat ein Bewerber ohne Ausbildung, und der kam nicht zum Termin. So erzählen es uns viele Inhaber, und die Statistik passt dazu.</p><p>Eine gemeldete Stelle im Handwerk war 2025 im Schnitt 242 Tage offen, schreibt die Bundesagentur für Arbeit. Über alle Berufe waren es 167 Tage. Für Sanitär, Heizung und Klimatechnik weist das Kompetenzzentrum Fachkräftesicherung (KOFA) für Gesellenstellen eine Lücke von 10.941 Fachkräften aus. Bei 70,6 Prozent dieser offenen Stellen gab es rechnerisch keinen passend qualifizierten Arbeitslosen.</p><p>Für dich heißt das, dass ein Anlagenmechaniker, der etwas kann, fast immer schon einen Arbeitgeber hat. Er schaut selten in Stellenbörsen und kaum noch in die Lokalzeitung. Eine Anzeige, die darauf wartet, gefunden zu werden, erreicht ihn deshalb selten. Ein Inhaber hat uns erzählt, dass seine Zeitungsanzeige 2.500 € gekostet und eine einzige Bewerbung gebracht hat.</p><p>Du musst die Stelle also zu den Leuten bringen, die gerade gar nicht suchen. Die Frage ist nur, wo die sich aufhalten und was sie dazu bringt, bei dir anzuhalten.</p>"
+      "html": "<p>Die Anzeige steht seit Wochen bei der Arbeitsagentur und auf zwei Portalen. Angerufen hat ein Bewerber ohne Ausbildung, und der kam nicht zum Termin. So erzählen es uns viele Inhaber, und die Statistik passt dazu.</p><p>Eine gemeldete Stelle im Handwerk war 2025 im Schnitt 242 Tage offen, schreibt die Bundesagentur für Arbeit. Über alle Berufe waren es 167 Tage. Für Sanitär, Heizung und Klimatechnik weist das Kompetenzzentrum Fachkräftesicherung (KOFA) für Gesellenstellen eine Lücke von 10.941 Fachkräften aus. Bei 70,6 Prozent dieser offenen Stellen gab es rechnerisch keinen passend qualifizierten Arbeitslosen.</p><p>Für dich heißt das, dass ein Anlagenmechaniker, der etwas kann, fast immer schon einen Arbeitgeber hat. Er schaut selten in Stellenbörsen und kaum noch in die Lokalzeitung. Eine Anzeige, die darauf wartet, gefunden zu werden, erreicht ihn deshalb selten. Ein Inhaber hat uns erzählt, dass seine Zeitungsanzeige 2.500 € gekostet und eine einzige Bewerbung gebracht hat.</p><p>Du musst die Stelle also zu den Leuten bringen, die gerade gar nicht suchen. Die Frage ist nur, wo die sich aufhalten und was sie dazu bringt, bei dir anzuhalten.</p>",
+      "balken": {
+        "titel": "So lange war eine gemeldete Stelle 2025 im Schnitt offen",
+        "werte": [
+          [
+            "Handwerk",
+            242,
+            "242 Tage",
+            true
+          ],
+          [
+            "Alle Berufe",
+            167,
+            "167 Tage"
+          ]
+        ],
+        "quelle": "Quelle: Bundesagentur für Arbeit, Jahresdurchschnitt 2025"
+      }
     },
     {
       "h2": "Welche Wege gibt es, einen Monteur zu finden, und was bringen sie?",
       "html": "<p>Fast jeder Betrieb hat schon mehrere Wege probiert, bevor er mit uns spricht. Die Tabelle zeigt, wen du über welchen Weg erreichst und was uns Inhaber davon erzählt haben. Die Beträge sind Einzelfälle aus Gesprächen und keine Durchschnittswerte.</p><p>Der Unterschied liegt in der Frage, wer sich bewegen muss. Bei Zeitung und Jobbörse muss der Monteur selbst suchen. Bei der Arbeitsagentur landen vor allem Leute, die gerade ohne Job sind, und unter Anlagenmechanikern gibt es davon wenige. Bei der Empfehlung und bei Anzeigen im Feed kommt die Stelle zu ihm, auch wenn er gerade zufrieden ist. Die Empfehlung aus dem eigenen Team ist ein guter Weg, lässt sich aber schwer planen. Frag deine Leute trotzdem als Erstes, bevor du Geld ausgibst.</p>",
       "tabelle": {
         "titel": "Wege zum Monteur im Vergleich",
-        "kopf": ["Weg", "Wen du erreichst", "Was Inhaber uns erzählt haben"],
+        "kopf": [
+          "Weg",
+          "Wen du erreichst",
+          "Was Inhaber uns erzählt haben"
+        ],
         "zeilen": [
-          ["Zeitungsanzeige", "Leser der Lokalzeitung, die gerade suchen", "2.500 € für eine einzige Bewerbung"],
-          ["Online-Portale und Zeitung", "Leute, die aktiv eine Stelle suchen", "rund 1.600 € für eine Bewerbung, die nicht gepasst hat"],
-          ["Arbeitsagentur", "Arbeitsuchende im Bezirk", "bei 70,6 % der offenen Gesellenstellen in SHK fehlt rechnerisch ein passender Arbeitsloser (KOFA/IW 2026)"],
-          ["Personalvermittler", "Kandidaten aus der Kartei des Vermittlers", "7.000 bis 10.000 € wurden uns genannt"],
-          ["Prämie für Empfehlungen", "Bekannte deiner Monteure", "Prämien bis zu 5.000 € sind uns begegnet"],
-          ["Anzeigen auf Facebook und Instagram im Umkreis", "Monteure, die nicht aktiv suchen, am Handy", "bei Erwin Schmidt & Sohn 25 Bewerbungen in 4 Wochen"]
+          [
+            "Zeitungsanzeige",
+            "Leser der Lokalzeitung, die gerade suchen",
+            "2.500 € für eine einzige Bewerbung"
+          ],
+          [
+            "Online-Portale und Zeitung",
+            "Leute, die aktiv eine Stelle suchen",
+            "rund 1.600 € für eine Bewerbung, die nicht gepasst hat"
+          ],
+          [
+            "Arbeitsagentur",
+            "Arbeitsuchende im Bezirk",
+            "bei 70,6 % der offenen Gesellenstellen in SHK fehlt rechnerisch ein passender Arbeitsloser (KOFA/IW 2026)"
+          ],
+          [
+            "Personalvermittler",
+            "Kandidaten aus der Kartei des Vermittlers",
+            "7.000 bis 10.000 € wurden uns genannt"
+          ],
+          [
+            "Prämie für Empfehlungen",
+            "Bekannte deiner Monteure",
+            "Prämien bis zu 5.000 € sind uns begegnet"
+          ],
+          [
+            "Anzeigen auf Facebook und Instagram im Umkreis",
+            "Monteure, die nicht aktiv suchen, am Handy",
+            "bei Erwin Schmidt & Sohn 25 Bewerbungen in 4 Wochen"
+          ]
         ],
         "quelle": "Quelle: Angaben von Inhabern aus unseren Gesprächen 2026 (Einzelfälle), eigene Kampagne Erwin Schmidt & Sohn, KOFA/IW 2026."
       }
     },
     {
       "h2": "Wie erreichst du Monteure, die gerade nicht suchen?",
-      "html": "<p>Monteure schauen abends auf dem Sofa aufs Handy oder in der Mittagspause im Firmenwagen. Genau dort läuft deine Anzeige. Laut ARD/ZDF-Medienstudie 2025 nutzen 54 Prozent der 30- bis 49-Jährigen Instagram mindestens einmal pro Woche, 48 Prozent Facebook. Bei den 14- bis 29-Jährigen liegt Instagram bei 77 Prozent.</p><p>Damit so eine Anzeige beim Wischen hängen bleibt, braucht sie ein paar Dinge:</p><ul><li>Fotos und kurze Clips aus deinem Betrieb, mit deinen Leuten im Heizungskeller, im Lager oder auf der Baustelle</li><li>die Stelle in einem Satz, zum Beispiel Kundendienst in einem festen Gebiet oder Obermonteur mit Bauleitung</li><li>das, was du bietest, so konkret wie möglich, vom Firmenwagen bis zur Arbeitszeit</li><li>einen Umkreis von meist 20 bis 30 Kilometern um deinen Betrieb, damit nur Leute die Anzeige sehen, die auch hinfahren würden</li></ul><p>Anzeigen mit Stockfoto und „Wir suchen dich“ laufen überall und sehen alle gleich aus. Ein Betrieb aus dem Nachbarort mit Gesichtern, die man vom Großhandel kennt, fällt dagegen auf. Deshalb fotografieren wir bei dir im Betrieb, mit deinem Team. Wie das abläuft, steht auf der Seite <a href='/monteure/'>Monteure gewinnen</a>.</p>"
+      "html": "<p>Monteure schauen abends auf dem Sofa aufs Handy oder in der Mittagspause im Firmenwagen. Genau dort läuft deine Anzeige. Laut ARD/ZDF-Medienstudie 2025 nutzen 54 Prozent der 30- bis 49-Jährigen Instagram mindestens einmal pro Woche, 48 Prozent Facebook. Bei den 14- bis 29-Jährigen liegt Instagram bei 77 Prozent.</p><p>Damit so eine Anzeige beim Wischen hängen bleibt, braucht sie ein paar Dinge:</p><ul><li>Fotos und kurze Clips aus deinem Betrieb, mit deinen Leuten im Heizungskeller, im Lager oder auf der Baustelle</li><li>die Stelle in einem Satz, zum Beispiel Kundendienst in einem festen Gebiet oder Obermonteur mit Bauleitung</li><li>das, was du bietest, so konkret wie möglich, vom Firmenwagen bis zur Arbeitszeit</li><li>einen Umkreis von meist 20 bis 30 Kilometern um deinen Betrieb, damit nur Leute die Anzeige sehen, die auch hinfahren würden</li></ul><p>Anzeigen mit Stockfoto und „Wir suchen dich“ laufen überall und sehen alle gleich aus. Ein Betrieb aus dem Nachbarort mit Gesichtern, die man vom Großhandel kennt, fällt dagegen auf. Deshalb fotografieren wir bei dir im Betrieb, mit deinem Team. Wie das abläuft, steht auf der Seite <a href='/monteure/'>Monteure gewinnen</a>.</p>",
+      "balken": {
+        "titel": "Wer Instagram und Facebook mindestens einmal pro Woche nutzt",
+        "werte": [
+          [
+            "Instagram, 14 bis 29 Jahre",
+            77,
+            "77 %"
+          ],
+          [
+            "Instagram, 30 bis 49 Jahre",
+            54,
+            "54 %",
+            true
+          ],
+          [
+            "Facebook, 30 bis 49 Jahre",
+            48,
+            "48 %"
+          ]
+        ],
+        "quelle": "Quelle: ARD/ZDF-Medienstudie 2025"
+      }
     },
     {
       "h2": "Wie bekommst du passende Bewerber und keine Zufallsklicks?",
@@ -48,7 +132,16 @@
     {
       "h2": "Was hat bei Erwin Schmidt & Sohn in Sindelfingen funktioniert?",
       "html": "<p>Erwin Schmidt & Sohn ist ein SHK-Familienbetrieb in Sindelfingen und suchte einen Anlagenmechaniker für den Kundendienst. Geschäftsführer Florian Schmidt hatte schon einiges probiert. Auf den Firmenwagen klebten Aufkleber mit QR-Code, und die Stelle stand auf der eigenen Website. Gebracht hat beides wenig.</p><p>Dann liefen vier Wochen lang Anzeigen im Umkreis, mit Fotos aus dem Betrieb und Filterfragen vor der Bewerbung. In diesen vier Wochen kamen 25 Bewerbungen, und die Stelle ist besetzt. Mit so vielen hatte im Betrieb niemand gerechnet. „Wir haben nur nicht gedacht, dass es so viele sind“, sagt Florian Schmidt.</p><p>Das ist ein Fall und keine Zusage für deinen Betrieb. Wie viele Bewerbungen bei dir drin sind, hängt davon ab, wo du sitzt und was du bietest. Das schauen wir uns vorher in der <a href='/potenzialanalyse/'>Potenzialanalyse</a> an.</p>",
-      "zitat": {"text": "Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.", "wer": "Florian Schmidt, Geschäftsführer, Erwin Schmidt & Sohn, Sindelfingen"}
+      "zitat": {
+        "text": "Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.",
+        "wer": "Florian Schmidt, Geschäftsführer, Erwin Schmidt & Sohn, Sindelfingen"
+      },
+      "bild": {
+        "src": "/assets/fotos/erwin-schmidt-van.jpg",
+        "alt": "Zwei Monteure von Erwin Schmidt & Sohn im offenen Firmenwagen",
+        "unter": "Zwei Monteure von Erwin Schmidt & Sohn in Sindelfingen im Firmenwagen",
+        "pos": "50% 30%"
+      }
     },
     {
       "h2": "Was kannst du diese Woche selbst tun?",
@@ -56,18 +149,52 @@
     }
   ],
   "faq": [
-    ["Wir sitzen auf dem Land. Finden wir da überhaupt Monteure?", "Auf dem Land schalten wenige Betriebe eigene Anzeigen im Umkreis, deshalb fällt deine dort eher auf. Sie läuft nur im Einzugsgebiet, meist 20 bis 30 Kilometer um den Betrieb. Ob dort genug Monteure wohnen, lässt sich vorher über die Reichweite abschätzen. Das machen wir in der Potenzialanalyse."],
-    ["Bewerben sich da nicht vor allem Quereinsteiger?", "Auch Quereinsteiger klicken, deshalb stehen Filterfragen vor der Bewerbung. Wer keine Erfahrung im Heizungsbau oder in der Anlagenmechanik hat, sieht das an der Frage und bricht meist ab. Bei Heizung-Sanitär Klaß hatten 16 von 35 Bewerbern Erfahrung im Fach. Wen du zurückrufst, entscheidest du."],
-    ["Wie schnell kommen die ersten Bewerbungen?", "Oft schon in den ersten 24 Stunden nach dem Start. Bei Erwin Schmidt & Sohn lagen nach vier Wochen 25 Bewerbungen vor. Wie schnell es bei dir geht, hängt davon ab, wo du sitzt und was du bietest. Eine feste Zahl sagen wir vorher nicht zu."],
-    ["Wie viel Zeit kostet mich eine Recruiting-Kampagne?", "Zum Start ein Gespräch von 30 Minuten und ein Fototermin bei dir im Betrieb, der meist 1,5 bis 2 Stunden dauert. Danach führst du die Gespräche mit den Bewerbern. Insgesamt rechnen Betriebe bei uns mit rund 5 bis 6 Stunden. Die Anzeigen und das Nachregeln übernehmen wir."],
-    ["Was kostet es, einen Monteur über Anzeigen zu finden?", "Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag. Dazu kommen Aufbau und Betreuung der Kampagne. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch. Einen Vergleich der Wege findest du in unserem Artikel zu den Kosten."]
+    [
+      "Wir sitzen auf dem Land. Finden wir da überhaupt Monteure?",
+      "Auf dem Land schalten wenige Betriebe eigene Anzeigen im Umkreis, deshalb fällt deine dort eher auf. Sie läuft nur im Einzugsgebiet, meist 20 bis 30 Kilometer um den Betrieb. Ob dort genug Monteure wohnen, lässt sich vorher über die Reichweite abschätzen. Das machen wir in der Potenzialanalyse."
+    ],
+    [
+      "Bewerben sich da nicht vor allem Quereinsteiger?",
+      "Auch Quereinsteiger klicken, deshalb stehen Filterfragen vor der Bewerbung. Wer keine Erfahrung im Heizungsbau oder in der Anlagenmechanik hat, sieht das an der Frage und bricht meist ab. Bei Heizung-Sanitär Klaß hatten 16 von 35 Bewerbern Erfahrung im Fach. Wen du zurückrufst, entscheidest du."
+    ],
+    [
+      "Wie schnell kommen die ersten Bewerbungen?",
+      "Oft schon in den ersten 24 Stunden nach dem Start. Bei Erwin Schmidt & Sohn lagen nach vier Wochen 25 Bewerbungen vor. Wie schnell es bei dir geht, hängt davon ab, wo du sitzt und was du bietest. Eine feste Zahl sagen wir vorher nicht zu."
+    ],
+    [
+      "Wie viel Zeit kostet mich eine Recruiting-Kampagne?",
+      "Zum Start ein Gespräch von 30 Minuten und ein Fototermin bei dir im Betrieb, der meist 1,5 bis 2 Stunden dauert. Danach führst du die Gespräche mit den Bewerbern. Insgesamt rechnen Betriebe bei uns mit rund 5 bis 6 Stunden. Die Anzeigen und das Nachregeln übernehmen wir."
+    ],
+    [
+      "Was kostet es, einen Monteur über Anzeigen zu finden?",
+      "Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag. Dazu kommen Aufbau und Betreuung der Kampagne. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch. Einen Vergleich der Wege findest du in unserem Artikel zu den Kosten."
+    ]
   ],
   "quellen": [
-    {"name": "Bundesagentur für Arbeit: Arbeits- und Ausbildungsmarkt im Handwerk (Jahresdurchschnitt 2025, veröffentlicht 2026)", "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"},
-    {"name": "KOFA/IW: Fachkräftesicherung im Handwerk, KOFA Kompakt 7/2026", "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"},
-    {"name": "ARD/ZDF-Medienstudie 2025: Social Media zwischen Wachstum und Sättigung, Media Perspektiven 31/2025", "url": "https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf"}
+    {
+      "name": "Bundesagentur für Arbeit: Arbeits- und Ausbildungsmarkt im Handwerk (Jahresdurchschnitt 2025, veröffentlicht 2026)",
+      "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"
+    },
+    {
+      "name": "KOFA/IW: Fachkräftesicherung im Handwerk, KOFA Kompakt 7/2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    },
+    {
+      "name": "ARD/ZDF-Medienstudie 2025: Social Media zwischen Wachstum und Sättigung, Media Perspektiven 31/2025",
+      "url": "https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf"
+    }
   ],
-  "verwandt": ["social-recruiting-shk", "passende-bewerber", "kosten-mitarbeitergewinnung"],
+  "verwandt": [
+    "social-recruiting-shk",
+    "passende-bewerber",
+    "kosten-mitarbeitergewinnung"
+  ],
   "cta_titel": "Wie viele Monteure wohnen in <span class='em w'>deinem Umkreis?</span>",
-  "cta_satz": "In 30 Minuten schauen wir, wen deine Anzeige im Umkreis erreicht und was ein Monteur bei dir sehen müsste, um sich zu bewerben."
+  "cta_satz": "In 30 Minuten schauen wir, wen deine Anzeige im Umkreis erreicht und was ein Monteur bei dir sehen müsste, um sich zu bewerben.",
+  "bild": {
+    "src": "/assets/fotos/klass-monteur.jpg",
+    "alt": "Monteur von Heizung-Sanitär Klaß mit Werkzeug im Rohbau",
+    "unter": "Monteur von Heizung-Sanitär Klaß in Türkenfeld, fotografiert beim Shooting im eigenen Betrieb",
+    "pos": "50% 12%"
+  }
 }

@@ -1,0 +1,165 @@
+{
+  "slug": "obermonteur-finden",
+  "titel": "Obermonteur oder Bauleiter SHK finden",
+  "h1": "Wie finde ich einen Obermonteur oder Bauleiter SHK?",
+  "beschreibung": "Warum Obermonteure kaum auf dem Markt sind und wie Heizung-Sanitär Klaß mit einer Filterfrage 35 Bewerbungen bekam, 16 davon mit Erfahrung im Fach.",
+  "kategorie": "Monteure finden",
+  "reihe": 12,
+  "top": false,
+  "veroeffentlicht": "2026-10-16",
+  "teaser": "Wer eine Baustelle allein führen kann, sucht selten eine Stelle. So sprichst du ihn trotzdem an und siebst vor dem ersten Gespräch.",
+  "kurzantwort": "Auf Meisterebene ließen sich in Sanitär, Heizung und Klimatechnik 2025 rechnerisch drei von vier offenen Stellen nicht besetzen. Einen Obermonteur findest du deshalb unter Leuten, die gerade arbeiten: mit Anzeigen im Umkreis, die eigene Projekte und ein festes Team zeigen, und einer Filterfrage nach Erfahrung, bevor sich jemand bewirbt.",
+  "lesezeit": 7,
+  "leistung": "monteure",
+  "bild": {
+    "src": "/assets/fotos/klass-beratung.jpg",
+    "alt": "Zwei Monteure von Heizung-Sanitär Klaß besprechen eine Installation am Tablet",
+    "unter": "Aus dem Shooting für die Recruiting-Kampagne von Heizung-Sanitär Klaß, Türkenfeld",
+    "pos": "50% 35%"
+  },
+  "zahlen": [
+    {
+      "zahl": "75,1",
+      "einheit": "%",
+      "text": "der offenen Stellen auf Meisterebene in Klempnerei, Sanitär, Heizung und Klimatechnik ließen sich 2025 rechnerisch nicht besetzen.",
+      "quelle": "KOFA/IW 2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    },
+    {
+      "zahl": "35",
+      "einheit": "Bewerbungen",
+      "text": "bekam Heizung-Sanitär Klaß in Türkenfeld auf eine Stelle als Obermonteur mit Bauleitung.",
+      "quelle": "eigene Kampagne, Heizung-Sanitär Klaß, 2024"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Warum ist ein Obermonteur so schwer zu finden?",
+      "html": "<p>Morgens stehst du auf der einen Baustelle, mittags auf der zweiten, abends schreibst du Aufmaße und Angebote. Ein Obermonteur, der dir eine Baustelle ganz abnimmt, würde dir jeden Tag Stunden freiräumen. Nur meldet sich auf die Anzeige keiner, der das kann.</p><p>Das liegt nicht an deiner Anzeige allein. Laut Kompetenzzentrum Fachkräftesicherung (KOFA) ließen sich 2025 im ganzen Handwerk drei von zehn offenen Gesellenstellen rechnerisch nicht besetzen, bei Meistern und Fortbildungsabsolventen fast jede zweite. In Sanitär, Heizung und Klimatechnik liegt die Quote schon bei den Gesellen bei 70,6 Prozent. Auf Meisterebene sind es 75,1 Prozent.</p><p>Das KOFA nennt auch den Grund. Wer Meister werden will, braucht vorher eine Ausbildung. Fehlen schon die Gesellen, wird die Gruppe kleiner, aus der später Meister und Bauleiter kommen. Wer eine Baustelle führen kann, hat fast immer einen Job, und sein Chef weiß, was er an ihm hat.</p><p>Du musst also jemanden überzeugen, der gerade nicht wechseln will. Womit das gelingt, hängt davon ab, was genau die Stelle ist.</p>",
+      "balken": {
+        "titel": "Offene Stellen, die sich 2025 rechnerisch nicht besetzen ließen",
+        "werte": [
+          [
+            "Handwerk gesamt, Gesellen",
+            29.6,
+            "29,6 %"
+          ],
+          [
+            "SHK, Gesellen",
+            70.6,
+            "70,6 %"
+          ],
+          [
+            "SHK, Meisterebene",
+            75.1,
+            "75,1 %",
+            true
+          ]
+        ],
+        "quelle": "Quelle: KOFA/IW, KOFA Kompakt 7/2026 (Stellenüberhangsquote, Jahresdurchschnitt 2025). SHK-Meisterebene heißt in der Statistik „Aufsicht Klempnerei, Sanitär, Heizung, Klimatechnik“."
+      },
+      "zitat": {
+        "text": "Von vernünftigen Fachkräften im Moment keine.",
+        "wer": "Inhaber, SHK-Betrieb, im Gespräch mit uns (2026)"
+      }
+    },
+    {
+      "h2": "Was ist der Unterschied zwischen Obermonteur und Bauleiter?",
+      "html": "<p>In großen Firmen sind das zwei Stellen, in kleinen SHK-Betrieben oft eine. Der Obermonteur führt den Trupp auf der Baustelle und packt selbst mit an. Der Bauleiter plant, stimmt sich mit den anderen Gewerken ab, hält Termine und macht Aufmaß und Abnahme. Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker als Obermonteur mit Bauleitung, also beides in einer Person.</p><p>Schreib deshalb vorher auf, wie viel Werkzeug und wie viel Schreibtisch deine Stelle hat. Ein Obermonteur, der gern montiert, fühlt sich mit einem halben Tag Büro nicht wohl. Ein Bauleiter, der gern plant, will nicht jeden Tag Heizkörper schleppen. Schreib auch dazu, ob er Angebote schreiben oder Material bestellen soll. Steht das in der Anzeige, melden sich eher die Richtigen, und im Gespräch gibt es keine Überraschung.</p>",
+      "tabelle": {
+        "titel": "Obermonteur und Bauleiter im Vergleich",
+        "kopf": [
+          "",
+          "Obermonteur",
+          "Bauleiter"
+        ],
+        "zeilen": [
+          [
+            "Wo er arbeitet",
+            "auf der Baustelle, im Trupp",
+            "auf mehreren Baustellen und im Büro"
+          ],
+          [
+            "Was er macht",
+            "führt die Monteure und montiert selbst mit",
+            "plant, koordiniert Gewerke, macht Aufmaß und Abnahme"
+          ],
+          [
+            "Wofür er geradesteht",
+            "saubere Montage und Zeitplan auf seiner Baustelle",
+            "Termine und Kosten, dazu die Abstimmung mit Kunde und Architekt"
+          ],
+          [
+            "Was die Anzeige zeigen kann",
+            "eigene Projekte und das feste Team, das er führt",
+            "wie viel er selbst entscheidet und wer ihm den Rücken freihält"
+          ]
+        ],
+        "quelle": "Typische Aufteilung. In kleinen Betrieben verschwimmt sie oft, dann gehört beides in die Anzeige."
+      }
+    },
+    {
+      "h2": "Wie sprichst du jemanden an, der gerade eine Baustelle führt?",
+      "html": "<p>Ein guter Obermonteur schaut selten in eine Jobbörse. Er sieht deine Anzeige abends am Handy und entscheidet in ein paar Sekunden, ob er weiterliest. Laut ARD/ZDF-Medienstudie 2025 nutzen 54 Prozent der 30- bis 49-Jährigen Instagram jede Woche, 48 Prozent Facebook. Dort läuft die Anzeige, nur im Umkreis deines Betriebs.</p><p>Anhalten lässt ihn das, was er gerade vermisst. Bei Klaß zeigten die Anzeigen drei Dinge:</p><ul><li>eigene Projekte, die er von Anfang bis Ende führt</li><li>ein festes Team, mit dem er jeden Tag rausfährt</li><li>die 4-Tage-Woche</li></ul><p>Das meiste davon lässt sich mit Fotos aus dem Betrieb zeigen: die Baustelle, die er übernehmen würde, die Leute, die er anleiten würde, der Firmenwagen, mit dem er fährt. Fotografiert haben wir bei Klaß im Betrieb, mit dem eigenen Team. Über das Gehalt sprecht ihr am Telefon, wenn klar ist, dass er zur Stelle passt.</p>"
+    },
+    {
+      "h2": "Wie trennt eine Filterfrage Erfahrene von Einsteigern?",
+      "html": "<p>Auf eine Anzeige für einen Obermonteur melden sich auch Leute, die sich den Posten nur wünschen. Deshalb stand bei Klaß vor der Bewerbung eine Frage: „Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?“</p><p>Am Ende lagen 35 Bewerbungen vor, 16 davon von Leuten mit Erfahrung im Fach. Das ist knapp die Hälfte. Die Antwort kam mit jeder Bewerbung an, noch vor dem ersten Anruf.</p><p>Für eine Stelle mit Bauleitung kannst du eine zweite Frage dazunehmen, zum Beispiel „Hast du schon eine Baustelle selbst geführt?“ oder „Wie viele Leute hast du schon angeleitet?“. Mehr als zwei, drei Fragen sollten es nicht sein, sonst brechen gute Leute mitten im Formular ab. Ob einer eine Baustelle führen kann, klärst du trotzdem im Gespräch und am besten auf einer Baustelle. Mehr zu Filterfragen steht im Artikel <a href='/wissen/passende-bewerber/'>Wie bekomme ich passende Bewerber?</a></p>",
+      "zahlen": [
+        {
+          "zahl": "16",
+          "einheit": "von 35",
+          "text": "Bewerbungen bei Heizung-Sanitär Klaß kamen von Leuten mit Erfahrung im Fach.",
+          "quelle": "eigene Kampagne, Heizung-Sanitär Klaß, 2024"
+        }
+      ]
+    },
+    {
+      "h2": "Kannst du einen Obermonteur auch selbst aufbauen?",
+      "html": "<p>Manchmal arbeitet der Obermonteur schon bei dir, nur hat ihn noch keiner so genannt. Ein Geselle mit ein paar Jahren Erfahrung, der auf der Baustelle den Überblick behält und den Jüngeren Dinge erklärt, kann in die Rolle hineinwachsen. Das kostet dich am Anfang Zeit, weil du ihn begleitest. Dafür kennt er deine Kunden und dein Lager schon.</p><ul><li>Gib ihm eine kleine Baustelle, die er von Anfang bis Ende allein führt.</li><li>Nimm ihn zu Aufmaß und Kundengespräch mit.</li><li>Sprich mit ihm über die Meisterschule. Für Meisterkurse gibt es das Aufstiegs-BAföG.</li></ul><p>Offen ist dann eine Gesellenstelle für seine alten Baustellen. Die besetzt du eher, weil es mehr Gesellen als Meister gibt. Wie das geht, steht im Artikel <a href='/wissen/anlagenmechaniker-finden/'>Wie finde ich einen Anlagenmechaniker SHK?</a></p>"
+    },
+    {
+      "h2": "Was du diese Woche selbst tun kannst",
+      "html": "<p>Bevor eine Anzeige läuft, klär ein paar Dinge im Betrieb. Das dauert einen Abend und macht jede Anzeige besser, egal wo sie später erscheint. Nimm dir dafür jemanden dazu, der deine Baustellen kennt.</p><ol><li>Schreib auf, wie viel Baustelle und wie viel Büro die Stelle hat, grob in Prozent.</li><li>Leg fest, welche Projekte der Neue übernimmt und wen er führt.</li><li>Frag deinen besten Gesellen, ob er sich die Rolle vorstellen kann.</li><li>Fotografier eine laufende Baustelle und das Team, das der Obermonteur führen würde.</li><li>Schreib die eine Filterfrage auf, die für dich ein Muss ist.</li></ol><p>Suchst du eher jemanden für den Kundendienst, lies <a href='/wissen/kundendiensttechniker-finden/'>Wie finde ich einen Kundendiensttechniker für Heizung und Sanitär?</a> Willst du langfristig eigene Leute aufbauen, fang bei den Azubis an: <a href='/wissen/azubi-anlagenmechaniker-finden/'>Wie finde ich einen Azubi zum Anlagenmechaniker SHK?</a></p>"
+    }
+  ],
+  "faq": [
+    [
+      "Soll ich einen frisch ausgebildeten Meister nehmen?",
+      "Das hängt davon ab, wie viel Praxis er mitbringt. Ein Inhaber hat uns gesagt, er nimmt lieber einen erfahrenen Handwerker als einen frischen Meister ohne Baustellenjahre. Frag im Gespräch nach Baustellen, die er schon geführt hat, und schau ihn dir auf einer an. Der Titel sagt wenig darüber, wie er mit Leuten und Terminen umgeht."
+    ],
+    [
+      "Bewerben sich da nicht vor allem Quereinsteiger?",
+      "Auch die klicken, deshalb steht die Filterfrage vor der Bewerbung. Bei Heizung-Sanitär Klaß hatten 16 von 35 Bewerbern Erfahrung im Fach. Die anderen siehst du vorher und entscheidest selbst, ob du anrufst. Für eine Stelle mit Bauleitung kommt eine zweite Frage zur Führungserfahrung dazu."
+    ],
+    [
+      "Wie viel muss ich zahlen, damit einer wechselt?",
+      "Eine feste Zahl gibt es nicht. Inhaber haben uns von Abwerbeprämien bis zu 5.000 € erzählt. Bei Klaß stand in der Anzeige neben der Stelle, was der Betrieb bietet: eigene Projekte, ein festes Team, die 4-Tage-Woche. Über das Gehalt sprecht ihr offen im ersten Telefonat."
+    ],
+    [
+      "Wie schnell kommen die ersten Bewerbungen?",
+      "Oft schon in den ersten 24 Stunden nach dem Start. Wie viele es bei dir werden, hängt vom Umkreis ab und davon, was du bietest. Eine feste Zahl sagen wir vorher nicht zu. Bei Heizung-Sanitär Klaß lagen am Ende 35 Bewerbungen vor."
+    ],
+    [
+      "Was kostet die Suche über Anzeigen?",
+      "Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung der Kampagne. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch."
+    ]
+  ],
+  "quellen": [
+    {
+      "name": "KOFA/IW: Fachkräftesicherung im Handwerk. Ausbildung zwischen Krise und Renaissance, KOFA Kompakt 7/2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    },
+    {
+      "name": "ARD/ZDF-Medienstudie 2025: Social Media zwischen Wachstum und Sättigung, Media Perspektiven 31/2025",
+      "url": "https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf"
+    }
+  ],
+  "verwandt": [
+    "passende-bewerber",
+    "attraktiv-fuer-monteure",
+    "stellenanzeige-shk-schreiben"
+  ],
+  "cta_titel": "Wer führt bald <span class='em w'>deine Baustellen?</span>",
+  "cta_satz": "In 30 Minuten schauen wir, wen eine Anzeige für einen Obermonteur in deinem Umkreis erreicht und welche Filterfragen zu deiner Stelle passen."
+}

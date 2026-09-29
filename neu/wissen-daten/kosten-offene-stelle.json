@@ -8,7 +8,7 @@
  "top": false,
  "teaser": "Ein fehlender Monteur kostet dich jeden Monat den Ertrag seiner Stunden. Mit dieser Formel rechnest du deine eigene Zahl aus.",
  "kurzantwort": "Eine offene Monteursstelle kostet dich jeden Monat den Deckungsbeitrag der Stunden, die niemand verrechnet, dazu Suchkosten und Überstunden der anderen. Im Rechenbeispiel mit 120 Stunden und 35 € Deckungsbeitrag je Stunde sind das 4.200 € im Monat. Gemeldete Stellen im Handwerk waren 2025 laut Bundesagentur für Arbeit im Schnitt 242 Tage offen.",
- "lesezeit": 7,
+ "lesezeit": 8,
  "leistung": "monteure",
  "zahlen": [
   {
@@ -36,7 +36,24 @@
  "abschnitte": [
   {
    "h2": "Wie lange bleibt eine Stelle im Handwerk offen?",
-   "html": "<p>Laut Bundesagentur für Arbeit war eine gemeldete Stelle im Handwerk 2025 im Schnitt 242 Tage offen. Über alle Berufe waren es 167 Tage. 242 Tage sind rund acht Monate, in denen ein Firmenwagen auf dem Hof steht oder ein Kollege die Arbeit nach Feierabend mit erledigt.</p><p>Die Sanitär-, Heizungs- und Klimatechnik gilt dabei als Engpassberuf. In der Engpassanalyse der Bundesagentur liegt sie bei der Vakanzzeit auf der höchsten Stufe: Der Median liegt bei 80 Tagen oder mehr. Median heißt, mindestens die Hälfte der Stellen ist so lange oder länger offen. Ein Durchschnitt fällt meist höher aus als der Median, weil Stellen, die sehr lange offen bleiben, ihn nach oben ziehen.</p><p>Beide Werte beziehen sich auf Stellen, die bei der Arbeitsagentur gemeldet sind. Viele Betriebe suchen daneben über Zeitung, Aufkleber oder Empfehlung. Wie lange es bei dir dauert, weißt nur du. Für die Rechnung unten nehmen wir die 242 Tage als Beispiel, weil sie amtlich sind und fürs Handwerk gelten.</p>"
+   "html": "<p>Seit dein Monteur im Frühjahr gekündigt hat, sagst du Kunden am Telefon, dass es vor dem Herbst nichts mehr wird. Wie lange so eine Lücke im Handwerk dauert, hat die Bundesagentur für Arbeit ausgewertet. Danach war eine gemeldete Stelle im Handwerk 2025 im Schnitt 242 Tage offen. Über alle Berufe waren es 167 Tage. 242 Tage sind rund acht Monate, in denen ein Firmenwagen auf dem Hof steht oder ein Kollege die Arbeit nach Feierabend mit erledigt.</p><p>Die Sanitär-, Heizungs- und Klimatechnik gilt dabei als Engpassberuf. In der Engpassanalyse der Bundesagentur liegt sie bei der Vakanzzeit auf der höchsten Stufe: Der Median liegt bei 80 Tagen oder mehr. Median heißt, mindestens die Hälfte der Stellen ist so lange oder länger offen. Ein Durchschnitt fällt meist höher aus als der Median, weil Stellen, die sehr lange offen bleiben, ihn nach oben ziehen.</p><p>Beide Werte beziehen sich auf Stellen, die bei der Arbeitsagentur gemeldet sind. Viele Betriebe suchen daneben über Zeitung, Aufkleber oder Empfehlung. Wie lange es bei dir dauert, weißt nur du. Für die Rechnung unten nehmen wir die 242 Tage als Beispiel, weil sie amtlich sind und fürs Handwerk gelten.</p>",
+   "balken": {
+    "titel": "So lange war eine gemeldete Stelle 2025 im Schnitt offen",
+    "werte": [
+     [
+      "Handwerk",
+      242,
+      "242 Tage",
+      true
+     ],
+     [
+      "Alle Berufe",
+      167,
+      "167 Tage"
+     ]
+    ],
+    "quelle": "Quelle: Bundesagentur für Arbeit, Jahresdurchschnitt 2025"
+   }
   },
   {
    "h2": "Was genau kostet dich ein fehlender Monteur?",
@@ -117,6 +134,10 @@
   {
    "h2": "Wird die Suche von allein leichter?",
    "html": "<p>Die Zahlen sprechen dagegen. Für 10.941 offene Gesellenstellen in Sanitär, Heizung und Klimatechnik gab es 2025 rechnerisch keinen passenden Arbeitslosen. Das sind 70,6 Prozent der offenen Gesellenstellen in diesen Berufen (KOFA/IW). Rund die Hälfte der etwa 48.000 SHK-Betriebe meldet offene Stellen (ZVSHK).</p><p>Der Nachwuchs wächst langsam. 2025 gab es 40.770 Auszubildende zum Anlagenmechaniker SHK, 0,8 Prozent mehr als im Vorjahr (ZVSHK). Bis aus einem Azubi ein Geselle wird, der allein auf die Baustelle fährt, vergehen Jahre.</p><p>Die Monteure, die du brauchst, sind also in Arbeit. Du erreichst sie dort, wo sie abends aufs Handy schauen, und musst ihnen zeigen, warum sich der Wechsel zu dir lohnt. Wie das geht, steht im Ratgeber <a href='/wissen/attraktiv-fuer-monteure/'>Was macht einen kleinen SHK-Betrieb für Monteure attraktiv?</a></p>"
+  },
+  {
+   "h2": "Was kannst du diese Woche selbst tun?",
+   "html": "<p>Die Rechnung oben wird erst mit deinen eigenen Zahlen aussagekräftig. Die meisten davon liegen schon in deiner Buchhaltung.</p><ol><li>Schau nach, wie viele Stunden ein Monteur im letzten Jahr beim Kunden verrechnet hat, und teil durch zwölf.</li><li>Rechne deinen Deckungsbeitrag je Stunde aus: Stundensatz minus Lohnkosten je verrechenbarer Stunde.</li><li>Trag beides in die Tabelle oben ein, zusammen mit den Monaten, die deine Stelle schon offen ist.</li><li>Zähl, wie viele Aufträge du seit der Kündigung verschoben oder abgesagt hast.</li><li>Leg das Ergebnis neben das, was dich die Suche bisher gekostet hat.</li></ol>"
   }
  ],
  "faq": [
@@ -165,5 +186,11 @@
   "attraktiv-fuer-monteure"
  ],
  "cta_titel": "Was kostet die offene Stelle <span class='em w'>bei dir?</span>",
- "cta_satz": "In 30 Minuten rechnen wir deine Zahlen durch und schauen, wie viele Monteure du im Umkreis erreichst."
+ "cta_satz": "In 30 Minuten rechnen wir deine Zahlen durch und schauen, wie viele Monteure du im Umkreis erreichst.",
+ "bild": {
+  "src": "/assets/fotos/shk-04.jpg",
+  "alt": "Betriebsgebäude eines SHK-Betriebs mit zwei Firmenwagen und dem Team davor",
+  "unter": "Ein SHK-Betrieb mit Team und Firmenwagen vor dem Haus, aus einem unserer Shootings",
+  "pos": "50% 55%"
+ }
 }

@@ -1,0 +1,108 @@
+{
+  "slug": "kundendiensttechniker-finden",
+  "titel": "Kundendiensttechniker für Heizung und Sanitär finden",
+  "h1": "Wie finde ich einen Kundendiensttechniker für Heizung und Sanitär?",
+  "beschreibung": "Warum sich Kundendiensttechniker kaum auf Anzeigen melden und wie du sie im Umkreis erreichst. Mit Rechenbeispiel und Fall aus Sindelfingen.",
+  "kategorie": "Monteure finden",
+  "reihe": 10,
+  "top": false,
+  "veroeffentlicht": "2026-10-02",
+  "teaser": "Gute Kundendienstler haben einen Job und ihre Stammkunden. So zeigst du ihnen im Umkreis, warum sich der Wechsel zu dir lohnt.",
+  "kurzantwort": "Ein Kundendiensttechniker, der Heizungen wartet und Störungen findet, hat fast immer schon einen Arbeitgeber. Du erreichst ihn abends am Handy, mit Anzeigen im Umkreis, die sein Gebiet, den Bereitschaftsdienst, den Firmenwagen und dein Team zeigen. Vor der Bewerbung stehen ein paar Filterfragen, die Bewerbung selbst dauert rund 60 Sekunden und braucht keinen Lebenslauf.",
+  "lesezeit": 7,
+  "leistung": "monteure",
+  "bild": {
+    "src": "/assets/fotos/erwin-schmidt-monteur.jpg",
+    "alt": "Monteur von Erwin Schmidt & Sohn mit Zange im Materiallager",
+    "unter": "Aus dem Shooting für die Recruiting-Kampagne von Erwin Schmidt & Sohn in Sindelfingen",
+    "pos": "50% 30%"
+  },
+  "zahlen": [
+    {
+      "zahl": "25",
+      "einheit": "Bewerbungen",
+      "text": "in 4 Wochen für einen Anlagenmechaniker im Kundendienst bei Erwin Schmidt & Sohn in Sindelfingen. Die Stelle ist besetzt.",
+      "quelle": "eigene Kampagne, Erwin Schmidt & Sohn, 2026"
+    },
+    {
+      "zahl": "70,6",
+      "einheit": "%",
+      "text": "der offenen Gesellenstellen in Sanitär, Heizung und Klimatechnik ließen sich 2025 rechnerisch nicht besetzen, weil passend qualifizierte Arbeitslose fehlten.",
+      "quelle": "KOFA/IW 2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Warum meldet sich auf eine Kundendienst-Stelle kaum jemand?",
+      "html": "<p>Im Oktober klingelt das Telefon im Minutentakt. Therme aus, Heizung kalt, Wartung überfällig. Dein Kundendienstler fährt jeden Tag Überstunden, und die Anzeige für einen zweiten steht seit dem Frühjahr bei der Arbeitsagentur.</p><p>Damit bist du nicht allein. Eine gemeldete Stelle in Handwerksberufen war 2025 im Schnitt 242 Tage offen, über alle Berufe 167 Tage, schreibt die Bundesagentur für Arbeit. Für Sanitär, Heizung und Klimatechnik fand das Kompetenzzentrum Fachkräftesicherung (KOFA) bei 70,6 Prozent der offenen Gesellenstellen rechnerisch keinen passend qualifizierten Arbeitslosen.</p><p>Beim Kundendienst kommt etwas dazu. Ein guter Kundendiensttechniker fährt allein zum Kunden, findet den Fehler und entscheidet im Keller, was zu tun ist. So jemanden gibt ein Betrieb ungern her. Er hat seine Stammkunden, kennt sein Gebiet und schaut abends selten in eine Jobbörse.</p><p>Du musst ihn also ansprechen, während er gar nicht sucht. Und du musst ihm etwas anderes zeigen als einem Monteur für die Baustelle.</p>",
+      "balken": {
+        "titel": "So lange war eine gemeldete Stelle 2025 im Schnitt offen",
+        "werte": [["Handwerksberufe", 242, "242 Tage", true], ["Alle Berufe", 167, "167 Tage"]],
+        "quelle": "Quelle: Bundesagentur für Arbeit, Arbeits- und Ausbildungsmarkt im Handwerk, Jahresdurchschnitt 2025"
+      }
+    },
+    {
+      "h2": "Was will ein Kundendiensttechniker wissen, bevor er sich bewirbt?",
+      "html": "<p>Ein Monteur auf der Baustelle arbeitet im Team. Der Kundendienstler ist meist allein unterwegs. Er sitzt den halben Tag im Firmenwagen, steht beim Kunden im Heizungskeller und muss auch mal einem verärgerten Hausbesitzer erklären, warum das Ersatzteil erst übermorgen kommt.</p><p>Die Fragen, die er sich zu einer neuen Stelle stellt, drehen sich deshalb um seinen Alltag. Wie groß ist das Gebiet? Wie oft ist Bereitschaft? Darf der Wagen mit nach Hause? Und wen ruft er an, wenn er bei einer Anlage nicht weiterkommt?</p><p>Eine Anzeige, die darauf antwortet, erspart dir viele Fragen im ersten Telefonat. Und sie sortiert vor: Wer keine Bereitschaft machen will, meldet sich gar nicht erst. Die Tabelle zeigt, was in so eine Anzeige gehört. Trag bei jeder Zeile ein, was bei dir gilt, am besten mit Zahlen.</p>",
+      "tabelle": {
+        "titel": "Was in eine Anzeige für den Kundendienst gehört",
+        "kopf": ["Frage des Bewerbers", "Was in der Anzeige stehen kann"],
+        "zeilen": [
+          ["Wo bin ich unterwegs?", "die Orte deines Gebiets und wie weit der entfernteste Kunde weg ist"],
+          ["Wie oft habe ich Bereitschaft?", "der Rhythmus, zum Beispiel jedes vierte Wochenende, und was es dafür gibt"],
+          ["Darf der Wagen mit nach Hause?", "ob der Firmenwagen privat genutzt werden darf und ob der Tag beim ersten Kunden beginnt"],
+          ["Welche Anlagen warte ich?", "die Marken und Techniken, die du betreust, von Gas-Brennwert bis Wärmepumpe"],
+          ["Wer hilft mir am Anfang?", "wie die Einarbeitung läuft und wen er bei einer kniffligen Störung anrufen kann"]
+        ],
+        "quelle": "Die Antworten sind Beispiele. Setz ein, was in deinem Betrieb gilt."
+      }
+    },
+    {
+      "h2": "Wie erreichst du Kundendienstler, die gerade nicht suchen?",
+      "html": "<p>Kundendienstler schauen abends aufs Handy wie alle anderen auch, auf dem Sofa oder in der Pause im Wagen. Laut ARD/ZDF-Medienstudie 2025 nutzen 54 Prozent der 30- bis 49-Jährigen Instagram mindestens einmal pro Woche, 48 Prozent Facebook. Dort läuft deine Anzeige, und nur im Umkreis deines Betriebs, meist 20 bis 30 Kilometer. Beim Kundendienst zählt der Wohnort doppelt, wenn der Tag direkt beim ersten Kunden beginnt.</p><p>Vor der Bewerbung stehen ein paar Filterfragen, die ein Kundendienstler mit einem Tipp beantwortet:</p><ul><li>Hast du schon Heizungen gewartet oder Störungen gesucht?</li><li>Kannst du dir Bereitschaftsdienst vorstellen?</li><li>Welchen Führerschein hast du?</li><li>Wie weit wohnst du von uns weg?</li></ul><p>Die Bewerbung selbst dauert rund 60 Sekunden und kommt ohne Lebenslauf aus. Wer abends auf dem Sofa auf die Anzeige tippt, lädt dort kein PDF hoch. Wie die Anzeigen mit Fotos aus deinem Betrieb entstehen, steht auf der Seite <a href='/monteure/'>Monteure gewinnen</a>.</p>"
+    },
+    {
+      "h2": "Wie hat Erwin Schmidt & Sohn einen Kundendienstler gefunden?",
+      "html": "<p>Erwin Schmidt & Sohn ist ein SHK-Familienbetrieb in dritter Generation in Sindelfingen. Gesucht war ein Anlagenmechaniker für den Kundendienst. Geschäftsführer Florian Schmidt hatte schon einiges probiert. Auf den Firmenwagen klebten Aufkleber mit QR-Code, und die Stelle stand auf der eigenen Website. „Hat aber nicht so wirklich was gebracht“, sagt er.</p><p>Dann liefen Anzeigen im Umkreis, mit Fotos aus dem Betrieb und Filterfragen vor der Bewerbung. Nach vier Wochen lagen 25 Bewerbungen vor, und die Stelle im Kundendienst ist besetzt. Mit so vielen hatte im Betrieb keiner gerechnet. Bei so vielen Bewerbungen lohnt sich ein fester Plan, wer wann zurückruft.</p><p>Das ist ein Fall aus einem Betrieb und keine Zusage für deinen. Wie viele Kundendienstler in deinem Umkreis wohnen und was sie bei dir sehen müssten, schauen wir uns vorher in der <a href='/potenzialanalyse/'>Potenzialanalyse</a> an.</p>",
+      "zitat": {
+        "text": "Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.",
+        "wer": "Florian Schmidt, Geschäftsführer, Erwin Schmidt & Sohn, Sindelfingen"
+      }
+    },
+    {
+      "h2": "Was kostet dich ein fehlender Kundendienstler?",
+      "html": "<p>Im Kundendienst siehst du die Lücke im Kalender. Wartungen rutschen nach hinten, Störungen gehen vor, und irgendwann sagst du Kunden ab. Dazu kommt die Mehrarbeit für den Kundendienstler, den du schon hast. Wie viel Umsatz dabei liegen bleibt, kannst du grob selbst ausrechnen.</p><p><strong>Rechenbeispiel, keine Prognose:</strong> Angenommen, pro Woche bleiben 6 Wartungen liegen, und eine Wartung bringt 150 € Umsatz. Bleibt die Stelle so lange offen wie im Schnitt, sind das rund 35 Wochen (242 Tage laut Bundesagentur für Arbeit). Dann fehlen 6 × 150 € × 35 = 31.500 € Umsatz. Aufträge, die aus einer Wartung entstehen, etwa ein neuer Kessel, sind darin noch nicht enthalten.</p><p>Die Werte sind Annahmen. Trag deine eigenen in die Tabelle ein. Ausführlich gerechnet steht das im Artikel <a href='/wissen/kosten-offene-stelle/'>Was kostet eine unbesetzte Stelle im SHK-Betrieb?</a></p>",
+      "tabelle": {
+        "titel": "Deine Zahlen",
+        "kopf": ["Wert", "Beispiel", "Dein Wert"],
+        "zeilen": [
+          ["Wartungen, die pro Woche liegen bleiben", "6", "___"],
+          ["Umsatz je Wartung", "150 €", "___"],
+          ["Wochen, bis die Stelle besetzt ist", "35", "___"],
+          ["Umsatz, der fehlt (Zeile 1 × 2 × 3)", "31.500 €", "___"]
+        ],
+        "quelle": "Rechenbeispiel mit angenommenen Werten. 35 Wochen entsprechen den 242 Tagen, die eine gemeldete Stelle in Handwerksberufen 2025 im Schnitt offen war (Bundesagentur für Arbeit)."
+      }
+    },
+    {
+      "h2": "Was du diese Woche selbst tun kannst",
+      "html": "<p>Diese fünf Schritte kosten dich ein, zwei Abende und kein Geld. Sie machen jede Anzeige besser, egal wo sie später läuft.</p><ol><li>Schreib die Stelle in einem Satz auf, mit Gebiet, Bereitschaft und Firmenwagen.</li><li>Frag deinen Kundendienstler, was ihn bei dir hält. Seine Worte gehören in die Anzeige.</li><li>Fotografier ihn mit dem Handy am Wagen und bei einem Einsatz, bei Tageslicht und mit Einverständnis des Kunden.</li><li>Leg fest, wer eine Bewerbung am selben oder am nächsten Tag zurückruft.</li><li>Frag deine Leute, ob sie einen Kundendienstler kennen, der mit seinem Betrieb hadert.</li></ol><p>Wie du Erfahrene von Zufallsklicks trennst, steht im Artikel <a href='/wissen/passende-bewerber/'>Wie bekomme ich passende Bewerber?</a> Was einen kleinen Betrieb für Techniker interessant macht, liest du unter <a href='/wissen/attraktiv-fuer-monteure/'>Was macht einen kleinen SHK-Betrieb für Monteure attraktiv?</a></p>"
+    }
+  ],
+  "faq": [
+    ["Bewerben sich da nicht vor allem Quereinsteiger?", "Auch Quereinsteiger tippen auf Anzeigen. Deshalb fragt die erste Filterfrage, ob jemand schon Heizungen gewartet oder Störungen gesucht hat. Wer das verneint, merkt selbst, dass die Stelle nicht passt, und bricht meist ab. Bei Heizung-Sanitär Klaß hatten 16 von 35 Bewerbern Erfahrung im Fach. Wen du anrufst, entscheidest du."],
+    ["Funktioniert Recruiting über Instagram und Facebook überhaupt?", "Viele Inhaber wischen Werbung selbst weg und zweifeln deshalb. Eine Anzeige mit Stockfoto wischt man weg, eine mit Gesichtern aus dem Nachbarort bleibt eher hängen. 54 Prozent der 30- bis 49-Jährigen nutzen Instagram jede Woche (ARD/ZDF-Medienstudie 2025). Bei Erwin Schmidt & Sohn kamen so 25 Bewerbungen in vier Wochen."],
+    ["Wie viel Zeit kostet mich das?", "Zum Start ein Gespräch von 30 Minuten und ein Fototermin im Betrieb, der meist 1,5 bis 2 Stunden dauert. Danach rufst du die Bewerber an und führst die Gespräche. Insgesamt rechnen Betriebe bei uns mit rund 5 bis 6 Stunden. Die Anzeigen und das Nachregeln übernehmen wir."],
+    ["Was kostet es, einen Kundendienstler über Anzeigen zu suchen?", "Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung der Kampagne. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch."],
+    ["Was passiert, wenn keine Bewerbung kommt?", "Dann liegt es meist an der Anzeige, am Umkreis oder an den Filterfragen, und genau dort wird nachgeregelt. Eine feste Zahl an Bewerbungen sagen wir vorher nicht zu, weil sie von deinem Umkreis und deinem Angebot abhängt. Was in so einem Fall passiert, steht in unserem Artikel zu ausbleibenden Bewerbungen."]
+  ],
+  "quellen": [
+    {"name": "Bundesagentur für Arbeit: Arbeits- und Ausbildungsmarkt im Handwerk (Jahresdurchschnitt 2025, veröffentlicht 2026)", "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"},
+    {"name": "KOFA/IW: Fachkräftesicherung im Handwerk. Ausbildung zwischen Krise und Renaissance, KOFA Kompakt 7/2026", "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"},
+    {"name": "ARD/ZDF-Medienstudie 2025: Social Media zwischen Wachstum und Sättigung, Media Perspektiven 31/2025", "url": "https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf"}
+  ],
+  "verwandt": ["anlagenmechaniker-finden", "stellenanzeige-shk-schreiben", "bewerber-schnell-zurueckrufen"],
+  "cta_titel": "Wie viele Kundendienstler wohnen <span class='em w'>in deinem Umkreis?</span>",
+  "cta_satz": "In 30 Minuten schauen wir, wen deine Anzeige im Umkreis erreicht und was ein Kundendienstler bei dir sehen müsste, um sich zu melden."
+}

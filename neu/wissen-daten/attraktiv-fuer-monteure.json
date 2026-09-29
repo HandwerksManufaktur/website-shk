@@ -35,7 +35,13 @@
   "abschnitte": [
     {
       "h2": "Womit kann ein kleiner Betrieb gegen die Großen punkten?",
-      "html": "<p>Fragt man Inhaber, was ihr Betrieb Monteuren bietet, kommt zuerst die Liste mit dem, was fehlt. 4-Tage-Woche, Firmenwagen für privat, ein Gehalt wie in München oder Stuttgart. Dabei verbringt ein Monteur seinen Tag im Heizungskeller und im Firmenwagen. Was ihn dort stört, merkt er jeden Tag: eine Stunde Anfahrt, jede Woche andere Kollegen, Material, das auf der Baustelle fehlt, ein Chef, den er nur beim Jahresgespräch sieht.</p><p>Genau da ist ein kleiner Betrieb oft im Vorteil:</p><ul><li><strong>Kurze Wege:</strong> Die Baustellen liegen im Umkreis, abends ist er daheim.</li><li><strong>Festes Team:</strong> Er arbeitet jeden Tag mit denselben Leuten.</li><li><strong>Der Chef packt mit an:</strong> Probleme klärt er direkt auf der Baustelle, ohne drei Ebenen dazwischen.</li><li><strong>Eigene Projekte:</strong> Er baut ein Bad oder eine Heizung von Anfang bis Ende und sieht, was er geschafft hat.</li><li><strong>Pünktliches Geld:</strong> Der Lohn ist am Monatsende da, jeden Monat.</li></ul><p>Die Konkurrenz um diese Leute ist groß. Rund die Hälfte der etwa 48.000 SHK-Betriebe meldet offene Stellen (ZVSHK). Der Monteur hat die Wahl, und er wählt nach dem, was er sieht.</p>"
+      "html": "<p>Du sitzt abends über der Stellenanzeige und überlegst, was du hineinschreiben sollst. Zuerst fällt dir ein, was fehlt: 4-Tage-Woche, Firmenwagen für privat, ein Gehalt wie in München oder Stuttgart. Dabei verbringt ein Monteur seinen Tag im Heizungskeller und im Firmenwagen. Was ihn dort stört, merkt er jeden Tag: eine Stunde Anfahrt, jede Woche andere Kollegen, Material, das auf der Baustelle fehlt, ein Chef, den er nur beim Jahresgespräch sieht.</p><p>Genau da ist ein kleiner Betrieb oft im Vorteil:</p><ul><li><strong>Kurze Wege:</strong> Die Baustellen liegen im Umkreis, abends ist er daheim.</li><li><strong>Festes Team:</strong> Er arbeitet jeden Tag mit denselben Leuten.</li><li><strong>Der Chef packt mit an:</strong> Probleme klärt er direkt auf der Baustelle, ohne drei Ebenen dazwischen.</li><li><strong>Eigene Projekte:</strong> Er baut ein Bad oder eine Heizung von Anfang bis Ende und sieht, was er geschafft hat.</li><li><strong>Pünktliches Geld:</strong> Der Lohn ist am Monatsende da, jeden Monat.</li></ul><p>Die Konkurrenz um diese Leute ist groß. Rund die Hälfte der etwa 48.000 SHK-Betriebe meldet offene Stellen (ZVSHK). Der Monteur hat die Wahl, und er wählt nach dem, was er sieht.</p>",
+      "bild": {
+        "src": "/assets/fotos/shk-03.jpg",
+        "alt": "Zwei Monteure im Rohbau, einer reicht dem anderen ein Bauteil",
+        "unter": "Aus einem Shooting in einem SHK-Betrieb: zwei Kollegen, die jeden Tag zusammen auf der Baustelle stehen",
+        "pos": "50% 35%"
+      }
     },
     {
       "h2": "Reichen Pluspunkte wie 4-Tage-Woche oder 13. Gehalt?",
@@ -43,6 +49,23 @@
       "zitat": {
         "text": "Das zieht schon mal, aber wechseln wollen sie nicht.",
         "wer": "Inhaber, SHK-Betrieb, über die 4-Tage-Woche (2026)"
+      },
+      "balken": {
+        "titel": "Bewerbungen bei Heizung-Sanitär Klaß für einen Anlagenmechaniker",
+        "werte": [
+          [
+            "Alle Bewerbungen",
+            35,
+            "35"
+          ],
+          [
+            "mit Erfahrung im Fach",
+            16,
+            "16",
+            true
+          ]
+        ],
+        "quelle": "Quelle: eigene Kampagne, Heizung-Sanitär Klaß, 2024"
       }
     },
     {
@@ -136,5 +159,11 @@
     "kosten-offene-stelle"
   ],
   "cta_titel": "Wie wirkt dein Betrieb <span class='em w'>auf Monteure?</span>",
-  "cta_satz": "In 30 Minuten schauen wir, was dein Betrieb Monteuren bietet und wie viele davon im Umkreis deine Anzeige sehen würden."
+  "cta_satz": "In 30 Minuten schauen wir, was dein Betrieb Monteuren bietet und wie viele davon im Umkreis deine Anzeige sehen würden.",
+  "bild": {
+    "src": "/assets/fotos/klass-hebel-monteure.jpg",
+    "alt": "Monteur von Heizung-Sanitär Klaß am offenen Firmenwagen mit Werkzeugschubladen",
+    "unter": "Monteur von Heizung-Sanitär Klaß in Türkenfeld am Firmenwagen",
+    "pos": "62% 40%"
+  }
 }

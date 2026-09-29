@@ -1,0 +1,166 @@
+{
+  "slug": "stellenanzeige-shk-schreiben",
+  "titel": "Stellenanzeige für Anlagenmechaniker SHK schreiben",
+  "h1": "Was gehört in eine Stellenanzeige für Anlagenmechaniker, damit sich jemand meldet?",
+  "beschreibung": "Aufbau einer SHK-Stellenanzeige in sechs Teilen, mit Beispiel-Anzeige und den Punkten, die bei Heizung-Sanitär Klaß in den Anzeigen standen.",
+  "kategorie": "Monteure finden",
+  "reihe": 13,
+  "top": false,
+  "veroeffentlicht": "2026-10-23",
+  "teaser": "Viele Anzeigen sagen „Wir suchen dich“ und sonst wenig. So baust du eine, bei der ein Monteur hängen bleibt und sich meldet.",
+  "kurzantwort": "Eine Anzeige, auf die sich ein Anlagenmechaniker meldet, nennt Stelle und Ort im ersten Satz, beschreibt seinen Alltag bei dir, sagt konkret, was du bietest, und zeigt dein Team auf Fotos. Dazu kommen zwei, drei Filterfragen und eine Bewerbung ohne Lebenslauf. Bei Heizung-Sanitär Klaß kamen so 35 Bewerbungen, 16 davon mit Erfahrung im Fach.",
+  "lesezeit": 6,
+  "leistung": "monteure",
+  "bild": {
+    "src": "/assets/fotos/klass-team-van-scharf.jpg",
+    "alt": "Zwei Monteure von Heizung-Sanitär Klaß vor ihrem Firmenwagen",
+    "unter": "Aus dem Shooting für die Kampagne von Heizung-Sanitär Klaß, Türkenfeld",
+    "pos": "50% 40%"
+  },
+  "zahlen": [
+    {
+      "zahl": "35",
+      "einheit": "Bewerbungen",
+      "text": "bekam Heizung-Sanitär Klaß auf Anzeigen, die eigene Projekte, ein festes Team und die 4-Tage-Woche zeigten.",
+      "quelle": "eigene Kampagne, Heizung-Sanitär Klaß, 2024"
+    },
+    {
+      "zahl": "70,6",
+      "einheit": "%",
+      "text": "der offenen Gesellenstellen in Sanitär, Heizung und Klimatechnik ließen sich 2025 rechnerisch nicht besetzen, weil passend qualifizierte Arbeitslose fehlten.",
+      "quelle": "KOFA/IW 2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Warum lesen Monteure die meisten Stellenanzeigen nicht zu Ende?",
+      "html": "<p>„Wir suchen dich! Anlagenmechaniker SHK (m/w/d) in Vollzeit. Wir bieten ein familiäres Arbeitsumfeld und eine leistungsgerechte Bezahlung.“ So stehen viele Anzeigen im Netz und in der Zeitung. Ein Monteur weiß danach nicht mehr über deinen Betrieb als vorher.</p><p>Dazu kommt, wer da überhaupt liest. Für 70,6 Prozent der offenen Gesellenstellen in Sanitär, Heizung und Klimatechnik gab es 2025 rechnerisch keinen passend qualifizierten Arbeitslosen (KOFA/IW). Die Leute, die du suchst, haben also einen Job. Sie sehen deine Anzeige abends am Handy, zwischen zwei Videos, und entscheiden in ein paar Sekunden, ob sie weiterlesen.</p><p>In diesen Sekunden zählt, ob sich einer wiedererkennt: seine Arbeit, seine Gegend, Leute wie er. „Familiäres Arbeitsumfeld“ schreibt fast jeder. Ein Foto von deinem Team am Firmenwagen und ein Satz dazu, wann bei dir freitags Feierabend ist, passen nur zu deinem Betrieb.</p><p>Wie so eine Anzeige aufgebaut ist, zeigen die nächsten Abschnitte, mit einem Beispiel zum Übernehmen.</p>"
+    },
+    {
+      "h2": "Wie ist eine Stellenanzeige für Anlagenmechaniker aufgebaut?",
+      "html": "<p>Eine Anzeige, die funktioniert, hat sechs Teile. Die Reihenfolge zählt, weil am Handy oft nur die ersten Zeilen zu sehen sind, bevor jemand auf „Mehr“ tippt.</p><ol><li><strong>Stelle und Ort im ersten Satz,</strong> zum Beispiel „Anlagenmechaniker SHK für Heizung und Bad in [Ort]“.</li><li><strong>Der Alltag:</strong> welche Anlagen, welche Kunden, wie weit die Baustellen weg sind.</li><li><strong>Was du bietest, mit Zahlen:</strong> Arbeitszeit, Firmenwagen, Urlaubstage, Weiterbildung.</li><li><strong>Das Team:</strong> wie viele ihr seid, wer der Chef ist, ein Foto.</li><li><strong>Was du erwartest, kurz:</strong> zwei, drei Punkte, mehr nicht.</li><li><strong>Die Bewerbung:</strong> wie lange sie dauert und wer wann zurückruft.</li></ol><p>Punkt 3 ist der schwierigste. Was du bietest, glaubt dir ein Monteur erst, wenn eine Zahl oder ein Bild dabei ist. Die Tabelle zeigt den Unterschied an Sätzen, wie sie oft in Anzeigen stehen.</p>",
+      "tabelle": {
+        "titel": "Allgemein oder konkret",
+        "kopf": [
+          "Teil",
+          "Oft zu lesen",
+          "Konkret, zum Beispiel"
+        ],
+        "zeilen": [
+          [
+            "Stelle",
+            "Anlagenmechaniker (m/w/d) gesucht",
+            "Anlagenmechaniker SHK für Wärmepumpen im Bestand, Raum [Ort]"
+          ],
+          [
+            "Alltag",
+            "abwechslungsreiche Tätigkeiten",
+            "Heizungstausch im Einfamilienhaus, meist zwei, drei Tage je Baustelle"
+          ],
+          [
+            "Angebot",
+            "leistungsgerechte Bezahlung",
+            "4-Tage-Woche, Firmenwagen auch für den Heimweg, 30 Tage Urlaub"
+          ],
+          [
+            "Team",
+            "junges, dynamisches Team",
+            "8 Leute, der Chef steht selbst noch auf der Baustelle"
+          ],
+          [
+            "Bewerbung",
+            "aussagekräftige Unterlagen an …",
+            "Bewerbung in 60 Sekunden ohne Lebenslauf, Rückruf am nächsten Tag"
+          ]
+        ],
+        "quelle": "Die Beispiele sind ausgedacht. Schreib nur hin, was bei dir gilt."
+      }
+    },
+    {
+      "h2": "Wie sieht so eine Anzeige aus? Ein Beispiel",
+      "html": "<p>Hier eine Anzeige nach diesem Aufbau. Der Betrieb ist ausgedacht, die Form kannst du übernehmen.</p><p><strong>Beispiel-Anzeige: Anlagenmechaniker SHK für Heizung und Bad, Raum Musterstadt</strong></p><p>Du baust bei uns Wärmepumpen und Brennwertgeräte in Einfamilienhäuser ein, fast alle im Umkreis von 20 Kilometern. Morgens holst du dein Material im Lager, abends bist du zu Hause.</p><p>Wir sind acht Leute, seit 30 Jahren im Ort. Jeder hat seinen eigenen Firmenwagen, auch für den Heimweg. Freitags ist um 13 Uhr Schluss.</p><p>Du bringst einen Gesellenbrief im SHK-Handwerk mit oder ein paar Jahre im Heizungsbau, dazu den Führerschein B.</p><p>Bewerben dauert eine Minute und geht ohne Lebenslauf. Unser Meister Thomas ruft dich innerhalb eines Tages zurück.</p><p>Das sind keine 100 Wörter. Mehr braucht es nicht, den Rest klärt ihr am Telefon. Neben den Text gehören Fotos aus deinem Betrieb: dein Team, dein Lager, eine Baustelle.</p>"
+    },
+    {
+      "h2": "Was haben die Anzeigen bei Heizung-Sanitär Klaß gezeigt?",
+      "html": "<p>Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker als Obermonteur mit Bauleitung. Fotografiert haben wir im Betrieb, mit dem eigenen Team. Die Anzeigen liefen im Umkreis und zeigten, was der Betrieb bietet:</p><ul><li>eigene Projekte, die der Neue führt</li><li>ein festes Team</li><li>die 4-Tage-Woche</li></ul><p>Vor der Bewerbung stand eine Frage: „Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?“ Am Ende lagen 35 Bewerbungen vor, 16 davon von Leuten mit Erfahrung im Fach.</p><p>Alle drei Punkte beschreiben etwas, das ein Monteur in seinem jetzigen Betrieb vielleicht vermisst. Das ist der Maßstab für deine Anzeige. Schreib hin, was bei dir anders ist, und zeig es auf den Fotos. Mehr dazu, was einen kleinen Betrieb für Monteure interessant macht, steht im Artikel <a href='/wissen/attraktiv-fuer-monteure/'>Was macht einen kleinen SHK-Betrieb für Monteure attraktiv?</a></p>",
+      "zahlen": [
+        {
+          "zahl": "16",
+          "einheit": "von 35",
+          "text": "Bewerbungen bei Heizung-Sanitär Klaß kamen von Leuten mit Erfahrung im Fach.",
+          "quelle": "eigene Kampagne, Heizung-Sanitär Klaß, 2024"
+        }
+      ]
+    },
+    {
+      "h2": "Wo sollte die Anzeige laufen, und wie meldet sich einer?",
+      "html": "<p>Eine Anzeige in der Lokalzeitung liest vor allem, wer gerade sucht. Die Monteure, die du willst, erreichst du am Handy. Laut ARD/ZDF-Medienstudie 2025 nutzen 54 Prozent der 30- bis 49-Jährigen Instagram jede Woche, 48 Prozent Facebook und 24 Prozent TikTok. Auf Facebook und Instagram lässt sich die Anzeige auf deinen Umkreis begrenzen, meist 20 bis 30 Kilometer.</p><p>Unter der Anzeige steht ein kurzes Formular mit zwei, drei Filterfragen. Wer tippt, beantwortet sie in Sekunden und schickt Name und Telefonnummer ab. So kommt jede Bewerbung mit den Antworten an, die du für den ersten Anruf brauchst. Welche Fragen sich eignen, steht im Artikel <a href='/wissen/passende-bewerber/'>Wie bekomme ich passende Bewerber?</a></p><p>Die Stelle gehört trotzdem auch auf deine Website. Wer die Anzeige sieht, schaut sich vorher gern an, wer dahintersteckt.</p>",
+      "balken": {
+        "titel": "Wöchentliche Nutzung bei 30- bis 49-Jährigen, 2025",
+        "werte": [
+          [
+            "Instagram",
+            54,
+            "54 %",
+            true
+          ],
+          [
+            "Facebook",
+            48,
+            "48 %"
+          ],
+          [
+            "TikTok",
+            24,
+            "24 %"
+          ]
+        ],
+        "quelle": "Quelle: ARD/ZDF-Medienstudie 2025, Media Perspektiven 31/2025, Tabelle 4"
+      }
+    },
+    {
+      "h2": "Was du diese Woche selbst tun kannst",
+      "html": "<p>Deine nächste Anzeige kannst du heute Abend selbst besser machen, mit Stift und Handy. Nimm dir eine halbe Stunde und geh die fünf Punkte der Reihe nach durch.</p><ol><li>Nimm deine aktuelle Anzeige und streich jeden Satz, der auch beim Nachbarbetrieb stehen könnte.</li><li>Schreib den ersten Satz neu: Stelle, Art der Arbeit, Ort.</li><li>Frag zwei Monteure, warum sie bei dir bleiben. Ihre Antworten sind dein Angebot.</li><li>Mach ein paar Fotos vom Team, vom Lager und von einer laufenden Baustelle.</li><li>Leg fest, wer eine Bewerbung am nächsten Tag zurückruft, und schreib seinen Vornamen in die Anzeige. Ein Name wirkt anders als eine Sammeladresse.</li></ol><p>Für eine Stelle im Kundendienst oder als Obermonteur stehen eigene Hinweise in den Artikeln <a href='/wissen/kundendiensttechniker-finden/'>Kundendiensttechniker finden</a> und <a href='/wissen/obermonteur-finden/'>Obermonteur oder Bauleiter finden</a>.</p>"
+    }
+  ],
+  "faq": [
+    [
+      "Reicht die 4-Tage-Woche als Argument?",
+      "Allein reicht sie manchmal nicht. Ein SHK-Inhaber hat uns erzählt, dass die 4-Tage-Woche zwar zieht, die Leute aber trotzdem nicht wechseln wollten. Bei Klaß stand sie neben eigenen Projekten und einem festen Team, dazu Fotos aus dem Betrieb. Ein einzelner Vorteil wirkt schwächer als ein Bild vom ganzen Betrieb."
+    ],
+    [
+      "Muss die Stelle auch auf meine Website?",
+      "Ja, am besten als eigene Seite mit denselben Punkten wie in der Anzeige. Wer die Anzeige sieht, schaut dort gern nach. Allein bringt die Stelle auf der Website aber wenig. Bei Erwin Schmidt & Sohn stand sie dort schon, bevor die Anzeigen liefen, und hat nach Aussage des Geschäftsführers kaum etwas gebracht."
+    ],
+    [
+      "Muss ich selbst in der Anzeige zu sehen sein?",
+      "Das entscheidest du. Wichtiger sind die Leute, mit denen ein neuer Monteur jeden Tag arbeiten würde. Beim Shooting im Betrieb fotografieren wir das Team bei der Arbeit, im Lager und am Firmenwagen. Ein Bild vom Chef hilft trotzdem, weil ein Bewerber wissen will, für wen er arbeitet."
+    ],
+    [
+      "Brauche ich ein Video oder reichen Fotos?",
+      "Beides geht. In unseren Kampagnen fallen kurze Videos im Feed meist eher auf als Fotos, deshalb gehört zum Shooting auch Video. Wichtig ist, dass die ersten Sekunden zeigen, worum es geht: dein Team bei der Arbeit und die Stelle in einem Satz."
+    ],
+    [
+      "Was kostet es, die Anzeige auf Facebook und Instagram zu schalten?",
+      "Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung der Kampagne. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch."
+    ]
+  ],
+  "quellen": [
+    {
+      "name": "KOFA/IW: Fachkräftesicherung im Handwerk. Ausbildung zwischen Krise und Renaissance, KOFA Kompakt 7/2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    },
+    {
+      "name": "ARD/ZDF-Medienstudie 2025: Social Media zwischen Wachstum und Sättigung, Media Perspektiven 31/2025",
+      "url": "https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf"
+    }
+  ],
+  "verwandt": [
+    "passende-bewerber",
+    "bewerber-schnell-zurueckrufen",
+    "attraktiv-fuer-monteure"
+  ],
+  "cta_titel": "Was müsste in <span class='em w'>deiner Anzeige</span> stehen?",
+  "cta_satz": "In 30 Minuten schauen wir auf deine Stelle und deinen Umkreis und sagen dir, was in die Anzeige gehört und wen sie erreicht."
+}

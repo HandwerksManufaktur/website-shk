@@ -87,15 +87,42 @@
   },
   {
    "h2": "Was muss in der Anzeige stehen, damit die Richtigen klicken?",
-   "html": "<p>Die Anzeige ist der erste Filter. Je genauer sie beschreibt, was jemand bei dir macht, desto eher klickt der Richtige und wischt der Falsche weiter.</p><ul><li><strong>Die Stelle beim Namen:</strong> zum Beispiel „Anlagenmechaniker SHK für den Kundendienst“.</li><li><strong>Der Alltag:</strong> Wärmepumpen im Bestand, Bäder im Einfamilienhaus, Wartung im Kundendienst. Wer das liest, weiß sofort, ob er das kann.</li><li><strong>Das Einsatzgebiet:</strong> die Orte, in denen deine Baustellen liegen.</li><li><strong>Deine Leute im Bild:</strong> Fotos und kurze Videos aus deinem Betrieb, mit deinem Team. Ein Stockfoto mit weißem Helm erkennt jeder als Werbung.</li></ul><p>Ausgespielt wird die Anzeige auf Facebook und Instagram, und nur im Umkreis deines Betriebs. Dort sind die Leute, die du suchst: 54 Prozent der 30- bis 49-Jährigen nutzen Instagram jede Woche, 48 Prozent Facebook (ARD/ZDF-Medienstudie 2025). Ein Geselle, der 20 Minuten von dir entfernt wohnt, sieht die Anzeige abends zwischen zwei Videos, auch wenn er gar keine Stelle sucht. Mehr dazu im Ratgeber <a href='/wissen/social-recruiting-shk/'>Recruiting über Facebook und Instagram</a>.</p>"
+   "html": "<p>Die Anzeige ist der erste Filter. Je genauer sie beschreibt, was jemand bei dir macht, desto eher klickt der Richtige und wischt der Falsche weiter.</p><ul><li><strong>Die Stelle beim Namen:</strong> zum Beispiel „Anlagenmechaniker SHK für den Kundendienst“.</li><li><strong>Der Alltag:</strong> Wärmepumpen im Bestand, Bäder im Einfamilienhaus, Wartung im Kundendienst. Wer das liest, weiß sofort, ob er das kann.</li><li><strong>Das Einsatzgebiet:</strong> die Orte, in denen deine Baustellen liegen.</li><li><strong>Deine Leute im Bild:</strong> Fotos und kurze Videos aus deinem Betrieb, mit deinem Team. Ein Stockfoto mit weißem Helm erkennt jeder als Werbung.</li></ul><p>Ausgespielt wird die Anzeige auf Facebook und Instagram, und nur im Umkreis deines Betriebs. Dort sind die Leute, die du suchst: 54 Prozent der 30- bis 49-Jährigen nutzen Instagram jede Woche, 48 Prozent Facebook (ARD/ZDF-Medienstudie 2025). Ein Geselle, der 20 Minuten von dir entfernt wohnt, sieht die Anzeige abends zwischen zwei Videos, auch wenn er gar keine Stelle sucht. Mehr dazu im Ratgeber <a href='/wissen/social-recruiting-shk/'>Recruiting über Facebook und Instagram</a>.</p>",
+   "bild": {
+    "src": "/assets/fotos/shk-02.jpg",
+    "alt": "Zwei Monteure bei der Montage im Rohbau",
+    "unter": "Aus einem Shooting in einem SHK-Betrieb: zwei Monteure bei der Montage im Rohbau",
+    "pos": "50% 35%"
+   }
   },
   {
    "h2": "Fall aus der Praxis: 35 Bewerbungen, 16 mit Erfahrung im Fach",
-   "html": "<p>Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker als Obermonteur mit Bauleitung. Fotografiert haben wir im Betrieb, mit dem eigenen Team. Die Anzeigen liefen im Umkreis und zeigten, was der Betrieb bietet: eigene Projekte, ein festes Team, die 4-Tage-Woche.</p><p>Vor der Bewerbung stand eine einzige Frage: „Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?“ Am Ende lagen 35 Bewerbungen vor. 16 davon kamen von Leuten mit Erfahrung im Fach, knapp die Hälfte. Durch die Filterfrage stand bei jeder Bewerbung dabei, ob jemand schon im Fach gearbeitet hat.</p><p>Das ist ein Fall aus einem Betrieb. Wie viele Bewerbungen bei dir kommen, hängt von deinem Umkreis ab und davon, was du bietest. Was einen kleinen Betrieb für Monteure interessant macht, steht im Ratgeber <a href='/wissen/attraktiv-fuer-monteure/'>Was macht einen kleinen SHK-Betrieb für Monteure attraktiv?</a></p>"
+   "html": "<p>Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker als Obermonteur mit Bauleitung. Fotografiert haben wir im Betrieb, mit dem eigenen Team. Die Anzeigen liefen im Umkreis und zeigten, was der Betrieb bietet: eigene Projekte, ein festes Team, die 4-Tage-Woche.</p><p>Vor der Bewerbung stand eine einzige Frage: „Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?“ Am Ende lagen 35 Bewerbungen vor. 16 davon kamen von Leuten mit Erfahrung im Fach, knapp die Hälfte. Durch die Filterfrage stand bei jeder Bewerbung dabei, ob jemand schon im Fach gearbeitet hat.</p><p>Das ist ein Fall aus einem Betrieb. Wie viele Bewerbungen bei dir kommen, hängt von deinem Umkreis ab und davon, was du bietest. Was einen kleinen Betrieb für Monteure interessant macht, steht im Ratgeber <a href='/wissen/attraktiv-fuer-monteure/'>Was macht einen kleinen SHK-Betrieb für Monteure attraktiv?</a></p>",
+   "balken": {
+    "titel": "Bewerbungen bei Heizung-Sanitär Klaß für einen Anlagenmechaniker",
+    "werte": [
+     [
+      "Alle Bewerbungen",
+      35,
+      "35"
+     ],
+     [
+      "mit Erfahrung im Fach",
+      16,
+      "16",
+      true
+     ]
+    ],
+    "quelle": "Quelle: eigene Kampagne, Heizung-Sanitär Klaß, 2024"
+   }
   },
   {
    "h2": "Was tun, wenn trotzdem die Falschen kommen?",
    "html": "<p>Dann hakt es meist an einer von zwei Stellen. Entweder ist die Anzeige zu allgemein, dann klicken zu viele. Oder die Filterfragen sind zu weich, dann kommen alle durch. Beides lässt sich in der laufenden Kampagne ändern, ohne von vorn anzufangen:</p><ul><li>Die Frage nach der Erfahrung zur Muss-Frage machen.</li><li>Den Umkreis enger ziehen, wenn viele Bewerber von weit her kommen.</li><li>In Anzeige und Video deutlicher zeigen, welche Arbeit bei dir ansteht.</li></ul><p>Änder immer nur eine Sache auf einmal. Sonst weißt du am Ende nicht, was gewirkt hat.</p><p>Und ruf die Passenden schnell zurück, am besten am nächsten Tag. Ein Geselle, der sich abends beworben hat, ist dann noch in Gedanken bei deiner Anzeige. Was du nachregelst, wenn gar keine Bewerbung kommt, steht im Ratgeber <a href='/wissen/keine-bewerbung-was-dann/'>Was passiert, wenn keine Bewerbung oder Anfrage kommt?</a></p>"
+  },
+  {
+   "h2": "Was kannst du diese Woche selbst tun?",
+   "html": "<p>Für passende Bewerber brauchst du kein Budget, nur eine halbe Stunde am Schreibtisch.</p><ol><li>Schreib deine Muss-Liste auf: Gewerk, Erfahrung, Führerschein, Entfernung. Mehr Punkte braucht es selten.</li><li>Entscheide, ob du einen Quereinsteiger anlernen kannst und wer ihn mitnimmt.</li><li>Formulier die eine Frage, an der du einen Gesellen mit Erfahrung erkennst.</li><li>Lies deine aktuelle Stellenanzeige und streich „Wir suchen dich“, wenn danach nichts Konkretes kommt.</li><li>Schau nach, aus welchen Orten deine Monteure heute kommen. So groß ist dein Umkreis.</li></ol><p>Mit dieser Liste weißt du beim ersten Anruf, worauf du achtest.</p>"
   }
  ],
  "faq": [
@@ -136,5 +163,11 @@
   "keine-bewerbung-was-dann"
  ],
  "cta_titel": "Welche Monteure erreichst du <span class='em w'>in deinem Umkreis?</span>",
- "cta_satz": "In 30 Minuten schauen wir, wen du im Umkreis erreichst und welche Filterfragen zu deiner Stelle passen."
+ "cta_satz": "In 30 Minuten schauen wir, wen du im Umkreis erreichst und welche Filterfragen zu deiner Stelle passen.",
+ "bild": {
+  "src": "/assets/fotos/klass-team-van-scharf.jpg",
+  "alt": "Zwei Monteure von Heizung-Sanitär Klaß mit verschränkten Armen vor dem Firmenwagen",
+  "unter": "Das Team von Heizung-Sanitär Klaß in Türkenfeld, fotografiert im eigenen Betrieb",
+  "pos": "50% 35%"
+ }
 }

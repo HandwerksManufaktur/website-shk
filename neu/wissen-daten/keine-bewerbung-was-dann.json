@@ -8,7 +8,7 @@
  "top": false,
  "teaser": "Eine feste Zahl an Bewerbungen kann dir niemand seriös zusagen. Wo es hakt, lässt sich aber an den Zahlen der Kampagne ablesen.",
  "kurzantwort": "Dann wird nachgeregelt, der Reihe nach. Zuerst die Zahlen lesen: Sehen genug Leute im Umkreis die Anzeige, klicken sie, brechen sie im Formular ab? Daraus folgt, was du änderst, also Bild und Einstieg der Anzeige, die Filterfragen, den Umkreis oder das Budget. Eine feste Zahl an Bewerbungen oder Anfragen kann dir niemand seriös zusagen.",
- "lesezeit": 8,
+ "lesezeit": 9,
  "leistung": "potenzial",
  "zahlen": [
   {
@@ -33,7 +33,7 @@
  "abschnitte": [
   {
    "h2": "Gibt es eine Garantie auf Bewerbungen oder Anfragen?",
-   "html": "<p>Nein. Ob sich jemand bewirbt oder ein Bad anfragt, entscheidet ein Mensch am Handy. Wie viele das in deinem Umkreis tun, weiß vorher niemand auf die Zahl genau. Sagt dir jemand eine feste Zahl zu, frag nach, was er als Bewerbung zählt und was passiert, wenn sie ausbleibt.</p><p>Was sich sagen lässt: wie es in anderen Betrieben lief, und woran man früh sieht, ob eine Kampagne läuft. Bewerbungen kommen bei uns oft in den ersten 24 Stunden nach dem Start. Bäder brauchen länger, weil ein Bad geplant wird. Bei der Erich Sussmann GmbH kam der erste Auftrag über 10.000 € nach 2 Wochen, Senftleben Haustechnik hatte 21 Bad-Anfragen in 2 Monaten.</p><p>Die Sorge, dass nichts kommt, hören wir oft vor dem Start. Ein Inhaber hat sie uns so beschrieben:</p>",
+   "html": "<p>Die Anzeige läuft seit drei Tagen, und morgens schaust du als Erstes aufs Handy, ob sich jemand gemeldet hat. Spätestens dann fragst du dich, ob man darauf eine Garantie bekommen kann. Die Antwort ist Nein. Ob sich jemand bewirbt oder ein Bad anfragt, entscheidet ein Mensch am Handy. Wie viele das in deinem Umkreis tun, weiß vorher niemand auf die Zahl genau. Sagt dir jemand eine feste Zahl zu, frag nach, was er als Bewerbung zählt und was passiert, wenn sie ausbleibt.</p><p>Was sich sagen lässt: wie es in anderen Betrieben lief, und woran man früh sieht, ob eine Kampagne läuft. Bewerbungen kommen bei uns oft in den ersten 24 Stunden nach dem Start. Bäder brauchen länger, weil ein Bad geplant wird. Bei der Erich Sussmann GmbH kam der erste Auftrag über 10.000 € nach gut 2 Wochen, Senftleben Haustechnik hatte 21 Bad-Anfragen in 2 Monaten.</p><p>Die Sorge, dass nichts kommt, hören wir oft vor dem Start. Ein Inhaber hat sie uns so beschrieben:</p>",
    "zitat": {
     "text": "Du denkst halt immer: Da zahle ich das Gold, und es kommt nichts.",
     "wer": "Inhaber, SHK-Betrieb, vor dem Start (2026)"
@@ -84,15 +84,42 @@
   },
   {
    "h2": "Rechenbeispiel: Wie viele Besucher brauchst du für zehn Bewerbungen?",
-   "html": "<p>Die Formel ist einfach:</p><p><strong>Bewerbungen = Besucher des Formulars × Abschlussquote</strong></p><p>In einem unserer Bewerbungs-Formulare haben sich 26 von 1.100 Besuchern beworben. Das sind gut 2 Prozent, gerundet 26 ÷ 1.100 ≈ 2,4 Prozent. Damit gerechnet:</p><ul><li>Für 10 Bewerbungen brauchst du 10 ÷ 0,024 ≈ 420 Besucher.</li><li>Halbiert eine zu strenge Filterfrage die Quote auf 1,2 Prozent, sind es 10 ÷ 0,012 ≈ 830 Besucher.</li><li>Kommen nur 200 Besucher, weil der Umkreis klein ist, bleiben bei 2,4 Prozent 200 × 0,024 ≈ 5 Bewerbungen.</li></ul><p>Das ist ein Rechenbeispiel, keine Prognose. Deine Quote kann höher oder niedriger liegen. Es zeigt nur, warum man zuerst schaut, an welcher Stelle Leute verloren gehen. Liegt das Problem im Formular, bringt mehr Budget vor allem mehr Leute, die abbrechen. Liegt es am Umkreis, hilft keine noch so gute Filterfrage.</p>"
+   "html": "<p>Die Formel ist einfach:</p><p><strong>Bewerbungen = Besucher des Formulars × Abschlussquote</strong></p><p>In einem unserer Bewerbungs-Formulare haben sich 26 von 1.100 Besuchern beworben. Das sind gut 2 Prozent, gerundet 26 ÷ 1.100 ≈ 2,4 Prozent. Damit gerechnet:</p><ul><li>Für 10 Bewerbungen brauchst du 10 ÷ 0,024 ≈ 420 Besucher.</li><li>Halbiert eine zu strenge Filterfrage die Quote auf 1,2 Prozent, sind es 10 ÷ 0,012 ≈ 830 Besucher.</li><li>Kommen nur 200 Besucher, weil der Umkreis klein ist, bleiben bei 2,4 Prozent 200 × 0,024 ≈ 5 Bewerbungen.</li></ul><p>Das ist ein Rechenbeispiel, keine Prognose. Deine Quote kann höher oder niedriger liegen. Es zeigt nur, warum man zuerst schaut, an welcher Stelle Leute verloren gehen. Liegt das Problem im Formular, bringt mehr Budget vor allem mehr Leute, die abbrechen. Liegt es am Umkreis, hilft keine noch so gute Filterfrage.</p>",
+   "balken": {
+    "titel": "Besucher des Formulars für 10 Bewerbungen, je nach Abschlussquote",
+    "werte": [
+     [
+      "bei 2,4 % Abschlussquote",
+      420,
+      "rund 420 Besucher",
+      true
+     ],
+     [
+      "bei 1,2 % Abschlussquote",
+      830,
+      "rund 830 Besucher"
+     ]
+    ],
+    "quelle": "Rechenbeispiel, keine Prognose. Quote aus einer unserer Kampagnen: 26 von 1.100 Besuchern."
+   }
   },
   {
    "h2": "Und wenn zu viel kommt? Drosseln und pausieren",
-   "html": "<p>Das Gegenteil kommt auch vor. Patrick Wähnl, Geschäftsführer der Erich Sussmann GmbH, sagt über die ersten Tage: „Am Anfang war es extrem.“ Schafft dein Team die Anfragen nicht mehr, wird gedrosselt. Du bekommst dann weniger, in einem Tempo, das deine Leute abarbeiten können. Sag früh Bescheid, wenn es zu viel wird, bevor Anfragen liegen bleiben.</p><p>Das Werbebudget läuft direkt über Meta und lässt sich herunterfahren oder ganz pausieren. Beim Recruiting liegt das nahe. Ist die Stelle besetzt, kannst du die Kampagne anhalten und später wieder anstellen.</p><p>Manche Betriebe lassen sie trotzdem weiterlaufen. Senftleben Haustechnik in Ehingen ist ausgelastet und hat die Bad-Kampagne verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Warum das sinnvoll sein kann, steht im Ratgeber <a href='/wissen/ausgelastet-werbung/'>Ich bin ausgelastet: Brauche ich trotzdem Werbung?</a></p>"
+   "html": "<p>Das Gegenteil kommt auch vor. Patrick Wähnl, Geschäftsführer der Erich Sussmann GmbH, sagt über die ersten Tage: „Am Anfang war es extrem.“ Schafft dein Team die Anfragen nicht mehr, wird gedrosselt. Du bekommst dann weniger, in einem Tempo, das deine Leute abarbeiten können. Sag früh Bescheid, wenn es zu viel wird, bevor Anfragen liegen bleiben.</p><p>Das Werbebudget läuft direkt über Meta und lässt sich herunterfahren oder ganz pausieren. Beim Recruiting liegt das nahe. Ist die Stelle besetzt, kannst du die Kampagne anhalten und später wieder anstellen.</p><p>Manche Betriebe lassen sie trotzdem weiterlaufen. Senftleben Haustechnik in Ehingen ist ausgelastet und hat die Bad-Kampagne verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Warum das sinnvoll sein kann, steht im Ratgeber <a href='/wissen/ausgelastet-werbung/'>Ich bin ausgelastet: Brauche ich trotzdem Werbung?</a></p>",
+   "bild": {
+    "src": "/assets/fotos/sussmann-patrick-mirjana-van.jpg",
+    "alt": "Patrick Wähnl und Mirjana lehnen am Firmenwagen der Erich Sussmann GmbH",
+    "unter": "Patrick Wähnl, Geschäftsführer, mit Mirjana am Firmenwagen der Erich Sussmann GmbH in Kirchheim bei München",
+    "pos": "50% 30%"
+   }
   },
   {
    "h2": "Was solltest du vor dem Start klären?",
    "html": "<p>Viel Ärger entsteht, weil vorher niemand gesagt hat, was als Erfolg zählt. Kläre diese Punkte, bevor die erste Anzeige läuft:</p><ul><li>Was zählt als Ergebnis: eine Bewerbung, eine passende Bewerbung, eine Anfrage oder ein Vor-Ort-Termin?</li><li>Wer regelt nach, wenn in den ersten Wochen wenig kommt, und ist das im Preis drin?</li><li>Wird das Werbebudget direkt mit Meta abgerechnet, und kannst du es stoppen?</li><li>Wie lange bist du gebunden? Bei uns sind es 3 Monate Anlaufzeit, danach monatlich kündbar.</li><li>Wer ruft Bewerber und Anfragen zurück, auch wenn du im Urlaub bist?</li></ul><p>Schreib dir die Antworten auf, bevor du unterschreibst. Dann kannst du nach ein paar Wochen nachlesen, was vereinbart war.</p><p>Woran du eine seriöse Agentur erkennst, steht im Ratgeber <a href='/wissen/agentur-pruefen/'>Woran erkenne ich eine seriöse Marketing-Agentur für SHK-Betriebe?</a></p>"
+  },
+  {
+   "h2": "Was kannst du diese Woche selbst tun?",
+   "html": "<p>Wenn gerade wenig kommt, findest du den Grund oft schon mit einer Stunde Nachsehen.</p><ol><li>Lass dir die Zahlen der Kampagne zeigen oder öffne den Werbeanzeigenmanager: wie viele Leute die Anzeige gesehen und angeklickt haben und wie viele Bewerbungen oder Anfragen daraus wurden.</li><li>Such in der Tabelle oben die Zeile, die zu deinen Zahlen passt.</li><li>Öffne dein Bewerbungs- oder Anfrageformular am Handy und füll es einmal selbst aus. Merk dir die Fragen, bei denen du zögerst.</li><li>Prüf, wer Bewerbungen und Anfragen zurückruft und wie schnell das passiert.</li><li>Schreib auf, was für dich als Ergebnis zählt, und sprich es mit deinem Ansprechpartner ab.</li></ol>"
   }
  ],
  "faq": [
@@ -129,5 +156,11 @@
   "agentur-pruefen"
  ],
  "cta_titel": "Was ist in deinem Umkreis <span class='em w'>drin?</span>",
- "cta_satz": "In 30 Minuten schauen wir, wie viele Leute du im Umkreis erreichst und woran eine Kampagne bei dir hängen würde."
+ "cta_satz": "In 30 Minuten schauen wir, wie viele Leute du im Umkreis erreichst und woran eine Kampagne bei dir hängen würde.",
+ "bild": {
+  "src": "/assets/fotos/senftleben-team.jpg",
+  "alt": "Das Team von Senftleben Haustechnik in roten Shirts vor den Firmenwagen",
+  "unter": "Das Team von Senftleben Haustechnik in Ehingen vor den Firmenwagen",
+  "pos": "50% 45%"
+ }
 }

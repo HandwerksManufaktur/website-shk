@@ -3,7 +3,9 @@
    verzögert (erste Berührung oder 3,5 s nach dem Laden), damit PageSpeed nicht leidet. Hier hängen nur die
    Ereignisse dran; bis die Skripte da sind, sammelt dataLayer alles. Eingebaut 27.09.2026 (Noah). */
 (function () {
-  const g = (name, p) => { try { window.gtag && gtag('event', name, Object.assign({ seite: location.pathname }, p || {})); } catch (e) {} };
+  // Ratgeber: jedes Ereignis trägt den Artikel mit, damit sich Wissensseiten einzeln auswerten lassen (29.09.2026)
+  const artikel = (location.pathname.match(/\/wissen\/([^/]+)\//) || [])[1] || (/\/wissen\/$/.test(location.pathname) ? 'uebersicht' : '');
+  const g = (name, p) => { try { window.gtag && gtag('event', name, Object.assign({ seite: location.pathname }, artikel ? { artikel } : {}, p || {})); } catch (e) {} };
   const kurz = s => (s || '').replace(/\s+/g, ' ').trim().slice(0, 90);
 
   // Wo auf der Seite: Navigation, Fuß, Menü oder die Sektion (id, sonst erste Überschrift)
@@ -30,6 +32,27 @@
       a.href = url.toString();
     } catch (e) {}
   };
+
+  // Ratgeber: welche Handlungsaufforderung zieht (Mitte/Ende/Seitenleiste) und welcher Querlink zur Hauptseite
+  document.addEventListener('click', e => {
+    const c = e.target.closest('[data-cta]');
+    if (c) g('wissen_cta', { position: c.dataset.cta, link_text: kurz(c.textContent) });
+    const q = e.target.closest('.wx-quer a, .wx-karte');
+    if (q) g(q.matches('.wx-karte') ? 'wissen_weiter' : 'wissen_quer', { ziel: q.getAttribute('href') });
+  }, { capture: true, passive: true });
+
+  // Ratgeber: „gelesen" = 75 % des Artikeltexts im Bild und mindestens 30 Sekunden auf der Seite
+  const text = document.querySelector('.wx-text');
+  if (text) {
+    const start = Date.now(); let gemeldet = false;
+    const pruef = () => {
+      if (gemeldet) return;
+      const r = text.getBoundingClientRect();
+      const gelesen = (innerHeight - r.top) / r.height;
+      if (gelesen >= 0.75 && Date.now() - start >= 30000) { gemeldet = true; g('wissen_gelesen', { sekunden: Math.round((Date.now() - start) / 1000) }); }
+    };
+    addEventListener('scroll', pruef, { passive: true }); setInterval(pruef, 5000);
+  }
 
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href]');
@@ -70,4 +93,17 @@
   // Welche Sektion wirklich gesehen wurde (erreicht die Bildmitte, gilt auch für Sektionen höher als der Bildschirm) — zeigt, wo die Leute aussteigen
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { g('sektion_gesehen', { bereich: bereich(e.target), nr: String(e.target.dataset.nr) }); io.unobserve(e.target); } }), { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
   document.querySelectorAll('main > section, main > div > section').forEach((s, i) => { s.dataset.nr = i + 1; io.observe(s); });
+})();
+
+/* Cookieloser Seitenzähler (Worker seiten-zaehler, D1 zaehler-db — gebaut im Chat „HWM Website Überarbeitung", 29.09.2026).
+   Nichts im Browser gespeichert, keine IP, keine Nutzer-Kennung → keine Einwilligung nötig. Zählt Aufrufe, Klicks (Knopftext),
+   Formulare (Ereignis 'hwm:lead') und Lesetiefe für die Montags-Mail (web_wochenbericht.py, Block „Seitenzähler"). */
+(() => { if (!/(^|\.)handwerksmanufaktur\.digital$/.test(location.hostname)) return;
+const Z='https://seiten-zaehler.handwerksmanufaktur.workers.dev/z', id=Math.random().toString(36).slice(2,12), g=innerWidth<768?'m':'d';
+const s=(t,x)=>{const d=JSON.stringify(Object.assign({t,s:location.hostname,p:location.pathname,g,id},x||{}));try{if(!(navigator.sendBeacon&&navigator.sendBeacon(Z,new Blob([d],{type:'text/plain'}))))fetch(Z,{method:'POST',body:d,keepalive:true,mode:'no-cors'})}catch(e){}};
+let r='direkt';try{const q=new URLSearchParams(location.search);if(q.get('utm_source'))r='utm:'+q.get('utm_source');else if(document.referrer){const h=new URL(document.referrer).hostname.replace(/^www\./,'');if(h&&h!==location.hostname)r=h}}catch(e){}
+s('v',{r});
+document.addEventListener('click',e=>{const a=e.target.closest('a,button,summary');if(!a)return;const t=(a.getAttribute('aria-label')||a.textContent||'').trim().replace(/\s+/g,' ').slice(0,70);const h=a.getAttribute('href')||'';s('k',{z:t+(h.startsWith('tel:')?' → Anruf':h.startsWith('mailto:')?' → Mail':/calendly/.test(h)?' → Termin':'')})},{capture:true});
+document.addEventListener('hwm:lead',e=>s('f',{z:(e.detail&&e.detail.formular)||'formular'}));
+const m=[25,50,75,100],done=new Set();let l=false;addEventListener('scroll',()=>{if(l)return;l=true;requestAnimationFrame(()=>{l=false;const h=document.documentElement.scrollHeight-innerHeight;if(h<=0)return;const p=Math.round(scrollY/h*100);m.forEach(x=>{if(p>=x-2&&!done.has(x)){done.add(x);s('l',{z:String(x)})}})})},{passive:true});
 })();

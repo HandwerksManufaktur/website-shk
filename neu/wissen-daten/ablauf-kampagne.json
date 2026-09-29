@@ -11,25 +11,73 @@
   "lesezeit": 8,
   "leistung": "potenzial",
   "zahlen": [
-    {"zahl": "5–6", "einheit": " Stunden", "text": "deiner Zeit für Vorbereitung und die ersten Wochen, das Shooting eingerechnet. Die Gespräche mit Bewerbern oder Kunden kommen dazu.", "quelle": "eigene Kampagnen, HandwerksManufaktur, 2026"},
-    {"zahl": "24", "einheit": " Stunden", "text": "Bewerbungen kommen oft schon in den ersten 24 Stunden nach dem Start. Bäder brauchen länger.", "quelle": "eigene Kampagnen, HandwerksManufaktur, 2026"},
-    {"zahl": "242", "einheit": " Tage", "text": "bleibt eine gemeldete Stelle im Handwerk im Schnitt offen. Über alle Berufe sind es 167 Tage.", "quelle": "Bundesagentur für Arbeit, Daten 2025", "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"}
+    {
+      "zahl": "5–6",
+      "einheit": " Stunden",
+      "text": "deiner Zeit für Vorbereitung und die ersten Wochen, das Shooting eingerechnet. Die Gespräche mit Bewerbern oder Kunden kommen dazu.",
+      "quelle": "eigene Kampagnen, HandwerksManufaktur, 2026"
+    },
+    {
+      "zahl": "24",
+      "einheit": " Stunden",
+      "text": "Bewerbungen kommen oft schon in den ersten 24 Stunden nach dem Start. Bäder brauchen länger.",
+      "quelle": "eigene Kampagnen, HandwerksManufaktur, 2026"
+    },
+    {
+      "zahl": "242",
+      "einheit": " Tage",
+      "text": "bleibt eine gemeldete Stelle im Handwerk im Schnitt offen. Über alle Berufe sind es 167 Tage.",
+      "quelle": "Bundesagentur für Arbeit, Daten 2025",
+      "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"
+    }
   ],
   "abschnitte": [
     {
       "h2": "Welche Schritte hat eine Kampagne?",
-      "html": "<p>Ob du einen Anlagenmechaniker suchst oder Bad-Anfragen willst, der Ablauf ist bei uns derselbe. Nur die Fragen vor der Bewerbung oder Anfrage ändern sich.</p><ol><li><strong>Erstgespräch.</strong> 30 Minuten am Telefon oder per Video. Wir klären, welche Stelle oder welche Leistung, welcher Umkreis und ob es in deiner Gegend genug Leute gibt.</li><li><strong>Fragebogen.</strong> Du beschreibst deinen Betrieb, die Stelle oder die Leistung und was du bietest.</li><li><strong>Fototermin im Betrieb.</strong> Wir kommen zu dir und fotografieren und filmen dein Team bei der Arbeit.</li><li><strong>Anzeigen und Filterfragen.</strong> Wir schreiben die Texte, bauen die Seite mit den Fragen und schneiden das Material. Du liest drüber und gibst frei.</li><li><strong>Start im Umkreis.</strong> Die Anzeigen laufen nur in deinem Einzugsgebiet. Bewerbungen und Anfragen landen direkt bei dir.</li><li><strong>Nachregeln.</strong> Wir schauen, was jede Bewerbung oder Anfrage kostet, tauschen schwache Anzeigen aus und drosseln, wenn dein Team nicht mehr hinterherkommt.</li></ol><p>Wie lange es vom Erstgespräch bis zum Start dauert, hängt vor allem am Fototermin. Je schneller ein Tag im Betrieb frei ist, desto früher laufen die Anzeigen.</p>",
+      "html": "<p>Abends um acht sitzt du noch an den Angeboten vom Tag, und eine Agentur will wissen, wann du Zeit für ein Projekt hast. Bevor du zusagst, willst du wissen, wie viele Stunden dich das kostet.</p><p>Ob du einen Anlagenmechaniker suchst oder Bad-Anfragen willst, der Ablauf ist bei uns derselbe. Nur die Fragen vor der Bewerbung oder Anfrage ändern sich.</p><ol><li><strong>Erstgespräch.</strong> 30 Minuten am Telefon oder per Video. Wir klären, welche Stelle oder welche Leistung, welcher Umkreis und ob es in deiner Gegend genug Leute gibt.</li><li><strong>Fragebogen.</strong> Du beschreibst deinen Betrieb, die Stelle oder die Leistung und was du bietest.</li><li><strong>Fototermin im Betrieb.</strong> Wir kommen zu dir und fotografieren und filmen dein Team bei der Arbeit.</li><li><strong>Anzeigen und Filterfragen.</strong> Wir schreiben die Texte, bauen die Seite mit den Fragen und schneiden das Material. Du liest drüber und gibst frei.</li><li><strong>Start im Umkreis.</strong> Die Anzeigen laufen nur in deinem Einzugsgebiet. Bewerbungen und Anfragen landen direkt bei dir.</li><li><strong>Nachregeln.</strong> Wir schauen, was jede Bewerbung oder Anfrage kostet, tauschen schwache Anzeigen aus und drosseln, wenn dein Team nicht mehr hinterherkommt.</li></ol><p>Wie lange es vom Erstgespräch bis zum Start dauert, hängt vor allem am Fototermin. Je schneller ein Tag im Betrieb frei ist, desto früher laufen die Anzeigen.</p>",
       "tabelle": {
         "titel": "Zeitplan einer Kampagne",
-        "kopf": ["Phase", "Was passiert", "Dein Aufwand"],
+        "kopf": [
+          "Phase",
+          "Was passiert",
+          "Dein Aufwand"
+        ],
         "zeilen": [
-          ["Erstgespräch", "Stelle oder Leistung, Umkreis, Potenzial", "30 Minuten"],
-          ["Vorbereitung", "Fragebogen, Termin für das Shooting", "20 bis 30 Minuten"],
-          ["Shooting", "Fotos und Videos im Betrieb, mit deinem Team", "1,5 bis 2 Stunden"],
-          ["Vor dem Start", "Texte und Anzeigen mit den Filterfragen prüfen", "kurz drüberlesen und freigeben"],
-          ["Erste Woche", "Anzeigen laufen, Meta lernt, wem es sie zeigt", "Bewerbungen und Anfragen zurückrufen"],
-          ["Monat 1 bis 3", "Nachregeln, schwache Anzeigen tauschen, bei Bedarf drosseln", "Gespräche führen, Rückmeldung geben"],
-          ["Ab Monat 4", "Kampagne läuft weiter oder pausiert, monatlich kündbar", "wie in Monat 1 bis 3"]
+          [
+            "Erstgespräch",
+            "Stelle oder Leistung, Umkreis, Potenzial",
+            "30 Minuten"
+          ],
+          [
+            "Vorbereitung",
+            "Fragebogen, Termin für das Shooting",
+            "20 bis 30 Minuten"
+          ],
+          [
+            "Shooting",
+            "Fotos und Videos im Betrieb, mit deinem Team",
+            "1,5 bis 2 Stunden"
+          ],
+          [
+            "Vor dem Start",
+            "Texte und Anzeigen mit den Filterfragen prüfen",
+            "kurz drüberlesen und freigeben"
+          ],
+          [
+            "Erste Woche",
+            "Anzeigen laufen, Meta lernt, wem es sie zeigt",
+            "Bewerbungen und Anfragen zurückrufen"
+          ],
+          [
+            "Monat 1 bis 3",
+            "Nachregeln, schwache Anzeigen tauschen, bei Bedarf drosseln",
+            "Gespräche führen, Rückmeldung geben"
+          ],
+          [
+            "Ab Monat 4",
+            "Kampagne läuft weiter oder pausiert, monatlich kündbar",
+            "wie in Monat 1 bis 3"
+          ]
         ],
         "quelle": "Ablauf aus unseren Kampagnen für SHK-Betriebe, Stand 2026. Die Zeiten sind Erfahrungswerte, keine Zusage."
       }
@@ -37,37 +85,94 @@
     {
       "h2": "Wie viel Zeit kostet dich eine Kampagne als Inhaber?",
       "html": "<p>Für den Start und die ersten Wochen rechnen wir mit rund 5 bis 6 Stunden deiner Zeit. Den größten Brocken macht das Shooting mit 1,5 bis 2 Stunden aus. Der Rest verteilt sich auf das Erstgespräch, den Fragebogen, das Freigeben der Texte und die Rückmeldung in den ersten Wochen.</p><p>Anzeigen bauen, Texte schreiben, Videos schneiden, das Budget im Werbekonto einstellen und nachregeln liegt bei uns. Selbst auf Facebook oder Instagram posten musst du dafür nichts, und in den Werbeanzeigenmanager musst du dich nicht einarbeiten.</p><p>Die eigentliche Arbeit kommt danach, und die willst du haben: Gespräche mit Bewerbern oder Termine vor Ort bei Kunden. Plan dafür fest ein, wer zurückruft. Wir fragen vor dem Start ab, wer bei dir binnen 24 Stunden auf eine Bewerbung oder Anfrage reagiert, auch im Urlaub.</p><p>Bei Erwin Schmidt &amp; Sohn in Sindelfingen war vorher einiges probiert worden: Aufkleber mit QR-Code auf den Firmenwagen, die Stelle auf der eigenen Website. Gebracht hat das wenig. Mit der Kampagne kamen in 4 Wochen 25 Bewerbungen für einen Anlagenmechaniker im Kundendienst, die Stelle ist besetzt.</p>",
-      "zitat": {"text": "Wir haben nur nicht gedacht, dass es so viele sind.", "wer": "Florian Schmidt, Geschäftsführer, Erwin Schmidt & Sohn, Sindelfingen"}
+      "zitat": {
+        "text": "Wir haben nur nicht gedacht, dass es so viele sind.",
+        "wer": "Florian Schmidt, Geschäftsführer, Erwin Schmidt & Sohn, Sindelfingen"
+      }
     },
     {
       "h2": "Was passiert beim Shooting im Betrieb?",
-      "html": "<p>Wir kommen zu dir und fotografieren und filmen das, was deinen Betrieb ausmacht: den Heizungskeller beim Kunden, das Lager, die Baustelle, den Firmenwagen, dein Team bei der Arbeit. Rechne mit 1,5 bis 2 Stunden. Deine Leute stehen davon nur einen Teil vor der Kamera, der Rest läuft neben der Arbeit.</p><p>Warum der Aufwand? Stockfotos und „Wir suchen dich“ laufen bei allen, und niemand erkennt darin einen Betrieb aus seinem Ort. Ein Monteur will sehen, mit wem er morgens im Wagen sitzt. Ein Eigentümer will sehen, wer später in seinem Bad steht.</p><ul><li>Bei Senftleben Haustechnik steht der Inhaber Benjamin Senftleben selbst vor der Kamera.</li><li>Bei der Erich Sussmann GmbH sind es Patrick Wähnl und Mirjana.</li><li>Bei Heizung-Sanitär Klaß zeigen die Bilder das Team im Betrieb und am Firmenwagen.</li></ul><p>Du musst nicht selbst sprechen, wenn dir das nicht liegt. Wichtig ist, dass man deine Leute und deine Arbeit sieht. Was vor die Kamera kommt, besprechen wir vorher mit dir, damit am Tag des Shootings niemand improvisieren muss.</p>"
+      "html": "<p>Wir kommen zu dir und fotografieren und filmen das, was deinen Betrieb ausmacht: den Heizungskeller beim Kunden, das Lager, die Baustelle, den Firmenwagen, dein Team bei der Arbeit. Rechne mit 1,5 bis 2 Stunden. Deine Leute stehen davon nur einen Teil vor der Kamera, der Rest läuft neben der Arbeit.</p><p>Warum der Aufwand? Stockfotos und „Wir suchen dich“ laufen bei allen, und niemand erkennt darin einen Betrieb aus seinem Ort. Ein Monteur will sehen, mit wem er morgens im Wagen sitzt. Ein Eigentümer will sehen, wer später in seinem Bad steht.</p><ul><li>Bei Senftleben Haustechnik steht der Inhaber Benjamin Senftleben selbst vor der Kamera.</li><li>Bei der Erich Sussmann GmbH sind es Patrick Wähnl und Mirjana.</li><li>Bei Heizung-Sanitär Klaß zeigen die Bilder das Team im Betrieb und am Firmenwagen.</li></ul><p>Du musst nicht selbst sprechen, wenn dir das nicht liegt. Wichtig ist, dass man deine Leute und deine Arbeit sieht. Was vor die Kamera kommt, besprechen wir vorher mit dir, damit am Tag des Shootings niemand improvisieren muss.</p>",
+      "bild": {
+        "src": "/assets/fotos/klass-hebel-auftraege.jpg",
+        "alt": "Zwei Mitarbeiter von Heizung-Sanitär Klaß mit Tablet an einem Vorwandelement im Rohbau",
+        "unter": "Heizung-Sanitär Klaß, Türkenfeld: das Team bei der Arbeit, aus dem Shooting für die Kampagne",
+        "pos": "45% 35%"
+      }
     },
     {
       "h2": "Wozu dienen die Filterfragen vor der Bewerbung oder Anfrage?",
-      "html": "<p>Wer auf die Anzeige tippt, landet auf einer kurzen Seite mit ein paar Fragen. Erst danach kommt das Kontaktformular. Eine Bewerbung dauert so rund 60 Sekunden, ohne Lebenslauf. Das senkt die Hürde für Monteure, die abends auf dem Sofa am Handy sind und keine Mappe schreiben wollen.</p><p>Die Fragen sortieren vor. Bei Monteuren fragen wir nach Gewerk, Erfahrung, Führerschein und Entfernung. Bei Aufträgen nach Objekt, Baujahr, Eigentum und Zeitrahmen. Wer nicht passt, hört vorher auf, und du rufst nur die zurück, die in Frage kommen.</p><p>Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker als Obermonteur mit Bauleitung. Vor der Bewerbung stand eine Frage: „Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?“ Es kamen 35 Bewerbungen, 16 davon mit Erfahrung im Fach. Die Anzeigen zeigten, was der Betrieb bietet: eigene Projekte, ein festes Team, die 4-Tage-Woche.</p><p>Welche Fragen bei dir Sinn ergeben, legen wir im Erstgespräch fest. Mehr dazu im Artikel <a href='/wissen/passende-bewerber/'>Wie bekomme ich passende Bewerber</a>.</p>"
+      "html": "<p>Wer auf die Anzeige tippt, landet auf einer kurzen Seite mit ein paar Fragen. Erst danach kommt das Kontaktformular. Eine Bewerbung dauert so rund 60 Sekunden, ohne Lebenslauf. Das senkt die Hürde für Monteure, die abends auf dem Sofa am Handy sind und keine Mappe schreiben wollen.</p><p>Die Fragen sortieren vor. Bei Monteuren fragen wir nach Gewerk, Erfahrung, Führerschein und Entfernung. Bei Aufträgen nach Objekt, Baujahr, Eigentum und Zeitrahmen. Wer nicht passt, hört vorher auf, und du rufst nur die zurück, die in Frage kommen.</p><p>Heizung-Sanitär Klaß in Türkenfeld suchte einen Anlagenmechaniker als Obermonteur mit Bauleitung. Vor der Bewerbung stand eine Frage: „Hast du schon im Heizungsbau, in der Anlagenmechanik oder Elektrik gearbeitet?“ Es kamen 35 Bewerbungen, 16 davon mit Erfahrung im Fach. Die Anzeigen zeigten, was der Betrieb bietet: eigene Projekte, ein festes Team, die 4-Tage-Woche.</p><p>Welche Fragen bei dir Sinn ergeben, legen wir im Erstgespräch fest. Mehr dazu im Artikel <a href='/wissen/passende-bewerber/'>Wie bekomme ich passende Bewerber</a>.</p>",
+      "balken": {
+        "titel": "Heizung-Sanitär Klaß: Bewerbungen für den Obermonteur mit Bauleitung",
+        "werte": [
+          [
+            "Bewerbungen insgesamt",
+            35,
+            "35"
+          ],
+          [
+            "davon mit Erfahrung im Fach",
+            16,
+            "16",
+            true
+          ]
+        ],
+        "quelle": "Quelle: eigene Kampagne, Heizung-Sanitär Klaß, Türkenfeld"
+      }
     },
     {
       "h2": "Warum rechnet man mit 3 Monaten Anlaufzeit?",
-      "html": "<p>In der ersten Woche lernt Meta, wem es die Anzeige in deinem Umkreis zeigen soll. Deshalb stellen wir am Anfang wenig um. Danach tauschen wir, was schwach läuft, und probieren andere Bilder oder Einstiege aus. Dafür brauchen wir ein paar Wochen Daten.</p><p>Wie schnell Ergebnisse kommen, hängt am Ziel:</p><ul><li>Bei Senftleben Haustechnik kamen für eine Stelle in Lohn und Buchhaltung 21 Bewerbungen in 18 Tagen.</li><li>Bei Erwin Schmidt &amp; Sohn waren es 25 Bewerbungen in 4 Wochen.</li><li>Die Erich Sussmann GmbH bekam den ersten Bad-Auftrag über 10.000 € nach 2 Wochen. „Am Anfang war es extrem“, sagt Patrick Wähnl über die ersten Tage.</li><li>Senftleben Haustechnik hatte nach 2 Monaten 21 Bad-Anfragen und mehr als 10 Vor-Ort-Termine.</li></ul><p>Das sind einzelne Fälle, keine Zusage für deinen Betrieb. Die 3 Monate geben der Kampagne Zeit, sich einzuspielen, auch bei Bädern, die länger geplant werden. Danach ist die Zusammenarbeit monatlich kündbar. Zum Vergleich: Laut Bundesagentur für Arbeit bleibt eine gemeldete Stelle im Handwerk im Schnitt 242 Tage offen.</p>"
+      "html": "<p>In der ersten Woche lernt Meta, wem es die Anzeige in deinem Umkreis zeigen soll. Deshalb stellen wir am Anfang wenig um. Danach tauschen wir, was schwach läuft, und probieren andere Bilder oder Einstiege aus. Dafür brauchen wir ein paar Wochen Daten.</p><p>Wie schnell Ergebnisse kommen, hängt am Ziel:</p><ul><li>Bei Senftleben Haustechnik kamen für eine Stelle in Lohn und Buchhaltung 21 Bewerbungen in 18 Tagen.</li><li>Bei Erwin Schmidt &amp; Sohn waren es 25 Bewerbungen in 4 Wochen.</li><li>Die Erich Sussmann GmbH bekam den ersten Bad-Auftrag über 10.000 € nach gut 2 Wochen. „Am Anfang war es extrem“, sagt Patrick Wähnl über die ersten Tage.</li><li>Senftleben Haustechnik hatte nach 2 Monaten 21 Bad-Anfragen und mehr als 10 Vor-Ort-Termine.</li></ul><p>Das sind einzelne Fälle, keine Zusage für deinen Betrieb. Die 3 Monate geben der Kampagne Zeit, sich einzuspielen, auch bei Bädern, die länger geplant werden. Danach ist die Zusammenarbeit monatlich kündbar. Zum Vergleich: Laut Bundesagentur für Arbeit bleibt eine gemeldete Stelle im Handwerk im Schnitt 242 Tage offen.</p>"
     },
     {
-      "h2": "Was kannst du vor dem Start schon vorbereiten?",
+      "h2": "Was kannst du diese Woche schon vorbereiten?",
       "html": "<p>Ein paar Dinge kannst du erledigen, bevor wir überhaupt telefonieren. Sie machen den Start schneller.</p><ul><li>Schreib auf, was ein neuer Monteur bei dir bekommt: Lohn, Arbeitszeit, Fahrzeug, Werkzeug, Umkreis der Baustellen.</li><li>Überleg dir, welche Aufträge du mehr willst und welche weniger, etwa Bäder ab einer Größe oder Wärmepumpen im Bestand.</li><li>Leg fest, wer Bewerbungen und Anfragen zurückruft und bis wann.</li><li>Such dir einen Tag aus, an dem das Team im Betrieb oder auf einer Baustelle ist, die man zeigen kann.</li><li>Sag vorher, wie viele Anfragen dein Team im Monat schafft. Dann drosseln wir rechtzeitig.</li></ul><p>Das Werbebudget zahlst du direkt an Meta. Wie viel in unseren Kampagnen am Tag läuft, steht im Artikel <a href='/wissen/werbebudget-facebook-instagram/'>Wie viel Werbebudget braucht ein SHK-Betrieb</a>. Und falls doch nichts kommt: Was dann passiert, liest du unter <a href='/wissen/keine-bewerbung-was-dann/'>Was passiert, wenn keine Bewerbung kommt</a>.</p>"
     }
   ],
   "faq": [
-    ["Wie schnell kommen die ersten Bewerbungen?", "Oft in den ersten 24 Stunden nach dem Start. Bei Bädern dauert es länger, weil ein Bad geplant wird. Die Erich Sussmann GmbH hatte den ersten Auftrag über 10.000 € nach 2 Wochen. Das ist ein Fall aus unseren Kampagnen, keine Zusage für jeden Umkreis."],
-    ["Ich will nicht vor die Kamera. Geht das trotzdem?", "Ja. Du musst nicht selbst sprechen. Wichtig ist, dass man deinen Betrieb, deine Leute und eure Arbeit sieht. Bei Heizung-Sanitär Klaß zeigen die Bilder das Team im Betrieb. Was gefilmt wird, sprechen wir vorher mit dir ab."],
-    ["Muss ich die Bewerber selbst anrufen?", "Ja, die Gespräche führst du. Du entscheidest, wen du zurückrufst und wen du einstellst. Die Filterfragen sortieren vorher aus, wer nach Gewerk, Erfahrung, Führerschein oder Entfernung nicht passt. So telefonierst du nur mit denen, die in Frage kommen."],
-    ["Wie lange bin ich gebunden?", "3 Monate Anlaufzeit, damit die Kampagne eingespielt ist. Danach ist die Zusammenarbeit monatlich kündbar. Das Werbebudget bei Meta lässt sich jederzeit anhalten."],
-    ["Was, wenn zu viele Anfragen kommen?", "Dann drosseln wir die Kampagne, auf Wunsch auf ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team stemmt. Sag uns am besten vor dem Start, wie viele Anfragen ihr im Monat bearbeiten könnt."],
-    ["Muss ich selbst etwas auf Facebook oder Instagram posten?", "Nein. Die Anzeigen laufen über das Werbekonto deines Betriebs, um Aufbau und Betreuung kümmern wir uns. Eine eigene Seite mit regelmäßigen Beiträgen brauchst du dafür nicht. Du gibst die Texte frei und rufst die Leute zurück."]
+    [
+      "Wie schnell kommen die ersten Bewerbungen?",
+      "Oft in den ersten 24 Stunden nach dem Start. Bei Bädern dauert es länger, weil ein Bad geplant wird. Die Erich Sussmann GmbH hatte den ersten Auftrag über 10.000 € nach gut 2 Wochen. Das ist ein Fall aus unseren Kampagnen, keine Zusage für jeden Umkreis."
+    ],
+    [
+      "Ich will nicht vor die Kamera. Geht das trotzdem?",
+      "Ja. Du musst nicht selbst sprechen. Wichtig ist, dass man deinen Betrieb, deine Leute und eure Arbeit sieht. Bei Heizung-Sanitär Klaß zeigen die Bilder das Team im Betrieb. Was gefilmt wird, sprechen wir vorher mit dir ab."
+    ],
+    [
+      "Muss ich die Bewerber selbst anrufen?",
+      "Ja, die Gespräche führst du. Du entscheidest, wen du zurückrufst und wen du einstellst. Die Filterfragen sortieren vorher aus, wer nach Gewerk, Erfahrung, Führerschein oder Entfernung nicht passt. So telefonierst du nur mit denen, die in Frage kommen."
+    ],
+    [
+      "Wie lange bin ich gebunden?",
+      "3 Monate Anlaufzeit, damit die Kampagne eingespielt ist. Danach ist die Zusammenarbeit monatlich kündbar. Das Werbebudget bei Meta lässt sich jederzeit anhalten."
+    ],
+    [
+      "Was, wenn zu viele Anfragen kommen?",
+      "Dann drosseln wir die Kampagne, auf Wunsch auf ein, zwei Aufträge im Monat. Du bekommst Anfragen in dem Tempo, das dein Team stemmt. Sag uns am besten vor dem Start, wie viele Anfragen ihr im Monat bearbeiten könnt."
+    ],
+    [
+      "Muss ich selbst etwas auf Facebook oder Instagram posten?",
+      "Nein. Die Anzeigen laufen über das Werbekonto deines Betriebs, um Aufbau und Betreuung kümmern wir uns. Eine eigene Seite mit regelmäßigen Beiträgen brauchst du dafür nicht. Du gibst die Texte frei und rufst die Leute zurück."
+    ]
   ],
   "quellen": [
-    {"name": "Bundesagentur für Arbeit: Arbeits- und Ausbildungsmarkt im Handwerk (Jahresdurchschnitt 2025, veröffentlicht 2026)", "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"}
+    {
+      "name": "Bundesagentur für Arbeit: Arbeits- und Ausbildungsmarkt im Handwerk (Jahresdurchschnitt 2025, veröffentlicht 2026)",
+      "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"
+    }
   ],
-  "verwandt": ["werbebudget-facebook-instagram", "passende-bewerber", "keine-bewerbung-was-dann"],
+  "verwandt": [
+    "werbebudget-facebook-instagram",
+    "passende-bewerber",
+    "keine-bewerbung-was-dann"
+  ],
   "cta_titel": "Wie sähe der Ablauf <span class='em w'>bei dir aus?</span>",
-  "cta_satz": "Im Erstgespräch klären wir in 30 Minuten, was du suchst und wie groß dein Umkreis ist. Den Termin fürs Shooting machen wir gleich mit aus."
+  "cta_satz": "Im Erstgespräch klären wir in 30 Minuten, was du suchst und wie groß dein Umkreis ist. Den Termin fürs Shooting machen wir gleich mit aus.",
+  "bild": {
+    "src": "/assets/fotos/sussmann-lager.jpg",
+    "alt": "Patrick Wähnl und Mirjana am Empfang der Erich Sussmann GmbH, dahinter das Firmenlogo an einer Pflanzenwand",
+    "unter": "Patrick Wähnl und Mirjana, Erich Sussmann GmbH, Kirchheim bei München",
+    "pos": "50% 35%"
+  }
 }

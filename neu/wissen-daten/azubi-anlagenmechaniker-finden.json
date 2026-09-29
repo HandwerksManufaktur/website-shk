@@ -1,0 +1,191 @@
+{
+  "slug": "azubi-anlagenmechaniker-finden",
+  "titel": "Azubi zum Anlagenmechaniker SHK finden",
+  "h1": "Wie finde ich einen Azubi zum Anlagenmechaniker SHK?",
+  "beschreibung": "Wo du Schulabgänger erreichst, was in eine Azubi-Anzeige gehört und warum ein Praktikum vor dem Vertrag hilft. Mit Zahlen von Arbeitsagentur und ZVSHK.",
+  "kategorie": "Monteure finden",
+  "reihe": 11,
+  "top": false,
+  "veroeffentlicht": "2026-10-09",
+  "teaser": "Das Interesse am SHK-Beruf wächst. So findet ein Schulabgänger aus deinem Umkreis zu dir, und so klärt ihr vor dem Vertrag, ob es passt.",
+  "kurzantwort": "In Handwerksberufen blieb im September 2025 etwa jede sechste gemeldete Ausbildungsstelle unbesetzt. Schulabgänger erreichst du am Handy: 77 Prozent der 14- bis 29-Jährigen nutzen Instagram jede Woche. Zeig dort deine Azubis und jungen Gesellen bei der Arbeit, stell ein paar einfache Fragen vor der Bewerbung und lade zum Praktikum ein, bevor ihr den Vertrag unterschreibt.",
+  "lesezeit": 7,
+  "leistung": "monteure",
+  "bild": {
+    "src": "/assets/fotos/shk-01.jpg",
+    "alt": "Junger Monteur mit Akkuschrauber an einer Installation im Rohbau",
+    "unter": "Aus einem Shooting in einem SHK-Betrieb",
+    "pos": "50% 30%"
+  },
+  "zahlen": [
+    {
+      "zahl": "17",
+      "einheit": "%",
+      "text": "der gemeldeten Ausbildungsstellen in Handwerksberufen waren im September 2025 noch unbesetzt, in Industrie und Handel 10 %.",
+      "quelle": "Bundesagentur für Arbeit 2026",
+      "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"
+    },
+    {
+      "zahl": "40.770",
+      "einheit": "Azubis",
+      "text": "lernten 2025 Anlagenmechaniker SHK, 0,8 % mehr als im Vorjahr.",
+      "quelle": "ZVSHK 2026",
+      "url": "https://www.zvshk.de/presse/shk-handwerk-2025-umsatz-und-auftraege-ruecklaeufig-investitionsstau-bremst-branche"
+    },
+    {
+      "zahl": "8",
+      "einheit": "von 10",
+      "text": "ausbildenden Handwerksbetrieben nutzen digitale Kanäle, um Auszubildende anzusprechen.",
+      "quelle": "Bitkom Research 2025",
+      "url": "https://www.bitkom.org/sites/main/files/2026-01/bitkom-studienbericht-handwerk.pdf"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Warum bleiben so viele Ausbildungsplätze im Handwerk leer?",
+      "html": "<p>Der Aushang in der Realschule hängt seit Februar. Im Sommer hat sich ein Schüler gemeldet, und der wollte am Ende doch lieber Elektriker werden.</p><p>Die Zahlen der Bundesagentur für Arbeit passen dazu. Im September 2025 waren in Handwerksberufen 16.000 von 96.000 gemeldeten betrieblichen Ausbildungsstellen noch unbesetzt. Das sind 17 Prozent und damit mehr als in jedem anderen Bereich. Über alle Bereiche lag der Anteil bei 12 Prozent, in Industrie und Handel bei 10 Prozent.</p><p>Für SHK sieht es etwas freundlicher aus. Laut KOFA steigen in Sanitär, Heizung und Klimatechnik seit Jahren die Bewerberzahlen, das Angebot an Ausbildungsplätzen und die Zahl neuer Verträge. 2025 lernten 40.770 junge Leute Anlagenmechaniker SHK, 0,8 Prozent mehr als im Vorjahr, meldet der Zentralverband Sanitär Heizung Klima (ZVSHK).</p><p>Das Interesse am Beruf ist also da. Die Frage ist, ob die Schulabgänger aus deiner Gegend deinen Betrieb kennen, wenn sie sich entscheiden. Manche Inhaber glauben, sie hätten jungen Leuten wenig zu bieten, und versuchen es gar nicht erst.</p>",
+      "zitat": {
+        "text": "Und deswegen sind wir vielleicht auch nicht so anspruchsvoll oder nicht so ansprechend für manche junge Leute, die eine Arbeit suchen.",
+        "wer": "Inhaber, Handwerksbetrieb, im Gespräch mit uns (2026)"
+      }
+    },
+    {
+      "h2": "Wo erreichst du Schulabgänger heute?",
+      "html": "<p>Einen Schulabgänger erreichst du am ehesten am Handy. Laut ARD/ZDF-Medienstudie 2025 nutzen 77 Prozent der 14- bis 29-Jährigen Instagram mindestens einmal pro Woche, 53 Prozent Snapchat, 50 Prozent TikTok und 26 Prozent Facebook. Die Altersgruppe ist breit und reicht bis 29, die Reihenfolge ist trotzdem deutlich.</p><p>Anzeigen auf Instagram laufen wie bei Gesellen nur im Umkreis deines Betriebs. Für Azubis darf der Kreis enger sein, weil viele morgens mit Bus, Rad oder Roller kommen und oft noch keinen Führerschein haben.</p><p>Die klassischen Wege bleiben daneben wichtig: das Praktikum, der Kontakt zur Schule im Ort, die Kinder und Nachbarn deiner Mitarbeiter. Laut Bitkom nutzen acht von zehn ausbildenden Handwerksbetrieben digitale Kanäle, um Auszubildende anzusprechen. Auf Instagram bist du also in guter Gesellschaft. Auffallen tust du mit Bildern aus deinem Betrieb, die zu keinem anderen passen. Wie Anzeigen auf Facebook und Instagram im SHK-Handwerk laufen, steht im Artikel <a href='/wissen/social-recruiting-shk/'>Recruiting über Facebook und Instagram</a>.</p>",
+      "balken": {
+        "titel": "Wöchentliche Nutzung bei 14- bis 29-Jährigen, 2025",
+        "werte": [
+          [
+            "Instagram",
+            77,
+            "77 %",
+            true
+          ],
+          [
+            "Snapchat",
+            53,
+            "53 %"
+          ],
+          [
+            "TikTok",
+            50,
+            "50 %"
+          ],
+          [
+            "Facebook",
+            26,
+            "26 %"
+          ]
+        ],
+        "quelle": "Quelle: ARD/ZDF-Medienstudie 2025, Media Perspektiven 31/2025, Tabelle 4"
+      }
+    },
+    {
+      "h2": "Was gehört in eine Anzeige für Azubis?",
+      "html": "<p>Ein Schulabgänger weiß oft nicht genau, was ein Anlagenmechaniker den ganzen Tag macht. Die Anzeige zeigt es ihm, in einfachen Worten und mit Leuten, die nicht viel älter sind als er.</p><ul><li><strong>Deine Azubis oder jungen Gesellen im Bild:</strong> beim Einbau einer Wärmepumpe, im Bad, am Firmenwagen.</li><li><strong>Der erste Monat in einem Satz:</strong> zum Beispiel „Du fährst mit einem Gesellen mit und baust ab der ersten Woche mit ein.“</li><li><strong>Was du bietest, konkret:</strong> etwa Übernahme nach der Prüfung oder einen Zuschuss zum Führerschein, wenn es das bei dir gibt.</li><li><strong>Ein Ansprechpartner mit Gesicht und Vornamen,</strong> den man anrufen oder anschreiben kann.</li></ul><p>Vor der Bewerbung stehen auch hier ein paar Fragen, nur andere als bei Gesellen. Nach Erfahrung im Fach fragst du nicht. Wichtig sind Schulabschluss und Anfahrt, dazu die Frage nach einem Praktikum.</p><p>Eigene Zahlen zu Azubi-Kampagnen haben wir nicht in einer Menge, die wir hier nennen würden. Deshalb stehen in diesem Artikel nur Zahlen aus Statistiken und Studien.</p>",
+      "tabelle": {
+        "titel": "Fragen vor einer Azubi-Bewerbung",
+        "kopf": [
+          "Frage",
+          "Antworten zum Tippen",
+          "Wofür"
+        ],
+        "zeilen": [
+          [
+            "Wann bist du mit der Schule fertig?",
+            "dieses Jahr · nächstes Jahr · schon fertig",
+            "Ausbildungsbeginn"
+          ],
+          [
+            "Welchen Abschluss machst du?",
+            "Haupt- oder Mittelschule · Realschule · Abitur · anderer",
+            "Einstieg"
+          ],
+          [
+            "Hast du schon ein Praktikum im Handwerk gemacht?",
+            "ja, im SHK-Handwerk · ja, anderes Handwerk · nein",
+            "Vorwissen"
+          ],
+          [
+            "Wie kommst du morgens zu uns?",
+            "Bus oder Bahn · Rad oder Roller · Auto · weiß ich noch nicht",
+            "Anfahrt"
+          ]
+        ],
+        "quelle": "Die Fragen sind Beispiele. Pass sie an deinen Betrieb an."
+      }
+    },
+    {
+      "h2": "Warum lohnt sich ein Praktikum vor dem Vertrag?",
+      "html": "<p>Ein Ausbildungsvertrag ist schnell unterschrieben und auch schnell wieder gelöst. Laut Bundesagentur für Arbeit wurden rund 37 Prozent der Ausbildungsverträge der Jahre 2022 bis 2024 im Handwerk wieder gelöst, im Bereich der Industrie- und Handelskammern 27 Prozent. Nicht jede Lösung ist ein Abbruch, manche Azubis wechseln nur den Betrieb. Für dich ist der Platz trotzdem wieder leer.</p><p>Ein Praktikum von ein, zwei Wochen zeigt beiden Seiten, ob es passt. Der Schüler steht im Heizungskeller, trägt Heizkörper in den dritten Stock und merkt, ob ihm das liegt. Du siehst, ob er pünktlich kommt und Fragen stellt.</p><ul><li>Gib ihm einen festen Gesellen an die Seite, der Lust auf die Aufgabe hat.</li><li>Lass ihn jeden Tag etwas selbst machen, auch wenn es nur ein Anschluss ist.</li><li>Setz dich am letzten Tag zehn Minuten mit ihm hin und frag, wie es war.</li></ul><p>Eine Anzeige im Umkreis kann auch einfach zum Praktikum einladen. Die Hürde ist kleiner als eine Bewerbung, und du lernst den Schüler kennen, bevor ihr über einen Vertrag sprecht.</p>",
+      "zahlen": [
+        {
+          "zahl": "37",
+          "einheit": "%",
+          "text": "der Ausbildungsverträge im Handwerk aus den Jahren 2022 bis 2024 wurden wieder gelöst, im IHK-Bereich 27 %.",
+          "quelle": "Bundesagentur für Arbeit 2026 (Daten des BIBB)",
+          "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"
+        }
+      ]
+    },
+    {
+      "h2": "Wie meldest du dich bei einem Schüler zurück?",
+      "html": "<p>Ein Schüler, der sich abends bewirbt, hat am nächsten Tag noch deine Anzeige im Kopf. Ruf ihn deshalb am selben oder am nächsten Tag an, am besten am Nachmittag. Morgens um zehn sitzt er meist im Unterricht und geht nicht ran.</p><p>Halte das erste Telefonat kurz. Sag, wer du bist und was dein Betrieb macht, und frag, was ihn am Beruf interessiert. Dann lädst du ihn ein, sich den Betrieb anzuschauen oder gleich eine Woche Praktikum zu machen. Mach den Termin am Telefon fest, mit Tag und Uhrzeit.</p><p>Wenn die Eltern mitkommen wollen, lass sie mitkommen. Zeig ihnen dasselbe wie ihrem Kind: das Lager, die Firmenwagen, die Leute, mit denen es jeden Tag arbeiten würde. Und schick nach dem Besuch eine kurze Nachricht, ob es gefallen hat. Das kostet dich eine Minute.</p>"
+    },
+    {
+      "h2": "Was du diese Woche selbst tun kannst",
+      "html": "<p>Für die ersten Schritte brauchst du weder Agentur noch Budget. Ein Abend und dein Handy reichen. Fang mit dem an, was du schon hast: deine Leute.</p><ol><li>Frag deinen jüngsten Gesellen oder Azubi, warum er bei dir angefangen hat. Seine Antwort ist der erste Satz deiner Anzeige.</li><li>Mach ein paar Fotos und kurze Clips von ihm bei der Arbeit, bei Tageslicht.</li><li>Ruf die Schule in deinem Ort an und frag, wann die Praktikumswochen sind.</li><li>Leg fest, wer im Betrieb Praktikanten betreut und wer eine Bewerbung am selben Tag zurückruft.</li><li>Schau dir deine Karriereseite am Handy an. Steht dort überhaupt, dass du ausbildest?</li></ol><p>Was einen kleinen Betrieb für junge Leute und für Gesellen interessant macht, liest du im Artikel <a href='/wissen/attraktiv-fuer-monteure/'>Was macht einen kleinen SHK-Betrieb für Monteure attraktiv?</a></p>"
+    }
+  ],
+  "faq": [
+    [
+      "Ich habe keine Zeit, einen Azubi auszubilden. Lohnt sich das trotzdem?",
+      "Ausbilden kostet Zeit, vor allem im ersten Jahr. Ein Weg ist ein Geselle, der den Azubi auf seine Baustellen mitnimmt. Die Stelle, die heute offen ist, füllt ein Azubi nicht. Nach dreieinhalb Jahren hast du dafür einen Gesellen, der deinen Betrieb kennt."
+    ],
+    [
+      "Funktionieren Anzeigen auf Instagram auch für Azubis?",
+      "Ja, mit einer anderen Ansprache als bei Gesellen: jüngere Gesichter, der Alltag in einfachen Worten, Fragen nach Schule und Anfahrt. 77 Prozent der 14- bis 29-Jährigen nutzen Instagram jede Woche (ARD/ZDF-Medienstudie 2025). Eigene Azubi-Zahlen in nennenswerter Menge haben wir nicht, deshalb nennen wir hier keine."
+    ],
+    [
+      "Muss ich dafür selbst auf Instagram posten?",
+      "Nein. Die Anzeige läuft über das Werbekonto, auch wenn dein eigenes Profil kaum Beiträge hat. Ein paar Bilder vom Team auf dem Profil helfen trotzdem, weil manche Schüler oder Eltern nach der Anzeige dort nachschauen. Mehr brauchst du für den Anfang nicht."
+    ],
+    [
+      "Was kostet eine Anzeige für Azubis?",
+      "Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung der Kampagne. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch. Das Praktikum über die Schule kostet dich nur Zeit."
+    ],
+    [
+      "Wie viel Zeit kostet mich eine Kampagne?",
+      "Zum Start ein Gespräch von 30 Minuten und ein Fototermin im Betrieb, meist 1,5 bis 2 Stunden. Danach rufst du die Bewerber an und lädst die Passenden zum Kennenlernen oder Praktikum ein. Insgesamt rechnen Betriebe bei uns mit rund 5 bis 6 Stunden. Die Anzeigen übernehmen wir."
+    ]
+  ],
+  "quellen": [
+    {
+      "name": "Bundesagentur für Arbeit: Arbeits- und Ausbildungsmarkt im Handwerk (Jahresdurchschnitt 2025, veröffentlicht 2026)",
+      "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Berufe/Generische-Publikationen/AM-kompakt-Arbeits-und-Ausbildungsmarkt-im-Handwerk.pdf?__blob=publicationFile&v=2"
+    },
+    {
+      "name": "ZVSHK: SHK-Handwerk 2025, Umsatz und Aufträge rückläufig (Pressemitteilung, 04.05.2026)",
+      "url": "https://www.zvshk.de/presse/shk-handwerk-2025-umsatz-und-auftraege-ruecklaeufig-investitionsstau-bremst-branche"
+    },
+    {
+      "name": "KOFA/IW: Fachkräftesicherung im Handwerk. Ausbildung zwischen Krise und Renaissance, KOFA Kompakt 7/2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    },
+    {
+      "name": "Bitkom Research: Digitalisierung des Handwerks 2025 (Studienbericht, n = 504; Ausbildungsbetriebe n = 203)",
+      "url": "https://www.bitkom.org/sites/main/files/2026-01/bitkom-studienbericht-handwerk.pdf"
+    },
+    {
+      "name": "ARD/ZDF-Medienstudie 2025: Social Media zwischen Wachstum und Sättigung, Media Perspektiven 31/2025",
+      "url": "https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf"
+    }
+  ],
+  "verwandt": [
+    "attraktiv-fuer-monteure",
+    "social-recruiting-shk",
+    "stellenanzeige-shk-schreiben"
+  ],
+  "cta_titel": "Wen erreicht eine Azubi-Anzeige <span class='em w'>in deinem Umkreis?</span>",
+  "cta_satz": "In 30 Minuten schauen wir, wen eine Anzeige für Azubis bei dir erreicht und was sie zeigen sollte, damit sich ein Schulabgänger meldet."
+}

@@ -1,0 +1,166 @@
+{
+  "slug": "bewerber-schnell-zurueckrufen",
+  "titel": "Bewerber innerhalb von 24 Stunden zurückrufen",
+  "h1": "Warum du Bewerber innerhalb von 24 Stunden zurückrufen solltest",
+  "beschreibung": "Warum ein schneller Rückruf zählt, wer im Betrieb anruft, auch im Urlaub, und welche Leitfragen ins erste Telefonat mit einem Bewerber gehören.",
+  "kategorie": "Monteure finden",
+  "reihe": 14,
+  "top": false,
+  "veroeffentlicht": "2026-10-30",
+  "teaser": "Wer sich abends bewirbt, hat am nächsten Tag noch deine Anzeige im Kopf. So nutzt du das, mit Leitfragen fürs erste Telefonat.",
+  "kurzantwort": "Ruf jeden passenden Bewerber innerhalb von 24 Stunden an. Wer sich auf eine Anzeige meldet, hat meist schon einen Job und oft mehr als eine Möglichkeit. Nach ein paar Tagen kann die Neugier weg sein, oder ein anderer Betrieb war schneller. Leg vor dem Start fest, wer zurückruft, auch im Urlaub, und nimm dir zehn Minuten mit festen Leitfragen.",
+  "lesezeit": 7,
+  "leistung": "monteure",
+  "bild": {
+    "src": "/assets/fotos/senftleben-benjamin-fenster.jpg",
+    "alt": "Benjamin Senftleben im offenen Fenster seines Firmenwagens",
+    "unter": "Benjamin Senftleben, Inhaber von Senftleben Haustechnik in Ehingen. Für eine Bürostelle kamen dort 21 Bewerbungen in 18 Tagen.",
+    "pos": "50% 40%"
+  },
+  "zahlen": [
+    {
+      "zahl": "21",
+      "einheit": "Bewerbungen",
+      "text": "in 18 Tagen für eine Stelle in Lohn und Buchhaltung bei Senftleben Haustechnik in Ehingen. Die Stelle ist besetzt.",
+      "quelle": "eigene Kampagne, Senftleben Haustechnik, 2026"
+    },
+    {
+      "zahl": "25",
+      "einheit": "Bewerbungen",
+      "text": "in 4 Wochen für einen Anlagenmechaniker im Kundendienst bei Erwin Schmidt & Sohn in Sindelfingen.",
+      "quelle": "eigene Kampagne, Erwin Schmidt & Sohn, 2026"
+    },
+    {
+      "zahl": "70,6",
+      "einheit": "%",
+      "text": "der offenen Gesellenstellen in Sanitär, Heizung und Klimatechnik ließen sich 2025 rechnerisch nicht besetzen, weil passend qualifizierte Arbeitslose fehlten.",
+      "quelle": "KOFA/IW 2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Was passiert, wenn eine Bewerbung drei Tage liegen bleibt?",
+      "html": "<p>Montagabend, kurz nach neun. Ein Geselle aus dem Nachbarort tippt sich durch deine Anzeige und schickt die Bewerbung ab. Du siehst sie am Donnerstag zwischen zwei Baustellen und rufst am Freitag an. Er sagt, er habe es sich anders überlegt.</p><p>So ein Verlauf hat einen einfachen Grund. Wer sich auf eine Anzeige im Feed bewirbt, sucht meist nicht aktiv. Für 70,6 Prozent der offenen Gesellenstellen in Sanitär, Heizung und Klimatechnik gab es 2025 rechnerisch keinen passend qualifizierten Arbeitslosen (KOFA/IW). Der Bewerber hat also einen Arbeitgeber, und er hat Auswahl. Die Bewerbung war ein Moment der Neugier, vielleicht nach einem schlechten Tag auf der Baustelle.</p><p>Dieser Moment hält nicht lange. Am nächsten Tag weiß er noch, wie dein Firmenwagen aussah und was in der Anzeige stand. Nach einer Woche hat ihn sein Chef vielleicht mit einer Zusage gehalten, oder ein anderer Betrieb hat schneller angerufen.</p><p>Eine Quote, wie viele Bewerber du mit jedem Tag Warten verlierst, haben wir nicht gemessen, und wir schätzen hier auch keine. Was wir aus unseren Kampagnen wissen: Bewerbungen kommen oft schon in den ersten 24 Stunden nach dem Start. Der erste Tag zählt also auch für dich.</p>"
+    },
+    {
+      "h2": "Wie viele Bewerbungen kommen in den ersten Wochen?",
+      "html": "<p>Bei Erwin Schmidt & Sohn in Sindelfingen hatte keiner mit so vielen Bewerbungen gerechnet. In vier Wochen kamen 25, für eine Stelle im Kundendienst. Die Stelle ist besetzt. Bei Senftleben Haustechnik in Ehingen waren es 21 Bewerbungen in 18 Tagen, für eine Bürostelle. Heizung-Sanitär Klaß bekam 35 Bewerbungen für einen Obermonteur.</p><p><strong>Rechenbeispiel, keine Prognose:</strong> 25 Bewerbungen in 4 Wochen sind rund 6 pro Woche. Wer jede davon 10 Minuten anruft, braucht 6 × 10 = 60 Minuten pro Woche. Dazu kommen die Treffen im Betrieb mit denen, die passen.</p><p>Eine Stunde pro Woche ist machbar, wenn sie im Kalender steht. Ohne Plan bleiben die Bewerbungen liegen, bis zur nächsten ruhigen Woche. Die kommt im SHK-Betrieb selten, und im Herbst schon gar nicht.</p>",
+      "tabelle": {
+        "titel": "Bewerbungen in unseren Kampagnen",
+        "kopf": [
+          "Betrieb",
+          "Stelle",
+          "Bewerbungen",
+          "Zeitraum"
+        ],
+        "zeilen": [
+          [
+            "Erwin Schmidt & Sohn, Sindelfingen",
+            "Anlagenmechaniker SHK im Kundendienst",
+            "25",
+            "4 Wochen"
+          ],
+          [
+            "Senftleben Haustechnik, Ehingen",
+            "Lohn und Buchhaltung",
+            "21",
+            "18 Tage"
+          ],
+          [
+            "Heizung-Sanitär Klaß, Türkenfeld",
+            "Obermonteur mit Bauleitung",
+            "35, davon 16 mit Erfahrung im Fach",
+            "Kampagne 2024"
+          ]
+        ],
+        "quelle": "Quelle: eigene Kampagnen 2024 und 2026. Einzelne Fälle, keine Zusage für deinen Betrieb."
+      },
+      "zitat": {
+        "text": "Wir haben nur nicht gedacht, dass es so viele sind.",
+        "wer": "Florian Schmidt, Geschäftsführer, Erwin Schmidt & Sohn, Sindelfingen"
+      }
+    },
+    {
+      "h2": "Wer ruft zurück, wenn du auf der Baustelle oder im Urlaub bist?",
+      "html": "<p>Bevor bei uns eine Kampagne startet, klären wir mit dem Betrieb eine Frage: Wer reagiert innerhalb von 24 Stunden, auch im Urlaub? Die Frage klingt banal. Wer sie vorher offen lässt, merkt es in der ersten Woche.</p><ul><li><strong>Eine feste Person</strong> ruft zurück, dazu eine Vertretung. Das kann der Chef sein, der Meister oder jemand im Büro.</li><li><strong>Bewerbungen landen dort, wo sie gesehen werden,</strong> zum Beispiel als Mail aufs Handy der Person, die zurückruft.</li><li><strong>Ein fester Zeitpunkt am Tag,</strong> etwa die Mittagspause oder die halbe Stunde nach Feierabend.</li><li><strong>Klappt es heute nicht,</strong> geht eine kurze Nachricht raus: „Danke für deine Bewerbung, ich ruf dich morgen um 17 Uhr an.“</li></ul><p>Im Urlaub übernimmt die Vertretung. Ein Monteur, der zwei Wochen auf einen Rückruf wartet, hat danach vielleicht schon andere Pläne. Kommen zu viele Bewerbungen auf einmal, lässt sich die Kampagne drosseln oder kurz pausieren, bis die Rückrufe geschafft sind.</p>"
+    },
+    {
+      "h2": "Wie läuft das erste Telefonat mit einem Bewerber ab?",
+      "html": "<p>Plan für das erste Telefonat zehn Minuten ein. Es soll klären, ob sich ein Treffen im Betrieb lohnt. Für ein Vorstellungsgespräch ist es noch zu früh.</p><ol><li>Stell dich vor und sag, auf welche Stelle er sich gemeldet hat.</li><li>Geh kurz seine Antworten auf die Filterfragen durch.</li><li>Stell ein paar Leitfragen und hör zu.</li><li>Beantworte seine Fragen, etwa zu Gehalt und Arbeitszeit oder zum Firmenwagen.</li><li>Mach einen Termin im Betrieb aus, am besten in den nächsten Tagen, mit Tag und Uhrzeit.</li></ol><p>Frag dabei nicht alles ab, was im Lebenslauf stehen würde. Zeugnisse und Gesellenbrief schaust du dir beim Treffen an. Passt jemand nicht, sag es ihm freundlich und klar, am besten gleich im Telefonat. Wer eine faire Absage bekommt, erzählt vielleicht trotzdem einem Kollegen von deinem Betrieb.</p>",
+      "tabelle": {
+        "titel": "Leitfragen für das erste Telefonat",
+        "kopf": [
+          "Frage",
+          "Worauf du hörst"
+        ],
+        "zeilen": [
+          [
+            "Was machst du gerade, und bei wem?",
+            "Gewerk, Art der Baustellen, Größe des Betriebs"
+          ],
+          [
+            "Welche Anlagen hast du zuletzt eingebaut oder gewartet?",
+            "ob seine Erfahrung zu deiner Arbeit passt"
+          ],
+          [
+            "Was müsste bei uns anders sein als bei deinem jetzigen Betrieb?",
+            "der Grund, warum er wechseln will"
+          ],
+          [
+            "Wie weit wohnst du weg, und wie kommst du morgens hin?",
+            "Anfahrt und Führerschein"
+          ],
+          [
+            "Ab wann könntest du anfangen?",
+            "Kündigungsfrist und wie ernst er es meint"
+          ]
+        ],
+        "quelle": "Die Fragen sind Beispiele. Die Reihenfolge ist frei, wichtig ist das Zuhören."
+      }
+    },
+    {
+      "h2": "Was tust du, wenn ein Bewerber nicht rangeht?",
+      "html": "<p>Das kommt vor, gerade tagsüber. Ein Monteur auf der Baustelle hat das Handy im Wagen liegen oder geht bei einer fremden Nummer nicht ran. Das heißt noch nicht, dass er kein Interesse mehr hat.</p><ul><li>Ruf zu einer anderen Zeit noch einmal an, am besten in der Mittagspause oder nach Feierabend.</li><li>Schick nach dem ersten verpassten Anruf eine kurze Nachricht mit deinem Namen und dem Namen des Betriebs, damit er weiß, wer angerufen hat.</li><li>Nach drei Versuchen an verschiedenen Tagen lässt du es gut sein. Wer dann nicht zurückruft, hat vermutlich andere Pläne.</li></ul><p>Ruf möglichst immer von derselben Nummer an, am besten vom Firmenhandy. Manche gehen bei unbekannten Nummern nicht ran, rufen aber zurück, wenn sie in der Nachricht lesen, wer dran war. Und notier dir bei jeder Bewerbung, wann du es versucht hast, damit keiner doppelt oder gar nicht angerufen wird.</p>"
+    },
+    {
+      "h2": "Was du diese Woche selbst tun kannst",
+      "html": "<p>Ein schneller Rückruf kostet kein Geld, nur einen festen Platz im Tag. Diese fünf Schritte richten ihn ein.</p><ol><li>Leg fest, wer Bewerbungen zurückruft und wer ihn vertritt.</li><li>Trag dir eine feste Viertelstunde am Tag im Kalender ein, zum Beispiel nach Feierabend.</li><li>Schreib die Leitfragen auf eine Karte und leg sie ins Auto.</li><li>Speicher dir eine kurze Nachricht für Tage, an denen du nicht anrufen kannst.</li><li>Ruf heute noch jeden an, dessen Bewerbung bei dir seit Tagen liegt.</li></ol><p>Kommt gar keine Bewerbung, liegt es oft an der Anzeige. Wie du sie aufbaust, steht im Artikel <a href='/wissen/stellenanzeige-shk-schreiben/'>Was gehört in eine Stellenanzeige für Anlagenmechaniker?</a> Was du tun kannst, wenn trotzdem nichts kommt, liest du unter <a href='/wissen/keine-bewerbung-was-dann/'>Was passiert, wenn keine Bewerbung oder Anfrage kommt?</a></p>"
+    }
+  ],
+  "faq": [
+    [
+      "Ich habe keine Zeit, alle Bewerber abzutelefonieren. Was dann?",
+      "Die Filterfragen nehmen dir einen Teil ab. Du siehst vor dem Anruf, wer Erfahrung im Fach hat, und rufst die zuerst an. Ein erstes Telefonat dauert rund zehn Minuten. Insgesamt rechnen Betriebe bei uns für eine Kampagne mit rund 5 bis 6 Stunden Aufwand, vom ersten Gespräch bis zu den Bewerbern."
+    ],
+    [
+      "Übernehmt ihr die Anrufe bei den Bewerbern?",
+      "Nein. Die Anzeigen, die Filterfragen und das Nachregeln übernehmen wir, anrufen tust du oder jemand aus deinem Betrieb. Der Bewerber will mit dem sprechen, bei dem er später arbeitet. Und du merkst im Telefonat am schnellsten, ob er ins Team passt."
+    ],
+    [
+      "Was, wenn zu viele Bewerbungen auf einmal kommen?",
+      "Dann lässt sich die Kampagne drosseln oder kurz pausieren, bis du die Rückrufe geschafft hast. Ruf zuerst die an, die bei den Filterfragen Erfahrung im Fach angegeben haben. Den anderen schickst du eine kurze Nachricht, wann du dich meldest."
+    ],
+    [
+      "Was mache ich, wenn ich im Urlaub bin?",
+      "Leg vor dem Urlaub fest, wer dich vertritt, und gib ihm die Leitfragen. Ein kurzer Rückruf mit einem Termin nach deiner Rückkehr ist besser als zwei Wochen Stille. Du kannst die Kampagne für die Zeit auch pausieren und danach wieder starten."
+    ],
+    [
+      "Wie viele Bewerbungen sind normal?",
+      "Eine feste Zahl gibt es nicht, sie hängt vom Umkreis ab und davon, was du bietest. Zur Orientierung: Erwin Schmidt & Sohn bekam 25 Bewerbungen in 4 Wochen, Senftleben Haustechnik 21 in 18 Tagen, Heizung-Sanitär Klaß 35. Das sind einzelne Fälle und keine Zusage für deinen Betrieb."
+    ]
+  ],
+  "quellen": [
+    {
+      "name": "KOFA/IW: Fachkräftesicherung im Handwerk. Ausbildung zwischen Krise und Renaissance, KOFA Kompakt 7/2026",
+      "url": "https://www.kofa.de/media/Publikationen/KOFA_Kompakt/KOFA_Kompakt_07.2026_Handwerk.pdf"
+    }
+  ],
+  "verwandt": [
+    "keine-bewerbung-was-dann",
+    "passende-bewerber",
+    "ablauf-kampagne"
+  ],
+  "cta_titel": "Wie viele Bewerbungen wären <span class='em w'>bei dir drin?</span>",
+  "cta_satz": "In 30 Minuten schauen wir, wen eine Anzeige in deinem Umkreis erreicht und wie die Rückrufe in deinen Alltag passen."
+}

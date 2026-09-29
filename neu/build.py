@@ -114,7 +114,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
 <link rel="preload" href="/fonts/sub/inter-v20-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/sub/instrument-serif-v5-latin_latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>{CSS_INLINE}</style>
-{MESSUNG_KOPF}
+{MESSUNG_KOPF.replace("'shk-v3'", "'shk-wissen'") if pfad.startswith('/wissen/') else MESSUNG_KOPF}
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
@@ -297,7 +297,7 @@ def rechner_dialog():
       <div data-fuer="Aufträge" hidden>{wahl('stelle', [('Badsanierung', 'Badsanierung'), ('Wärmepumpe', 'Wärmepumpe'), ('Heizung', 'Heizung'), ('Mehreres', 'Mehreres')])}</div></section>
     <section class="rd-schritt" data-schritt="3" hidden><h3 data-text-monteure="Wie viele Aufträge lehnst du im Monat ab, weil ein Monteur fehlt?" data-text-auftraege="Wie viele Aufträge mehr im Monat könnte dein Team bauen?">Wie viele Aufträge lehnst du im Monat ab?</h3>{wahl('anzahl', [('1', '1'), ('2', '2–3'), ('4', '4–5'), ('6', '6 oder mehr')])}</section>
     <section class="rd-schritt" data-schritt="4" hidden><h3>Was ist ein Auftrag bei dir im Schnitt wert?</h3>{wahl('wert', [('5000', '5.000 €'), ('10000', '10.000 €'), ('20000', '20.000 €'), ('35000', '35.000 € +')])}</section>
-    <section class="rd-schritt" data-schritt="5" hidden><div class="rd-ergebnis"><small data-text-monteure="Liegen bei dir jeden Monat" data-text-auftraege="Wären jeden Monat zusätzlich drin">Liegen bei dir jeden Monat</small><b data-summe>0 €</b><p data-beleg-monteure="Bei Erwin Schmidt &amp; Sohn kamen 25 Bewerbungen in 4 Wochen, bei Senftleben Haustechnik 21 in 18 Tagen." data-beleg-auftraege="Bei Senftleben Haustechnik kamen 21 Bad-Anfragen in 2 Monaten, bei Sussmann der erste Auftrag nach 2 Wochen."></p><span class="rd-fuss">Rechenbeispiel mit deinen Angaben, keine Zusage.</span></div>
+    <section class="rd-schritt" data-schritt="5" hidden><div class="rd-ergebnis"><small data-text-monteure="Liegen bei dir jeden Monat" data-text-auftraege="Wären jeden Monat zusätzlich drin">Liegen bei dir jeden Monat</small><b data-summe>0 €</b><p data-beleg-monteure="Bei Erwin Schmidt &amp; Sohn kamen 25 Bewerbungen in 4 Wochen, bei Senftleben Haustechnik 21 in 18 Tagen." data-beleg-auftraege="Bei Senftleben Haustechnik kamen 21 Bad-Anfragen in 2 Monaten, bei Sussmann der erste Auftrag nach gut 2 Wochen."></p><span class="rd-fuss">Rechenbeispiel mit deinen Angaben, keine Zusage.</span></div>
       <button type="button" class="btn btn-ink rd-weiter" data-weiter>Für meinen Umkreis prüfen lassen <span aria-hidden="true">→</span></button></section>
     <section class="rd-schritt" data-schritt="6" hidden><h3>Wo sitzt dein Betrieb?</h3>
       <div class="rd-zeile"><label class="rd-feld rd-plz"><span>PLZ</span><input name="plz" autocomplete="postal-code" inputmode="numeric" maxlength="5" pattern="[0-9]{4,5}" placeholder="89584" required></label>
@@ -383,7 +383,7 @@ ESS_LOGO = '/assets/logos-box/erwin-schmidt.png'
 SEN_LOGO = '/assets/logos-box/senftleben.png'
 SUS_LOGO = '/assets/logos-box/sussmann.png'
 
-ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker': IK['hardhat'], 'Erster Auftrag nach 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro']}
+ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker': IK['hardhat'], 'Erster Auftrag nach gut 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro']}
 def zahl_html(b, s, k):
     ic = ICON.get(s, '')
     zi = f'<span class="zi" aria-hidden="true">{ic}</span>' if ic else ''
@@ -429,7 +429,7 @@ def kaskade(variante='senftleben'):
 def fallstudien_teaser():
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bad-Anfragen in 2&nbsp;Monaten, ein Auftrag über 10.000&nbsp;€ nach 14&nbsp;Tagen. Die Zahlen stammen aus den laufenden Kampagnen.</p></div>
+    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bad-Anfragen in 2&nbsp;Monaten, ein Auftrag über 10.000&nbsp;€ nach gut 2&nbsp;Wochen. Die Zahlen stammen aus den laufenden Kampagnen.</p></div>
     <div class="fall-grid drei">
       {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting · läuft', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen')}
       {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Badsanierung · läuft', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '21 Bad-Anfragen und 10+ Vor-Ort-Termine in 2 Monaten.', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 1)}
@@ -459,9 +459,9 @@ def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, 
 </article>'''
 
 FALL_ESS = lambda: fall_gross(ESS_LOGO, 'Florian Schmidt', 'Geschäftsführer, Erwin Schmidt &amp; Sohn GmbH, Sindelfingen', 'Erwin Schmidt & Sohn', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.“', 'Erwin Schmidt &amp; Sohn in Sindelfingen, SHK-Familienbetrieb in dritter Generation, suchte einen Anlagenmechaniker für den Kundendienst. Probiert war schon einiges: Aufkleber mit QR-Code auf den Firmenwagen, die Stelle auf der eigenen Webseite. Gebracht hat das wenig. Dann liefen 4 Wochen lang Anzeigen im Umkreis, mit Fotos aus dem Betrieb und Filterfragen vor der Bewerbung.', [('25', 'Bewerbungen'), ('4', 'Wochen Kampagnen-Laufzeit'), ('1', 'Stelle besetzt: Anlagenmechaniker SHK')], '', 'Fallstudie Erwin Schmidt & Sohn: 25 Bewerbungen in 4 Wochen')
-FALL_SEN = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Also die Zusammenarbeit würde ich auf jeden Fall jedem empfehlen, weil das auch immer unkompliziert ist.“', '„Aufträge haben wir jetzt aktuell genügend“, sagt Benjamin Senftleben. Sein Meisterbetrieb in Ehingen, dritte Generation, ist ausgelastet. Trotzdem laufen seit Juli Anzeigen für Badsanierung im Umkreis von 25 km, mit ihm selbst vor der Kamera und Filterfragen vor der Anfrage. Nach dem Startpaket hat er verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Werbung macht man nicht nur, wenn es gut läuft. Das hat er schon in der Meisterschule gelernt.', [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine in 2 Monaten')], 'w', 'Fallstudie Senftleben Haustechnik: 21 Bad-Anfragen in 2 Monaten')
+FALL_SEN = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Also die Zusammenarbeit würde ich auf jeden Fall jedem empfehlen, weil das auch immer unkompliziert ist.“', '„Aufträge haben wir jetzt aktuell genügend“, sagt Benjamin Senftleben. Sein Meisterbetrieb in Ehingen, dritte Generation, ist ausgelastet. Trotzdem laufen seit Juli Anzeigen für Badsanierung im Umkreis von 25 km, mit ihm selbst vor der Kamera und Filterfragen vor der Anfrage. Nach dem Startpaket hat er verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Werbung macht man nicht nur, wenn es gut läuft. Das hat er schon in der Schule gelernt.', [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine in 2 Monaten')], 'w', 'Fallstudie Senftleben Haustechnik: 21 Bad-Anfragen in 2 Monaten')
 
-FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-lager-scharf.jpg', '', '', '„So sind wir super zufrieden.“', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Seit Anfang September laufen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Nach zwei Wochen kam der erste Auftrag. Als Nächstes folgen Wärmepumpe und Klima, vor der Heizperiode.', [('14', 'Bad-Anfragen'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH', '40% 35%')
+FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-lager-scharf.jpg', '', '', '„So sind wir super zufrieden.“', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Seit Anfang September laufen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Nach gut zwei Wochen kam der erste Auftrag. Als Nächstes folgen Wärmepumpe und Klima, vor der Heizperiode.', [('14', 'Bad-Anfragen'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach gut 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH', '40% 35%')
 FALL_SEN_REC = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/fotos/senftleben-team-2026.jpg', '', '', '„21 Bewerbungen in 18 Tagen, diesmal fürs Büro.“', 'Nach dem Auftrags-Funnel ging Senftleben Haustechnik denselben Weg für eine Stelle in Lohn- und Buchhaltung: Anzeigen im Umkreis, mit dem eigenen Team im Bild, Bewerbung in 60 Sekunden ohne Lebenslauf. Nach 18 Tagen lagen 21 Bewerbungen vor, die Stelle ist besetzt.', [('21', 'Bewerbungen'), ('18', 'Tage Kampagne'), ('1', 'Stelle: Lohn &amp; Buchhaltung')], 'k', 'Das Team von Senftleben Haustechnik im Lager', '50% 40%')
 
 KLASS_LOGO = '/assets/logos-box/klass.png'
@@ -482,7 +482,7 @@ def sussmann_karte(d=1):
   <div class="vid"><img src="/assets/fotos/sussmann-wagen-nebeneinander.jpg" alt="Patrick und Mirjana Wähnl am Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="900" style="object-position:40% 25%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung · läuft</span>
-    <p class="erg">14 Bad-Anfragen, 7+ Termine, erster Auftrag 10.000 € nach 2 Wochen.</p>
+    <p class="erg">14 Bad-Anfragen, 7+ Termine, erster Auftrag 10.000 € nach gut 2 Wochen.</p>
     <div class="betrieb"><span class="lg"><img src="{SUS_LOGO}" alt="Sussmann GmbH"></span><span><b>Sussmann GmbH</b></span></div>
     <div class="zahlen">{zahl_html('14', 'Bad-Anfragen', 'w')}{zahl_html('7<span class="plus">+</span>', 'Vor-Ort-Termine', 'w')}{zahl_html('10.000&nbsp;€', 'Erster Auftrag', 'w')}</div>
   </div>
@@ -568,7 +568,7 @@ def statement(text_html, mitte=False, von='', cta=''):
 
 FAQ_ALLE = [
     ('Ich habe schon eine Agentur bezahlt, und es kam nichts.', 'Social-Media-Werbung ist nicht gleich Social-Media-Werbung. Stockfoto und „Wir suchen dich" laufen bei allen, und niemand erkennt darin einen Betrieb aus seinem Ort. Wir drehen bei dir, filtern vor der Bewerbung und spielen nur deinen Umkreis aus.'),
-    ('Wie schnell kommen die ersten Bewerbungen und Anfragen?', 'Bewerbungen oft in den ersten 24 Stunden nach dem Start. Bäder brauchen länger, ein Bad wird geplant: Sussmann hatte den ersten Auftrag über 10.000 € nach 2 Wochen, Senftleben 21 Anfragen in 2 Monaten.'),
+    ('Wie schnell kommen die ersten Bewerbungen und Anfragen?', 'Bewerbungen oft in den ersten 24 Stunden nach dem Start. Bäder brauchen länger, ein Bad wird geplant: Sussmann hatte den ersten Auftrag über 10.000 € nach gut 2 Wochen, Senftleben 21 Anfragen in 2 Monaten.'),
     ('Ich habe keine Zeit für Social Media.', 'Dein Aufwand: ein Gespräch von 30 Minuten zum Start, ein Fototermin bei dir im Betrieb, danach die Bewerbungsgespräche. Kampagne, Anzeigen und Nachregeln machen wir.'),
     ('Wir haben keine 4-Tage-Woche und keinen Firmenwagen.', 'Brauchst du auch nicht. Pünktliches Geld, ein fester Umkreis, ein Chef, der mit anpackt: Das ist für viele Monteure schon der Grund. Das zeigen wir mit deinen Leuten vor der Kamera.'),
     ('Wir sitzen auf dem Land. Lohnt sich das da?', 'Gerade dort. Die Anzeigen laufen nur in deinem Einzugsgebiet, und auf dem Land wirbt dort kaum jemand. Ob dein Umkreis groß genug ist, rechnen wir in der Potenzialanalyse durch.'),
@@ -721,7 +721,7 @@ def seite_fallstudien():
     body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Fallstudien</p><h1 class="h-xl rv" data-d="1">Fünf Kampagnen, <span class="em w">fünf SHK-Betriebe.</span></h1><p class="lead rv" data-d="2">Mit den Zahlen aus den Kampagnen und den Inhabern vor der Kamera. Keine Hochrechnung, kein „bis zu".</p></div></section>
 <section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">Recruiting · Erwin Schmidt &amp; Sohn, Sindelfingen</p><h2 class="d rv">Ein Anlagenmechaniker gesucht. <span class="em k">25 Bewerbungen.</span></h2></div></div>{FALL_ESS()}</div></section>
 <section class="sec" id="senftleben" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Auftrags-Funnel · Senftleben Haustechnik, Ehingen</p><h2 class="d rv">Ausgelastet, und trotzdem <span class="em w">21 Bad-Anfragen.</span></h2></div></div>{FALL_SEN()}</div></section>
-<section class="sec" id="sussmann" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Auftrags-Funnel · Erich Sussmann GmbH, Kirchheim bei München</p><h2 class="d rv">Erster Auftrag <span class="em w">nach zwei Wochen.</span></h2></div></div>{FALL_SUS()}</div></section>
+<section class="sec" id="sussmann" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Auftrags-Funnel · Erich Sussmann GmbH, Kirchheim bei München</p><h2 class="d rv">Erster Auftrag <span class="em w">nach gut zwei Wochen.</span></h2></div></div>{FALL_SUS()}</div></section>
 <section class="sec" id="senftleben-recruiting" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">Recruiting · Senftleben Haustechnik, Ehingen</p><h2 class="d rv">Eine Bürostelle, <span class="em k">21 Bewerbungen.</span></h2></div></div>{FALL_SEN_REC()}</div></section>
 <section class="sec" id="klass" style="padding-top:0"><div class="wrap"><div class="sec-kopf"><div><p class="kick k rv">Recruiting · Heizung-Sanitär Klaß, Türkenfeld</p><h2 class="d rv">Ein Heizungsbauer gesucht. <span class="em k">35 Bewerbungen.</span></h2></div></div>{FALL_KLASS()}</div></section>'''
     body += reels() + stimmen()
@@ -793,8 +793,8 @@ def seite_recht(pfad):
 #    konzept/ratgeber/). Aufbau für KI-Antworten (marketing/ratgeber/recherche/geo-ki-sichtbarkeit.md): eine Frage je Seite, Antwort
 #    in den ersten 40–60 Wörtern („Kurz gesagt"), H2 als Fragen, Zahlen mit Quelle und Jahr, Tabelle, FAQ, Autor + Datum im HTML,
 #    Article + FAQPage + BreadcrumbList. URL: /wissen/<slug>/.
-WX_KAT = ['Monteure finden', 'Aufträge gewinnen', 'Kosten & Ablauf']
-WX_KAT_IC = {'Monteure finden': 'users', 'Aufträge gewinnen': 'bath', 'Kosten & Ablauf': 'calculator'}
+WX_KAT = ['Monteure finden', 'Aufträge gewinnen', 'Fallstudien', 'Kosten & Ablauf']
+WX_KAT_IC = {'Monteure finden': 'users', 'Aufträge gewinnen': 'bath', 'Fallstudien': 'chart', 'Kosten & Ablauf': 'calculator'}
 WX_STAND = '2026-09-29'
 # Querlinks auf den Ratgeber der Hauptseite (handwerksmanufaktur.digital/wissen/, gebaut im Chat „HWM Website Überarbeitung"):
 # gewerkeübergreifende Fassung desselben Themas — gegenseitig verlinkt statt doppelt geschrieben.
@@ -813,6 +813,13 @@ def wx_laden():
         if a['kategorie'] not in WX_KAT: raise SystemExit(f'wissen/{a["slug"]}.json: Kategorie unbekannt {a["kategorie"]}')
         if len(a['titel']) > 65: raise SystemExit(f'wissen/{a["slug"]}.json: Titel über 65 Zeichen ({len(a["titel"])})')
         if len(a['beschreibung']) > 160: raise SystemExit(f'wissen/{a["slug"]}.json: Beschreibung über 160 Zeichen ({len(a["beschreibung"])})')
+    # Zeitgesteuert (Noah, 29.09.2026: „mach automatisierte veröffentlichungen"): live nur, was sein Datum erreicht hat;
+    # die Vorschau /neu/ zeigt alles, Geplantes mit Vermerk. Täglich baut system/scripts/wissen_veroeffentlichen.sh neu.
+    import datetime as _dt
+    heute = _dt.date.today().isoformat()
+    for a in arts:
+        a['geplant'] = a.get('veroeffentlicht', WX_STAND) > heute
+    if LIVE: arts = [a for a in arts if not a['geplant']]
     arts.sort(key=lambda a: (WX_KAT.index(a['kategorie']), a.get('reihe', 50), a['slug']))
     return arts
 WISSEN = wx_laden()
@@ -827,6 +834,7 @@ def wx_anker(h):
 def wx_karte(a, gross=False, chip=True):
     k = 'k' if a['kategorie'] == 'Monteure finden' else ('w' if a['kategorie'] == 'Aufträge gewinnen' else 'n')
     kat = f'<span class="wx-kat">{ic(WX_KAT_IC[a["kategorie"]])}{a["kategorie"]}</span>' if chip else ''
+    if a.get('geplant'): kat += f'<span class="wx-geplant">geplant am {wx_datum(a["veroeffentlicht"])}</span>'
     return (f'<a class="wx-karte{" gross" if gross else ""} {k} rv" href="{u("/wissen/" + a["slug"] + "/")}">{kat}'
             f'<h3>{a["h1"]}</h3><p>{a["teaser"]}</p><span class="wx-lese">{ic("clock")}{a["lesezeit"]} Min. Lesezeit<span class="wx-pfeil" aria-hidden="true">{ic("arrow")}</span></span></a>')
 
@@ -847,11 +855,45 @@ def wx_tabelle(t):
     quelle = f'<p class="wx-tab-quelle">{t["quelle"]}</p>' if t.get('quelle') else ''
     return f'<div class="wx-tabelle rv"><div class="wx-tab-roll"><table>{unter}<thead><tr>{kopfz}</tr></thead><tbody>{zeilen}</tbody></table></div>{quelle}</div>'
 
+WX_BILD_GESPERRT = ('sussmann-empfang-nah', 'sussmann-empfang-quer', '/noah-')
+
+def wx_bild(b):
+    """Echtes Foto aus einem Kunden-Shooting (assets/fotos), mit Bildunterschrift."""
+    # Umarmung am Empfang (Sussmann) nie in Fallstudien/Artikeln — Noah, 29.09.2026: „nicht, wo sie so kuscheln"
+    if any(x in b['src'] for x in WX_BILD_GESPERRT): raise SystemExit(f'Wissen: gesperrtes Foto {b["src"]}')
+    pfad = REPO / b['src'].lstrip('/')
+    try:
+        with Image.open(pfad) as im: w, h = im.size
+    except Exception:
+        raise SystemExit(f'Wissen: Bild fehlt {b["src"]}')
+    unter = f'<figcaption>{b["unter"]}</figcaption>' if b.get('unter') else ''
+    return (f'<figure class="wx-bild rv"><img src="{b["src"]}" alt="{html.escape(b["alt"], quote=True)}" loading="lazy" width="{w}" height="{h}"'
+            f' style="object-position:{b.get("pos", "50% 40%")}">{unter}</figure>')
+
+def wx_balken(bk):
+    """Balkenvergleich für Zahlen mit Quelle (z. B. 242 Tage Handwerk gegen 167 alle Berufe)."""
+    hoch = max(float(w[1]) for w in bk['werte']) or 1
+    zeilen = ''.join(f'<div class="wx-balken-zeile{" hervor" if (len(w) > 3 and w[3]) else ""}"><span class="wx-balken-l">{w[0]}</span>'
+                     f'<span class="wx-balken-spur"><i style="--w:{max(4, round(float(w[1]) / hoch * 100))}%"></i></span><b>{w[2]}</b></div>' for w in bk['werte'])
+    quelle = f'<p class="wx-tab-quelle">{bk["quelle"]}</p>' if bk.get('quelle') else ''
+    return f'<figure class="wx-balken rv"><figcaption>{bk["titel"]}</figcaption><div class="wx-balken-reihe">{zeilen}</div>{quelle}</figure>'
+
 def wx_cta(titel, satz, ziel):
     l = WX_LEISTUNG.get(ziel, WX_LEISTUNG['potenzial'])
     zweit = '' if ziel == 'potenzial' else f'<a class="btn btn-glass" href="{u(l[0])}">{ic(l[1], "ic")}{l[2]}</a>'
     return (f'<section class="wx-cta"><div class="wrap"><div class="wx-cta-karte rv"><div><p class="kick">Potenzialanalyse · 30 Minuten · kostenlos</p><h2 class="d">{titel}</h2><p class="lead">{satz}</p></div>'
-            f'<div class="wx-cta-knoepfe"><a class="btn btn-warm" href="{u("/potenzialanalyse/")}">{ic("target", "ic")}Termin aussuchen</a>{zweit}</div></div></div></section>')
+            f'<div class="wx-cta-rechts"><div class="wx-cta-knoepfe"><a class="btn btn-warm" data-cta="wissen-ende" href="{u("/potenzialanalyse/")}">{ic("target", "ic")}Termin aussuchen</a>{zweit}</div>'
+            f'<a class="wx-cta-noah" data-cta="wissen-telefon" href="{TEL_HREF}"><img src="/assets/team/noah.jpg" alt="" width="480" height="480"><span><b>Lieber gleich reden?</b><small>Noah direkt: {TEL}</small></span></a></div></div></div></section>')
+
+def wx_voll(liste):
+    """Jede Reihe voll, bei jeder Anzahl (Hausregel: keine halb leeren Kachelreihen). 6er-Raster: Karten belegen 2 Spalten (3 je Reihe);
+    bleiben am Ende 2 übrig, belegen sie je 3, bleibt 1, belegt sie alle 6. Bei 4 Karten 2 + 2 statt 3 + 1."""
+    n = len(liste)
+    spans = [2] * n
+    if n == 4: spans = [3] * 4
+    elif n % 3 == 1: spans[-1] = 6
+    elif n % 3 == 2: spans[-2:] = [3, 3]
+    return ''.join(wx_karte(a, chip=False).replace('<a class="wx-karte', f'<a style="--span:{sp}" class="wx-karte', 1) for a, sp in zip(liste, spans))
 
 def seite_wissen():
     # Keine Einstiegskarte über den Gruppen: sie ließ die Reihen darunter halb leer (3 + 2, 3 + 1). Jede Gruppe füllt ihre
@@ -860,9 +902,8 @@ def seite_wissen():
     for kname in WX_KAT:
         liste = [a for a in WISSEN if a['kategorie'] == kname]
         if not liste: continue
-        spalten = 3 if len(liste) % 3 == 0 else 2
         gruppen += (f'<section class="wx-gruppe" id="{wx_anker(kname)}"><h2 class="wx-gruppe-titel rv">{ic(WX_KAT_IC[kname])}{kname}</h2>'
-                    f'<div class="wx-raster s{spalten}">{"".join(wx_karte(a, chip=False) for a in liste)}</div></section>')
+                    f'<div class="wx-raster wx-voll">{wx_voll(liste)}</div></section>')
     sprung = ''.join(f'<a href="#{wx_anker(k)}">{ic(WX_KAT_IC[k])}{k}</a>' for k in WX_KAT if any(a['kategorie'] == k for a in WISSEN))
     schema = [{"@type": "CollectionPage", "name": "Wissen für SHK-Betriebe", "url": f"{DOMAIN}/wissen/", "inLanguage": "de-DE",
                "hasPart": [{"@type": "Article", "headline": html.unescape(a['h1']), "url": f"{DOMAIN}/wissen/{a['slug']}/"} for a in WISSEN]},
@@ -879,11 +920,12 @@ WX_HUB_LEAD = 'Die Fragen aus unseren Gesprächen mit SHK-Inhabern: wie du Monte
 
 WX_MITTE = {'Monteure finden': ('Wie viele Bewerbungen sind in deinem Umkreis drin?', 'users'),
             'Aufträge gewinnen': ('Wie viele Bad-Anfragen sind in deinem Umkreis drin?', 'bath'),
+            'Fallstudien': ('Was wäre bei deinem Betrieb drin?', 'chart'),
             'Kosten & Ablauf': ('Was wäre in deinem Umkreis drin?', 'calculator')}
 def wx_mitte(kat):
     t, i = WX_MITTE.get(kat, WX_MITTE['Kosten & Ablauf'])
     return (f'<aside class="wx-mitte rv"><span class="wx-mitte-ic">{ic(i)}</span><div><b>{t}</b><p>Ein paar kurze Fragen zu deinem Betrieb und deinem Umkreis, das Ergebnis siehst du sofort.</p></div>'
-            f'<button type="button" class="btn btn-warm" data-rechner>{ic("target", "ic")}Durchrechnen</button></aside>')
+            f'<button type="button" class="btn btn-warm" data-rechner data-cta="wissen-mitte">{ic("target", "ic")}Durchrechnen</button></aside>')
 
 def seite_wissen_artikel(a):
     nach_slug = {x['slug']: x for x in WISSEN}
@@ -892,6 +934,8 @@ def seite_wissen_artikel(a):
         an = wx_anker(ab['h2'])
         inhalt += f'<li><a href="#{an}">{ab["h2"]}</a></li>'
         teil = f'<h2 id="{an}">{ab["h2"]}</h2>{ab["html"]}'
+        if ab.get('bild'): teil += wx_bild(ab['bild'])
+        if ab.get('balken'): teil += wx_balken(ab['balken'])
         if ab.get('zahlen'): teil += wx_zahlen(ab['zahlen'])
         if ab.get('tabelle'): teil += wx_tabelle(ab['tabelle'])
         if ab.get('zitat'): teil += f'<blockquote class="wx-zitat rv"><p>„{ab["zitat"]["text"]}“</p><cite>{ab["zitat"]["wer"]}</cite></blockquote>'
@@ -910,10 +954,10 @@ def seite_wissen_artikel(a):
     kopfteil = (f'<section class="wx-kopf"><div class="wrap wx-schmal"><nav class="wx-brot" aria-label="Brotkrumen"><a href="{u("/")}">Start</a><span aria-hidden="true">›</span><a href="{u("/wissen/")}">Wissen</a><span aria-hidden="true">›</span><span>{a["kategorie"]}</span></nav>'
                 f'<p class="kick">{a["kategorie"]}</p><h1 class="wx-h1">{a["h1"]}</h1><p class="lead">{a["teaser"]}</p>'
                 f'<div class="wx-meta"><img src="/assets/team/noah.jpg" alt="Noah Seelau" width="480" height="480"><span class="wx-autor"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur, seit 2019 nur Handwerk</small></span>'
-                f'<span class="wx-meta-rest"><span>{ic("calendar")}Aktualisiert {wx_datum(a.get("aktualisiert", WX_STAND))}</span><span>{ic("clock")}{a["lesezeit"]} Min. Lesezeit</span></span></div></div></section>')
+                f'<span class="wx-meta-rest"><span>{ic("calendar")}Aktualisiert {wx_datum(a.get("aktualisiert") or a.get("veroeffentlicht", WX_STAND))}</span><span>{ic("clock")}{a["lesezeit"]} Min. Lesezeit</span></span></div></div></section>')
     kern = (f'<section class="wx-inhalt"><div class="wrap wx-raster-artikel"><aside class="wx-seite"><nav class="wx-toc" aria-label="Inhalt"><p>Inhalt</p><ol>{inhalt}</ol></nav>'
-            f'<a class="wx-leistung" href="{u(l[0])}">{ic(l[1])}<span><small>Passende Leistung</small><b>{l[2]}</b></span></a></aside>'
-            f'<article class="wx-text"><div class="wx-kurz rv"><b>Kurz gesagt</b><p>{a["kurzantwort"]}</p></div>{wx_zahlen(a.get("zahlen"))}{abschnitte}'
+            f'<a class="wx-leistung" data-cta="wissen-leistung" href="{u(l[0])}">{ic(l[1])}<span><small>Passende Leistung</small><b>{l[2]}</b></span></a></aside>'
+            f'<article class="wx-text"><div class="wx-kurz rv"><b>Kurz gesagt</b><p>{a["kurzantwort"]}</p></div>{wx_bild(a["bild"]) if a.get("bild") else ""}{wx_zahlen(a.get("zahlen"))}{abschnitte}'
             f'<section class="wx-teil wx-fragen" id="fragen"><h2>Häufige Fragen</h2><div class="faq-liste">{fragen}</div></section>'
             + (f'<section class="wx-teil wx-quellen"><h2>Quellen</h2><ol>{qliste}</ol></section>' if qliste else '')
             + '<section class="wx-teil wx-quer"><h2>Für alle Gewerke</h2><p>Dieselben Fragen aus Sicht aller Handwerksbetriebe, im Ratgeber der HandwerksManufaktur:</p><ul>' + ''.join(f'<li><a href="{WX_HWM}/{sl}/">{t}</a></li>' for sl, t in WX_QUER.get(a['kategorie'], [])) + f'<li><a href="{WX_HWM}/wissen/">Alle Ratgeber für Handwerksbetriebe</a></li></ul></section>'
@@ -925,7 +969,7 @@ def seite_wissen_artikel(a):
     autor = {"@type": "Person", "name": "Noah Seelau", "jobTitle": "Gründer", "url": f"{DOMAIN}/ueber-uns/", "image": f"{DOMAIN}/assets/team/noah.jpg",
              "worksFor": {"@id": "https://handwerksmanufaktur.digital/#organization"}}
     art = {"@type": "Article", "headline": html.unescape(a['h1']), "description": a['beschreibung'], "author": autor, "publisher": {"@id": "https://handwerksmanufaktur.digital/#organization"},
-           "datePublished": a.get('veroeffentlicht', WX_STAND), "dateModified": a.get('aktualisiert', WX_STAND), "mainEntityOfPage": url, "inLanguage": "de-DE",
+           "datePublished": a.get('veroeffentlicht', WX_STAND), "dateModified": a.get('aktualisiert') or a.get('veroeffentlicht', WX_STAND), "mainEntityOfPage": url, "inLanguage": "de-DE",
            "image": f"{DOMAIN}/og-image-hm.jpg", "about": a['kategorie'], "audience": {"@type": "BusinessAudience", "audienceType": "SHK-Betriebe (Sanitär, Heizung, Klima)"}}
     if quellen: art["citation"] = [q['url'] for q in quellen]
     schema = [art] + faq_schema(a['faq']) + [
@@ -957,7 +1001,7 @@ _weg = AUS / 'fallstudien' / 'index.html'
 _weg.parent.mkdir(parents=True, exist_ok=True)
 _weg.write_text(f'<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={u("/")}#fallstudien"><link rel="canonical" href="{u("/")}"><title>Fallstudien</title></head><body><a href="{u("/")}#fallstudien">Zu den Fallstudien</a></body></html>\n', encoding='utf-8')
 if LIVE:
-    _wx_mod = {f'/wissen/{x["slug"]}/': x.get('aktualisiert', WX_STAND) for x in WISSEN}
+    _wx_mod = {f'/wissen/{x["slug"]}/': x.get('aktualisiert') or x.get('veroeffentlicht', WX_STAND) for x in WISSEN}
     if WISSEN: _wx_mod['/wissen/'] = max(_wx_mod.values())
     sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc>' + (f'<lastmod>{_wx_mod[p]}</lastmod>' if p in _wx_mod else '') + f'<changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else ("0.7" if p.startswith("/wissen/") and p != "/wissen/" else "0.8")}</priority></url>' for p in SEITEN if p not in RECHT)
     (REPO/'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding='utf-8')

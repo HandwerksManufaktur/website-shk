@@ -187,8 +187,14 @@ def bildschirm_oben(img, verh=2.3):
             im.convert('RGB').crop((0, 0, w, round(w * verh))).save(ziel, quality=88, optimize=True)
     return img.rsplit('/', 1)[0] + '/' + ziel.name
 
+def etikett_text(etikett):
+    """„Recruiting · Erwin Schmidt & Sohn" zweizeilig (Art / Betrieb) — einzeilig brach es auf schmalen Handys in vier Zeilen (Sichtprüfung 29.09.2026)."""
+    if ' · ' not in etikett: return etikett
+    a, b = etikett.split(' · ', 1)
+    return f'<span class="et-t"><span class="et-a">{a}</span><span class="et-b">{b}</span></span>'
+
 def phone(img, etikett, farbe, klasse='', delay='0s'):
-    return f'''<div class="phone {klasse}" aria-hidden="true"><div class="scroller"><img src="{img}" alt="" loading="lazy" style="--d:{delay}"></div><span class="etikett"><i style="background:{farbe}"></i>{etikett}</span></div>'''
+    return f'''<div class="phone {klasse}" aria-hidden="true"><div class="scroller"><img src="{img}" alt="" loading="lazy" style="--d:{delay}"></div><span class="etikett"><i style="background:{farbe}"></i>{etikett_text(etikett)}</span></div>'''
 
 def reel_phone(f, etikett, klasse, poster=''):
     p = f' poster="/assets/reels/{poster}"' if poster else ''
@@ -295,23 +301,23 @@ def rechner_dialog():
     <section class="rd-schritt" data-schritt="2" hidden><h3 data-text-monteure="Welche Stelle ist offen?" data-text-auftraege="Welche Aufträge willst du mehr?">Welche Stelle ist offen?</h3>
       <div data-fuer="Monteure">{wahl('stelle', [('Anlagenmechaniker SHK', 'Anlagenmechaniker SHK'), ('Kundendiensttechniker', 'Kundendiensttechniker'), ('Bäderbauer', 'Bäderbauer'), ('Andere Stelle', 'Andere Stelle')])}</div>
       <div data-fuer="Aufträge" hidden>{wahl('stelle', [('Badsanierung', 'Badsanierung'), ('Wärmepumpe', 'Wärmepumpe'), ('Heizung', 'Heizung'), ('Mehreres', 'Mehreres')])}</div></section>
-    <section class="rd-schritt" data-schritt="3" hidden><h3 data-text-monteure="Wie viele Aufträge lehnst du im Monat ab, weil ein Monteur fehlt?" data-text-auftraege="Wie viele Aufträge mehr im Monat könnte dein Team bauen?">Wie viele Aufträge lehnst du im Monat ab?</h3>{wahl('anzahl', [('1', '1'), ('2', '2–3'), ('4', '4–5'), ('6', '6 oder mehr')])}</section>
+    <section class="rd-schritt" data-schritt="3" hidden><h3 data-text-monteure="Wie viele Aufträge lehnst du im Monat ab, weil ein Monteur fehlt?" data-text-auftraege="Wie viele Aufträge mehr im Monat könnte dein Team bauen?">Wie viele Aufträge lehnst du im Monat ab?</h3>{wahl('anzahl', [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4 oder mehr')])}</section>
     <section class="rd-schritt" data-schritt="4" hidden><h3>Was ist ein Auftrag bei dir im Schnitt wert?</h3>{wahl('wert', [('5000', '5.000 €'), ('10000', '10.000 €'), ('20000', '20.000 €'), ('35000', '35.000 € +')])}</section>
-    <section class="rd-schritt" data-schritt="5" hidden><div class="rd-ergebnis"><small data-text-monteure="Liegen bei dir jeden Monat" data-text-auftraege="Wären jeden Monat zusätzlich drin">Liegen bei dir jeden Monat</small><b data-summe>0 €</b><p data-beleg-monteure="Bei Erwin Schmidt &amp; Sohn kamen 25 Bewerbungen in 4 Wochen, bei Senftleben Haustechnik 21 in 18 Tagen." data-beleg-auftraege="Bei Senftleben Haustechnik kamen 21 Bad-Anfragen in 2 Monaten, bei Sussmann der erste Auftrag nach gut 2 Wochen."></p><span class="rd-fuss">Rechenbeispiel mit deinen Angaben, keine Zusage.</span></div>
-      <button type="button" class="btn btn-ink rd-weiter" data-weiter>Für meinen Umkreis prüfen lassen <span aria-hidden="true">→</span></button></section>
+    <section class="rd-schritt" data-schritt="5" hidden><div class="rd-ergebnis"><small data-text-monteure="Liegen bei dir jeden Monat" data-text-auftraege="Wären jeden Monat zusätzlich drin">Liegen bei dir jeden Monat</small><b data-summe>0 €</b><small class="rd-grob">Umsatz, grob aus deinen Angaben gerechnet.</small><p data-beleg-monteure="Bei Erwin Schmidt &amp; Sohn kamen 25 Bewerbungen in 4 Wochen, bei Senftleben Haustechnik 21 in 18 Tagen." data-beleg-auftraege="Bei Senftleben Haustechnik kamen 21 Bad-Anfragen in 2 Monaten, bei Sussmann der erste Auftrag nach gut 2 Wochen."></p><span class="rd-fuss">Rechenbeispiel mit deinen Angaben, keine Zusage.</span></div>
+      <button type="button" class="btn btn-ink rd-weiter" data-weiter>Für meinen Umkreis durchrechnen lassen <span aria-hidden="true">→</span></button></section>
     <section class="rd-schritt" data-schritt="6" hidden><h3>Wo sitzt dein Betrieb?</h3>
       <div class="rd-zeile"><label class="rd-feld rd-plz"><span>PLZ</span><input name="plz" autocomplete="postal-code" inputmode="numeric" maxlength="5" pattern="[0-9]{4,5}" placeholder="89584" required></label>
       <label class="rd-feld"><span>Ort</span><input name="ort" autocomplete="address-level2" placeholder="Ehingen" required></label></div>
       <p class="rd-fehler" data-fehler-ort hidden>Bitte Postleitzahl und Ort eintragen.</p>
-      <button type="button" class="btn btn-ink rd-weiter" data-weiter>Umkreis prüfen <span aria-hidden="true">→</span></button></section>
+      <button type="button" class="btn btn-ink rd-weiter" data-weiter>Umkreis vormerken <span aria-hidden="true">→</span></button></section>
     <section class="rd-schritt" data-schritt="7" hidden><div class="rd-radar" data-radar>
       <svg viewBox="0 0 220 220" aria-hidden="true"><defs><radialGradient id="rdSweep" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#1E90E8" stop-opacity=".0"/><stop offset="1" stop-color="#1E90E8" stop-opacity=".35"/></radialGradient></defs>
         <circle class="rr" cx="110" cy="110" r="100"/><circle class="rr" cx="110" cy="110" r="68"/><circle class="rr" cx="110" cy="110" r="36"/>
         <path class="rd-sweep" d="M110 110 L110 10 A100 100 0 0 1 196.6 60 Z" fill="url(#rdSweep)"/>
         <circle class="rp" style="--i:0" cx="66" cy="72" r="5"/><circle class="rp" style="--i:1" cx="158" cy="80" r="5"/><circle class="rp" style="--i:2" cx="146" cy="150" r="5"/><circle class="rp" style="--i:3" cx="72" cy="146" r="5"/><circle class="rp" style="--i:4" cx="112" cy="42" r="5"/><circle class="rp" style="--i:5" cx="182" cy="122" r="5"/>
         <circle class="rd-mitte" cx="110" cy="110" r="9"/></svg>
-      <p class="rd-radar-t" data-radar-text>Umkreis wird geprüft …</p>
-      <div class="rd-radar-ok" hidden><h3 data-radar-titel>In deinem Umkreis ist das möglich.</h3><p>Die genaue Zahl für deinen Umkreis rechnen wir dir im Gespräch durch.</p>
+      <p class="rd-radar-t" data-radar-text>Umkreis wird vorgemerkt …</p>
+      <div class="rd-radar-ok" hidden><h3 data-radar-titel>Dein Umkreis ist vorgemerkt.</h3><p>Noah sieht sich vor dem Gespräch an, wer dort sucht und wer dort anbietet, und rechnet dir die Zahl für deinen Umkreis durch.</p>
       <button type="button" class="btn btn-ink rd-weiter" data-weiter>Weiter <span aria-hidden="true">→</span></button></div></div></section>
     <section class="rd-schritt" data-schritt="8" hidden><h3>Wie heißt dein Betrieb?</h3><label class="rd-feld"><span>Betrieb</span><input name="betrieb" autocomplete="organization" placeholder="z. B. Müller Haustechnik GmbH" required></label>
       <button type="button" class="btn btn-ink rd-weiter" data-weiter>Weiter <span aria-hidden="true">→</span></button></section>
@@ -537,7 +543,7 @@ def ueber_offen(kurz=True):
   </div></div>
 </section>'''
 
-TEAM = [('noah', 'Noah', 'Gründer · Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 50%'),   # rundes Lächel-Porträt 03/2026 als Kreis — ganzer Kopf, und kein zweites Mal das Laptop-Foto aus „Wer dahinter steht" (Noah, 27.09.2026)
+TEAM = [('noah', 'Noah', 'Gründer, Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 50%'),   # rundes Lächel-Porträt 03/2026 als Kreis — ganzer Kopf, und kein zweites Mal das Laptop-Foto aus „Wer dahinter steht" (Noah, 27.09.2026)
         ('robert-rund', 'Robert', 'Videoschnitt&nbsp;&amp;&nbsp;Creative', '50% 50%'),   # Kopf mit Luft nach oben — im Original berührt das Haar den Rand (Noah, 27.09.2026)
         (None, 'Rudolf', 'Websites&nbsp;&amp;&nbsp;Anzeigen', '')]   # Noah, 27.09.2026: „mach gesicht von rudolf raus!!! und einfach n R rein … füll die kreise aus"
 
@@ -606,7 +612,7 @@ def kontakt(h2='Was ist in deinem Umkreis <span class="em w">drin?</span>'):
   <div class="wrap"><div class="kontakt-karte kontakt-neu rv">
     <figure class="kontakt-bild collage-feld"><div class="collage" data-pool='{json.dumps([f"/assets/collage/k{i:02d}.webp" for i in COLLAGE])}'>{"".join(f'<img src="/assets/collage/k{i:02d}.webp" alt="" width="320" height="320" loading="lazy" decoding="async">' for i in COLLAGE[:16])}</div><figcaption>Aus unseren Shootings in den Betrieben</figcaption></figure>
     <div class="kontakt-text">
-      <p class="kick">Potenzialanalyse · 30 Min. · kostenlos</p>
+      <p class="kick"><span>Potenzialanalyse<span class="kick-pt"> · </span><span class="kick-rest">30&nbsp;Min.&nbsp;·&nbsp;kostenlos</span></span></p>
       <h2 class="d">{h2}</h2>
       <p class="kontakt-satz">Am Ende steht eine Zahl für deinen Umkreis. Reicht sie nicht, sagen wir es dir.</p>
       <div class="wahl">
@@ -757,7 +763,7 @@ def v_kurve():
 
 def seite_ueber():
     h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit 2019 nur Handwerk, über 130 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
-    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Marketing für Handwerksbetriebe, <span class="em w">seit 2019.</span></h1><p class="lead rv" data-d="2">Für SHK-Betriebe bauen wir die Anzeigen für Monteure, Bäder und Wärmepumpen. Gedreht wird bei dir im Betrieb, mit deinen Leuten vor der Kamera.</p></div></section>
+    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Marketing für Handwerks&shy;betriebe, <span class="em w">seit 2019.</span></h1><p class="lead rv" data-d="2">Für SHK-Betriebe bauen wir die Anzeigen für Monteure, Bäder und Wärmepumpen. Gedreht wird bei dir im Betrieb, mit deinen Leuten vor der Kamera.</p></div></section>
 <div style="height:64px"></div>'''
     body += ueber_werdegang() + team()
     body += f'''<section class="sec" id="wie" style="padding-top:0"><div class="wrap">
@@ -816,7 +822,7 @@ def wx_laden():
     # Zeitgesteuert (Noah, 29.09.2026: „mach automatisierte veröffentlichungen"): live nur, was sein Datum erreicht hat;
     # die Vorschau /neu/ zeigt alles, Geplantes mit Vermerk. Täglich baut system/scripts/wissen_veroeffentlichen.sh neu.
     import datetime as _dt
-    heute = _dt.date.today().isoformat()
+    heute = os.environ.get('WISSEN_HEUTE') or _dt.date.today().isoformat()   # WISSEN_HEUTE=JJJJ-MM-TT nur für Tests (Simulation eines späteren Tags)
     for a in arts:
         a['geplant'] = a.get('veroeffentlicht', WX_STAND) > heute
     if LIVE: arts = [a for a in arts if not a['geplant']]
@@ -831,19 +837,28 @@ def wx_anker(h):
     s = html.unescape(re.sub('<[^>]+>', '', h)).lower().translate(str.maketrans({'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss'}))
     return re.sub(r'-+', '-', re.sub(r'[^a-z0-9]+', '-', s)).strip('-')[:60]
 
+def wx_karten_titel(h):
+    """Endet ein Kartentitel auf ein Bindestrich-Wort („an Wärmepumpen-Anfragen?"), steht es sonst allein in der letzten Zeile:
+    Wort davor und Bindestrich binden (Sichtprüfung 29.09.2026). Nur auf Karten — in der Artikel-H1 wäre die Gruppe am Handy zu breit."""
+    return re.sub(r' (\S+)-(\S+)$', lambda m: f'&nbsp;{m.group(1)}&#8209;{m.group(2)}' if len(m.group(0)) <= 26 else m.group(0), h)
+
 def wx_karte(a, gross=False, chip=True):
     k = 'k' if a['kategorie'] == 'Monteure finden' else ('w' if a['kategorie'] == 'Aufträge gewinnen' else 'n')
     kat = f'<span class="wx-kat">{ic(WX_KAT_IC[a["kategorie"]])}{a["kategorie"]}</span>' if chip else ''
-    if a.get('geplant'): kat += f'<span class="wx-geplant">geplant am {wx_datum(a["veroeffentlicht"])}</span>'
+    geplant = f'<span class="wx-geplant">geplant am {wx_datum(a["veroeffentlicht"])}</span>' if a.get('geplant') else ''
     return (f'<a class="wx-karte{" gross" if gross else ""} {k} rv" href="{u("/wissen/" + a["slug"] + "/")}">{kat}'
-            f'<h3>{a["h1"]}</h3><p>{a["teaser"]}</p><span class="wx-lese">{ic("clock")}{a["lesezeit"]} Min. Lesezeit<span class="wx-pfeil" aria-hidden="true">{ic("arrow")}</span></span></a>')
+            f'<h3>{wx_karten_titel(a["h1"])}</h3><p>{a["teaser"]}</p><span class="wx-lese">{ic("clock")}{a["lesezeit"]} Min. Lesezeit{geplant}<span class="wx-pfeil" aria-hidden="true">{ic("arrow")}</span></span></a>')
 
 def wx_zahlen(z):
     if not z: return ''
     def quelle(x):
         q = x.get('quelle', '')
-        return f'<a href="{x["url"]}" target="_blank" rel="noopener">{q}</a>' if x.get('url') else q
-    k = ''.join(f'<figure class="wx-zahl rv"><b>{x["zahl"]}<small>{x.get("einheit", "")}</small></b>'
+        return f'<a class="wx-q-link" href="{x["url"]}" target="_blank" rel="noopener">{q}</a>' if x.get('url') else q
+    def einheit(e):
+        e = (e or '').strip()
+        if not e: return ''
+        return f'<small class="{"wort" if re.search(r"[A-Za-zÄÖÜäöü]", e) else "zeichen"}">{e}</small>'
+    k = ''.join(f'<figure class="wx-zahl rv"><b>{x["zahl"]}{einheit(x.get("einheit"))}</b>'
                 f'<figcaption>{x["text"]}<span class="wx-quelle">Quelle: {quelle(x)}</span></figcaption></figure>' for x in z)
     return f'<div class="wx-zahlen n{len(z)}">{k}</div>'
 
@@ -881,7 +896,7 @@ def wx_balken(bk):
 def wx_cta(titel, satz, ziel):
     l = WX_LEISTUNG.get(ziel, WX_LEISTUNG['potenzial'])
     zweit = '' if ziel == 'potenzial' else f'<a class="btn btn-glass" href="{u(l[0])}">{ic(l[1], "ic")}{l[2]}</a>'
-    return (f'<section class="wx-cta"><div class="wrap"><div class="wx-cta-karte rv"><div><p class="kick">Potenzialanalyse · 30 Minuten · kostenlos</p><h2 class="d">{titel}</h2><p class="lead">{satz}</p></div>'
+    return (f'<section class="wx-cta"><div class="wrap"><div class="wx-cta-karte rv"><div><p class="kick"><span>Potenzialanalyse<span class="kick-pt"> · </span><span class="kick-rest">30&nbsp;Minuten&nbsp;·&nbsp;kostenlos</span></span></p><h2 class="d">{titel}</h2><p class="lead">{satz}</p></div>'
             f'<div class="wx-cta-rechts"><div class="wx-cta-knoepfe"><a class="btn btn-warm" data-cta="wissen-ende" href="{u("/potenzialanalyse/")}">{ic("target", "ic")}Termin aussuchen</a>{zweit}</div>'
             f'<a class="wx-cta-noah" data-cta="wissen-telefon" href="{TEL_HREF}"><img src="/assets/team/noah.jpg" alt="" width="480" height="480"><span><b>Lieber gleich reden?</b><small>Noah direkt: {TEL}</small></span></a></div></div></div></section>')
 
@@ -911,7 +926,7 @@ def seite_wissen():
                                                               {"@type": "ListItem", "position": 2, "name": "Wissen", "item": f"{DOMAIN}/wissen/"}]}]
     h = kopf('Wissen für SHK-Betriebe: Monteure finden, Aufträge gewinnen', 'Ratgeber für SHK-Betriebe: wie du Anlagenmechaniker findest, woher Bad- und Wärmepumpen-Anfragen kommen und was Recruiting und Anzeigen kosten.', '/wissen/', schema_extra=schema)
     body = (f'<section class="hero wx-hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Wissen</p>'
-            f'<h1 class="h-xl rv" data-d="1">Was SHK-Betriebe <span class="em k">am häufigsten fragen.</span></h1>'
+            f'<h1 class="h-xl rv" data-d="1">Was SHK&#8209;Betriebe <span class="em k">am häufigsten fragen.</span></h1>'
             f'<p class="lead rv" data-d="2">{WX_HUB_LEAD}</p></div></section>'
             f'<section class="sec wx-uebersicht"><div class="wrap"><nav class="wx-sprung rv" aria-label="Themen">{sprung}</nav>{gruppen}</div></section>')
     body += wx_cta('Deine Frage war <span class="em w">nicht dabei?</span>', 'In 30 Minuten klären wir, was in deinem Umkreis an Bewerbungen oder Anfragen drin ist. Die Antworten bekommst du von Noah.', 'potenzial')

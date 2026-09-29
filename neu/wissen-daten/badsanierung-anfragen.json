@@ -26,7 +26,7 @@
     {
       "zahl": "26",
       "einheit": "%",
-      "text": "der Deutschen informieren sich auf den Websites der Betriebe, bevor sie einen Handwerker auswählen. 41 % tun es vor Ort.",
+      "text": "der Deutschen informieren sich auf den Websites der Betriebe, bevor sie einen Handwerker auswählen. 41 % tun es vor Ort.",
       "quelle": "Bitkom 2025",
       "url": "https://www.bitkom.org/Presse/Presseinformation/Handwerkersuche-Gespraech-schlaegt-Netz"
     }
@@ -73,7 +73,7 @@
     },
     {
       "h2": "Warum ärgern sich viele SHK-Betriebe über Portal-Anfragen?",
-      "html": "<p>In unseren Gesprächen mit SHK-Inhabern kommt das Thema regelmäßig. Die Klagen ähneln sich: Der Kunde hat noch gar keinen Plan, er will nur einen Preis zum Vergleichen, oder man fährt eine Stunde für eine Besichtigung, und danach meldet sich niemand mehr.</p><p>Dazu kommt das Geld. Ein Inhaber erzählte uns von 50 € je gekaufter Anfrage, ein anderer will bei 100 € nicht mehr mitmachen. Bei einem Bad kann sich das trotzdem rechnen, auch wenn nur ein kleiner Teil der Anfragen zum Auftrag wird. Es kippt, wenn dieselbe Anfrage an mehrere Betriebe geht und am Ende der günstigste gewinnt.</p><p>Der Kern des Problems ist die Vorauswahl. Ein Portal fragt, was es für seine eigenen Zwecke braucht. Du brauchst andere Antworten: Gehört dem Anfragenden das Haus? Wie alt ist das Bad? Soll es dieses Jahr losgehen? Diese Fragen kannst du nur stellen, wenn die Anfrage über deinen eigenen Weg kommt.</p>",
+      "html": "<p>In unseren Gesprächen mit SHK-Inhabern kommt das Thema regelmäßig. Die Klagen ähneln sich: Der Kunde hat noch gar keinen Plan, er will nur einen Preis zum Vergleichen, oder man fährt eine Stunde für eine Besichtigung, und danach meldet sich niemand mehr.</p><p>Dazu kommt das Geld. Ein Inhaber erzählte uns von 50 € je gekaufter Anfrage, ein anderer will bei 100 € nicht mehr mitmachen. Bei einem Bad kann sich das trotzdem rechnen, auch wenn nur ein kleiner Teil der Anfragen zum Auftrag wird. Es kippt, wenn dieselbe Anfrage an mehrere Betriebe geht und am Ende der günstigste gewinnt.</p><p>Der Kern des Problems ist die Vorauswahl. Ein Portal fragt, was es für seine eigenen Zwecke braucht. Du brauchst andere Antworten: Gehört dem Anfragenden das Haus? Wie alt ist das Bad? Soll es dieses Jahr losgehen? Diese Fragen kannst du nur stellen, wenn die Anfrage über deinen eigenen Weg kommt.</p>",
       "zitat": {
         "text": "Ich bin nicht bereit, für einen Lead 100 Euro auszugeben, dann noch irgendeine lustige Servicegebühr. Das lohnt sich für mich nicht.",
         "wer": "Inhaber, SHK-Betrieb"
@@ -81,20 +81,20 @@
     },
     {
       "h2": "Wie kommen Bad-Anfragen direkt zu dir?",
-      "html": "<p>Der Weg ohne Portal hat fünf Schritte. Den Anfang macht der Umkreis, denn ein Bad baust du dort, wo deine Monteure morgens schnell sind.</p><ol><li><strong>Umkreis festlegen.</strong> Meist 20 bis 30 km um den Betrieb. Senftleben wirbt in 25 km, Sussmann in 30 km.</li><li><strong>Fotos im Betrieb machen.</strong> Dein Team, dein Lager, fertige Bäder, du selbst. Hausbesitzer wollen sehen, wer da bei ihnen im Bad steht.</li><li><strong>Anzeigen auf Facebook und Instagram schalten.</strong> Nur im Umkreis, mit dem Bad als Thema. In der Altersgruppe 50 bis 69 nutzen 29 % Facebook und 24 % Instagram jede Woche (ARD/ZDF-Medienstudie 2025).</li><li><strong>Anfrageseite mit Filterfragen.</strong> Die Anzeige führt auf eine kurze Seite, die vor den Kontaktdaten ein paar Fragen stellt.</li><li><strong>Schnell zurückrufen.</strong> Ruf am selben oder am nächsten Tag an, solange der Kunde noch weiß, was er ausgefüllt hat.</li></ol><p>Die Anfragen gehen an dich und an keinen anderen Betrieb. Wie das bei uns abläuft, steht auf der Seite <a href='/auftraege/'>Aufträge gewinnen</a>.</p>",
+      "html": "<p>Der Weg ohne Portal hat fünf Schritte. Den Anfang macht der Umkreis, denn ein Bad baust du dort, wo deine Monteure morgens schnell sind.</p><ol><li><strong>Umkreis festlegen.</strong> Meist 20 bis 30 km um den Betrieb. Senftleben wirbt in 25 km, Sussmann in 30 km.</li><li><strong>Fotos im Betrieb machen.</strong> Dein Team, dein Lager, fertige Bäder, du selbst. Hausbesitzer wollen sehen, wer da bei ihnen im Bad steht.</li><li><strong>Anzeigen auf Facebook und Instagram schalten.</strong> Nur im Umkreis, mit dem Bad als Thema. In der Altersgruppe 50 bis 69 nutzen 29 % Facebook und 24 % Instagram jede Woche (ARD/ZDF-Medienstudie 2025).</li><li><strong>Anfrageseite mit Filterfragen.</strong> Die Anzeige führt auf eine kurze Seite, die vor den Kontaktdaten ein paar Fragen stellt.</li><li><strong>Schnell zurückrufen.</strong> Ruf am selben oder am nächsten Tag an, solange der Kunde noch weiß, was er ausgefüllt hat.</li></ol><p>Die Anfragen gehen an dich und an keinen anderen Betrieb. Wie das bei uns abläuft, steht auf der Seite <a href='/auftraege/'>Aufträge gewinnen</a>.</p>",
       "balken": {
         "titel": "Wöchentliche Nutzung bei den 50- bis 69-Jährigen",
         "werte": [
           [
             "Facebook",
             29,
-            "29 %",
+            "29 %",
             true
           ],
           [
             "Instagram",
             24,
-            "24 %"
+            "24 %"
           ]
         ],
         "quelle": "Quelle: ARD/ZDF-Medienstudie 2025, Media Perspektiven 31/2025"
@@ -110,7 +110,7 @@
     },
     {
       "h2": "Was haben zwei SHK-Betriebe mit eigenen Bad-Anfragen erlebt?",
-      "html": "<p>Senftleben Haustechnik in Ehingen ist ein Meisterbetrieb in dritter Generation und ausgelastet. Seit Juli laufen trotzdem Anzeigen für Badsanierung, mit Benjamin Senftleben selbst vor der Kamera. In 2 Monaten kamen 21 Bad-Anfragen und über 10 Vor-Ort-Termine zusammen.</p><p>Die Erich Sussmann GmbH in Kirchheim bei München startete Anfang September, mit Patrick und Mirjana Wähnl vor der Kamera. Nach gut 2 Wochen stand der erste Auftrag über 10.000 €. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Als Nächstes wollen sie Wärmepumpe und Klima bewerben.</p><p>In beiden Fällen wurde etwa jede zweite Anfrage zum Vor-Ort-Termin. Das sind zwei Betriebe und kein Durchschnitt. Wie viele Anfragen in deinem Umkreis drin sind, hängt vor allem davon ab, wie viele Leute dort wohnen und welche Bilder die Anzeige zeigt. Mehr dazu im Artikel <a href='/wissen/anfragen-durch-werbung/'>Wie viele Anfragen bringt Werbung auf Facebook und Instagram?</a></p>",
+      "html": "<p>Senftleben Haustechnik in Ehingen ist ein Meisterbetrieb in dritter Generation und ausgelastet. Seit Juli laufen trotzdem Anzeigen für Badsanierung, mit Benjamin Senftleben selbst vor der Kamera. In 2 Monaten kamen 21 Bad-Anfragen und über 10 Vor-Ort-Termine zusammen.</p><p>Die Erich Sussmann GmbH in Kirchheim bei München startete Anfang September, mit Patrick und Mirjana Wähnl vor der Kamera. Nach gut 2 Wochen stand der erste Auftrag über 10.000 €. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Als Nächstes wollen sie Wärmepumpe und Klima bewerben.</p><p>In beiden Fällen wurde etwa jede zweite Anfrage zum Vor-Ort-Termin. Das sind zwei Betriebe und kein Durchschnitt. Wie viele Anfragen in deinem Umkreis drin sind, hängt vor allem davon ab, wie viele Leute dort wohnen und welche Bilder die Anzeige zeigt. Mehr dazu im Artikel <a href='/wissen/anfragen-durch-werbung/'>Wie viele Anfragen bringt Werbung auf Facebook und Instagram?</a></p>",
       "tabelle": {
         "titel": "Zwei Bad-Kampagnen im Vergleich",
         "kopf": [
@@ -133,7 +133,7 @@
             "30 km",
             "14 seit Anfang September",
             "über 7",
-            "erster Auftrag über 10.000 € nach gut 2 Wochen"
+            "erster Auftrag über 10.000 € nach gut 2 Wochen"
           ]
         ],
         "quelle": "Quelle: eigene Kampagnen, 2026. Einzelfälle, keine Prognose."
@@ -157,7 +157,7 @@
     ],
     [
       "Wie schnell kommen die ersten Bad-Anfragen?",
-      "Oft in den ersten Tagen nach dem Start, bei Sussmann war es am Anfang „extrem“. Bis zum Auftrag dauert es länger, weil ein Bad geplant wird. Sussmann hatte den ersten Auftrag über 10.000 € nach gut 2 Wochen, Senftleben 21 Anfragen in 2 Monaten."
+      "Oft in den ersten Tagen nach dem Start, bei Sussmann war es am Anfang „extrem“. Bis zum Auftrag dauert es länger, weil ein Bad geplant wird. Sussmann hatte den ersten Auftrag über 10.000 € nach gut 2 Wochen, Senftleben 21 Anfragen in 2 Monaten."
     ],
     [
       "Was, wenn ich die Anfragen nicht abarbeiten kann?",
@@ -165,11 +165,11 @@
     ],
     [
       "Brauche ich dafür eine neue Website?",
-      "Für den Start reicht die Anfrageseite, auf die die Anzeige führt. Deine Website bleibt, wie sie ist. Aktuell sollte sie trotzdem sein: Für 40 % der Deutschen ist eine fehlende Website ein Grund, einen Handwerksbetrieb nicht zu wählen (Bitkom 2025)."
+      "Für den Start reicht die Anfrageseite, auf die die Anzeige führt. Deine Website bleibt, wie sie ist. Aktuell sollte sie trotzdem sein: Für 40 % der Deutschen ist eine fehlende Website ein Grund, einen Handwerksbetrieb nicht zu wählen (Bitkom 2025)."
     ],
     [
       "Was kostet eine Bad-Anfrage über eigene Anzeigen?",
-      "Das hängt vom Umkreis und von den Bildern ab. In unseren Kampagnen liegt das Werbebudget meist bei 25 bis 33 € am Tag und geht direkt an Meta. Was das bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch."
+      "Das hängt vom Umkreis und von den Bildern ab. In unseren Kampagnen liegt das Werbebudget meist bei 25 bis 33 € am Tag und geht direkt an Meta. Was das bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch."
     ]
   ],
   "quellen": [

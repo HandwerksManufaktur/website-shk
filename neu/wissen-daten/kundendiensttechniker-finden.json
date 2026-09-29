@@ -72,15 +72,15 @@
     },
     {
       "h2": "Was kostet dich ein fehlender Kundendienstler?",
-      "html": "<p>Im Kundendienst siehst du die Lücke im Kalender. Wartungen rutschen nach hinten, Störungen gehen vor, und irgendwann sagst du Kunden ab. Dazu kommt die Mehrarbeit für den Kundendienstler, den du schon hast. Wie viel Umsatz dabei liegen bleibt, kannst du grob selbst ausrechnen.</p><p><strong>Rechenbeispiel, keine Prognose:</strong> Angenommen, pro Woche bleiben 6 Wartungen liegen, und eine Wartung bringt 150 € Umsatz. Bleibt die Stelle so lange offen wie im Schnitt, sind das rund 35 Wochen (242 Tage laut Bundesagentur für Arbeit). Dann fehlen 6 × 150 € × 35 = 31.500 € Umsatz. Aufträge, die aus einer Wartung entstehen, etwa ein neuer Kessel, sind darin noch nicht enthalten.</p><p>Die Werte sind Annahmen. Trag deine eigenen in die Tabelle ein. Ausführlich gerechnet steht das im Artikel <a href='/wissen/kosten-offene-stelle/'>Was kostet eine unbesetzte Stelle im SHK-Betrieb?</a></p>",
+      "html": "<p>Im Kundendienst siehst du die Lücke im Kalender. Wartungen rutschen nach hinten, Störungen gehen vor, und irgendwann sagst du Kunden ab. Dazu kommt die Mehrarbeit für den Kundendienstler, den du schon hast. Wie viel Umsatz dabei liegen bleibt, kannst du grob selbst ausrechnen.</p><p><strong>Rechenbeispiel, keine Prognose:</strong> Angenommen, pro Woche bleiben 6 Wartungen liegen, und eine Wartung bringt 150 € Umsatz. Bleibt die Stelle so lange offen wie im Schnitt, sind das rund 35 Wochen (242 Tage laut Bundesagentur für Arbeit). Dann fehlen 6 × 150 € × 35 = 31.500 € Umsatz. Aufträge, die aus einer Wartung entstehen, etwa ein neuer Kessel, sind darin noch nicht enthalten.</p><p>Die Werte sind Annahmen. Trag deine eigenen in die Tabelle ein. Ausführlich gerechnet steht das im Artikel <a href='/wissen/kosten-offene-stelle/'>Was kostet eine unbesetzte Stelle im SHK-Betrieb?</a></p>",
       "tabelle": {
         "titel": "Deine Zahlen",
         "kopf": ["Wert", "Beispiel", "Dein Wert"],
         "zeilen": [
           ["Wartungen, die pro Woche liegen bleiben", "6", "___"],
-          ["Umsatz je Wartung", "150 €", "___"],
+          ["Umsatz je Wartung", "150 €", "___"],
           ["Wochen, bis die Stelle besetzt ist", "35", "___"],
-          ["Umsatz, der fehlt (Zeile 1 × 2 × 3)", "31.500 €", "___"]
+          ["Umsatz, der fehlt (Zeile 1 × 2 × 3)", "31.500 €", "___"]
         ],
         "quelle": "Rechenbeispiel mit angenommenen Werten. 35 Wochen entsprechen den 242 Tagen, die eine gemeldete Stelle in Handwerksberufen 2025 im Schnitt offen war (Bundesagentur für Arbeit)."
       }
@@ -94,7 +94,7 @@
     ["Bewerben sich da nicht vor allem Quereinsteiger?", "Auch Quereinsteiger tippen auf Anzeigen. Deshalb fragt die erste Filterfrage, ob jemand schon Heizungen gewartet oder Störungen gesucht hat. Wer das verneint, merkt selbst, dass die Stelle nicht passt, und bricht meist ab. Bei Heizung-Sanitär Klaß hatten 16 von 35 Bewerbern Erfahrung im Fach. Wen du anrufst, entscheidest du."],
     ["Funktioniert Recruiting über Instagram und Facebook überhaupt?", "Viele Inhaber wischen Werbung selbst weg und zweifeln deshalb. Eine Anzeige mit Stockfoto wischt man weg, eine mit Gesichtern aus dem Nachbarort bleibt eher hängen. 54 Prozent der 30- bis 49-Jährigen nutzen Instagram jede Woche (ARD/ZDF-Medienstudie 2025). Bei Erwin Schmidt & Sohn kamen so 25 Bewerbungen in vier Wochen."],
     ["Wie viel Zeit kostet mich das?", "Zum Start ein Gespräch von 30 Minuten und ein Fototermin im Betrieb, der meist 1,5 bis 2 Stunden dauert. Danach rufst du die Bewerber an und führst die Gespräche. Insgesamt rechnen Betriebe bei uns mit rund 5 bis 6 Stunden. Die Anzeigen und das Nachregeln übernehmen wir."],
-    ["Was kostet es, einen Kundendienstler über Anzeigen zu suchen?", "Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung der Kampagne. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch."],
+    ["Was kostet es, einen Kundendienstler über Anzeigen zu suchen?", "Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung der Kampagne. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch."],
     ["Was passiert, wenn keine Bewerbung kommt?", "Dann liegt es meist an der Anzeige, am Umkreis oder an den Filterfragen, und genau dort wird nachgeregelt. Eine feste Zahl an Bewerbungen sagen wir vorher nicht zu, weil sie von deinem Umkreis und deinem Angebot abhängt. Was in so einem Fall passiert, steht in unserem Artikel zu ausbleibenden Bewerbungen."]
   ],
   "quellen": [

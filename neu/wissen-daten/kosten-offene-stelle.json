@@ -7,7 +7,7 @@
  "reihe": 6,
  "top": false,
  "teaser": "Ein fehlender Monteur kostet dich jeden Monat den Ertrag seiner Stunden. Mit dieser Formel rechnest du deine eigene Zahl aus.",
- "kurzantwort": "Eine offene Monteursstelle kostet dich jeden Monat den Deckungsbeitrag der Stunden, die niemand verrechnet, dazu Suchkosten und Überstunden der anderen. Im Rechenbeispiel mit 120 Stunden und 35 € Deckungsbeitrag je Stunde sind das 4.200 € im Monat. Gemeldete Stellen im Handwerk waren 2025 laut Bundesagentur für Arbeit im Schnitt 242 Tage offen.",
+ "kurzantwort": "Eine offene Monteursstelle kostet dich jeden Monat den Deckungsbeitrag der Stunden, die niemand verrechnet, dazu Suchkosten und Überstunden der anderen. Im Rechenbeispiel mit 120 Stunden und 35 € Deckungsbeitrag je Stunde sind das 4.200 € im Monat. Gemeldete Stellen im Handwerk waren 2025 laut Bundesagentur für Arbeit im Schnitt 242 Tage offen.",
  "lesezeit": 8,
  "leistung": "monteure",
  "zahlen": [
@@ -57,11 +57,11 @@
   },
   {
    "h2": "Was genau kostet dich ein fehlender Monteur?",
-   "html": "<p>Fehlt ein Monteur, sparst du seinen Lohn. Du verlierst aber, was seine Stunden sonst eingebracht hätten, und die festen Kosten für Halle und Firmenwagen laufen weiter. Der Verlust ist deshalb der Deckungsbeitrag. Das ist dein Stundenverrechnungssatz minus die Lohnkosten des Monteurs je Stunde, mal die Stunden, die niemand verrechnet.</p><p>Dazu kommen Posten, die in keiner Buchhaltung als Kosten der offenen Stelle auftauchen:</p><ul><li>Aufträge, die du absagst oder ins nächste Jahr schiebst, weil niemand frei ist.</li><li>Überstunden deiner anderen Leute, bezahlt oder abgefeiert.</li><li>Suchkosten. Betriebe haben uns 2.500 € für eine Zeitungsanzeige mit einer einzigen Bewerbung genannt, 7.000 bis 10.000 € für einen Vermittler und Abwerbeprämien bis 5.000 €.</li><li>Die Gefahr, dass ein überlasteter Kollege selbst kündigt.</li></ul><p>Die Rechnung unten nimmt nur den Deckungsbeitrag und die Suchkosten. Alles andere kommt obendrauf.</p>"
+   "html": "<p>Fehlt ein Monteur, sparst du seinen Lohn. Du verlierst aber, was seine Stunden sonst eingebracht hätten, und die festen Kosten für Halle und Firmenwagen laufen weiter. Der Verlust ist deshalb der Deckungsbeitrag. Das ist dein Stundenverrechnungssatz minus die Lohnkosten des Monteurs je Stunde, mal die Stunden, die niemand verrechnet.</p><p>Dazu kommen Posten, die in keiner Buchhaltung als Kosten der offenen Stelle auftauchen:</p><ul><li>Aufträge, die du absagst oder ins nächste Jahr schiebst, weil niemand frei ist.</li><li>Überstunden deiner anderen Leute, bezahlt oder abgefeiert.</li><li>Suchkosten. Betriebe haben uns 2.500 € für eine Zeitungsanzeige mit einer einzigen Bewerbung genannt, 7.000 bis 10.000 € für einen Vermittler und Abwerbeprämien bis 5.000 €.</li><li>Die Gefahr, dass ein überlasteter Kollege selbst kündigt.</li></ul><p>Die Rechnung unten nimmt nur den Deckungsbeitrag und die Suchkosten. Alles andere kommt obendrauf.</p>"
   },
   {
    "h2": "Rechenbeispiel: So rechnest du die Kosten aus",
-   "html": "<p>Die Formel:</p><p><strong>Kosten = Monate offen × verrechenbare Stunden im Monat × (Stundensatz − Lohnkosten je Stunde) + Suchkosten</strong></p><p>Die Annahmen im Beispiel:</p><ul><li><strong>8 Monate offen:</strong> 242 Tage, der Durchschnitt im Handwerk laut Bundesagentur.</li><li><strong>120 verrechenbare Stunden im Monat:</strong> ein Monteur, der an rund 20 Tagen je 6 Stunden beim Kunden abrechnet.</li><li><strong>70 € Stundensatz netto</strong> und <strong>35 € Lohnkosten je verrechenbarer Stunde</strong> mit Lohnnebenkosten. Das ergibt 35 € Deckungsbeitrag je Stunde.</li><li><strong>2.500 € Suchkosten:</strong> eine Zeitungsanzeige, wie sie uns ein Betrieb genannt hat.</li></ul><p>Ausgeschrieben: 8 × 120 × (70 € − 35 €) + 2.500 € = 8 × 120 × 35 € + 2.500 € = 33.600 € + 2.500 € = <strong>36.100 €</strong>. Je Monat fehlen dir im Beispiel 120 × 35 € = 4.200 €.</p><p>Das ist ein Rechenbeispiel, keine Prognose. Bis auf die Vakanzzeit sind alle Werte angenommen, deine können höher oder niedriger liegen. Material, das der Monteur mit Aufschlag verbaut hätte, fehlt in der Rechnung, genauso abgesagte Aufträge und Überstunden. Trag deine Werte in die Tabelle ein.</p>",
+   "html": "<p>Die Formel:</p><p><strong>Kosten = Monate offen × verrechenbare Stunden im Monat × (Stundensatz − Lohnkosten je Stunde) + Suchkosten</strong></p><p>Die Annahmen im Beispiel:</p><ul><li><strong>8 Monate offen:</strong> 242 Tage, der Durchschnitt im Handwerk laut Bundesagentur.</li><li><strong>120 verrechenbare Stunden im Monat:</strong> ein Monteur, der an rund 20 Tagen je 6 Stunden beim Kunden abrechnet.</li><li><strong>70 € Stundensatz netto</strong> und <strong>35 € Lohnkosten je verrechenbarer Stunde</strong> mit Lohnnebenkosten. Das ergibt 35 € Deckungsbeitrag je Stunde.</li><li><strong>2.500 € Suchkosten:</strong> eine Zeitungsanzeige, wie sie uns ein Betrieb genannt hat.</li></ul><p>Ausgeschrieben: 8 × 120 × (70 € − 35 €) + 2.500 € = 8 × 120 × 35 € + 2.500 € = 33.600 € + 2.500 € = <strong>36.100 €</strong>. Je Monat fehlen dir im Beispiel 120 × 35 € = 4.200 €.</p><p>Das ist ein Rechenbeispiel, keine Prognose. Bis auf die Vakanzzeit sind alle Werte angenommen, deine können höher oder niedriger liegen. Material, das der Monteur mit Aufschlag verbaut hätte, fehlt in der Rechnung, genauso abgesagte Aufträge und Überstunden. Trag deine Werte in die Tabelle ein.</p>",
    "tabelle": {
     "titel": "Deine Zahlen zum Selbstrechnen",
     "kopf": [
@@ -86,37 +86,37 @@
      [
       "Stundensatz netto",
       "Dein Verrechnungssatz für eine Monteursstunde",
-      "70 €",
+      "70 €",
       "…"
      ],
      [
       "Lohnkosten je Stunde",
       "Bruttolohn plus Nebenkosten im Monat, geteilt durch die verrechenbaren Stunden",
-      "35 €",
+      "35 €",
       "…"
      ],
      [
       "Deckungsbeitrag je Stunde",
       "Stundensatz minus Lohnkosten",
-      "35 €",
+      "35 €",
       "…"
      ],
      [
       "Kosten je Monat",
       "Stunden × Deckungsbeitrag",
-      "4.200 €",
+      "4.200 €",
       "…"
      ],
      [
       "Suchkosten",
       "Anzeigen, Vermittler, Prämien",
-      "2.500 €",
+      "2.500 €",
       "…"
      ],
      [
       "Kosten gesamt",
       "Monate × Kosten je Monat + Suchkosten",
-      "36.100 €",
+      "36.100 €",
       "…"
      ]
     ],
@@ -125,7 +125,7 @@
   },
   {
    "h2": "Was bringt es, die Stelle früher zu besetzen?",
-   "html": "<p>Jeder Monat, den die Stelle früher besetzt ist, bringt im Beispiel 4.200 € zurück. Ist sie nach drei Monaten besetzt und damit fünf Monate früher als der Durchschnitt, bleiben 5 × 4.200 € = 21.000 € im Betrieb.</p><p>Erwin Schmidt &amp; Sohn in Sindelfingen hatte es vorher mit QR-Code-Aufklebern auf den Firmenwagen und der Stelle auf der eigenen Website probiert. Florian Schmidt, Geschäftsführer, sagt dazu: „Hat aber nicht so wirklich was gebracht.“ Mit Anzeigen im Umkreis kamen dann 25 Bewerbungen in 4 Wochen. Die Stelle als Anlagenmechaniker SHK im Kundendienst ist besetzt. Das ist ein Fall aus einem Betrieb, eine Zusage für deinen ist es nicht.</p><p>Zum Vergleich mit den 4.200 € im Monat: Das Werbebudget in unseren Kampagnen liegt meist bei 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat, und geht direkt an Meta. Was die Suche bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch. Einen Überblick über die Wege und ihre Kosten gibt der Ratgeber <a href='/wissen/kosten-mitarbeitergewinnung/'>Was kostet es, einen Monteur zu finden?</a></p>",
+   "html": "<p>Jeder Monat, den die Stelle früher besetzt ist, bringt im Beispiel 4.200 € zurück. Ist sie nach drei Monaten besetzt und damit fünf Monate früher als der Durchschnitt, bleiben 5 × 4.200 € = 21.000 € im Betrieb.</p><p>Erwin Schmidt &amp; Sohn in Sindelfingen hatte es vorher mit QR-Code-Aufklebern auf den Firmenwagen und der Stelle auf der eigenen Website probiert. Florian Schmidt, Geschäftsführer, sagt dazu: „Hat aber nicht so wirklich was gebracht.“ Mit Anzeigen im Umkreis kamen dann 25 Bewerbungen in 4 Wochen. Die Stelle als Anlagenmechaniker SHK im Kundendienst ist besetzt. Das ist ein Fall aus einem Betrieb, eine Zusage für deinen ist es nicht.</p><p>Zum Vergleich mit den 4.200 € im Monat: Das Werbebudget in unseren Kampagnen liegt meist bei 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat, und geht direkt an Meta. Was die Suche bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch. Einen Überblick über die Wege und ihre Kosten gibt der Ratgeber <a href='/wissen/kosten-mitarbeitergewinnung/'>Was kostet es, einen Monteur zu finden?</a></p>",
    "zitat": {
     "text": "Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.",
     "wer": "Florian Schmidt, Geschäftsführer, Erwin Schmidt &amp; Sohn, Sindelfingen"
@@ -143,7 +143,7 @@
  "faq": [
   [
    "Spare ich nicht Geld, solange die Stelle offen ist?",
-   "Du sparst den Lohn, aber du verlierst mehr. Die festen Kosten laufen weiter, und die Stunden, die der Monteur verrechnet hätte, fehlen. Im Rechenbeispiel bleibt nach Abzug des Lohns ein Deckungsbeitrag von 35 € je Stunde. Bei 120 Stunden im Monat fehlen dir damit 4.200 €."
+   "Du sparst den Lohn, aber du verlierst mehr. Die festen Kosten laufen weiter, und die Stunden, die der Monteur verrechnet hätte, fehlen. Im Rechenbeispiel bleibt nach Abzug des Lohns ein Deckungsbeitrag von 35 € je Stunde. Bei 120 Stunden im Monat fehlen dir damit 4.200 €."
   ],
   [
    "Wie komme ich an meine verrechenbaren Stunden?",
@@ -155,7 +155,7 @@
   ],
   [
    "Lohnt sich ein Personalvermittler?",
-   "Betriebe nennen uns Honorare von 7.000 bis 10.000 €. Rechne sie gegen deine Kosten je Monat. Besetzt der Vermittler die Stelle zwei Monate früher, hat er sich im Rechenbeispiel mit 8.400 € ungefähr bezahlt gemacht. Frag vorher, ob er Bewerber vorstellt oder nur Profile schickt, und was passiert, wenn der Neue in der Probezeit geht."
+   "Betriebe nennen uns Honorare von 7.000 bis 10.000 €. Rechne sie gegen deine Kosten je Monat. Besetzt der Vermittler die Stelle zwei Monate früher, hat er sich im Rechenbeispiel mit 8.400 € ungefähr bezahlt gemacht. Frag vorher, ob er Bewerber vorstellt oder nur Profile schickt, und was passiert, wenn der Neue in der Probezeit geht."
   ],
   [
    "Gilt die Rechnung auch für Bürostellen?",

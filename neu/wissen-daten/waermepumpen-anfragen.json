@@ -7,14 +7,14 @@
   "reihe": 2,
   "top": false,
   "teaser": "Der Markt wächst, viele Hausbesitzer warten trotzdem ab. Wie du jetzt an Wärmepumpen-Anfragen aus deinem Umkreis kommst.",
-  "kurzantwort": "Der Markt ist da: 2025 wurden in Deutschland 299.000 Heizungswärmepumpen verkauft, 55 % mehr als im Vorjahr, knapp 80 % davon für Bestandsgebäude. Anfragen kommen über Wartungskunden, Empfehlung, Portale oder eigene Anzeigen im Umkreis mit Filterfragen zu Haus und Heizung. Weil viele wegen der Förderung abwarten, zählt, früh als Ansprechpartner bekannt zu sein.",
+  "kurzantwort": "Der Markt ist da: 2025 wurden in Deutschland 299.000 Heizungswärmepumpen verkauft, 55 % mehr als im Vorjahr, knapp 80 % davon für Bestandsgebäude. Anfragen kommen über Wartungskunden, Empfehlung, Portale oder eigene Anzeigen im Umkreis mit Filterfragen zu Haus und Heizung. Weil viele wegen der Förderung abwarten, zählt, früh als Ansprechpartner bekannt zu sein.",
   "lesezeit": 7,
   "leistung": "auftraege",
   "zahlen": [
     {
       "zahl": "299.000",
       "einheit": "Stück",
-      "text": "Heizungswärmepumpen verkauft in Deutschland 2025, ein Plus von 55 % zum Vorjahr.",
+      "text": "Heizungswärmepumpen verkauft in Deutschland 2025, ein Plus von 55 % zum Vorjahr.",
       "quelle": "Bundesverband Wärmepumpe 2026",
       "url": "https://www.waermepumpe.de/presse/pressemitteilungen/details/ueber-50-prozent-im-plus-waermepumpen-absatz-steigt-2025-deutlich/"
     },
@@ -28,7 +28,7 @@
     {
       "zahl": "627.000",
       "einheit": "Stück",
-      "text": "Wärmeerzeuger insgesamt verkauft 2025, 12 % weniger als 2024. Der Markt schrumpft, die Wärmepumpe wächst.",
+      "text": "Wärmeerzeuger insgesamt verkauft 2025, 12 % weniger als 2024. Der Markt schrumpft, die Wärmepumpe wächst.",
       "quelle": "BDH 2026",
       "url": "https://www.bdh-industrie.de/fileadmin/user_upload/Downloads/PresseMeldungen/Absatzzahlen_Heizungen_Deutschland_2025.pdf"
     }
@@ -36,7 +36,7 @@
   "abschnitte": [
     {
       "h2": "Wie groß ist der Wärmepumpen-Markt 2025?",
-      "html": "<p>Beim Warten des alten Gaskessels fragt dich der Kunde nebenbei, ob bei ihm auch eine Wärmepumpe ginge. Dann will er wissen, ob es dafür noch Geld gibt und ob er besser abwartet.</p><p>Der Markt ist 2025 deutlich größer als im Vorjahr. Laut Bundesverband Wärmepumpe wurden 2025 in Deutschland 299.000 Heizungswärmepumpen verkauft, 55 % mehr als 2024. Der Heizungsindustrieverband BDH zählt im selben Jahr 627.000 verkaufte Wärmeerzeuger insgesamt, 12 % weniger als im Vorjahr.</p><p>Beide Zahlen zusammen zeigen, was in den Heizungskellern passiert. Es werden insgesamt weniger Heizungen getauscht, aber fast jede zweite neue ist eine Wärmepumpe. Und knapp 80 % davon gehen in Bestandsgebäude. Das sind die Häuser, in denen du heute schon Kessel wartest. Nur gut ein Fünftel geht in Neubauten.</p><p>Für dich heißt das: Die Kunden für Wärmepumpen sitzen in deinem Umkreis in Einfamilienhäusern mit einer alten Öl- oder Gasheizung. Die Frage ist, ob sie beim Tausch an dich denken oder an den Anbieter, dessen Flyer gerade im Briefkasten lag.</p>",
+      "html": "<p>Beim Warten des alten Gaskessels fragt dich der Kunde nebenbei, ob bei ihm auch eine Wärmepumpe ginge. Dann will er wissen, ob es dafür noch Geld gibt und ob er besser abwartet.</p><p>Der Markt ist 2025 deutlich größer als im Vorjahr. Laut Bundesverband Wärmepumpe wurden 2025 in Deutschland 299.000 Heizungswärmepumpen verkauft, 55 % mehr als 2024. Der Heizungsindustrieverband BDH zählt im selben Jahr 627.000 verkaufte Wärmeerzeuger insgesamt, 12 % weniger als im Vorjahr.</p><p>Beide Zahlen zusammen zeigen, was in den Heizungskellern passiert. Es werden insgesamt weniger Heizungen getauscht, aber fast jede zweite neue ist eine Wärmepumpe. Und knapp 80 % davon gehen in Bestandsgebäude. Das sind die Häuser, in denen du heute schon Kessel wartest. Nur gut ein Fünftel geht in Neubauten.</p><p>Für dich heißt das: Die Kunden für Wärmepumpen sitzen in deinem Umkreis in Einfamilienhäusern mit einer alten Öl- oder Gasheizung. Die Frage ist, ob sie beim Tausch an dich denken oder an den Anbieter, dessen Flyer gerade im Briefkasten lag.</p>",
       "tabelle": {
         "titel": "Heizungsmarkt Deutschland 2025",
         "kopf": [
@@ -47,27 +47,27 @@
         "zeilen": [
           [
             "Heizungswärmepumpen verkauft",
-            "299.000 (plus 55 %)",
+            "299.000 (plus 55 %)",
             "BWP, 27.01.2026"
           ],
           [
             "Wärmeerzeuger insgesamt verkauft",
-            "627.000 (minus 12 %)",
+            "627.000 (minus 12 %)",
             "BDH, 31.01.2026"
           ],
           [
             "Anteil Wärmepumpe am Gesamtmarkt",
-            "rund 48 %",
+            "rund 48 %",
             "eigene Berechnung: 299.000 geteilt durch 627.000"
           ],
           [
             "davon in Bestandsgebäuden",
-            "knapp 80 %",
+            "knapp 80 %",
             "BWP, 27.01.2026"
           ],
           [
             "Förderzusagen für Wärmepumpen",
-            "über 288.000 (plus 91 %)",
+            "über 288.000 (plus 91 %)",
             "BWP, 27.01.2026"
           ],
           [
@@ -123,7 +123,7 @@
     },
     {
       "h2": "Sollte ich Bad und Wärmepumpe zusammen bewerben?",
-      "html": "<p>Besser getrennt. Wer sein Bad sanieren will, reagiert auf andere Bilder und andere Fragen als jemand, dessen Gaskessel 25 Jahre alt ist. In einer gemeinsamen Anzeige verliert jede Botschaft an Kraft, und die Filterfragen passen nur zur Hälfte der Anfragen.</p><p>In unseren Kampagnen bekommt deshalb jede Leistung ihre eigene Anzeige und ihre eigene Anfrageseite. So siehst du auch, was dir welcher Weg bringt.</p><p>Zur Einordnung, damit du weißt, worauf unsere Zahlen beruhen: Unsere veröffentlichten Ergebnisse kommen bisher aus Bad-Kampagnen. Die Erich Sussmann GmbH in Kirchheim bei München hatte nach gut 2 Wochen Bad-Kampagne den ersten Auftrag über 10.000 € und will als Nächstes Wärmepumpe und Klima bewerben, vor der Heizperiode. Eigene Wärmepumpen-Zahlen nennen wir hier erst, wenn wir sie haben. Wie es bei Bädern läuft, steht im Artikel <a href='/wissen/badsanierung-anfragen/'>Badsanierungs-Anfragen ohne Portale</a>.</p>"
+      "html": "<p>Besser getrennt. Wer sein Bad sanieren will, reagiert auf andere Bilder und andere Fragen als jemand, dessen Gaskessel 25 Jahre alt ist. In einer gemeinsamen Anzeige verliert jede Botschaft an Kraft, und die Filterfragen passen nur zur Hälfte der Anfragen.</p><p>In unseren Kampagnen bekommt deshalb jede Leistung ihre eigene Anzeige und ihre eigene Anfrageseite. So siehst du auch, was dir welcher Weg bringt.</p><p>Zur Einordnung, damit du weißt, worauf unsere Zahlen beruhen: Unsere veröffentlichten Ergebnisse kommen bisher aus Bad-Kampagnen. Die Erich Sussmann GmbH in Kirchheim bei München hatte nach gut 2 Wochen Bad-Kampagne den ersten Auftrag über 10.000 € und will als Nächstes Wärmepumpe und Klima bewerben, vor der Heizperiode. Eigene Wärmepumpen-Zahlen nennen wir hier erst, wenn wir sie haben. Wie es bei Bädern läuft, steht im Artikel <a href='/wissen/badsanierung-anfragen/'>Badsanierungs-Anfragen ohne Portale</a>.</p>"
     },
     {
       "h2": "Was kannst du diese Woche vor der Heizperiode selbst tun?",
@@ -133,7 +133,7 @@
   "faq": [
     [
       "Lohnt sich Werbung für Wärmepumpen, solange die Förderung unklar ist?",
-      "Das musst du für deinen Betrieb entscheiden. Der Markt ist 2025 um 55 % gewachsen, die Kunden sind also da. Wer heute abwartet, entscheidet sich irgendwann. Wer dann im Umkreis bekannt ist, wird zuerst angerufen."
+      "Das musst du für deinen Betrieb entscheiden. Der Markt ist 2025 um 55 % gewachsen, die Kunden sind also da. Wer heute abwartet, entscheidet sich irgendwann. Wer dann im Umkreis bekannt ist, wird zuerst angerufen."
     ],
     [
       "Könnt ihr meine Kunden zur Förderung beraten?",

@@ -7,7 +7,7 @@
   "reihe": 4,
   "top": false,
   "teaser": "Was zwei SHK-Betriebe an Bad-Anfragen bekommen haben und wie du dir mit einer einfachen Formel deine eigene Zahl ausrechnest.",
-  "kurzantwort": "Das hängt vor allem von Umkreis und Budget ab, eine feste Zahl sagt dir niemand seriös zu. Zwei Beispiele aus unseren Kampagnen: Senftleben Haustechnik bekam 21 Bad-Anfragen in 2 Monaten, die Erich Sussmann GmbH 14 Bad-Anfragen und nach gut 2 Wochen den ersten Auftrag über 10.000 €. Deine eigene Zahl rechnest du mit Besuchern mal Anfragequote.",
+  "kurzantwort": "Das hängt vor allem von Umkreis und Budget ab, eine feste Zahl sagt dir niemand seriös zu. Zwei Beispiele aus unseren Kampagnen: Senftleben Haustechnik bekam 21 Bad-Anfragen in 2 Monaten, die Erich Sussmann GmbH 14 Bad-Anfragen und nach gut 2 Wochen den ersten Auftrag über 10.000 €. Deine eigene Zahl rechnest du mit Besuchern mal Anfragequote.",
   "lesezeit": 8,
   "leistung": "auftraege",
   "zahlen": [
@@ -20,7 +20,7 @@
     {
       "zahl": "14",
       "einheit": "Anfragen",
-      "text": "Bad-Anfragen im 30-km-Umkreis seit Anfang September, der erste Auftrag über 10.000 € kam nach gut 2 Wochen.",
+      "text": "Bad-Anfragen im 30-km-Umkreis seit Anfang September, der erste Auftrag über 10.000 € kam nach gut 2 Wochen.",
       "quelle": "eigene Kampagne, Erich Sussmann GmbH, 2026"
     },
     {
@@ -33,7 +33,7 @@
   "abschnitte": [
     {
       "h2": "Was haben zwei SHK-Kampagnen an Anfragen gebracht?",
-      "html": "<p>Der eine Anbieter am Telefon nennt dir eine hohe Zahl, der nächste eine noch höhere, und nachprüfen kannst du keine davon. Deshalb zuerst zwei Fälle mit Namen.</p><p>Beide Betriebe haben Bad-Kampagnen auf Facebook und Instagram, beide mit Fotos aus dem eigenen Betrieb und Filterfragen vor der Anfrage.</p><p>Senftleben Haustechnik in Ehingen wirbt seit Juli im Umkreis von 25 km. Die Anzeigen wurden 125.000 Mal angezeigt, in 2 Monaten kamen 21 Bad-Anfragen und über 10 Vor-Ort-Termine. Das sind gut 10 Anfragen im Monat.</p><p>Die Erich Sussmann GmbH in Kirchheim bei München startete Anfang September im Umkreis von 30 km. Bisher kamen 14 Bad-Anfragen und über 7 Vor-Ort-Termine. Nach gut 2 Wochen stand der erste Auftrag über 10.000 €.</p><p>Auffällig ist eine Zahl, die bei beiden fast gleich ist: Etwa jede zweite Anfrage wurde zum Vor-Ort-Termin. Das ist unsere eigene Rechnung aus zwei Fällen und kein Durchschnitt aller Kampagnen. Für deine Planung ist sie trotzdem ein brauchbarer Anhaltspunkt, und im nächsten Abschnitt setzt du sie in die Rechnung für deinen Umkreis ein.</p>",
+      "html": "<p>Der eine Anbieter am Telefon nennt dir eine hohe Zahl, der nächste eine noch höhere, und nachprüfen kannst du keine davon. Deshalb zuerst zwei Fälle mit Namen.</p><p>Beide Betriebe haben Bad-Kampagnen auf Facebook und Instagram, beide mit Fotos aus dem eigenen Betrieb und Filterfragen vor der Anfrage.</p><p>Senftleben Haustechnik in Ehingen wirbt seit Juli im Umkreis von 25 km. Die Anzeigen wurden 125.000 Mal angezeigt, in 2 Monaten kamen 21 Bad-Anfragen und über 10 Vor-Ort-Termine. Das sind gut 10 Anfragen im Monat.</p><p>Die Erich Sussmann GmbH in Kirchheim bei München startete Anfang September im Umkreis von 30 km. Bisher kamen 14 Bad-Anfragen und über 7 Vor-Ort-Termine. Nach gut 2 Wochen stand der erste Auftrag über 10.000 €.</p><p>Auffällig ist eine Zahl, die bei beiden fast gleich ist: Etwa jede zweite Anfrage wurde zum Vor-Ort-Termin. Das ist unsere eigene Rechnung aus zwei Fällen und kein Durchschnitt aller Kampagnen. Für deine Planung ist sie trotzdem ein brauchbarer Anhaltspunkt, und im nächsten Abschnitt setzt du sie in die Rechnung für deinen Umkreis ein.</p>",
       "balken": {
         "titel": "Bad-Anfragen und Vor-Ort-Termine in zwei Kampagnen",
         "werte": [
@@ -64,7 +64,7 @@
     },
     {
       "h2": "Wie rechnest du dir deine Anfragen selbst aus?",
-      "html": "<p>Mit einer Kette aus vier Zahlen. Die Anfrageseite ist die kurze Seite, auf die deine Anzeige führt. Die Anfragequote ist der Anteil der Besucher, die dort ihre Daten abschicken.</p><p><strong>Besucher × Anfragequote = Anfragen. Anfragen × Terminquote × Auftragsquote = Aufträge.</strong></p><p>Ein Rechenbeispiel, keine Prognose. Annahmen: 30 € Werbebudget am Tag, also 900 € im Monat. 400 Besucher auf der Anfrageseite. Eine Anfragequote von 2,5 %, angenommen und leicht aufgerundet aus 2,4 % in einem unserer Funnels (26 Einsendungen bei rund 1.100 Besuchern). Jede zweite Anfrage wird zum Termin, wie bei Senftleben und Sussmann. Jeder vierte Termin wird zum Auftrag, das ist eine Annahme, setz hier deine eigene Quote ein. Ein Bad bringt 10.000 €, so viel wie Sussmanns erster Auftrag.</p><p>400 × 2,5 % = 10 Anfragen. 10 × 50 % = 5 Termine. 5 × 25 % = 1,25 Aufträge im Monat, also 12.500 € Auftragswert. Pro Anfrage sind das 90 € Werbebudget. Einrichtung und Betreuung sind darin nicht enthalten, die rechnen wir im Erstgespräch mit allen Posten durch.</p>",
+      "html": "<p>Mit einer Kette aus vier Zahlen. Die Anfrageseite ist die kurze Seite, auf die deine Anzeige führt. Die Anfragequote ist der Anteil der Besucher, die dort ihre Daten abschicken.</p><p><strong>Besucher × Anfragequote = Anfragen. Anfragen × Terminquote × Auftragsquote = Aufträge.</strong></p><p>Ein Rechenbeispiel, keine Prognose. Annahmen: 30 € Werbebudget am Tag, also 900 € im Monat. 400 Besucher auf der Anfrageseite. Eine Anfragequote von 2,5 %, angenommen und leicht aufgerundet aus 2,4 % in einem unserer Funnels (26 Einsendungen bei rund 1.100 Besuchern). Jede zweite Anfrage wird zum Termin, wie bei Senftleben und Sussmann. Jeder vierte Termin wird zum Auftrag, das ist eine Annahme, setz hier deine eigene Quote ein. Ein Bad bringt 10.000 €, so viel wie Sussmanns erster Auftrag.</p><p>400 × 2,5 % = 10 Anfragen. 10 × 50 % = 5 Termine. 5 × 25 % = 1,25 Aufträge im Monat, also 12.500 € Auftragswert. Pro Anfrage sind das 90 € Werbebudget. Einrichtung und Betreuung sind darin nicht enthalten, die rechnen wir im Erstgespräch mit allen Posten durch.</p>",
       "tabelle": {
         "titel": "Deine Zahlen",
         "kopf": [
@@ -77,7 +77,7 @@
           [
             "Werbebudget im Monat",
             "Was du an Meta zahlst",
-            "900 €",
+            "900 €",
             ""
           ],
           [
@@ -89,31 +89,31 @@
           [
             "Anfragequote",
             "Anteil der Besucher, die anfragen",
-            "2,5 %",
+            "2,5 %",
             ""
           ],
           [
             "Terminquote",
             "Anteil der Anfragen mit Vor-Ort-Termin",
-            "50 %",
+            "50 %",
             ""
           ],
           [
             "Auftragsquote",
             "Anteil der Termine mit Auftrag",
-            "25 %",
+            "25 %",
             ""
           ],
           [
             "Auftragswert",
             "Was ein Bad bei dir im Schnitt bringt",
-            "10.000 €",
+            "10.000 €",
             ""
           ],
           [
             "Ergebnis",
             "Aufträge und Auftragswert im Monat",
-            "1,25 Aufträge, 12.500 €",
+            "1,25 Aufträge, 12.500 €",
             ""
           ]
         ],
@@ -122,11 +122,11 @@
     },
     {
       "h2": "Wovon hängt ab, wie viele Anfragen kommen?",
-      "html": "<p>Von mehr Dingen, als eine Agentur in einem Satz verspricht. Diese sechs machen den größten Unterschied:</p><ul><li><strong>Umkreis und Einwohner.</strong> 25 km um eine Kreisstadt sind etwas anderes als 25 km im Allgäu.</li><li><strong>Leistung.</strong> Ein Bad wird länger geplant als ein Kesseltausch, der kaputt ist.</li><li><strong>Bilder.</strong> Dein Team und deine Bäder wirken anders als ein Katalogbild. Die Leute sehen, wer bei ihnen arbeitet.</li><li><strong>Filterfragen.</strong> Jede Frage kostet ein paar Anfragen und spart dir Fahrten. Mehr Fragen heißt weniger, aber passendere Anfragen.</li><li><strong>Budget.</strong> In unseren Kampagnen meist 25 bis 33 € am Tag, direkt an Meta.</li><li><strong>Rückruf.</strong> Wer erst nach einer Woche anruft, hat Anfragen, die auf dem Papier stehen und in Wahrheit kalt sind.</li></ul><p>Deine Kunden sind auf beiden Kanälen unterwegs. Laut ARD/ZDF-Medienstudie 2025 nutzen von den 30- bis 49-Jährigen 54 % Instagram und 48 % Facebook jede Woche. Bei den 50- bis 69-Jährigen sind es 24 % und 29 %.</p>"
+      "html": "<p>Von mehr Dingen, als eine Agentur in einem Satz verspricht. Diese sechs machen den größten Unterschied:</p><ul><li><strong>Umkreis und Einwohner.</strong> 25 km um eine Kreisstadt sind etwas anderes als 25 km im Allgäu.</li><li><strong>Leistung.</strong> Ein Bad wird länger geplant als ein Kesseltausch, der kaputt ist.</li><li><strong>Bilder.</strong> Dein Team und deine Bäder wirken anders als ein Katalogbild. Die Leute sehen, wer bei ihnen arbeitet.</li><li><strong>Filterfragen.</strong> Jede Frage kostet ein paar Anfragen und spart dir Fahrten. Mehr Fragen heißt weniger, aber passendere Anfragen.</li><li><strong>Budget.</strong> In unseren Kampagnen meist 25 bis 33 € am Tag, direkt an Meta.</li><li><strong>Rückruf.</strong> Wer erst nach einer Woche anruft, hat Anfragen, die auf dem Papier stehen und in Wahrheit kalt sind.</li></ul><p>Deine Kunden sind auf beiden Kanälen unterwegs. Laut ARD/ZDF-Medienstudie 2025 nutzen von den 30- bis 49-Jährigen 54 % Instagram und 48 % Facebook jede Woche. Bei den 50- bis 69-Jährigen sind es 24 % und 29 %.</p>"
     },
     {
       "h2": "Wie schnell kommen die ersten Anfragen?",
-      "html": "<p>Oft schneller als die Aufträge. Bei Sussmann ging es gleich nach dem Start los. „Am Anfang war es extrem“, sagt Patrick Wähnl über die ersten Tage. Der erste Auftrag über 10.000 € stand nach gut 2 Wochen.</p><p>Bäder brauchen trotzdem Zeit. Wer heute anfragt, will oft erst im Frühjahr loslegen, und zwischen Anfrage, Vor-Ort-Termin, Angebot und Auftrag liegen Wochen. Bei Bewerbungen ist das anders: Die kommen oft in den ersten 24 Stunden nach dem Start. Eine Bad-Kampagne misst du deshalb besser nach zwei, drei Monaten als nach zwei Wochen.</p><p>Darum planen wir die ersten 3 Monate als Anlaufzeit. In der Zeit lernt die Kampagne, welche Anzeige in deinem Umkreis läuft, und wir regeln nach. Danach ist sie monatlich kündbar.</p><p>Kommen am Anfang mehr Anfragen, als dein Team schafft, wird gedrosselt. Das geht über das Budget, den Umkreis oder eine Pause.</p>",
+      "html": "<p>Oft schneller als die Aufträge. Bei Sussmann ging es gleich nach dem Start los. „Am Anfang war es extrem“, sagt Patrick Wähnl über die ersten Tage. Der erste Auftrag über 10.000 € stand nach gut 2 Wochen.</p><p>Bäder brauchen trotzdem Zeit. Wer heute anfragt, will oft erst im Frühjahr loslegen, und zwischen Anfrage, Vor-Ort-Termin, Angebot und Auftrag liegen Wochen. Bei Bewerbungen ist das anders: Die kommen oft in den ersten 24 Stunden nach dem Start. Eine Bad-Kampagne misst du deshalb besser nach zwei, drei Monaten als nach zwei Wochen.</p><p>Darum planen wir die ersten 3 Monate als Anlaufzeit. In der Zeit lernt die Kampagne, welche Anzeige in deinem Umkreis läuft, und wir regeln nach. Danach ist sie monatlich kündbar.</p><p>Kommen am Anfang mehr Anfragen, als dein Team schafft, wird gedrosselt. Das geht über das Budget, den Umkreis oder eine Pause.</p>",
       "bild": {
         "src": "/assets/fotos/sussmann-patrick-mirjana.jpg",
         "alt": "Patrick Wähnl und Mirjana vor einem Firmenwagen der Erich Sussmann GmbH",
@@ -154,7 +154,7 @@
     ],
     [
       "Wie viel Werbebudget brauche ich?",
-      "In unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Das Geld geht direkt an Meta, nicht an uns. Was das bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch."
+      "In unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Das Geld geht direkt an Meta, nicht an uns. Was das bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch."
     ],
     [
       "Was zählt als Anfrage?",

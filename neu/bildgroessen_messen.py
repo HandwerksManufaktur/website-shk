@@ -14,6 +14,9 @@ from pathlib import Path
 HIER = Path(__file__).resolve().parent
 BASIS = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8792'
 SEITEN = ['/', '/neu/', '/neu/monteure/', '/neu/auftraege/', '/neu/fallstudien/', '/neu/ueber-uns/', '/neu/potenzialanalyse/']
+# Wissen/Ratgeber (29.09.2026): Übersicht + jeder Artikel aus neu/wissen-daten — auch die zeitgesteuerten, damit ihre Fotos
+# beim Veröffentlichen schon die gemessene Anzeigegröße haben (sonst lädt das Handy ein zu großes Bild).
+SEITEN += ['/neu/wissen/'] + [f'/neu/wissen/{p.stem}/' for p in sorted((Path(__file__).resolve().parent / 'wissen-daten').glob('*.json')) if not p.name.startswith('_')]
 MESSEN = '''async () => {
   document.querySelectorAll('img').forEach(i => i.loading = 'eager');
   await Promise.all([...document.images].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 8000); })));

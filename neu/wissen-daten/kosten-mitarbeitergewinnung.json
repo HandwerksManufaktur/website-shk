@@ -6,8 +6,8 @@
   "kategorie": "Monteure finden",
   "reihe": 3,
   "top": false,
-  "teaser": "Von 2.500 € für eine einzige Bewerbung bis 10.000 € für eine Vermittlung. So vergleichst du die Wege nach dem, was im Team ankommt.",
-  "kurzantwort": "Das hängt vom Weg ab. Inhaber nannten uns 2.500 € für eine Zeitungsanzeige mit einer einzigen Bewerbung und 7.000 bis 10.000 € für einen Personalvermittler. Bei Anzeigen auf Facebook und Instagram zahlst du das Werbebudget direkt an Meta, meist 750 bis 1.000 € im Monat, dazu kommen Aufbau und Betreuung. Vergleiche am Ende die Kosten je passender Bewerbung.",
+  "teaser": "Von 2.500 € für eine einzige Bewerbung bis 10.000 € für eine Vermittlung. So vergleichst du die Wege nach dem, was im Team ankommt.",
+  "kurzantwort": "Das hängt vom Weg ab. Inhaber nannten uns 2.500 € für eine Zeitungsanzeige mit einer einzigen Bewerbung und 7.000 bis 10.000 € für einen Personalvermittler. Bei Anzeigen auf Facebook und Instagram zahlst du das Werbebudget direkt an Meta, meist 750 bis 1.000 € im Monat, dazu kommen Aufbau und Betreuung. Vergleiche am Ende die Kosten je passender Bewerbung.",
   "lesezeit": 7,
   "leistung": "monteure",
   "zahlen": [
@@ -33,7 +33,7 @@
   "abschnitte": [
     {
       "h2": "Was kosten die üblichen Wege, einen Monteur zu finden?",
-      "html": "<p>Die Rechnung für die Zeitungsanzeige ist bezahlt, gemeldet hat sich einer. Jetzt überlegst du, ob du es mit einem Vermittler probierst oder mit Anzeigen im Netz. Jeder Weg kostet Geld, es fällt nur an verschiedenen Stellen an. Die Zeitung bezahlst du vorher, egal ob sich jemand meldet. Bei der Empfehlung bekommt dein Mitarbeiter eine Prämie. Die Tabelle fasst zusammen, was uns SHK-Inhaber in Gesprächen genannt haben. Das sind Einzelfälle, keine Marktpreise.</p><p>Auffällig ist, wie weit die Beträge auseinanderliegen und wie wenig manche davon gebracht haben. Ein Betrieb hat rund 1.600 € für Anzeigen online und in der Zeitung ausgegeben und eine einzige Bewerbung bekommen, die nicht gepasst hat. Ein anderer zahlte 2.500 € für eine Zeitungsanzeige mit einer Bewerbung.</p><p>Die Stellenmeldung bei der Arbeitsagentur kostet dich keine Gebühr. Für Sanitär, Heizung und Klimatechnik fehlen dort allerdings die passenden Leute. Laut KOFA gab es 2025 für 70,6 Prozent der offenen Gesellenstellen in SHK rechnerisch keinen passend qualifizierten Arbeitslosen.</p>",
+      "html": "<p>Die Rechnung für die Zeitungsanzeige ist bezahlt, gemeldet hat sich einer. Jetzt überlegst du, ob du es mit einem Vermittler probierst oder mit Anzeigen im Netz. Jeder Weg kostet Geld, es fällt nur an verschiedenen Stellen an. Die Zeitung bezahlst du vorher, egal ob sich jemand meldet. Bei der Empfehlung bekommt dein Mitarbeiter eine Prämie. Die Tabelle fasst zusammen, was uns SHK-Inhaber in Gesprächen genannt haben. Das sind Einzelfälle, keine Marktpreise.</p><p>Auffällig ist, wie weit die Beträge auseinanderliegen und wie wenig manche davon gebracht haben. Ein Betrieb hat rund 1.600 € für Anzeigen online und in der Zeitung ausgegeben und eine einzige Bewerbung bekommen, die nicht gepasst hat. Ein anderer zahlte 2.500 € für eine Zeitungsanzeige mit einer Bewerbung.</p><p>Die Stellenmeldung bei der Arbeitsagentur kostet dich keine Gebühr. Für Sanitär, Heizung und Klimatechnik fehlen dort allerdings die passenden Leute. Laut KOFA gab es 2025 für 70,6 Prozent der offenen Gesellenstellen in SHK rechnerisch keinen passend qualifizierten Arbeitslosen.</p>",
       "tabelle": {
         "titel": "Was Inhaber uns genannt haben",
         "kopf": [
@@ -44,32 +44,32 @@
         "zeilen": [
           [
             "Zeitungsanzeige",
-            "2.500 €",
+            "2.500 €",
             "eine Bewerbung"
           ],
           [
             "Online-Anzeige und Zeitung",
-            "rund 1.600 €",
+            "rund 1.600 €",
             "eine Bewerbung, die nicht gepasst hat"
           ],
           [
             "Personalvermittler",
-            "7.000 bis 10.000 €",
+            "7.000 bis 10.000 €",
             "hängt vom Vermittler und seiner Kartei ab"
           ],
           [
             "Prämie für Empfehlung oder Abwerbung",
-            "bis zu 5.000 €",
+            "bis zu 5.000 €",
             "ein Kollege, wenn jemand einen kennt"
           ],
           [
             "Stellenmeldung bei der Arbeitsagentur",
             "keine Gebühr",
-            "bei 70,6 % der offenen SHK-Gesellenstellen fehlt rechnerisch ein passender Arbeitsloser"
+            "bei 70,6 % der offenen SHK-Gesellenstellen fehlt rechnerisch ein passender Arbeitsloser"
           ],
           [
             "Anzeigen auf Facebook und Instagram",
-            "750 bis 1.000 € Werbebudget im Monat, dazu Aufbau und Betreuung",
+            "750 bis 1.000 € Werbebudget im Monat, dazu Aufbau und Betreuung",
             "bei Erwin Schmidt & Sohn 25 Bewerbungen in 4 Wochen"
           ]
         ],
@@ -81,23 +81,23 @@
           [
             "Personalvermittler",
             10000,
-            "7.000 bis 10.000 €"
+            "7.000 bis 10.000 €"
           ],
           [
             "Prämie für Empfehlung oder Abwerbung",
             5000,
-            "bis zu 5.000 €"
+            "bis zu 5.000 €"
           ],
           [
             "Zeitungsanzeige",
             2500,
-            "2.500 € für eine Bewerbung",
+            "2.500 € für eine Bewerbung",
             true
           ],
           [
             "Online-Anzeige und Zeitung",
             1600,
-            "rund 1.600 € für eine Bewerbung, die nicht passte"
+            "rund 1.600 € für eine Bewerbung, die nicht passte"
           ]
         ],
         "quelle": "Quelle: Angaben von Inhabern aus unseren Gesprächen 2026 (Einzelfälle, keine Marktpreise)"
@@ -105,7 +105,7 @@
     },
     {
       "h2": "Wie rechnest du, was dich eine passende Bewerbung kostet?",
-      "html": "<p>Die Summe auf der Rechnung sagt wenig. Wichtig ist, was du für einen Bewerber zahlst, den du auch zurückrufen würdest. Dafür reicht eine Formel.</p><p><strong>Kosten je passender Bewerbung = Ausgaben ÷ Zahl der passenden Bewerbungen</strong></p><p>Für die Zeitungsanzeige aus der Tabelle heißt das 2.500 € ÷ 1 = 2.500 €, falls die eine Bewerbung gepasst hat. Bei Online-Anzeige und Zeitung für rund 1.600 € kam keine passende Bewerbung, die Rechnung geht also gar nicht auf.</p><p>Für Anzeigen auf Facebook und Instagram folgt ein Rechenbeispiel mit ausgedachten Annahmen, keine Prognose. Eine Kampagne läuft 30 Tage mit 25 € Werbebudget am Tag, das sind 30 × 25 € = 750 €. Kommen in dieser Zeit angenommen 6 Bewerbungen, von denen 3 passen, kostet eine passende Bewerbung 750 € ÷ 3 = 250 € Werbebudget. Aufbau und Betreuung kommen dazu. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch.</p><p>Trag deine eigenen Zahlen in die Tabelle ein, am besten für jeden Weg, den du schon probiert hast.</p>",
+      "html": "<p>Die Summe auf der Rechnung sagt wenig. Wichtig ist, was du für einen Bewerber zahlst, den du auch zurückrufen würdest. Dafür reicht eine Formel.</p><p><strong>Kosten je passender Bewerbung = Ausgaben ÷ Zahl der passenden Bewerbungen</strong></p><p>Für die Zeitungsanzeige aus der Tabelle heißt das 2.500 € ÷ 1 = 2.500 €, falls die eine Bewerbung gepasst hat. Bei Online-Anzeige und Zeitung für rund 1.600 € kam keine passende Bewerbung, die Rechnung geht also gar nicht auf.</p><p>Für Anzeigen auf Facebook und Instagram folgt ein Rechenbeispiel mit ausgedachten Annahmen, keine Prognose. Eine Kampagne läuft 30 Tage mit 25 € Werbebudget am Tag, das sind 30 × 25 € = 750 €. Kommen in dieser Zeit angenommen 6 Bewerbungen, von denen 3 passen, kostet eine passende Bewerbung 750 € ÷ 3 = 250 € Werbebudget. Aufbau und Betreuung kommen dazu. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch.</p><p>Trag deine eigenen Zahlen in die Tabelle ein, am besten für jeden Weg, den du schon probiert hast.</p>",
       "tabelle": {
         "titel": "Deine Rechnung",
         "kopf": [
@@ -118,7 +118,7 @@
           [
             "Ausgaben",
             "alles, was der Weg gekostet hat",
-            "750 €",
+            "750 €",
             ""
           ],
           [
@@ -136,7 +136,7 @@
           [
             "Kosten je passender Bewerbung",
             "Ausgaben ÷ passende Bewerbungen",
-            "250 €",
+            "250 €",
             ""
           ]
         ],
@@ -172,7 +172,7 @@
     },
     {
       "h2": "Welche Posten stecken in den Kosten für Social Recruiting?",
-      "html": "<p>Bei Anzeigen auf Facebook und Instagram gibt es zwei Arten von Kosten. Das Werbebudget zahlst du direkt an Meta, abgebucht über das Werbekonto deines Betriebs. In unseren Kampagnen sind das meist 25 bis 33 € am Tag. Dazu kommt das Honorar für Aufbau und Betreuung. Im Einzelnen sind das diese Posten:</p><ul><li>das Werbebudget an Meta, das sich drosseln oder stoppen lässt</li><li>das Shooting bei dir im Betrieb mit deinen Leuten, meist 1,5 bis 2 Stunden</li><li>Anzeigen und die Bewerbungsseite mit Filterfragen</li><li>das Nachregeln, solange die Kampagne läuft</li><li>deine eigene Zeit für das Startgespräch und die Bewerbungsgespräche</li></ul><p>Die Kampagne hat 3 Monate Anlaufzeit, danach ist sie monatlich kündbar. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch, getrennt nach Werbebudget und Honorar. So kannst du es direkt neben Zeitung und Vermittler legen. Wie viel Budget sinnvoll ist, steht im Artikel <a href='/wissen/werbebudget-facebook-instagram/'>Werbebudget für Facebook und Instagram</a>.</p>"
+      "html": "<p>Bei Anzeigen auf Facebook und Instagram gibt es zwei Arten von Kosten. Das Werbebudget zahlst du direkt an Meta, abgebucht über das Werbekonto deines Betriebs. In unseren Kampagnen sind das meist 25 bis 33 € am Tag. Dazu kommt das Honorar für Aufbau und Betreuung. Im Einzelnen sind das diese Posten:</p><ul><li>das Werbebudget an Meta, das sich drosseln oder stoppen lässt</li><li>das Shooting bei dir im Betrieb mit deinen Leuten, meist 1,5 bis 2 Stunden</li><li>Anzeigen und die Bewerbungsseite mit Filterfragen</li><li>das Nachregeln, solange die Kampagne läuft</li><li>deine eigene Zeit für das Startgespräch und die Bewerbungsgespräche</li></ul><p>Die Kampagne hat 3 Monate Anlaufzeit, danach ist sie monatlich kündbar. Was das bei dir kostet, rechnen wir im Erstgespräch mit allen Posten durch, getrennt nach Werbebudget und Honorar. So kannst du es direkt neben Zeitung und Vermittler legen. Wie viel Budget sinnvoll ist, steht im Artikel <a href='/wissen/werbebudget-facebook-instagram/'>Werbebudget für Facebook und Instagram</a>.</p>"
     },
     {
       "h2": "Welcher Weg passt zu welcher Lage?",
@@ -190,7 +190,7 @@
   "faq": [
     [
       "Zahle ich das Werbebudget an euch?",
-      "Nein. Das Werbebudget läuft über das Werbekonto deines Betriebs und wird direkt von Meta abgebucht. In unseren Kampagnen sind das meist 25 bis 33 € am Tag. Du siehst jede Abbuchung selbst und kannst das Budget drosseln oder stoppen."
+      "Nein. Das Werbebudget läuft über das Werbekonto deines Betriebs und wird direkt von Meta abgebucht. In unseren Kampagnen sind das meist 25 bis 33 € am Tag. Du siehst jede Abbuchung selbst und kannst das Budget drosseln oder stoppen."
     ],
     [
       "Was kostet eure Betreuung?",
@@ -206,7 +206,7 @@
     ],
     [
       "Reicht nicht eine Prämie für Empfehlungen?",
-      "Mach das ruhig, eine Empfehlung aus dem Team ist ein guter Weg. Prämien bis zu 5.000 € sind uns in Gesprächen begegnet. Du kannst aber schlecht planen, wann jemand einen Kollegen mitbringt. Anzeigen im Umkreis ergänzen die Empfehlung, sie ersetzen sie nicht."
+      "Mach das ruhig, eine Empfehlung aus dem Team ist ein guter Weg. Prämien bis zu 5.000 € sind uns in Gesprächen begegnet. Du kannst aber schlecht planen, wann jemand einen Kollegen mitbringt. Anzeigen im Umkreis ergänzen die Empfehlung, sie ersetzen sie nicht."
     ]
   ],
   "quellen": [

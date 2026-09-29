@@ -1,27 +1,43 @@
 {
  "assets-fotos-erwin-schmidt-monteur": [
-  340,
-  370
+  360,
+  720
+ ],
+ "assets-fotos-erwin-schmidt-team": [
+  360,
+  720
+ ],
+ "assets-fotos-erwin-schmidt-van": [
+  360,
+  720
  ],
  "assets-fotos-florian-neutral": [
   80,
   60
  ],
+ "assets-fotos-klass-beratung": [
+  360,
+  720
+ ],
  "assets-fotos-klass-hebel-auftraege": [
   360,
-  300
+  720
  ],
  "assets-fotos-klass-hebel-monteure": [
   360,
-  230
+  720
+ ],
+ "assets-fotos-klass-monteur": [
+  360,
+  720
  ],
  "assets-fotos-klass-team-van": [
   360,
-  590
+  720
  ],
  "assets-fotos-klass-team-van-scharf": [
-  340,
-  370
+  360,
+  720
  ],
  "assets-fotos-klass-werkbank": [
   360,
@@ -39,21 +55,73 @@
   360,
   540
  ],
+ "assets-fotos-senftleben-benjamin-fenster": [
+  360,
+  720
+ ],
+ "assets-fotos-senftleben-benjamin-van": [
+  360,
+  720
+ ],
+ "assets-fotos-senftleben-team": [
+  360,
+  720
+ ],
  "assets-fotos-senftleben-team-2026": [
   360,
-  630
+  720
+ ],
+ "assets-fotos-shk-01": [
+  360,
+  720
  ],
  "assets-fotos-shk-02": [
   360,
-  390
+  720
+ ],
+ "assets-fotos-shk-03": [
+  360,
+  720
+ ],
+ "assets-fotos-shk-04": [
+  360,
+  720
+ ],
+ "assets-fotos-shk-05": [
+  360,
+  720
+ ],
+ "assets-fotos-shk-06": [
+  360,
+  720
+ ],
+ "assets-fotos-shk-07": [
+  360,
+  720
+ ],
+ "assets-fotos-sussmann-lager": [
+  360,
+  720
  ],
  "assets-fotos-sussmann-lager-scharf": [
   360,
-  630
+  720
+ ],
+ "assets-fotos-sussmann-patrick-mirjana": [
+  360,
+  720
+ ],
+ "assets-fotos-sussmann-patrick-mirjana-van": [
+  360,
+  720
+ ],
+ "assets-fotos-sussmann-team-2026": [
+  360,
+  720
  ],
  "assets-fotos-sussmann-wagen-nebeneinander": [
   360,
-  380
+  720
  ],
  "assets-funnels-erwin-schmidt-jobs-full": [
   310,
@@ -189,7 +257,7 @@
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
   160,
-  160
+  170
  ],
  "logos-shk-logo-irlbacher-weiss": [
   40,
@@ -256,6 +324,83 @@
   "/neu/ueber-uns/": [
    "assets-fotos-noah-laptop-hoch"
   ],
-  "/neu/potenzialanalyse/": []
+  "/neu/potenzialanalyse/": [],
+  "/neu/wissen/": [],
+  "/neu/wissen/ablauf-kampagne/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/agentur-pruefen/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/anfragen-durch-werbung/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/anlagenmechaniker-finden/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/attraktiv-fuer-monteure/": [
+   "assets-fotos-klass-hebel-monteure",
+   "assets-team-noah"
+  ],
+  "/neu/wissen/ausgelastet-werbung/": [
+   "assets-fotos-senftleben-benjamin-van",
+   "assets-team-noah"
+  ],
+  "/neu/wissen/azubi-anlagenmechaniker-finden/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/bad-anfragen-nachfassen/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/badsanierung-anfragen/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/bewerber-schnell-zurueckrufen/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/fallstudie-erwin-schmidt/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/fallstudie-klass/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/fallstudie-senftleben/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/fallstudie-sussmann/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/keine-bewerbung-was-dann/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/kosten-mitarbeitergewinnung/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/kosten-offene-stelle/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/kundendiensttechniker-finden/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/obermonteur-finden/": [
+   "assets-fotos-klass-beratung",
+   "assets-team-noah"
+  ],
+  "/neu/wissen/passende-bewerber/": [
+   "assets-fotos-klass-team-van-scharf",
+   "assets-team-noah"
+  ],
+  "/neu/wissen/social-recruiting-shk/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/stellenanzeige-shk-schreiben/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/waermepumpen-anfragen/": [
+   "assets-team-noah"
+  ],
+  "/neu/wissen/werbebudget-facebook-instagram/": [
+   "assets-team-noah"
+  ]
  }
 }

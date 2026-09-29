@@ -35,7 +35,7 @@
   "abschnitte": [
     {
       "h2": "Warum sind SHK-Betriebe bei Agenturen misstrauisch?",
-      "html": "<p>Du stehst beim Kunden im Heizungskeller, und das Handy zeigt eine unbekannte Nummer. Am anderen Ende will dir jemand in fünf Minuten erklären, wie du an mehr Aufträge kommst.</p><p>Die meisten Inhaber, mit denen wir sprechen, haben schon eine Agentur am Telefon gehabt, oft mehrere in derselben Woche. Viele haben auch schon Geld ausgegeben und wenig dafür bekommen. Ein Inhaber zahlte 2.500 € für eine Zeitungsanzeige und bekam eine Bewerbung. Ein anderer ließ eine Kampagne laufen, auf die sich nur Leute ohne Erfahrung im Fach meldeten. Das Misstrauen ist also gelernt.</p><p>Laut Bitkom sind 56 % der Handwerksbetriebe auf Social Media präsent oder werben dort, 37 % schalten Anzeigen im Internet. Der Markt ist groß, und entsprechend viele Anbieter rufen an. Ob einer seriös arbeitet, erkennst du selten am ersten Gespräch. Du erkennst es an Dingen, die du selbst nachprüfen kannst.</p><p>Die folgenden Abschnitte gehen diese Punkte einzeln durch. Am Ende steht eine Checkliste, die du neben das nächste Angebot legen kannst. Sie gilt für jede Agentur, auch für uns.</p>",
+      "html": "<p>Du stehst beim Kunden im Heizungskeller, und das Handy zeigt eine unbekannte Nummer. Am anderen Ende will dir jemand in fünf Minuten erklären, wie du an mehr Aufträge kommst.</p><p>Die meisten Inhaber, mit denen wir sprechen, haben schon eine Agentur am Telefon gehabt, oft mehrere in derselben Woche. Viele haben auch schon Geld ausgegeben und wenig dafür bekommen. Ein Inhaber zahlte 2.500 € für eine Zeitungsanzeige und bekam eine Bewerbung. Ein anderer ließ eine Kampagne laufen, auf die sich nur Leute ohne Erfahrung im Fach meldeten. Das Misstrauen ist also gelernt.</p><p>Laut Bitkom sind 56 % der Handwerksbetriebe auf Social Media präsent oder werben dort, 37 % schalten Anzeigen im Internet. Der Markt ist groß, und entsprechend viele Anbieter rufen an. Ob einer seriös arbeitet, erkennst du selten am ersten Gespräch. Du erkennst es an Dingen, die du selbst nachprüfen kannst.</p><p>Die folgenden Abschnitte gehen diese Punkte einzeln durch. Am Ende steht eine Checkliste, die du neben das nächste Angebot legen kannst. Sie gilt für jede Agentur, auch für uns.</p>",
       "zitat": {
         "text": "… du denkst halt immer, okay, da zahle ich das Gold und es bringt nichts oder es kommt nichts.",
         "wer": "SHK-Betrieb im Gespräch, 2026"
@@ -46,13 +46,13 @@
           [
             "Auf Social Media präsent oder werben dort",
             56,
-            "56 %",
+            "56 %",
             true
           ],
           [
             "Schalten Anzeigen im Internet",
             37,
-            "37 %"
+            "37 %"
           ]
         ],
         "quelle": "Quelle: Bitkom Research, Digitalisierung des Handwerks 2025"
@@ -60,7 +60,7 @@
     },
     {
       "h2": "Wie prüfst du die Referenzen einer Agentur?",
-      "html": "<p>Eine Referenz ist nur so viel wert, wie du sie nachprüfen kannst. „Ein SHK-Betrieb aus Bayern“ kannst du nicht anrufen. Eine gute Fallstudie nennt den Betrieb, den Ort, die Person und das Ergebnis mit Zeitraum.</p><ul><li>Gibt es den Betrieb, und steht die genannte Person auf dessen Website oder im Impressum?</li><li>Passt das Gewerk? Ergebnisse aus dem Onlinehandel sagen über deinen Heizungsbau wenig.</li><li>Steht ein Zeitraum dabei? „25 Bewerbungen“ ohne Wochenangabe lässt sich nicht einordnen.</li><li>Darfst du einen Kunden anrufen? Frag im Erstgespräch danach. Eine seriöse Agentur stellt den Kontakt her.</li></ul><p>So sieht das bei uns aus. Erwin Schmidt &amp; Sohn in Sindelfingen bekam in 4 Wochen 25 Bewerbungen für einen Anlagenmechaniker im Kundendienst, die Stelle ist besetzt. Senftleben Haustechnik in Ehingen hatte in 2 Monaten 21 Bad-Anfragen und mehr als 10 Vor-Ort-Termine. Die Erich Sussmann GmbH in Kirchheim bei München bekam nach gut 2 Wochen den ersten Bad-Auftrag über 10.000 €. Heizung-Sanitär Klaß in Türkenfeld bekam 35 Bewerbungen für einen Anlagenmechaniker, 16 davon mit Erfahrung im Fach. Alle vier Betriebe findest du im Netz, und Florian Schmidt und Benjamin Senftleben erzählen es in eigenen Videos.</p>"
+      "html": "<p>Eine Referenz ist nur so viel wert, wie du sie nachprüfen kannst. „Ein SHK-Betrieb aus Bayern“ kannst du nicht anrufen. Eine gute Fallstudie nennt den Betrieb, den Ort, die Person und das Ergebnis mit Zeitraum.</p><ul><li>Gibt es den Betrieb, und steht die genannte Person auf dessen Website oder im Impressum?</li><li>Passt das Gewerk? Ergebnisse aus dem Onlinehandel sagen über deinen Heizungsbau wenig.</li><li>Steht ein Zeitraum dabei? „25 Bewerbungen“ ohne Wochenangabe lässt sich nicht einordnen.</li><li>Darfst du einen Kunden anrufen? Frag im Erstgespräch danach. Eine seriöse Agentur stellt den Kontakt her.</li></ul><p>So sieht das bei uns aus. Erwin Schmidt &amp; Sohn in Sindelfingen bekam in 4 Wochen 25 Bewerbungen für einen Anlagenmechaniker im Kundendienst, die Stelle ist besetzt. Senftleben Haustechnik in Ehingen hatte in 2 Monaten 21 Bad-Anfragen und mehr als 10 Vor-Ort-Termine. Die Erich Sussmann GmbH in Kirchheim bei München bekam nach gut 2 Wochen den ersten Bad-Auftrag über 10.000 €. Heizung-Sanitär Klaß in Türkenfeld bekam 35 Bewerbungen für einen Anlagenmechaniker, 16 davon mit Erfahrung im Fach. Alle vier Betriebe findest du im Netz, und Florian Schmidt und Benjamin Senftleben erzählen es in eigenen Videos.</p>"
     },
     {
       "h2": "Was sagen Google-Bewertungen und das Bildmaterial?",
@@ -78,7 +78,7 @@
     },
     {
       "h2": "Was ist mit Portalen und gekauften Anfragen?",
-      "html": "<p>Viele SHK-Betriebe kennen Vermittlungsportale und gekaufte Anfragen. Ein Betrieb erzählte uns von 50 € pro Anfrage, ein anderer lehnte 100 € plus Servicegebühr ab. Die Klagen in unseren Gesprächen ähneln sich: Anfragen, die nur Preise vergleichen, und lange Fahrten zu Terminen ohne Abschluss.</p><p>Beim Vergleich mit einer Agentur hilft die Frage, wem die Anfrage gehört. Beim Portal kaufst du einen Kontakt. Bei einer eigenen Kampagne meldet sich der Kunde bei deinem Betrieb, weil er deine Leute und deine Bäder gesehen hat. Dafür trägst du das Werbebudget, und die Zahl der Anfragen schwankt.</p><p>Welcher Weg für dich passt, hängt an deinem Umkreis und daran, wie viele Anfragen dein Team abarbeiten kann. Mehr dazu im Artikel <a href='/wissen/badsanierung-anfragen/'>Wie bekomme ich Badsanierungs-Anfragen ohne Portale</a>.</p>",
+      "html": "<p>Viele SHK-Betriebe kennen Vermittlungsportale und gekaufte Anfragen. Ein Betrieb erzählte uns von 50 € pro Anfrage, ein anderer lehnte 100 € plus Servicegebühr ab. Die Klagen in unseren Gesprächen ähneln sich: Anfragen, die nur Preise vergleichen, und lange Fahrten zu Terminen ohne Abschluss.</p><p>Beim Vergleich mit einer Agentur hilft die Frage, wem die Anfrage gehört. Beim Portal kaufst du einen Kontakt. Bei einer eigenen Kampagne meldet sich der Kunde bei deinem Betrieb, weil er deine Leute und deine Bäder gesehen hat. Dafür trägst du das Werbebudget, und die Zahl der Anfragen schwankt.</p><p>Welcher Weg für dich passt, hängt an deinem Umkreis und daran, wie viele Anfragen dein Team abarbeiten kann. Mehr dazu im Artikel <a href='/wissen/badsanierung-anfragen/'>Wie bekomme ich Badsanierungs-Anfragen ohne Portale</a>.</p>",
       "zitat": {
         "text": "Ich bin nicht bereit, für ein [Lead] 100 Euro auszugeben, dann noch irgendeine lustige Servicegebühr manchmal, das lohnt sich für mich nicht.",
         "wer": "SHK-Betrieb mit Badsanierung, Gespräch 2026"

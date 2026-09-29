@@ -27,13 +27,13 @@
     {
       "zahl": "14",
       "einheit": "Anfragen",
-      "text": "für Badsanierung im September, daraus über 7 Vor-Ort-Termine und nach gut 2 Wochen ein Auftrag über 10.000 €.",
+      "text": "für Badsanierung im September, daraus über 7 Vor-Ort-Termine und nach gut 2 Wochen ein Auftrag über 10.000 €.",
       "quelle": "eigene Kampagne, Erich Sussmann GmbH, 2026"
     },
     {
       "zahl": "41",
       "einheit": "%",
-      "text": "der Deutschen informieren sich vor Ort beim Betrieb, bevor sie einen Handwerker wählen. Über Websites der Betriebe tun es 26 %.",
+      "text": "der Deutschen informieren sich vor Ort beim Betrieb, bevor sie einen Handwerker wählen. Über Websites der Betriebe tun es 26 %.",
       "quelle": "Bitkom 2025",
       "url": "https://www.bitkom.org/Presse/Presseinformation/Handwerkersuche-Gespraech-schlaegt-Netz"
     }
@@ -99,7 +99,7 @@
     },
     {
       "h2": "Wie legst du den Vor-Ort-Termin fest und bereitest ihn vor?",
-      "html": "<p>Ziel des ersten Anrufs ist ein Termin im Kalender. Die Einzelheiten zum Bad klärst du vor Ort, wo du es siehst. Drei Dinge helfen dabei:</p><ul><li><strong>Zwei Termine anbieten.</strong> „Passt Ihnen Dienstag oder Donnerstag besser?“ ist leichter zu beantworten als „Wann haben Sie Zeit?“.</li><li><strong>Fotos vorab erbitten.</strong> Bei einem unserer Kunden schicken manche Interessenten vor dem Termin Fotos vom Bad. Du siehst Fliesen und Platz, bevor du losfährst.</li><li><strong>Entfernung mitdenken.</strong> Nahe Anfragen lassen sich spontan einschieben, weite planst du mit Vorlauf.</li></ul><p>Manche Betriebe verlangen für die Besichtigung eine Gebühr, in unseren Gesprächen nannten Inhaber 100 bis 200 €. Ein Betrieb will eine Pauschale für das Angebot einführen, die bei Auftrag angerechnet wird. Das filtert Neugierige, kann aber auch ernsthafte Kunden kosten. Probier es erst, wenn du trotz Filterfragen zu oft umsonst fährst.</p>",
+      "html": "<p>Ziel des ersten Anrufs ist ein Termin im Kalender. Die Einzelheiten zum Bad klärst du vor Ort, wo du es siehst. Drei Dinge helfen dabei:</p><ul><li><strong>Zwei Termine anbieten.</strong> „Passt Ihnen Dienstag oder Donnerstag besser?“ ist leichter zu beantworten als „Wann haben Sie Zeit?“.</li><li><strong>Fotos vorab erbitten.</strong> Bei einem unserer Kunden schicken manche Interessenten vor dem Termin Fotos vom Bad. Du siehst Fliesen und Platz, bevor du losfährst.</li><li><strong>Entfernung mitdenken.</strong> Nahe Anfragen lassen sich spontan einschieben, weite planst du mit Vorlauf.</li></ul><p>Manche Betriebe verlangen für die Besichtigung eine Gebühr, in unseren Gesprächen nannten Inhaber 100 bis 200 €. Ein Betrieb will eine Pauschale für das Angebot einführen, die bei Auftrag angerechnet wird. Das filtert Neugierige, kann aber auch ernsthafte Kunden kosten. Probier es erst, wenn du trotz Filterfragen zu oft umsonst fährst.</p>",
       "zitat": {
         "text": "Mir kam es bis jetzt bei den Kunden vor Ort nicht so vor.",
         "wer": "Benjamin Senftleben auf die Frage, ob über Facebook nur Schnäppchenjäger kommen"
@@ -171,11 +171,11 @@
     ],
     [
       "Soll ich für den Vor-Ort-Termin Geld verlangen?",
-      "Manche Betriebe tun das und nennen 100 bis 200 € als Besichtigungsgebühr. Das filtert Neugierige, kann aber auch ernsthafte Kunden kosten. Probier zuerst Filterfragen und Fotos vorab. Eine Gebühr lohnt sich eher, wenn du trotzdem zu oft umsonst fährst."
+      "Manche Betriebe tun das und nennen 100 bis 200 € als Besichtigungsgebühr. Das filtert Neugierige, kann aber auch ernsthafte Kunden kosten. Probier zuerst Filterfragen und Fotos vorab. Eine Gebühr lohnt sich eher, wenn du trotzdem zu oft umsonst fährst."
     ],
     [
       "Wie viele Anfragen werden zum Auftrag?",
-      "Eine feste Quote können wir dir nicht nennen. In zwei Bad-Kampagnen wurde rund jede zweite Anfrage zum Vor-Ort-Termin, bei Sussmann kam der erste Auftrag über 10.000 € nach gut 2 Wochen. Wie viele Termine du für einen Auftrag brauchst, weißt du aus deinen eigenen Angeboten am besten."
+      "Eine feste Quote können wir dir nicht nennen. In zwei Bad-Kampagnen wurde rund jede zweite Anfrage zum Vor-Ort-Termin, bei Sussmann kam der erste Auftrag über 10.000 € nach gut 2 Wochen. Wie viele Termine du für einen Auftrag brauchst, weißt du aus deinen eigenen Angeboten am besten."
     ]
   ],
   "quellen": [
@@ -194,6 +194,6 @@
   "intern_belege": [
     "kunden/sussmann/README.md (Kontakt-Stages, Mail-Ablauf nach Versuchen, Erreichbarkeit 3 von 8 abends, PLZ & Ort, Stage „Schickt vorab Fotos“)",
     "kunden/senftleben/README.md (Zitat Benjamin zum Wohnort, 09.09.2026)",
-    "marketing/ratgeber/recherche/fragen-aus-close.md L-2, L-6, 5.3 (Rückruf 24 h, Besichtigungsgebühr 100–200 €, Kundenstimme Kapazität)"
+    "marketing/ratgeber/recherche/fragen-aus-close.md L-2, L-6, 5.3 (Rückruf 24 h, Besichtigungsgebühr 100–200 €, Kundenstimme Kapazität)"
   ]
 }

@@ -1693,3 +1693,96 @@ html.rd-offen{overflow:hidden}
 .wx-cta-noah img,.wx-cta-noah img[width][height]{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--night-line)}
 .wx-cta-noah b{display:block;font-size:15px} .wx-cta-noah small{display:block;font-size:14px;letter-spacing:.01em;color:var(--night-sub)}
 .wx-cta-noah:hover small{color:#fff}
+/* FAQ: Plus/Kreuz aus zwei Balken, exakt mittig (Textzeichen „+" saß je nach Schrift versetzt), offene Frage mit Trennlinie
+   und Luft zur Antwort (Noah, 29.09.2026: „das Kreuz ist nicht mehr ganz zentriert … kleinen Rand … nicht clean"). */
+.faq-item summary i{position:relative;font-size:0;color:transparent;width:32px;height:32px}
+.faq-item summary i::before,.faq-item summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:var(--ink);transition:background .3s}
+.faq-item summary i::after{transform:rotate(90deg)}
+.faq-item[open] summary i::before,.faq-item[open] summary i::after{background:#fff}
+.faq-item[open] summary{border-bottom:1px solid var(--line)}
+.faq-item[open] summary:hover{background:var(--card)}
+.faq-item .a{padding:18px 24px 24px}
+@media(max-width:640px){.faq-item summary{padding:16px 18px;font-size:16px;gap:12px}.faq-item .a{padding:16px 18px 20px}}
+.faq-item summary:hover i{background:var(--card)} .faq-item[open] summary:hover i{background:var(--ink)}
+
+/* ── Sichtprüfung 29.09.2026 (Noah: „kleine Design-Fehler … überall nochmal drüber … Mobiloptimierung") ── */
+/* 2 · Wege-Plan am Handy: ✕ sitzt auf dem Icon-Rand, nicht auf dem ersten Buchstaben */
+@media(max-width:760px){
+  .leiter.wege-plan .weg{column-gap:18px}
+  .leiter.wege-plan .weg .x{left:30px;top:34px}
+}
+/* 3 · Hero-Knopf passt auch bei 360 px (bricht notfalls sauber um, statt abgeschnitten zu werden) */
+@media(max-width:600px){.hero-cta .btn-lg{padding-left:18px;padding-right:18px}}
+@media(max-width:420px){.hero-cta .btn-lg{font-size:15.5px;white-space:normal;line-height:1.3;min-height:56px;text-align:center}.hero-cta .btn-lg .ik{flex:none}}
+/* 4 · Bento 04: Ziffer steht frei über der ersten Karte */
+.zelle.mit-tickets .tickets{margin-top:32px}
+/* 5 · Kontaktkarte: Symbol mit Luft in seiner Kachel */
+.wahl a>svg.ic{padding:12px;box-sizing:border-box;flex:none;overflow:visible}
+/* 6 · Kontaktkarte: Unterzeile mit eigener Zeilenhöhe */
+.wahl a span small{display:block;line-height:1.4;margin-top:2px}
+/* 8 · „Kurz gesagt": gerader Farbstrich statt einer Linie, die sich in die Rundung biegt */
+.wx-kurz{border-left:0;position:relative;padding-left:32px}
+.wx-kurz::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:4px;border-radius:0 4px 4px 0;background:var(--kalt)}
+@media(max-width:640px){.wx-kurz{padding-left:24px}.wx-kurz::before{top:18px;bottom:18px}}
+/* 7 · Absatz nach einer Aufzählung bekommt Abstand */
+.wx-teil ul+p,.wx-teil ol+p,.wx-teil ul+h3,.wx-teil ol+h3{margin-top:18px}
+/* 9 · Kennzahlen: Zeichen (%, €) neben der Zahl, Wort-Einheiten immer in eigener Zeile */
+.wx-zahl b small.wort{flex-basis:100%;margin-left:0;font-size:.44em;line-height:1.2}
+/* 10 · Quellen-Links: 44 px Tippfläche, ohne die Zeile aufzublähen */
+.wx-quelle a.wx-q-link{display:inline-block;padding:14px 0;margin:-14px 0;min-height:44px;box-sizing:border-box}
+/* 12 · „geplant am"-Chip in der Lesezeit-Zeile — schiebt den Titel nicht mehr nach unten */
+.wx-lese .wx-geplant{margin-left:8px;align-self:center}
+/* 13 · Etikett auf den Hero-Handys: Art und Betrieb zweizeilig; auf schmalen Handys nur die Art */
+.phone .etikett .et-t{display:grid;gap:1px;line-height:1.25}
+.phone .etikett .et-a{font-weight:600;opacity:.8}
+@media(max-width:900px){
+  .feed-innen .phone .etikett{left:8px;right:8px;bottom:10px;padding:6px 10px;justify-content:center;white-space:nowrap}
+  .feed-innen .phone .etikett .et-b{display:none}
+  .feed-innen .phone .etikett .et-a{opacity:1;font-weight:700}
+  .feed-innen .phone.reel .etikett{white-space:normal;text-align:center}
+}
+/* 14 · Tickets in schmalen Karten: Status-Chip unter den Text statt daneben */
+.tickets{container-type:inline-size}
+@container (max-width:400px){
+  .ticket{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:12px;row-gap:8px;align-items:start}
+  .ticket .ok{grid-column:2;justify-self:start;margin-left:0}
+}
+/* 17 · Stat-Zeile am Handy ohne Trennpunkte (hingen sonst am Zeilenende) */
+@media(max-width:600px){.trust{column-gap:18px;row-gap:6px}.trust>span:nth-child(even){display:none}}
+/* 18 · Kicker: Farbstrich steht vor der ersten Zeile, auch wenn der Kicker umbricht */
+.kick{align-items:flex-start}
+.kick::before{flex:none;margin-top:calc(.5lh - 1.5px)}
+/* 20 · Reiterleiste scrollt: Kante blendet aus, solange noch Reiter dahinter liegen */
+@media(max-width:1000px){
+  .vgl-tabs.rand-r{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 56px),transparent)}
+  .vgl-tabs.rand-l{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px);mask-image:linear-gradient(90deg,transparent,#000 40px)}
+  .vgl-tabs.rand-l.rand-r{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 56px),transparent)}
+}
+/* 21 · Umkreis-Grafik bleibt in der halben bzw. vollen Karte ganz sichtbar */
+@media(max-width:1180px){.umkreis{right:-10px;top:-14px}}
+/* 25 · Handlungsaufforderung im Artikel am Handy: Symbol an der Überschrift, Knopf unter dem Text */
+@media(max-width:640px){.wx-mitte{align-items:start}.wx-mitte-ic{margin-top:2px}.wx-mitte .btn{grid-column:2;justify-self:start}}
+/* 27 · Rechner-Dialog am Handy: feste Oberkante, springt zwischen den Schritten nicht mehr */
+@media(max-width:640px){.rd{margin:max(16px,6vh) auto auto}}
+/* 29 · Rechtstexte: Zwischenüberschrift klar über der fetten Absatzzeile */
+.recht-text h3{font-size:17.5px;margin:32px 0 10px;letter-spacing:-.01em}
+.recht-text h2+h3{margin-top:16px}
+/* 31 · Handy: weniger Leerraum zwischen den Abschnitten */
+@media(max-width:600px){
+  .sec,.system,.fall,.stimmen,.faq,.vergleich,.probiert,.hebel,.ueber.offen,.reels{padding-top:44px;padding-bottom:44px}
+  .statement{padding-top:40px;padding-bottom:40px}
+  .ueber.offen,.reels{padding-top:0}
+}
+@media(max-width:420px){.feed-innen .phone:not(.reel) .etikett{padding:6px 8px;gap:0}.feed-innen .phone:not(.reel) .etikett>i{display:none}.feed-innen .phone.reel .etikett{left:8px;right:8px;padding:6px 10px;justify-content:center}}
+@media(max-width:380px){.feed-innen .phone:not(.reel) .etikett{left:5px;right:5px;padding:6px 4px;letter-spacing:0}}
+/* 18 · Kicker „Potenzialanalyse · 30 Min. · kostenlos" am Handy zweizeilig ohne Punkt am Zeilenanfang */
+@media(max-width:600px){.kick .kick-pt{display:none}.kick .kick-rest{display:block}}
+/* 14 · Ticket-Bild in der Vorteil-Karte: wächst mit, statt die zweite Karte abzuschneiden */
+.vorteil.mit-bild .v-bild:has(.tickets){height:auto;min-height:230px;padding:18px 0}
+.vorteil.mit-bild .v-bild .tickets{transform:none;width:90%}
+@media(min-width:601px){.vorteile.bilder-v .vorteil.mit-bild{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;align-content:start}.vorteile.bilder-v .vorteil.mit-bild .v-bild{height:auto;min-height:230px;align-self:stretch}}
+@media(min-width:601px){.vorteile.bilder-v .vorteil.mit-bild .v-bild:not(:has(.tickets)){contain:size}}
+@media(max-width:420px){.wahl a{padding:16px 16px 16px 14px;gap:12px}.wahl a>svg.ic{width:44px;height:44px;padding:11px}}
+@media(min-width:601px) and (max-width:900px){.sec,.system,.fall,.stimmen,.faq,.vergleich,.probiert,.hebel{padding-top:48px;padding-bottom:48px}.ueber.offen,.reels{padding-bottom:48px}.statement{padding-top:48px;padding-bottom:48px}}
+
+.rd-ergebnis .rd-grob{margin-top:6px;font-weight:500}

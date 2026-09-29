@@ -185,12 +185,17 @@
   if (vb) {
     const tabs = $$('.vgl-tab', vb), pan = $$('.vgl-panel', vb), TAKT = 6000;
     let i = 0, timer = null, steht = rm;
+    // Reiterleiste scrollt unter 1000 px waagerecht: Kante blendet aus, solange dahinter noch Reiter liegen, und der aktive Reiter rückt ins Bild (Sichtprüfung 29.09.2026)
+    const leiste = $('.vgl-tabs', vb);
+    const rand = () => { if (!leiste) return; const m = leiste.scrollWidth - leiste.clientWidth; leiste.classList.toggle('rand-r', m > 4 && leiste.scrollLeft < m - 4); leiste.classList.toggle('rand-l', m > 4 && leiste.scrollLeft > 4); };
+    if (leiste) { leiste.addEventListener('scroll', rand, { passive: true }); addEventListener('resize', rand, { passive: true }); rand(); }
     vb.style.setProperty('--takt', TAKT / 1000 + 's');
     const zeig = (k, fokus) => {
       i = (k + tabs.length) % tabs.length;
       tabs.forEach((t, n) => { const an = n === i; t.classList.toggle('an', an); t.setAttribute('aria-selected', an ? 'true' : 'false'); t.tabIndex = an ? 0 : -1; const l = $('.lauf', t); if (l && an) { l.style.animation = 'none'; void l.offsetWidth; l.style.animation = ''; } });
       pan.forEach((p, n) => { const an = n === i; p.hidden = !an; p.classList.remove('an'); if (an) { void p.offsetWidth; p.classList.add('an'); } });
-      if (fokus) tabs[i].focus();
+      if (fokus) tabs[i].focus({ preventScroll: true });
+      if (leiste && leiste.scrollWidth > leiste.clientWidth + 4) { const x = tabs[i].getBoundingClientRect().left - leiste.getBoundingClientRect().left + leiste.scrollLeft - 16; leiste.scrollTo({ left: Math.max(0, x), behavior: rm ? 'auto' : 'smooth' }); }
     };
     const lauf = () => { clearInterval(timer); if (!steht) timer = setInterval(() => zeig(i + 1), TAKT); };
     tabs.forEach((t, n) => t.addEventListener('click', () => { steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(n); }));
@@ -258,14 +263,14 @@
       const r = $('[data-radar]', dlg), ok = $('.rd-radar-ok', r), t = $('[data-radar-text]', r);
       const ort = form.elements.ort.value.trim(), plz = form.elements.plz.value.trim();
       clearTimeout(radarUhr); r.classList.remove('fertig'); ok.hidden = true; t.hidden = false;
-      t.textContent = `Umkreis ${plz} ${ort} wird geprüft …`;
+      t.textContent = `Umkreis ${plz} ${ort} wird vorgemerkt …`;
       const ruhig = matchMedia('(prefers-reduced-motion: reduce)').matches;
       radarUhr = setTimeout(() => {
         r.classList.add('fertig'); t.hidden = true; ok.hidden = false;
-        $('[data-radar-titel]', r).textContent = `Im Umkreis um ${ort} ist das möglich.`;
+        $('[data-radar-titel]', r).textContent = `${ort} ist vorgemerkt.`;
         const k = $('button', ok); if (k) k.focus();
         spur('rechner_radar', { plz });
-      }, ruhig ? 400 : 2600);
+      }, ruhig ? 300 : 1400);
     };
     $$('[data-weiter]', dlg).forEach(b => b.addEventListener('click', () => {
       const felder = $$('.rd-schritt.an input[required]', dlg);

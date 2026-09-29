@@ -523,13 +523,13 @@ def ueber_offen(kurz=True):
     return f'''<section class="ueber offen" id="ueber-uns">
   <div class="wrap"><div class="ueber-grid rv">
     <div class="bilder nur-noah">
-      <figure class="gross"><img src="/assets/fotos/noah-laptop.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="900" height="1125" style="object-position:60% 40%"></figure>
+      <figure class="gross"><img src="/assets/fotos/noah-laptop-hoch.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="980" height="1333" style="object-position:50% 30%"></figure>
     </div>
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
       <p>Ich bin Noah. Seit 2019 arbeiten wir nur für Handwerksbetriebe, über 130 waren es bisher. Für SHK-Betriebe drehen wir bei dir vor Ort, mit deinen Leuten vor der Kamera, und fragen vor jeder Bewerbung und jeder Anfrage ab, ob sie zu dir passt. Ist dein Umkreis zu klein, hörst du das im ersten Gespräch.</p>
-      <div class="gruender"><img src="/assets/fotos/noah-gruender-portrait.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="400" height="320" loading="lazy" style="object-position:50% 40%"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
+      <div class="gruender"><img class="rund-sw" src="/assets/fotos/noah-gruender-rund-sw.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="400" height="400" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>24<span>h</span></b><small>oft bis zur ersten Bewerbung oder Anfrage</small></div><div class="stat"><b>25<span>km</span></b><small>Umkreis, in dem die Anzeigen laufen</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
@@ -548,7 +548,7 @@ def team():
         return f'''<figure><img src="/assets/team/{d}.jpg" alt="{n}, {r.replace('&nbsp;', ' ').replace('&amp;', '&')}" loading="lazy" width="{ {'noah': 480, 'robert-rund': 600}.get(d, 800) }" height="{ {'noah': 480, 'robert-rund': 600}.get(d, 1000) }" style="object-position:{pos}"></figure>'''
     k = ''.join(f'''<article class="person rv" data-d="{i+1}">{bild(d, n, r, pos)}<div class="txt"><h3>{n}</h3><p>{r}</p></div></article>''' for i, (d, n, r, pos) in enumerate(TEAM))
     return f'''<section class="sec team" id="team"><div class="wrap">
-  <div class="sec-kopf"><div><p class="kick rv">Das Team</p><h2 class="d rv">Drei Leute. <span class="em k">Ein Team.</span></h2></div><p class="lead rv">Wer mit dir spricht, sitzt mit denen am Tisch, die deine Kampagne bauen.</p></div>
+  <div class="sec-kopf"><div><p class="kick rv">Das Team</p><h2 class="d rv">Diese drei <span class="em k">bauen deine Kampagne.</span></h2></div><p class="lead rv">Noah führt das Erstgespräch, Robert dreht bei dir im Betrieb, Rudolf baut Seiten und Anzeigen.</p></div>
   <div class="team-grid">{k}</div>
 </div></section>'''
 
@@ -731,11 +731,12 @@ def ueber_werdegang():
     scheiße"). Seit 29.09.2026 ohne Zeitstrahl und ohne Kundenzahlen, Foto nur mit Noah (Noah: „25 Bewerbungen, 21 Badanfragen
     … hat bei ‚Über uns' überhaupt nichts verloren" · „einfach nur ein Foto von mir")."""
     return f'''<section class="sec werdegang" id="werdegang"><div class="wrap"><div class="werdegang-grid">
-  <figure class="werdegang-bild rv"><img src="/assets/fotos/noah-ueber-studio.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur" loading="lazy" width="900" height="1100" style="object-position:50% 25%"></figure>
+  <figure class="werdegang-bild rv"><img src="/assets/fotos/noah-laptop-hoch.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="980" height="1333" style="object-position:50% 30%"></figure>
   <div class="werdegang-text">
-    <p class="kick rv">Wie es angefangen hat</p>
-    <h2 class="d rv">Die erste Website war für einen Handwerker. <span class="em w">Dabei ist es geblieben.</span></h2>
-    <p class="lead rv">Ich bin Noah. 2019 habe ich die erste Website für einen Handwerksbetrieb gebaut. Heute bauen wir für SHK-Betriebe auch die Anzeigen: für Monteure, für Bäder und für Wärmepumpen.</p>
+    <p class="kick rv">Der Gründer</p>
+    <h2 class="d rv">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
+    <p class="lead rv">Ich bin Noah. Seit 2019 dreht sich bei uns alles um eine Branche: das Handwerk. Über 130 Betriebe später wissen wir ziemlich genau, was funktioniert und was du dir sparen kannst.</p>
+    <p class="rv werdegang-satz">Wir kennen dein Gewerk, bevor du es erklären musst. Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer bereit für sein neues Bad ist, und bauen deine Kampagne genau darauf.</p>
     <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
   </div>
 </div></div></section>'''
@@ -755,7 +756,7 @@ def v_kurve():
 
 def seite_ueber():
     h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit 2019 nur Handwerk, über 130 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
-    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Eine Branche. <span class="em w">Seit 2019.</span></h1><p class="lead rv" data-d="2">Kein Account-Manager dazwischen, keine Ticketnummer. Du weißt immer, wer an deiner Kampagne sitzt.</p></div></section>
+    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Marketing für Handwerksbetriebe, <span class="em w">seit 2019.</span></h1><p class="lead rv" data-d="2">Für SHK-Betriebe bauen wir die Anzeigen für Monteure, Bäder und Wärmepumpen. Gedreht wird bei dir im Betrieb, mit deinen Leuten vor der Kamera.</p></div></section>
 <div style="height:64px"></div>'''
     body += ueber_werdegang() + team()
     body += f'''<section class="sec" id="wie" style="padding-top:0"><div class="wrap">

@@ -1512,3 +1512,9 @@ html.rd-offen{overflow:hidden}
 
 .werdegang-name{display:flex;flex-direction:column;gap:2px;margin:0;padding-left:16px;border-left:3px solid var(--warm)}
 .werdegang-name b{font-size:16px;font-weight:700;color:var(--ink)} .werdegang-name small{font-size:14px;letter-spacing:.01em;color:var(--sub)}
+/* Gründer-Zeile: rundes Porträt in Schwarz-Weiß (Noah, 29.09.2026) */
+.gruender img.rund-sw,.ueber.offen .gruender img.rund-sw,.gruender img.rund-sw[width][height]{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:50% 50%;filter:grayscale(1)}
+@media(max-width:600px){.gruender img.rund-sw,.ueber.offen .gruender img.rund-sw,.gruender img.rund-sw[width][height]{width:72px;height:72px}}
+.werdegang-satz{font-size:17px;line-height:1.6;color:var(--sub);margin:0 0 16px;max-width:56ch}
+.werdegang-satz + .werdegang-name{margin-top:28px}
+.werdegang-text .lead{margin:14px 0 16px}

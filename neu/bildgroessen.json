@@ -31,6 +31,10 @@
   100,
   120
  ],
+ "assets-fotos-noah-gruender-rund-sw": [
+  80,
+  90
+ ],
  "assets-fotos-noah-kopf-nah": [
   60,
   60
@@ -39,9 +43,9 @@
   360,
   540
  ],
- "assets-fotos-noah-ueber-studio": [
+ "assets-fotos-noah-laptop-hoch": [
   360,
-  510
+  540
  ],
  "assets-fotos-senftleben-team-2026": [
   360,
@@ -249,6 +253,8 @@
    "assets-funnels-sussmann-leadgen-hero"
   ],
   "/neu/fallstudien/": [
+   "assets-fotos-klass-hebel-auftraege",
+   "assets-fotos-klass-hebel-monteure",
    "assets-fotos-sussmann-wagen-nebeneinander",
    "assets-funnels-erwin-schmidt-jobs-full",
    "assets-logos-box-erwin-schmidt",
@@ -256,7 +262,7 @@
    "assets-logos-box-sussmann"
   ],
   "/neu/ueber-uns/": [
-   "assets-fotos-noah-ueber-studio"
+   "assets-fotos-noah-laptop-hoch"
   ],
   "/neu/potenzialanalyse/": []
  }

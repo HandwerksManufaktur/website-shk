@@ -927,7 +927,7 @@ def seite_wissen():
                                                               {"@type": "ListItem", "position": 2, "name": "Wissen", "item": f"{DOMAIN}/wissen/"}]}]
     h = kopf('Wissen für SHK-Betriebe: Monteure finden, Aufträge gewinnen', 'Ratgeber für SHK-Betriebe: wie du Anlagenmechaniker findest, woher Bad- und Wärmepumpen-Anfragen kommen und was Recruiting und Anzeigen kosten.', '/wissen/', schema_extra=schema)
     body = (f'<section class="hero wx-hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Wissen</p>'
-            f'<h1 class="h-xl rv" data-d="1">Was SHK&#8209;Betriebe <span class="em k">am häufigsten fragen.</span></h1>'
+            f'<h1 class="h-xl rv" data-d="1">Was SHK&#8209;Betriebe<br> <span class="em k">am häufigsten fragen.</span></h1>'
             f'<p class="lead rv" data-d="2">{WX_HUB_LEAD}</p></div></section>'
             f'<section class="sec wx-uebersicht"><div class="wrap"><nav class="wx-sprung rv" aria-label="Themen">{sprung}</nav>{gruppen}</div></section>')
     body += wx_cta('Deine Frage war <span class="em w">nicht dabei?</span>', 'In 30 Minuten klären wir, was in deinem Umkreis an Bewerbungen oder Anfragen drin ist. Die Antworten bekommst du von Noah.', 'potenzial')

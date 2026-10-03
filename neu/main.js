@@ -92,7 +92,8 @@
 
   /* Die kalte Leiter: Stempel nacheinander */
   const leiter = $('.leiter');
-  if (leiter) {
+  const HANDY = matchMedia('(max-width:760px)').matches && !rm;   // am Handy übernimmt die Handy-Fassung unten (Scroll statt Takt)
+  if (leiter && !(HANDY && leiter.classList.contains('wege-plan'))) {
     const wege = $$('.weg', leiter);
     const ioL = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return; ioL.disconnect();
@@ -310,4 +311,149 @@
   /* Aktiver Menüpunkt */
   const pfad = location.pathname.replace(/index\.html$/, '');
   $$('.nav-links a').forEach(a => { const h = a.getAttribute('href'); if (h && h !== '/' && pfad.startsWith(h.replace(/index\.html$/, '')) && !a.classList.contains('nav-cta')) a.classList.add('aktiv'); });
+})();
+
+/* ── Handy-Fassung (03.10.2026): eigene Scroll-Animationen am Telefon ─────────────────────────────────────────────
+   EINE Schleife, geglättet (die Szene folgt dem Daumen weich nach), gemessen wird nur beim Laden/Größenwechsel —
+   im Takt selbst nur scrollY + gespeicherte Lagen, geschrieben nur transform/opacity bzw. Variablen darauf.
+   Desktop läuft hier nie hinein (matchMedia), reduzierte Bewegung bekommt die Endlage aus dem CSS. */
+(function () {
+  const handy = matchMedia('(max-width:760px)');
+  if (!handy.matches) return;
+  const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+  const oben = el => el.getBoundingClientRect().top + scrollY;   // nur in messen()
+  const spuren = [];
+  let h = innerHeight, sy = scrollY, laeuft = false;
+  const setze = (el, k, v) => { const alt = el['_' + k]; if (alt !== undefined && Math.abs(alt - v) < .0015) return; el['_' + k] = v; el.style.setProperty(k, v.toFixed(4)); };
+
+  /* Zahlen zählen hoch (Fallstudien, Kennzahlen), sobald sie zur Hälfte im Bild sind */
+  const zaehlbar = el => {
+    const t = [...el.childNodes].find(n => n.nodeType === 3 && /\d/.test(n.textContent)); if (!t) return;
+    const m = t.textContent.match(/^(\s*)([\d.]+)(,\d+)?(.*)$/s); if (!m || m[3]) return;
+    const ziel = parseInt(m[2].replace(/\./g, ''), 10); if (!(ziel > 1)) return;
+    const fmt = n => m[1] + Math.round(n).toLocaleString('de-DE') + m[4];
+    if (rm) return;
+    const breite = el.getBoundingClientRect().width; el.style.minWidth = breite ? breite + 'px' : '';   // nichts springt beim Zählen
+    t.textContent = fmt(0);
+    const o = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return; o.disconnect();
+      const t0 = performance.now(), d = 1100 + Math.min(700, String(ziel).length * 90);
+      const tick = n => { const k = Math.min(1, (n - t0) / d), e2 = 1 - Math.pow(1 - k, 3); t.textContent = fmt(ziel * e2); if (k < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    }), { threshold: .6 });
+    o.observe(el);
+  };
+
+  /* 1 · Hero: Handys fächern auf */
+  const feed = $('.hero .feed-innen'), buehne = feed && feed.closest('.buehne');
+  if (feed && !rm) { let top = 0; spuren.push({ messen() { top = oben(buehne); }, an(y) { setze(feed, '--fan', clamp((y + h * .86 - top) / (h * .5))); } }); }
+
+  /* 2 · Wege-Plan: Linie läuft, Stempel folgen ihr (beide Richtungen) */
+  $$('.leiter.wege-plan').forEach(l => {
+    if (rm) return;
+    const reihe = $('.wp-reihe', l), wege = $$('.weg', l); if (!reihe || !wege.length) return;
+    let rt = 0, rh = 1, mitten = [];
+    spuren.push({
+      messen() { rt = oben(reihe); rh = reihe.offsetHeight || 1; mitten = wege.map(w => oben(w) + 28 - rt); },
+      an(y) {
+        const lauf = clamp((y + h * .62 - rt) / rh); setze(reihe, '--lp', lauf);
+        let alle = true; wege.forEach((w, i) => { const an = lauf * rh >= mitten[i]; if (w.classList.contains('gestempelt') !== an) w.classList.toggle('gestempelt', an); if (!an) alle = false; });
+        if (l.classList.contains('fertig') !== (alle && lauf > .97)) l.classList.toggle('fertig', alle && lauf > .97);
+      }
+    });
+  });
+
+  /* 3 · Karten-Stapel „So wird es warm": stehen bleiben, nächste schiebt sich darüber, die untere tritt zurück */
+  const bento = $('.system .bento');
+  if (bento && !rm) {
+    const karten = $$('.zelle', bento); let halt = [];
+    spuren.push({
+      messen() {
+        let y0 = oben(bento); halt = [];
+        karten.forEach((k, i) => { const kh = k.offsetHeight, st = Math.min(72 + i * 12, h - kh - 14); k.style.setProperty('--st', st + 'px'); halt.push(y0 - st); y0 += kh + 14; });
+      },
+      an(y) { karten.forEach((k, i) => { if (i === karten.length - 1) return; const p = clamp((y - halt[i]) / Math.max(1, halt[i + 1] - halt[i])); setze(k, '--sk', 1 - .07 * p); setze(k, '--dk', .62 * p); }); }
+    });
+  }
+
+  /* 4 · Hebel: Foto zoomt auf, Haken laufen ein */
+  $$('.hebel-karte').forEach(k => {
+    const img = $('.bild img', k); if (rm) { k.classList.add('offen'); return; }
+    let top = 0;
+    spuren.push({ messen() { top = oben(k); }, an(y) { const p = clamp((y + h - top) / (h * .8)); if (img) setze(img, '--zm', 1.22 - .22 * p); const of = y + h * .86 > top + 200; if (k.classList.contains('offen') !== of) k.classList.toggle('offen', of); } });
+  });
+
+  /* 5 · Fallstudien als Wischbahn: Punkte zeigen die Lage, einmal antippen genügt; Bilder laden sofort (Bahn rechnet lazy falsch) */
+  $$('.fall-grid.drei').forEach(bahn => {
+    const karten = $$('.fall-karte', bahn); if (karten.length < 2) return;
+    $$('img[loading="lazy"]', bahn).forEach(i => { i.loading = 'eager'; });
+    const zeigen = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeigen.disconnect(); karten.forEach(k => k.classList.add('an')); } }), { threshold: .1 }); zeigen.observe(bahn);
+    const punkte = document.createElement('div'); punkte.className = 'fall-punkte'; punkte.setAttribute('role', 'group'); punkte.setAttribute('aria-label', 'Fallstudie wählen');
+    karten.forEach((k, n) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Fallstudie ' + (n + 1) + ' von ' + karten.length); b.innerHTML = '<i></i>'; b.addEventListener('click', () => bahn.scrollTo({ left: k.offsetLeft - (bahn.clientWidth - k.offsetWidth) / 2, behavior: rm ? 'auto' : 'smooth' })); punkte.appendChild(b); });
+    bahn.after(punkte);
+    const knoepfe = $$('button', punkte); knoepfe[0].classList.add('an');
+    const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const n = karten.indexOf(e.target); knoepfe.forEach((b, m) => { b.classList.toggle('an', m === n); b.setAttribute('aria-current', m === n ? 'true' : 'false'); }); } }), { root: bahn, threshold: .6 });
+    karten.forEach(k => o.observe(k));
+    if (!rm) { const s = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { s.disconnect(); bahn.classList.add('stups'); setTimeout(() => bahn.classList.remove('stups'), 1500); } }), { threshold: .5 }); s.observe(bahn); }
+  });
+  $$('.fall-karte .zahl b, .fall-gross .zahl b').forEach(zaehlbar);
+
+  /* 6 · Vergleich: Kanal-Karte steigt über die Heute-Karte */
+  const vpan = $('.vgl-panels');
+  if (vpan && !rm) { let top = 0; spuren.push({ messen() { top = oben(vpan); }, an(y) { setze(vpan, '--vr', clamp((y + h * .95 - top - 330) / (h * .4))); } }); }
+
+  /* 7 · Über: Porträt mit Tiefe */
+  const pz = $('.ueber.offen .bilder.nur-noah .gross');
+  if (pz && !rm) { const img = $('img', pz); let top = 0, hh = 1; spuren.push({ messen() { top = oben(pz); hh = pz.offsetHeight; }, an(y) { const p = clamp((y + h - top) / (h + hh)); setze(img, '--pz', 1.18 - .1 * p); img.style.setProperty('--py', ((p - .5) * -28).toFixed(1) + 'px'); } }); }
+  $$('.stats .stat b').forEach(zaehlbar);
+
+  /* 8 · Team: Rollen dürfen am Handy umbrechen (feste Leerzeichen nur für den Desktop gedacht) */
+  $$('.team .person p').forEach(p => { p.textContent = p.textContent.replace(/\u00a0/g, ' '); });
+
+  /* 10 · Unterseiten-Hero: zwei Handys fächern auf */
+  const uph = $('.uhero .buehne-phones');
+  if (uph && !rm) { let top = 0; spuren.push({ messen() { top = oben(uph); }, an(y) { setze(uph, '--fan', clamp((y + h * .92 - top) / (h * .45))); } }); }
+
+  /* 11 · Wischbahnen: Zähler „2 / 6“ + Laufbalken, ein Stups beim ersten Erscheinen, Bilder sofort laden */
+  $$('.vorteile, .galerie, .wx-uebersicht .wx-raster, .wx-weiter .wx-raster').forEach(bahn => {
+    const karten = [...bahn.children]; if (karten.length < 2) return;
+    $$('img[loading="lazy"]', bahn).forEach(i => { i.loading = 'eager'; });
+    const zeigen = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeigen.disconnect(); karten.forEach(k => k.classList.add('an')); } }), { threshold: .1 }); zeigen.observe(bahn);   // seitlich liegende Karten erreicht der Reveal-Beobachter nie
+    const z = document.createElement('div'); z.setAttribute('aria-hidden', 'true');
+    z.innerHTML = `<span class="bahn-zaehler"><b>1</b> / ${karten.length} · wischen</span><span class="bahn-lauf"><i></i></span>`;
+    bahn.after(z);
+    const nr = $('b', z), lauf = $('.bahn-lauf', z);
+    lauf.style.setProperty('--bp', (1 / karten.length).toFixed(3));
+    const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const n = karten.indexOf(e.target) + 1; nr.textContent = n; lauf.style.setProperty('--bp', (n / karten.length).toFixed(3)); } }), { root: bahn, threshold: .6 });
+    karten.forEach(k => o.observe(k));
+    if (!rm) { const s = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { s.disconnect(); bahn.classList.add('bahn-stups'); setTimeout(() => bahn.classList.remove('bahn-stups'), 1500); } }), { threshold: .5 }); s.observe(bahn); }
+  });
+
+  /* Reels-Bahn: seitlich liegende Reels erreicht der Reveal-Beobachter nie — aufdecken, sobald die Bahn im Bild ist */
+  $$('.reel-reihe').forEach(r => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); $$('.rv', r).forEach(k => k.classList.add('an')); } }), { threshold: .1 }); o.observe(r); });
+
+  /* 12 · Große Fallstudien: Bild mit Tiefe */
+  $$('.fall-gross .vid').forEach(v => {
+    if (rm) return; const m = $('img, video', v); if (!m) return; let top = 0, hh = 1;
+    spuren.push({ messen() { top = oben(v); hh = v.offsetHeight; }, an(y) { if (y + h < top - 200 || y > top + hh + 200) return; setze(m, '--pz', 1.16 - .16 * clamp((y + h - top) / (h * .9))); } });
+  });
+  $$('.wx-zahl b').forEach(zaehlbar);
+
+  /* Schleife */
+  const messen = () => { h = innerHeight; spuren.forEach(s => s.messen && s.messen()); los(); };
+  const takt = () => {
+    const ziel = scrollY; sy += (ziel - sy) * .24; if (Math.abs(ziel - sy) < .5) sy = ziel;
+    spuren.forEach(s => s.an(sy));
+    if (sy !== ziel) requestAnimationFrame(takt); else laeuft = false;
+  };
+  function los() { if (!laeuft) { laeuft = true; requestAnimationFrame(takt); } }
+  addEventListener('scroll', los, { passive: true });
+  addEventListener('resize', messen);
+  addEventListener('load', messen);
+  if (document.fonts) document.fonts.ready.then(messen);
+  let ro = 0; new ResizeObserver(() => { cancelAnimationFrame(ro); ro = requestAnimationFrame(messen); }).observe(document.body);
+  messen(); sy = scrollY; spuren.forEach(s => s.an(sy));
+  window.__handy = { spuren: spuren.length };
 })();

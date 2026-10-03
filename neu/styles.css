@@ -1805,3 +1805,139 @@ html.rd-offen{overflow:hidden}
 
 /* Lange Einzelwörter in Überschriften trennen statt aus dem Bild ragen (Noah, 03.10.2026: mobil alle Seiten). */
 @media(max-width:640px){h1,h2,h3{hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:14 6 6;overflow-wrap:break-word}}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   HANDY-FASSUNG (03.10.2026) — jede Sektion am Telefon eigens gestaltet, mit eigenen Scroll-Animationen.
+   Noah: „Das kann man auch mobil in geilen Animationen machen … zentriert … auf die Unterseiten überall anpassen."
+   🔴 Alles hier steht in @media(max-width:760px) — Desktop bleibt unberührt. Bewegung nur über transform/opacity
+   (bzw. scale/--Variablen darauf), angetrieben von EINER geglätteten Schleife in main.js („Handy-Fassung").
+   ════════════════════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+  /* 1 · Hero: die drei Handys liegen zuerst als Stapel und fächern beim Scrollen auf (--fan 0→1) */
+  .feed-innen .p2{transform:translateX(calc((1 - var(--fan,1)) * 96%)) translateY(calc((1 - var(--fan,1)) * 34px)) rotate(calc(-8deg * var(--fan,1)))}
+  .feed-innen .p4{transform:translateX(calc((var(--fan,1) - 1) * 96%)) translateY(calc((1 - var(--fan,1)) * 34px)) rotate(calc(8deg * var(--fan,1)))}
+  .feed-innen .p3{transform:scale(calc(.9 + .1 * var(--fan,1)))}
+  .feed-innen .p2 .etikett,.feed-innen .p4 .etikett{opacity:calc(var(--fan,1) * 1.6 - .6)}
+
+  /* 2 · Wege-Plan: eine rote Linie läuft die Schiene hinunter, jeder Weg wird gestempelt, wenn sie ihn erreicht */
+  .leiter.wege-plan .wp-reihe{position:relative}
+  .leiter.wege-plan .wp-reihe::after{content:"";position:absolute;left:27px;top:0;bottom:0;width:2px;margin-left:-.5px;background:linear-gradient(#E5484D,#F5762B);border-radius:2px;transform:scaleY(var(--lp,0));transform-origin:top;z-index:0;pointer-events:none}
+  .leiter.wege-plan .weg .ic{transition:transform .45s var(--spring),border-color .3s,box-shadow .45s}
+  .leiter.wege-plan .weg.gestempelt .ic{transform:scale(.92);box-shadow:0 0 0 6px rgba(229,72,77,.10)}
+  .leiter.wege-plan .weg .x{transition:transform .45s var(--spring),opacity .3s!important}
+  .leiter.wege-plan .weg p{transition:opacity .45s}
+  .leiter.wege-plan .ende{transition:opacity .5s var(--ease),transform .5s var(--spring)}
+
+  /* 3 · „So wird es warm": fünf Karten als Stapel — jede bleibt stehen, die nächste schiebt sich darüber */
+  .system{overflow:clip}
+  .system .bento{display:block}
+  .system .zelle{position:sticky;top:var(--st,72px);margin-bottom:14px;transform-origin:50% 0;scale:var(--sk,1);box-shadow:0 -14px 40px rgba(0,0,0,.35)}
+  .system .zelle:last-child{margin-bottom:0}
+  .system .zelle::after{content:"";position:absolute;inset:0;background:#050b16;opacity:var(--dk,0);pointer-events:none;z-index:4;border-radius:inherit}
+
+  /* 4 · Zwei Hebel: das Foto zoomt beim Hereinscrollen auf, die Haken laufen der Reihe nach ein */
+  .hebel-karte .bild img{scale:var(--zm,1);transform-origin:50% 60%}
+  .hebel-karte li{transition:opacity .45s var(--ease),transform .45s var(--spring)}
+  .js .hebel-karte:not(.offen) li{opacity:0;transform:translateX(-14px)}
+  .hebel-karte li:nth-child(2){transition-delay:.12s}.hebel-karte li:nth-child(3){transition-delay:.24s}
+
+  /* 5 · Fallstudien: eine Wischbahn statt drei Karten untereinander, Zahlen als kompakte Zeilen, die hochzählen */
+  .fall-grid.drei{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:40px -18px 0;padding:4px 18px 6px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .fall-grid.drei::-webkit-scrollbar{display:none}
+  .fall-grid.drei .fall-karte{flex:0 0 86%;scroll-snap-align:center;scroll-snap-stop:always}
+  .fall-grid.drei .txt{padding:20px 20px 22px;gap:12px}
+  .fall-grid.drei .zahlen{grid-template-columns:1fr;gap:0;background:var(--paper);border-radius:var(--r-sm);padding:2px 14px}
+  .fall-grid.drei .zahl{display:flex;align-items:baseline;gap:12px;background:none;border-top:0;border-bottom:1px solid var(--line);border-radius:0;padding:12px 0}
+  .fall-grid.drei .zahl:last-child{border-bottom:0}
+  .fall-grid.drei .zahl b{font-size:24px;min-width:4.4ch;color:var(--kalt-deep)}
+  .fall-grid.drei .zahl.w b{color:var(--warm-ink)}
+  .fall-grid.drei .zahl small{margin:0;min-height:0;font-size:14px;text-align:left}
+  .fall-grid.drei .zahl .zi{position:static;margin-left:auto;order:3;align-self:center}
+  .fall-punkte{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:14px}
+  .fall-punkte button{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;padding:0;cursor:pointer}
+  .fall-punkte button i{display:block;width:8px;height:8px;border-radius:8px;background:var(--line2);transition:width .4s var(--spring),background .3s}
+  .fall-punkte button.an i{width:28px;background:var(--ink)}
+  .fall-punkte button:focus-visible{outline:2px solid var(--kalt);outline-offset:-6px;border-radius:12px}
+  .fall-grid.drei.stups{animation:stups 1.1s var(--spring) .2s 1}
+}
+@keyframes stups{0%,100%{transform:none}40%{transform:translateX(-46px)}}
+@media(max-width:760px) and (prefers-reduced-motion:reduce){
+  .feed-innen{--fan:1!important}
+  .js .hebel-karte:not(.offen) li{opacity:1;transform:none}
+  .fall-grid.drei.stups{animation:none}
+  .system .zelle{scale:1}
+}
+@media(max-width:760px){
+  /* 6 · Vergleich: „Mit eigenen Anzeigen" steigt beim Scrollen über die Heute-Karte (--vr 0→1) */
+  .vgl-panel{border:0;overflow:visible;gap:0}
+  .vgl-seite.heute{border:1px solid var(--line);border-radius:var(--r-lg);padding-bottom:44px}
+  .vgl-seite.kanal{border-radius:var(--r-lg);margin-top:-24px;position:relative;z-index:1;box-shadow:0 -18px 40px rgba(11,20,36,.18);transform:translateY(calc((1 - var(--vr,1)) * 90px)) scale(calc(.92 + .08 * var(--vr,1)));transform-origin:50% 0}
+
+  /* 7 · Über: quadratisches Porträt mit Tiefe beim Scrollen, Kennzahlen als eine Dreier-Zeile */
+  .ueber.offen .bilder.nur-noah .gross{aspect-ratio:1;max-height:none}
+  .ueber.offen .bilder.nur-noah .gross img{scale:var(--pz,1.12);translate:0 var(--py,0px)}
+  .stats.hell{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stats.hell .stat{border-bottom:0;border-right:1px solid var(--line);padding:16px 8px}
+  .stats.hell .stat:last-child{border-right:0}
+  .stats.hell .stat b{font-size:28px}
+  .stats.hell .stat small{font-size:13px;line-height:1.3}
+
+  /* 8 · Team: drei Köpfe nebeneinander, zentriert, ploppen nacheinander auf */
+  .team .sec-kopf{text-align:center;justify-items:center}
+  .team .sec-kopf .kick{justify-content:center}
+  .team .sec-kopf .lead{justify-self:center}
+  .team .team-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:none}
+  .team .person{display:flex;flex-direction:column;align-items:center;text-align:center;padding:16px 6px 14px;gap:10px}
+  .team .person figure{width:76px;height:76px;aspect-ratio:1;border-radius:50%;flex:none}
+  .team .person .initiale span{width:100%;font-size:28px}
+  .team .person .txt{padding:0}
+  .team .person h3{font-size:16px;margin-bottom:2px}
+  .team .person p{font-size:13px;line-height:1.35}
+  .js .team .person.rv:not(.an){transform:translateY(18px) scale(.86)}
+
+  /* 9 · Fuß: Leistungen und HandwerksManufaktur nebeneinander statt einer langen Liste */
+  .fuss .oben{grid-template-columns:max-content minmax(0,1fr);column-gap:22px;row-gap:28px}
+  .fuss .oben>.marke,.fuss .oben>div:last-child{grid-column:1/-1}
+  .fuss ul a{font-size:14.5px;line-height:1.3}
+}
+@media(max-width:760px) and (prefers-reduced-motion:reduce){.vgl-seite.kanal{transform:none}.ueber.offen .bilder.nur-noah .gross img{scale:1;translate:none}}
+@media(max-width:760px){
+  /* 10 · Unterseiten-Hero: zwei Handys statt einem — sie liegen erst übereinander und fächern beim Scrollen auf */
+  .uhero .buehne-phones{position:relative;justify-content:center;gap:0;padding-top:8px}
+  .uhero .phone.links{display:block;width:min(196px,50vw);margin-right:-24vw;z-index:0;transform:translateX(calc((1 - var(--fan,1)) * 52%)) translateY(calc(34px + (1 - var(--fan,1)) * 18px)) rotate(calc(-7deg * var(--fan,1)))}
+  .uhero .phone.rechts{z-index:1;width:min(218px,56vw);transform:translateX(calc((var(--fan,1) - 1) * 16%)) rotate(calc(4deg * var(--fan,1)))}
+  .uhero .phone.links .etikett{opacity:calc(var(--fan,1) * 1.6 - .6)}
+
+  /* 11 · Wischbahnen statt Kartenstapel: Vorteile, Projekt-Galerie, Regions-Karten, Wissen-Gruppen, „Weiterlesen" */
+  .vorteile,.galerie,.wx-uebersicht .wx-raster,.wx-weiter .wx-raster{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-18px;margin-right:-18px;padding:4px 18px 6px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .vorteile::-webkit-scrollbar,.galerie::-webkit-scrollbar,.wx-raster::-webkit-scrollbar{display:none}
+  .vorteile>*,.galerie>*,.wx-uebersicht .wx-raster>*,.wx-weiter .wx-raster>*{flex:0 0 84%;min-width:0;scroll-snap-align:center;scroll-snap-stop:always;grid-column:auto!important}
+  .galerie>figure,.galerie>figure.quer{flex-basis:74%;aspect-ratio:3/4}
+  .vorteile.bilder-v .vorteil.mit-bild{display:flex}
+  .bahn-zaehler{display:block;text-align:center;margin-top:10px;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--sub)}
+  .bahn-zaehler b{color:var(--ink)}
+  .bahn-lauf{display:block;height:3px;width:120px;margin:10px auto 0;border-radius:3px;background:var(--line);overflow:hidden}
+  .bahn-lauf i{display:block;height:100%;width:100%;background:var(--ink);border-radius:3px;transform-origin:left;transform:scaleX(var(--bp,.2))}
+  .bahn-stups{animation:stups 1.1s var(--spring) .2s 1}
+  .wx-sprung{justify-content:center}
+  .wx-sprung a{width:auto}
+
+  /* 12 · Große Fallstudien: Zahlen als kompakte Zeilen, die hochzählen; Foto/Video mit Tiefe beim Scrollen */
+  .fall-gross .zahlen{grid-template-columns:1fr;gap:0;background:var(--paper);border-radius:var(--r-sm);padding:2px 14px}
+  .fall-gross .zahl{display:flex;align-items:baseline;gap:12px;background:none;border-top:0;border-bottom:1px solid var(--line);border-radius:0;padding:12px 0}
+  .fall-gross .zahl:last-child{border-bottom:0}
+  .fall-gross .zahl b{font-size:24px;min-width:4.4ch;color:var(--kalt-deep)}
+  .fall-gross .zahl.w b{color:var(--warm-ink)}
+  .fall-gross .zahl small{margin:0;min-height:0;font-size:14px;text-align:left}
+  .fall-gross .zahl .zi{position:static;margin-left:auto;order:3;align-self:center}
+  .fall-gross .vid{min-height:0;aspect-ratio:4/3}
+  .fall-gross .vid img,.fall-gross .vid video{scale:var(--pz,1)}
+
+  /* 13 · Ratgeber-Kennzahlen: zählen hoch, Balken wie gehabt */
+  .wx-zahl b{font-variant-numeric:tabular-nums}
+}
+@media(max-width:760px) and (prefers-reduced-motion:reduce){.uhero .buehne-phones{--fan:1!important}.bahn-stups{animation:none}.fall-gross .vid img,.fall-gross .vid video{scale:1}}
+@media(max-width:760px){.vorteile{align-items:flex-start}.wx-uebersicht .wx-raster,.wx-weiter .wx-raster{align-items:stretch}}
+@media(max-width:760px){.wx-sprung{flex-direction:row;flex-wrap:wrap}}
+@media(max-width:760px){.system .zelle{background:linear-gradient(var(--night2),var(--night2)),var(--night)}}
+@media(max-width:760px){.system .zelle{isolation:isolate}.system .zelle:nth-child(2){z-index:2}.system .zelle:nth-child(3){z-index:3}.system .zelle:nth-child(4){z-index:4}.system .zelle:nth-child(5){z-index:5}.system .zelle:first-child{z-index:1}}

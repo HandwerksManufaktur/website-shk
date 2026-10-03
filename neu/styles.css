@@ -1767,6 +1767,10 @@ html.rd-offen{overflow:hidden}
 /* 29 · Rechtstexte: Zwischenüberschrift klar über der fetten Absatzzeile */
 .recht-text h3{font-size:17.5px;margin:32px 0 10px;letter-spacing:-.01em}
 .recht-text h2+h3{margin-top:16px}
+/* Mobil (03.10.2026): lange Wörter in der Seitenüberschrift passen ins Bild, Fragen im Fließtext stehen unter den Zwischenüberschriften. */
+.recht-text h1{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.recht-text p strong{font-weight:600}
+@media(max-width:600px){.recht-text h1{font-size:32px}.recht-text h3{font-size:17px}}
 /* 31 · Handy: weniger Leerraum zwischen den Abschnitten */
 @media(max-width:600px){
   .sec,.system,.fall,.stimmen,.faq,.vergleich,.probiert,.hebel,.ueber.offen,.reels{padding-top:44px;padding-bottom:44px}

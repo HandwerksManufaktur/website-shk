@@ -1795,3 +1795,13 @@ html.rd-offen{overflow:hidden}
 .region-quer{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
 .region-text p+p{margin-top:14px}
 .region-extra .sec-kopf{align-items:start}
+
+/* Mobil-Feinschliff (03.10.2026): Handy sauber über alle Seiten — Desktop unberührt */
+@media(max-width:600px){
+  .btn{white-space:normal;text-align:center;line-height:1.25;min-height:48px}
+  h1,h2,h3{word-spacing:.07em}
+  h2.d{font-size:clamp(25px,6.9vw,30px)} /* h1 (30–47 px) bleibt klar größer als h2 */
+}
+
+/* Lange Einzelwörter in Überschriften trennen statt aus dem Bild ragen (Noah, 03.10.2026: mobil alle Seiten). */
+@media(max-width:640px){h1,h2,h3{hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:14 6 6;overflow-wrap:break-word}}

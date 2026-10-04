@@ -308,6 +308,13 @@
     new IntersectionObserver(es => es.forEach(e => { clearInterval(timer); if (e.isIntersecting) timer = setInterval(tausch, 1400); }), { threshold: .2 }).observe(col);
   }
 
+  /* Reels-Bahn: unter 900 px (Handy UND Tablet) liegen Reels seitlich in einer Wischbahn — die erreicht der Reveal-Beobachter nie.
+     Aufdecken, sobald die Bahn im Bild ist (Prüfung 04.10.2026: zwischen 761 und 900 px blieben Reel 3–5 unsichtbar) */
+  /* Reels haben kein Poster und laden erst im Bild — am Handy/Tablet (langsames Netz) standen sie sekundenlang schwarz da.
+     Ein Standbild (10–16 KB je Reel) kommt, sobald die Bahn auf 800 px herankommt (Prüfung 04.10.2026). */
+  if (matchMedia('(max-width:1180px)').matches) $$('.reel-reihe').forEach(r => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); $$('video[data-standbild]', r).forEach(v => { if (!v.poster) v.poster = v.dataset.standbild; }); } }), { rootMargin: '800px 0px' }); o.observe(r); });
+  if (matchMedia('(max-width:900px)').matches) $$('.reel-reihe').forEach(r => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); $$('.rv', r).forEach(k => k.classList.add('an')); } }), { threshold: .1 }); o.observe(r); });
+
   /* Aktiver Menüpunkt */
   const pfad = location.pathname.replace(/index\.html$/, '');
   $$('.nav-links a').forEach(a => { const h = a.getAttribute('href'); if (h && h !== '/' && pfad.startsWith(h.replace(/index\.html$/, '')) && !a.classList.contains('nav-cta')) a.classList.add('aktiv'); });
@@ -345,6 +352,10 @@
     }), { threshold: .6 });
     o.observe(el);
   };
+
+  /* Bilder in Wischbahnen: seitlich liegende lädt „lazy" nie (die Bahn schneidet sie ab) — darum „eager", aber erst wenn die Bahn
+     auf 900 px herankommt. Vorher geschah das beim Laden und zog 200 KB+ Bilder vor das LCP (PageSpeed mobil /monteure/ 84–88, 04.10.2026). */
+  const vorladen = bahn => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); $$('img[loading="lazy"]', bahn).forEach(i => { i.loading = 'eager'; }); } }), { rootMargin: '900px 0px' }); o.observe(bahn); };
 
   /* 1 · Hero: Handys fächern auf */
   const feed = $('.hero .feed-innen'), buehne = feed && feed.closest('.buehne');
@@ -388,7 +399,7 @@
   /* 5 · Fallstudien als Wischbahn: Punkte zeigen die Lage, einmal antippen genügt; Bilder laden sofort (Bahn rechnet lazy falsch) */
   $$('.fall-grid.drei').forEach(bahn => {
     const karten = $$('.fall-karte', bahn); if (karten.length < 2) return;
-    $$('img[loading="lazy"]', bahn).forEach(i => { i.loading = 'eager'; });
+    vorladen(bahn);
     const zeigen = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeigen.disconnect(); karten.forEach(k => k.classList.add('an')); } }), { threshold: .1 }); zeigen.observe(bahn);
     const punkte = document.createElement('div'); punkte.className = 'fall-punkte'; punkte.setAttribute('role', 'group'); punkte.setAttribute('aria-label', 'Fallstudie wählen');
     karten.forEach((k, n) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Fallstudie ' + (n + 1) + ' von ' + karten.length); b.innerHTML = '<i></i>'; b.addEventListener('click', () => bahn.scrollTo({ left: k.offsetLeft - (bahn.clientWidth - k.offsetWidth) / 2, behavior: rm ? 'auto' : 'smooth' })); punkte.appendChild(b); });
@@ -419,7 +430,7 @@
   /* 11 · Wischbahnen: Zähler „2 / 6“ + Laufbalken, ein Stups beim ersten Erscheinen, Bilder sofort laden */
   $$('.vorteile, .galerie, .wx-uebersicht .wx-raster, .wx-weiter .wx-raster').forEach(bahn => {
     const karten = [...bahn.children]; if (karten.length < 2) return;
-    $$('img[loading="lazy"]', bahn).forEach(i => { i.loading = 'eager'; });
+    vorladen(bahn);
     const zeigen = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeigen.disconnect(); karten.forEach(k => k.classList.add('an')); } }), { threshold: .1 }); zeigen.observe(bahn);   // seitlich liegende Karten erreicht der Reveal-Beobachter nie
     const z = document.createElement('div'); z.setAttribute('aria-hidden', 'true');
     z.innerHTML = `<span class="bahn-zaehler"><b>1</b> / ${karten.length} · wischen</span><span class="bahn-lauf"><i></i></span>`;
@@ -430,9 +441,6 @@
     karten.forEach(k => o.observe(k));
     if (!rm) { const s = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { s.disconnect(); bahn.classList.add('bahn-stups'); setTimeout(() => bahn.classList.remove('bahn-stups'), 1500); } }), { threshold: .5 }); s.observe(bahn); }
   });
-
-  /* Reels-Bahn: seitlich liegende Reels erreicht der Reveal-Beobachter nie — aufdecken, sobald die Bahn im Bild ist */
-  $$('.reel-reihe').forEach(r => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); $$('.rv', r).forEach(k => k.classList.add('an')); } }), { threshold: .1 }); o.observe(r); });
 
   /* 12 · Große Fallstudien: Bild mit Tiefe */
   $$('.fall-gross .vid').forEach(v => {

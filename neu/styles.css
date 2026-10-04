@@ -1813,9 +1813,9 @@ html.rd-offen{overflow:hidden}
    (bzw. scale/--Variablen darauf), angetrieben von EINER geglätteten Schleife in main.js („Handy-Fassung").
    ════════════════════════════════════════════════════════════════════════════ */
 @media(max-width:760px){
-  /* 1 · Hero: die drei Handys liegen zuerst als Stapel und fächern beim Scrollen auf (--fan 0→1) */
-  .feed-innen .p2{transform:translateX(calc((1 - var(--fan,1)) * 96%)) translateY(calc((1 - var(--fan,1)) * 34px)) rotate(calc(-8deg * var(--fan,1)))}
-  .feed-innen .p4{transform:translateX(calc((var(--fan,1) - 1) * 96%)) translateY(calc((1 - var(--fan,1)) * 34px)) rotate(calc(8deg * var(--fan,1)))}
+  /* 1 · Hero: die drei Handys liegen zuerst als Stapel und fächern beim Scrollen auf (--fan 0→1). Endlage 30 px weiter innen (04.10.2026): die Etiketten „Recruiting“/„Badsanierung“ ragten 20–24 px über den Bühnenrand */
+  .feed-innen .p2{transform:translateX(calc((1 - var(--fan,1)) * 96% + var(--fan,1) * 30px)) translateY(calc((1 - var(--fan,1)) * 34px)) rotate(calc(-8deg * var(--fan,1)))}
+  .feed-innen .p4{transform:translateX(calc((var(--fan,1) - 1) * 96% - var(--fan,1) * 30px)) translateY(calc((1 - var(--fan,1)) * 34px)) rotate(calc(8deg * var(--fan,1)))}
   .feed-innen .p3{transform:scale(calc(.9 + .1 * var(--fan,1)))}
   .feed-innen .p2 .etikett,.feed-innen .p4 .etikett{opacity:calc(var(--fan,1) * 1.6 - .6)}
 
@@ -1941,3 +1941,45 @@ html.rd-offen{overflow:hidden}
 @media(max-width:760px){.wx-sprung{flex-direction:row;flex-wrap:wrap}}
 @media(max-width:760px){.system .zelle{background:linear-gradient(var(--night2),var(--night2)),var(--night)}}
 @media(max-width:760px){.system .zelle{isolation:isolate}.system .zelle:nth-child(2){z-index:2}.system .zelle:nth-child(3){z-index:3}.system .zelle:nth-child(4){z-index:4}.system .zelle:nth-child(5){z-index:5}.system .zelle:first-child{z-index:1}}
+
+/* ════ Prüfung 04.10.2026 (Handy + Tablet, live gemessen) ════ */
+/* Ratgeber-Balken: lange Werte („rund 1.600 € für eine Bewerbung, die nicht passte") liefen am Handy 73 px über den Rand —
+   unter 640 px steht der Wert unter der Bezeichnung und darf umbrechen */
+@media(max-width:640px){
+  .wx-balken-zeile{grid-template-columns:minmax(0,1fr);row-gap:4px}
+  .wx-balken-l{grid-row:1}
+  .wx-balken-zeile b{grid-row:2;white-space:normal;font-size:16px;line-height:1.3}
+  .wx-balken-spur{grid-column:1;grid-row:3;margin-top:4px}
+}
+/* Kartenstapel „So wird es warm", Karte 04: mit vier Tickets untereinander über 700 px hoch — auf kurzen Handys (667/740 px)
+   blieb sie oben abgeschnitten stehen. Dort liegen die Tickets nebeneinander in einer kleinen Bahn (nächstes Ticket schaut rein),
+   die Karte passt wieder ganz ins Bild. Ab 821 px Höhe (z. B. 390 x 844) bleibt die Liste wie gehabt. */
+@media(max-width:760px) and (max-height:820px){
+  .system .zelle.mit-tickets .tickets{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin:4px -24px 22px;padding:0 24px 2px;scroll-padding:0 24px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .system .zelle.mit-tickets .tickets::-webkit-scrollbar{display:none}
+  .system .zelle.mit-tickets .ticket{flex:0 0 82%;scroll-snap-align:start}
+}
+/* Ratgeber „Für alle Gewerke" + „Quellen": einzeilige Links waren nur 19–21 px hoch — am Touch-Gerät ≥ 40 px Tippfläche.
+   Polster am Inline-Element: vergrößert die Fläche, verschiebt keine Zeile */
+@media(max-width:1180px){.wx-quer li a,.wx-quellen li a{padding:11px 0}}
+/* Reels-Bahn (Handy + Tablet): ohne scroll-padding rastete das erste Reel bündig an den Bildschirmrand (Rand 0 px statt 18/28 px) */
+@media(max-width:900px){.reel-reihe{scroll-padding-inline:28px}}
+@media(max-width:600px){.reel-reihe{scroll-padding-inline:18px}}
+/* Reduzierte Bewegung: Laufbänder stehen und brechen um — die Endlos-Kopie (aria-hidden) stand dann doppelt da
+   (Logos zweimal über zwei Bildschirme, Stimmen 14 statt 7). Und der Kartenstapel stapelt ohne Abdunkeln nicht sauber:
+   dort liegen die Karten einfach untereinander. */
+@media(prefers-reduced-motion:reduce){
+  .marq img[aria-hidden="true"],.stimmen-marq .stimme[aria-hidden="true"]{display:none}
+}
+@media(max-width:760px) and (prefers-reduced-motion:reduce){.system .zelle{position:relative;top:auto;box-shadow:none}}
+/* Tablet quer (901–1180 px): Fallstudien lagen als Handy-Stapel untereinander, jedes Video fast bildschirmhoch (984 x 553 px bei 1024 quer).
+   Dort Video links, Ergebnis rechts — eine Fallstudie passt wieder in den Bildschirm. Läuft das Video, wird es ganz gezeigt. */
+@media(min-width:901px) and (max-width:1180px){
+  .fall-grid.drei .fall-karte{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .fall-grid.drei .fall-karte .vid{aspect-ratio:auto;min-height:100%}
+  .fall-grid.drei .fall-karte .vid.laeuft video{object-fit:contain}
+}
+/* Tablet hoch (601–900 px): ein Reel war 58vw breit (475 x 845 px bei 820 px) und füllte den ganzen Bildschirm — 40vw zeigt zwei und ein angeschnittenes */
+@media(min-width:601px) and (max-width:900px){.reel{flex-basis:40vw}}
+/* Zahlen-Zeilen der Fallstudien (Handy): „10.000 €" schob sich bei 360 px 6 px über „Erster Auftrag …" — die Zahl darf nicht schrumpfen */
+@media(max-width:760px){.fall-gross .zahl b,.fall-grid.drei .zahl b{flex:none;white-space:nowrap}.fall-gross .zahl small,.fall-grid.drei .zahl small{min-width:0}}

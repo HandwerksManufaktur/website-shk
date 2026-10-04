@@ -148,7 +148,7 @@ def fuss():
         <li><a href="{u('/auftraege/')}">{ic('bath')}Aufträge gewinnen</a></li>
         <li><a href="{u('/potenzialanalyse/')}">{ic('target')}Potenzialanalyse</a></li>
       </ul></div>
-      <div><h4>HandwerksManufaktur</h4><ul>
+      <div><h4>Handwerks&shy;Manufaktur</h4><ul>
         <li><a href="{u('/ueber-uns/')}">{ic('handshake')}Über uns</a></li>
         <li><a href="{u('/wissen/')}">{ic('docs')}Wissen &amp; Ratgeber</a></li>
         <li><a href="{u('/bayern/')}">{ic('pin')}SHK-Betriebe in Bayern</a></li>
@@ -497,7 +497,7 @@ def sussmann_karte(d=1):
 
 REELS = [('patrick-reel', 'Patrick'), ('josef', 'Josef'), ('mirjana-hook', 'Mirjana'), ('meike-solo', 'Meike'), ('benjamin-schirm', 'Benjamin')]
 def reels():
-    r = ''.join(f'<figure class="reel rv" data-d="{i+1}"><video muted loop playsinline preload="none" data-quelle="/assets/reels/{f}.mp4" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><figcaption>{n}</figcaption></figure>' for i, (f, n) in enumerate(REELS))
+    r = ''.join(f'<figure class="reel rv" data-d="{i+1}"><video muted loop playsinline preload="none" data-quelle="/assets/reels/{f}.mp4" data-standbild="/assets/reels/{f}-standbild.webp" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><figcaption>{n}</figcaption></figure>' for i, (f, n) in enumerate(REELS))
     return f'''<section class="reels" id="reels">
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick rv">Aus der Praxis</p><h2 class="d rv">Direkt im Betrieb <span class="em w">gedreht.</span></h2></div><p class="lead rv">Inhaber und Monteure unserer Kunden vor der Kamera. Genau so laufen die Anzeigen im Feed.</p></div>

@@ -538,3 +538,12 @@
   messen(); sy = scrollY; spuren.forEach(s => s.an(sy));
   window.__handy = { spuren: spuren.length };
 })();
+
+/* ---- Hintergrund-Videos am Handy etwas schneller (05.10.2026, Noah: „lass die videos bisschen schneller durchlaufen da mobil").
+        Nur stumme Schleifen-Videos (nicht die Kundenstimmen mit Ton), nur bis 760 px; bei play/loadeddata nachziehen, weil neues Laden das Tempo zurücksetzt. ---- */
+(() => {
+  if (!matchMedia('(max-width: 760px)').matches) return;
+  const TEMPO = 1.3;
+  const setze = v => { v.defaultPlaybackRate = TEMPO; if (v.playbackRate !== TEMPO) v.playbackRate = TEMPO; };
+  document.querySelectorAll('video[muted][loop]').forEach(v => { setze(v); ['loadeddata', 'play'].forEach(e => v.addEventListener(e, () => setze(v))); });
+})();

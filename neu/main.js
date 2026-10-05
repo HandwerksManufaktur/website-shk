@@ -184,7 +184,7 @@
   /* Vergleich: fünf Lagen, wechseln alle 6 s, solange die Bühne im Bild ist; Klick hält an */
   const vb = $('.vgl-buehne');
   if (vb) {
-    const tabs = $$('.vgl-tab', vb), pan = $$('.vgl-panel', vb), TAKT = 6000;
+    const tabs = $$('.vgl-tab', vb), pan = $$('.vgl-panel', vb), TAKT = matchMedia('(max-width: 760px)').matches ? 10000 : 6000;  // Handy: 10 s je Lage (Noah, 05.10.2026: „die animation geht etwas zu schnell beim handy“)
     let i = 0, timer = null, steht = rm;
     // Reiterleiste scrollt unter 1000 px waagerecht: Kante blendet aus, solange dahinter noch Reiter liegen, und der aktive Reiter rückt ins Bild (Sichtprüfung 29.09.2026)
     const leiste = $('.vgl-tabs', vb);

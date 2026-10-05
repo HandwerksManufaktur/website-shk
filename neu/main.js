@@ -191,99 +191,46 @@
     const rand = () => { if (!leiste) return; const m = leiste.scrollWidth - leiste.clientWidth; leiste.classList.toggle('rand-r', m > 4 && leiste.scrollLeft < m - 4); leiste.classList.toggle('rand-l', m > 4 && leiste.scrollLeft > 4); };
     if (leiste) { leiste.addEventListener('scroll', rand, { passive: true }); addEventListener('resize', rand, { passive: true }); rand(); }
     vb.style.setProperty('--takt', TAKT / 1000 + 's');
+    /* Handy (≤760 px), 05.10.2026: kompakte, interaktive Fassung. Noah zur klebenden Scroll-Bühne: „richtig langsam … langer Abstand … nicht interaktiv“
+       → NIE WIEDER Pinnen/Sticky für diese Bühne. Fünf Icons als Raster, kleiner Titel „Lage k von 5“, Wischen über die Karten wechselt die Lage,
+       der Takt läuft weiter, ein Tipp/Wisch hält ihn an. Klassen mit Präfix vglm- (keine generischen Namen wie weg/an/aus). */
+    const mq = matchMedia('(max-width:760px)');
+    let vglmTitel = null;
+    {
+      const kopf = document.createElement('div');
+      kopf.className = 'vglm-titel'; kopf.setAttribute('aria-live', 'polite');
+      kopf.innerHTML = '<small></small><b></b>';
+      if (leiste) leiste.after(kopf);
+      vglmTitel = () => {
+        $('small', kopf).textContent = 'Lage ' + (i + 1) + ' von ' + tabs.length;
+        $('b', kopf).textContent = $('b', tabs[i]).textContent;
+        if (!rm) { kopf.classList.remove('vglm-neu'); void kopf.offsetWidth; kopf.classList.add('vglm-neu'); }
+      };
+    }
+    const vp = $('.vgl-panels', vb);
+    if (vp) {
+      let x0 = 0, y0 = 0, aktiv = false;
+      vp.addEventListener('touchstart', e => { if (!mq.matches || e.touches.length !== 1) return; aktiv = true; x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+      vp.addEventListener('touchend', e => {
+        if (!aktiv) return; aktiv = false;
+        const t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0;
+        if (Math.abs(dx) < 44 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+        steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+    }
     const zeig = (k, fokus) => {
       i = (k + tabs.length) % tabs.length;
       tabs.forEach((t, n) => { const an = n === i; t.classList.toggle('an', an); t.setAttribute('aria-selected', an ? 'true' : 'false'); t.tabIndex = an ? 0 : -1; const l = $('.lauf', t); if (l && an) { l.style.animation = 'none'; void l.offsetWidth; l.style.animation = ''; } });
       pan.forEach((p, n) => { const an = n === i; p.hidden = !an; p.classList.remove('an'); if (an) { void p.offsetWidth; p.classList.add('an'); } });
+      if (vglmTitel) vglmTitel();
       if (fokus) tabs[i].focus({ preventScroll: true });
       if (leiste && leiste.scrollWidth > leiste.clientWidth + 4) { const x = tabs[i].getBoundingClientRect().left - leiste.getBoundingClientRect().left + leiste.scrollLeft - 16; leiste.scrollTo({ left: Math.max(0, x), behavior: rm ? 'auto' : 'smooth' }); }
     };
-    const lauf = () => { clearInterval(timer); if (!steht && !klebt) timer = setInterval(() => zeig(i + 1), TAKT); };
-    tabs.forEach((t, n) => t.addEventListener('click', () => { if (klebt) { sprung(n); return; } steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(n); }));
-    vb.addEventListener('keydown', e => {
-      if (!e.target.classList.contains('vgl-tab')) return;
-      const vor = e.key === 'ArrowDown' || e.key === 'ArrowRight', zur = e.key === 'ArrowUp' || e.key === 'ArrowLeft';
-      if (!vor && !zur) return;
-      e.preventDefault();
-      if (klebt) { const k = clamp(k0 + (vor ? 1 : -1), 0, tabs.length - 1); sprung(k); tabs[k].focus({ preventScroll: true }); return; }
-      steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i + (vor ? 1 : -1), true);
-    });
+    const lauf = () => { clearInterval(timer); if (!steht) timer = setInterval(() => zeig(i + 1), TAKT); };
+    tabs.forEach((t, n) => t.addEventListener('click', () => { steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(n); }));
+    vb.addEventListener('keydown', e => { if (!e.target.classList.contains('vgl-tab')) return; if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i + 1, true); } if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i - 1, true); } });
     if (rm) vb.classList.add('steht');
-    new IntersectionObserver(es => es.forEach(e => { if (klebt || vb.classList.contains('vgl-ruhig')) return; if (e.isIntersecting) { zeig(i); lauf(); } else clearInterval(timer); }), { threshold: .35 }).observe(vb);
-
-    /* Handy (≤ 760 px), 05.10.2026: kein Tippen mehr. Noah: „zwei mal klicken ist shit". Die Bühne klebt, der Daumen scrollt:
-       je Lage erst „Heute", dann wischt „Mit eigenen Anzeigen" im selben Rahmen darüber, dann kommt die nächste Lage.
-       Die Symbol-Leiste zeigt nur, wo man steht (Tipp springt hin, kein zweiter Schalter). Auto-Weiterschalten ist am Handy aus.
-       Reduzierte Bewegung: keine klebende Bühne, alle Lagen untereinander, Heute und Mit eigenen Anzeigen je sichtbar. */
-    const mob = matchMedia('(max-width:760px)'), n = tabs.length;
-    const sek = vb.closest('section'), lead = sek && $('.lead', sek), leadAlt = lead ? lead.textContent : '';
-    const titel = document.createElement('div'); titel.className = 'vgl-titel'; titel.setAttribute('aria-live', 'polite');
-    titel.innerHTML = `<small>Lage <span>1</span> von ${n}</small><b></b>`;
-    const klebtEl = document.createElement('div'); klebtEl.className = 'vgl-klebt-in';
-    const nav = $('.nav');
-    let klebt = false, k0 = -1, mit0 = null, rafId = 0;
-    const seite = (p, k) => $(`.vgl-seite.${k}`, p);
-    const ease = q => 1 - Math.pow(1 - q, 3);
-    const ziel = k => { const r = vb.getBoundingClientRect(), weg = r.height - innerHeight; return scrollY + r.top + weg * (k + .04) / n; };
-    function sprung(k) { scrollTo({ top: ziel(k), behavior: rm ? 'auto' : 'smooth' }); }
-    const male = () => {
-      rafId = 0; if (!klebt) return;
-      const r = vb.getBoundingClientRect(), weg = Math.max(1, r.height - innerHeight);
-      const x = clamp(-r.top / weg, 0, 1) * n, k = Math.min(n - 1, Math.floor(x)), q = Math.min(1, x - k);
-      const w = ease(clamp((q - .3) / .3, 0, 1)), p = pan[k], m = seite(p, 'kanal');
-      if (k !== k0) {
-        tabs.forEach((t, j) => { t.classList.toggle('an', j === k); t.classList.toggle('war', j < k); t.setAttribute('aria-selected', j === k ? 'true' : 'false'); t.tabIndex = j === k ? 0 : -1; });
-        pan.forEach((pp, j) => { pp.hidden = j !== k; pp.classList.remove('an', 'mit-an'); });
-        void p.offsetWidth; p.classList.add('an');            // Szenen der Seite starten neu, wie beim Reiterwechsel
-        $('span', titel).textContent = k + 1; $('b', titel).textContent = $('b', tabs[k]).textContent;
-        titel.classList.remove('neu'); void titel.offsetWidth; titel.classList.add('neu');
-        i = k; k0 = k; mit0 = null;
-      }
-      tabs.forEach((t, j) => { const l = $('.lauf', t); if (l) l.style.transform = `scaleX(${j < k ? 1 : j === k ? q.toFixed(3) : 0})`; });
-      if (m) m.style.clipPath = `inset(0 0 0 ${((1 - w) * 100).toFixed(2)}%)`;
-      const mit = w > .5; if (mit !== mit0) { p.classList.toggle('mit-an', mit); mit0 = mit; }   // Szenen von „Mit eigenen Anzeigen" laufen erst, wenn es sichtbar wird
-    };
-    const takt = () => { if (!rafId) rafId = requestAnimationFrame(male); };
-    // gleiche Höhe für alle Rahmen; passt die Bühne nicht ins Bild (375 × 667), wird der Rahmen verkleinert
-    const messen = () => {
-      if (!klebt) return;
-      const panels = $('.vgl-panels', vb);
-      vb.style.removeProperty('--vgl-h'); panels.style.removeProperty('--vgl-s');
-      const oben = (nav ? nav.getBoundingClientRect().bottom : 72) + 10; vb.style.setProperty('--vgl-oben', Math.round(oben) + 'px');
-      let h = 0; pan.forEach(p => { const war = p.hidden; p.hidden = false; h = Math.max(h, p.offsetHeight); p.hidden = war; });
-      if (!h) return;
-      vb.style.setProperty('--vgl-h', Math.ceil(h) + 'px');
-      const frei = innerHeight - oben - leiste.offsetHeight - titel.offsetHeight - 28;
-      panels.style.setProperty('--vgl-s', Math.min(1, frei / h).toFixed(3));
-      k0 = -1; male();
-    };
-    const an = () => {
-      if (rm) {   // reduzierte Bewegung: alle Lagen untereinander
-        vb.classList.add('vgl-ruhig'); if (lead) lead.textContent = leadAlt.replace(/Tipp auf deine\.?/, 'Alle fünf untereinander.'); pan.forEach((p, j) => { p.hidden = false; p.classList.add('an'); if (!$('.vgl-lagetitel', p)) { const h = document.createElement('p'); h.className = 'vgl-lagetitel'; h.textContent = $('b', tabs[j]).textContent; p.prepend(h); } }); return;
-      }
-      klebt = true; clearInterval(timer);
-      vb.classList.add('vgl-klebt'); vb.style.setProperty('--vgl-n', n); if (sek) sek.classList.add('vgl-sek');
-      if (lead) lead.textContent = leadAlt.replace(/Tipp auf deine\.?/, 'Scroll einfach weiter.');
-      leiste.before(klebtEl); klebtEl.append(leiste, titel, $('.vgl-panels', vb));
-      leiste.classList.remove('rand-l', 'rand-r');
-      messen();
-    };
-    const aus = () => {
-      if (rm) { if (!vb.classList.contains('vgl-ruhig')) return; vb.classList.remove('vgl-ruhig'); if (lead) lead.textContent = leadAlt; $$('.vgl-lagetitel', vb).forEach(e => e.remove()); pan.forEach((p, j) => { p.hidden = j !== i; p.classList.toggle('an', j === i); }); return; }
-      if (!klebt) return; klebt = false;
-      vb.classList.remove('vgl-klebt'); if (sek) sek.classList.remove('vgl-sek');
-      if (lead) lead.textContent = leadAlt;
-      vb.append(leiste, $('.vgl-panels', vb)); klebtEl.remove(); titel.remove();
-      ['--vgl-h', '--vgl-n', '--vgl-oben'].forEach(v => vb.style.removeProperty(v)); $('.vgl-panels', vb).style.removeProperty('--vgl-s');
-      pan.forEach(p => { const m = seite(p, 'kanal'); if (m) m.style.clipPath = ''; p.classList.remove('mit-an'); });
-      tabs.forEach(t => { t.classList.remove('war'); const l = $('.lauf', t); if (l) l.style.transform = ''; });
-      k0 = -1; zeig(i); rand();
-    };
-    const pruefe = () => { if (mob.matches) an(); else aus(); };
-    pruefe(); mob.addEventListener('change', pruefe);
-    addEventListener('scroll', takt, { passive: true });
-    let bx = innerWidth; addEventListener('resize', () => { if (innerWidth !== bx) { bx = innerWidth; messen(); } }, { passive: true });
-    addEventListener('load', messen); if (document.fonts) document.fonts.ready.then(messen);
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeig(i); lauf(); } else clearInterval(timer); }), { threshold: .35 }).observe(vb);
   }
 
   /* Hero: „Mehr [Wort]" — Breite folgt dem Wort, Regler-Strich zeigt den Takt. Alle Wörter liegen im selben Rasterfeld,

@@ -1984,44 +1984,24 @@ html.rd-offen{overflow:hidden}
 /* Zahlen-Zeilen der Fallstudien (Handy): „10.000 €" schob sich bei 360 px 6 px über „Erster Auftrag …" — die Zahl darf nicht schrumpfen */
 @media(max-width:760px){.fall-gross .zahl b,.fall-grid.drei .zahl b{flex:none;white-space:nowrap}.fall-gross .zahl small,.fall-grid.drei .zahl small{min-width:0}}
 
-/* ── Vergleich am Handy (05.10.2026): kein Tippen mehr. Noah: „zwei mal klicken ist shit". Die Bühne klebt, der Daumen scrollt —
-      je Lage erst Heute, dann wischt „Mit eigenen Anzeigen" im selben Rahmen darüber, dann die nächste Lage. Desktop bleibt unberührt. ── */
-.vgl-titel,.vgl-lagetitel{display:none}
+/* ── Vergleich am Handy (05.10.2026): kompakt und interaktiv. Noah zur klebenden Scroll-Bühne: „richtig langsam … langer Abstand … nicht interaktiv“
+      → nie wieder Pinnen/Sticky für diese Bühne. Fünf Icons im Raster, Titel „Lage k von 5“, Wischen wechselt, Heute + Mit eigenen Anzeigen untereinander. Desktop unberührt. ── */
+.vglm-titel{display:none}
 @media(max-width:760px){
-  .vgl-sek{overflow:clip}  /* hidden würde das Kleben verhindern */
-  .vgl-buehne.vgl-klebt{display:block;height:calc(var(--vgl-n,5) * 90svh + 100svh);transform:none!important;opacity:1!important;margin-top:28px}
-  .vgl-klebt-in{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;padding:var(--vgl-oben,84px) 0 16px}
-  .vgl-klebt .vgl-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;overflow:visible;margin:0;padding:0;-webkit-mask-image:none!important;mask-image:none!important}
-  .vgl-klebt .vgl-tab{flex:none;min-height:54px;padding:0;justify-content:center;border-radius:18px;transition:transform .35s var(--ease),background .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease)}
-  .vgl-klebt .vgl-tab:hover{transform:none}
-  .vgl-klebt .vgl-tab b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}  /* nur Symbol, Text bleibt für Screenreader */
-  .vgl-klebt .vgl-tab .ic{width:40px;height:40px;background:transparent}
-  .vgl-klebt .vgl-tab.an{transform:translateY(-4px);box-shadow:0 14px 26px -14px rgba(11,20,36,.55)}
-  .vgl-klebt .vgl-tab.an .ic{background:transparent}
-  .vgl-klebt .vgl-tab .lauf{left:14px;right:14px;width:auto;bottom:8px;height:3px;border-radius:3px;animation:none!important;will-change:transform}
-  .vgl-klebt .vgl-tab.war .ic{color:var(--kalt-deep)}
-  .vgl-klebt .vgl-titel{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;margin:14px 0 12px;min-height:52px}
-  .vgl-titel small{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-ink)}
-  .vgl-titel b{font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
-  .vgl-titel.neu b,.vgl-titel.neu small{animation:vglTitel .45s var(--ease) both}
-  .vgl-titel.neu small{animation-duration:.35s}
-  @keyframes vglTitel{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-  .vgl-klebt .vgl-panels{min-height:var(--vgl-h,0px);transform:scale(var(--vgl-s,1));transform-origin:50% 0;margin-bottom:calc((var(--vgl-s,1) - 1) * var(--vgl-h,0px))}
-  .vgl-klebt .vgl-panel{display:grid;grid-template-columns:minmax(0,1fr);min-height:var(--vgl-h,0px);height:auto;gap:0}
-  .vgl-klebt .vgl-panel[hidden]{display:none}
-  .vgl-klebt .vgl-seite{grid-area:1/1;min-height:0;margin:0;border-radius:var(--r-lg);box-shadow:none;transform:none;padding-bottom:24px}
-  .vgl-klebt .vgl-seite.heute{border:1px solid var(--line);background:var(--card)}
-  .vgl-klebt .vgl-seite.kanal{position:relative;z-index:1;will-change:clip-path;clip-path:inset(0 0 0 100%)}
-  /* Szenen von „Mit eigenen Anzeigen" warten, bis die Seite sichtbar wird (.mit-an) */
-  .vgl-klebt .vgl-panel .kanal *{animation-play-state:paused!important}
-  .vgl-klebt .vgl-panel.mit-an .kanal *{animation-play-state:running!important}
-  .vgl-klebt .vgl-seite p{text-align:center}
-  .vgl-klebt .vgl-seite .vgl-etikett{align-self:center}
-  /* reduzierte Bewegung: keine klebende Bühne, alle Lagen untereinander, Heute und Mit eigenen Anzeigen je sichtbar */
-  .vgl-ruhig .vgl-tabs{display:none}
-  .vgl-ruhig .vgl-panels{display:grid;gap:28px}
-  .vgl-ruhig .vgl-panel{gap:12px}
-  .vgl-ruhig .vgl-seite.kanal{margin-top:0;box-shadow:none;transform:none}
-  .vgl-ruhig .vgl-lagetitel{display:block;margin:0;font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--ink);text-align:center}
+  .vgl-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;overflow:visible;margin:0;padding:0;-webkit-mask-image:none!important;mask-image:none!important}
+  .vgl-tab{flex:none;min-width:0;min-height:52px;padding:0;justify-content:center;border-radius:16px}
+  .vgl-tab b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .vgl-tab .ic{width:40px;height:40px}
+  .vgl-tab.an .ic{background:transparent}
+  .vgl-tab .lauf{left:12px;right:12px;width:auto;bottom:6px;border-radius:3px}
+  .vglm-titel{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;margin:14px 0 12px;min-height:50px}
+  .vglm-titel small{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-ink)}
+  .vglm-titel b{font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
+  .vglm-titel.vglm-neu b,.vglm-titel.vglm-neu small{animation:vglmTitel .4s var(--ease) both}
+  @keyframes vglmTitel{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .vgl-panels{touch-action:pan-y}
+  .vgl-panel{gap:12px}
+  .vgl-seite.heute{padding-bottom:24px}
+  .vgl-seite.kanal{margin-top:0;box-shadow:none;transform:none}
 }
-@media(max-width:760px) and (prefers-reduced-motion:reduce){.vgl-titel.neu b,.vgl-titel.neu small{animation:none}}
+@media(max-width:760px) and (prefers-reduced-motion:reduce){.vglm-titel.vglm-neu b,.vglm-titel.vglm-neu small{animation:none}}

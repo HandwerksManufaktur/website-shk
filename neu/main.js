@@ -207,30 +207,75 @@
         if (!rm) { kopf.classList.remove('vglm-neu'); void kopf.offsetWidth; kopf.classList.add('vglm-neu'); }
       };
     }
-    const vp = $('.vgl-panels', vb);
+    /* Ein Rahmen, zwei Seiten übereinander (05.10.2026, Noah: „ja genau, mach es bei SHK genauso“ — wie „Gute Arbeit reicht nicht mehr“ auf handwerksmanufaktur.digital):
+       erst Heute, nach 3,5 s wischt „Mit eigenen Anzeigen“ von rechts darüber. Kleiner Schalter oben im Rahmen (Ohne uns / Mit uns) springt mit und ist antippbar,
+       Tipp auf den Rahmen schaltet um, Wischen links = erst Mit uns, dann nächste Lage. Alles nur ≤ 760 px; am Desktop bleibt es bei den zwei Karten nebeneinander.
+       Klassen mit Präfix vglm- (die Karten-Regel .weg hat auf der Schwesterseite einmal den Rahmen überdeckt). */
+    const vp = $('.vgl-panels', vb), FLIP = 3500;
+    let flip = null, aktivP = null;
+    const sch = document.createElement('div'); sch.className = 'vglm-schalter'; sch.dataset.mit = '0';
+    sch.setAttribute('role', 'group'); sch.setAttribute('aria-label', 'Vergleich umschalten');
+    sch.innerHTML = '<i class="vglm-daumen" aria-hidden="true"></i><button type="button" aria-pressed="true"><i aria-hidden="true">✕</i>Ohne uns</button><button type="button" aria-pressed="false"><i aria-hidden="true">✓</i>Mit uns</button>';
+    const [bH, bM] = $$('button', sch);
+    if (vp) vp.append(sch);
+    const neuStarten = el => { el.style.display = 'none'; void el.offsetWidth; el.style.display = ''; };   // Szenen-Animationen der sichtbaren Seite von vorn
+    const ist = () => !!(aktivP && aktivP.classList.contains('vglm-mit'));
+    const setMit = mit => {
+      clearTimeout(flip);
+      const p = aktivP || pan[i]; if (!p) return;
+      p.classList.toggle('vglm-mit', mit);
+      sch.dataset.mit = mit ? '1' : '0'; bH.setAttribute('aria-pressed', mit ? 'false' : 'true'); bM.setAttribute('aria-pressed', mit ? 'true' : 'false');
+      const se = $(mit ? '.vgl-seite.kanal' : '.vgl-seite.heute', p); if (se && mq.matches) neuStarten(se);
+    };
+    const stopp = () => { steht = true; vb.classList.add('steht'); clearInterval(timer); };
+    // Schalter: hält den Takt an und zeigt die gewählte Seite der aktuellen Lage
+    bH.addEventListener('click', e => { e.stopPropagation(); stopp(); setMit(false); });
+    bM.addEventListener('click', e => { e.stopPropagation(); stopp(); setMit(true); });
+    let gewischt = false;
     if (vp) {
+      vp.addEventListener('click', () => { if (!mq.matches) return; if (gewischt) { gewischt = false; return; } stopp(); setMit(!ist()); });
       let x0 = 0, y0 = 0, aktiv = false;
       vp.addEventListener('touchstart', e => { if (!mq.matches || e.touches.length !== 1) return; aktiv = true; x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
       vp.addEventListener('touchend', e => {
         if (!aktiv) return; aktiv = false;
         const t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0;
         if (Math.abs(dx) < 44 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-        steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i + (dx < 0 ? 1 : -1));
+        gewischt = true; setTimeout(() => { gewischt = false; }, 400);
+        stopp();
+        if (dx < 0) { if (!ist()) setMit(true); else zeig(i + 1, false, false); }
+        else { if (ist()) setMit(false); else zeig(i - 1, false, true); }
       }, { passive: true });
     }
-    const zeig = (k, fokus) => {
+    const zeig = (k, fokus, mitStart) => {
       i = (k + tabs.length) % tabs.length;
       tabs.forEach((t, n) => { const an = n === i; t.classList.toggle('an', an); t.setAttribute('aria-selected', an ? 'true' : 'false'); t.tabIndex = an ? 0 : -1; const l = $('.lauf', t); if (l && an) { l.style.animation = 'none'; void l.offsetWidth; l.style.animation = ''; } });
-      pan.forEach((p, n) => { const an = n === i; p.hidden = !an; p.classList.remove('an'); if (an) { void p.offsetWidth; p.classList.add('an'); } });
+      pan.forEach((p, n) => { const an = n === i; p.hidden = !an; p.classList.remove('an', 'vglm-mit'); if (an) { void p.offsetWidth; p.classList.add('an'); aktivP = p; } });
+      clearTimeout(flip);
+      sch.dataset.mit = '0'; bH.setAttribute('aria-pressed', 'true'); bM.setAttribute('aria-pressed', 'false');
+      if (mq.matches) {
+        if (mitStart !== undefined) { if (mitStart) setMit(true); }                  // Wisch nach rechts auf die vorige Lage: gleich „Mit uns“
+        else if (!rm) flip = setTimeout(() => setMit(true), FLIP);                    // reduzierte Bewegung: Umschalten nur per Tipp
+      }
       if (vglmTitel) vglmTitel();
       if (fokus) tabs[i].focus({ preventScroll: true });
       if (leiste && leiste.scrollWidth > leiste.clientWidth + 4) { const x = tabs[i].getBoundingClientRect().left - leiste.getBoundingClientRect().left + leiste.scrollLeft - 16; leiste.scrollTo({ left: Math.max(0, x), behavior: rm ? 'auto' : 'smooth' }); }
     };
+    // alle Rahmen gleich hoch: die größte der fünf Lagen (beide Seiten liegen übereinander) bestimmt die Höhe
+    const messen = () => {
+      vb.style.removeProperty('--vglm-h'); if (!mq.matches) return; let h = 0;
+      // je Lage EINZELN messen (die anderen kurz verstecken) — sonst stapeln sich zwei sichtbare Lagen und der Rahmen wird doppelt so hoch (05.10.2026)
+      const war = pan.map(p => p.hidden);
+      pan.forEach(p => { pan.forEach(x => { x.hidden = x !== p; }); h = Math.max(h, p.offsetHeight); });
+      pan.forEach((p, n) => { p.hidden = war[n]; });
+      if (h) vb.style.setProperty('--vglm-h', Math.ceil(h) + 'px');
+    };
+    messen(); addEventListener('load', messen); if (document.fonts) document.fonts.ready.then(messen);
+    let bx = innerWidth; addEventListener('resize', () => { if (innerWidth !== bx) { bx = innerWidth; messen(); } });
     const lauf = () => { clearInterval(timer); if (!steht) timer = setInterval(() => zeig(i + 1), TAKT); };
     tabs.forEach((t, n) => t.addEventListener('click', () => { steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(n); }));
     vb.addEventListener('keydown', e => { if (!e.target.classList.contains('vgl-tab')) return; if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i + 1, true); } if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); steht = true; vb.classList.add('steht'); clearInterval(timer); zeig(i - 1, true); } });
     if (rm) vb.classList.add('steht');
-    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { zeig(i); lauf(); } else clearInterval(timer); }), { threshold: .35 }).observe(vb);
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { if (!steht || !aktivP) zeig(i); lauf(); } else clearInterval(timer); }), { threshold: .35 }).observe(vb);
   }
 
   /* Hero: „Mehr [Wort]" — Breite folgt dem Wort, Regler-Strich zeigt den Takt. Alle Wörter liegen im selben Rasterfeld,

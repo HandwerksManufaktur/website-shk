@@ -2026,3 +2026,61 @@ html.rd-offen{overflow:hidden}
   .vglm-schalter[data-mit="1"] button:last-of-type{color:var(--ink)}
 }
 @media(max-width:760px) and (prefers-reduced-motion:reduce){.vglm-titel.vglm-neu b,.vglm-titel.vglm-neu small,.vgl-panel.vglm-mit .vgl-seite.kanal{animation:none}}
+
+/* ════ Handy-Runde 06.10.2026 (Noah: „du solltest ALLES mobil optimieren!!!") — nur bis 760 px, Desktop unberührt.
+   Gemessen mit neu/werkzeug/mobil_pruefen.py (390×844 + 375×667, Chromium + WebKit) und Sektion für Sektion angesehen. ════ */
+@media(max-width:760px){
+  /* Start-Hero: das mittlere Handy hebt sich beim Auffächern an. Vorher lag es über den unteren Kanten der seitlichen Handys,
+     „Badsanierung" las sich als „adsanierung" (Etikett 17 px unter dem Mittel-Handy). Jetzt stehen beide Etiketten frei darunter. */
+  .feed-innen .p3{transform:translateY(calc(var(--fan,1) * -64px)) scale(calc(.9 + .1 * var(--fan,1)))}
+
+  /* Unterseiten-Hero: das hintere Handy steckt zu zwei Dritteln hinter dem vorderen und läuft unten aus dem Bild —
+     von seinem Etikett blieben nur Bruchstücke („Se…") sichtbar. Am Handy trägt nur das vordere ein Etikett. */
+  .uhero .phone.links .etikett{display:none}
+
+  /* Fallstudien-Zahlen: alle Bezeichnungen auf einer Kante (vorher je nach Zahlbreite 63–126 px versetzt) — eine Spalte für die Zahl, eine für den Text, eine fürs Symbol */
+  .fall-gross .zahlen,.fall-grid.drei .zahlen{display:grid;grid-template-columns:max-content minmax(0,1fr) auto;column-gap:14px}
+  .fall-gross .zahl,.fall-grid.drei .zahl{display:grid;grid-column:1/-1;grid-template-columns:subgrid;align-items:baseline}
+  .fall-gross .zahl b,.fall-grid.drei .zahl b{grid-column:1;grid-row:1;min-width:0;padding-right:0}
+  .fall-gross .zahl small,.fall-grid.drei .zahl small{grid-column:2;grid-row:1}
+  .fall-gross .zahl .zi,.fall-grid.drei .zahl .zi{grid-column:3;grid-row:1;margin-left:0}
+
+  /* Große Fallstudien: Safari (WebKit) rechnete die Video-/Bildfläche mit aspect-ratio im gestreckten Raster auf 0 × 0 px —
+     auf dem iPhone fehlten Video und Foto der Fallstudien komplett. Feste Breite, dann ergibt sich die Höhe aus 4:3. */
+  .fall-gross .vid{width:100%;align-self:start}
+
+  /* Fuß: „HandwerksManufaktur" bricht in zwei Zeilen — beide Spalten teilen sich jetzt die Kopfzeile, die Listen beginnen auf einer Höhe */
+  .fuss .oben>div:nth-child(2),.fuss .oben>div:nth-child(3){display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0}
+  .fuss .oben>div:nth-child(2) ul,.fuss .oben>div:nth-child(3) ul{align-content:start}
+
+  /* Kundenstimmen: am Handy der ganze Text statt „Die…" nach drei Zeilen; Finger auf der Bahn hält sie an */
+  .stimmen-marq .stimme blockquote{display:block;-webkit-line-clamp:unset;overflow:visible;min-height:0}
+  .stimmen-marq:active .spur{animation-play-state:paused}
+
+  /* Kachel 03 „Nur dein Einzugsgebiet": der Umkreis lag mitten unter Überschrift und Text (Punkte auf den Buchstaben) — jetzt steht er frei darüber */
+  .system .zelle.z-c{padding-top:262px}
+  .system .zelle.z-c .umkreis{top:34px;right:auto;left:50%;width:220px;height:220px;margin-left:-110px;opacity:1}
+
+  /* Ratgeber „Für alle Gewerke" + „Quellen": 43 px → 44 px Tippfläche (Polster am Inline-Link, keine Zeile verschiebt sich) */
+  .wx-quer li a,.wx-quellen li a{padding:12px 0}
+
+  /* Wissen: die drei Sprungmarken gleich breit untereinander statt drei verschiedene Pillen-Längen */
+  .wx-hero .wx-sprung,.wx-sprung{flex-direction:column;align-items:center}
+  .wx-sprung a{width:min(100%,264px);justify-content:center}
+
+  /* Regionsseiten „Weitere Seiten": vier Knöpfe in vier Längen untereinander — jetzt gleich breit, Symbol und Text auf einer Kante */
+  .region-quer{flex-direction:column;align-items:stretch}
+  .region-quer .btn{justify-content:flex-start;text-align:left;padding-left:20px;padding-right:20px}
+
+  /* Ratgeber-Artikel: das Inhaltsverzeichnis stand am Handy erst NACH Artikel und Quellen — jetzt zugeklappt oben, „Passende Leistung" bleibt am Ende */
+  .wx-raster-artikel .wx-seite{display:contents}
+  .wx-raster-artikel .wx-toc{order:-1}
+  .wx-raster-artikel .wx-leistung{order:2}
+  .wx-toc.mo-klapp{padding:0 18px}
+  .wx-toc.mo-klapp>p{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .wx-toc.mo-klapp>p::after{content:"";flex:none;width:9px;height:9px;margin-right:4px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-3px) rotate(45deg);transition:transform .3s var(--ease)}
+  .wx-toc.mo-klapp.mo-offen>p::after{transform:translateY(2px) rotate(-135deg)}
+  .wx-toc.mo-klapp>p:active{opacity:.6}
+  .wx-toc.mo-klapp:not(.mo-offen) ol{display:none}
+  .wx-toc.mo-klapp.mo-offen ol{padding-bottom:10px}
+}

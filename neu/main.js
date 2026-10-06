@@ -416,6 +416,11 @@
     const fmt = n => m[1] + Math.round(n).toLocaleString('de-DE') + m[4];
     if (rm) return;
     const breite = el.getBoundingClientRect().width; el.style.minWidth = breite ? breite + 'px' : '';   // nichts springt beim Zählen
+    // 06.10.2026: gemessen wurde vor der Webschrift — mit Archivo ist die Endzahl breiter, der Text daneben brach beim Zählen um
+    // (Safari 360 px, /auftraege/: +18 px). Nach dem Laden der Schrift die Endbreite noch einmal messen.
+    if (document.fonts && document.fonts.status !== 'loaded') document.fonts.ready.then(() => {
+      const jetzt = t.textContent; t.textContent = fmt(ziel); el.style.minWidth = ''; const w = el.getBoundingClientRect().width; t.textContent = jetzt; if (w) el.style.minWidth = w + 'px';
+    });
     t.textContent = fmt(0);
     const o = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return; o.disconnect();
@@ -521,6 +526,16 @@
     spuren.push({ messen() { top = oben(v); hh = v.offsetHeight; }, an(y) { if (y + h < top - 200 || y > top + hh + 200) return; setze(m, '--pz', 1.16 - .16 * clamp((y + h - top) / (h * .9))); } });
   });
   $$('.wx-zahl b').forEach(zaehlbar);
+
+  /* 13 · Ratgeber (06.10.2026): Inhaltsverzeichnis steht am Handy oben und ist zugeklappt — ein Tipp auf „Inhalt" klappt es auf, ein Sprung klappt es wieder zu */
+  $$('.wx-toc').forEach(t => {
+    const kopf = $('p', t); if (!kopf || !$('ol', t)) return;
+    t.classList.add('mo-klapp'); kopf.setAttribute('role', 'button'); kopf.tabIndex = 0; kopf.setAttribute('aria-expanded', 'false');
+    const setz = auf => { t.classList.toggle('mo-offen', auf); kopf.setAttribute('aria-expanded', auf ? 'true' : 'false'); };
+    kopf.addEventListener('click', () => setz(!t.classList.contains('mo-offen')));
+    kopf.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setz(!t.classList.contains('mo-offen')); } });
+    $$('a', t).forEach(a => a.addEventListener('click', () => setz(false)));
+  });
 
   /* Schleife */
   const messen = () => { h = innerHeight; spuren.forEach(s => s.messen && s.messen()); los(); };

@@ -605,8 +605,13 @@ def faq_schema(fragen):
 # Fischer k50–k52 · Stimpfle k53–k55 · Irlbacher k56–k58 — damit ist die Collage komplett SHK, die Nachbarn
 # (Allplast k24 k26 k29 k30 k32 · Hirschvogel k19 k20 k23 · Hawe k08) sind raus.
 # Raus bleibt: Pröbstl k01 k03 k05 k14 · Zimmerei Schneider k02 k04 k06 k09 k10 k12 k13 k16 · Metallbau k33 k39
-COLLAGE = [7, 34, 37, 50, 15, 42, 53, 47, 17, 35, 56, 43, 18, 48, 51, 36,
-           40, 41, 54, 38, 44, 57, 45, 52, 46, 49, 55, 58]
+# Reihenfolge reihum (Noah, 18.10.2026: „kein Kunde soll 2x kommen, bevor nicht alle Kunden 1x gekommen sind"):
+# Klaß → Erwin Schmidt → Senftleben → Fischer → Stimpfle → Irlbacher (→ Ott, nur ein Foto). Die ersten 16 stehen beim Laden,
+# deshalb ist jeder Betrieb schon im ersten Bild drin; Erwin Schmidt hat die meisten Fotos und füllt den Rest.
+COLLAGE = [7, 34, 37, 50, 53, 56, 49,
+           15, 42, 47, 51, 54, 57,
+           17, 35, 38, 52, 55, 58,
+           18, 43, 48, 40, 36, 41, 44, 45, 46]
 
 def kontakt(h2='Was ist in deinem Umkreis <span class="em w">drin?</span>'):
     """Potenzialanalyse — neu angesetzt (Noah, 27.09.2026, vierte Ansage: „immer noch gleich … pass es endlich an"):

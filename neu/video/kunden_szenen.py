@@ -35,7 +35,7 @@ TOL_LAGE, TOL_GROESSE = 0.03, 0.15
 # quelle: lokaler Pfad (relativ zu CEO-GPT) oder drive:<Datei-ID>; ab: Sekunde im Original, ab der das 6–40-s-Fenster läuft.
 SZENEN = [
     dict(betrieb='Sussmann', wer='Patrick Wähnl vor der Sussmann-Logowand', quelle='drive:1lSa9ClI7Z_P2XOaDqEwkWimb26GhioiP', datei='Sussmann CTAs (1).MP4', ab=118.5, dauer=3),
-    dict(betrieb='Erwin Schmidt', wer='Florian Schmidt in der Badausstellung', quelle='drive:1ye7mpGkOczcLiSPuKS1QTkWWdWUtrW7O', datei='Erwin Schmidt Videos (2) - Skript 1 Full Body.MP4', ab=48, dauer=3, bild=0),   # Lager-Take: Flo zu weit rechts für die Mitte; lächelt in keinem Take deutlich
+    dict(betrieb='Erwin Schmidt', wer='Florian Schmidt lächelt in der Badausstellung', quelle='drive:1cTO1f2TFeT2tXk70QJN3_4QLYDUU6fJH', datei='Erwin Schmidt Videos (1) - Skript 1.MP4', ab=27.5, dauer=4, bild=39),   # näher und lächelnd; vorher Ganzkörper-Take (Skript 1 Full Body), dort klein und neutral
     dict(betrieb='Fischer', wer='Bettina Tittmann im Lager an der Kiste', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b2.mp4', datei='Bodys - Fischer (2).MP4 (Proxy)', ab=58, dauer=2.5, bild=15),   # Logo 1:1 geprüft: alle drei Symbole + FISCHER frei, Haar hinter der Schulter; in c1, h21, h22 und b2 bei 135–140 s liegt eine Strähne darauf
     dict(betrieb='Stimpfle', wer='Yannick Stimpfle lächelt, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=21.5, dauer=2, bild=9),
     dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=174),   # ab Bild 174 ruhig, lächelt zum Schluss; bei Bild 24–29 Zunge raus

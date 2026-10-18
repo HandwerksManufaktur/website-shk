@@ -1,18 +1,32 @@
 {
+ "szenen": [
+  "sussmann",
+  "erwin-schmidt",
+  "fischer",
+  "stimpfle",
+  "senftleben",
+  "irlbacher",
+  "sussmann-mirjana",
+  "senftleben-mitarbeiter"
+ ],
  "betriebe": [
   "Sussmann",
   "Erwin Schmidt",
   "Fischer",
   "Stimpfle",
   "Senftleben",
-  "Irlbacher"
+  "Irlbacher",
+  "Sussmann",
+  "Senftleben"
  ],
  "wer": [
-  "Patrick Wähnl vor dem Firmenwagen",
+  "Patrick Wähnl vor der Sussmann-Logowand",
   "Florian Schmidt in der Badausstellung",
-  "Bettina Tittmann lacht, Lager",
+  "Bettina Tittmann lächelt, Büro",
   "Yannick Stimpfle lächelt, Werkstatt",
   "Benjamin Senftleben steht vor dem Firmenwagen und lacht",
-  "Josef Irlbacher lacht, vor dem Wagen"
+  "Josef Irlbacher lacht, vor dem Wagen",
+  "Mirjana Wähnl vor der Sussmann-Logowand",
+  "Mitarbeiter von Senftleben im Interview"
  ]
 }

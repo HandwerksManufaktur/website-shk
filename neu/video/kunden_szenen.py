@@ -27,24 +27,28 @@ WS = REPO.parents[1]                                   # CEO-GPT
 ZIEL = REPO / 'assets/reels/kunden-szenen.mp4'
 SZENEN_ORDNER = HIER / 'szenen'
 BILDER = 30                                            # 1,0 s je Szene
-KOPF_X, KOPF_Y, KOPF_H = 0.50, 0.20, 0.16              # Lage und Größe des Kopfes im fertigen Bild (Anteile); 18.10. abends weiter weg (vorher 0,25 / 0,24)
+KOPF_X, KOPF_Y, KOPF_H = 0.50, 0.22, 0.185             # Kopflage/-größe (Anteile). 0,185/0,22 ist der weiteste Ausschnitt, in den alle acht Szenen exakt passen (Mirjana steht nah, der Senftleben-Mitarbeiter sitzt tief im Bild)
 TOL_LAGE, TOL_GROESSE = 0.03, 0.15
 
 # Reihenfolge = Reihenfolge im Video (Frau/Mann wechseln, Hintergründe wechseln). 18.10. abends: weiter weg, wo möglich lächelnd (Noah).
 # quelle: lokaler Pfad (relativ zu CEO-GPT) oder drive:<Datei-ID>; ab: Sekunde im Original, ab der das 6–40-s-Fenster läuft.
 SZENEN = [
-    dict(betrieb='Sussmann', wer='Patrick Wähnl vor dem Firmenwagen', quelle='drive:1cUTuGGYPv51DZfkES-pJ6Cy2rubu8ppR', datei='Sussmann CTAs (2).MP4', ab=43.5, dauer=3, bild=57),   # Mirjana geprüft: lächelt im Take nicht, steht zu weit rechts für die Mitte
+    dict(betrieb='Sussmann', wer='Patrick Wähnl vor der Sussmann-Logowand', quelle='drive:1lSa9ClI7Z_P2XOaDqEwkWimb26GhioiP', datei='Sussmann CTAs (1).MP4', ab=118.5, dauer=3),
     dict(betrieb='Erwin Schmidt', wer='Florian Schmidt in der Badausstellung', quelle='drive:1ye7mpGkOczcLiSPuKS1QTkWWdWUtrW7O', datei='Erwin Schmidt Videos (2) - Skript 1 Full Body.MP4', ab=48, dauer=3, bild=0),   # Lager-Take: Flo zu weit rechts für die Mitte; lächelt in keinem Take deutlich
-    dict(betrieb='Fischer', wer='Bettina Tittmann lacht, Lager', quelle='kunden/fischer-chemnitz/videos/rohmaterial/c1.mp4', datei='CTAs - Fischer.MP4 (Proxy)', ab=114.5, dauer=4, bild=45),
+    dict(betrieb='Fischer', wer='Bettina Tittmann lächelt, Büro', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b1.mp4', datei='Bodys - Fischer (1).MP4 (Proxy)', ab=254, dauer=6, bild=132),   # Logo ganz frei; im Lager-Take deckte das Haar das R ab („FISCHEA“)
     dict(betrieb='Stimpfle', wer='Yannick Stimpfle lächelt, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=21.5, dauer=2, bild=9),
-    dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=0),   # lacht in den ersten Bildern
+    dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=174),   # ab Bild 174 ruhig, lächelt zum Schluss; bei Bild 24–29 Zunge raus
     dict(betrieb='Irlbacher', wer='Josef Irlbacher lacht, vor dem Wagen', quelle='drive:1ZOQQAa7sYMkwCdA47d6VYLDp-Qt0KKIt', datei='Arbeitsclips/h6.mp4', ab=14, dauer=12, bild=75),   # ab Bild 75 lacht er
+    # Zusatzpersonen (Noah, 18.10.2026: „nimm Mirjana noch mit rein und nimm noch einen MA … z.B. von Senftleben“) — erst nach dem ersten Umlauf
+    dict(betrieb='Sussmann', id='sussmann-mirjana', wer='Mirjana Wähnl vor der Sussmann-Logowand', quelle='drive:1halUBA2cGwhBz5GF4YmQWQfMjl_eRJEk', datei='Sussmann Hooks (7).MP4', ab=3.5, dauer=3),
+    dict(betrieb='Senftleben', id='senftleben-mitarbeiter', wer='Mitarbeiter von Senftleben im Interview', quelle='drive:1Gj_uxE75tf-VQOTwvK2sfWMbrev4Jlg2', datei='Recruiting/MA-Interviews/Senftleben Mitarbeiter (4).MP4', ab=18.5, dauer=3),
 ]
 # Raus (18.10.2026): Josef im Büro (dreht den Kopf weg), Josef in der Sonne (kneift die Augen), alle Clips mit eingebrannten
 # Untertiteln aus dem Zusammenschnitt vom 27.09., drei weitere Bettina-Szenen, Senftleben-Szenen im Sitzen.
 
 
 def slug(b): return b.lower().replace(' ', '-')
+def sid(sz): return sz.get('id', slug(sz['betrieb']))      # Szenen-Name (Datei); Zusatzpersonen tragen eine eigene id
 
 
 # ── Gesicht ──────────────────────────────────────────────────────────────
@@ -131,13 +135,13 @@ def schneiden():
         for sz in SZENEN:
             # Zwischenspeicher (SZENEN_CACHE=<Ordner>): gleiche Quelle + Startsekunde + Länge wird nicht neu geladen
             cache = os.environ.get('SZENEN_CACHE')
-            schluessel = f"{slug(sz['betrieb'])}-{sz['quelle'].split(':')[-1].replace('/', '_')[-24:]}-{sz['ab']}-{sz['dauer']}.mp4"
+            schluessel = f"{sid(sz)}-{sz['quelle'].split(':')[-1].replace('/', '_')[-24:]}-{sz['ab']}-{sz['dauer']}.mp4"
             fen = (Path(cache) if cache else Path(tmp)) / schluessel
             if not fen.exists() or fen.stat().st_size < 10000:
                 fenster_holen(sz, fen, token)
             start, kopf = ruhigste_sekunde(gesichter(fen), sz.get('bild'))
-            lage, quellpx = ausrichten(fen, start, kopf, SZENEN_ORDNER / f"{slug(sz['betrieb'])}.mp4")
-            protokoll[sz['betrieb']] = dict(sekunde=round(sz['ab'] + start / 30, 2), kopf_x=round(lage[0], 3), kopf_y=round(lage[1], 3), quellpixel_je_zielpixel=round(quellpx, 2))
+            lage, quellpx = ausrichten(fen, start, kopf, SZENEN_ORDNER / f"{sid(sz)}.mp4")
+            protokoll[sid(sz)] = dict(sekunde=round(sz['ab'] + start / 30, 2), kopf_x=round(lage[0], 3), kopf_y=round(lage[1], 3), quellpixel_je_zielpixel=round(quellpx, 2))
             print(f"{sz['betrieb']:14s} ab {sz['ab'] + start / 30:7.2f} s  Kopf x={lage[0]:.2f} y={lage[1]:.2f}  Quellpixel/Zielpixel {quellpx:.2f}")
     (HIER / 'kunden-szenen-schnitt.json').write_text(json.dumps(protokoll, ensure_ascii=False, indent=1), encoding='utf-8')
 
@@ -146,7 +150,7 @@ def schneiden():
 def bauen():
     ein, teile = [], []
     for i, sz in enumerate(SZENEN):
-        ein += ['-i', str(SZENEN_ORDNER / f"{slug(sz['betrieb'])}.mp4")]
+        ein += ['-i', str(SZENEN_ORDNER / f"{sid(sz)}.mp4")]
         teile.append(f'[{i}:v]trim=end_frame={BILDER},setpts=PTS-STARTPTS,setsar=1[v{i}];')
     kette = ''.join(teile) + ''.join(f'[v{i}]' for i in range(len(SZENEN))) + f'concat=n={len(SZENEN)}:v=1:a=0[out]'
     tmp = ZIEL.with_suffix('.neu.mp4')
@@ -154,7 +158,7 @@ def bauen():
                     '-preset', 'slow', '-pix_fmt', 'yuv420p', '-r', '30', '-movflags', '+faststart', '-an', str(tmp)], check=True)
     tmp.replace(ZIEL)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(ZIEL), '-frames:v', '1', '-q:v', '3', str(ZIEL.with_name('kunden-szenen-poster.jpg'))], check=True)
-    (HIER / 'kunden-szenen-folge.json').write_text(json.dumps({'betriebe': [s['betrieb'] for s in SZENEN], 'wer': [s['wer'] for s in SZENEN]}, ensure_ascii=False, indent=1), encoding='utf-8')
+    (HIER / 'kunden-szenen-folge.json').write_text(json.dumps({'szenen': [sid(s) for s in SZENEN], 'betriebe': [s['betrieb'] for s in SZENEN], 'wer': [s['wer'] for s in SZENEN]}, ensure_ascii=False, indent=1), encoding='utf-8')
 
 
 # ── Prüfen (am fertigen Video) ───────────────────────────────────────────
@@ -167,14 +171,24 @@ def pruefen():
         z = [Image.open(p).convert('L') for p in sorted(Path(d).glob('z_*.png'))]
         ref = {}
         for sz in SZENEN:
-            p = f"{d}/r_{slug(sz['betrieb'])}.png"
-            subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(SZENEN_ORDNER / f"{slug(sz['betrieb'])}.mp4"), '-vf', f'select=eq(n\\,{BILDER // 2}),scale=90:160', '-frames:v', '1', p], check=True)
-            ref[sz['betrieb']] = Image.open(p).convert('L')
+            p = f"{d}/r_{sid(sz)}.png"
+            subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(SZENEN_ORDNER / f"{sid(sz)}.mp4"), '-vf', f'select=eq(n\\,{BILDER // 2}),scale=90:160', '-frames:v', '1', p], check=True)
+            ref[sid(sz)] = Image.open(p).convert('L')
     grenzen = [0] + [i for i in range(1, len(z)) if diff(z[i], z[i - 1]) > 18] + [len(z)]
     folge = [min(ref, key=lambda b: diff(z[(grenzen[k] + grenzen[k + 1]) // 2], ref[b])) for k in range(len(grenzen) - 1)]
-    alle = [s['betrieb'] for s in SZENEN]
-    if sorted(folge) != sorted(alle):
-        fehler.append(f'Betriebe im Video: {folge} — erwartet jeden genau einmal: {alle}')
+    # Regeln (Noah, 18.10.2026): jede Szene genau einmal · die ersten Szenen zeigen jeden Betrieb genau einmal, bevor eine
+    # Zusatzperson kommt · nie derselbe Betrieb direkt hintereinander, auch nicht über die Schleife
+    b_von = {sid(s): s['betrieb'] for s in SZENEN}
+    if sorted(folge) != sorted(sid(s) for s in SZENEN):
+        fehler.append(f'Szenen im Video: {folge} — erwartet jede genau einmal: {[sid(s) for s in SZENEN]}')
+    betriebe = sorted({s['betrieb'] for s in SZENEN})
+    erste = [b_von.get(x, '?') for x in folge[:len(betriebe)]]
+    if sorted(erste) != betriebe:
+        fehler.append(f'die ersten {len(betriebe)} Szenen zeigen nicht jeden Betrieb genau einmal: {erste}')
+    for i in range(len(folge)):
+        a, b2 = b_von.get(folge[i]), b_von.get(folge[(i + 1) % len(folge)])
+        if a == b2:
+            fehler.append(f'{a} zweimal hintereinander (Szene {i + 1} → {(i + 1) % len(folge) + 1})' + (' über die Schleife' if i == len(folge) - 1 else ''))
     # Kopf je Szene: Lage + Größe gleich, Kopf durchgehend frontal (dreht er weg, fällt die Erkennung aus)
     kd = gesichter(ZIEL, verkl=1.0)
     werte = []
@@ -204,4 +218,4 @@ if __name__ == '__main__':
         print(f'  {b:14s} Kopf x={cx:.3f} y={cy:.3f} Höhe={h:.3f}')
     if fehler:
         print('❌', *fehler, sep='\n  '); sys.exit(1)
-    print(f'✅ {len(folge)} Betriebe je einmal, Kopf in jeder Szene bei {KOPF_X:.0%}/{KOPF_Y:.0%} mit {KOPF_H:.0%} Höhe (±{TOL_LAGE:.0%} / ±{TOL_GROESSE:.0%}), durchgehend frontal')
+    print(f'✅ {len(folge)} Szenen, jeder Betrieb zuerst einmal, nie zweimal hintereinander (inkl. Schleife), Kopf in jeder Szene bei {KOPF_X:.0%}/{KOPF_Y:.0%} mit {KOPF_H:.0%} Höhe (±{TOL_LAGE:.0%} / ±{TOL_GROESSE:.0%}), durchgehend frontal')

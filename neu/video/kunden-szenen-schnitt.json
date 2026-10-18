@@ -1,38 +1,50 @@
 {
- "Sussmann": {
-  "sekunde": 45.4,
+ "sussmann": {
+  "sekunde": 118.5,
   "kopf_x": 0.5,
-  "kopf_y": 0.2,
-  "quellpixel_je_zielpixel": 1.65
+  "kopf_y": 0.22,
+  "quellpixel_je_zielpixel": 2.95
  },
- "Erwin Schmidt": {
+ "erwin-schmidt": {
   "sekunde": 48.0,
   "kopf_x": 0.5,
-  "kopf_y": 0.2,
-  "quellpixel_je_zielpixel": 2.16
+  "kopf_y": 0.22,
+  "quellpixel_je_zielpixel": 1.87
  },
- "Fischer": {
-  "sekunde": 116.0,
+ "fischer": {
+  "sekunde": 258.4,
   "kopf_x": 0.5,
-  "kopf_y": 0.2,
-  "quellpixel_je_zielpixel": 2.17
+  "kopf_y": 0.22,
+  "quellpixel_je_zielpixel": 1.82
  },
- "Stimpfle": {
+ "stimpfle": {
   "sekunde": 21.8,
   "kopf_x": 0.5,
-  "kopf_y": 0.2,
-  "quellpixel_je_zielpixel": 2.03
+  "kopf_y": 0.22,
+  "quellpixel_je_zielpixel": 1.76
  },
- "Senftleben": {
-  "sekunde": 77.0,
+ "senftleben": {
+  "sekunde": 82.8,
   "kopf_x": 0.5,
-  "kopf_y": 0.2,
-  "quellpixel_je_zielpixel": 2.84
+  "kopf_y": 0.22,
+  "quellpixel_je_zielpixel": 2.45
  },
- "Irlbacher": {
+ "irlbacher": {
   "sekunde": 16.5,
-  "kopf_x": 0.522,
-  "kopf_y": 0.189,
-  "quellpixel_je_zielpixel": 2.11
+  "kopf_x": 0.5,
+  "kopf_y": 0.219,
+  "quellpixel_je_zielpixel": 1.82
+ },
+ "sussmann-mirjana": {
+  "sekunde": 3.7,
+  "kopf_x": 0.5,
+  "kopf_y": 0.22,
+  "quellpixel_je_zielpixel": 3.64
+ },
+ "senftleben-mitarbeiter": {
+  "sekunde": 18.8,
+  "kopf_x": 0.5,
+  "kopf_y": 0.23,
+  "quellpixel_je_zielpixel": 3.43
  }
 }

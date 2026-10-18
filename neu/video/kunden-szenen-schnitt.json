@@ -1,50 +1,50 @@
 {
  "sussmann": {
   "sekunde": 118.5,
-  "kopf_x": 0.5,
-  "kopf_y": 0.22,
-  "quellpixel_je_zielpixel": 2.95
+  "kopf_x": 0.435,
+  "kopf_y": 0.249,
+  "quellpixel_je_zielpixel": 4.0
  },
  "erwin-schmidt": {
   "sekunde": 48.0,
-  "kopf_x": 0.5,
-  "kopf_y": 0.22,
-  "quellpixel_je_zielpixel": 1.87
+  "kopf_x": 0.479,
+  "kopf_y": 0.233,
+  "quellpixel_je_zielpixel": 4.0
  },
  "fischer": {
-  "sekunde": 258.4,
-  "kopf_x": 0.5,
-  "kopf_y": 0.22,
-  "quellpixel_je_zielpixel": 1.82
+  "sekunde": 58.5,
+  "kopf_x": 0.498,
+  "kopf_y": 0.2,
+  "quellpixel_je_zielpixel": 2.4
  },
  "stimpfle": {
   "sekunde": 21.8,
-  "kopf_x": 0.5,
-  "kopf_y": 0.22,
-  "quellpixel_je_zielpixel": 1.76
+  "kopf_x": 0.566,
+  "kopf_y": 0.202,
+  "quellpixel_je_zielpixel": 2.4
  },
  "senftleben": {
   "sekunde": 82.8,
-  "kopf_x": 0.5,
-  "kopf_y": 0.22,
-  "quellpixel_je_zielpixel": 2.45
+  "kopf_x": 0.575,
+  "kopf_y": 0.208,
+  "quellpixel_je_zielpixel": 4.0
  },
  "irlbacher": {
   "sekunde": 16.5,
-  "kopf_x": 0.5,
-  "kopf_y": 0.219,
-  "quellpixel_je_zielpixel": 1.82
+  "kopf_x": 0.579,
+  "kopf_y": 0.166,
+  "quellpixel_je_zielpixel": 2.4
  },
  "sussmann-mirjana": {
   "sekunde": 3.7,
-  "kopf_x": 0.5,
-  "kopf_y": 0.22,
-  "quellpixel_je_zielpixel": 3.64
+  "kopf_x": 0.515,
+  "kopf_y": 0.27,
+  "quellpixel_je_zielpixel": 4.0
  },
  "senftleben-mitarbeiter": {
   "sekunde": 18.8,
-  "kopf_x": 0.5,
-  "kopf_y": 0.23,
-  "quellpixel_je_zielpixel": 3.43
+  "kopf_x": 0.508,
+  "kopf_y": 0.339,
+  "quellpixel_je_zielpixel": 4.0
  }
 }

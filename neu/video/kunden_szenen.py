@@ -27,6 +27,7 @@ WS = REPO.parents[1]                                   # CEO-GPT
 ZIEL = REPO / 'assets/reels/kunden-szenen.mp4'
 SZENEN_ORDNER = HIER / 'szenen'
 BILDER = 30                                            # 1,0 s je Szene
+VOLLBILD = True                                        # Noah, 18.10.2026 nachts: „die müssen nicht als Porträt da sein … einfach normal im normalen Frame“ → kein Zoom, volles Kamerabild
 KOPF_X, KOPF_Y, KOPF_H = 0.50, 0.22, 0.185             # Kopflage/-größe (Anteile). 0,185/0,22 ist der weiteste Ausschnitt, in den alle acht Szenen exakt passen (Mirjana steht nah, der Senftleben-Mitarbeiter sitzt tief im Bild)
 TOL_LAGE, TOL_GROESSE = 0.03, 0.15
 
@@ -35,7 +36,7 @@ TOL_LAGE, TOL_GROESSE = 0.03, 0.15
 SZENEN = [
     dict(betrieb='Sussmann', wer='Patrick Wähnl vor der Sussmann-Logowand', quelle='drive:1lSa9ClI7Z_P2XOaDqEwkWimb26GhioiP', datei='Sussmann CTAs (1).MP4', ab=118.5, dauer=3),
     dict(betrieb='Erwin Schmidt', wer='Florian Schmidt in der Badausstellung', quelle='drive:1ye7mpGkOczcLiSPuKS1QTkWWdWUtrW7O', datei='Erwin Schmidt Videos (2) - Skript 1 Full Body.MP4', ab=48, dauer=3, bild=0),   # Lager-Take: Flo zu weit rechts für die Mitte; lächelt in keinem Take deutlich
-    dict(betrieb='Fischer', wer='Bettina Tittmann lächelt, Büro', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b1.mp4', datei='Bodys - Fischer (1).MP4 (Proxy)', ab=254, dauer=6, bild=132),   # Logo ganz frei; im Lager-Take deckte das Haar das R ab („FISCHEA“)
+    dict(betrieb='Fischer', wer='Bettina Tittmann im Lager an der Kiste', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b2.mp4', datei='Bodys - Fischer (2).MP4 (Proxy)', ab=58, dauer=2.5, bild=15),   # Logo 1:1 geprüft: alle drei Symbole + FISCHER frei, Haar hinter der Schulter; in c1, h21, h22 und b2 bei 135–140 s liegt eine Strähne darauf
     dict(betrieb='Stimpfle', wer='Yannick Stimpfle lächelt, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=21.5, dauer=2, bild=9),
     dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=174),   # ab Bild 174 ruhig, lächelt zum Schluss; bei Bild 24–29 Zunge raus
     dict(betrieb='Irlbacher', wer='Josef Irlbacher lacht, vor dem Wagen', quelle='drive:1ZOQQAa7sYMkwCdA47d6VYLDp-Qt0KKIt', datei='Arbeitsclips/h6.mp4', ab=14, dauer=12, bild=75),   # ab Bild 75 lacht er
@@ -114,11 +115,16 @@ def fenster_holen(sz, ziel, token):
 
 def ausrichten(fenster, start, kopf, ziel):
     W, H = kopf['W'], kopf['H']
-    k = KOPF_H * 960 / (kopf['h'] * H)                 # Skalierung Quelle → 540×960
-    cw, ch = 540 / k, 960 / k
-    if cw > W or ch > H: sys.exit(f'{ziel.name}: Kopf zu groß für {KOPF_H:.0%} — Kopfhöhe senken oder andere Szene')
     fx, fy = kopf['cx'] * W, kopf['cy'] * H
-    x0, y0 = min(max(0, fx - KOPF_X * cw), W - cw), min(max(0, fy - KOPF_Y * ch), H - ch)
+    if VOLLBILD:                                        # volles Kamerabild, kein Zoom; Querformat → 9:16 in voller Höhe um den Kopf
+        ch, cw = H, H * 9 / 16
+        if cw > W: cw, ch = W, W * 16 / 9
+        x0, y0 = min(max(0, fx - cw / 2), W - cw), (H - ch) / 2
+    else:
+        k = KOPF_H * 960 / (kopf['h'] * H)             # Skalierung Quelle → 540×960
+        cw, ch = 540 / k, 960 / k
+        if cw > W or ch > H: sys.exit(f'{ziel.name}: Kopf zu groß für {KOPF_H:.0%} — Kopfhöhe senken oder andere Szene')
+        x0, y0 = min(max(0, fx - KOPF_X * cw), W - cw), min(max(0, fy - KOPF_Y * ch), H - ch)
     lage = ((fx - x0) / cw, (fy - y0) / ch)
     vf = (f"select='between(n\\,{start}\\,{start + BILDER - 1})',setpts=N/30/TB,"
           f"crop={cw:.0f}:{ch:.0f}:{x0:.0f}:{y0:.0f},scale=540:960:flags=lanczos,setsar=1,format=yuv420p")
@@ -200,9 +206,9 @@ def pruefen():
             fehler.append(f'{b}: Kopf nur in {quote:.0%} der Bilder frontal (wegdrehen?)'); continue
         m = lambda key: sorted(x[key] for x in erkannt)[len(erkannt) // 2]
         cx, cy, h = m('cx'), m('cy'), m('h'); werte.append((b, cx, cy, h))
-        if abs(cx - KOPF_X) > TOL_LAGE or abs(cy - KOPF_Y) > TOL_LAGE:
+        if not VOLLBILD and (abs(cx - KOPF_X) > TOL_LAGE or abs(cy - KOPF_Y) > TOL_LAGE):
             fehler.append(f'{b}: Kopf bei x={cx:.2f} y={cy:.2f} statt {KOPF_X:.2f}/{KOPF_Y:.2f}')
-        if abs(h / KOPF_H - 1) > TOL_GROESSE:
+        if not VOLLBILD and abs(h / KOPF_H - 1) > TOL_GROESSE:
             fehler.append(f'{b}: Kopfhöhe {h:.2f} statt {KOPF_H:.2f}')
     return folge, werte, fehler
 
@@ -218,4 +224,5 @@ if __name__ == '__main__':
         print(f'  {b:14s} Kopf x={cx:.3f} y={cy:.3f} Höhe={h:.3f}')
     if fehler:
         print('❌', *fehler, sep='\n  '); sys.exit(1)
-    print(f'✅ {len(folge)} Szenen, jeder Betrieb zuerst einmal, nie zweimal hintereinander (inkl. Schleife), Kopf in jeder Szene bei {KOPF_X:.0%}/{KOPF_Y:.0%} mit {KOPF_H:.0%} Höhe (±{TOL_LAGE:.0%} / ±{TOL_GROESSE:.0%}), durchgehend frontal')
+    ausschnitt = 'volles Kamerabild (kein Zoom)' if VOLLBILD else f'Kopf in jeder Szene bei {KOPF_X:.0%}/{KOPF_Y:.0%} mit {KOPF_H:.0%} Höhe (±{TOL_LAGE:.0%} / ±{TOL_GROESSE:.0%})'
+    print(f'✅ {len(folge)} Szenen, jeder Betrieb zuerst einmal, nie zweimal hintereinander (inkl. Schleife), {ausschnitt}, Kopf durchgehend frontal')

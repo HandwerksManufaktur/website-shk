@@ -1,178 +1,202 @@
 #!/usr/bin/env python3
-"""Hero-Zusammenschnitt der SHK-Seite (assets/reels/kunden-szenen.mp4) — reihum, jeder Betrieb gleich oft.
+"""Hero-Zusammenschnitt der SHK-Seite (assets/reels/kunden-szenen.mp4): jeder Betrieb EINMAL, Köpfe als Match Cut.
 
-Noah, 18.10.2026: „es sollten doch bei dem Handyvideo alle einmal durchlaufen, möglichst immer hintereinander gewechselt …
-kein Kunde soll 2x kommen, bevor die nicht alle Kunden 1x gekommen sind."
-Davor, 29.09.2026: „keine Firma kommt zweimal hintereinander … noch mehr Match Cuts."
+Noah, 18.10.2026 (1): „es sollten doch bei dem Handyvideo alle einmal durchlaufen … kein Kunde soll 2x kommen,
+bevor die nicht alle Kunden 1x gekommen sind."
+Noah, 18.10.2026 (2): „im Clip von Irlbacher schaut er auf einmal so komisch zur Seite. Bettina kannst du vielleicht
+auch einfach nur einmal nehmen. Bei Senftleben nimmst du einfach das Video von ihm, wo er steht. Schau auch überall,
+dass die Köpfe zentriert sind, sodass es aussieht wie ein Match Cut."
 
-Regel (Pflicht, gemessen): Die Betriebe laufen in einer FESTEN Reihenfolge reihum. Jedes Fenster aus so vielen Szenen,
-wie es Betriebe gibt, enthält jeden Betrieb genau einmal — von jeder Stelle aus und auch über die Schleife (Ende → Anfang).
-Dafür hat jeder Betrieb gleich viele Szenen (SZENEN_JE_BETRIEB). Kommt ein Betrieb dazu, braucht er so viele Szenen
-wie die anderen; fehlen ihm welche, wird nicht hinten angehängt, sondern geschnitten oder bei den anderen gekürzt.
+Aufbau (neu angesetzt nach der zweiten Korrektur):
+- Je Betrieb genau EINE Szene, stehend, Blick in die Kamera, aus dem Original (keine eingebrannten Untertitel).
+- Jede Szene 1,0 s (30 Bilder). Die ruhigste Sekunde im Fenster sucht die Gesichtserkennung (Kopf ohne Drehung).
+- Ausschnitt je Szene fest (kein Schwenk): Kopfmitte bei x = 50 %, y = 25 %, Kopfhöhe = 24 % der Bildhöhe.
+  So liegt der Kopf in jeder Szene an derselben Stelle in derselben Größe → Match Cut.
 
-Quellen:
-- QUELLE: der alte Zusammenschnitt vom 27.09.2026 (18 Clips à 20/21 Bilder, 540×960, aus den 4K-Originalen im Drive).
-- zusatz/*.mp4: je 21 Bilder 540×960, geschnitten aus den Kunden-Rohclips (Herkunft in ZUSATZ).
-
-Aufruf:  python3 neu/video/kunden_szenen.py            → baut assets/reels/kunden-szenen.mp4 + Poster, prüft das Ergebnis
-         python3 neu/video/kunden_szenen.py --pruefen  → misst nur die fertige Datei (Betrieb je Szene, Reihum-Regel)
+Aufruf:  python3 neu/video/kunden_szenen.py              → setzt szenen/*.mp4 zusammen, schreibt Video + Poster, prüft
+         python3 neu/video/kunden_szenen.py --schneiden  → holt die Fenster neu (lokal / Drive), richtet aus, dann wie oben
+         python3 neu/video/kunden_szenen.py --pruefen    → misst nur die fertige Datei
+Braucht OpenCV mit CascadeClassifier (System-python3; das .venv-cv2 hat ihn nicht).
 """
-import itertools, json, random, subprocess, sys, shutil
+import json, subprocess, sys, tempfile
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
 REPO = HIER.parents[1]
+WS = REPO.parents[1]                                   # CEO-GPT
 ZIEL = REPO / 'assets/reels/kunden-szenen.mp4'
-QUELLE = HIER / 'kunden-szenen-quelle-2026-09-27.mp4'
-ZUSATZ_ORDNER = HIER / 'zusatz'
-GRENZEN = [0, 21, 42, 63, 84, 104, 125, 146, 167, 188, 209, 230, 251, 272, 293, 314, 335, 355, 376]  # Schnitte in QUELLE
-SZENEN_JE_BETRIEB = 4
+SZENEN_ORDNER = HIER / 'szenen'
+BILDER = 30                                            # 1,0 s je Szene
+KOPF_X, KOPF_Y, KOPF_H = 0.50, 0.25, 0.24              # Lage und Größe des Kopfes im fertigen Bild (Anteile)
+TOL_LAGE, TOL_GROESSE = 0.03, 0.15
 
-# Szene → (Betrieb, Haltung, Umgebung, Geste am Anfang, Geste am Ende). Zahlen = Clip im alten Video, Text = zusatz/<name>.mp4
-SZENEN = {
-    1: ('Sussmann', 'steht', 'lager', 0, 0),        3: ('Sussmann', 'steht', 'logo', 0, 0),
-    9: ('Sussmann', 'steht', 'wand', 0, 0),         18: ('Sussmann', 'steht', 'lager', 0, 0),
-    2: ('Irlbacher', 'steht', 'wagen', 1, 1),       7: ('Irlbacher', 'steht', 'wagen', 0, 0),
-    14: ('Irlbacher', 'steht', 'wagen', 0, 1),      'irlbacher-buero': ('Irlbacher', 'steht', 'buero', 0, 0),
-    4: ('Senftleben', 'sitzt', 'tisch', 0, 0),      6: ('Senftleben', 'sitzt', 'tisch', 0, 0),
-    13: ('Senftleben', 'sitzt', 'tisch', 0, 0),     17: ('Senftleben', 'sitzt', 'tisch', 1, 1),
-    8: ('Erwin Schmidt', 'steht', 'lager', 0, 0),   10: ('Erwin Schmidt', 'sitzt', 'tisch', 0, 0),
-    12: ('Erwin Schmidt', 'steht', 'lager', 0, 0),  15: ('Erwin Schmidt', 'sitzt', 'tisch', 0, 0),
-    'fischer-lager': ('Fischer', 'steht', 'lager', 0, 0),   'fischer-werkbank': ('Fischer', 'sitzt', 'tisch', 0, 0),
-    'fischer-gelb': ('Fischer', 'sitzt', 'raum', 0, 0),     'fischer-buero': ('Fischer', 'steht', 'buero', 0, 0),
-    'stimpfle-regal': ('Stimpfle', 'steht', 'lager', 0, 1), 'stimpfle-werkstatt': ('Stimpfle', 'sitzt', 'werkstatt', 0, 0),
-    'stimpfle-monteur': ('Stimpfle', 'sitzt', 'werkstatt', 0, 0), 'stimpfle-halle': ('Stimpfle', 'steht', 'halle', 0, 0),
-}
-# Bewusst raus (18.10.2026, damit jeder Betrieb 4 hat): 11 Patrick im Lager (wie 1), 16 Mirjana am Logo (wie 3), 5 Benjamin (kommt in 17).
-ZUSATZ = {   # Herkunft der neuen Szenen: Rohclip, Startsekunde (je 21 Bilder, 30 fps)
-    'fischer-lager': 'kunden/fischer-chemnitz/videos/rohmaterial/c1.mp4 @30,0',
-    'fischer-werkbank': 'kunden/fischer-chemnitz/videos/rohmaterial/h9.mp4 @9,0',
-    'fischer-gelb': 'kunden/fischer-chemnitz/videos/rohmaterial/h11.mp4 @12,0',
-    'fischer-buero': 'kunden/fischer-chemnitz/videos/rohmaterial/b1.mp4 @200,0',
-    'stimpfle-regal': 'kunden/stimpfle/videos/rohmaterial/c1.mp4 @30,0',
-    'stimpfle-werkstatt': 'kunden/stimpfle/videos/rohmaterial/br2.mp4 @30,0',
-    'stimpfle-monteur': 'kunden/stimpfle/videos/rohmaterial/br3.mp4 @80,0',
-    'stimpfle-halle': 'kunden/stimpfle/videos/rohmaterial/g1.mp4 @130,0 (4096×2304, Mitte 1296×2304 ausgeschnitten)',
-    'irlbacher-buero': 'Drive Irlbacher/Videos/Rohmaterial/Arbeitsclips/h4.mp4 @10,0',
-}
-START = 1   # Patrick im Lager eröffnet (Poster bleibt gleich)
+# Reihenfolge = Reihenfolge im Video (Hintergründe wechseln: grün, hell, rot, dunkel, rot, Wagen).
+# quelle: lokaler Pfad (relativ zu CEO-GPT) oder drive:<Datei-ID>; ab: Sekunde im Original, ab der das 6–40-s-Fenster läuft.
+SZENEN = [
+    dict(betrieb='Sussmann', wer='Patrick Wähnl, Lager', quelle='drive:18ng_habZYeS93k-Kslk3rCGAJaXpqY3e', datei='Sussmann Hooks (32).MP4', ab=40, dauer=6),
+    dict(betrieb='Fischer', wer='Bettina Tittmann, Lager', quelle='kunden/fischer-chemnitz/videos/rohmaterial/c1.mp4', datei='CTAs - Fischer.MP4 (Proxy)', ab=27, dauer=6),
+    dict(betrieb='Erwin Schmidt', wer='Florian Schmidt, Lager', quelle='drive:1w-SoM69mZpW-vA_m7CPPneS84sJMWagS', datei='Erwin Schmidt Videos (7) - Skript 4 Flo.MP4', ab=55, dauer=6),
+    dict(betrieb='Stimpfle', wer='Yannick Stimpfle, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=10, dauer=40, bild=870),   # ab Bild 870 ruhig, keine Hand im Bild (18.10.)
+    dict(betrieb='Senftleben', wer='Benjamin Senftleben, steht vor dem Firmenwagen', quelle='drive:14BGZqqNyhmyFk5f_tIIdFQ_grrSAkvgB', datei='LeadGen/Skript 2.MP4', ab=245, dauer=6),
+    dict(betrieb='Irlbacher', wer='Josef Irlbacher, vor dem Wagen im Schatten', quelle='drive:1ZOQQAa7sYMkwCdA47d6VYLDp-Qt0KKIt', datei='Arbeitsclips/h6.mp4', ab=14, dauer=12, bild=180),   # ab Bild 180 Augen offen, Blick in die Kamera (18.10.)
+]
+# Raus (18.10.2026): Josef im Büro (dreht den Kopf weg), Josef in der Sonne (kneift die Augen), alle Clips mit eingebrannten
+# Untertiteln aus dem Zusammenschnitt vom 27.09., drei weitere Bettina-Szenen, Senftleben-Szenen im Sitzen.
 
 
-def betrieb(s): return SZENEN[s][0]
-BETRIEBE = sorted({betrieb(s) for s in SZENEN})
+def slug(b): return b.lower().replace(' ', '-')
 
 
-def uebergang(a, b):
-    A, B = SZENEN[a], SZENEN[b]
-    p = 0
-    p += 3 if A[1] == B[1] else 0         # Haltung bleibt → ruhiger Schnitt
-    p += 2 if A[2] == B[2] else 0         # gleiche Umgebung, anderer Betrieb → Match Cut
-    p += 2 if A[4] and B[3] else 0        # Geste läuft über den Schnitt
-    return p
+# ── Gesicht ──────────────────────────────────────────────────────────────
+def _cv():
+    import cv2
+    if not hasattr(cv2, 'CascadeClassifier'):
+        sys.exit('OpenCV ohne CascadeClassifier — mit System-python3 aufrufen')
+    return cv2, cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 
-def wertung(folge):
-    return sum(uebergang(folge[i], folge[(i + 1) % len(folge)]) for i in range(len(folge)))
+def gesichter(pfad, verkl=0.5):
+    """Je Bild: Kopfmitte (cx, cy) und Kopfhöhe h als Anteil des Bildes, oder None (kein frontales Gesicht)."""
+    cv2, ges = _cv()
+    cap, out = cv2.VideoCapture(str(pfad)), []
+    while True:
+        ok, f = cap.read()
+        if not ok: break
+        H, W = f.shape[:2]
+        g = cv2.cvtColor(cv2.resize(f, None, fx=verkl, fy=verkl), cv2.COLOR_BGR2GRAY)
+        fs = ges.detectMultiScale(g, 1.1, 6, minSize=(30, 30))
+        if len(fs) == 0: out.append(None); continue
+        x, y, w, h = max(fs, key=lambda r: r[2] * r[3]); k = 1 / verkl
+        out.append(dict(cx=(x + w / 2) * k / W, cy=(y + h / 2) * k / H, h=h * k / H, W=W, H=H))
+    return out
 
 
-def suchen(saat=7):
-    """Feste Betriebsreihenfolge (alle Umläufe gleich) × Szenenwahl je Umlauf; beste Match-Cut-Wertung gewinnt."""
-    rnd = random.Random(saat)
-    je = {b: [s for s in SZENEN if betrieb(s) == b] for b in BETRIEBE}
-    for b, l in je.items():
-        if len(l) != SZENEN_JE_BETRIEB:
-            sys.exit(f'{b} hat {len(l)} Szenen statt {SZENEN_JE_BETRIEB} — erst angleichen, nie hinten anhängen')
-    erster = betrieb(START)
-    best, bw = None, -1
-    for rest in itertools.permutations([b for b in BETRIEBE if b != erster]):
-        kreis = (erster,) + rest
-        ordnung = {b: l[:] for b, l in je.items()}
-        ordnung[erster].remove(START); ordnung[erster].insert(0, START)
-        def folge_aus(o): return [o[kreis[i % len(kreis)]][i // len(kreis)] for i in range(len(kreis) * SZENEN_JE_BETRIEB)]
-        f = folge_aus(ordnung); w = wertung(f)
-        for _ in range(3000):
-            b = rnd.choice(kreis); l = ordnung[b]
-            i, j = rnd.randrange(len(l)), rnd.randrange(len(l))
-            if i == j or (b == erster and 0 in (i, j)): continue
-            l[i], l[j] = l[j], l[i]
-            w2 = wertung(folge_aus(ordnung))
-            if w2 >= w: w = w2
-            else: l[i], l[j] = l[j], l[i]
-        if w > bw: best, bw = folge_aus(ordnung), w
-    return best, bw
+def ruhigste_sekunde(d, fest=None):
+    """Start der 30 Bilder mit stabilstem Kopf (Lage + Größe); Kopfdrehung lässt die frontale Erkennung ausfallen.
+    fest = Startbild, das per Sichtprüfung gewählt wurde (Augen offen, keine Geste) — Messung läuft trotzdem darüber."""
+    import statistics as st
+    best = None
+    for s in ([fest] if fest is not None else range(len(d) - BILDER + 1)):
+        f = d[s:s + BILDER]
+        if any(x is None for x in f): continue
+        u = st.pstdev([x['cx'] for x in f]) * 10 + st.pstdev([x['cy'] for x in f]) * 10 + (max(x['h'] for x in f) / min(x['h'] for x in f) - 1) * 3
+        if best is None or u < best[0]: best = (u, s)
+    if best is None: sys.exit('keine Sekunde mit durchgehend frontalem Gesicht')
+    f = d[best[1]:best[1] + BILDER]
+    mitte = lambda k: sorted(x[k] for x in f)[BILDER // 2]
+    return best[1], dict(cx=mitte('cx'), cy=mitte('cy'), h=mitte('h'), W=f[0]['W'], H=f[0]['H'])
 
 
-def pruefen(folge):
-    """Reihum-Regel: jedes Fenster aus len(BETRIEBE) Szenen (auch über die Schleife) enthält jeden Betrieb genau einmal."""
-    fehler, n, k = [], len(folge), len(BETRIEBE)
-    if n % k:
-        fehler.append(f'{n} Szenen gehen nicht in Umläufe à {k} auf')
-    for i in range(n):
-        fenster = [betrieb(folge[(i + j) % n]) for j in range(k)]
-        doppelt = sorted({b for b in fenster if fenster.count(b) > 1})
-        if doppelt:
-            fehler.append(f'ab Szene {i + 1}: {", ".join(doppelt)} zweimal, bevor alle einmal kamen' + (' (über die Schleife)' if i + k > n else ''))
-    if sorted(map(str, folge)) != sorted(map(str, SZENEN)):
-        fehler.append('nicht alle Szenen genau einmal drin')
-    return fehler
+# ── Schneiden ────────────────────────────────────────────────────────────
+def drive_token():
+    py = WS / '.venv/bin/python'
+    code = ("from google.oauth2.credentials import Credentials; from google.auth.transport.requests import Request\n"
+            f"c=Credentials.from_authorized_user_file('{WS}/system/credentials/google-oauth-token.json')\n"
+            "c.valid or c.refresh(Request()); print(c.token)")
+    return subprocess.run([str(py), '-c', code], capture_output=True, text=True, check=True).stdout.strip()
 
 
-def bauen(folge):
-    eingaben, teile = ['-i', str(QUELLE)], []
-    zusatz_idx = {}
-    for s in folge:
-        if isinstance(s, str) and s not in zusatz_idx:
-            zusatz_idx[s] = len(zusatz_idx) + 1
-            eingaben += ['-i', str(ZUSATZ_ORDNER / f'{s}.mp4')]
-    for k, s in enumerate(folge):
-        if isinstance(s, int):
-            teile.append(f'[0:v]trim=start_frame={GRENZEN[s-1]}:end_frame={GRENZEN[s]},setpts=PTS-STARTPTS,setsar=1[v{k}];')
-        else:
-            teile.append(f'[{zusatz_idx[s]}:v]trim=end_frame=21,setpts=PTS-STARTPTS,setsar=1[v{k}];')
-    kette = ''.join(teile) + ''.join(f'[v{k}]' for k in range(len(folge))) + f'concat=n={len(folge)}:v=1:a=0[out]'
+def fenster_holen(sz, ziel, token):
+    ein = ['-ss', str(sz['ab'])]
+    if sz['quelle'].startswith('drive:'):
+        fid = sz['quelle'][6:]
+        ein += ['-headers', f'Authorization: Bearer {token}\r\n', '-i', f'https://www.googleapis.com/drive/v3/files/{fid}?alt=media&supportsAllDrives=true']
+    else:
+        ein += ['-i', str(WS / sz['quelle'])]
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', *ein, '-t', str(sz['dauer']), '-an', '-vf', 'scale=1296:2304,fps=30',
+                    '-c:v', 'libx264', '-crf', '14', '-preset', 'fast', str(ziel)], check=True, timeout=900)
+
+
+def ausrichten(fenster, start, kopf, ziel):
+    W, H = kopf['W'], kopf['H']
+    k = KOPF_H * 960 / (kopf['h'] * H)                 # Skalierung Quelle → 540×960
+    cw, ch = 540 / k, 960 / k
+    if cw > W or ch > H: sys.exit(f'{ziel.name}: Kopf zu groß für {KOPF_H:.0%} — Kopfhöhe senken oder andere Szene')
+    fx, fy = kopf['cx'] * W, kopf['cy'] * H
+    x0, y0 = min(max(0, fx - KOPF_X * cw), W - cw), min(max(0, fy - KOPF_Y * ch), H - ch)
+    lage = ((fx - x0) / cw, (fy - y0) / ch)
+    vf = (f"select='between(n\\,{start}\\,{start + BILDER - 1})',setpts=N/30/TB,"
+          f"crop={cw:.0f}:{ch:.0f}:{x0:.0f}:{y0:.0f},scale=540:960:flags=lanczos,setsar=1,format=yuv420p")
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(fenster), '-vf', vf, '-frames:v', str(BILDER), '-r', '30', '-an',
+                    '-c:v', 'libx264', '-crf', '16', '-preset', 'slow', str(ziel)], check=True)
+    return lage, cw / 540
+
+
+def schneiden():
+    SZENEN_ORDNER.mkdir(exist_ok=True)
+    token = drive_token() if any(s['quelle'].startswith('drive:') for s in SZENEN) else ''
+    protokoll = {}
+    with tempfile.TemporaryDirectory() as tmp:
+        for sz in SZENEN:
+            fen = Path(tmp) / f"{slug(sz['betrieb'])}.mp4"
+            fenster_holen(sz, fen, token)
+            start, kopf = ruhigste_sekunde(gesichter(fen), sz.get('bild'))
+            lage, quellpx = ausrichten(fen, start, kopf, SZENEN_ORDNER / f"{slug(sz['betrieb'])}.mp4")
+            protokoll[sz['betrieb']] = dict(sekunde=round(sz['ab'] + start / 30, 2), kopf_x=round(lage[0], 3), kopf_y=round(lage[1], 3), quellpixel_je_zielpixel=round(quellpx, 2))
+            print(f"{sz['betrieb']:14s} ab {sz['ab'] + start / 30:7.2f} s  Kopf x={lage[0]:.2f} y={lage[1]:.2f}  Quellpixel/Zielpixel {quellpx:.2f}")
+    (HIER / 'kunden-szenen-schnitt.json').write_text(json.dumps(protokoll, ensure_ascii=False, indent=1), encoding='utf-8')
+
+
+# ── Zusammensetzen ───────────────────────────────────────────────────────
+def bauen():
+    ein, teile = [], []
+    for i, sz in enumerate(SZENEN):
+        ein += ['-i', str(SZENEN_ORDNER / f"{slug(sz['betrieb'])}.mp4")]
+        teile.append(f'[{i}:v]trim=end_frame={BILDER},setpts=PTS-STARTPTS,setsar=1[v{i}];')
+    kette = ''.join(teile) + ''.join(f'[v{i}]' for i in range(len(SZENEN))) + f'concat=n={len(SZENEN)}:v=1:a=0[out]'
     tmp = ZIEL.with_suffix('.neu.mp4')
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', *eingaben, '-filter_complex', kette, '-map', '[out]',
-                    '-c:v', 'libx264', '-crf', '20', '-preset', 'slow', '-pix_fmt', 'yuv420p', '-r', '30', '-movflags', '+faststart', '-an', str(tmp)], check=True)
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', *ein, '-filter_complex', kette, '-map', '[out]', '-c:v', 'libx264', '-crf', '20',
+                    '-preset', 'slow', '-pix_fmt', 'yuv420p', '-r', '30', '-movflags', '+faststart', '-an', str(tmp)], check=True)
     tmp.replace(ZIEL)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(ZIEL), '-frames:v', '1', '-q:v', '3', str(ZIEL.with_name('kunden-szenen-poster.jpg'))], check=True)
-    (HIER / 'kunden-szenen-folge.json').write_text(json.dumps({'folge': folge, 'betriebe': [betrieb(s) for s in folge]}, ensure_ascii=False, indent=1), encoding='utf-8')
+    (HIER / 'kunden-szenen-folge.json').write_text(json.dumps({'betriebe': [s['betrieb'] for s in SZENEN], 'wer': [s['wer'] for s in SZENEN]}, ensure_ascii=False, indent=1), encoding='utf-8')
 
 
-def messen():
-    """Misst die FERTIGE Datei: Schnitte per Bildwechsel, jede Szene per Bildvergleich gegen alle Quellszenen → Betrieb."""
+# ── Prüfen (am fertigen Video) ───────────────────────────────────────────
+def pruefen():
     from PIL import Image, ImageChops, ImageStat
-    import tempfile
-    def bilder(datei, d, pre):
-        subprocess.run(['ffmpeg', '-v', 'error', '-i', str(datei), '-vf', 'scale=90:160', f'{d}/{pre}_%03d.png'], check=True)
-        return sorted(Path(d).glob(f'{pre}_*.png'))
     diff = lambda a, b: ImageStat.Stat(ImageChops.difference(a, b)).mean[0]
+    fehler = []
     with tempfile.TemporaryDirectory() as d:
-        q = bilder(QUELLE, d, 'q')
-        ref = {s: Image.open(q[(GRENZEN[s-1] + GRENZEN[s]) // 2]).convert('L') for s in SZENEN if isinstance(s, int)}
-        for s in SZENEN:
-            if isinstance(s, str):
-                ref[s] = Image.open(bilder(ZUSATZ_ORDNER / f'{s}.mp4', d, s.replace('-', '_'))[10]).convert('L')
-        z = [Image.open(f).convert('L') for f in bilder(ZIEL, d, 'z')]
-        grenzen = [0] + [i for i in range(1, len(z)) if diff(z[i], z[i-1]) > 18] + [len(z)]
-        folge = [min(ref, key=lambda s: diff(z[(grenzen[k] + grenzen[k+1]) // 2], ref[s])) for k in range(len(grenzen) - 1)]
-    fehler = pruefen(folge)
-    if len(folge) != len(SZENEN):
-        fehler.insert(0, f'{len(folge)} Szenen gemessen statt {len(SZENEN)}')
-    return folge, fehler
+        subprocess.run(['ffmpeg', '-v', 'error', '-i', str(ZIEL), '-vf', 'scale=90:160', f'{d}/z_%03d.png'], check=True)
+        z = [Image.open(p).convert('L') for p in sorted(Path(d).glob('z_*.png'))]
+        ref = {}
+        for sz in SZENEN:
+            p = f"{d}/r_{slug(sz['betrieb'])}.png"
+            subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(SZENEN_ORDNER / f"{slug(sz['betrieb'])}.mp4"), '-vf', f'select=eq(n\\,{BILDER // 2}),scale=90:160', '-frames:v', '1', p], check=True)
+            ref[sz['betrieb']] = Image.open(p).convert('L')
+    grenzen = [0] + [i for i in range(1, len(z)) if diff(z[i], z[i - 1]) > 18] + [len(z)]
+    folge = [min(ref, key=lambda b: diff(z[(grenzen[k] + grenzen[k + 1]) // 2], ref[b])) for k in range(len(grenzen) - 1)]
+    alle = [s['betrieb'] for s in SZENEN]
+    if sorted(folge) != sorted(alle):
+        fehler.append(f'Betriebe im Video: {folge} — erwartet jeden genau einmal: {alle}')
+    # Kopf je Szene: Lage + Größe gleich, Kopf durchgehend frontal (dreht er weg, fällt die Erkennung aus)
+    kd = gesichter(ZIEL, verkl=1.0)
+    werte = []
+    for k in range(len(grenzen) - 1):
+        f = kd[grenzen[k]:grenzen[k + 1]]; b = folge[k] if k < len(folge) else '?'
+        erkannt = [x for x in f if x]
+        quote = len(erkannt) / max(1, len(f))
+        if quote < 0.9:
+            fehler.append(f'{b}: Kopf nur in {quote:.0%} der Bilder frontal (wegdrehen?)'); continue
+        m = lambda key: sorted(x[key] for x in erkannt)[len(erkannt) // 2]
+        cx, cy, h = m('cx'), m('cy'), m('h'); werte.append((b, cx, cy, h))
+        if abs(cx - KOPF_X) > TOL_LAGE or abs(cy - KOPF_Y) > TOL_LAGE:
+            fehler.append(f'{b}: Kopf bei x={cx:.2f} y={cy:.2f} statt {KOPF_X:.2f}/{KOPF_Y:.2f}')
+        if abs(h / KOPF_H - 1) > TOL_GROESSE:
+            fehler.append(f'{b}: Kopfhöhe {h:.2f} statt {KOPF_H:.2f}')
+    return folge, werte, fehler
 
 
 if __name__ == '__main__':
+    if '--schneiden' in sys.argv:
+        schneiden()
     if '--pruefen' not in sys.argv:
-        folge, w = suchen()
-        print('Folge:', folge, 'Match-Cut-Wertung', w)
-        f = pruefen(folge)
-        if f: sys.exit('Suche fand keine gültige Folge: ' + '; '.join(f))
-        bauen(folge)
-    folge, fehler = messen()
-    print('Gemessen:', folge)
-    k = len(BETRIEBE)
-    for u in range(0, len(folge), k):
-        print(f'  Umlauf {u // k + 1}:', ' → '.join(betrieb(s) for s in folge[u:u + k]))
+        bauen()
+    folge, werte, fehler = pruefen()
+    print('Folge:', ' → '.join(folge))
+    for b, cx, cy, h in werte:
+        print(f'  {b:14s} Kopf x={cx:.3f} y={cy:.3f} Höhe={h:.3f}')
     if fehler:
         print('❌', *fehler, sep='\n  '); sys.exit(1)
-    print(f'✅ {len(folge)} Szenen, {k} Betriebe à {SZENEN_JE_BETRIEB}, reihum: jedes Fenster aus {k} Szenen hat jeden Betrieb genau einmal (inkl. Schleife)')
+    print(f'✅ {len(folge)} Betriebe je einmal, Kopf in jeder Szene bei {KOPF_X:.0%}/{KOPF_Y:.0%} mit {KOPF_H:.0%} Höhe (±{TOL_LAGE:.0%} / ±{TOL_GROESSE:.0%}), durchgehend frontal')

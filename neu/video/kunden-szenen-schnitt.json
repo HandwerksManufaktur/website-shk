@@ -1,0 +1,38 @@
+{
+ "Sussmann": {
+  "sekunde": 41.93,
+  "kopf_x": 0.5,
+  "kopf_y": 0.25,
+  "quellpixel_je_zielpixel": 1.9
+ },
+ "Fischer": {
+  "sekunde": 30.4,
+  "kopf_x": 0.5,
+  "kopf_y": 0.25,
+  "quellpixel_je_zielpixel": 1.41
+ },
+ "Erwin Schmidt": {
+  "sekunde": 58.67,
+  "kopf_x": 0.5,
+  "kopf_y": 0.25,
+  "quellpixel_je_zielpixel": 1.3
+ },
+ "Stimpfle": {
+  "sekunde": 39.0,
+  "kopf_x": 0.5,
+  "kopf_y": 0.25,
+  "quellpixel_je_zielpixel": 1.41
+ },
+ "Senftleben": {
+  "sekunde": 249.27,
+  "kopf_x": 0.5,
+  "kopf_y": 0.25,
+  "quellpixel_je_zielpixel": 1.29
+ },
+ "Irlbacher": {
+  "sekunde": 20.0,
+  "kopf_x": 0.5,
+  "kopf_y": 0.25,
+  "quellpixel_je_zielpixel": 1.42
+ }
+}

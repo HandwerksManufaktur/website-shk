@@ -18,7 +18,7 @@ Aufruf:  python3 neu/video/kunden_szenen.py              → setzt szenen/*.mp4 
          python3 neu/video/kunden_szenen.py --pruefen    → misst nur die fertige Datei
 Braucht OpenCV mit CascadeClassifier (System-python3; das .venv-cv2 hat ihn nicht).
 """
-import json, subprocess, sys, tempfile
+import json, os, subprocess, sys, tempfile
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
@@ -27,18 +27,18 @@ WS = REPO.parents[1]                                   # CEO-GPT
 ZIEL = REPO / 'assets/reels/kunden-szenen.mp4'
 SZENEN_ORDNER = HIER / 'szenen'
 BILDER = 30                                            # 1,0 s je Szene
-KOPF_X, KOPF_Y, KOPF_H = 0.50, 0.25, 0.24              # Lage und Größe des Kopfes im fertigen Bild (Anteile)
+KOPF_X, KOPF_Y, KOPF_H = 0.50, 0.20, 0.16              # Lage und Größe des Kopfes im fertigen Bild (Anteile); 18.10. abends weiter weg (vorher 0,25 / 0,24)
 TOL_LAGE, TOL_GROESSE = 0.03, 0.15
 
-# Reihenfolge = Reihenfolge im Video (Hintergründe wechseln: grün, hell, rot, dunkel, rot, Wagen).
+# Reihenfolge = Reihenfolge im Video (Frau/Mann wechseln, Hintergründe wechseln). 18.10. abends: weiter weg, wo möglich lächelnd (Noah).
 # quelle: lokaler Pfad (relativ zu CEO-GPT) oder drive:<Datei-ID>; ab: Sekunde im Original, ab der das 6–40-s-Fenster läuft.
 SZENEN = [
-    dict(betrieb='Sussmann', wer='Patrick Wähnl, Lager', quelle='drive:18ng_habZYeS93k-Kslk3rCGAJaXpqY3e', datei='Sussmann Hooks (32).MP4', ab=40, dauer=6),
-    dict(betrieb='Fischer', wer='Bettina Tittmann, Lager', quelle='kunden/fischer-chemnitz/videos/rohmaterial/c1.mp4', datei='CTAs - Fischer.MP4 (Proxy)', ab=27, dauer=6),
-    dict(betrieb='Erwin Schmidt', wer='Florian Schmidt, Lager', quelle='drive:1w-SoM69mZpW-vA_m7CPPneS84sJMWagS', datei='Erwin Schmidt Videos (7) - Skript 4 Flo.MP4', ab=55, dauer=6),
-    dict(betrieb='Stimpfle', wer='Yannick Stimpfle, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=10, dauer=40, bild=870),   # ab Bild 870 ruhig, keine Hand im Bild (18.10.)
-    dict(betrieb='Senftleben', wer='Benjamin Senftleben, steht vor dem Firmenwagen', quelle='drive:14BGZqqNyhmyFk5f_tIIdFQ_grrSAkvgB', datei='LeadGen/Skript 2.MP4', ab=245, dauer=6),
-    dict(betrieb='Irlbacher', wer='Josef Irlbacher, vor dem Wagen im Schatten', quelle='drive:1ZOQQAa7sYMkwCdA47d6VYLDp-Qt0KKIt', datei='Arbeitsclips/h6.mp4', ab=14, dauer=12, bild=180),   # ab Bild 180 Augen offen, Blick in die Kamera (18.10.)
+    dict(betrieb='Sussmann', wer='Patrick Wähnl vor dem Firmenwagen', quelle='drive:1cUTuGGYPv51DZfkES-pJ6Cy2rubu8ppR', datei='Sussmann CTAs (2).MP4', ab=43.5, dauer=3, bild=57),   # Mirjana geprüft: lächelt im Take nicht, steht zu weit rechts für die Mitte
+    dict(betrieb='Erwin Schmidt', wer='Florian Schmidt in der Badausstellung', quelle='drive:1ye7mpGkOczcLiSPuKS1QTkWWdWUtrW7O', datei='Erwin Schmidt Videos (2) - Skript 1 Full Body.MP4', ab=48, dauer=3, bild=0),   # Lager-Take: Flo zu weit rechts für die Mitte; lächelt in keinem Take deutlich
+    dict(betrieb='Fischer', wer='Bettina Tittmann lacht, Lager', quelle='kunden/fischer-chemnitz/videos/rohmaterial/c1.mp4', datei='CTAs - Fischer.MP4 (Proxy)', ab=114.5, dauer=4, bild=45),
+    dict(betrieb='Stimpfle', wer='Yannick Stimpfle lächelt, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=21.5, dauer=2, bild=9),
+    dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=0),   # lacht in den ersten Bildern
+    dict(betrieb='Irlbacher', wer='Josef Irlbacher lacht, vor dem Wagen', quelle='drive:1ZOQQAa7sYMkwCdA47d6VYLDp-Qt0KKIt', datei='Arbeitsclips/h6.mp4', ab=14, dauer=12, bild=75),   # ab Bild 75 lacht er
 ]
 # Raus (18.10.2026): Josef im Büro (dreht den Kopf weg), Josef in der Sonne (kneift die Augen), alle Clips mit eingebrannten
 # Untertiteln aus dem Zusammenschnitt vom 27.09., drei weitere Bettina-Szenen, Senftleben-Szenen im Sitzen.
@@ -103,7 +103,8 @@ def fenster_holen(sz, ziel, token):
         ein += ['-headers', f'Authorization: Bearer {token}\r\n', '-i', f'https://www.googleapis.com/drive/v3/files/{fid}?alt=media&supportsAllDrives=true']
     else:
         ein += ['-i', str(WS / sz['quelle'])]
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', *ein, '-t', str(sz['dauer']), '-an', '-vf', 'scale=1296:2304,fps=30',
+    # Volle Auflösung behalten (Hoch- und Querformat); die Fenster sind kurz, weil die Leitung schmal sein kann
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', *ein, '-t', str(sz['dauer']), '-an', '-vf', 'fps=30',
                     '-c:v', 'libx264', '-crf', '14', '-preset', 'fast', str(ziel)], check=True, timeout=900)
 
 
@@ -128,8 +129,12 @@ def schneiden():
     protokoll = {}
     with tempfile.TemporaryDirectory() as tmp:
         for sz in SZENEN:
-            fen = Path(tmp) / f"{slug(sz['betrieb'])}.mp4"
-            fenster_holen(sz, fen, token)
+            # Zwischenspeicher (SZENEN_CACHE=<Ordner>): gleiche Quelle + Startsekunde + Länge wird nicht neu geladen
+            cache = os.environ.get('SZENEN_CACHE')
+            schluessel = f"{slug(sz['betrieb'])}-{sz['quelle'].split(':')[-1].replace('/', '_')[-24:]}-{sz['ab']}-{sz['dauer']}.mp4"
+            fen = (Path(cache) if cache else Path(tmp)) / schluessel
+            if not fen.exists() or fen.stat().st_size < 10000:
+                fenster_holen(sz, fen, token)
             start, kopf = ruhigste_sekunde(gesichter(fen), sz.get('bild'))
             lage, quellpx = ausrichten(fen, start, kopf, SZENEN_ORDNER / f"{slug(sz['betrieb'])}.mp4")
             protokoll[sz['betrieb']] = dict(sekunde=round(sz['ab'] + start / 30, 2), kopf_x=round(lage[0], 3), kopf_y=round(lage[1], 3), quellpixel_je_zielpixel=round(quellpx, 2))

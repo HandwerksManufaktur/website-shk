@@ -1,38 +1,38 @@
 {
  "Sussmann": {
-  "sekunde": 41.93,
+  "sekunde": 45.4,
   "kopf_x": 0.5,
-  "kopf_y": 0.25,
-  "quellpixel_je_zielpixel": 1.9
- },
- "Fischer": {
-  "sekunde": 30.4,
-  "kopf_x": 0.5,
-  "kopf_y": 0.25,
-  "quellpixel_je_zielpixel": 1.41
+  "kopf_y": 0.2,
+  "quellpixel_je_zielpixel": 1.65
  },
  "Erwin Schmidt": {
-  "sekunde": 58.67,
+  "sekunde": 48.0,
   "kopf_x": 0.5,
-  "kopf_y": 0.25,
-  "quellpixel_je_zielpixel": 1.3
+  "kopf_y": 0.2,
+  "quellpixel_je_zielpixel": 2.16
+ },
+ "Fischer": {
+  "sekunde": 116.0,
+  "kopf_x": 0.5,
+  "kopf_y": 0.2,
+  "quellpixel_je_zielpixel": 2.17
  },
  "Stimpfle": {
-  "sekunde": 39.0,
+  "sekunde": 21.8,
   "kopf_x": 0.5,
-  "kopf_y": 0.25,
-  "quellpixel_je_zielpixel": 1.41
+  "kopf_y": 0.2,
+  "quellpixel_je_zielpixel": 2.03
  },
  "Senftleben": {
-  "sekunde": 249.27,
+  "sekunde": 77.0,
   "kopf_x": 0.5,
-  "kopf_y": 0.25,
-  "quellpixel_je_zielpixel": 1.29
+  "kopf_y": 0.2,
+  "quellpixel_je_zielpixel": 2.84
  },
  "Irlbacher": {
-  "sekunde": 20.0,
-  "kopf_x": 0.5,
-  "kopf_y": 0.25,
-  "quellpixel_je_zielpixel": 1.42
+  "sekunde": 16.5,
+  "kopf_x": 0.522,
+  "kopf_y": 0.189,
+  "quellpixel_je_zielpixel": 2.11
  }
 }

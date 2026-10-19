@@ -51,13 +51,11 @@ SZENEN = [
     dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=174),   # bei Bild 24–29 Zunge raus
     dict(betrieb='Stimpfle', wer='Yannick Stimpfle lächelt, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=21.5, dauer=2, bild=9),
     dict(betrieb='Irlbacher', wer='Josef Irlbacher vor dem Firmenwagen', quelle='drive:1m-aq3JRkKiYh-hzbfRZR2R5DoBgA61ji', datei='Arbeitsclips/b2.mp4 (Proxy)', ab=20, dauer=9.5),   # ab 30 s Handgesten; 19.10.: h6 (lacht) hatte den Kopf bei 15 % ganz oben → Match Cut nur mit 1,6-fachem Zoom; b2 derselbe Wagen, Kopf bei 23 %
-    # ── Umlauf 2: weitere Personen und Orte derselben Betriebe (Noah 19.10.: „immernoch nur 6 ausschnitte oder so“) ──
+    # ── danach drei weitere Personen; nach Meike geht es von vorn los (Noah 19.10.: „nimm nicht zweimal so komisch irlbacher und fischer,
+    #    sondern mach dann einfach ab dem clip von meike schluss“) ──
     dict(betrieb='Sussmann', id='sussmann-mirjana', wer='Mirjana Wähnl vor der Sussmann-Logowand', quelle='drive:1halUBA2cGwhBz5GF4YmQWQfMjl_eRJEk', datei='Sussmann Hooks (7).MP4', ab=3.5, dauer=3),
-    dict(betrieb='Senftleben', id='senftleben-mitarbeiter', wer='Mitarbeiter von Senftleben lächelt im Interview', quelle='drive:1UoQmbmYsOkSTgdlFyMja62lpe5nr5TpV', datei='Recruiting/MA-Interviews/Senftleben Mitarbeiter (1).MP4', ab=33.5, dauer=5),   # 19.10.: Mitarbeiter (4) kneift fast durchgehend die Augen zu
+    dict(betrieb='Senftleben', id='senftleben-mitarbeiter', wer='Mitarbeiter von Senftleben spricht im Interview', quelle='drive:1UoQmbmYsOkSTgdlFyMja62lpe5nr5TpV', datei='Recruiting/MA-Interviews/Senftleben Mitarbeiter (1).MP4', ab=19.5, dauer=6, bild=102),   # Noah 19.10.: „ne sequenz wo der gerade redet“; Mitarbeiter (4) kneift fast durchgehend die Augen zu
     dict(betrieb='Erwin Schmidt', id='erwin-schmidt-meike', wer='Meike im Lager vor den Regalkästen', quelle='drive:1234ziq-iZdt-irLxt0nd7-Hsj5HkDwHk', datei='Erwin Schmidt Videos (8) - Skript 5 Meike.MP4', ab=46, dauer=5, bild=60),   # ab 48 s lächelt sie, bei 49,5 s lacht sie
-    dict(betrieb='Irlbacher', id='irlbacher-lager', wer='Josef Irlbacher im Regallager', quelle='drive:1sweKzYxD0t7cJ83e6iHeclf0c3mb9J0M', datei='Arbeitsclips/h8.mp4 (Proxy)', ab=42.5, dauer=5),
-    dict(betrieb='Fischer', id='fischer-buero', wer='Bettina Tittmann im hellen Raum mit Pflanzen', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b1.mp4', datei='Bodys - Fischer (1).MP4 (Proxy)', ab=55, dauer=4),   # bei 53–55 s Blick nach oben
-    dict(betrieb='Stimpfle', id='stimpfle-regal', wer='Yannick Stimpfle vor dem Regal', quelle='kunden/stimpfle/videos/rohmaterial/h9.mp4', datei='Hooks (9).MP4 (Proxy)', ab=49, dauer=3),
 ]
 # Raus (18.10.2026): Josef im Büro (dreht den Kopf weg), Josef in der Sonne (kneift die Augen), alle Clips mit eingebrannten
 # Untertiteln aus dem Zusammenschnitt vom 27.09., drei weitere Bettina-Szenen, Senftleben-Szenen im Sitzen.

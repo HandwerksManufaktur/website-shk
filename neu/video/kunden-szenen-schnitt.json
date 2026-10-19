@@ -42,33 +42,15 @@
   "quellpixel_je_zielpixel": 3.72
  },
  "senftleben-mitarbeiter": {
-  "sekunde": 36.07,
+  "sekunde": 22.9,
   "kopf_x": 0.5,
   "kopf_y": 0.215,
-  "quellpixel_je_zielpixel": 3.46
+  "quellpixel_je_zielpixel": 3.42
  },
  "erwin-schmidt-meike": {
   "sekunde": 48.0,
   "kopf_x": 0.5,
   "kopf_y": 0.215,
   "quellpixel_je_zielpixel": 2.99
- },
- "irlbacher-lager": {
-  "sekunde": 43.7,
-  "kopf_x": 0.5,
-  "kopf_y": 0.215,
-  "quellpixel_je_zielpixel": 2.12
- },
- "fischer-buero": {
-  "sekunde": 56.43,
-  "kopf_x": 0.5,
-  "kopf_y": 0.215,
-  "quellpixel_je_zielpixel": 1.94
- },
- "stimpfle-regal": {
-  "sekunde": 50.8,
-  "kopf_x": 0.5,
-  "kopf_y": 0.215,
-  "quellpixel_je_zielpixel": 2.25
  }
 }

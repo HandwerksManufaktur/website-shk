@@ -7,11 +7,16 @@ Noah, 18.10.2026 (2): „im Clip von Irlbacher schaut er auf einmal so komisch z
 auch einfach nur einmal nehmen. Bei Senftleben nimmst du einfach das Video von ihm, wo er steht. Schau auch überall,
 dass die Köpfe zentriert sind, sodass es aussieht wie ein Match Cut."
 
-Aufbau (neu angesetzt nach der zweiten Korrektur):
-- Je Betrieb genau EINE Szene, stehend, Blick in die Kamera, aus dem Original (keine eingebrannten Untertitel).
-- Jede Szene 1,0 s (30 Bilder). Die ruhigste Sekunde im Fenster sucht die Gesichtserkennung (Kopf ohne Drehung).
-- Ausschnitt je Szene fest (kein Schwenk): Kopfmitte bei x = 50 %, y = 25 %, Kopfhöhe = 24 % der Bildhöhe.
-  So liegt der Kopf in jeder Szene an derselben Stelle in derselben Größe → Match Cut.
+Noah, 19.10.2026: „immernoch nur 6 ausschnitte oder so drin? und patrick ist nicht zentriert und von patrick hätte ich gerne
+den ausschnitt im lager drin und die match-cuts gescheit.“
+
+Aufbau (Stand 19.10.2026):
+- 12 Szenen à 1,0 s (30 Bilder): Umlauf 1 jeder Betrieb einmal, Umlauf 2 weitere Personen/Orte derselben Betriebe;
+  nie derselbe Betrieb direkt hintereinander, auch nicht über die Schleife.
+- Stehend oder sitzend, Blick in die Kamera, aus dem Original (keine eingebrannten Untertitel); Augen, Hände, Logos von Hand
+  im Kontaktbogen geprüft, Startbild dann fest im Feld `bild`.
+- Match Cut: Kopfmitte bei x 50 %, y 21,5 %, Kopfhöhe 17 % (KOPF_*). Zoom je Szene nur so weit wie Größe oder Lage es
+  verlangen, höchstens ZOOM_MAX = 1,5 — kein Porträt (Noah 18.10.). Kopf ganz oben/unten im Original → anderen Take nehmen.
 
 Aufruf:  python3 neu/video/kunden_szenen.py              → setzt szenen/*.mp4 zusammen, schreibt Video + Poster, prüft
          python3 neu/video/kunden_szenen.py --schneiden  → holt die Fenster neu (lokal / Drive), richtet aus, dann wie oben

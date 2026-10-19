@@ -27,22 +27,32 @@ WS = REPO.parents[1]                                   # CEO-GPT
 ZIEL = REPO / 'assets/reels/kunden-szenen.mp4'
 SZENEN_ORDNER = HIER / 'szenen'
 BILDER = 30                                            # 1,0 s je Szene
-VOLLBILD = True                                        # Noah, 18.10.2026 nachts: „die müssen nicht als Porträt da sein … einfach normal im normalen Frame“ → kein Zoom, volles Kamerabild
-KOPF_X, KOPF_Y, KOPF_H = 0.50, 0.22, 0.185             # Kopflage/-größe (Anteile). 0,185/0,22 ist der weiteste Ausschnitt, in den alle acht Szenen exakt passen (Mirjana steht nah, der Senftleben-Mitarbeiter sitzt tief im Bild)
+VOLLBILD = False                                       # 18.10. nachts: volles Kamerabild ohne Zoom → 19.10.: Köpfe lagen dann zwischen x 0,43–0,58 und y 0,17–0,34, kein Match Cut
+# Noah, 19.10.2026: „patrick ist nicht zentriert … und die match-cuts gescheit“ → Match-Cut-Modus mit HÖCHSTENS leichtem Zoom:
+# Kopf in jeder Szene an derselben Stelle (50 %/21,5 %) und gleich groß (17 % Bildhöhe). Werte per Rechnung über alle zwölf Szenen gewählt:
+# kleinster Zoom (max 1,5 bei Benjamin), bei dem jeder Kopf innerhalb ±15 % gleich groß ist; Grenze setzt der sitzende Senftleben-Mitarbeiter.
+# Je Szene nur so viel Zoom, wie Größe ODER Lage verlangen, nie mehr als ZOOM_MAX (sonst wirkt es wie ein Porträt, Noah 18.10.).
+KOPF_X, KOPF_Y, KOPF_H = 0.50, 0.215, 0.17
+ZOOM_MAX = 1.5
 TOL_LAGE, TOL_GROESSE = 0.03, 0.15
 
 # Reihenfolge = Reihenfolge im Video (Frau/Mann wechseln, Hintergründe wechseln). 18.10. abends: weiter weg, wo möglich lächelnd (Noah).
 # quelle: lokaler Pfad (relativ zu CEO-GPT) oder drive:<Datei-ID>; ab: Sekunde im Original, ab der das 6–40-s-Fenster läuft.
 SZENEN = [
-    dict(betrieb='Sussmann', wer='Patrick Wähnl vor der Sussmann-Logowand', quelle='drive:1lSa9ClI7Z_P2XOaDqEwkWimb26GhioiP', datei='Sussmann CTAs (1).MP4', ab=118.5, dauer=3),
-    dict(betrieb='Erwin Schmidt', wer='Florian Schmidt lächelt in der Badausstellung', quelle='drive:1cTO1f2TFeT2tXk70QJN3_4QLYDUU6fJH', datei='Erwin Schmidt Videos (1) - Skript 1.MP4', ab=27.5, dauer=4, bild=39),   # näher und lächelnd; vorher Ganzkörper-Take (Skript 1 Full Body), dort klein und neutral
-    dict(betrieb='Fischer', wer='Bettina Tittmann im Lager an der Kiste', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b2.mp4', datei='Bodys - Fischer (2).MP4 (Proxy)', ab=58, dauer=2.5, bild=15),   # Logo 1:1 geprüft: alle drei Symbole + FISCHER frei, Haar hinter der Schulter; in c1, h21, h22 und b2 bei 135–140 s liegt eine Strähne darauf
+    # ── Umlauf 1: jeder Betrieb einmal ──
+    dict(betrieb='Sussmann', wer='Patrick Wähnl im Lager', quelle='drive:18ng_habZYeS93k-Kslk3rCGAJaXpqY3e', datei='Sussmann Hooks (32).MP4', ab=2.5, dauer=6),   # Noah 19.10.: „von patrick hätte ich gerne den ausschnitt im lager drin“
+    dict(betrieb='Fischer', wer='Bettina Tittmann im Lager an der Kiste', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b2.mp4', datei='Bodys - Fischer (2).MP4 (Proxy)', ab=58, dauer=2.5, bild=15),   # Logo 1:1 geprüft: alle drei Symbole + FISCHER frei
+    dict(betrieb='Erwin Schmidt', wer='Florian Schmidt lächelt in der Badausstellung', quelle='drive:1cTO1f2TFeT2tXk70QJN3_4QLYDUU6fJH', datei='Erwin Schmidt Videos (1) - Skript 1.MP4', ab=27.5, dauer=4, bild=39),
+    dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=174),   # bei Bild 24–29 Zunge raus
     dict(betrieb='Stimpfle', wer='Yannick Stimpfle lächelt, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=21.5, dauer=2, bild=9),
-    dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=174),   # ab Bild 174 ruhig, lächelt zum Schluss; bei Bild 24–29 Zunge raus
-    dict(betrieb='Irlbacher', wer='Josef Irlbacher lacht, vor dem Wagen', quelle='drive:1ZOQQAa7sYMkwCdA47d6VYLDp-Qt0KKIt', datei='Arbeitsclips/h6.mp4', ab=14, dauer=12, bild=75),   # ab Bild 75 lacht er
-    # Zusatzpersonen (Noah, 18.10.2026: „nimm Mirjana noch mit rein und nimm noch einen MA … z.B. von Senftleben“) — erst nach dem ersten Umlauf
+    dict(betrieb='Irlbacher', wer='Josef Irlbacher vor dem Firmenwagen', quelle='drive:1m-aq3JRkKiYh-hzbfRZR2R5DoBgA61ji', datei='Arbeitsclips/b2.mp4 (Proxy)', ab=20, dauer=9.5),   # ab 30 s Handgesten; 19.10.: h6 (lacht) hatte den Kopf bei 15 % ganz oben → Match Cut nur mit 1,6-fachem Zoom; b2 derselbe Wagen, Kopf bei 23 %
+    # ── Umlauf 2: weitere Personen und Orte derselben Betriebe (Noah 19.10.: „immernoch nur 6 ausschnitte oder so“) ──
     dict(betrieb='Sussmann', id='sussmann-mirjana', wer='Mirjana Wähnl vor der Sussmann-Logowand', quelle='drive:1halUBA2cGwhBz5GF4YmQWQfMjl_eRJEk', datei='Sussmann Hooks (7).MP4', ab=3.5, dauer=3),
-    dict(betrieb='Senftleben', id='senftleben-mitarbeiter', wer='Mitarbeiter von Senftleben im Interview', quelle='drive:1Gj_uxE75tf-VQOTwvK2sfWMbrev4Jlg2', datei='Recruiting/MA-Interviews/Senftleben Mitarbeiter (4).MP4', ab=18.5, dauer=3),
+    dict(betrieb='Senftleben', id='senftleben-mitarbeiter', wer='Mitarbeiter von Senftleben lächelt im Interview', quelle='drive:1UoQmbmYsOkSTgdlFyMja62lpe5nr5TpV', datei='Recruiting/MA-Interviews/Senftleben Mitarbeiter (1).MP4', ab=33.5, dauer=5),   # 19.10.: Mitarbeiter (4) kneift fast durchgehend die Augen zu
+    dict(betrieb='Erwin Schmidt', id='erwin-schmidt-meike', wer='Meike im Lager vor den Regalkästen', quelle='drive:1234ziq-iZdt-irLxt0nd7-Hsj5HkDwHk', datei='Erwin Schmidt Videos (8) - Skript 5 Meike.MP4', ab=46, dauer=5, bild=60),   # ab 48 s lächelt sie, bei 49,5 s lacht sie
+    dict(betrieb='Irlbacher', id='irlbacher-lager', wer='Josef Irlbacher im Regallager', quelle='drive:1sweKzYxD0t7cJ83e6iHeclf0c3mb9J0M', datei='Arbeitsclips/h8.mp4 (Proxy)', ab=42.5, dauer=5),
+    dict(betrieb='Fischer', id='fischer-buero', wer='Bettina Tittmann im hellen Raum mit Pflanzen', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b1.mp4', datei='Bodys - Fischer (1).MP4 (Proxy)', ab=55, dauer=4),   # bei 53–55 s Blick nach oben
+    dict(betrieb='Stimpfle', id='stimpfle-regal', wer='Yannick Stimpfle vor dem Regal', quelle='kunden/stimpfle/videos/rohmaterial/h9.mp4', datei='Hooks (9).MP4 (Proxy)', ab=49, dauer=3),
 ]
 # Raus (18.10.2026): Josef im Büro (dreht den Kopf weg), Josef in der Sonne (kneift die Augen), alle Clips mit eingebrannten
 # Untertiteln aus dem Zusammenschnitt vom 27.09., drei weitere Bettina-Szenen, Senftleben-Szenen im Sitzen.
@@ -56,8 +66,15 @@ def sid(sz): return sz.get('id', slug(sz['betrieb']))      # Szenen-Name (Datei)
 def _cv():
     import cv2
     if not hasattr(cv2, 'CascadeClassifier'):
+        # Das .venv-OpenCV (5.x) hat den CascadeClassifier nicht: einmal selbst mit dem System-python3 neu starten
+        # (Sammel-Testläufer und Regel-Prüfer rufen mit dem venv-Python auf).
+        if not os.environ.get('KUNDEN_SZENEN_NEUSTART') and os.path.exists('/usr/bin/python3'):
+            os.environ['KUNDEN_SZENEN_NEUSTART'] = '1'
+            os.execv('/usr/bin/python3', ['/usr/bin/python3'] + sys.argv)
         sys.exit('OpenCV ohne CascadeClassifier — mit System-python3 aufrufen')
-    return cv2, cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+    # Zwei frontale Modelle: das zweite (alt2) fängt Brillenträger im Gegenlicht (Josef Irlbacher, 19.10.2026), die das erste
+    # zwischendurch verliert. Ein weggedrehter Kopf fällt in beiden durch — der Wegschau-Test bleibt scharf.
+    return cv2, [cv2.CascadeClassifier(cv2.data.haarcascades + n) for n in ('haarcascade_frontalface_default.xml', 'haarcascade_frontalface_alt2.xml')]
 
 
 def gesichter(pfad, verkl=0.5):
@@ -69,7 +86,10 @@ def gesichter(pfad, verkl=0.5):
         if not ok: break
         H, W = f.shape[:2]
         g = cv2.cvtColor(cv2.resize(f, None, fx=verkl, fy=verkl), cv2.COLOR_BGR2GRAY)
-        fs = ges.detectMultiScale(g, 1.1, 6, minSize=(30, 30))
+        fs = ()
+        for modell in ges:
+            fs = modell.detectMultiScale(g, 1.1, 6, minSize=(30, 30))
+            if len(fs): break
         if len(fs) == 0: out.append(None); continue
         x, y, w, h = max(fs, key=lambda r: r[2] * r[3]); k = 1 / verkl
         out.append(dict(cx=(x + w / 2) * k / W, cy=(y + h / 2) * k / H, h=h * k / H, W=W, H=H))
@@ -121,9 +141,13 @@ def ausrichten(fenster, start, kopf, ziel):
         if cw > W: cw, ch = W, W * 16 / 9
         x0, y0 = min(max(0, fx - cw / 2), W - cw), (H - ch) / 2
     else:
-        k = KOPF_H * 960 / (kopf['h'] * H)             # Skalierung Quelle → 540×960
-        cw, ch = 540 / k, 960 / k
-        if cw > W or ch > H: sys.exit(f'{ziel.name}: Kopf zu groß für {KOPF_H:.0%} — Kopfhöhe senken oder andere Szene')
+        # Zoom nur so weit wie nötig: Kopfgröße auf KOPF_H bringen und Platz schaffen, damit der Kopf auf KOPF_X/KOPF_Y rücken kann
+        z_groesse = KOPF_H / kopf['h']
+        cw1, ch1 = (W, W * 16 / 9) if W * 16 / 9 <= H else (H * 9 / 16, H)      # größtes 9:16-Fenster im Bild
+        z_x = max(KOPF_X * cw1 / fx if fx < KOPF_X * cw1 else 1, (1 - KOPF_X) * cw1 / (W - fx) if (W - fx) < (1 - KOPF_X) * cw1 else 1)
+        z_y = max(KOPF_Y * ch1 / fy if fy < KOPF_Y * ch1 else 1, (1 - KOPF_Y) * ch1 / (H - fy) if (H - fy) < (1 - KOPF_Y) * ch1 else 1)
+        z = min(ZOOM_MAX, max(1.0, z_groesse, z_x, z_y))
+        cw, ch = cw1 / z, ch1 / z
         x0, y0 = min(max(0, fx - KOPF_X * cw), W - cw), min(max(0, fy - KOPF_Y * ch), H - ch)
     lage = ((fx - x0) / cw, (fy - y0) / ch)
     vf = (f"select='between(n\\,{start}\\,{start + BILDER - 1})',setpts=N/30/TB,"
@@ -145,7 +169,8 @@ def schneiden():
             fen = (Path(cache) if cache else Path(tmp)) / schluessel
             if not fen.exists() or fen.stat().st_size < 10000:
                 fenster_holen(sz, fen, token)
-            start, kopf = ruhigste_sekunde(gesichter(fen), sz.get('bild'))
+            breite = int(subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width', '-of', 'csv=p=0', str(fen)], capture_output=True, text=True).stdout.strip() or 0)
+            start, kopf = ruhigste_sekunde(gesichter(fen, verkl=1.0 if breite < 2000 else 0.5), sz.get('bild'))   # Proxys (1296 px) in voller Größe, sonst verliert die Erkennung Brillenträger
             lage, quellpx = ausrichten(fen, start, kopf, SZENEN_ORDNER / f"{sid(sz)}.mp4")
             protokoll[sid(sz)] = dict(sekunde=round(sz['ab'] + start / 30, 2), kopf_x=round(lage[0], 3), kopf_y=round(lage[1], 3), quellpixel_je_zielpixel=round(quellpx, 2))
             print(f"{sz['betrieb']:14s} ab {sz['ab'] + start / 30:7.2f} s  Kopf x={lage[0]:.2f} y={lage[1]:.2f}  Quellpixel/Zielpixel {quellpx:.2f}")

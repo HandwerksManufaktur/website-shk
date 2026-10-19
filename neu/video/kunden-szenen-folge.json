@@ -1,32 +1,44 @@
 {
  "szenen": [
   "sussmann",
-  "erwin-schmidt",
   "fischer",
-  "stimpfle",
+  "erwin-schmidt",
   "senftleben",
+  "stimpfle",
   "irlbacher",
   "sussmann-mirjana",
-  "senftleben-mitarbeiter"
+  "senftleben-mitarbeiter",
+  "erwin-schmidt-meike",
+  "irlbacher-lager",
+  "fischer-buero",
+  "stimpfle-regal"
  ],
  "betriebe": [
   "Sussmann",
-  "Erwin Schmidt",
   "Fischer",
-  "Stimpfle",
+  "Erwin Schmidt",
   "Senftleben",
+  "Stimpfle",
   "Irlbacher",
   "Sussmann",
-  "Senftleben"
+  "Senftleben",
+  "Erwin Schmidt",
+  "Irlbacher",
+  "Fischer",
+  "Stimpfle"
  ],
  "wer": [
-  "Patrick Wähnl vor der Sussmann-Logowand",
-  "Florian Schmidt lächelt in der Badausstellung",
+  "Patrick Wähnl im Lager",
   "Bettina Tittmann im Lager an der Kiste",
-  "Yannick Stimpfle lächelt, Werkstatt",
+  "Florian Schmidt lächelt in der Badausstellung",
   "Benjamin Senftleben steht vor dem Firmenwagen und lacht",
-  "Josef Irlbacher lacht, vor dem Wagen",
+  "Yannick Stimpfle lächelt, Werkstatt",
+  "Josef Irlbacher vor dem Firmenwagen",
   "Mirjana Wähnl vor der Sussmann-Logowand",
-  "Mitarbeiter von Senftleben im Interview"
+  "Mitarbeiter von Senftleben lächelt im Interview",
+  "Meike im Lager vor den Regalkästen",
+  "Josef Irlbacher im Regallager",
+  "Bettina Tittmann im hellen Raum mit Pflanzen",
+  "Yannick Stimpfle vor dem Regal"
  ]
 }

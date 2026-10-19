@@ -1,50 +1,74 @@
 {
  "sussmann": {
-  "sekunde": 118.5,
-  "kopf_x": 0.435,
-  "kopf_y": 0.249,
-  "quellpixel_je_zielpixel": 4.0
- },
- "erwin-schmidt": {
-  "sekunde": 28.8,
-  "kopf_x": 0.456,
-  "kopf_y": 0.226,
-  "quellpixel_je_zielpixel": 4.0
+  "sekunde": 2.63,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 3.76
  },
  "fischer": {
   "sekunde": 58.5,
-  "kopf_x": 0.498,
-  "kopf_y": 0.2,
-  "quellpixel_je_zielpixel": 2.4
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 1.95
  },
- "stimpfle": {
-  "sekunde": 21.8,
-  "kopf_x": 0.566,
-  "kopf_y": 0.202,
-  "quellpixel_je_zielpixel": 2.4
+ "erwin-schmidt": {
+  "sekunde": 28.8,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 3.37
  },
  "senftleben": {
   "sekunde": 82.8,
-  "kopf_x": 0.575,
-  "kopf_y": 0.208,
-  "quellpixel_je_zielpixel": 4.0
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 2.67
+ },
+ "stimpfle": {
+  "sekunde": 21.8,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 1.91
  },
  "irlbacher": {
-  "sekunde": 16.5,
-  "kopf_x": 0.579,
-  "kopf_y": 0.166,
-  "quellpixel_je_zielpixel": 2.4
+  "sekunde": 25.27,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 1.87
  },
  "sussmann-mirjana": {
   "sekunde": 3.7,
-  "kopf_x": 0.515,
-  "kopf_y": 0.27,
-  "quellpixel_je_zielpixel": 4.0
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 3.72
  },
  "senftleben-mitarbeiter": {
-  "sekunde": 18.8,
-  "kopf_x": 0.508,
-  "kopf_y": 0.339,
-  "quellpixel_je_zielpixel": 4.0
+  "sekunde": 36.07,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 3.46
+ },
+ "erwin-schmidt-meike": {
+  "sekunde": 48.0,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 2.99
+ },
+ "irlbacher-lager": {
+  "sekunde": 43.7,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 2.12
+ },
+ "fischer-buero": {
+  "sekunde": 56.43,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 1.94
+ },
+ "stimpfle-regal": {
+  "sekunde": 50.8,
+  "kopf_x": 0.5,
+  "kopf_y": 0.215,
+  "quellpixel_je_zielpixel": 2.25
  }
 }

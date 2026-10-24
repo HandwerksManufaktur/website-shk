@@ -438,9 +438,9 @@ def fallstudien_teaser():
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, 21&nbsp;Bad-Anfragen in 2&nbsp;Monaten, ein Auftrag über 10.000&nbsp;€ nach gut 2&nbsp;Wochen. Die Zahlen stammen aus den laufenden Kampagnen.</p></div>
     <div class="fall-grid drei vier">
-      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting · läuft', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen')}
+      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen')}
       {senftleben_recruiting_karte(1)}
-      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Badsanierung · läuft', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '21 Bad-Anfragen und 10+ Vor-Ort-Termine in 2 Monaten.', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 2)}
+      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Badsanierung', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '21 Bad-Anfragen und 10+ Vor-Ort-Termine in 2 Monaten.', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 2)}
       {sussmann_karte(3)}
     </div>
   </div>
@@ -482,7 +482,7 @@ def senftleben_recruiting_karte(d=1):
     return f'''<article class="fall-karte rv" data-d="{d}">
   <div class="vid"><img src="/assets/fotos/senftleben-team-2026.jpg" alt="Das Team von Senftleben Haustechnik im Lager" loading="lazy" width="1600" height="1067" style="object-position:50% 40%"></div>
   <div class="txt">
-    <span class="chip"><i aria-hidden="true"></i>Recruiting · Stelle besetzt</span>
+    <span class="chip"><i aria-hidden="true"></i>Recruiting</span>
     <p class="erg">21 Bewerbungen in 18 Tagen, Stelle in Lohn &amp; Buchhaltung besetzt.</p>
     <div class="betrieb"><span class="lg"><img src="{SEN_LOGO}" alt="Senftleben Haustechnik"></span><span><b>Senftleben Haustechnik</b></span></div>
     <div class="zahlen">{zahl_html('21', 'Bewerbungen', '')}{zahl_html('18', 'Tage Kampagne', '')}{zahl_html('1', 'Stelle besetzt', '')}</div>
@@ -493,7 +493,7 @@ def sussmann_karte(d=1):
     return f'''<article class="fall-karte rv" data-d="{d}">
   <div class="vid"><img src="/assets/fotos/sussmann-wagen-nebeneinander.jpg" alt="Patrick und Mirjana Wähnl am Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="900" style="object-position:40% 25%"></div>
   <div class="txt">
-    <span class="chip w"><i aria-hidden="true"></i>Badsanierung · läuft</span>
+    <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
     <p class="erg">14 Bad-Anfragen, 7+ Termine, erster Auftrag 10.000 € nach gut 2 Wochen.</p>
     <div class="betrieb"><span class="lg"><img src="{SUS_LOGO}" alt="Sussmann GmbH"></span><span><b>Sussmann GmbH</b></span></div>
     <div class="zahlen">{zahl_html('14', 'Bad-Anfragen', 'w')}{zahl_html('7<span class="plus">+</span>', 'Vor-Ort-Termine', 'w')}{zahl_html('10.000&nbsp;€', 'Erster Auftrag', 'w')}</div>

@@ -462,6 +462,17 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .uhero .phone{transform:translateY(0)}
 .uhero .phone.links{transform:rotate(-5deg) translateY(30px)}
 .uhero .phone.rechts{transform:rotate(5deg)}
+/* Drei Funnels oben (Noah, 24.10.2026): das mittlere Handy steht vorn, die äußeren fächern dahinter auf */
+@media(min-width:761px){
+.uhero .wrap:has(.buehne-phones.drei){grid-template-columns:1fr 1fr}
+.uhero .buehne-phones.drei{gap:0;padding-bottom:36px}
+.uhero .buehne-phones.drei .phone{width:min(236px,19vw)}
+.uhero .buehne-phones.drei .phone.links{z-index:0;margin-right:-64px;transform:rotate(-7deg) translateY(10px)}
+.uhero .buehne-phones.drei .phone.mitte{z-index:2;width:min(256px,20.5vw);transform:translateY(-28px)}
+.uhero .buehne-phones.drei .phone.rechts{z-index:1;margin-left:-64px;transform:rotate(7deg) translateY(10px)}
+.uhero .buehne-phones.drei .phone.links .etikett{left:12px;right:auto;max-width:calc(100% - 80px)}
+.uhero .buehne-phones.drei .phone.rechts .etikett{left:auto;right:12px;max-width:calc(100% - 80px)}
+}
 .uhero .foto-frei{position:relative;border-radius:var(--r-md) var(--r-md) 0 0;overflow:hidden;min-height:420px;align-self:end}
 .uhero .foto-frei img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 
@@ -1097,6 +1108,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .vgl-c:hover .ik{transform:scale(1.25)}
 /* Fallstudien: drei gleich gebaute Karten — Überschrift immer drei Zeilen hoch, damit Logo und Zahlen auf einer Linie stehen */
 @media(min-width:1181px){.fall-grid.drei .erg{min-height:calc(3 * 1.25em)}}
+/* Vier Fallstudien (Senftleben Recruiting dazu, Noah 24.10.2026): 2 × 2 statt 3 + 1 */
+@media(min-width:1181px){.fall-grid.drei.vier{grid-template-columns:repeat(2,minmax(0,1fr))}.fall-grid.drei.vier .erg{min-height:calc(2 * 1.25em)}}
 /* Team kleiner: Porträt als Quadrat neben Name und Rolle */
 .person{display:grid;grid-template-columns:132px minmax(0,1fr);align-items:center}
 .person figure{aspect-ratio:1;height:100%}
@@ -1908,6 +1921,7 @@ html.rd-offen{overflow:hidden}
   .uhero .phone.links{display:block;width:min(196px,50vw);margin-right:-24vw;z-index:0;transform:translateX(calc((1 - var(--fan,1)) * 52%)) translateY(calc(34px + (1 - var(--fan,1)) * 18px)) rotate(calc(-7deg * var(--fan,1)))}
   .uhero .phone.rechts{z-index:1;width:min(218px,56vw);transform:translateX(calc((var(--fan,1) - 1) * 16%)) rotate(calc(4deg * var(--fan,1)))}
   .uhero .phone.links .etikett{opacity:calc(var(--fan,1) * 1.6 - .6)}
+  .uhero .buehne-phones.drei .phone.mitte{display:none}
 
   /* 11 · Wischbahnen statt Kartenstapel: Vorteile, Projekt-Galerie, Regions-Karten, Wissen-Gruppen, „Weiterlesen" */
   .vorteile,.galerie,.wx-uebersicht .wx-raster,.wx-weiter .wx-raster{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-18px;margin-right:-18px;padding:4px 18px 6px;scrollbar-width:none;overscroll-behavior-x:contain}

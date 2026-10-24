@@ -502,7 +502,7 @@ def sussmann_karte(d=1):
 
 REELS = [('patrick-reel', 'Patrick'), ('josef', 'Josef'), ('mirjana-hook', 'Mirjana'), ('meike-solo', 'Meike'), ('benjamin-schirm', 'Benjamin')]
 def reels():
-    r = ''.join(f'<figure class="reel rv" data-d="{i+1}"><video muted loop playsinline preload="none" data-quelle="/assets/reels/{f}.mp4" data-standbild="/assets/reels/{f}-standbild.webp" aria-label="Ausschnitt aus einer laufenden Kampagne"></video><figcaption>{n}</figcaption></figure>' for i, (f, n) in enumerate(REELS))
+    r = ''.join(f'<figure class="reel rv" data-d="{i+1}"><video muted loop playsinline preload="none" data-quelle="/assets/reels/{f}.mp4" data-standbild="/assets/reels/{f}-standbild.webp" aria-label="Ausschnitt aus einer Kampagne"></video><figcaption>{n}</figcaption></figure>' for i, (f, n) in enumerate(REELS))
     return f'''<section class="reels" id="reels">
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick rv">Aus der Praxis</p><h2 class="d rv">Direkt im Betrieb <span class="em w">gedreht.</span></h2></div><p class="lead rv">Inhaber und Monteure unserer Kunden vor der Kamera. Genau so laufen die Anzeigen im Feed.</p></div>

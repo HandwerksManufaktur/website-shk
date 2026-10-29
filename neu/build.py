@@ -23,6 +23,9 @@ MAIL = 'info@handwerksmanufaktur.digital'
 INSTA = 'https://www.instagram.com/handwerks.manufaktur/'   # neues Konto seit 27.09.2026 (marketing/instagram/README.md)
 CAL_REC = 'https://calendly.com/noahseelau/recruiting-potenzial'
 CAL_LEAD = 'https://calendly.com/noahseelau/leadgen-potenzial'
+CAL_WEB = 'https://calendly.com/noahseelau/website-potenzial'   # Website-Erstgespräch (wie auf der HWM-Hauptseite)
+# Gebaut, aber versteckt: nicht in Nav, Sitemap, llms.txt, robots noindex — Noah, 29.10.2026: „unter irgendeiner Unterseite, wo man es noch nicht unbedingt sieht“
+VERSTECKT = {'/webdesign/'}
 
 def u(p):  # Seiten-Link
     return f'{B}{p}'
@@ -42,7 +45,8 @@ for f in sorted((REPO/'Logos SHK').glob('Logo *.png')):
 
 LOGOBOX = {'erwin-schmidt': 'Logo Erwin Schmidt weiss.png', 'senftleben': 'Logo Senftleben Haustechnik weiss.png', 'sussmann': 'Logo Sussmann weiss.png',
            'gallenberger': 'Logo Franz Gallenberger weiss.png', 'hannes-schmidt': 'Logo Hannes Schmidt GmbH Weiss.png', 'kirchner': 'Logo Kirchner weiss.png',
-           'lanzinger': 'Logo Lanzinger GmbH weiss.png', 'suessmeier': 'Logo Suessmeier Heizungstechnik weiss.png', 'ressle': 'Logo Autohaus Ressle weiss.png'}
+           'lanzinger': 'Logo Lanzinger GmbH weiss.png', 'suessmeier': 'Logo Suessmeier Heizungstechnik weiss.png', 'ressle': 'Logo Autohaus Ressle weiss.png',
+           'entenmann': 'Logo Entenmann Haustechnik weiss.png', 'irlbacher': 'Logo Irlbacher weiss.png'}   # Vorzeigeprojekte /webdesign/ (29.10.2026)
 def logos_box():
     """Jede Referenz-Kachel 336 × 120, Logo weiß, zentriert, Füllmaß 86 % × 72 % — dieselbe Regel für alle (Noah, 3× „exakt gleich groß")."""
     ziel = REPO / 'assets' / 'logos-box'; ziel.mkdir(exist_ok=True)
@@ -71,9 +75,9 @@ NAV = [('/monteure/', IK['users'], 'Monteure'), ('/auftraege/', IK['bath'], 'Auf
 # Logo-Intro nur auf der Startseite: auf Unterseiten verdeckte es beim Erstbesuch den Inhalt ~2,2 s (LCP mobil 2,8–3,0 s, 27.09.2026)
 INTRO = '<div id="intro" aria-hidden="true"><img src="/assets/logo-hm-quer-weiss.svg" alt="" width="340" height="91"><span class="strich"><i></i></span></div>'
 
-def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None):
+def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None, noindex=False):
     canon = f'{DOMAIN}{pfad}'
-    robots = 'noindex, nofollow' if NOINDEX else 'index, follow, max-image-preview:large, max-snippet:-1'
+    robots = 'noindex, nofollow' if (NOINDEX or noindex) else 'index, follow, max-image-preview:large, max-snippet:-1'
     org = {
         "@type": "ProfessionalService", "@id": "https://handwerksmanufaktur.digital/#organization",
         "name": "HandwerksManufaktur", "legalName": "HANDWERKSMANUFAKTUR LTD", "url": "https://handwerksmanufaktur.digital/",
@@ -520,14 +524,15 @@ STIMMEN = [
     ('Isabella Rauch', 'Autohaus Ressle · Recruiting', '„(…) wir haben eine überraschend hohe Anzahl an BewerberInnen und InteressentInnen über die kreative Stellenanzeige auf Facebook etc. erhalten. Für uns ist dieser Weg der Personalsuche in jedem Fall zukunftsweisend und zeigt sicheren Erfolg. (…)“'),
 ]
 STIMMEN_LOGO = {'Franz Gallenberger': 'gallenberger', 'Benjamin Senftleben': 'senftleben', 'Lanzinger GmbH': 'lanzinger', 'Andrea Süßmeier': 'suessmeier', 'Hannes Schmidt GmbH': 'hannes-schmidt', 'Alisa Kirchner': 'kirchner', 'Isabella Rauch': 'ressle'}
-def stimmen():
+def stimmen(liste=None, h2='Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span>'):
+    liste = STIMMEN if liste is None else liste
     def karte(n, b, z):
         return f'<figure class="stimme"><div class="kopf"><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span><span class="google-mini" aria-hidden="true">{GOOGLE_G}</span></div><blockquote>{z}</blockquote><figcaption class="wer"><span class="lg"><img src="/assets/logos-box/{STIMMEN_LOGO[n]}.png" alt="" width="336" height="120"></span><span><b>{n}</b><small>{b}</small></span></figcaption></figure>'
-    reihe1 = ''.join(karte(n, b, z) for n, b, z in STIMMEN)
+    reihe1 = ''.join(karte(n, b, z) for n, b, z in liste)
     still = lambda k: k.replace('<figure class="stimme">', '<figure class="stimme" aria-hidden="true">')
     return f'''<section class="stimmen" id="stimmen">
   <div class="wrap">
-    <div class="sec-kopf mitte"><p class="kick rv">Stimmen aus der Branche</p><h2 class="d rv">Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span></h2><p class="rv"><span class="google">{GOOGLE_G}<span>5,0 <span class="stern" aria-hidden="true">{ic("star","voll")*5}</span></span><span style="font-weight:500;color:var(--sub)">57 Google-Bewertungen</span></span></p></div>
+    <div class="sec-kopf mitte"><p class="kick rv">Stimmen aus der Branche</p><h2 class="d rv">{h2}</h2><p class="rv"><span class="google">{GOOGLE_G}<span>5,0 <span class="stern" aria-hidden="true">{ic("star","voll")*5}</span></span><span style="font-weight:500;color:var(--sub)">57 Google-Bewertungen</span></span></p></div>
   </div>
   <div class="stimmen-marq rv"><div class="spur">{reihe1}{still(reihe1)}</div></div>
 </section>'''
@@ -589,11 +594,11 @@ FAQ_ALLE = [
     ('Woher wisst ihr, welcher Monteur zu mir passt?', 'Vor der Bewerbung stehen Filterfragen: Gewerk, Erfahrung, Führerschein, Entfernung. Wer nicht passt, hört vorher auf. Du entscheidest, wen du zurückrufst.'),
 ]
 FAQ_START = [FAQ_ALLE[i] for i in (0, 1, 2, 3, 4, 6)]
-def faq(fragen=FAQ_START, h2='Bevor du <span class="em k">fragst.</span>'):
+def faq(fragen=FAQ_START, h2='Bevor du <span class="em k">fragst.</span>', satz='Die Einwände aus fast jedem Erstgespräch, kurz beantwortet. Alles andere klären wir in der Potenzialanalyse.'):
     items = ''.join(f'<details class="faq-item"{" open" if i == 0 else ""}><summary>{q}<i aria-hidden="true">+</i></summary><div class="a"><p>{a}</p></div></details>' for i, (q, a) in enumerate(fragen))
     return f'''<section class="faq" id="faq">
   <div class="wrap"><div class="faq-grid">
-    <div class="links rv"><p class="kick">Häufige Fragen</p><h2 class="d">{h2}</h2><p>Die Einwände aus fast jedem Erstgespräch, kurz beantwortet. Alles andere klären wir in der Potenzialanalyse.</p>
+    <div class="links rv"><p class="kick">Häufige Fragen</p><h2 class="d">{h2}</h2><p>{satz}</p>
       <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-kopf-nah.jpg" alt="Noah Seelau" width="400" height="400"><span><b>Deine Frage steht nicht dabei?</b><small>Am Telefon bist du direkt bei mir.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
     </div>
     <div class="faq-liste rv" data-d="1">{items}</div>
@@ -618,19 +623,19 @@ COLLAGE = [7, 34, 37, 50, 53, 56, 49,
            17, 35, 38, 52, 55, 58,
            18, 43, 48, 40, 36, 41, 44, 45, 46]
 
-def kontakt(h2='Was ist in deinem Umkreis <span class="em w">drin?</span>'):
+def kontakt(h2='Was ist in deinem Umkreis <span class="em w">drin?</span>', kick=None, satz='Am Ende steht eine Zahl für deinen Umkreis. Reicht sie nicht, sagen wir es dir.', wahl=None):
     """Potenzialanalyse — neu angesetzt (Noah, 27.09.2026, vierte Ansage: „immer noch gleich … pass es endlich an"):
     zwei gleich breite Hälften, links ein echtes Foto aus einem Kundenbetrieb, rechts drei Zeilen und die zwei Wege. Kein Avatar-Band, keine Häkchen-Liste."""
     return f'''<section class="kontakt" id="kontakt">
   <div class="wrap"><div class="kontakt-karte kontakt-neu rv">
     <figure class="kontakt-bild collage-feld"><div class="collage" data-pool='{json.dumps([f"/assets/collage/k{i:02d}.webp" for i in COLLAGE])}'>{"".join(f'<img src="/assets/collage/k{i:02d}.webp" alt="" width="320" height="320" loading="lazy" decoding="async">' for i in COLLAGE[:16])}</div><figcaption>Aus unseren Shootings in den Betrieben</figcaption></figure>
     <div class="kontakt-text">
-      <p class="kick"><span>Potenzialanalyse<span class="kick-pt"> · </span><span class="kick-rest">30&nbsp;Min.&nbsp;·&nbsp;kostenlos</span></span></p>
+      <p class="kick"><span>{kick or 'Potenzialanalyse'}<span class="kick-pt"> · </span><span class="kick-rest">30&nbsp;Min.&nbsp;·&nbsp;kostenlos</span></span></p>
       <h2 class="d">{h2}</h2>
-      <p class="kontakt-satz">Am Ende steht eine Zahl für deinen Umkreis. Reicht sie nicht, sagen wir es dir.</p>
-      <div class="wahl">
+      <p class="kontakt-satz">{satz}</p>
+      <div class="wahl">{wahl if wahl is not None else f"""
         <a href="{CAL_REC}" target="_blank" rel="noopener">{ic('users','ic')}<span><h3>Monteure finden</h3><small>Recruiting-Potenzial deiner Region</small></span><span class="pfeil" aria-hidden="true">→</span></a>
-        <a class="w" href="{CAL_LEAD}" target="_blank" rel="noopener">{ic('bath','ic')}<span><h3>Aufträge gewinnen</h3><small>Bad- und Wärmepumpen-Potenzial</small></span><span class="pfeil" aria-hidden="true">→</span></a>
+        <a class="w" href="{CAL_LEAD}" target="_blank" rel="noopener">{ic('bath','ic')}<span><h3>Aufträge gewinnen</h3><small>Bad- und Wärmepumpen-Potenzial</small></span><span class="pfeil" aria-hidden="true">→</span></a>"""}
       </div>
       <p class="kontakt-zeile"><a href="{TEL_HREF}">{ic('phone')}{TEL}</a><a href="mailto:{MAIL}">{ic('mail')}{MAIL}</a></p>
     </div>
@@ -1156,7 +1161,86 @@ def seite_region(r):
 
 # ── Schreiben ─────────────────────────────────────────────────────────────
 # /fallstudien/ ist ausgeblendet (Noah, 27.09.2026: „die Seite Fallstudien können wir aktuell noch rausnehmen“) — die alte Adresse leitet auf die Fallstudien der Startseite
-SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial}
+# ── /webdesign/ — Websites für SHK-Betriebe (29.10.2026, versteckt) ───────────
+# Noah: „In diesem Stil will ich jetzt das Thema Website … mit reinbringen, einfach für SHK-Firmen … Entenmann Haustechnik
+# und Irlbacher als zwei Vorzeigeprojekte … noch irgendwo so, dass die Seite theoretisch noch versteckt ist.“
+# Copy nach copywriting (gute-copy.md, hwm-stimme.md): nur belegte Zahlen (20.000–50.000 € je Bad/Wärmepumpe, 25 Bewerbungen
+# in 4 Wochen bei Erwin Schmidt & Sohn, 2–3 Wochen bis zur Seite); Preis-Antwort und Ablauf-Sätze 1:1 von der abgenommenen
+# HWM-Leistungsseite (firma/website/websites, /website-shk). Bewertungen wörtlich, Kürzungen mit (…).
+# 🔴 Vor dem Sichtbarmachen: „Seite ansehen“-Links auf die Kundendomains stellen (heute Vorschau-Adressen) und VERSTECKT leeren.
+STIMMEN_WEB = [
+    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„Reibungsloser Ablauf bis zur Fertigstellung der Homepage. Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit, gerne wieder.“'),
+    ('Benjamin Senftleben', 'Senftleben Haustechnik, Ehingen', '„Noah hat unsere Homepage erstellt und betreut diese. Wir sind sehr zufrieden! Auch der Kontakt mit Noah ist immer freundlich. Grüße Fa. Senftleben Sanitär Heizung aus Ehingen (Donau).“'),
+    ('Alisa Kirchner', 'Kirchner GmbH', '„Noah hat unsere Website erstellt und auch die Bilder hierfür gemacht! Wir sind absolut happy und die Zusammenarbeit läuft immer super unkompliziert. (…)“'),
+    ('Franz Gallenberger', 'Sanitär · Heizung · Klimatechnik', '„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. Die Beratung war kompetent, verständlich und stets auf unsere individuellen Wünsche abgestimmt. (…) Das Ergebnis hat unsere Erwartungen nicht nur erfüllt, sondern sogar übertroffen. (…)“'),
+    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) Nach einem kurzen Telefonat und Kennenlernen verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“'),
+    ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren. (…)“'),
+]
+FAQ_WEB = [
+    ('Was kostet eine Website bei euch?', 'Einmalig im vierstelligen Bereich, mit Karriereseite und Anfrage-Strecke. Die genaue Zahl steht nach dem Erstgespräch im Angebot, mit allen Posten im Klartext.'),
+    ('Wie lange dauert das?', 'Zwei bis drei Wochen vom Gespräch bis die Seite online ist, wenn du mitziehst: Shooting-Termin zügig, Rückmeldung zum Entwurf innerhalb weniger Tage. Wartet die Seite auf dich, dauert es entsprechend länger.'),
+    ('Was passiert mit meiner alten Seite?', 'Die bleibt online, bis die neue steht. Alte Adressen leiten wir weiter, damit du bei Google nichts verlierst.'),
+    ('Kann ich später selbst etwas ändern?', 'Ja. Du bekommst einen Zugang, mit dem du Texte und Fotos selbst tauschst. Oder du schreibst uns in einem Satz, was anders soll, und wir setzen es um.'),
+    ('Brauche ich eine Karriereseite?', 'Bei SHK fast immer. Anlagenmechaniker bewerben sich am Handy oder gar nicht, eine Mailadresse reicht ihnen nicht. Bei Erwin Schmidt &amp; Sohn kamen über unsere Bewerbungsstrecke 25 Bewerbungen in vier Wochen, die Stelle ist besetzt.'),
+    ('Und wenn nach dem Livegang etwas hakt?', 'Wir bleiben dran. Updates und Sicherheit laufen über uns, kleine Änderungen auch. Du erreichst uns direkt, ohne Warteschleife.'),
+]
+
+def browser(img, titel):
+    """Browser-Rahmen mit Seiten-Screenshot, der von selbst durchscrollt, sobald er im Bild ist (wie die Handys; main.js setzt --bh)."""
+    return f'<div class="browser"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel}</span></div><div class="scroller"><img src="{img}" alt="{html.escape(titel)}, Startseite" width="1200" height="4333"></div></div>'
+
+def web_phone(img):
+    return f'<div class="phone klein"><div class="scroller"><img src="{img}" alt="" width="480" height="6400"></div></div>'
+
+def web_projekt(slug, name, kick, text, punkte, titel, url, farbe, d=0):
+    pts = ''.join(f'<li><span class="ic" aria-hidden="true">{IK[i]}</span><span>{t}</span></li>' for i, t in punkte)
+    return (f'<article class="web-projekt {farbe} rv" data-d="{d}" id="{slug}">'
+            f'<div class="web-schirm"><div class="raster" aria-hidden="true"></div>{browser(f"/assets/webdesign/{slug}-start-desk.jpg", titel)}{web_phone(f"/assets/webdesign/{slug}-start-mobil.jpg")}</div>'
+            f'<div class="web-text"><span class="lg"><img src="/assets/logos-box/{slug}.png" alt="{name}" width="336" height="120"></span><p class="kick {farbe}">{kick}</p><h3>{name}</h3><p>{text}</p><ul class="web-punkte">{pts}</ul>'
+            f'<a class="btn btn-ink" href="{url}" target="_blank" rel="noopener">{ic("monitor","ic")}Seite ansehen</a></div></article>')
+
+def web_ablauf():
+    s = [('k', 'speech', 'Gespräch', 'Welche Aufträge die Seite bringen soll und wo dich die alte Seite heute Anfragen kostet. Danach bekommst du ein Angebot mit allen Posten im Klartext.', '30 Minuten'),
+         ('w', 'camera', 'Shooting und Entwurf', 'Wir kommen mit der Kamera zu dir in den Betrieb und fotografieren dein Team im Lager und auf der Baustelle. Der Entwurf kommt danach als Link aufs Handy und du sagst uns, was anders soll.', 'Ein Termin bei dir'),
+         ('k', 'rocket', 'Online', 'Alte Adressen leiten weiter, das Google-Profil zeigt auf die neue Seite. Updates und Sicherheit bleiben bei uns, kleine Änderungen auch.', 'Zwei bis drei Wochen nach dem Gespräch')]
+    k = ''.join(f'<article class="schritt-web {f} rv" data-d="{i+1}"><span class="nr">0{i+1}</span><div class="ic" aria-hidden="true">{IK[ik]}</div><h3>{t}</h3><p>{p}</p><span class="dauer">{ic("clock")}{dauer}</span></article>' for i, (f, ik, t, p, dauer) in enumerate(s))
+    return ('<section class="sec" id="ablauf"><div class="wrap">'
+            '<div class="sec-kopf"><div><p class="kick rv">So läuft es</p><h2 class="d rv">Vom Gespräch bis online: <span class="em w">zwei bis drei Wochen.</span></h2></div><p class="lead rv">Du brauchst dafür ein Gespräch, einen Termin fürs Shooting und einen Blick auf den Entwurf. Den Rest machen wir.</p></div>'
+            f'<div class="web-schritte">{k}</div></div></section>')
+
+def seite_webdesign():
+    h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Eine Website, die Bad- und Wärmepumpen-Anfragen bringt, und Monteure dazu: eine Seite je Leistung mit Ort, Anfrage mit Vorfragen, Karriereseite mit Bewerbung in 60 Sekunden. Zwei SHK-Seiten als Beispiel.', '/webdesign/', dunkel=True, schema_extra=faq_schema(FAQ_WEB), noindex=True)
+    body = ('<section class="uhero w web-hero"><div class="raster" aria-hidden="true"></div><div class="wrap">'
+            '<div class="txt"><p class="kick rv">Websites für SHK-Betriebe</p><h1 class="h-xl rv" data-d="1">Eine Website, die Bäder bringt. <span class="em w">Und Monteure.</span></h1>'
+            '<p class="lead rv" data-d="2">Jede Leistung bekommt ihre eigene Seite mit deinem Ort. Die Anfrage fragt Baujahr und Eigentum ab, bevor du zurückrufst. Dazu eine Karriereseite, auf der sich Monteure in 60 Sekunden bewerben. Gebaut mit Fotos aus deinem Betrieb, online in zwei bis drei Wochen.</p>'
+            f'<div class="hero-cta rv" data-d="3"><a class="btn btn-warm btn-lg" href="{CAL_WEB}" target="_blank" rel="noopener">{ic("monitor","ic")}Website besprechen</a><a class="btn btn-glass btn-lg" href="#projekte">Zwei Seiten ansehen</a></div>'
+            f'<div class="rv" data-d="4">{trust()}</div></div>'
+            f'<div class="web-buehne rv" data-d="2">{browser("/assets/webdesign/entenmann-start-desk.jpg", "Entenmann Haustechnik · Weilheim i.OB")}{web_phone("/assets/webdesign/entenmann-start-mobil.jpg")}</div>'
+            '</div></section>')
+    vort = vorteile_bild([
+        ('w', '<img src="/assets/webdesign/entenmann-heizung.jpg" alt="Leistungsseite Heizung und Wärmepumpe der Entenmann Haustechnik" width="1200" height="750">', 'Eine Seite je Leistung, mit Ort', 'Jede Leistung bekommt ihre eigene Seite mit deinem Ort im Titel, die Wärmepumpe genauso wie das Bad. Wer „Wärmepumpe Weilheim“ sucht, landet auf genau dieser Seite.'),
+        ('w', tickets(TICKETS_LEAD[:2]), 'Anfragen, die vorsortiert ankommen', 'Das Formular fragt nach Baujahr und Heizungsart und ob der Anrufer Eigentümer ist. Das weißt du, bevor du zurückrufst, und fährst nicht mehr zu Kunden, bei denen es schon am Baujahr scheitert.'),
+        ('', v_phone('/assets/funnels/irlbacher-jobs-full.jpg'), 'Karriereseite, Bewerbung in 60 Sekunden', 'Ein paar Fragen am Handy, kein Lebenslauf. Die Jobs-Seite von Irlbacher führt direkt in die Bewerbungsstrecke, in der auch die Anzeigen laufen.')])
+    body += ('<section class="sec" id="vorteile"><div class="wrap">'
+             '<div class="sec-kopf"><div><p class="kick w rv">Was die Seite können muss</p><h2 class="d rv">Gebaut für die Aufträge, <span class="em w">die du willst.</span></h2></div><p class="lead rv">Ein Komplettbad oder eine Wärmepumpe bringt 20.000 bis 50.000 €. Die Seite muss genau dafür gefunden werden und die Anfrage vorsortieren, bevor du losfährst.</p></div>'
+             f'{vort}</div></section>')
+    p1 = web_projekt('entenmann', 'Entenmann Haustechnik', 'Heizung · Bad · Wärmepumpe · Weilheim i.OB', 'Meisterbetrieb seit 1969, vom Diplom-Ingenieur geplant. Dunkle Bühne, Video im Hero, und der Wärmekreis aus dem Logo zieht sich als Linie durch die ganze Seite.',
+                     [('monitor', 'Eine Seite je Leistung: Heizung &amp; Wärmepumpe, Bad &amp; Sanitär, Anlagentechnik, Wartung &amp; Notdienst'), ('users', 'Jobs-Seite für Anlagenmechaniker SHK'), ('search', 'Jede Seite auf Weilheim und Umgebung gebaut')],
+                     'Entenmann Haustechnik · Weilheim i.OB', 'https://entenmann-preview.pages.dev/', 'w', 0)
+    p2 = web_projekt('irlbacher', 'Irlbacher GmbH', 'Sanitär · Heizung · Lüftung · Fensterbach bei Schwandorf', 'Josef Irlbacher und sein Team vor der Kamera, Fotos vom Shooting im Betrieb. Die drei Bögen aus dem Logo laufen als Ring durch Hero und Unterseiten.',
+                     [('monitor', 'Sechs Leistungsseiten: Bad, Heizung, Wärmepumpe, Lüftung &amp; Klima, Solar, Kundendienst'), ('users', 'Jobs-Seite mit Recruiting-Reel und Bewerbung in 60 Sekunden'), ('camera', 'Shooting bei Irlbacher: Team, Werkstatt, Fahrzeuge')],
+                     'Irlbacher GmbH · Fensterbach', 'https://irlbacher-vorschau.handwerksmanufaktur.workers.dev/', 'k', 1)
+    body += ('<section class="sec" id="projekte" style="padding-top:0"><div class="wrap">'
+             '<div class="sec-kopf"><div><p class="kick k rv">Zwei Seiten aus diesem Jahr</p><h2 class="d rv">So sieht das bei <span class="em k">zwei SHK-Betrieben</span> aus.</h2></div><p class="lead rv">Einmal Weilheim in Oberbayern, einmal Fensterbach in der Oberpfalz. Beide Seiten scrollen von selbst durch, sobald sie im Bild sind.</p></div>'
+             f'<div class="web-projekte">{p1}{p2}</div></div></section>')
+    body += web_ablauf()
+    body += stimmen(STIMMEN_WEB, 'Was Betriebe über <span class="em k">ihre Seite</span> schreiben.')
+    body += faq(FAQ_WEB, 'Bevor du <span class="em w">fragst.</span>', 'Preis, Dauer, was mit der alten Seite passiert. Das fragen fast alle, hier die kurzen Antworten.')
+    body += kontakt('Welche Aufträge soll <span class="em w">deine Seite bringen?</span>', kick='Erstgespräch', satz='Wir schauen uns vorher an, was es von dir im Netz gibt, und sagen dir, wo du bei Google heute stehst.',
+                    wahl=f'<a class="w" href="{CAL_WEB}" target="_blank" rel="noopener">{ic("monitor","ic")}<span><h3>Website besprechen</h3><small>Termin aussuchen, 30 Minuten am Telefon</small></span><span class="pfeil" aria-hidden="true">→</span></a>')
+    return h + body + fuss()
+
+SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial, '/webdesign/': seite_webdesign}
 for _p in RECHT: SEITEN[_p] = (lambda p: lambda: seite_recht(p))(_p)
 if WISSEN:
     SEITEN['/wissen/'] = seite_wissen
@@ -1178,7 +1262,7 @@ if LIVE:
     _wx_mod = {f'/wissen/{x["slug"]}/': x.get('aktualisiert') or x.get('veroeffentlicht', WX_STAND) for x in WISSEN}
     if WISSEN: _wx_mod['/wissen/'] = max(_wx_mod.values())
     for _r in REGIONEN: _wx_mod[f'/{_r["slug"]}/'] = '2026-09-30'   # Regionsseiten (30.09.2026)
-    sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc>' + (f'<lastmod>{_wx_mod[p]}</lastmod>' if p in _wx_mod else '') + f'<changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else ("0.7" if p.startswith("/wissen/") and p != "/wissen/" else "0.8")}</priority></url>' for p in SEITEN if p not in RECHT)
+    sm = ''.join(f'<url><loc>{DOMAIN}{p}</loc>' + (f'<lastmod>{_wx_mod[p]}</lastmod>' if p in _wx_mod else '') + f'<changefreq>monthly</changefreq><priority>{"1.0" if p == "/" else ("0.7" if p.startswith("/wissen/") and p != "/wissen/" else "0.8")}</priority></url>' for p in SEITEN if p not in RECHT and p not in VERSTECKT)
     (REPO/'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding='utf-8')
     print('✓ sitemap.xml')
 if LIVE and WISSEN:

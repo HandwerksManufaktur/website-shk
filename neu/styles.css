@@ -2103,3 +2103,61 @@ html.rd-offen{overflow:hidden}
   .wx-toc.mo-klapp:not(.mo-offen) ol{display:none}
   .wx-toc.mo-klapp.mo-offen ol{padding-bottom:10px}
 }
+
+/* ── Webdesign-Unterseite /webdesign/ (29.10.2026, versteckt): Browser-Rahmen, Projektkarten, Ablauf ─────────────────────
+   Browser und Handy scrollen von selbst, sobald sie im Bild sind (nur transform, 26 s, zweimal); Apple-Regeln wie der Rest. */
+.browser{background:#0B1424;border:1px solid #2A3852;border-radius:var(--r-md);overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45);display:flex;flex-direction:column;aspect-ratio:16/11;width:100%}
+.b-leiste{height:36px;flex:none;display:flex;align-items:center;gap:6px;padding:0 14px;background:#111D31;border-bottom:1px solid #22314A}
+.b-leiste i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.b-leiste span{margin-left:10px;font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--night-sub);background:rgba(255,255,255,.06);padding:4px 12px;border-radius:var(--r-pill);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser .scroller{position:relative;flex:1;overflow:hidden;background:#0B1424}
+.browser .scroller img{width:100%;height:auto;will-change:transform;animation:browserScroll 26s ease-in-out 2 alternate;animation-play-state:paused}
+.browser.laeuft .scroller img{animation-play-state:running}
+@keyframes browserScroll{0%,8%{transform:translateY(0)}100%{transform:translateY(calc(-100% + var(--bh,400px)))}}
+.web-buehne{position:relative;padding:0 56px 40px 0;align-self:end;width:100%}
+.web-buehne .phone,.web-schirm .phone{position:absolute;right:0;bottom:0;width:min(150px,16vw);transform:none;border-radius:22px;border-width:2px;transition:transform .4s var(--spring)}
+.web-buehne .phone::after,.web-schirm .phone::after{height:14px;top:7px}
+.web-hero .wrap{align-items:end}
+.web-projekte{display:grid;gap:24px}
+.web-projekt{display:grid;grid-template-columns:1.1fr .9fr;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:transform .4s var(--spring),box-shadow .4s var(--spring)}
+.web-projekt:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.web-projekt:hover .phone{transform:translateY(-6px)}
+.web-projekt:active{transform:scale(.99);transition-duration:.1s}
+.web-schirm{position:relative;background:var(--night);padding:48px 96px 48px 40px;overflow:hidden;isolation:isolate;display:flex;align-items:center}
+.web-schirm::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 20% 70%,rgba(30,144,232,.22),transparent 70%),radial-gradient(60% 70% at 80% 30%,rgba(245,118,43,.2),transparent 70%);z-index:0}
+.web-projekt.w .web-schirm::before{background:radial-gradient(60% 70% at 20% 70%,rgba(245,118,43,.24),transparent 70%),radial-gradient(60% 70% at 80% 30%,rgba(30,144,232,.18),transparent 70%)}
+.web-schirm .raster{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%);z-index:0}
+.web-schirm .browser{position:relative;z-index:1}
+.web-schirm .phone{right:32px;bottom:32px;z-index:2}
+.web-text{padding:40px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.web-text .lg{display:inline-flex;width:168px;height:60px;background:var(--night);border-radius:var(--r-xs);padding:6px 10px;margin-bottom:6px}
+.web-text .lg img{width:100%;height:100%;object-fit:contain}
+.web-text .kick{margin-bottom:0}
+.web-text h3{font-size:clamp(24px,2.2vw,30px);letter-spacing:-.03em;line-height:1.1}
+.web-text>p{color:var(--sub);font-size:16px}
+.web-punkte{list-style:none;display:grid;gap:10px;margin:6px 0 10px}
+.web-punkte li{display:grid;grid-template-columns:36px 1fr;align-items:center;gap:12px;font-size:15px;font-weight:500}
+.web-punkte .ic{width:36px;height:36px;border-radius:var(--r-xs);background:var(--kalt-soft);display:grid;place-items:center}
+.web-punkte .ic .ik{width:18px;height:18px;color:var(--kalt-deep)}
+.web-projekt.w .web-punkte .ic{background:var(--warm-soft)}
+.web-projekt.w .web-punkte .ic .ik{color:var(--warm-ink)}
+.web-text .btn{align-self:flex-start;margin-top:8px}
+.web-schritte{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.schritt-web{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:28px 24px 26px;transition:transform .4s var(--spring),box-shadow .4s var(--spring);overflow:hidden}
+.schritt-web::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--regler);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease) .15s}
+.schritt-web.an::before{transform:scaleX(1)}
+.schritt-web:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.schritt-web:active{transform:scale(.985);transition-duration:.1s}
+.schritt-web .nr{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--faint)}
+.schritt-web .ic{width:52px;height:52px;border-radius:var(--r-sm);background:var(--kalt-soft);display:grid;place-items:center;margin:14px 0 18px}
+.schritt-web .ic .ik{width:26px;height:26px;color:var(--kalt-deep)}
+.schritt-web.w .ic{background:var(--warm-soft)}
+.schritt-web.w .ic .ik{color:var(--warm-ink)}
+.schritt-web h3{font-size:19px;margin-bottom:8px}
+.schritt-web p{color:var(--sub);font-size:15px}
+.schritt-web .dauer{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;letter-spacing:.01em;padding:6px 12px;border-radius:var(--r-pill);background:var(--paper);color:var(--ink)}
+.schritt-web .dauer .ik{width:14px;height:14px}
+@media(max-width:1180px){.web-projekt{grid-template-columns:1fr}.web-schirm{padding:36px 80px 36px 28px}}
+@media(max-width:900px){.web-buehne{padding:0 44px 24px 0}.web-schritte{grid-template-columns:1fr}.web-text{padding:28px 24px}}
+@media(max-width:600px){.web-schirm{padding:24px 60px 24px 18px}.web-buehne .phone{width:min(96px,26vw)}.web-schirm .phone{width:min(84px,22vw);right:16px;bottom:16px}.browser{border-radius:16px}.b-leiste{height:30px}.b-leiste span{display:none}}
+@media(prefers-reduced-motion:reduce){.browser .scroller img{animation:none}.schritt-web::before{transform:scaleX(1);transition:none}}

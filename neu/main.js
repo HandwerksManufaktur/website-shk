@@ -128,7 +128,7 @@
   if (bauplan && tafel) { const bp = () => { const r = tafel.getBoundingClientRect(), h = innerHeight; bauplan.style.setProperty('--p', (rm ? 1 : clamp((h * .9 - r.top) / (h * .75), 0, 1)).toFixed(3)); }; addEventListener('scroll', bp, { passive: true }); addEventListener('resize', bp); bp(); }
 
   /* Bewegung nur im Bild (Apple: keine Dauer-Loops außerhalb des Blickfelds): Phones scrollen zwei Durchgänge, sobald sie erscheinen; Laufbänder laufen nur sichtbar */
-  $$('.phone, .mini-phone').forEach(ph => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { ph.classList.add('laeuft'); o.disconnect(); } }), { threshold: .3 }); o.observe(ph); });
+  $$('.phone, .mini-phone, .browser').forEach(ph => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { ph.classList.add('laeuft'); o.disconnect(); } }), { threshold: .3 }); o.observe(ph); });
   $$('.band-innen, .stimmen-marq').forEach(m => new IntersectionObserver(es => es.forEach(e => m.classList.toggle('laeuft', e.isIntersecting)), { threshold: 0 }).observe(m));
 
   /* Umkreis: dreimal pulsen, wenn er ins Bild kommt — danach nur beim Hover */
@@ -170,6 +170,9 @@
     const set = () => { const box = img.parentElement.getBoundingClientRect(); if (img.naturalHeight) img.style.setProperty('--sk', (box.height / 1038).toFixed(3)); };
     img.complete ? set() : img.addEventListener('load', set); addEventListener('resize', set);
   });
+
+  /* Browser-Rahmen (/webdesign/): sichtbare Höhe je Rahmen, damit der Screenshot genau bis zum Seitenende scrollt */
+  $$('.browser .scroller img').forEach(img => { const set = () => img.style.setProperty('--bh', img.parentElement.getBoundingClientRect().height.toFixed(1) + 'px'); img.complete ? set() : img.addEventListener('load', set); addEventListener('resize', set); });
 
   /* Stimmen: eine Bühne, Logo-Leiste als Wähler, wechselt alle 6 s */
   const slides = $$('.stimme-buehne'), logos = $$('.stimme-logo');

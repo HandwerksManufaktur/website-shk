@@ -1187,10 +1187,10 @@ FAQ_WEB = [
 
 def browser(img, titel):
     """Browser-Rahmen mit Seiten-Screenshot, der von selbst durchscrollt, sobald er im Bild ist (wie die Handys; main.js setzt --bh)."""
-    return f'<div class="browser"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel}</span></div><div class="scroller"><img src="{img}" alt="{html.escape(titel)}, Startseite" width="1200" height="4333"></div></div>'
+    return f'<div class="browser"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel}</span></div><div class="scroller"><img src="{img}" alt="{html.escape(titel)}, Startseite" width="1200" height="3200"></div></div>'
 
 def web_phone(img):
-    return f'<div class="phone klein"><div class="scroller"><img src="{img}" alt="" width="480" height="6400"></div></div>'
+    return f'<div class="phone klein"><div class="scroller"><img src="{img}" alt="" width="480" height="3400" loading="lazy"></div></div>'
 
 def web_projekt(slug, name, kick, text, punkte, titel, url, farbe, d=0):
     pts = ''.join(f'<li><span class="ic" aria-hidden="true">{IK[i]}</span><span>{t}</span></li>' for i, t in punkte)
@@ -1209,7 +1209,7 @@ def web_ablauf():
             f'<div class="web-schritte">{k}</div></div></section>')
 
 def seite_webdesign():
-    h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Eine Website, die Bad- und Wärmepumpen-Anfragen bringt, und Monteure dazu: eine Seite je Leistung mit Ort, Anfrage mit Vorfragen, Karriereseite mit Bewerbung in 60 Sekunden. Zwei SHK-Seiten als Beispiel.', '/webdesign/', dunkel=True, schema_extra=faq_schema(FAQ_WEB), noindex=True)
+    h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Websites, die Bad- und Wärmepumpen-Anfragen bringen, und Monteure dazu: eine Seite je Leistung mit Ort, Karriereseite mit Bewerbung in 60 Sekunden.', '/webdesign/', dunkel=True, schema_extra=faq_schema(FAQ_WEB), noindex=True)
     body = ('<section class="uhero w web-hero"><div class="raster" aria-hidden="true"></div><div class="wrap">'
             '<div class="txt"><p class="kick rv">Websites für SHK-Betriebe</p><h1 class="h-xl rv" data-d="1">Eine Website, die Bäder bringt. <span class="em w">Und Monteure.</span></h1>'
             '<p class="lead rv" data-d="2">Jede Leistung bekommt ihre eigene Seite mit deinem Ort. Die Anfrage fragt Baujahr und Eigentum ab, bevor du zurückrufst. Dazu eine Karriereseite, auf der sich Monteure in 60 Sekunden bewerben. Gebaut mit Fotos aus deinem Betrieb, online in zwei bis drei Wochen.</p>'

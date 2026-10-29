@@ -17,6 +17,7 @@ SEITEN = ['/', '/neu/', '/neu/monteure/', '/neu/auftraege/', '/neu/fallstudien/'
 # Wissen/Ratgeber (29.09.2026): Übersicht + jeder Artikel aus neu/wissen-daten — auch die zeitgesteuerten, damit ihre Fotos
 # beim Veröffentlichen schon die gemessene Anzeigegröße haben (sonst lädt das Handy ein zu großes Bild).
 SEITEN += ['/neu/bayern/', '/neu/muenchen/', '/neu/baden-wuerttemberg/']
+SEITEN += ['/neu/webdesign/']   # versteckte Webdesign-Seite (29.10.2026)
 SEITEN += ['/neu/wissen/'] + [f'/neu/wissen/{p.stem}/' for p in sorted((Path(__file__).resolve().parent / 'wissen-daten').glob('*.json')) if not p.name.startswith('_')]
 MESSEN = '''async () => {
   document.querySelectorAll('img').forEach(i => i.loading = 'eager');

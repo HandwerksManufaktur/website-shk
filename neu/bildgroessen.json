@@ -11,20 +11,28 @@
   360,
   720
  ],
+ "assets-fotos-fischer-team-wagen": [
+  280,
+  370
+ ],
  "assets-fotos-florian-neutral": [
   80,
   60
+ ],
+ "assets-fotos-irlbacher-wagen": [
+  280,
+  370
  ],
  "assets-fotos-klass-beratung": [
   360,
   720
  ],
  "assets-fotos-klass-hebel-auftraege": [
-  360,
+  440,
   720
  ],
  "assets-fotos-klass-hebel-monteure": [
-  360,
+  440,
   720
  ],
  "assets-fotos-klass-monteur": [
@@ -52,7 +60,7 @@
   60
  ],
  "assets-fotos-noah-laptop-hoch": [
-  360,
+  420,
   540
  ],
  "assets-fotos-senftleben-benjamin-fenster": [
@@ -99,6 +107,10 @@
   360,
   720
  ],
+ "assets-fotos-stimpfle-team-wagen": [
+  360,
+  590
+ ],
  "assets-fotos-sussmann-lager": [
   360,
   720
@@ -124,32 +136,48 @@
   720
  ],
  "assets-funnels-erwin-schmidt-jobs-full": [
-  310,
+  380,
   680
  ],
  "assets-funnels-erwin-schmidt-jobs-full-oben": [
-  270,
+  220,
   330
+ ],
+ "assets-funnels-fischer-leadgen-full-oben": [
+  200,
+  300
+ ],
+ "assets-funnels-irlbacher-jobs-full": [
+  150,
+  150
+ ],
+ "assets-funnels-irlbacher-jobs-full-oben": [
+  200,
+  300
  ],
  "assets-funnels-senftleben-jobs-full": [
   100,
   120
  ],
  "assets-funnels-senftleben-jobs-full-oben": [
-  330,
-  330
+  250,
+  250
  ],
  "assets-funnels-senftleben-leadgen-full": [
   230,
   290
  ],
  "assets-funnels-senftleben-leadgen-full-oben": [
-  270,
+  220,
   330
  ],
  "assets-funnels-sussmann-leadgen-hero": [
-  270,
+  220,
   330
+ ],
+ "assets-logos-box-entenmann": [
+  150,
+  150
  ],
  "assets-logos-box-erwin-schmidt": [
   120,
@@ -162,6 +190,10 @@
  "assets-logos-box-hannes-schmidt": [
   100,
   100
+ ],
+ "assets-logos-box-irlbacher": [
+  150,
+  150
  ],
  "assets-logos-box-kirchner": [
   100,
@@ -192,36 +224,56 @@
   120
  ],
  "assets-projekte-bad-dusche": [
-  360,
+  270,
   390
  ],
  "assets-projekte-bad-marmor": [
-  360,
+  270,
   390
  ],
  "assets-projekte-bad-wanne": [
-  360,
+  270,
   390
  ],
  "assets-projekte-wp-garten": [
-  360,
+  270,
   390
  ],
  "assets-projekte-wp-haus": [
-  360,
+  270,
   390
  ],
  "assets-projekte-wp-herbst": [
-  360,
+  270,
   390
  ],
  "assets-team-noah": [
-  90,
+  60,
   120
  ],
  "assets-team-robert-rund": [
-  90,
+  60,
   120
+ ],
+ "assets-webdesign-entenmann-heizung": [
+  280,
+  370
+ ],
+ "assets-webdesign-entenmann-start-desk": [
+  310,
+  520
+ ],
+ "assets-webdesign-entenmann-start-mobil": [
+  100,
+  150
+ ],
+ "assets-webdesign-irlbacher-start-desk": [
+  280,
+  520
+ ],
+ "assets-webdesign-irlbacher-start-mobil": [
+  80,
+  150
  ],
  "logos-shk-logo-azemi-hausrenovierungen-weiss": [
   110,
@@ -234,6 +286,10 @@
  "logos-shk-logo-erwin-schmidt-weiss": [
   60,
   60
+ ],
+ "logos-shk-logo-fischer-weiss": [
+  80,
+  80
  ],
  "logos-shk-logo-franticonstruct-weiss": [
   40,
@@ -256,8 +312,8 @@
   90
  ],
  "logos-shk-logo-heizung-sanitaer-klass-weiss": [
-  170,
-  170
+  160,
+  160
  ],
  "logos-shk-logo-irlbacher-weiss": [
   40,
@@ -306,15 +362,16 @@
   ],
   "/neu/monteure/": [
    "assets-funnels-erwin-schmidt-jobs-full-oben",
+   "assets-funnels-irlbacher-jobs-full-oben",
    "assets-funnels-senftleben-jobs-full-oben"
   ],
   "/neu/auftraege/": [
+   "assets-funnels-fischer-leadgen-full-oben",
    "assets-funnels-senftleben-leadgen-full-oben",
    "assets-funnels-sussmann-leadgen-hero"
   ],
   "/neu/fallstudien/": [
-   "assets-fotos-klass-hebel-auftraege",
-   "assets-fotos-klass-hebel-monteure",
+   "assets-fotos-senftleben-team-2026",
    "assets-fotos-sussmann-wagen-nebeneinander",
    "assets-logos-box-erwin-schmidt",
    "assets-logos-box-senftleben",
@@ -333,6 +390,10 @@
   "/neu/baden-wuerttemberg/": [
    "assets-funnels-erwin-schmidt-jobs-full-oben",
    "assets-funnels-senftleben-leadgen-full-oben"
+  ],
+  "/neu/webdesign/": [
+   "assets-webdesign-entenmann-start-desk",
+   "assets-webdesign-entenmann-start-mobil"
   ],
   "/neu/wissen/": [],
   "/neu/wissen/ablauf-kampagne/": [

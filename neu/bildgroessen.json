@@ -180,8 +180,8 @@
   150
  ],
  "assets-logos-box-erwin-schmidt": [
-  120,
-  120
+  150,
+  150
  ],
  "assets-logos-box-gallenberger": [
   100,
@@ -261,15 +261,23 @@
  ],
  "assets-webdesign-entenmann-start-desk": [
   360,
-  500
+  490
  ],
  "assets-webdesign-entenmann-start-mobil": [
   70,
   120
  ],
+ "assets-webdesign-erwin-schmidt-start-desk": [
+  310,
+  480
+ ],
+ "assets-webdesign-erwin-schmidt-start-mobil": [
+  70,
+  120
+ ],
  "assets-webdesign-irlbacher-start-desk": [
   340,
-  500
+  480
  ],
  "assets-webdesign-irlbacher-start-mobil": [
   70,
@@ -393,6 +401,7 @@
   ],
   "/neu/webdesign/": [
    "assets-webdesign-entenmann-start-desk",
+   "assets-webdesign-erwin-schmidt-start-desk",
    "assets-webdesign-irlbacher-start-desk"
   ],
   "/neu/wissen/": [],

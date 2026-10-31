@@ -1240,16 +1240,17 @@ def seite_webdesign():
     p2 = web_projekt('irlbacher', 'Irlbacher GmbH', 'Sanitär · Heizung · Lüftung · Fensterbach bei Schwandorf', 'Josef Irlbacher und sein Team vor der Kamera, Fotos vom Shooting im Betrieb. Die drei Bögen aus dem Logo laufen als Ring durch Hero und Unterseiten.',
                      [('monitor', 'Sechs Leistungsseiten: Bad, Heizung, Wärmepumpe, Lüftung &amp; Klima, Solar, Kundendienst'), ('users', 'Jobs-Seite mit Recruiting-Reel und Bewerbung in 60 Sekunden'), ('camera', 'Shooting bei Irlbacher: Team, Werkstatt, Fahrzeuge')],
                      'Irlbacher GmbH · Fensterbach', 'https://irlbacher-vorschau.handwerksmanufaktur.workers.dev/', 'k', 1)
-    p3 = web_projekt('erwin-schmidt', 'Erwin Schmidt &amp; Sohn', 'Sanitär · Heizung · Erneuerbare Energien · Sindelfingen', 'Familienbetrieb seit über 60 Jahren, geführt von Meike Bürkle und Florian Schmidt. Die Marke mit dem blauen Dach bleibt, die Seite wird neu aufgebaut: große Fotos aus dem Betrieb, eine Seite je Leistung und eine Jobs-Seite, die in die laufende Bewerbungsstrecke führt.',
-                     [('monitor', 'Drei Leistungsseiten: Sanitär, Heizung, Erneuerbare Energien'), ('users', 'Jobs-Seite mit Bewerbung in 60 Sekunden, 25 Bewerbungen in vier Wochen'), ('search', 'Sindelfingen und Böblingen auf jeder Seite')],
+    p3 = web_projekt('erwin-schmidt', 'Erwin Schmidt &amp; Sohn', 'Sanitär · Heizung · Energie · Sindelfingen', 'Familienbetrieb seit 1954, geführt von Meike Bürkle und Florian Schmidt in dritter Generation. Die Marke mit dem blauen Dach bleibt, die Seite wird neu aufgebaut: das Dach aus dem Logo zeichnet sich im Hero, 58 Fotos aus dem Betrieb statt Stock, eine Seite je Leistung und eine Jobs-Seite, die in die laufende Bewerbungsstrecke führt.',
+                     [('monitor', 'Drei Leistungsseiten: Sanitär, Heizung, Erneuerbare Energien'), ('users', 'Jobs-Seite mit Bewerbung in 60 Sekunden, 25 Bewerbungen in vier Wochen'), ('search', 'Umkreis 30 km um Sindelfingen als Karte auf jeder Seite')],
                      'Erwin Schmidt &amp; Sohn · Sindelfingen', ERWIN_URL, 'w', 2) if ERWIN_DA else ''
     n = 'drei' if ERWIN_DA else 'zwei'
     orte = 'Weilheim in Oberbayern, Fensterbach in der Oberpfalz und Sindelfingen bei Stuttgart' if ERWIN_DA else 'Weilheim in Oberbayern und Fensterbach in der Oberpfalz'
     body += ('<section class="sec" id="projekte" style="padding-top:0"><div class="wrap">'
              f'<div class="sec-kopf"><div><p class="kick k rv">{n.capitalize()} Betriebe, {n} Seiten</p><h2 class="d rv">So sieht das bei <span class="em k">{n} SHK-Betrieben</span> aus.</h2></div><p class="lead rv">{orte}. Jede Seite scrollt von selbst durch, sobald sie im Bild ist.</p></div>'
              f'<div class="web-projekte">{p1}{p2}{p3}</div></div></section>')
+    body += stimmen(STIMMEN_WEB, 'Was Betriebe über <span class="em k">ihre Seite</span> schreiben.')   # Stimmen zwischen Projektkarten und Ablauf: nie drei Kartenbänder hintereinander (os_regeln kartenFolge)
     body += web_ablauf()
-    body += stimmen(STIMMEN_WEB, 'Was Betriebe über <span class="em k">ihre Seite</span> schreiben.')
+    body += statement('„Noah hat unsere Website erstellt und auch die Bilder hierfür gemacht! Wir sind absolut happy und die Zusammenarbeit läuft <em>immer super unkompliziert.“</em>', mitte=True, von='Alisa Kirchner · Kirchner GmbH, Google-Bewertung')   # Leitsatz zwischen Ablauf und FAQ (os_regeln kartenFolge: nie drei Kartenbänder hintereinander)
     body += faq(FAQ_WEB, 'Bevor du <span class="em w">fragst.</span>', 'Preis, Dauer, was mit der alten Seite passiert. Das fragen fast alle, hier die kurzen Antworten.')
     body += kontakt('Welche Aufträge soll <span class="em w">deine Seite bringen?</span>', kick='Erstgespräch', satz='Wir schauen uns vorher an, was es von dir im Netz gibt, und sagen dir, wo du bei Google heute stehst.',
                     wahl=f'<a class="w" href="{CAL_WEB}" target="_blank" rel="noopener">{ic("monitor","ic")}<span><h3>Website besprechen</h3><small>Termin aussuchen, 30 Minuten am Telefon</small></span><span class="pfeil" aria-hidden="true">→</span></a>')

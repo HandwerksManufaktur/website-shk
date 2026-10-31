@@ -23,7 +23,9 @@ MAIL = 'info@handwerksmanufaktur.digital'
 INSTA = 'https://www.instagram.com/handwerks.manufaktur/'   # neues Konto seit 27.09.2026 (marketing/instagram/README.md)
 CAL_REC = 'https://calendly.com/noahseelau/recruiting-potenzial'
 CAL_LEAD = 'https://calendly.com/noahseelau/leadgen-potenzial'
-CAL_WEB = 'https://calendly.com/noahseelau/website-potenzial'   # Website-Erstgespräch (wie auf der HWM-Hauptseite)
+CAL_WEB = 'https://calendly.com/noahseelau/website-potenzial'
+ERWIN_URL = 'https://erwin-schmidt-vorschau.handwerksmanufaktur.workers.dev/'   # Vorschlag 31.10.2026, vor Freischaltung ggf. Kundendomain
+ERWIN_DA = (REPO / 'assets' / 'webdesign' / 'erwin-schmidt-start-desk.jpg').exists()   # dritte Referenz erst, wenn der Vorschlag steht   # Website-Erstgespräch (wie auf der HWM-Hauptseite)
 # Gebaut, aber versteckt: nicht in Nav, Sitemap, llms.txt, robots noindex — Noah, 29.10.2026: „unter irgendeiner Unterseite, wo man es noch nicht unbedingt sieht“
 VERSTECKT = {'/webdesign/'}
 
@@ -1192,10 +1194,18 @@ def browser(img, titel):
 def web_phone(img):
     return f'<div class="phone klein"><div class="scroller"><img src="{img}" alt="" width="480" height="3400" loading="lazy"></div></div>'
 
+def web_stapel(slugs, titel):
+    """Hero-Bühne: drei Startseiten als Browser-Stapel, der vordere scrollt (Noah, 31.10.2026: Handy oben war „komisch positioniert“ → kein Handy mehr im Hero)."""
+    teile = []
+    for i, s in reversed(list(enumerate(slugs))):
+        lazy = ' loading="lazy"' if i else ''
+        teile.append(f'<div class="browser s{i+1}"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel[i]}</span></div><div class="scroller"><img src="/assets/webdesign/{s}-start-desk.jpg" alt="{html.escape(titel[i])}, Startseite" width="1200" height="3200"{lazy}></div></div>')
+    return '<div class="web-stapel rv" data-d="2">' + ''.join(teile) + '</div>'
+
 def web_projekt(slug, name, kick, text, punkte, titel, url, farbe, d=0):
     pts = ''.join(f'<li><span class="ic" aria-hidden="true">{IK[i]}</span><span>{t}</span></li>' for i, t in punkte)
-    return (f'<article class="web-projekt {farbe} rv" data-d="{d}" id="{slug}">'
-            f'<div class="web-schirm"><div class="raster" aria-hidden="true"></div>{browser(f"/assets/webdesign/{slug}-start-desk.jpg", titel)}{web_phone(f"/assets/webdesign/{slug}-start-mobil.jpg")}</div>'
+    return (f'<article class="web-projekt {farbe}{" gespiegelt" if d % 2 else ""} rv" data-d="{d}" id="{slug}">'
+            f'<div class="web-schirm"><div class="raster" aria-hidden="true"></div><div class="web-duo">{web_phone(f"/assets/webdesign/{slug}-start-mobil.jpg")}{browser(f"/assets/webdesign/{slug}-start-desk.jpg", titel)}</div></div>'
             f'<div class="web-text"><span class="lg"><img src="/assets/logos-box/{slug}.png" alt="{name}" width="336" height="120"></span><p class="kick {farbe}">{kick}</p><h3>{name}</h3><p>{text}</p><ul class="web-punkte">{pts}</ul>'
             f'<a class="btn btn-ink" href="{url}" target="_blank" rel="noopener">{ic("monitor","ic")}Seite ansehen</a></div></article>')
 
@@ -1213,10 +1223,10 @@ def seite_webdesign():
     body = ('<section class="uhero w web-hero"><div class="raster" aria-hidden="true"></div><div class="wrap">'
             '<div class="txt"><p class="kick rv">Websites für SHK-Betriebe</p><h1 class="h-xl rv" data-d="1">Eine Website, die Bäder bringt. <span class="em w">Und Monteure.</span></h1>'
             '<p class="lead rv" data-d="2">Jede Leistung bekommt ihre eigene Seite mit deinem Ort. Die Anfrage fragt Baujahr und Eigentum ab, bevor du zurückrufst. Dazu eine Karriereseite, auf der sich Monteure in 60 Sekunden bewerben. Gebaut mit Fotos aus deinem Betrieb, online in zwei bis drei Wochen.</p>'
-            f'<div class="hero-cta rv" data-d="3"><a class="btn btn-warm btn-lg" href="{CAL_WEB}" target="_blank" rel="noopener">{ic("monitor","ic")}Website besprechen</a><a class="btn btn-glass btn-lg" href="#projekte">Zwei Seiten ansehen</a></div>'
+            f'<div class="hero-cta rv" data-d="3"><a class="btn btn-warm btn-lg" href="{CAL_WEB}" target="_blank" rel="noopener">{ic("monitor","ic")}Website besprechen</a><a class="btn btn-glass btn-lg" href="#projekte">{"Drei" if ERWIN_DA else "Zwei"} Seiten ansehen</a></div>'
             f'<div class="rv" data-d="4">{trust()}</div></div>'
-            f'<div class="web-buehne rv" data-d="2">{browser("/assets/webdesign/entenmann-start-desk.jpg", "Entenmann Haustechnik · Weilheim i.OB")}{web_phone("/assets/webdesign/entenmann-start-mobil.jpg")}</div>'
-            '</div></section>')
+            + web_stapel(['entenmann', 'irlbacher'] + (['erwin-schmidt'] if ERWIN_DA else []), ['Entenmann Haustechnik · Weilheim i.OB', 'Irlbacher GmbH · Fensterbach', 'Erwin Schmidt & Sohn · Sindelfingen'])
+            + '</div></section>')
     vort = vorteile_bild([
         ('w', '<img src="/assets/webdesign/entenmann-heizung.jpg" alt="Leistungsseite Heizung und Wärmepumpe der Entenmann Haustechnik" width="1200" height="750">', 'Eine Seite je Leistung, mit Ort', 'Jede Leistung bekommt ihre eigene Seite mit deinem Ort im Titel, die Wärmepumpe genauso wie das Bad. Wer „Wärmepumpe Weilheim“ sucht, landet auf genau dieser Seite.'),
         ('w', tickets(TICKETS_LEAD[:2]), 'Anfragen, die vorsortiert ankommen', 'Das Formular fragt nach Baujahr und Heizungsart und ob der Anrufer Eigentümer ist. Das weißt du, bevor du zurückrufst, und fährst nicht mehr zu Kunden, bei denen es schon am Baujahr scheitert.'),
@@ -1230,9 +1240,14 @@ def seite_webdesign():
     p2 = web_projekt('irlbacher', 'Irlbacher GmbH', 'Sanitär · Heizung · Lüftung · Fensterbach bei Schwandorf', 'Josef Irlbacher und sein Team vor der Kamera, Fotos vom Shooting im Betrieb. Die drei Bögen aus dem Logo laufen als Ring durch Hero und Unterseiten.',
                      [('monitor', 'Sechs Leistungsseiten: Bad, Heizung, Wärmepumpe, Lüftung &amp; Klima, Solar, Kundendienst'), ('users', 'Jobs-Seite mit Recruiting-Reel und Bewerbung in 60 Sekunden'), ('camera', 'Shooting bei Irlbacher: Team, Werkstatt, Fahrzeuge')],
                      'Irlbacher GmbH · Fensterbach', 'https://irlbacher-vorschau.handwerksmanufaktur.workers.dev/', 'k', 1)
+    p3 = web_projekt('erwin-schmidt', 'Erwin Schmidt &amp; Sohn', 'Sanitär · Heizung · Erneuerbare Energien · Sindelfingen', 'Familienbetrieb seit über 60 Jahren, geführt von Meike Bürkle und Florian Schmidt. Die Marke mit dem blauen Dach bleibt, die Seite wird neu aufgebaut: große Fotos aus dem Betrieb, eine Seite je Leistung und eine Jobs-Seite, die in die laufende Bewerbungsstrecke führt.',
+                     [('monitor', 'Drei Leistungsseiten: Sanitär, Heizung, Erneuerbare Energien'), ('users', 'Jobs-Seite mit Bewerbung in 60 Sekunden, 25 Bewerbungen in vier Wochen'), ('search', 'Sindelfingen und Böblingen auf jeder Seite')],
+                     'Erwin Schmidt &amp; Sohn · Sindelfingen', ERWIN_URL, 'w', 2) if ERWIN_DA else ''
+    n = 'drei' if ERWIN_DA else 'zwei'
+    orte = 'Weilheim in Oberbayern, Fensterbach in der Oberpfalz und Sindelfingen bei Stuttgart' if ERWIN_DA else 'Weilheim in Oberbayern und Fensterbach in der Oberpfalz'
     body += ('<section class="sec" id="projekte" style="padding-top:0"><div class="wrap">'
-             '<div class="sec-kopf"><div><p class="kick k rv">Zwei Seiten aus diesem Jahr</p><h2 class="d rv">So sieht das bei <span class="em k">zwei SHK-Betrieben</span> aus.</h2></div><p class="lead rv">Einmal Weilheim in Oberbayern, einmal Fensterbach in der Oberpfalz. Beide Seiten scrollen von selbst durch, sobald sie im Bild sind.</p></div>'
-             f'<div class="web-projekte">{p1}{p2}</div></div></section>')
+             f'<div class="sec-kopf"><div><p class="kick k rv">{n.capitalize()} Betriebe, {n} Seiten</p><h2 class="d rv">So sieht das bei <span class="em k">{n} SHK-Betrieben</span> aus.</h2></div><p class="lead rv">{orte}. Jede Seite scrollt von selbst durch, sobald sie im Bild ist.</p></div>'
+             f'<div class="web-projekte">{p1}{p2}{p3}</div></div></section>')
     body += web_ablauf()
     body += stimmen(STIMMEN_WEB, 'Was Betriebe über <span class="em k">ihre Seite</span> schreiben.')
     body += faq(FAQ_WEB, 'Bevor du <span class="em w">fragst.</span>', 'Preis, Dauer, was mit der alten Seite passiert. Das fragen fast alle, hier die kurzen Antworten.')

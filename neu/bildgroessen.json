@@ -260,20 +260,20 @@
   370
  ],
  "assets-webdesign-entenmann-start-desk": [
-  310,
-  520
+  360,
+  500
  ],
  "assets-webdesign-entenmann-start-mobil": [
-  100,
-  150
+  70,
+  120
  ],
  "assets-webdesign-irlbacher-start-desk": [
-  280,
-  520
+  340,
+  500
  ],
  "assets-webdesign-irlbacher-start-mobil": [
-  80,
-  150
+  70,
+  120
  ],
  "logos-shk-logo-azemi-hausrenovierungen-weiss": [
   110,
@@ -393,7 +393,7 @@
   ],
   "/neu/webdesign/": [
    "assets-webdesign-entenmann-start-desk",
-   "assets-webdesign-entenmann-start-mobil"
+   "assets-webdesign-irlbacher-start-desk"
   ],
   "/neu/wissen/": [],
   "/neu/wissen/ablauf-kampagne/": [

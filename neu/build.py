@@ -1189,17 +1189,19 @@ FAQ_WEB = [
 
 def browser(img, titel):
     """Browser-Rahmen mit Seiten-Screenshot, der von selbst durchscrollt, sobald er im Bild ist (wie die Handys; main.js setzt --bh)."""
-    return f'<div class="browser"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel}</span></div><div class="scroller"><img src="{img}" alt="{html.escape(titel)}, Startseite" width="1200" height="3200"></div></div>'
+    k = img[:-4]
+    return f'<div class="browser"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {img} 1200w" sizes="(max-width: 1180px) 70vw, 36vw" alt="{html.escape(titel)}, Startseite" width="1200" height="3200" loading="lazy"></div></div>'
 
 def web_phone(img):
-    return f'<div class="phone klein"><div class="scroller"><img src="{img}" alt="" width="480" height="3400" loading="lazy"></div></div>'
+    return f'<div class="phone klein"><div class="scroller"><img src="{img[:-4]}-240.jpg" srcset="{img[:-4]}-240.jpg 240w, {img} 480w" sizes="(max-width: 1180px) 24vw, 12vw" alt="" width="480" height="3400" loading="lazy"></div></div>'
 
 def web_stapel(slugs, titel):
     """Hero-Bühne: drei Startseiten als Browser-Stapel, der vordere scrollt (Noah, 31.10.2026: Handy oben war „komisch positioniert“ → kein Handy mehr im Hero)."""
     teile = []
     for i, s in reversed(list(enumerate(slugs))):
-        lazy = ' loading="lazy"' if i else ''
-        teile.append(f'<div class="browser s{i+1}"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel[i]}</span></div><div class="scroller"><img src="/assets/webdesign/{s}-start-desk.jpg" alt="{html.escape(titel[i])}, Startseite" width="1200" height="3200"{lazy}></div></div>')
+        lazy = ' loading="lazy" fetchpriority="low"' if i else ' fetchpriority="high"'
+        k = f'/assets/webdesign/{s}-start-desk'
+        teile.append(f'<div class="browser s{i+1}"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel[i]}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {k}.jpg 1200w" sizes="(max-width: 900px) 86vw, 40vw" alt="{html.escape(titel[i])}, Startseite" width="1200" height="3200"{lazy}></div></div>')
     return '<div class="web-stapel rv" data-d="2">' + ''.join(teile) + '</div>'
 
 def web_projekt(slug, name, kick, text, punkte, titel, url, farbe, d=0):

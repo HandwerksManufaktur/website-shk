@@ -522,8 +522,6 @@ STIMMEN = [
     ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„(…) Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit, gerne wieder.“'),
     ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren. (…)“'),
     ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) Nach einem kurzen Telefonat und Kennenlernen verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“'),
-    ('Alisa Kirchner', 'Kirchner GmbH', '„(…) Zusätzlich haben wir sein Recruiting Angebot in Anspruch genommen, auch hier hat er beste Arbeit geleistet und tolle Anzeigen erstellt und sehr professionell umgesetzt! (…)“'),
-    ('Isabella Rauch', 'Autohaus Ressle · Recruiting', '„(…) wir haben eine überraschend hohe Anzahl an BewerberInnen und InteressentInnen über die kreative Stellenanzeige auf Facebook etc. erhalten. Für uns ist dieser Weg der Personalsuche in jedem Fall zukunftsweisend und zeigt sicheren Erfolg. (…)“'),
 ]
 STIMMEN_LOGO = {'Franz Gallenberger': 'gallenberger', 'Benjamin Senftleben': 'senftleben', 'Lanzinger GmbH': 'lanzinger', 'Andrea Süßmeier': 'suessmeier', 'Hannes Schmidt GmbH': 'hannes-schmidt', 'Alisa Kirchner': 'kirchner', 'Isabella Rauch': 'ressle'}
 def stimmen(liste=None, h2='Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span>'):
@@ -1173,7 +1171,6 @@ def seite_region(r):
 STIMMEN_WEB = [
     ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„Reibungsloser Ablauf bis zur Fertigstellung der Homepage. Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit, gerne wieder.“'),
     ('Benjamin Senftleben', 'Senftleben Haustechnik, Ehingen', '„Noah hat unsere Homepage erstellt und betreut diese. Wir sind sehr zufrieden! Auch der Kontakt mit Noah ist immer freundlich. Grüße Fa. Senftleben Sanitär Heizung aus Ehingen (Donau).“'),
-    ('Alisa Kirchner', 'Kirchner GmbH', '„Noah hat unsere Website erstellt und auch die Bilder hierfür gemacht! Wir sind absolut happy und die Zusammenarbeit läuft immer super unkompliziert. (…)“'),
     ('Franz Gallenberger', 'Sanitär · Heizung · Klimatechnik', '„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. Die Beratung war kompetent, verständlich und stets auf unsere individuellen Wünsche abgestimmt. (…) Das Ergebnis hat unsere Erwartungen nicht nur erfüllt, sondern sogar übertroffen. (…)“'),
     ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) Nach einem kurzen Telefonat und Kennenlernen verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“'),
     ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren. (…)“'),
@@ -1252,7 +1249,7 @@ def seite_webdesign():
              f'<div class="web-projekte">{p1}{p2}{p3}</div></div></section>')
     body += stimmen(STIMMEN_WEB, 'Was Betriebe über <span class="em k">ihre Seite</span> schreiben.')   # Stimmen zwischen Projektkarten und Ablauf: nie drei Kartenbänder hintereinander (os_regeln kartenFolge)
     body += web_ablauf()
-    body += statement('„Noah hat unsere Website erstellt und auch die Bilder hierfür gemacht! Wir sind absolut happy und die Zusammenarbeit läuft <em>immer super unkompliziert.“</em>', mitte=True, von='Alisa Kirchner · Kirchner GmbH, Google-Bewertung')   # Leitsatz zwischen Ablauf und FAQ (os_regeln kartenFolge: nie drei Kartenbänder hintereinander)
+    body += statement('„Reibungsloser Ablauf bis zur Fertigstellung der Homepage. Alle gewünschten Details wurden <em>super umgesetzt.“</em>', mitte=True, von='Lanzinger GmbH · Sanitär, Heizung, Klimatechnik, Google-Bewertung')   # Leitsatz zwischen Ablauf und FAQ; nur SHK-Stimmen (Noah, 02.11.2026: „es darf doch kein zitat von ner nicht shk firma da rein“)
     body += faq(FAQ_WEB, 'Bevor du <span class="em w">fragst.</span>', 'Preis, Dauer, was mit der alten Seite passiert. Das fragen fast alle, hier die kurzen Antworten.')
     body += kontakt('Welche Aufträge soll <span class="em w">deine Seite bringen?</span>', kick='Erstgespräch', satz='Wir schauen uns vorher an, was es von dir im Netz gibt, und sagen dir, wo du bei Google heute stehst.',
                     wahl=f'<a class="w" href="{CAL_WEB}" target="_blank" rel="noopener">{ic("monitor","ic")}<span><h3>Website besprechen</h3><small>Termin aussuchen, 30 Minuten am Telefon</small></span><span class="pfeil" aria-hidden="true">→</span></a>')
@@ -1267,6 +1264,10 @@ for _r in REGIONEN: SEITEN[f'/{_r["slug"]}/'] = (lambda x: lambda: seite_region(
 import shutil
 for _d in (AUS / 'wissen').glob('*/') if (AUS / 'wissen').exists() else []:   # alte Artikel-Ordner weg, wenn die JSON gelöscht ist
     if _d.is_dir() and _d.name not in {x['slug'] for x in WISSEN}: shutil.rmtree(_d); print('− alt entfernt', _d.relative_to(REPO))
+NICHT_SHK = ('Kirchner', 'Ressle', 'Isabella Rauch')   # kein Zitat, kein Logo, kein Name eines Nicht-SHK-Betriebs auf der SHK-Seite (Noah, 27.09. + 02.11.2026)
+def nicht_shk_wache():
+    treffer = [(str(h.relative_to(REPO)), n) for h in AUS.rglob('*.html') for n in NICHT_SHK if n in h.read_text(encoding='utf-8', errors='ignore')]
+    if treffer: raise SystemExit('🔴 Nicht-SHK-Betrieb auf der SHK-Seite: ' + ', '.join(f'{f} ({n})' for f, n in treffer))
 (AUS/'version.json').write_text('{"v":"%s"}\n' % V, encoding='utf-8')
 for pfad, fn in SEITEN.items():
     ziel = AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html'
@@ -1295,3 +1296,5 @@ if LIVE and WISSEN:
     _llms = _llms.replace('## Wissen (Ratgeber', _reg + '## Wissen (Ratgeber', 1)
     (REPO / 'llms.txt').write_text(_llms, encoding='utf-8')
     print('✓ llms.txt (Wissen, Regionen)')
+
+nicht_shk_wache()

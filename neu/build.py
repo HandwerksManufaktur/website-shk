@@ -1266,7 +1266,8 @@ for _d in (AUS / 'wissen').glob('*/') if (AUS / 'wissen').exists() else []:   # 
     if _d.is_dir() and _d.name not in {x['slug'] for x in WISSEN}: shutil.rmtree(_d); print('− alt entfernt', _d.relative_to(REPO))
 NICHT_SHK = ('Kirchner', 'Ressle', 'Isabella Rauch')   # kein Zitat, kein Logo, kein Name eines Nicht-SHK-Betriebs auf der SHK-Seite (Noah, 27.09. + 02.11.2026)
 def nicht_shk_wache():
-    treffer = [(str(h.relative_to(REPO)), n) for h in AUS.rglob('*.html') for n in NICHT_SHK if n in h.read_text(encoding='utf-8', errors='ignore')]
+    seiten = [AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html' for pfad in SEITEN]   # nur die gebauten Seiten; alt-v2/ (Archiv) und praesentation/ (noindex-Verkaufsdeck mit Ressle-Recruiting-Stimme) sind keine Website-Seiten
+    treffer = [(str(h.relative_to(REPO)), n) for h in seiten if h.exists() for n in NICHT_SHK if n in h.read_text(encoding='utf-8', errors='ignore')]
     if treffer: raise SystemExit('🔴 Nicht-SHK-Betrieb auf der SHK-Seite: ' + ', '.join(f'{f} ({n})' for f, n in treffer))
 (AUS/'version.json').write_text('{"v":"%s"}\n' % V, encoding='utf-8')
 for pfad, fn in SEITEN.items():

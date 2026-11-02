@@ -1382,6 +1382,11 @@ html.rd-offen{overflow:hidden}
 .vorteil.mit-bild.an .ticket,.vorteil.mit-bild .ticket{opacity:1;transform:none}
 .vorteil.mit-bild .v-bild:has(.tickets) .ticket small{color:var(--night-sub)}
 .vorteil.mit-bild .v-bild:has(.v-phone){align-items:start}
+/* Kachel mit Seiten-Screenshot: ganzer Screenshot im Browser-Rahmen statt seitlich abgeschnitten (Noah, 02.11.2026: „die Einpassung … ist abgeschnitten“) */
+.vorteil.mit-bild .v-bild:has(.browser){background:var(--night);border-bottom-color:var(--night);padding:18px 0}
+.vorteil.mit-bild .v-bild .browser{width:88%;aspect-ratio:auto;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.vorteil.mit-bild .v-bild .browser .scroller img{animation:none;display:block}
+.vorteil.mit-bild .v-bild .browser .b-leiste{height:30px}.vorteil.mit-bild .v-bild .browser .b-leiste span{font-size:12px}
 .vorteil.mit-bild .v-bild .tickets{transform:scale(.88)}
 .vorteil.mit-bild .v-bild{margin:8px 8px 0;border-radius:var(--r-lg);border-bottom:0}
 .collage{gap:8px;border-radius:0}

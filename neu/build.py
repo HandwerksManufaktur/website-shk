@@ -90,7 +90,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None, no
         "founder": {"@type": "Person", "name": "Noah Seelau"},
         "areaServed": [{"@type": "Country", "name": "Deutschland"}, {"@type": "Country", "name": "Österreich"}, {"@type": "Country", "name": "Schweiz"}],
         "knowsAbout": ["Mitarbeitergewinnung im SHK-Handwerk", "Social Recruiting für Anlagenmechaniker SHK", "Leadgenerierung Badsanierung", "Leadgenerierung Wärmepumpe", "Marketing für Handwerksbetriebe"],
-        "sameAs": ["https://handwerksmanufaktur.digital/", "https://www.instagram.com/handwerks.manufaktur/"],
+        "sameAs": ["https://handwerksmanufaktur.digital/", "https://www.instagram.com/handwerks.manufaktur/", "https://www.facebook.com/profile.php?id=61586469383281", "https://g.page/r/CTjThCpQd1pqEAE"],   # Google-Profil + Facebook (07.11.2026, GEO: Entität für KI-Suchen)
     }
     graph = [org, {"@type": "WebPage", "url": canon, "name": titel, "description": beschreibung, "inLanguage": "de-DE", "isPartOf": {"@type": "WebSite", "url": f"{DOMAIN}/", "name": "HandwerksManufaktur SHK"}}]
     if schema_extra: graph += schema_extra
@@ -157,7 +157,9 @@ def fuss():
       <div><h4>Handwerks&shy;Manufaktur</h4><ul>
         <li><a href="{u('/ueber-uns/')}">{ic('handshake')}Über uns</a></li>
         <li><a href="{u('/wissen/')}">{ic('docs')}Wissen &amp; Ratgeber</a></li>
-        <li><a href="{u('/bayern/')}">{ic('pin')}SHK-Betriebe in Bayern</a></li>
+        <li><a href="{u('/bayern/')}">{ic('pin')}SHK in Bayern</a></li>
+        <li><a href="{u('/muenchen/')}">{ic('pin')}SHK in München</a></li>
+        <li><a href="{u('/baden-wuerttemberg/')}">{ic('pin')}SHK in Baden-Württemberg</a></li>
         <li><a href="https://handwerksmanufaktur.digital/">{ic('globe')}Webdesign für Handwerk</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
@@ -678,7 +680,8 @@ def galerie():
 
 # ── Seiten ────────────────────────────────────────────────────────────────
 def seite_start():
-    h = kopf('Monteure und Aufträge für SHK-Betriebe aus deinem Umkreis', 'Monteure und Bad-Anfragen, die nur du bekommst: Anzeigen mit deinen Leuten im eigenen Umkreis, Filterfragen vor jeder Bewerbung. 130+ Betriebe, 5,0 auf Google.', '/', schema_extra=faq_schema(FAQ_START))
+    h = kopf('Recruiting- und Marketing-Agentur für SHK-Betriebe',   # Inhaber suchen „Agentur“ (Suchbegriff-Recherche 07.11.2026)
+         'Monteure und Bad-Anfragen, die nur du bekommst: Anzeigen mit deinen Leuten im eigenen Umkreis, Filterfragen vor jeder Bewerbung. 130+ Betriebe, 5,0 auf Google.', '/', schema_extra=faq_schema(FAQ_START))
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
     <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
@@ -695,8 +698,22 @@ def seite_start():
     </div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + leiter() + vergleich() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ueber_offen() + team() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + kontakt()
+    body = hero + logo_band() + leiter() + vergleich() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ueber_offen() + team() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + ratgeber_weiter(RAT_START, 'Was SHK-Inhaber <span class="em k">am häufigsten fragen.</span>', regionen=True) + kontakt()
     return h + body + fuss()
+
+RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'stellenanzeige-shk-schreiben']
+RAT_AUFTRAEGE = ['badsanierung-anfragen', 'waermepumpen-anfragen', 'anfragen-durch-werbung', 'bad-anfragen-nachfassen', 'ausgelastet-werbung', 'werbebudget-facebook-instagram']
+RAT_START = ['social-recruiting-shk', 'badsanierung-anfragen', 'kosten-mitarbeitergewinnung']
+def ratgeber_weiter(slugs, h2, farbe='k', regionen=False):
+    # Interne Links von den Leistungsseiten in den Ratgeber (07.11.2026): vorher gab es nur den Menüpunkt, Google sah die Artikel als Nebensache
+    nach = {x['slug']: x for x in WISSEN}
+    karten = ''.join(wx_karte(nach[s]) for s in slugs if s in nach)
+    if not karten: return ''
+    quer = ''.join(f'<a class="btn btn-white" href="{u("/" + s + "/")}">{ic("pin", "ic")}{t}</a>' for s, t in (('bayern', 'SHK in Bayern'), ('muenchen', 'SHK im Raum München'), ('baden-wuerttemberg', 'SHK in Baden-Württemberg'))) if regionen else ''
+    quer += f'<a class="btn btn-white" href="{u("/wissen/")}">{ic("docs", "ic")}Alle Ratgeber</a>'
+    return f'''<section class="sec wx-weiter"><div class="wrap"><div class="sec-kopf"><div><p class="kick {farbe} rv">Ratgeber</p><h2 class="d rv">{h2}</h2></div></div>
+  <div class="wx-raster">{karten}</div>
+  <nav class="region-quer rv" aria-label="Weitere Seiten">{quer}</nav></div></section>'''
 
 def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):
     drei = ' drei' if phones.count('class="phone ') >= 3 else ''   # drei Funnels oben (Noah, 24.10.2026)
@@ -711,7 +728,7 @@ def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):
 
 def seite_monteure():
     fr = [FAQ_ALLE[0], FAQ_ALLE[7], FAQ_ALLE[3], FAQ_ALLE[2], FAQ_ALLE[1]]
-    h = kopf('Monteure finden für SHK-Betriebe: Social Recruiting im Umkreis', 'Anlagenmechaniker und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert. Fallstudie: 25 Bewerbungen in 4 Wochen.', '/monteure/', dunkel=True, schema_extra='')
+    h = kopf('Recruiting-Agentur für SHK-Betriebe: Monteure über Social Media', 'Anlagenmechaniker und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert. Fallstudie: 25 Bewerbungen in 4 Wochen.', '/monteure/', dunkel=True, schema_extra='')
     body = uhero('Für SHK-Betriebe, die einen Monteur suchen', 'Monteure, die anfangen wollen. <span class="em k">Aus deinem Umkreis.</span>', 'Die guten Monteure suchen nicht, sie sind in Arbeit. Sie wechseln, wenn das richtige Angebot vor ihnen liegt. Wir bringen deins dorthin, wo sie jeden Abend sind: in ihren Feed. Du führst nur noch die Gespräche.', 'Recruiting besprechen', CAL_REC, 'btn-kalt',
         phone(bildschirm_oben('/assets/funnels/irlbacher-jobs-full.jpg'), 'Recruiting · Irlbacher GmbH', '#1E90E8', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/senftleben-jobs-full.jpg'), 'Recruiting · Senftleben Haustechnik', '#1E90E8', 'mitte', '1s') + phone(bildschirm_oben('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'rechts', '0s'))
     body += f'''<section class="sec" id="vorteile"><div class="wrap">
@@ -722,12 +739,12 @@ def seite_monteure():
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Fallstudie · Recruiting</p><h2 class="d rv">„Wir haben nur nicht gedacht, dass es <span class="em k">so viele</span> sind.“</h2></div><p class="lead rv">Erwin Schmidt &amp; Sohn, Sindelfingen. Ein Anlagenmechaniker gesucht, 25 Bewerbungen bekommen, Stelle besetzt.</p></div>{FALL_ESS()}
   <div class="fall-abstand">{FALL_SEN_REC()}</div>
   <div class="fall-abstand">{FALL_KLASS()}</div></div></section>'''
-    body += kaskade('ess') + reels() + statement('„… der war schon eine Woche bei uns, der ist <em>echt gut.“</em>', mitte=True, von='Florian Schmidt · Geschäftsführer, Erwin Schmidt &amp; Sohn, über den Monteur aus der Kampagne') + kontakt('Such dir den Termin aus, <span class="em k">der passt.</span>')
+    body += kaskade('ess') + reels() + statement('„… der war schon eine Woche bei uns, der ist <em>echt gut.“</em>', mitte=True, von='Florian Schmidt · Geschäftsführer, Erwin Schmidt &amp; Sohn, über den Monteur aus der Kampagne') + ratgeber_weiter(RAT_MONTEURE, 'Monteure finden: <span class="em k">zum Nachlesen.</span>') + kontakt('Such dir den Termin aus, <span class="em k">der passt.</span>')
     return h + body + fuss()
 
 def seite_auftraege():
     fr = [FAQ_ALLE[0], FAQ_ALLE[5], FAQ_ALLE[1], FAQ_ALLE[4], FAQ_ALLE[2]]
-    h = kopf('Bad- und Wärmepumpen-Aufträge für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Umkreis, nur für deinen Betrieb, vorqualifiziert nach Objekt und Eigentum. Fallstudie: 21 Anfragen in 2 Monaten.', '/auftraege/', dunkel=True, schema_extra='')
+    h = kopf('Anfragen für Bad und Wärmepumpe: Marketing für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Umkreis, nur für deinen Betrieb, vorqualifiziert nach Objekt und Eigentum. Fallstudie: 21 Anfragen in 2 Monaten.', '/auftraege/', dunkel=True, schema_extra='')
     body = uhero('Für SHK-Betriebe, die Bäder und Wärmepumpen bauen', 'Bad-Aufträge, die nur du bekommst. <span class="em w">Aus deinem Umkreis.</span>', 'Anzeigen auf deinen Namen, nur in deinem Einzugsgebiet, Filterfragen vor jeder Anfrage. Jede Anfrage gehört dir allein, nicht vier Wettbewerbern gleichzeitig. Du fährst nur noch zum Termin.', 'Potenzial durchrechnen', '#rechner-auf', 'btn-warm',
         phone(bildschirm_oben('/assets/funnels/fischer-leadgen-full.jpg'), 'Aufträge · Fischer GmbH', '#F5762B', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/sussmann-leadgen-hero.jpg'), 'Aufträge · Sussmann GmbH', '#F5762B', 'mitte', '1s') + phone(bildschirm_oben('/assets/funnels/senftleben-leadgen-full.jpg'), 'Aufträge · Senftleben Haustechnik', '#F5762B', 'rechts', '0s'), warm=True)
     body += f'''<section class="sec" id="vorteile"><div class="wrap">
@@ -738,7 +755,7 @@ def seite_auftraege():
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Fallstudie · Auftrags-Funnel Badsanierung</p><h2 class="d rv">„Dass so schnell so viele Anfragen kommen, <span class="em w">hätte ich nicht gedacht.</span>“</h2></div><p class="lead rv">Senftleben Haustechnik, Ehingen. Ausgelastet, und trotzdem laufen die Anzeigen weiter, damit der Name im Kopf bleibt.</p></div>{FALL_SEN()}
   <div class="fall-abstand">{FALL_SUS()}</div>
 </div></section>'''
-    body += kaskade('senftleben') + reels() + statement('„Wieso macht Coca‑Cola Werbung? … Weil der Name sich in die Köpfe <em>einbrennen soll.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')
+    body += kaskade('senftleben') + reels() + statement('„Wieso macht Coca‑Cola Werbung? … Weil der Name sich in die Köpfe <em>einbrennen soll.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + ratgeber_weiter(RAT_AUFTRAEGE, 'Bad und Wärmepumpe: <span class="em w">zum Nachlesen.</span>', 'w') + kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')
     return h + body + fuss()
 
 def seite_fallstudien():
@@ -1279,6 +1296,14 @@ _weg = AUS / 'fallstudien' / 'index.html'
 _weg.parent.mkdir(parents=True, exist_ok=True)
 _weg.write_text(f'<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={u("/")}#fallstudien"><link rel="canonical" href="{u("/")}"><title>Fallstudien</title></head><body><a href="{u("/")}#fallstudien">Zu den Fallstudien</a></body></html>\n', encoding='utf-8')
 if LIVE:
+    # Eigene 404-Seite (07.11.2026): vorher GitHub-Standardseite ohne Rückweg
+    _h404 = kopf('Seite nicht gefunden', 'Diese Seite gibt es nicht (mehr). Hier geht es zu Monteure, Aufträge und Ratgeber.', '/404/', noindex=True)
+    _h404 = re.sub(r'<link rel="canonical"[^>]*>\n', '', _h404)
+    _b404 = (f'<section class="hero" id="start" style="padding-bottom:clamp(72px,10vw,128px)"><div class="wrap"><p class="kick rv">Fehler 404</p><h1 class="h-xl rv" data-d="1">Diese Seite <span class="em k">gibt es nicht.</span></h1>'
+             f'<p class="lead rv" data-d="2">Vielleicht ist der Link veraltet. Hier findest du, was SHK-Betriebe bei uns suchen.</p>'
+             f'<div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="/monteure/">{ic("users","ic")}Monteure gewinnen</a><a class="btn btn-white btn-lg" href="/auftraege/">{ic("bath","ic")}Aufträge gewinnen</a><a class="btn btn-white btn-lg" href="/wissen/">{ic("docs","ic")}Ratgeber</a></div></div></section>')
+    (REPO / '404.html').write_text(optimieren(_h404 + _b404 + fuss(), pfad='/404/'), encoding='utf-8')
+    print('✓ 404.html')
     _wx_mod = {f'/wissen/{x["slug"]}/': x.get('aktualisiert') or x.get('veroeffentlicht', WX_STAND) for x in WISSEN}
     if WISSEN: _wx_mod['/wissen/'] = max(_wx_mod.values())
     for _r in REGIONEN: _wx_mod[f'/{_r["slug"]}/'] = '2026-09-30'   # Regionsseiten (30.09.2026)

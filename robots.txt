@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /neu/
 
 Sitemap: https://shk.handwerksmanufaktur.digital/sitemap.xml

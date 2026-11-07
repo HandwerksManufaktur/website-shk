@@ -1,0 +1,227 @@
+{
+  "slug": "waermepumpen-leads-kaufen",
+  "titel": "Wärmepumpen-Leads kaufen: Kosten und wann es sich lohnt",
+  "h1": "Wärmepumpen-Leads kaufen: Was kosten sie, und wann lohnt sich das?",
+  "beschreibung": "Was Wärmepumpen-Leads laut Anbietern kosten, wie oft sie an mehrere Betriebe gehen und wie du die Kosten je Auftrag für deinen Betrieb rechnest.",
+  "kategorie": "Aufträge gewinnen",
+  "reihe": 7,
+  "top": false,
+  "veroeffentlicht": "2026-11-11",
+  "teaser": "Was Wärmepumpen-Leads kosten, wer sie noch bekommt und wie du ausrechnest, ob sich der Kauf für deinen Betrieb lohnt.",
+  "kurzantwort": "Laut dem Anbieter Leospardo kostet ein Wärmepumpen-Lead 50 bis 95 €, exklusive Leads rund 50 bis 80 % mehr. Geteilte Leads gehen dort und bei Aroundhome an bis zu drei Betriebe. Ob sich der Kauf lohnt, zeigt die Rechnung Preis je Lead geteilt durch deine Abschlussquote. Eigene Anzeigen im Umkreis bringen Anfragen, die nur bei dir landen.",
+  "lesezeit": 7,
+  "leistung": "auftraege",
+  "zahlen": [
+    {
+      "zahl": "50–95",
+      "einheit": "€",
+      "text": "kostet laut Leospardo ein Wärmepumpen-Lead, geteilt mit bis zu zwei weiteren Betrieben.",
+      "quelle": "Leospardo, Stand November 2026",
+      "url": "https://leospardo.de/fachpartner/leads-kaufen-handwerk/"
+    },
+    {
+      "zahl": "50–80",
+      "einheit": "%",
+      "text": "Aufschlag nennt Leospardo für exklusive Leads, die nur an deinen Betrieb gehen.",
+      "quelle": "Leospardo, Stand November 2026",
+      "url": "https://leospardo.de/fachpartner/waermepumpe-leads-kaufen/"
+    },
+    {
+      "zahl": "299.000",
+      "einheit": "Stück",
+      "text": "Heizungswärmepumpen wurden 2025 in Deutschland verkauft, 55 % mehr als im Vorjahr.",
+      "quelle": "Bundesverband Wärmepumpe 2026",
+      "url": "https://www.waermepumpe.de/presse/pressemitteilungen/details/ueber-50-prozent-im-plus-waermepumpen-absatz-steigt-2025-deutlich/"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Was kostet ein Wärmepumpen-Lead?",
+      "html": "<p>Der Anbieter Leospardo nennt für Wärmepumpen-Leads 50 bis 95 € je Kontakt, Stand November 2026. Andere Anbieter schreiben keinen Preis auf ihre Seite: Bei Aroundhome siehst du den Festpreis je Anfrage erst im Vertragsprozess, Powerleads nennt Preise auf Anfrage.</p><p>Der Markt dahinter ist groß. Laut Bundesverband Wärmepumpe wurden 2025 in Deutschland 299.000 Heizungswärmepumpen verkauft, 55 % mehr als 2024. Entsprechend viele Firmen verkaufen Kontakte von Hausbesitzern, die sich über eine Wärmepumpe informiert haben.</p><p>Der Preis je Lead sagt dir allein noch wenig. Bei einem Anbieter ist der Kontakt telefonisch geprüft, beim nächsten nur ein Formular. Ein Lead kann an dich allein gehen oder an mehrere Betriebe. Die Tabelle zeigt, was die Anbieter selbst angeben.</p>",
+      "tabelle": {
+        "titel": "Wärmepumpen-Leads: Angaben der Anbieter",
+        "kopf": [
+          "Anbieter",
+          "Preis je Lead",
+          "Wer die Anfrage noch bekommt",
+          "Prüfung vor Weitergabe"
+        ],
+        "zeilen": [
+          [
+            "Leospardo",
+            "50 bis 95 €, exklusiv rund 50 bis 80 % Aufschlag",
+            "geteilt bis zu 3 Betriebe, exklusiv nur du",
+            "Telefonnummer wird geprüft"
+          ],
+          [
+            "Aroundhome",
+            "Festpreis je Anfrage, Höhe erst im Vertragsprozess",
+            "bis zu 3 Fachpartner",
+            "Anfrage und Kontaktdaten werden vorab geprüft"
+          ],
+          [
+            "Powerleads",
+            "Preise auf Anfrage",
+            "exklusiv oder als Multi-Lead an mehrere Abnehmer",
+            "auf Wunsch telefonisch vorqualifiziert"
+          ]
+        ],
+        "quelle": "Quelle: Webseiten der Anbieter, Stand November 2026."
+      }
+    },
+    {
+      "h2": "Geteilt oder exklusiv: Was passt zu deinem Betrieb?",
+      "html": "<p>Ein geteilter Lead ist billiger, dafür rufen bei demselben Hausbesitzer womöglich noch zwei andere Betriebe an. Ein exklusiver Lead geht nur an dich und kostet bei Leospardo rund 50 bis 80 % mehr.</p><p>Aroundhome begründet die Weitergabe an bis zu drei Fachpartner damit, dass Hauseigentümer meist ein Vergleichsangebot wollen. Bei einer Wärmepumpe ist das verständlich, der Kunde gibt viel Geld aus. Für dich heißt es: Beim geteilten Lead gewinnt oft, wer zuerst anruft und den Termin zuerst bekommt.</p><p>Geteilte Leads passen, wenn jemand im Betrieb Anfragen am selben Tag zurückruft. Exklusive Leads passen, wenn der Chef die Rückrufe selbst macht und erst abends dazu kommt. Rechne beide Varianten mit deiner Quote durch, bevor du dich festlegst.</p>",
+      "zitat": {
+        "text": "Naja, also die Vorgehensweise von diesen Portalen, die sind uns schon klar.",
+        "wer": "Inhaber, SHK-Betrieb"
+      }
+    },
+    {
+      "h2": "Wie rechnest du die Kosten je Wärmepumpen-Auftrag?",
+      "html": "<p>Du teilst den Preis je Lead durch deine Abschlussquote. Bei 60 € je Lead und jedem zehnten Lead als Auftrag zahlst du 600 € an Lead-Kosten je Wärmepumpe.</p><p>Aroundhome schreibt, dass im Durchschnitt aus jeder zehnten Anfrage ein Auftrag wird. Ein exklusiver Lead für 95 € rechnet sich gegenüber dem geteilten erst, wenn du damit deutlich öfter abschließt. Ob das bei dir so ist, siehst du nur an deinen eigenen Zahlen aus ein paar Wochen.</p><p>Dazu kommen Stunden, die auf keiner Rechnung stehen. Du rufst zurück, schaust dir den Heizungskeller an und schreibst ein Angebot, auch wenn am Ende kein Auftrag daraus wird. Bei Kunden, die noch abwarten, was es an Förderung gibt, fährst du unter Umständen zweimal raus. Die Tabelle ist ein Rechenbeispiel mit angenommenen Werten, keine Prognose.</p>",
+      "tabelle": {
+        "titel": "Rechenbeispiel: Lead-Kosten je Wärmepumpen-Auftrag",
+        "kopf": [
+          "",
+          "Geteilter Lead",
+          "Exklusiver Lead"
+        ],
+        "zeilen": [
+          [
+            "Preis je Lead (angenommen)",
+            "60 €",
+            "95 €"
+          ],
+          [
+            "Abschlussquote (angenommen)",
+            "10 %",
+            "15 %"
+          ],
+          [
+            "Rechnung",
+            "60 € geteilt durch 0,10",
+            "95 € geteilt durch 0,15"
+          ],
+          [
+            "Lead-Kosten je Auftrag",
+            "600 €",
+            "rund 633 €"
+          ]
+        ],
+        "quelle": "Rechenbeispiel mit angenommenen Werten, keine Prognose. Fahrten, Besichtigungen und Angebotszeit kommen dazu."
+      }
+    },
+    {
+      "h2": "Welche Fragen stellst du einem Anbieter vor dem Kauf?",
+      "html": "<p>Klär vor dem ersten Lead sechs Punkte schriftlich. Die Antworten zeigen dir, was ein Kontakt am Ende kostet und wie gut er zu deinem Betrieb passt.</p><ol><li><strong>Weitergabe:</strong> An wie viele Betriebe geht derselbe Kontakt höchstens?</li><li><strong>Preis:</strong> Was kostet ein Lead in deinen Postleitzahlen, mit allen Gebühren?</li><li><strong>Angaben zum Haus:</strong> Weißt du vor dem Anruf, ob der Kunde Eigentümer ist, welches Baujahr das Haus hat und womit er heute heizt?</li><li><strong>Herkunft:</strong> Hat der Kunde nach einer Wärmepumpe gefragt oder nur einen Förderrechner ausgefüllt?</li><li><strong>Reklamation:</strong> Was passiert bei falscher Nummer oder einem Mieter? Powerleads etwa führt dafür eine eigene Seite mit Reklamationsgründen.</li><li><strong>Laufzeit:</strong> Kannst du monatlich kündigen und pausieren, wenn die Monteure ausgebucht sind?</li></ol><p>Ein kleiner Test mit wenigen Leads in deinem Kerngebiet zeigt dir mehr als jede Preisliste. Powerleads etwa nennt Testpakete mit 10 bis 50 Leads.</p>"
+    },
+    {
+      "h2": "Wann sind eigene Wärmepumpen-Anfragen die bessere Wahl?",
+      "html": "<p>Eigene Anfragen passen, wenn du über Monate planen willst und dein Name im Umkreis bekannt werden soll. Du schaltest Anzeigen auf Facebook und Instagram nur in 20 bis 30 km, mit deinen Monteuren und deinen Anlagen im Bild, und fragst vor dem Absenden ab, wem das Haus gehört, wie alt es ist, womit heute geheizt wird und wann es losgehen soll.</p><p>Das Werbebudget geht direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Fotos, Anfrageseite und Betreuung. Was das bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch.</p><p>Unsere veröffentlichten Zahlen kommen bisher aus Bad-Kampagnen. Die Erich Sussmann GmbH in Kirchheim bei München hatte 14 Bad-Anfragen, über 7 Vor-Ort-Termine und nach gut 2 Wochen den ersten Auftrag über 10.000 €. Als Nächstes will der Betrieb Wärmepumpe und Klima bewerben. Einzelfall, kein Versprechen. Eigene Wärmepumpen-Zahlen nennen wir erst, wenn wir sie haben.</p>",
+      "tabelle": {
+        "titel": "Gekaufte Leads vs. eigene Anfragen bei Wärmepumpen",
+        "kopf": [
+          "",
+          "Gekaufte Leads",
+          "Eigene Anfragen im Umkreis"
+        ],
+        "zeilen": [
+          [
+            "Kosten",
+            "50 bis 95 € je Lead laut Leospardo, exklusiv mit Aufschlag",
+            "Werbebudget direkt an Meta, meist 750 bis 1.000 € im Monat, dazu Aufbau und Betreuung"
+          ],
+          [
+            "Exklusivität",
+            "geteilt an bis zu 3 Betriebe oder exklusiv gegen Aufpreis",
+            "nur dein Betrieb"
+          ],
+          [
+            "Qualität",
+            "hängt von den Fragen des Anbieters ab",
+            "du fragst Eigentum, Baujahr, Heizung heute und Zeitrahmen ab"
+          ],
+          [
+            "Aufwand",
+            "gering zum Start, schneller Rückruf nötig",
+            "Fototermin im Betrieb und einige Wochen Anlauf"
+          ],
+          [
+            "Kontrolle",
+            "Region und Menge beim Anbieter einstellbar",
+            "Umkreis, Budget und Bilder bestimmst du, drosseln jederzeit"
+          ]
+        ],
+        "quelle": "Quelle: Anbieterangaben Leospardo und Aroundhome, Stand November 2026; eigene Kampagnen, 2026."
+      },
+      "bild": {
+        "src": "/assets/fotos/sussmann-patrick-mirjana-van.jpg",
+        "alt": "Patrick Wähnl und Mirjana an einem Firmenwagen der Erich Sussmann GmbH",
+        "unter": "Patrick Wähnl und Mirjana, Erich Sussmann GmbH, Kirchheim bei München. Der Betrieb will als Nächstes Wärmepumpe und Klima bewerben.",
+        "pos": "50% 35%"
+      }
+    },
+    {
+      "h2": "Was kannst du diese Woche selbst tun?",
+      "html": "<p>Bevor du Geld für Leads oder Anzeigen ausgibst, helfen dir ein paar Zahlen aus deinem eigenen Betrieb.</p><ul><li>Zähl, wie viele Wärmepumpen-Anfragen in den letzten sechs Monaten kamen und wie viele davon Aufträge wurden.</li><li>Rechne für gekaufte Leads die Lead-Kosten je Auftrag aus: Preis je Lead geteilt durch deine Quote.</li><li>Geh deine Wartungsliste durch und markiere Kessel über 20 Jahre. Das ist die Anrufliste, die dich nichts kostet.</li><li>Leg fest, wer Anfragen am selben Tag zurückruft, auch wenn du auf der Baustelle bist.</li></ul><p>Mit diesen Zahlen siehst du, ob gekaufte Leads oder eigene Anfragen besser zu dir passen. Woher Wärmepumpen-Anfragen sonst kommen, steht im Artikel <a href='/wissen/waermepumpen-anfragen/'>Wie komme ich 2026 an Wärmepumpen-Anfragen?</a></p>"
+    }
+  ],
+  "faq": [
+    [
+      "Was kostet ein Wärmepumpen-Lead?",
+      "Leospardo nennt 50 bis 95 € je Lead, geteilt mit bis zu zwei weiteren Betrieben, exklusive Leads rund 50 bis 80 % mehr (Stand November 2026). Aroundhome und Powerleads nennen ihre Preise erst im Vertragsprozess oder auf Anfrage. Frag immer nach dem Preis für deine Postleitzahlen mit allen Gebühren."
+    ],
+    [
+      "Lohnen sich exklusive Wärmepumpen-Leads?",
+      "Wenn du damit deutlich öfter abschließt als mit geteilten Leads, ja. Rechne beide Varianten: Preis je Lead geteilt durch Abschlussquote. Ein exklusiver Lead bringt dir vor allem Zeit beim Rückruf, weil kein anderer Betrieb denselben Kunden anruft."
+    ],
+    [
+      "An wie viele Betriebe geht ein Wärmepumpen-Lead?",
+      "Bei Aroundhome an bis zu drei Fachpartner, bei Leospardo gehen geteilte Leads ebenfalls an bis zu drei Betriebe. Powerleads verkauft neben exklusiven Leads auch Multi-Leads an mehrere Abnehmer. Lass dir die Höchstzahl vor dem Vertrag schriftlich geben."
+    ],
+    [
+      "Wie viele Wärmepumpen-Leads werden zum Auftrag?",
+      "Aroundhome schreibt, im Durchschnitt wird aus jeder zehnten Anfrage ein Auftrag. Bei Wärmepumpen hängt viel davon ab, wie schnell du zurückrufst und ob der Kunde noch auf die Förderung wartet. Deine eigene Quote kennst du nach ein paar Wochen mit sauber notierten Zahlen."
+    ],
+    [
+      "Wie bekomme ich eigene Wärmepumpen-Anfragen ohne Lead-Kauf?",
+      "Ja, über Anzeigen auf Facebook und Instagram in deinem Umkreis, mit Fotos aus deinem Betrieb und Filterfragen zu Eigentum, Baujahr und Heizung. Die Anfrage landet nur bei dir. Das Werbebudget geht direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag."
+    ]
+  ],
+  "quellen": [
+    {
+      "name": "Leospardo: Leads kaufen Handwerk, Preise je Gewerk (abgerufen November 2026)",
+      "url": "https://leospardo.de/fachpartner/leads-kaufen-handwerk/"
+    },
+    {
+      "name": "Leospardo: Wärmepumpe Leads kaufen, Exklusiv- und Shared-Leads (abgerufen November 2026)",
+      "url": "https://leospardo.de/fachpartner/waermepumpe-leads-kaufen/"
+    },
+    {
+      "name": "Aroundhome: Partner werden, Wärmepumpe (abgerufen November 2026)",
+      "url": "https://www.aroundhome.de/partner-werden/waermepumpe/"
+    },
+    {
+      "name": "Powerleads: Wärmepumpen Leads (abgerufen November 2026)",
+      "url": "https://www.powerleads.de/leads/waermepumpen-leads/"
+    },
+    {
+      "name": "Bundesverband Wärmepumpe: Über 50 Prozent im Plus, Wärmepumpen-Absatz steigt 2025 deutlich (Pressemitteilung, 27.01.2026)",
+      "url": "https://www.waermepumpe.de/presse/pressemitteilungen/details/ueber-50-prozent-im-plus-waermepumpen-absatz-steigt-2025-deutlich/"
+    }
+  ],
+  "verwandt": [
+    "handwerker-leads-kaufen",
+    "waermepumpen-anfragen",
+    "fallstudie-sussmann"
+  ],
+  "cta_titel": "Was kostet dich eine Wärmepumpen-Anfrage <span class='em w'>in deinem Umkreis?</span>",
+  "cta_satz": "In 30 Minuten schauen wir auf deinen Umkreis und rechnen mit dir durch, was eigene Anfragen gegenüber gekauften Leads bringen können.",
+  "bild": {
+    "src": "/assets/fotos/shk-02.jpg",
+    "alt": "Zwei Monteure eines SHK-Betriebs arbeiten auf einer Baustelle mit einem Akkuwerkzeug",
+    "unter": "Monteure eines SHK-Betriebs auf der Baustelle, aus einem unserer Shootings",
+    "pos": "50% 35%"
+  }
+}

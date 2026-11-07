@@ -1,0 +1,243 @@
+{
+  "slug": "handwerker-leads-kaufen",
+  "titel": "Handwerker-Leads kaufen oder selbst erzeugen: SHK-Vergleich",
+  "h1": "Handwerker-Leads kaufen oder selbst erzeugen: Was lohnt sich für SHK-Betriebe?",
+  "beschreibung": "Was gekaufte Leads für Bad, Heizung und Wärmepumpe kosten, an wie viele Betriebe sie gehen und wann eigene Anfragen im Umkreis besser passen.",
+  "kategorie": "Aufträge gewinnen",
+  "reihe": 6,
+  "top": false,
+  "veroeffentlicht": "2026-11-07",
+  "teaser": "Was gekaufte Leads kosten, wer sie noch bekommt und wie du sie mit Anfragen vergleichst, die nur bei dir landen.",
+  "kurzantwort": "Gekaufte Leads lohnen sich, wenn du schnell Anfragen brauchst oder ein neues Gebiet testen willst. Laut den Anbietern kosten sie bei Wärmepumpen rund 50 bis 95 € je Anfrage und gehen oft an bis zu drei Betriebe. Eigene Anfragen über Anzeigen im Umkreis auf deinen Namen landen nur bei dir, brauchen aber ein paar Wochen Anlauf.",
+  "lesezeit": 8,
+  "leistung": "auftraege",
+  "zahlen": [
+    {
+      "zahl": "3",
+      "einheit": "Betriebe",
+      "text": "bekommen bei Aroundhome höchstens dieselbe Anfrage. Du hast also bis zu zwei Mitbewerber am Telefon.",
+      "quelle": "Aroundhome, Partnerseite, Stand November 2026",
+      "url": "https://www.aroundhome.de/partner-werden/heizung/"
+    },
+    {
+      "zahl": "50–95",
+      "einheit": "€",
+      "text": "kostet laut Leospardo ein Wärmepumpen-Lead. Exklusive Leads kosten dort rund 50 bis 80 % Aufschlag.",
+      "quelle": "Leospardo, Stand November 2026",
+      "url": "https://leospardo.de/fachpartner/leads-kaufen-handwerk/"
+    },
+    {
+      "zahl": "21",
+      "einheit": "Anfragen",
+      "text": "Bad-Anfragen in 2 Monaten über eigene Anzeigen im 25-km-Umkreis, nur für diesen Betrieb. Einzelfall, kein Versprechen.",
+      "quelle": "eigene Kampagne, Senftleben Haustechnik, 2026"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Was kosten gekaufte Leads für SHK-Betriebe?",
+      "html": "<p>Für einen Wärmepumpen-Lead nennt der Anbieter Leospardo 50 bis 95 €, Stand November 2026. Viele Anbieter schreiben gar keinen Preis auf ihre Seite: Bei Aroundhome siehst du den Festpreis je Anfrage erst im Vertragsprozess, bei Powerleads gibt es Preise auf Anfrage.</p><p>Was SHK-Inhaber tatsächlich zahlen, hören wir in Gesprächen. Ein Inhaber nannte uns 50 € je gekaufter Anfrage. Ein anderer sagte, bei 100 € plus Servicegebühr steige er aus.</p><p>Die Preise hängen vor allem daran, in welcher Region du kaufst und ob die Anfrage nur an dich geht. Leospardo nennt für Solar, Wärmepumpe und Küche je eigene Spannen und schreibt, der Preis hänge von Region und Exklusivität ab. Bevor du vergleichst, frag jeden Anbieter nach denselben Punkten, sonst vergleichst du Äpfel mit Birnen.</p>",
+      "tabelle": {
+        "titel": "Was Lead-Anbieter auf ihren Seiten nennen",
+        "kopf": [
+          "Anbieter",
+          "Preis je Lead",
+          "Wer die Anfrage noch bekommt",
+          "Laufzeit"
+        ],
+        "zeilen": [
+          [
+            "Leospardo",
+            "Wärmepumpe 50 bis 95 €, exklusiv rund 50 bis 80 % Aufschlag",
+            "geteilt bis zu 3 Betriebe, exklusiv nur du",
+            "keine Mindestabnahme, monatlich kündbar"
+          ],
+          [
+            "Aroundhome",
+            "Festpreis je qualifizierter Anfrage, Höhe erst im Vertragsprozess",
+            "bis zu 3 Fachpartner",
+            "meist monatlich kündbar"
+          ],
+          [
+            "Powerleads",
+            "Preise auf Anfrage",
+            "exklusiv oder als Multi-Lead an mehrere Abnehmer",
+            "nicht auf der Seite genannt"
+          ],
+          [
+            "Inhaber im Gespräch",
+            "50 € je Anfrage",
+            "nicht bekannt",
+            "nicht bekannt"
+          ]
+        ],
+        "quelle": "Quelle: Angaben der Anbieter auf ihren Webseiten, Stand November 2026; Inhaber-Angabe aus einem Gespräch, 2026."
+      }
+    },
+    {
+      "h2": "An wie viele Betriebe geht ein gekaufter Lead?",
+      "html": "<p>Bei den Anbietern, die es offenlegen, geht ein geteilter Lead an bis zu drei Betriebe. Aroundhome begründet das so: Hauseigentümer wollen meist ein Vergleichsangebot. Leospardo bietet zusätzlich exklusive Leads gegen Aufpreis an, Powerleads verkauft sowohl exklusive Leads als auch Multi-Leads an mehrere Abnehmer.</p><p>Für dich heißt das: Bei einem geteilten Lead klingeln bei demselben Hausbesitzer womöglich noch zwei andere Betriebe an. Wer zuerst anruft, hat den Fuß in der Tür. Wer auf der Baustelle steht und erst abends zurückruft, ist oft der dritte.</p><p>Frag deshalb vor jedem Vertrag schriftlich nach, an wie viele Betriebe dieselbe Anfrage höchstens geht. Und frag, ob der Kunde weiß, dass sich mehrere melden. Ein Hausbesitzer, der drei Anrufe erwartet, vergleicht von Anfang an Preise.</p>",
+      "zitat": {
+        "text": "Ich bin nicht bereit, für einen Lead 100 Euro auszugeben, dann noch irgendeine lustige Servicegebühr. Das lohnt sich für mich nicht.",
+        "wer": "Inhaber, SHK-Betrieb"
+      }
+    },
+    {
+      "h2": "Wie rechnest du aus, ob sich gekaufte Leads lohnen?",
+      "html": "<p>Entscheidend ist der Preis je Auftrag, und den rechnest du so: Preis je Lead geteilt durch deine Abschlussquote. Ein Lead für 60 € bei jedem zehnten Lead als Auftrag kostet dich 600 € je Auftrag, ohne Fahrten und Angebote.</p><p>Aroundhome schreibt, dass im Durchschnitt aus jeder zehnten Anfrage ein Auftrag wird. Ob das bei dir so ist, weißt du erst nach ein paar Wochen mit eigenen Zahlen. Zähl dazu die Stunden für Rückrufe und Besichtigungen, aus denen nichts wird. Ein Inhaber erzählte uns von Fahrten bis zu zwei Stunden zu Besichtigungen, aus denen kein Auftrag wurde.</p><p>Trag deine Zahlen in die Tabelle ein. Die rechte Spalte ist ein Rechenbeispiel mit angenommenen Werten, keine Prognose.</p>",
+      "tabelle": {
+        "titel": "Deine Zahlen: Was kostet dich ein Auftrag aus gekauften Leads?",
+        "kopf": [
+          "Posten",
+          "So rechnest du",
+          "Rechenbeispiel"
+        ],
+        "zeilen": [
+          [
+            "Leads im Monat",
+            "aus deiner Rechnung",
+            "20"
+          ],
+          [
+            "Preis je Lead",
+            "aus deiner Rechnung",
+            "60 €"
+          ],
+          [
+            "Lead-Kosten im Monat",
+            "Leads mal Preis",
+            "1.200 €"
+          ],
+          [
+            "Aufträge daraus",
+            "selbst zählen",
+            "2"
+          ],
+          [
+            "Abschlussquote",
+            "Aufträge geteilt durch Leads",
+            "10 %"
+          ],
+          [
+            "Lead-Kosten je Auftrag",
+            "Preis je Lead geteilt durch Abschlussquote",
+            "600 €"
+          ]
+        ],
+        "quelle": "Rechenbeispiel mit angenommenen Werten, keine Prognose. Fahrten, Besichtigungen und Angebotszeit kommen dazu."
+      }
+    },
+    {
+      "h2": "Gekaufte Leads oder eigene Anfragen: Wo liegt der Unterschied?",
+      "html": "<p>Ein gekaufter Lead gehört dem Anbieter, eine eigene Anfrage gehört dir. Beim Kauf zahlst du je Kontakt und der Anbieter legt fest, wer ihn noch bekommt. Bei eigenen Anfragen schaltest du Anzeigen auf Facebook und Instagram in deinem Umkreis, mit Fotos aus deinem Betrieb, und die Anfrage landet bei dir.</p><p>Bei eigenen Anzeigen zahlst du das Werbebudget direkt an Meta. In unseren Kampagnen sind das meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Fotos, Anfrageseite und Betreuung. Was das bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch.</p><p>Der größte Unterschied zeigt sich nach ein paar Monaten. Gekaufte Leads hören auf, sobald du nicht mehr zahlst. Eigene Anzeigen machen deinen Namen im Umkreis bekannt, und die Leute erinnern sich daran, wenn ihr Bad oder ihr Kessel dran ist.</p>",
+      "tabelle": {
+        "titel": "Gekaufte Leads vs. eigene Anfragen",
+        "kopf": [
+          "",
+          "Gekaufte Leads",
+          "Eigene Anfragen im Umkreis"
+        ],
+        "zeilen": [
+          [
+            "Kosten",
+            "Preis je Lead, zum Beispiel 50 bis 95 € bei Wärmepumpen (Leospardo)",
+            "Werbebudget direkt an Meta, meist 750 bis 1.000 € im Monat, dazu Aufbau und Betreuung"
+          ],
+          [
+            "Exklusivität",
+            "geteilt an bis zu 3 Betriebe oder exklusiv gegen Aufpreis",
+            "nur dein Betrieb"
+          ],
+          [
+            "Qualität",
+            "hängt von den Fragen des Anbieters ab",
+            "du legst die Filterfragen fest: Eigentum, Objekt, Baujahr, Zeitrahmen"
+          ],
+          [
+            "Aufwand",
+            "gering zum Start, schneller Rückruf nötig",
+            "Fototermin im Betrieb und einige Wochen Anlauf"
+          ],
+          [
+            "Kontrolle",
+            "Region und Menge beim Anbieter einstellbar",
+            "Umkreis, Budget und Bilder bestimmst du, drosseln jederzeit"
+          ],
+          [
+            "Nach dem Stopp",
+            "es kommen keine Anfragen mehr",
+            "dein Name bleibt im Umkreis bekannt"
+          ]
+        ],
+        "quelle": "Quelle: Anbieterangaben Leospardo und Aroundhome, Stand November 2026; eigene Kampagnen, 2026."
+      }
+    },
+    {
+      "h2": "Wann sind gekaufte Leads die bessere Wahl?",
+      "html": "<p>Gekaufte Leads passen, wenn du kurzfristig Anfragen brauchst und keine Zeit für Fotos und Anlauf hast. Sie sind auch ein günstiger Weg, ein neues Gebiet oder eine neue Leistung zu testen, bevor du dort Werbung auf deinen Namen machst.</p><p>Gute Gründe für den Kauf:</p><ul><li>Ein Monteur ist nächste Woche frei und der Kalender hat eine Lücke.</li><li>Du willst prüfen, ob in einem Nachbarort Nachfrage nach Wärmepumpen besteht.</li><li>Du hast ein Team, das Anfragen am selben Tag zurückruft.</li></ul><p>Eigene Anfragen passen besser, wenn du über Monate planen willst und große Aufträge suchst, bei denen der Kunde dich vorher kennen soll. Senftleben Haustechnik in Ehingen hat so 125.000 Aufrufe, 21 Bad-Anfragen und über 10 Vor-Ort-Termine in den ersten 2 Monaten bekommen. Die Erich Sussmann GmbH in Kirchheim bei München hatte 14 Bad-Anfragen, über 7 Vor-Ort-Termine und nach gut 2 Wochen den ersten Auftrag über 10.000 €. Das sind Einzelfälle und kein Versprechen. Mehr dazu in der <a href='/wissen/fallstudie-senftleben/'>Fallstudie Senftleben</a>.</p>",
+      "bild": {
+        "src": "/assets/fotos/senftleben-benjamin-van.jpg",
+        "alt": "Benjamin Senftleben vor einem Firmenwagen von Senftleben Haustechnik",
+        "unter": "Benjamin Senftleben, Senftleben Haustechnik, Ehingen",
+        "pos": "50% 35%"
+      }
+    },
+    {
+      "h2": "Worauf solltest du vor dem Kauf von Leads achten?",
+      "html": "<p>Lass dir vor dem Vertrag fünf Dinge schriftlich geben. Diese Antworten entscheiden mehr über deine Kosten je Auftrag als der Preis auf der Webseite.</p><ol><li><strong>Weitergabe:</strong> An wie viele Betriebe geht dieselbe Anfrage höchstens?</li><li><strong>Preis:</strong> Was kostet ein Lead in deinem Gewerk und deiner Postleitzahl, mit allen Gebühren?</li><li><strong>Reklamation:</strong> Was passiert bei falscher Nummer oder einem Mieter, der gar nicht bauen darf?</li><li><strong>Laufzeit:</strong> Kannst du monatlich kündigen und pausieren, wenn die Monteure ausgebucht sind?</li><li><strong>Herkunft:</strong> Wo hat der Kunde seine Daten eingegeben, und welche Fragen hat er vorher beantwortet?</li></ol><p>Diese Woche kannst du schon anfangen: Schreib bei jeder neuen Anfrage auf, woher sie kam und was daraus wurde. Rechne für die letzten sechs Monate die Lead-Kosten je Auftrag aus. Und leg fest, wer im Betrieb Anfragen am selben Tag zurückruft. Mit diesen Zahlen vergleichst du jeden Weg, auch unseren. Wie eigene Anfragen ablaufen, steht im Artikel <a href='/wissen/badsanierung-anfragen/'>Badsanierungs-Anfragen ohne Portale</a>.</p>"
+    }
+  ],
+  "faq": [
+    [
+      "Was kostet ein Handwerker-Lead?",
+      "Das hängt von der Region ab und davon, ob der Lead nur an dich geht. Leospardo nennt für Wärmepumpen 50 bis 95 € je Lead, exklusive Leads kosten dort rund 50 bis 80 % Aufschlag (Stand November 2026). Viele Anbieter nennen Preise erst im Gespräch. Ein SHK-Inhaber erzählte uns von 50 € je Anfrage."
+    ],
+    [
+      "Sind gekaufte Leads exklusiv?",
+      "Meist nicht. Aroundhome gibt jede Anfrage an bis zu drei Fachpartner, bei Leospardo gehen geteilte Leads ebenfalls an bis zu drei Betriebe. Exklusive Leads gibt es bei einigen Anbietern gegen Aufpreis. Frag vor dem Vertrag schriftlich nach, an wie viele Betriebe dieselbe Anfrage höchstens geht."
+    ],
+    [
+      "Wie viele gekaufte Leads werden zum Auftrag?",
+      "Aroundhome schreibt, im Durchschnitt wird aus jeder zehnten Anfrage ein Auftrag. Bei dir kann es mehr oder weniger sein, je nachdem, wie schnell du zurückrufst und wie gut die Anfragen passen. Zähl es ein paar Wochen selbst mit, dann hast du deine eigene Quote."
+    ],
+    [
+      "Kann ich gekaufte Leads und eigene Anzeigen kombinieren?",
+      "Ja. Manche Betriebe kaufen Leads, um eine Lücke im Kalender zu füllen, und bauen parallel eigene Anfragen im Umkreis auf. Wichtig ist, dass du bei jeder Anfrage notierst, woher sie kam. Dann siehst du nach zwei, drei Monaten, welcher Weg dir Aufträge bringt."
+    ],
+    [
+      "Was kostet es, eigene Anfragen zu erzeugen?",
+      "Das Werbebudget für Facebook und Instagram geht direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag. Dazu kommen Fotos, Anfrageseite und Betreuung. Was das bei dir insgesamt kostet, rechnen wir im Erstgespräch mit allen Posten durch."
+    ]
+  ],
+  "quellen": [
+    {
+      "name": "Leospardo: Leads kaufen Handwerk, Preise je Gewerk (abgerufen November 2026)",
+      "url": "https://leospardo.de/fachpartner/leads-kaufen-handwerk/"
+    },
+    {
+      "name": "Leospardo: Wärmepumpe Leads kaufen, Exklusiv- und Shared-Leads (abgerufen November 2026)",
+      "url": "https://leospardo.de/fachpartner/waermepumpe-leads-kaufen/"
+    },
+    {
+      "name": "Aroundhome: Partner werden, Heizung (abgerufen November 2026)",
+      "url": "https://www.aroundhome.de/partner-werden/heizung/"
+    },
+    {
+      "name": "Powerleads: Wärmepumpen Leads (abgerufen November 2026)",
+      "url": "https://www.powerleads.de/leads/waermepumpen-leads/"
+    }
+  ],
+  "verwandt": [
+    "waermepumpen-leads-kaufen",
+    "badsanierung-anfragen",
+    "fallstudie-sussmann"
+  ],
+  "cta_titel": "Was kostet dich ein Auftrag <span class='em w'>aus deinen Anfragen?</span>",
+  "cta_satz": "In 30 Minuten schauen wir auf deinen Umkreis und rechnen mit dir durch, was eigene Anfragen gegenüber gekauften Leads bringen können.",
+  "bild": {
+    "src": "/assets/fotos/shk-08.jpg",
+    "alt": "Mitarbeiter eines SHK-Betriebs greift im Lager in ein Regal mit roten Kleinteilekästen",
+    "unter": "Lager eines SHK-Betriebs, aus einem unserer Shootings",
+    "pos": "50% 30%"
+  }
+}

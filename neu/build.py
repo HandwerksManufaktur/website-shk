@@ -701,8 +701,8 @@ def seite_start():
     body = hero + logo_band() + leiter() + vergleich() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ueber_offen() + team() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + ratgeber_weiter(RAT_START, 'Was SHK-Inhaber <span class="em k">am häufigsten fragen.</span>', regionen=True) + kontakt()
     return h + body + fuss()
 
-RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'stellenanzeige-shk-schreiben']
-RAT_AUFTRAEGE = ['badsanierung-anfragen', 'waermepumpen-anfragen', 'anfragen-durch-werbung', 'bad-anfragen-nachfassen', 'ausgelastet-werbung', 'werbebudget-facebook-instagram']
+RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'headhunter-oder-social-recruiting']
+RAT_AUFTRAEGE = ['badsanierung-anfragen', 'waermepumpen-anfragen', 'anfragen-durch-werbung', 'bad-anfragen-nachfassen', 'ausgelastet-werbung', 'handwerker-leads-kaufen']
 RAT_START = ['social-recruiting-shk', 'badsanierung-anfragen', 'kosten-mitarbeitergewinnung']
 def ratgeber_weiter(slugs, h2, farbe='k', regionen=False):
     # Interne Links von den Leistungsseiten in den Ratgeber (07.11.2026): vorher gab es nur den Menüpunkt, Google sah die Artikel als Nebensache

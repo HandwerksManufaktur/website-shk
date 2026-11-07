@@ -1,0 +1,172 @@
+{
+  "slug": "badsanierung-leads-kaufen",
+  "titel": "Badsanierung-Leads kaufen: Preise und Qualität",
+  "h1": "Badsanierung-Leads kaufen: Was kosten sie, und worauf musst du achten?",
+  "beschreibung": "Was Bad-Leads laut Anbietern kosten, an wie viele Betriebe sie gehen, woran du gute Leads erkennst und welche Fragen du vor dem Kauf klären solltest.",
+  "kategorie": "Aufträge gewinnen",
+  "reihe": 8,
+  "top": false,
+  "veroeffentlicht": "2026-11-14",
+  "teaser": "Preis je Lead, Zahl der Betriebe je Anfrage, Rückgabe: Was du vor dem Kauf von Bad-Leads fragen solltest und wann sich der Kauf rechnet.",
+  "kurzantwort": "Anbieter nennen für Badsanierung-Leads meist 10 bis 40 € je geteiltem und 30 bis 90 € je exklusivem Lead, Stand November 2026. Geteilte Leads gehen meist an bis zu drei Betriebe. Vor dem Kauf zählen vier Fragen: Wie viele Betriebe bekommen die Anfrage, was wird vorher abgefragt, ist die Telefonnummer geprüft, und wie läuft die Rückgabe?",
+  "lesezeit": 7,
+  "leistung": "auftraege",
+  "zahlen": [
+    {
+      "zahl": "10–40",
+      "einheit": "€",
+      "text": "je geteiltem Badsanierung-Lead nennt ein Lead-Anbieter als übliche Spanne. Der Preis hängt von Region und Menge ab.",
+      "quelle": "Leadnodes, Stand November 2026",
+      "url": "https://leadnodes.com/blog/badsanierungs-leads-wie-badbauer-mit-gekauften-anfragen-planbar-auftraege-gewinnen"
+    },
+    {
+      "zahl": "30–90",
+      "einheit": "€",
+      "text": "je exklusivem Badsanierung-Lead, der nur an einen Betrieb geht, laut demselben Anbieter.",
+      "quelle": "Leadnodes, Stand November 2026",
+      "url": "https://leadnodes.com/blog/badsanierungs-leads-wie-badbauer-mit-gekauften-anfragen-planbar-auftraege-gewinnen"
+    },
+    {
+      "zahl": "3",
+      "einheit": "Betriebe",
+      "text": "bekommen bei einem Sanierungs-Netzwerk jede Kundenanfrage zur Angebotsabgabe.",
+      "quelle": "vreed Partnernetzwerk, Stand November 2026",
+      "url": "https://vreed.de/partnernetzwerk/"
+    }
+  ],
+  "abschnitte": [
+    {
+      "h2": "Was kostet ein Badsanierung-Lead?",
+      "html": "<p>Ein Lead für eine Badsanierung kostet laut Anbieterseiten meist zwischen 10 und 90 €. Den größten Unterschied macht die Frage, ob die Anfrage nur an dich geht oder an mehrere Betriebe.</p><p>Leadnodes nennt für geteilte Bad-Leads 10 bis 40 € und für exklusive 30 bis 90 €, je nach Region und Abfragetiefe. Ein SHK-Inhaber erzählte uns von 50 € je gekauftem Lead. Viele Anbieter nennen gar keinen Preis und schicken dir erst nach einem Gespräch ein Angebot.</p><p>Alle Angaben stammen von den Anbietern selbst, Stand November 2026. Eine unabhängige Preisübersicht für Bad-Leads haben wir nicht gefunden. Nimm die Spannen deshalb als Richtwert und lass dir den Preis für deine Postleitzahl schriftlich geben.</p><p>Der Preis je Lead sagt allein wenig. Ein Lead für 15 €, den vier andere Betriebe am selben Vormittag anrufen, kann dich am Ende mehr kosten als einer für 80 €, der nur bei dir landet.</p>",
+      "tabelle": {
+        "titel": "Was Anbieter für Bad-Leads angeben",
+        "kopf": [
+          "Quelle",
+          "Geteilt",
+          "Exklusiv",
+          "Was dazu gesagt wird"
+        ],
+        "zeilen": [
+          [
+            "Leadnodes",
+            "10 bis 40 €",
+            "30 bis 90 €",
+            "Preis hängt von Region, Abfrage und Menge ab"
+          ],
+          [
+            "vreed Partnernetzwerk",
+            "geht an 3 Betriebe, Preis nicht auf der Seite",
+            "keine Angabe",
+            "Zahlung je Lead, ohne Abo"
+          ],
+          [
+            "Inhaber im Gespräch mit uns",
+            "50 € je Lead",
+            "keine Angabe",
+            "Einzelfall, kein Marktpreis"
+          ]
+        ],
+        "quelle": "Quelle: Anbieterseiten, abgerufen im November 2026; Angabe eines SHK-Inhabers im Gespräch, 2026."
+      }
+    },
+    {
+      "h2": "An wie viele Betriebe geht ein gekaufter Lead?",
+      "html": "<p>Ein geteilter Lead geht bei den Anbietern, die es angeben, an bis zu drei Betriebe, ein exklusiver nur an dich. Wie viele es genau sind, legt jeder Anbieter selbst fest, und nicht jeder schreibt es auf die Seite.</p><p>Das Sanierungs-Netzwerk vreed verteilt jede Kundenanfrage an drei Handwerker zur Angebotsabgabe. Aroundhome vermittelt jede Anfrage nach eigenen Angaben an maximal drei Fachpartner.</p><p>Für dich heißt das: Bei einem geteilten Lead telefoniert der Hausbesitzer innerhalb weniger Stunden mit mehreren Bäderbauern. Wer zuerst anruft, hat einen Vorteil. Wer am Abend nach der Baustelle zurückruft, ist oft schon der dritte. Und am Ende entscheidet bei gleichen Angeboten häufig der Preis.</p><p>Ein exklusiver Lead kostet mehr, dafür hast du den Kunden für dich. Frag vor dem Vertrag, wie „exklusiv“ gemeint ist: nur für dich in der Postleitzahl, oder nur für eine bestimmte Zeit, bevor die Anfrage weiterverkauft wird?</p>",
+      "balken": {
+        "titel": "So viele Betriebe bekommen dieselbe Anfrage",
+        "werte": [
+          [
+            "Exklusiver Lead",
+            1,
+            "1 Betrieb",
+            true
+          ],
+          [
+            "Sanierungs-Netzwerk (vreed)",
+            3,
+            "3 Betriebe"
+          ],
+          [
+            "Aroundhome (maximal)",
+            3,
+            "3 Betriebe"
+          ]
+        ],
+        "quelle": "Quelle: vreed Partnernetzwerk, Aroundhome Partnerseite Bad, Stand November 2026"
+      }
+    },
+    {
+      "h2": "Woran erkennst du einen guten Bad-Lead?",
+      "html": "<p>Ein guter Bad-Lead sagt dir vor dem Anruf, ob der Kunde ein Bad beauftragen kann und wann. Dafür muss der Anbieter vor der Weitergabe die richtigen Fragen gestellt und die Telefonnummer geprüft haben.</p><p>Diese Angaben sollten in jedem Lead stehen, den du kaufst:</p><ul><li><strong>Eigentum:</strong> Gehört dem Anfragenden das Haus oder die Wohnung? Ein Mieter beauftragt dir kein neues Bad.</li><li><strong>Objekt und Baujahr:</strong> Einfamilienhaus oder Wohnung, wie alt Haus und Bad sind.</li><li><strong>Umfang:</strong> Soll das ganze Bad neu, oder geht es um eine bodengleiche Dusche oder neue Fliesen?</li><li><strong>Zeitrahmen:</strong> In den nächsten Monaten, dieses Jahr oder irgendwann.</li><li><strong>Budget:</strong> Hat sich der Kunde schon einen Rahmen überlegt?</li><li><strong>Geprüfte Telefonnummer:</strong> Ist die Nummer vor der Weitergabe erreicht oder per Code bestätigt worden?</li><li><strong>Einwilligung:</strong> Kann der Anbieter zeigen, dass der Kunde einem Anruf zugestimmt hat?</li></ul><p>Leadnodes nennt fast dieselben Punkte, dazu die Postleitzahl und eine dokumentierte Einwilligung. Fehlen bei einem Anbieter mehrere davon, bekommst du oft nur Name und Nummer, und die Vorauswahl bleibt an dir hängen.</p>",
+      "zitat": {
+        "text": "Naja, also die Vorgehensweise von diesen Portalen, die sind uns schon klar.",
+        "wer": "Inhaber, SHK-Betrieb, 2026"
+      }
+    },
+    {
+      "h2": "Was passiert mit Leads, die nichts taugen?",
+      "html": "<p>Das regelt das Rückgaberecht, und das solltest du vor dem ersten Kauf schriftlich haben. Auf vielen Anbieterseiten steht dazu nichts.</p><p>Leadnodes beschreibt einen festen Ablauf: Unbrauchbare Kontakte meldest du, anerkannte Reklamationen werden mit der nächsten Rechnung gutgeschrieben. Bei vreed fanden wir auf den Seiten keine Angaben zur Rückgabe. Das heißt nicht, dass es keine Regel gibt. Du musst nur danach fragen.</p><p>Diese Fragen klärst du vor dem Vertrag:</p><ol><li>Welche Fälle kann ich zurückgeben? Zum Beispiel eine falsche Nummer, ein Mieter oder ein Kunde außerhalb meines Gebiets.</li><li>Bis wann muss ich reklamieren?</li><li>Bekomme ich Geld zurück oder einen Ersatz-Lead?</li><li>Gibt es eine Mindestabnahme oder eine Laufzeit?</li><li>Kann ich die Menge im Monat begrenzen, wenn die Monteure voll sind?</li></ol><p>Ein Anbieter, der dir diese fünf Punkte klar beantwortet, hat sich darüber Gedanken gemacht. Bleibt eine Antwort schwammig, kauf erst ein kleines Paket zum Testen.</p>"
+    },
+    {
+      "h2": "Wann lohnen sich gekaufte Bad-Leads?",
+      "html": "<p>Gekaufte Leads lohnen sich, wenn deine Kosten je gewonnenem Auftrag deutlich unter dem liegen, was dir ein Bad übrig lässt. Das rechnest du nach den ersten zwei, drei Monaten mit einer Formel nach.</p><p><strong>Kosten je Auftrag = Preis je Lead × Zahl der Leads bis zu einem Auftrag</strong></p><p>Rechenbeispiel mit ausgedachten Annahmen, keine Prognose: Du kaufst geteilte Leads für 30 € und gewinnst aus 20 Leads einen Auftrag. Dann kostet dich ein Bad 30 € × 20 = 600 € an Leads. Bei exklusiven Leads für 70 €, von denen jeder achte zum Auftrag wird, sind es 70 € × 8 = 560 €. Deine Fahrten und Angebote kommen in beiden Fällen dazu.</p><p>Sinnvoll sind gekaufte Leads vor allem in drei Lagen:</p><ul><li>Du hast im Kalender eine Lücke und brauchst schnell Termine.</li><li>Du willst ein neues Gebiet testen, bevor du dort Geld in eigene Werbung steckst.</li><li>Im Büro ist niemand, der eigene Anzeigen und Anfrageseiten betreut.</li></ul><p>Schwierig wird es, wenn du Bäder für den guten Preis bauen willst und der Kunde parallel zwei andere Angebote einholt. Dann landest du schnell im Preisvergleich.</p>"
+    },
+    {
+      "h2": "Was ist die Alternative zu gekauften Leads?",
+      "html": "<p>Die Alternative sind eigene Anfragen aus deinem Umkreis, die nur bei dir ankommen. Du schaltest dafür Anzeigen auf Facebook und Instagram mit Fotos aus deinem Betrieb und stellst die Filterfragen selbst.</p><p>Der Unterschied liegt in drei Punkten. Die Anfrage geht an keinen anderen Betrieb. Der Kunde hat dein Team schon gesehen, bevor er schreibt. Und du legst fest, was vor dem Absenden abgefragt wird. Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung.</p><p>Senftleben Haustechnik in Ehingen bekam so 21 Bad-Anfragen und über 10 Vor-Ort-Termine in 2 Monaten. Die Erich Sussmann GmbH hatte nach 14 Bad-Anfragen und über 7 Vor-Ort-Terminen den ersten Auftrag über 10.000 €, nach gut 2 Wochen. Beides sind Einzelfälle und kein Versprechen. Eigene Anfragen brauchen ein paar Wochen Anlauf, gekaufte Leads hast du ab dem ersten Tag.</p><p>Wie der Weg ohne Portal Schritt für Schritt aussieht, steht im Artikel <a href='/wissen/badsanierung-anfragen/'>Badsanierung-Anfragen ohne Portale</a>.</p>"
+    },
+    {
+      "h2": "Was kannst du diese Woche selbst tun?",
+      "html": "<p>Bevor du ein neues Lead-Paket kaufst oder eins kündigst, schau auf deine eigenen Zahlen.</p><ul><li>Zähl, wie viele Leads du in den letzten sechs Monaten gekauft hast und was sie gekostet haben.</li><li>Schreib dazu, wie viele davon zum Vor-Ort-Termin und wie viele zum Auftrag wurden.</li><li>Rechne mit der Formel oben aus, was dich ein Bad-Auftrag an Leads gekostet hat.</li><li>Frag deinen Anbieter schriftlich, an wie viele Betriebe ein Lead geht und wie die Rückgabe läuft.</li><li>Leg fest, wer gekaufte Leads anruft und bis wann, am besten noch am selben Tag.</li></ul><p>Mit diesen Zahlen vergleichst du jeden Anbieter und jeden anderen Weg, auch eigene Anzeigen.</p>"
+    }
+  ],
+  "faq": [
+    [
+      "Sind exklusive Bad-Leads ihr Geld wert?",
+      "Oft ja, wenn du Bäder nicht über den Preis verkaufen willst. Ein exklusiver Lead kostet laut Anbietern etwa das Doppelte bis Dreifache eines geteilten, dafür vergleicht der Kunde dich nicht am selben Tag mit drei anderen Betrieben. Rechne nach ein paar Monaten die Kosten je Auftrag für beide Arten nach."
+    ],
+    [
+      "Kann ich einen schlechten Lead zurückgeben?",
+      "Das hängt vom Anbieter ab. Manche schreiben einen Reklamationsablauf mit Gutschrift fest, viele nennen auf ihrer Seite gar keine Regel. Lass dir vor dem Kauf schriftlich geben, welche Fälle zählen, etwa falsche Nummer, Mieter oder außerhalb deines Gebiets, und bis wann du melden musst."
+    ],
+    [
+      "Wie schnell muss ich einen gekauften Lead anrufen?",
+      "So schnell es geht, am besten am selben Tag. Bei geteilten Leads rufen zwei bis vier andere Betriebe denselben Kunden an. Leg im Betrieb fest, wer neue Leads anruft, auch wenn du selbst auf der Baustelle stehst."
+    ],
+    [
+      "Muss ich einen Vertrag mit Laufzeit abschließen?",
+      "Nicht bei jedem Anbieter. Manche rechnen je Lead ohne Abo ab, andere arbeiten mit Paketen, Mindestabnahme oder Monatsvertrag. Frag nach Laufzeit und Kündigungsfrist, und ob du die Menge drosseln kannst, wenn deine Monteure ausgelastet sind."
+    ],
+    [
+      "Ist ein Lead dasselbe wie ein Auftrag?",
+      "Nein. Ein Lead ist ein Kontakt mit Interesse an einem neuen Bad. Bis zum Auftrag kommen Rückruf, Vor-Ort-Termin und Angebot. Wie viele Leads du für einen Auftrag brauchst, siehst du erst an deinen eigenen Zahlen nach ein paar Monaten."
+    ]
+  ],
+  "quellen": [
+    {
+      "name": "Leadnodes: Badsanierungs-Leads, wie Badbauer mit gekauften Anfragen planbar Aufträge gewinnen (03.11.2026, Anbieterangabe)",
+      "url": "https://leadnodes.com/blog/badsanierungs-leads-wie-badbauer-mit-gekauften-anfragen-planbar-auftraege-gewinnen"
+    },
+    {
+      "name": "vreed: Partnernetzwerk für Sanierungs-Leads (abgerufen November 2026, Anbieterangabe)",
+      "url": "https://vreed.de/partnernetzwerk/"
+    },
+    {
+      "name": "Aroundhome: Partner werden, Bad (abgerufen November 2026, Anbieterangabe)",
+      "url": "https://www.aroundhome.de/partner-werden/bad/"
+    }
+  ],
+  "verwandt": [
+    "badsanierung-anfragen",
+    "bad-anfragen-nachfassen",
+    "fallstudie-sussmann"
+  ],
+  "cta_titel": "Was kostet dich ein Bad-Auftrag <span class='em w'>bisher?</span>",
+  "cta_satz": "In 30 Minuten legen wir deine Lead-Kosten neben das, was eigene Anfragen in deinem Umkreis kosten würden.",
+  "bild": {
+    "src": "/assets/fotos/senftleben-lager.jpg",
+    "alt": "Das Team von Senftleben Haustechnik im eigenen Lager, vier Leute tragen einen Kollegen quer auf den Armen",
+    "unter": "Das Team von Senftleben Haustechnik in Ehingen im Lager",
+    "pos": "50% 40%"
+  }
+}

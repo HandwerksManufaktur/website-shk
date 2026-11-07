@@ -13,8 +13,8 @@ from icons import IK, ic  # Icons statt Emojis (Drive-Designregel)
 HIER = Path(__file__).resolve().parent
 REPO = HIER.parent
 LIVE = '--live' in sys.argv
-B = '' if LIVE else '/neu'            # Basis-Pfad der Seiten
-AUS = REPO if LIVE else HIER          # Ausgabeordner
+B = '' if LIVE else '/neu/_vorschau'   # Basis-Pfad der Seiten
+AUS = REPO if LIVE else HIER / '_vorschau'   # Vorschau nur lokal (gitignored): /neu war eine öffentliche Kopie der Live-Seite (Noah, 07.11.2026)
 DOMAIN = 'https://shk.handwerksmanufaktur.digital'
 NOINDEX = not LIVE
 
@@ -1286,6 +1286,7 @@ def nicht_shk_wache():
     seiten = [AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html' for pfad in SEITEN]   # nur die gebauten Seiten; alt-v2/ (Archiv) und praesentation/ (noindex-Verkaufsdeck mit Ressle-Recruiting-Stimme) sind keine Website-Seiten
     treffer = [(str(h.relative_to(REPO)), n) for h in seiten if h.exists() for n in NICHT_SHK if n in h.read_text(encoding='utf-8', errors='ignore')]
     if treffer: raise SystemExit('🔴 Nicht-SHK-Betrieb auf der SHK-Seite: ' + ', '.join(f'{f} ({n})' for f, n in treffer))
+AUS.mkdir(parents=True, exist_ok=True)
 (AUS/'version.json').write_text('{"v":"%s"}\n' % V, encoding='utf-8')
 for pfad, fn in SEITEN.items():
     ziel = AUS / pfad.strip('/') / 'index.html' if pfad != '/' else AUS / 'index.html'

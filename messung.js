@@ -105,5 +105,7 @@ let r='direkt';try{const q=new URLSearchParams(location.search);if(q.get('utm_so
 s('v',{r});
 document.addEventListener('click',e=>{const a=e.target.closest('a,button,summary');if(!a)return;const t=(a.getAttribute('aria-label')||a.textContent||'').trim().replace(/\s+/g,' ').slice(0,70);const h=a.getAttribute('href')||'';s('k',{z:t+(h.startsWith('tel:')?' → Anruf':h.startsWith('mailto:')?' → Mail':/calendly/.test(h)?' → Termin':'')})},{capture:true});
 document.addEventListener('hwm:lead',e=>s('f',{z:(e.detail&&e.detail.formular)||'formular'}));
+// Verweildauer (09.11.2026): sichtbare Sekunden je Aufruf, gemeldet beim Verstecken/Verlassen (Summe bisher, der Zähler nimmt den größten Wert)
+let sz=0,sa=document.visibilityState==='visible'?Date.now():0;const sd=()=>{if(sa){sz+=Date.now()-sa;sa=0}const k=Math.round(sz/1000);if(k>0)s('d',{z:String(k)})};document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')sd();else sa=Date.now()});addEventListener('pagehide',sd);
 const m=[25,50,75,100],done=new Set();let l=false;addEventListener('scroll',()=>{if(l)return;l=true;requestAnimationFrame(()=>{l=false;const h=document.documentElement.scrollHeight-innerHeight;if(h<=0)return;const p=Math.round(scrollY/h*100);m.forEach(x=>{if(p>=x-2&&!done.has(x)){done.add(x);s('l',{z:String(x)})}})})},{passive:true});
 })();

@@ -28,6 +28,8 @@ function laden() {
   gtag('config', GA4, { debug_mode: test, content_group: window.HM_GRUPPE || 'shk' });
   var g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4; document.head.appendChild(g);
   var h = document.createElement('script'); h.async = true; h.src = HOTJAR; document.head.appendChild(h);
+  // 11.11.2026: eigene Sitzungs-Aufnahmen fürs Cockpit (nur nach „Akzeptieren“, Eingaben geschwärzt, eigene Browser nie)
+  var a = document.createElement('script'); a.async = true; a.src = 'https://seiten-zaehler.handwerksmanufaktur.workers.dev/aufnahme.js'; document.head.appendChild(a);
 }
 function ereignis(name, daten) {
   if (!geladen) return;

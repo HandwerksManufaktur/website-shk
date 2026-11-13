@@ -2,12 +2,12 @@
   "slug": "anfragen-durch-werbung",
   "titel": "Wie viele Anfragen bringt Facebook-Werbung?",
   "h1": "Wie viele Anfragen bringt Werbung auf Facebook und Instagram?",
-  "beschreibung": "Zwei SHK-Kampagnen mit 21 und 14 Bad-Anfragen, eine Rechnung zum Selbstausfüllen und die Gründe, warum dir niemand seriös eine feste Zahl zusagt.",
+  "beschreibung": "Zwei SHK-Kampagnen mit 21 und über 30 Bad-Anfragen, eine Rechnung zum Selbstausfüllen und die Gründe, warum dir niemand seriös eine feste Zahl zusagt.",
   "kategorie": "Aufträge gewinnen",
   "reihe": 4,
   "top": false,
   "teaser": "Was zwei SHK-Betriebe an Bad-Anfragen bekommen haben und wie du dir mit einer einfachen Formel deine eigene Zahl ausrechnest.",
-  "kurzantwort": "Das hängt vor allem von Umkreis und Budget ab, eine feste Zahl sagt dir niemand seriös zu. Zwei Beispiele aus unseren Kampagnen: Senftleben Haustechnik bekam 21 Bad-Anfragen in 2 Monaten, die Erich Sussmann GmbH 14 Bad-Anfragen und nach gut 2 Wochen den ersten Auftrag über 10.000 €. Deine eigene Zahl rechnest du mit Besuchern mal Anfragequote.",
+  "kurzantwort": "Das hängt vor allem von Umkreis und Budget ab, eine feste Zahl sagt dir niemand seriös zu. Zwei Beispiele aus unseren Kampagnen: Senftleben Haustechnik bekam 21 Bad-Anfragen in 2 Monaten, die Erich Sussmann GmbH über 30 Bad-Anfragen in 2 Monaten und nach gut 2 Wochen den ersten Auftrag über 10.000 €. Deine eigene Zahl rechnest du mit Besuchern mal Anfragequote.",
   "lesezeit": 8,
   "leistung": "auftraege",
   "zahlen": [
@@ -18,9 +18,9 @@
       "quelle": "eigene Kampagne, Senftleben Haustechnik, 2026"
     },
     {
-      "zahl": "14",
+      "zahl": "30+",
       "einheit": "Anfragen",
-      "text": "Bad-Anfragen im 30-km-Umkreis seit Anfang September, der erste Auftrag über 10.000 € kam nach gut 2 Wochen.",
+      "text": "Bad-Anfragen im 30-km-Umkreis in 2 Monaten, der erste Auftrag über 10.000 € kam nach gut 2 Wochen.",
       "quelle": "eigene Kampagne, Erich Sussmann GmbH, 2026"
     },
     {
@@ -33,7 +33,7 @@
   "abschnitte": [
     {
       "h2": "Was haben zwei SHK-Kampagnen an Anfragen gebracht?",
-      "html": "<p>Der eine Anbieter am Telefon nennt dir eine hohe Zahl, der nächste eine noch höhere, und nachprüfen kannst du keine davon. Deshalb zuerst zwei Fälle mit Namen.</p><p>Beide Betriebe haben Bad-Kampagnen auf Facebook und Instagram, beide mit Fotos aus dem eigenen Betrieb und Filterfragen vor der Anfrage.</p><p>Senftleben Haustechnik in Ehingen wirbt seit Juli im Umkreis von 25 km. Die Anzeigen wurden 125.000 Mal angezeigt, in 2 Monaten kamen 21 Bad-Anfragen und über 10 Vor-Ort-Termine. Das sind gut 10 Anfragen im Monat.</p><p>Die Erich Sussmann GmbH in Kirchheim bei München startete Anfang September im Umkreis von 30 km. Bisher kamen 14 Bad-Anfragen und über 7 Vor-Ort-Termine. Nach gut 2 Wochen stand der erste Auftrag über 10.000 €.</p><p>Auffällig ist eine Zahl, die bei beiden fast gleich ist: Etwa jede zweite Anfrage wurde zum Vor-Ort-Termin. Das ist unsere eigene Rechnung aus zwei Fällen und kein Durchschnitt aller Kampagnen. Für deine Planung ist sie trotzdem ein brauchbarer Anhaltspunkt, und im nächsten Abschnitt setzt du sie in die Rechnung für deinen Umkreis ein.</p>",
+      "html": "<p>Der eine Anbieter am Telefon nennt dir eine hohe Zahl, der nächste eine noch höhere, und nachprüfen kannst du keine davon. Deshalb zuerst zwei Fälle mit Namen.</p><p>Beide Betriebe haben Bad-Kampagnen auf Facebook und Instagram, beide mit Fotos aus dem eigenen Betrieb und Filterfragen vor der Anfrage.</p><p>Senftleben Haustechnik in Ehingen wirbt seit Juli im Umkreis von 25 km. Die Anzeigen wurden 125.000 Mal angezeigt, in 2 Monaten kamen 21 Bad-Anfragen und über 10 Vor-Ort-Termine. Das sind gut 10 Anfragen im Monat.</p><p>Die Erich Sussmann GmbH in Kirchheim bei München startete Anfang September im Umkreis von 30 km. Bis zur Pause Anfang November kamen über 30 Bad-Anfragen in 2 Monaten und über 7 Vor-Ort-Termine. Nach gut 2 Wochen stand der erste Auftrag über 10.000 €.</p><p>Bei Senftleben wurde etwa jede zweite Anfrage zum Vor-Ort-Termin. Das ist unsere eigene Rechnung aus einem Fall und kein Durchschnitt aller Kampagnen. Für deine Planung ist sie trotzdem ein brauchbarer Anhaltspunkt, und im nächsten Abschnitt setzt du sie in die Rechnung für deinen Umkreis ein.</p>",
       "balken": {
         "titel": "Bad-Anfragen und Vor-Ort-Termine in zwei Kampagnen",
         "werte": [
@@ -49,9 +49,9 @@
             "über 10"
           ],
           [
-            "Sussmann: Anfragen seit Anfang September",
-            14,
-            "14"
+            "Sussmann: Bad-Anfragen in 2 Monaten",
+            30,
+            "über 30"
           ],
           [
             "Sussmann: Vor-Ort-Termine",

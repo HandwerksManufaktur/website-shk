@@ -502,7 +502,7 @@ def senftleben_recruiting_karte(d=1):
 
 def sussmann_karte(d=1):
     return f'''<article class="fall-karte rv" data-d="{d}">
-  <div class="vid"><img src="/assets/fotos/sussmann-team-wagen-duo.jpg" alt="Patrick und Mirjana Wähnl mit ihren Monteuren an den Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:50% 30%"></div>
+  <div class="vid"><img src="/assets/fotos/sussmann-team-wagen-duo.jpg" alt="Patrick und Mirjana Wähnl mit ihren Monteuren an den Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:74% 30%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
     <p class="erg">Über 30 Bad-Anfragen in 2 Monaten, erster Auftrag 10.000 € nach gut 2 Wochen.</p>
@@ -514,7 +514,7 @@ def sussmann_karte(d=1):
 def stimpfle_karte(d=2):
     # Kampagne seit 29.10.2026, 7 Anfragen bis 12.11. (Perspective-Lead-Mails und Meta gleich), Meta: 17.058 Ausspielungen
     return f'''<article class="fall-karte rv" data-d="{d}">
-  <div class="vid"><img src="/assets/fotos/stimpfle-yannick-werkstatt.jpg" alt="Yannick Stimpfle mit einem Monteur in der Werkstatt in Stadtbergen" loading="lazy" width="1600" height="1067" style="object-position:50% 25%"></div>
+  <div class="vid"><img src="/assets/fotos/stimpfle-team-werkstatt.jpg" alt="Yannick Stimpfle mit zwei Monteuren in der Werkstatt in Stadtbergen" loading="lazy" width="1600" height="1067" style="object-position:50% 25%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
     <p class="erg">7 Bad-Anfragen in den ersten 2 Wochen.</p>

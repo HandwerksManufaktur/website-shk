@@ -72,7 +72,7 @@ CSS_INLINE = fonts_css() + css_klein((HIER/'styles.css').read_text(encoding='utf
 MESSUNG_KOPF = messung_kopf('shk-v3')
 
 # ── Bausteine ─────────────────────────────────────────────────────────────
-NAV = [('/monteure/', IK['users'], 'Monteure'), ('/auftraege/', IK['bath'], 'Aufträge'), ('/ueber-uns/', IK['handshake'], 'Über uns')]
+NAV = [('/monteure/', IK['users'], 'Monteure'), ('/auftraege/', IK['bath'], 'Aufträge'), ('/webdesign/', IK['globe'], 'Websites'), ('/ueber-uns/', IK['handshake'], 'Über uns')]   # Websites im Menü seit 14.11.2026 (Noah)
 
 # Logo-Intro nur auf der Startseite: auf Unterseiten verdeckte es beim Erstbesuch den Inhalt ~2,2 s (LCP mobil 2,8–3,0 s, 27.09.2026)
 INTRO = '<div id="intro" aria-hidden="true"><img src="/assets/logo-hm-quer-weiss.svg" alt="" width="340" height="91"><span class="strich"><i></i></span></div>'
@@ -152,6 +152,7 @@ def fuss():
       <div><h4>Leistungen</h4><ul>
         <li><a href="{u('/monteure/')}">{ic('users')}Monteure gewinnen</a></li>
         <li><a href="{u('/auftraege/')}">{ic('bath')}Aufträge gewinnen</a></li>
+        <li><a href="{u('/webdesign/')}">{ic('globe')}Websites für SHK-Betriebe</a></li>
         <li><a href="{u('/potenzialanalyse/')}">{ic('target')}Potenzialanalyse</a></li>
       </ul></div>
       <div><h4>Handwerks&shy;Manufaktur</h4><ul>
@@ -368,11 +369,12 @@ UMKREIS = '''<svg class="umkreis" viewBox="0 0 320 320" aria-hidden="true">
   <circle class="haus" cx="160" cy="160" r="9"/>
 </svg>'''
 
-def system(mixed=True):
+def system(mixed=True, kurz=False):
     tk = TICKETS_REC[:2] + TICKETS_LEAD[:2] if mixed else TICKETS_REC
+    if kurz: tk = [TICKETS_REC[0], TICKETS_LEAD[0]]   # Startseite: zwei statt vier Tickets, die Sektion war 1.700 px hoch (Noah, 14.11.2026: „nicht so riesig“)
     return f'''<section class="system" id="system">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick w rv">So wird es warm</p><h2 class="d rv">Ein eigener Kanal. <span class="em w">Deine</span> Anfragen, <span class="em w">deine</span> Bewerber.</h2></div><p class="lead rv">Reichweite hat jedes Portal. Was fehlt, ist Relevanz: Anzeigen, die im Umkreis erkannt werden, weil deine Leute drauf sind. Für Monteure und Aufträge derselbe Ablauf, in unter zwei Wochen live.</p></div>
+    <div class="sec-kopf"><div><p class="kick w rv">So funktioniert es</p><h2 class="d rv">Ein eigener Kanal. <span class="em w">Deine</span> Anfragen, <span class="em w">deine</span> Bewerber.</h2></div><p class="lead rv">Anzeigen im Umkreis, mit deinen Leuten im Bild. In unter zwei Wochen live.</p></div>
     <div class="bento">
       <article class="zelle z-a hoch rv"><div class="bild"><img src="/assets/fotos/stimpfle-team-wagen.jpg" alt="Drei Monteure von Stimpfle Sanitär- und Heizungstechnik vor dem Firmenwagen — Shooting für die Kampagne" loading="lazy" width="1600" height="1067" style="object-position:50% 35%"></div><span class="nr">01</span><h3>Anzeigen mit Fotos aus deinem Betrieb</h3><p>„Wir suchen dich" mit Stockfoto wird gesehen und ignoriert. Deine Leute, dein Lager, dein Firmenwagen erkennt man im Umkreis. Für das Shooting kommen wir zu dir.</p></article>
       <article class="zelle z-b hoch mit-panels rv" data-d="1"><div class="mini-phones" aria-hidden="true"><div class="mini-phone" style="--off:0%"><img src="/assets/funnels/erwin-schmidt-jobs-full.jpg" alt="" loading="lazy"></div><div class="mini-phone" style="--off:31%"><img src="/assets/funnels/senftleben-jobs-full.jpg" alt="" loading="lazy"></div><div class="mini-phone" style="--off:62%"><img src="/assets/funnels/senftleben-leadgen-full.jpg" alt="" loading="lazy"></div></div><span class="nr">02</span><h3>Filterfragen vor der Bewerbung</h3><p>Bewerbung in 60 Sekunden, ohne Lebenslauf: Gewerk, Erfahrung, Führerschein. Bei Aufträgen Objekt, Baujahr, Eigentum, Zeitrahmen. Wer nicht passt, hört vorher auf.</p></article>
@@ -446,7 +448,7 @@ def fallstudien_teaser():
     # Fünf Fallstudien, 3 oben + 2 unten (Noah, 14.11.2026: „oben 3 hinmacht … und dann unten 2“), Bilder aus den Shootings statt Video-Standbild
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, 3 Vor-Ort-Termine in den ersten 3&nbsp;Tagen, ein Auftrag über 10.000&nbsp;€ nach gut 2&nbsp;Wochen. Die Zahlen stammen aus den Kampagnen dieser Betriebe.</p></div>
+    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
     <div class="fall-grid drei fuenf">
       {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen in 4&nbsp;Wochen, 1&nbsp;Anlagenmechaniker eingestellt.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}
@@ -558,13 +560,13 @@ def ueber_offen(kurz=True):
     return f'''<section class="ueber offen" id="ueber-uns">
   <div class="wrap"><div class="ueber-grid rv">
     <div class="bilder nur-noah">
-      <figure class="gross"><img src="/assets/fotos/noah-gruender-blau.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur, lachend vor blauem Grund" loading="lazy" width="1200" height="1500" style="object-position:50% 35%"></figure>
+      <figure class="gross"><img src="/assets/fotos/noah-laptop-hoch.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="980" height="1333" style="object-position:50% 30%"></figure>
     </div>
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
       <p>Ich bin Noah. Seit 2019 arbeiten wir nur für Handwerksbetriebe, über 130 waren es bisher. Für SHK-Betriebe drehen wir bei dir vor Ort, mit deinen Leuten vor der Kamera, und fragen vor jeder Bewerbung und jeder Anfrage ab, ob sie zu dir passt. Ist dein Umkreis zu klein, hörst du das im ersten Gespräch.</p>
-      <div class="gruender"><img class="rund-sw" src="/assets/fotos/noah-gruender-rund-sw.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="400" height="400" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
+      <div class="gruender"><img class="rund-blau" src="/assets/fotos/noah-gruender-rund-blau.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>24<span>h</span></b><small>oft bis zur ersten Bewerbung oder Anfrage</small></div><div class="stat"><b>130<span>+</span></b><small>Betriebe seit 2019</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
@@ -713,7 +715,7 @@ def seite_start():
     </div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + leiter() + vergleich() + system() + hebel() + fallstudien_teaser() + kaskade('senftleben') + stimmen() + ueber_offen() + team() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + ratgeber_weiter(RAT_START, 'Was SHK-Inhaber <span class="em k">am häufigsten fragen.</span>', regionen=True) + kontakt()
+    body = hero + logo_band() + vergleich() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen() + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + faq() + kontakt()
     return h + body + fuss()
 
 RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'headhunter-oder-social-recruiting']

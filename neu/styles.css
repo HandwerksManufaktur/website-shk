@@ -2178,3 +2178,13 @@ html.rd-offen{overflow:hidden}
 @media(max-width:900px){.web-stapel{margin-top:8px}.web-schritte{grid-template-columns:1fr}.web-text{padding:28px 24px}}
 @media(max-width:600px){.web-duo{inset:20px 16px 0}.web-stapel{margin-bottom:28px}.web-stapel .b-leiste span{display:inline;font-size:11px;padding:3px 9px}.web-stapel .browser{width:86%}.web-stapel .s2{left:7%}.web-stapel .s1{left:14%}.web-duo{gap:3%}.web-duo .phone{flex-basis:26%;width:26%;border-radius:16px}.web-duo .browser{width:70%}.browser{border-radius:16px}.b-leiste{height:30px}.b-leiste span{display:none}}
 @media(prefers-reduced-motion:reduce){.browser .scroller img{animation:none}.schritt-web::before{transform:scaleX(1);transition:none}}
+
+/* Startseite schlank (Noah, 14.11.2026) */
+.gruender img.rund-blau,.ueber.offen .gruender img.rund-blau,.gruender img.rund-blau[width][height]{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:50% 50%}
+@media(max-width:600px){.gruender img.rund-blau,.ueber.offen .gruender img.rund-blau,.gruender img.rund-blau[width][height]{width:72px;height:72px}}
+.kopf-zitat{margin:0;justify-self:end;max-width:34ch}
+.kopf-zitat blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.2vw,32px);line-height:1.18;letter-spacing:-.01em;color:var(--ink)}
+.kopf-zitat figcaption{margin-top:12px;font-size:14px;color:var(--sub);letter-spacing:.01em}
+@media(max-width:900px){.kopf-zitat{justify-self:start;max-width:none}}
+/* „Ein eigener Kanal“: niedrigere Zellen, die Sektion war 1.700 px hoch */
+@media(min-width:901px){.system{padding:clamp(56px,6vw,88px) 0}.system .sec-kopf{margin-bottom:32px}.system .bento{margin-top:0;gap:14px;grid-auto-rows:minmax(180px,auto)}.system .zelle{min-height:220px;padding:22px}.system .zelle.hoch{min-height:300px}.system .zelle h3{font-size:20px;margin-bottom:6px}.system .zelle p{font-size:14.5px}.system .zelle .tickets{margin:26px 0 16px;gap:6px}.system .ticket{padding:10px 14px}.system .mini-phones{height:200px;top:20px}.system .mini-phones .mini-phone{width:96px;height:192px}.system .zelle.mit-panels{padding-top:252px}}

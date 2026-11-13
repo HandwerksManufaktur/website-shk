@@ -80,9 +80,11 @@
     }
     if (worte.length) {
       // Fülltext: gemessen am Textelement, durch die Bildmitte, nur vorwärts, fertig sobald der Block ganz im Bild steht
-      // Skill scroll-text: das TEXTELEMENT messen, Start bei 78 % der Fensterhöhe, voll bei 32 %, beide Richtungen
+      // Das TEXTELEMENT messen: Start, wenn die Oberkante bei 92 % der Fensterhöhe steht; VOLL, sobald der Satz in der Bildmitte steht
+      // (Noah, 14.11.2026: „so, dass es voll ist, wenn es auf Mitte der Höhe ist“ — vorher erst bei 32 %)
       const r = statement.getBoundingClientRect();
-      const p = rm ? 1 : clamp((h * .78 - r.top) / (h * .46), 0, 1);
+      const ziel = h / 2 - r.height / 2;
+      const p = rm ? 1 : clamp((h * .92 - r.top) / Math.max(1, h * .92 - ziel), 0, 1);
       worte.forEach((w, i) => w.classList.toggle('an', (i + 1) / worte.length <= p + .02));
     }
   };

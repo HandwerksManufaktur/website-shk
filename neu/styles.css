@@ -1115,6 +1115,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 @media(min-width:1181px){.fall-grid.drei .erg{min-height:calc(3 * 1.25em)}}
 /* Vier Fallstudien (Senftleben Recruiting dazu, Noah 24.10.2026): 2 × 2 statt 3 + 1 */
 @media(min-width:1181px){.fall-grid.drei.vier{grid-template-columns:repeat(2,minmax(0,1fr))}.fall-grid.drei.vier .erg{min-height:calc(2 * 1.25em)}}
+/* Fünf Fallstudien (Stimpfle dazu, Noah 14.11.2026): 3 oben, 2 breitere unten */
+@media(min-width:1181px){.fall-grid.drei.fuenf{grid-template-columns:repeat(6,minmax(0,1fr))}.fall-grid.drei.fuenf>.fall-karte{grid-column:span 2}.fall-grid.drei.fuenf>.fall-karte:nth-child(n+4){grid-column:span 3}.fall-grid.drei.fuenf>.fall-karte:nth-child(n+4) .erg{min-height:calc(2 * 1.25em)}}
 /* Team kleiner: Porträt als Quadrat neben Name und Rolle */
 .person{display:grid;grid-template-columns:132px minmax(0,1fr);align-items:center}
 .person figure{aspect-ratio:1;height:100%}

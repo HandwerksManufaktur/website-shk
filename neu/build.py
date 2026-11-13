@@ -48,7 +48,7 @@ for f in sorted((REPO/'Logos SHK').glob('Logo *.png')):
 LOGOBOX = {'erwin-schmidt': 'Logo Erwin Schmidt weiss.png', 'senftleben': 'Logo Senftleben Haustechnik weiss.png', 'sussmann': 'Logo Sussmann weiss.png',
            'gallenberger': 'Logo Franz Gallenberger weiss.png', 'hannes-schmidt': 'Logo Hannes Schmidt GmbH Weiss.png', 'kirchner': 'Logo Kirchner weiss.png',
            'lanzinger': 'Logo Lanzinger GmbH weiss.png', 'suessmeier': 'Logo Suessmeier Heizungstechnik weiss.png', 'ressle': 'Logo Autohaus Ressle weiss.png',
-           'entenmann': 'Logo Entenmann Haustechnik weiss.png', 'irlbacher': 'Logo Irlbacher weiss.png'}   # Vorzeigeprojekte /webdesign/ (29.10.2026)
+           'entenmann': 'Logo Entenmann Haustechnik weiss.png', 'irlbacher': 'Logo Irlbacher weiss.png', 'stimpfle': 'Logo Yannick Stimpfle weiss.png'}   # Vorzeigeprojekte /webdesign/ (29.10.2026)
 def logos_box():
     """Jede Referenz-Kachel 336 × 120, Logo weiß, zentriert, Füllmaß 86 % × 72 % — dieselbe Regel für alle (Noah, 3× „exakt gleich groß")."""
     ziel = REPO / 'assets' / 'logos-box'; ziel.mkdir(exist_ok=True)
@@ -397,18 +397,19 @@ def hebel():
 ESS_LOGO = '/assets/logos-box/erwin-schmidt.png'
 SEN_LOGO = '/assets/logos-box/senftleben.png'
 SUS_LOGO = '/assets/logos-box/sussmann.png'
+STI_LOGO = '/assets/logos-box/stimpfle.png'
 
-ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker': IK['hardhat'], 'Erster Auftrag nach gut 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro']}
+ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker': IK['hardhat'], 'Erster Auftrag nach gut 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro'], 'Bad-Anfragen in 2 Monaten': IK['bath'], 'Bad-Anfragen in 2 Wochen': IK['bath'], 'Aufrufe im 25-km-Umkreis ': IK['eye']}
 def zahl_html(b, s, k):
     ic = ICON.get(s, '')
     zi = f'<span class="zi" aria-hidden="true">{ic}</span>' if ic else ''
     return f'<div class="zahl {k}">{zi}<b>{b}</b><small>{s}</small></div>'
 
-def fall_karte(logo, name, ort, chip, chipk, poster, video, dauer, zitat, zahlen, zeit, d=0, alt=''):
-    pos = '8%' if 'senftleben' in poster else '50%'
+def fall_karte(logo, name, ort, chip, chipk, poster, video, dauer, zitat, zahlen, zeit, d=0, alt='', pos=None):
+    pos = pos or ('8%' if 'senftleben-testimonial' in poster else '50%')
     z = ''.join(zahl_html(b, s, chipk) for b, s in zahlen)
     return f'''<article class="fall-karte rv" data-d="{d}">
-  <div class="vid"><video preload="none" poster="{poster}" playsinline style="object-position:50% {pos}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
+  <div class="vid"><video preload="none" poster="{poster}" playsinline style="object-position:{pos if ' ' in pos else '50% ' + pos}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
   <div class="txt">
     <span class="chip {chipk}"><i aria-hidden="true"></i>{chip}</span>
     <p class="erg">{zitat}</p>
@@ -442,14 +443,16 @@ def kaskade(variante='senftleben'):
   </div></section>'''
 
 def fallstudien_teaser():
+    # Fünf Fallstudien, 3 oben + 2 unten (Noah, 14.11.2026: „oben 3 hinmacht … und dann unten 2“), Bilder aus den Shootings statt Video-Standbild
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, 21&nbsp;Bad-Anfragen in 2&nbsp;Monaten, ein Auftrag über 10.000&nbsp;€ nach gut 2&nbsp;Wochen. Die Zahlen stammen aus den Kampagnen dieser Betriebe.</p></div>
-    <div class="fall-grid drei vier">
-      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen')}
+    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, über 30&nbsp;Bad-Anfragen in 2&nbsp;Monaten, 7 in den ersten 2&nbsp;Wochen. Die Zahlen stammen aus den Kampagnen dieser Betriebe.</p></div>
+    <div class="fall-grid drei fuenf">
+      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/fotos/erwin-schmidt-wagen-duo.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}
-      {sussmann_karte(2)}
-      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Badsanierung', 'w', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '21 Bad-Anfragen und 10+ Vor-Ort-Termine in 2 Monaten.', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 3)}
+      {stimpfle_karte(2)}
+      {sussmann_karte(3)}
+      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Badsanierung', 'w', '/assets/fotos/senftleben-benjamin-buero-team.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '21 Bad-Anfragen und 10+ Vor-Ort-Termine in 2 Monaten.', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 4, pos='50% 30%')}
     </div>
   </div>
 </section>'''
@@ -477,7 +480,7 @@ def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, 
 FALL_ESS = lambda: fall_gross(ESS_LOGO, 'Florian Schmidt', 'Geschäftsführer, Erwin Schmidt &amp; Sohn GmbH, Sindelfingen', 'Erwin Schmidt & Sohn', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.“', 'Erwin Schmidt &amp; Sohn in Sindelfingen, SHK-Familienbetrieb in dritter Generation, suchte einen Anlagenmechaniker für den Kundendienst. Probiert war schon einiges: Aufkleber mit QR-Code auf den Firmenwagen, die Stelle auf der eigenen Webseite. Gebracht hat das wenig. Dann liefen 4 Wochen lang Anzeigen im Umkreis, mit Fotos aus dem Betrieb und Filterfragen vor der Bewerbung.', [('25', 'Bewerbungen'), ('4', 'Wochen Kampagnen-Laufzeit'), ('1', 'Stelle besetzt: Anlagenmechaniker SHK')], '', 'Fallstudie Erwin Schmidt & Sohn: 25 Bewerbungen in 4 Wochen')
 FALL_SEN = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Also die Zusammenarbeit würde ich auf jeden Fall jedem empfehlen, weil das auch immer unkompliziert ist.“', '„Aufträge haben wir jetzt aktuell genügend“, sagt Benjamin Senftleben. Sein Meisterbetrieb in Ehingen, dritte Generation, ist ausgelastet. Trotzdem laufen seit Juli Anzeigen für Badsanierung im Umkreis von 25 km, mit ihm selbst vor der Kamera und Filterfragen vor der Anfrage. Nach dem Startpaket hat er verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Werbung macht man nicht nur, wenn es gut läuft. Das hat er schon in der Schule gelernt.', [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine in 2 Monaten')], 'w', 'Fallstudie Senftleben Haustechnik: 21 Bad-Anfragen in 2 Monaten')
 
-FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-lager-scharf.jpg', '', '', '„So sind wir super zufrieden.“', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Seit Anfang September laufen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Nach gut zwei Wochen kam der erste Auftrag. Als Nächstes folgen Wärmepumpe und Klima, vor der Heizperiode.', [('14', 'Bad-Anfragen'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach gut 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH', '40% 35%')
+FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-lager-scharf.jpg', '', '', '„So sind wir super zufrieden.“', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Von Anfang September bis Anfang November liefen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Nach gut zwei Wochen kam der erste Auftrag. Weil die Wartezeit auf fast drei Wochen gestiegen ist, pausieren die Anzeigen bis Februar. Dann folgt die Wärmepumpe.', [('30<span class="plus">+</span>', 'Bad-Anfragen in 2 Monaten'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach gut 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH', '40% 35%')
 FALL_SEN_REC = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/fotos/senftleben-team-2026.jpg', '', '', '„21 Bewerbungen in 18 Tagen, diesmal fürs Büro.“', 'Nach dem Auftrags-Funnel ging Senftleben Haustechnik denselben Weg für eine Stelle in Lohn- und Buchhaltung: Anzeigen im Umkreis, mit dem eigenen Team im Bild, Bewerbung in 60 Sekunden ohne Lebenslauf. Nach 18 Tagen lagen 21 Bewerbungen vor, die Stelle ist besetzt.', [('21', 'Bewerbungen'), ('18', 'Tage Kampagne'), ('1', 'Stelle: Lohn &amp; Buchhaltung')], 'k', 'Das Team von Senftleben Haustechnik im Lager', '50% 40%')
 
 KLASS_LOGO = '/assets/logos-box/klass.png'
@@ -499,12 +502,24 @@ def senftleben_recruiting_karte(d=1):
 
 def sussmann_karte(d=1):
     return f'''<article class="fall-karte rv" data-d="{d}">
-  <div class="vid"><img src="/assets/fotos/sussmann-wagen-nebeneinander.jpg" alt="Patrick und Mirjana Wähnl am Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="900" style="object-position:40% 25%"></div>
+  <div class="vid"><img src="/assets/fotos/sussmann-empfang-logo.jpg" alt="Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:50% 30%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
-    <p class="erg">14 Bad-Anfragen, 7+ Termine, erster Auftrag 10.000 € nach gut 2 Wochen.</p>
+    <p class="erg">Über 30 Bad-Anfragen in 2 Monaten, erster Auftrag 10.000 € nach gut 2 Wochen.</p>
     <div class="betrieb"><span class="lg"><img src="{SUS_LOGO}" alt="Sussmann GmbH"></span><span><b>Sussmann GmbH</b></span></div>
-    <div class="zahlen">{zahl_html('14', 'Bad-Anfragen', 'w')}{zahl_html('7<span class="plus">+</span>', 'Vor-Ort-Termine', 'w')}{zahl_html('10.000&nbsp;€', 'Erster Auftrag', 'w')}</div>
+    <div class="zahlen">{zahl_html('30<span class="plus">+</span>', 'Bad-Anfragen', 'w')}{zahl_html('7<span class="plus">+</span>', 'Vor-Ort-Termine', 'w')}{zahl_html('10.000&nbsp;€', 'Erster Auftrag', 'w')}</div>
+  </div>
+</article>'''
+
+def stimpfle_karte(d=2):
+    # Kampagne seit 29.10.2026, 7 Anfragen bis 12.11. (Perspective-Lead-Mails und Meta gleich), Meta: 17.058 Ausspielungen
+    return f'''<article class="fall-karte rv" data-d="{d}">
+  <div class="vid"><img src="/assets/fotos/stimpfle-yannick-wagen.jpg" alt="Yannick Stimpfle mit seinen Monteuren an den Firmenwagen in Stadtbergen" loading="lazy" width="1600" height="1067" style="object-position:50% 25%"></div>
+  <div class="txt">
+    <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
+    <p class="erg">7 Bad-Anfragen in den ersten 2 Wochen.</p>
+    <div class="betrieb"><span class="lg"><img src="{STI_LOGO}" alt="Yannick Stimpfle Sanitär- und Heizungstechnik"></span><span><b>Stimpfle Sanitär &amp; Heizung</b></span></div>
+    <div class="zahlen">{zahl_html('17.000', 'Aufrufe im Umkreis', 'w')}{zahl_html('7', 'Bad-Anfragen', 'w')}{zahl_html('2', 'Wochen Laufzeit', 'w')}</div>
   </div>
 </article>'''
 
@@ -1136,7 +1151,7 @@ def region_fall(art, absatz):
     if art == 'klass':
         return fall_gross(KLASS_LOGO, 'Heizung-Sanitär Klaß GmbH', 'Türkenfeld · Recruiting 2024', 'Heizung-Sanitär Klaß', '/assets/fotos/klass-werkbank.jpg', '', '', '35 Bewerbungen für einen Heizungsbauer.', absatz, [('35', 'Bewerbungen'), ('16', 'mit Erfahrung im Fach'), ('SHK', 'Stelle: Anlagenmechaniker')], 'k', 'Zwei Monteure von Heizung-Sanitär Klaß am Firmenwagen', '50% 30%')
     if art == 'sussmann':
-        return fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-lager-scharf.jpg', '', '', '„So sind wir super zufrieden.“', absatz, [('14', 'Bad-Anfragen'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach gut 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl im Lager der Erich Sussmann GmbH', '40% 35%')
+        return fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-lager-scharf.jpg', '', '', '„So sind wir super zufrieden.“', absatz, [('30<span class="plus">+</span>', 'Bad-Anfragen in 2 Monaten'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach gut 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl im Lager der Erich Sussmann GmbH', '40% 35%')
     if art == 'senftleben':
         return fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“', absatz, [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine in 2 Monaten')], 'w', 'Fallstudie Senftleben Haustechnik, Ehingen: 21 Bad-Anfragen in 2 Monaten')
     return fall_gross(ESS_LOGO, 'Florian Schmidt', 'Geschäftsführer, Erwin Schmidt &amp; Sohn GmbH, Sindelfingen', 'Erwin Schmidt & Sohn', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Wir haben nur nicht gedacht, dass es so viele sind.“', absatz, [('25', 'Bewerbungen'), ('4', 'Wochen Kampagnen-Laufzeit'), ('1', 'Stelle besetzt: Anlagenmechaniker SHK')], '', 'Fallstudie Erwin Schmidt & Sohn, Sindelfingen: 25 Bewerbungen in 4 Wochen')

@@ -399,7 +399,7 @@ SEN_LOGO = '/assets/logos-box/senftleben.png'
 SUS_LOGO = '/assets/logos-box/sussmann.png'
 STI_LOGO = '/assets/logos-box/stimpfle.png'
 
-ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker': IK['hardhat'], 'Erster Auftrag nach gut 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro'], 'Bad-Anfragen in 2 Monaten': IK['bath'], 'Bad-Anfragen in 2 Wochen': IK['bath'], 'Aufrufe im 25-km-Umkreis ': IK['eye']}
+ICON = {'mit Erfahrung im Fach': IK['wrench'], 'Stelle: Anlagenmechaniker': IK['hardhat'], 'Erster Auftrag nach gut 2 Wochen': IK['euro'], 'Bewerbungen': IK['inbox'], 'Stelle besetzt': IK['check'], 'Wochen Laufzeit': IK['clock'], 'Aufrufe im Umkreis': IK['eye'], 'Bad-Anfragen': IK['bath'], 'Vor-Ort-Termine': IK['pin'], 'Erster Auftrag': IK['euro'], 'Tage Kampagne': IK['clock'], 'Tage Laufzeit': IK['clock'], 'Tage bis dahin': IK['clock'], 'Stelle: Lohn &amp; Buchhaltung': IK['check'], 'Aufrufe im 25-km-Umkreis': IK['eye'], 'Bad-Anfragen über den Funnel': IK['bath'], 'Vor-Ort-Termine in 2 Monaten': IK['pin'], 'Wochen Kampagnen-Laufzeit': IK['clock'], 'Stelle besetzt: Anlagenmechaniker SHK': IK['check'], 'Auftrag: Teilsanierung Bad': IK['euro'], 'Bad-Anfragen in 2 Monaten': IK['bath'], 'Bad-Anfragen in 2 Wochen': IK['bath'], 'Aufrufe im 25-km-Umkreis ': IK['eye']}
 def zahl_html(b, s, k):
     ic = ICON.get(s, '')
     zi = f'<span class="zi" aria-hidden="true">{ic}</span>' if ic else ''
@@ -446,13 +446,13 @@ def fallstudien_teaser():
     # Fünf Fallstudien, 3 oben + 2 unten (Noah, 14.11.2026: „oben 3 hinmacht … und dann unten 2“), Bilder aus den Shootings statt Video-Standbild
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, über 30&nbsp;Bad-Anfragen in 2&nbsp;Monaten, 3 Vor-Ort-Termine in der ersten Woche. Die Zahlen stammen aus den Kampagnen dieser Betriebe.</p></div>
+    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, 3 Vor-Ort-Termine in den ersten 3&nbsp;Tagen, ein Auftrag über 10.000&nbsp;€ nach gut 2&nbsp;Wochen. Die Zahlen stammen aus den Kampagnen dieser Betriebe.</p></div>
     <div class="fall-grid drei fuenf">
-      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
+      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen in 4&nbsp;Wochen, 1&nbsp;Anlagenmechaniker eingestellt.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}
       {stimpfle_karte(2)}
       {sussmann_karte(3)}
-      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Badsanierung', 'w', '/assets/fotos/senftleben-benjamin-buero-team.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '21 Bad-Anfragen und 10+ Vor-Ort-Termine in 2 Monaten.', [('125.000', 'Aufrufe im Umkreis'), ('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 4, pos='50% 30%')}
+      {fall_karte(SEN_LOGO, 'Senftleben Haustechnik', 'Ehingen (Donau) · Badsanierung in 3. Generation', 'Badsanierung', 'w', '/assets/fotos/senftleben-benjamin-buero-team.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '21 Bad-Anfragen in 2&nbsp;Monaten, 10+ Vor-Ort-Termine.', [('21', 'Bad-Anfragen'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine'), ('125.000', 'Aufrufe im Umkreis')], 'Benjamin Senftleben, Inhaber · Zahlen aus den ersten 2 Monaten', 4, pos='50% 30%')}
     </div>
   </div>
 </section>'''
@@ -494,9 +494,9 @@ def senftleben_recruiting_karte(d=1):
   <div class="vid"><img src="/assets/fotos/senftleben-team-2026.jpg" alt="Das Team von Senftleben Haustechnik im Lager" loading="lazy" width="1600" height="1067" style="object-position:50% 40%"></div>
   <div class="txt">
     <span class="chip"><i aria-hidden="true"></i>Recruiting</span>
-    <p class="erg">21 Bewerbungen in 18 Tagen, Stelle in Lohn &amp; Buchhaltung besetzt.</p>
+    <p class="erg">21 Bewerbungen in 18&nbsp;Tagen, 1&nbsp;Stelle im Büro besetzt.</p>
     <div class="betrieb"><span class="lg"><img src="{SEN_LOGO}" alt="Senftleben Haustechnik"></span><span><b>Senftleben Haustechnik</b></span></div>
-    <div class="zahlen">{zahl_html('21', 'Bewerbungen', '')}{zahl_html('18', 'Tage Kampagne', '')}{zahl_html('1', 'Stelle besetzt', '')}</div>
+    <div class="zahlen">{zahl_html('21', 'Bewerbungen', '')}{zahl_html('1', 'Stelle besetzt', '')}{zahl_html('18', 'Tage Laufzeit', '')}</div>
   </div>
 </article>'''
 
@@ -505,7 +505,7 @@ def sussmann_karte(d=1):
   <div class="vid"><img src="/assets/fotos/sussmann-team-wagen-duo.jpg" alt="Patrick und Mirjana Wähnl mit ihren Monteuren an den Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:74% 30%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
-    <p class="erg">Über 30 Bad-Anfragen in 2 Monaten, erster Auftrag 10.000 € nach gut 2 Wochen.</p>
+    <p class="erg">Erster Auftrag über 10.000&nbsp;€ nach gut 2&nbsp;Wochen unterschrieben.</p>
     <div class="betrieb"><span class="lg"><img src="{SUS_LOGO}" alt="Sussmann GmbH"></span><span><b>Sussmann GmbH</b></span></div>
     <div class="zahlen">{zahl_html('30<span class="plus">+</span>', 'Bad-Anfragen', 'w')}{zahl_html('7<span class="plus">+</span>', 'Vor-Ort-Termine', 'w')}{zahl_html('10.000&nbsp;€', 'Erster Auftrag', 'w')}</div>
   </div>
@@ -517,9 +517,9 @@ def stimpfle_karte(d=2):
   <div class="vid"><img src="/assets/fotos/stimpfle-team-werkstatt.jpg" alt="Yannick Stimpfle mit zwei Monteuren in der Werkstatt in Stadtbergen" loading="lazy" width="1600" height="1067" style="object-position:50% 25%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
-    <p class="erg">3 Vor-Ort-Termine in der ersten Woche, 7 Bad-Anfragen in 2 Wochen.</p>
+    <p class="erg">3 Vor-Ort-Termine in den ersten 3&nbsp;Tagen.</p>
     <div class="betrieb"><span class="lg"><img src="{STI_LOGO}" alt="Yannick Stimpfle Sanitär- und Heizungstechnik"></span><span><b>Stimpfle Sanitär &amp; Heizung</b></span></div>
-    <div class="zahlen">{zahl_html('7', 'Bad-Anfragen', 'w')}{zahl_html('3', 'Vor-Ort-Termine', 'w')}{zahl_html('2', 'Wochen Laufzeit', 'w')}</div>
+    <div class="zahlen">{zahl_html('7', 'Bad-Anfragen', 'w')}{zahl_html('3', 'Vor-Ort-Termine', 'w')}{zahl_html('3', 'Tage bis dahin', 'w')}</div>
   </div>
 </article>'''
 

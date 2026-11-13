@@ -558,14 +558,14 @@ def ueber_offen(kurz=True):
     return f'''<section class="ueber offen" id="ueber-uns">
   <div class="wrap"><div class="ueber-grid rv">
     <div class="bilder nur-noah">
-      <figure class="gross"><img src="/assets/fotos/noah-laptop-hoch.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="980" height="1333" style="object-position:50% 30%"></figure>
+      <figure class="gross"><img src="/assets/fotos/noah-gruender-blau.jpg" alt="Noah Seelau, Gründer der HandwerksManufaktur, lachend vor blauem Grund" loading="lazy" width="1200" height="1500" style="object-position:50% 35%"></figure>
     </div>
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
       <p>Ich bin Noah. Seit 2019 arbeiten wir nur für Handwerksbetriebe, über 130 waren es bisher. Für SHK-Betriebe drehen wir bei dir vor Ort, mit deinen Leuten vor der Kamera, und fragen vor jeder Bewerbung und jeder Anfrage ab, ob sie zu dir passt. Ist dein Umkreis zu klein, hörst du das im ersten Gespräch.</p>
       <div class="gruender"><img class="rund-sw" src="/assets/fotos/noah-gruender-rund-sw.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="400" height="400" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
-      <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>24<span>h</span></b><small>oft bis zur ersten Bewerbung oder Anfrage</small></div><div class="stat"><b>25<span>km</span></b><small>Umkreis, in dem die Anzeigen laufen</small></div></div>
+      <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>24<span>h</span></b><small>oft bis zur ersten Bewerbung oder Anfrage</small></div><div class="stat"><b>130<span>+</span></b><small>Betriebe seit 2019</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
   </div></div>

@@ -446,7 +446,7 @@ def fallstudien_teaser():
     # Fünf Fallstudien, 3 oben + 2 unten (Noah, 14.11.2026: „oben 3 hinmacht … und dann unten 2“), Bilder aus den Shootings statt Video-Standbild
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, über 30&nbsp;Bad-Anfragen in 2&nbsp;Monaten, 7 in den ersten 2&nbsp;Wochen. Die Zahlen stammen aus den Kampagnen dieser Betriebe.</p></div>
+    <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, über 30&nbsp;Bad-Anfragen in 2&nbsp;Monaten, 3 Vor-Ort-Termine in der ersten Woche. Die Zahlen stammen aus den Kampagnen dieser Betriebe.</p></div>
     <div class="fall-grid drei fuenf">
       {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}
@@ -512,14 +512,14 @@ def sussmann_karte(d=1):
 </article>'''
 
 def stimpfle_karte(d=2):
-    # Kampagne seit 29.10.2026, 7 Anfragen bis 12.11. (Perspective-Lead-Mails und Meta gleich), Meta: 17.058 Ausspielungen
+    # Kampagne seit 29.10.2026, 7 Anfragen bis 12.11. (Perspective-Lead-Mails und Meta gleich). Review 05.11.: „bis Sonntag waren drei Anfragen … mit drei habe ich einen Termin gemacht vor Ort“
     return f'''<article class="fall-karte rv" data-d="{d}">
   <div class="vid"><img src="/assets/fotos/stimpfle-team-werkstatt.jpg" alt="Yannick Stimpfle mit zwei Monteuren in der Werkstatt in Stadtbergen" loading="lazy" width="1600" height="1067" style="object-position:50% 25%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
-    <p class="erg">7 Bad-Anfragen in den ersten 2 Wochen.</p>
+    <p class="erg">3 Vor-Ort-Termine in der ersten Woche, 7 Bad-Anfragen in 2 Wochen.</p>
     <div class="betrieb"><span class="lg"><img src="{STI_LOGO}" alt="Yannick Stimpfle Sanitär- und Heizungstechnik"></span><span><b>Stimpfle Sanitär &amp; Heizung</b></span></div>
-    <div class="zahlen">{zahl_html('17.000', 'Aufrufe im Umkreis', 'w')}{zahl_html('7', 'Bad-Anfragen', 'w')}{zahl_html('2', 'Wochen Laufzeit', 'w')}</div>
+    <div class="zahlen">{zahl_html('7', 'Bad-Anfragen', 'w')}{zahl_html('3', 'Vor-Ort-Termine', 'w')}{zahl_html('2', 'Wochen Laufzeit', 'w')}</div>
   </div>
 </article>'''
 

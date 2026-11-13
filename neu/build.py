@@ -448,7 +448,7 @@ def fallstudien_teaser():
   <div class="wrap">
     <div class="sec-kopf"><div><p class="kick rv">Fallstudien</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><p class="lead rv">Ein Anlagenmechaniker in 4&nbsp;Wochen, 21&nbsp;Bewerbungen in 18&nbsp;Tagen, über 30&nbsp;Bad-Anfragen in 2&nbsp;Monaten, 7 in den ersten 2&nbsp;Wochen. Die Zahlen stammen aus den Kampagnen dieser Betriebe.</p></div>
     <div class="fall-grid drei fuenf">
-      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/fotos/erwin-schmidt-wagen-duo.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
+      {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Recruiting', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen, 1 Anlagenmechaniker eingestellt, in 4 Wochen.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}
       {stimpfle_karte(2)}
       {sussmann_karte(3)}
@@ -502,7 +502,7 @@ def senftleben_recruiting_karte(d=1):
 
 def sussmann_karte(d=1):
     return f'''<article class="fall-karte rv" data-d="{d}">
-  <div class="vid"><img src="/assets/fotos/sussmann-empfang-logo.jpg" alt="Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:50% 30%"></div>
+  <div class="vid"><img src="/assets/fotos/sussmann-team-wagen-duo.jpg" alt="Patrick und Mirjana Wähnl mit ihren Monteuren an den Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:50% 30%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
     <p class="erg">Über 30 Bad-Anfragen in 2 Monaten, erster Auftrag 10.000 € nach gut 2 Wochen.</p>
@@ -514,7 +514,7 @@ def sussmann_karte(d=1):
 def stimpfle_karte(d=2):
     # Kampagne seit 29.10.2026, 7 Anfragen bis 12.11. (Perspective-Lead-Mails und Meta gleich), Meta: 17.058 Ausspielungen
     return f'''<article class="fall-karte rv" data-d="{d}">
-  <div class="vid"><img src="/assets/fotos/stimpfle-yannick-wagen.jpg" alt="Yannick Stimpfle mit seinen Monteuren an den Firmenwagen in Stadtbergen" loading="lazy" width="1600" height="1067" style="object-position:50% 25%"></div>
+  <div class="vid"><img src="/assets/fotos/stimpfle-yannick-werkstatt.jpg" alt="Yannick Stimpfle mit einem Monteur in der Werkstatt in Stadtbergen" loading="lazy" width="1600" height="1067" style="object-position:50% 25%"></div>
   <div class="txt">
     <span class="chip w"><i aria-hidden="true"></i>Badsanierung</span>
     <p class="erg">7 Bad-Anfragen in den ersten 2 Wochen.</p>

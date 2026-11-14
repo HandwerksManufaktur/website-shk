@@ -504,7 +504,7 @@ def fallstudien_teaser():
     # Fünf Fallstudien, 3 oben + 2 unten (Noah, 14.11.2026: „oben 3 hinmacht … und dann unten 2“), Bilder aus den Shootings statt Video-Standbild
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Die Ergebnisse</p><h2 class="d rv">So viel kam bei <span class="em w">unseren Kunden an.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
+    <div class="sec-kopf"><div><p class="kick rv">Die Ergebnisse</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
     <div class="fall-grid drei fuenf">
       {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Mitarbeiter', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen in 4&nbsp;Wochen, 1&nbsp;Anlagenmechaniker eingestellt.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}
@@ -645,7 +645,7 @@ def team():
   <div class="team-grid">{k}</div>
 </div></section>'''
 
-def statement(text_html, mitte=False, von='', cta='', kick=''):
+def statement(text_html, mitte=False, von='', cta='', kick='', kopf=''):
     # Wörter einzeln, damit sich der Satz beim Scrollen füllt; <em> bleibt als Akzent
     teile = re.split(r'(<em>.*?</em>)', text_html)
     out = []
@@ -654,7 +654,9 @@ def statement(text_html, mitte=False, von='', cta='', kick=''):
             for w in t[4:-5].split(): out.append(f'<span class="w em">{w}</span>')
         else:
             for w in t.split(): out.append(f'<span class="w">{w}</span>')
-    cite = f'<cite class="rv">{von}</cite>' if von else ''
+    # Kopf des Zitierten klein unter dem Satz, damit das Zitat nicht nach Noah aussieht (Noah, 15.11.2026)
+    bild = f'<img src="{kopf}" alt="" width="320" height="320" loading="lazy">' if kopf else ''
+    cite = f'<cite class="rv{" mit-kopf" if kopf else ""}">{bild}<span>{von}</span></cite>' if von else ''
     knopf = f'<div class="statement-cta rv">{cta}</div>' if cta else ''
     return f'<section class="statement{" mitte" if mitte else ""}" aria-label="Leitsatz"> <div class="wrap">{f'<span class="kick stm-kick rv">{kick}</span>' if kick else ""}<p>{" ".join(out)}</p>{cite}{knopf}</div></section>'
 
@@ -772,7 +774,7 @@ def seite_start():
   </div></div>
 </section>'''
     # Vorher/Nachher-Reiter raus (Noah, 14.11.2026: „zu kompliziert … zu schwer zugreifbar“): Wege-Plan nach Hista + einfache Tafel; vergleich() bleibt als Funktion liegen
-    body = hero + logo_band() + leiter() + vergleich_tafel() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
+    body = hero + logo_band() + leiter() + vergleich_tafel() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kopf='/assets/fotos/benjamin-kopf.jpg', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
     return h + body + fuss()
 
 def hebel_drei():
@@ -812,8 +814,8 @@ def seite_start_neu(pfad='/start-neu/', versteckt=True):
     body = (hero + logo_band() + hebel_drei()
             + vergleich_tafel(zeilen, kick='Vorher und nachher', lead='Sechs Situationen aus Gesprächen mit SHK-Inhabern.')
             + fallstudien_teaser()
-            + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen()
-            + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt())
+            + stimmen(kick='Die Zusammenarbeit') + ueber_offen()
+            + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kopf='/assets/fotos/benjamin-kopf.jpg', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt())
     return h + body + fuss()
 
 RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'headhunter-oder-social-recruiting']
@@ -854,7 +856,7 @@ def seite_monteure():
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Fallstudie · Recruiting</p><h2 class="d rv">„Wir haben nur nicht gedacht, dass es <span class="em k">so viele</span> sind.“</h2></div><p class="lead rv">Erwin Schmidt &amp; Sohn, Sindelfingen. Ein Anlagenmechaniker gesucht, 25 Bewerbungen bekommen, Stelle besetzt.</p></div>{FALL_ESS()}
   <div class="fall-abstand">{FALL_SEN_REC()}</div>
   <div class="fall-abstand">{FALL_KLASS()}</div></div></section>'''
-    body += kaskade('ess') + reels() + statement('„… der war schon eine Woche bei uns, der ist <em>echt gut.“</em>', mitte=True, von='Florian Schmidt · Geschäftsführer, Erwin Schmidt &amp; Sohn, über den Monteur aus der Kampagne') + ratgeber_weiter(RAT_MONTEURE, 'Monteure finden: <span class="em k">zum Nachlesen.</span>') + kontakt('Such dir den Termin aus, <span class="em k">der passt.</span>')
+    body += kaskade('ess') + reels() + statement('„… der war schon eine Woche bei uns, der ist <em>echt gut.“</em>', mitte=True, von='Florian Schmidt · Geschäftsführer, Erwin Schmidt &amp; Sohn, über den Monteur aus der Kampagne', kopf='/assets/fotos/florian-kopf.jpg') + ratgeber_weiter(RAT_MONTEURE, 'Monteure finden: <span class="em k">zum Nachlesen.</span>') + kontakt('Such dir den Termin aus, <span class="em k">der passt.</span>')
     return h + body + fuss()
 
 def seite_auftraege():
@@ -870,7 +872,7 @@ def seite_auftraege():
     body += f'''<section class="sec" id="fallstudie"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Fallstudie · Auftrags-Funnel Badsanierung</p><h2 class="d rv">„Dass so schnell so viele Anfragen kommen, <span class="em w">hätte ich nicht gedacht.</span>“</h2></div><p class="lead rv">Senftleben Haustechnik, Ehingen. Ausgelastet, und trotzdem laufen die Anzeigen weiter, damit der Name im Kopf bleibt.</p></div>{FALL_SEN()}
   <div class="fall-abstand">{FALL_SUS()}</div>
 </div></section>'''
-    body += kaskade('senftleben') + reels() + statement('„Wieso macht Coca‑Cola Werbung? … Weil der Name sich in die Köpfe <em>einbrennen soll.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen') + ratgeber_weiter(RAT_AUFTRAEGE, 'Bad und Wärmepumpe: <span class="em w">zum Nachlesen.</span>', 'w') + kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')
+    body += kaskade('senftleben') + reels() + statement('„Wieso macht Coca‑Cola Werbung? … Weil der Name sich in die Köpfe <em>einbrennen soll.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kopf='/assets/fotos/benjamin-kopf.jpg') + ratgeber_weiter(RAT_AUFTRAEGE, 'Bad und Wärmepumpe: <span class="em w">zum Nachlesen.</span>', 'w') + kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')
     return h + body + fuss()
 
 def seite_fallstudien():

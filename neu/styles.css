@@ -2213,3 +2213,14 @@ html.rd-offen{overflow:hidden}
 .uhero.kurz h1{font-size:clamp(32px,3.7vw,54px);hyphens:manual;-webkit-hyphens:manual}
 @media(max-width:900px){.uhero.kurz h1{font-size:clamp(28px,8.2vw,48px)}}
 .uhero.kurz h1 .em{white-space:nowrap}
+
+/* Gründer-Zeile ohne eigenen Kasten (14.11.2026): nie zwei gerundete Kästen direkt untereinander, die Zahlen-Karte darunter bleibt der einzige Kasten. Foto auf Markenblau --kalt. */
+.gruender,.ueber.offen .gruender{background:none;border:0;border-radius:0;padding:0;gap:14px;margin-top:4px}
+.gruender img.rund-blau,.ueber.offen .gruender img.rund-blau,.gruender img.rund-blau[width][height]{width:64px;height:64px;background:var(--kalt)}
+@media(max-width:600px){.gruender img.rund-blau,.ueber.offen .gruender img.rund-blau,.gruender img.rund-blau[width][height]{width:56px;height:56px}}
+.gruender b{font-size:17px;font-weight:600;line-height:1.3;letter-spacing:-.01em}
+.gruender small,.ueber.offen .gruender small{display:block;font-size:15px;line-height:1.4;letter-spacing:0}
+/* Kopf des Zitierten unter dem Leitsatz (15.11.2026) */
+.statement cite.mit-kopf{display:flex;align-items:center;gap:12px;text-align:left}
+.statement.mitte cite.mit-kopf{justify-content:center}
+.statement cite.mit-kopf img,.statement cite.mit-kopf img[width][height]{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none}

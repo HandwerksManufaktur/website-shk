@@ -207,7 +207,7 @@
       kopf.innerHTML = '<small></small><b></b>';
       if (leiste) leiste.after(kopf);
       vglmTitel = () => {
-        $('small', kopf).textContent = 'Lage ' + (i + 1) + ' von ' + tabs.length;
+        $('small', kopf).textContent = 'Situation ' + (i + 1) + ' von ' + tabs.length;
         $('b', kopf).textContent = $('b', tabs[i]).textContent;
         if (!rm) { kopf.classList.remove('vglm-neu'); void kopf.offsetWidth; kopf.classList.add('vglm-neu'); }
       };
@@ -220,7 +220,7 @@
     let flip = null, aktivP = null;
     const sch = document.createElement('div'); sch.className = 'vglm-schalter'; sch.dataset.mit = '0';
     sch.setAttribute('role', 'group'); sch.setAttribute('aria-label', 'Vergleich umschalten');
-    sch.innerHTML = '<i class="vglm-daumen" aria-hidden="true"></i><button type="button" aria-pressed="true"><i aria-hidden="true">✕</i>Ohne uns</button><button type="button" aria-pressed="false"><i aria-hidden="true">✓</i>Mit uns</button>';
+    sch.innerHTML = '<i class="vglm-daumen" aria-hidden="true"></i><button type="button" aria-pressed="true"><i aria-hidden="true">✕</i>Heute</button><button type="button" aria-pressed="false"><i aria-hidden="true">✓</i>Morgen</button>';
     const [bH, bM] = $$('button', sch);
     if (vp) vp.append(sch);
     const neuStarten = el => { el.style.display = 'none'; void el.offsetWidth; el.style.display = ''; };   // Szenen-Animationen der sichtbaren Seite von vorn

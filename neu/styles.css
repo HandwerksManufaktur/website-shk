@@ -2208,3 +2208,8 @@ html.rd-offen{overflow:hidden}
 .leiter.n2 .wp-reihe::before{left:25%;right:25%}
 .leiter.n2 .wp-schiene{width:50%;max-width:280px}
 @media(max-width:760px){.leiter.n2 .wp-reihe{grid-template-columns:1fr;max-width:none}}
+
+/* Entwurf Unterseiten (14.11.2026): Hero wie Startseite, zwei fette Zeilen + eine Kursiv-Zeile */
+.uhero.kurz h1{font-size:clamp(32px,3.7vw,54px);hyphens:manual;-webkit-hyphens:manual}
+@media(max-width:900px){.uhero.kurz h1{font-size:clamp(28px,8.2vw,48px)}}
+.uhero.kurz h1 .em{white-space:nowrap}

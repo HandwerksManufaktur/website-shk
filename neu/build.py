@@ -104,7 +104,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None, no
 <meta charset="UTF-8">
 <meta name="version" content="{V}">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<script>(function(){{var v='{V}';function pruefe(){{try{{fetch('{u("/version.json")}?t='+Date.now(),{{cache:'no-store'}}).then(function(r){{return r.json()}}).then(function(j){{if(j&&j.v&&j.v!==v&&sessionStorage.getItem('shk-reload')!==j.v){{sessionStorage.setItem('shk-reload',j.v);location.replace(location.pathname+'?v='+j.v+location.hash)}}}}).catch(function(){{}})}}catch(e){{}}}}addEventListener('load',pruefe);addEventListener('pageshow',function(e){{if(e.persisted)pruefe()}});document.addEventListener('visibilitychange',function(){{if(document.visibilityState==='visible')pruefe()}})}})()</script>
+<script>(function(){{var v='{V}',n=0,laeuft=0;function pruefe(){{if(laeuft)return;laeuft=1;fetch('{u("/version.json")}?t='+Date.now(),{{cache:'no-store'}}).then(function(r){{return r.json()}}).then(function(j){{if(!j||!j.v||j.v===v){{laeuft=0;return}}return fetch(location.pathname,{{cache:'reload'}}).then(function(r){{return r.text()}}).then(function(t){{laeuft=0;if(t.indexOf('content="'+j.v+'"')>-1){{location.reload()}}else if(n++<20){{setTimeout(pruefe,20000)}}}})}}).catch(function(){{laeuft=0}})}}addEventListener('load',pruefe);addEventListener('pageshow',function(e){{if(e.persisted)pruefe()}});document.addEventListener('visibilitychange',function(){{if(document.visibilityState==='visible')pruefe()}})}})()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(titel)}</title>
 <meta name="description" content="{html.escape(beschreibung)}">

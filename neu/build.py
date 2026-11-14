@@ -356,6 +356,16 @@ def vergleich():
   </div>
 </section>'''
 
+def vergleich_tafel():
+    """Einfache Fassung ohne Reiter und Bilder (Noah, 14.11.2026: Inhalt gut, Darstellung „zu komplex“): alle fünf Lagen auf einen Blick, links heute, rechts morgen."""
+    zeilen = ''.join(f'<div class="vgl-t rv" data-d="{i+1}"><span class="ic" aria-hidden="true">{icn}</span><b>{t}</b></div><div class="vgl-c heute rv" data-d="{i+1}">{IK["x"]}<p>{h}</p></div><div class="vgl-c kanal rv" data-d="{i+1}">{IK["checkmark"]}<p>{k}</p></div>' for i, (a, icn, t, h, k) in enumerate(VERGLEICH))
+    return f'''<section class="vergleich" id="vergleich">
+  <div class="wrap">
+    <div class="sec-kopf"><div><p class="kick k rv">Vorher und nachher</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Situationen aus Gesprächen mit SHK-Inhabern. Links, wie es heute nach Zufall läuft. Rechts, wie es morgen mit eigenen Anzeigen planbar wird.</p></div>
+    <div class="vgl-tafel drei"><div class="vgl-h leer" aria-hidden="true"></div><div class="vgl-h heute">Heute · Zufall</div><div class="vgl-h kanal">Morgen · planbar</div>{zeilen}</div>
+  </div>
+</section>'''
+
 TICKETS_REC = [(IK['users'], 'Anlagenmechaniker SHK', '8 Jahre Erfahrung · Führerschein B · 12 km entfernt', 'qualifiziert'+IK['checkmark']), (IK['wrench'], 'Kundendiensttechniker', 'Heizung &amp; Sanitär · ab sofort · 7 km entfernt', 'qualifiziert'+IK['checkmark']), (IK['users'], 'Geselle SHK', '3 Jahre Erfahrung · wechselwillig · 20 km entfernt', 'qualifiziert'+IK['checkmark']), (IK['bath'], 'Bäderbauer', 'Komplettbäder · Führerschein BE · 15 km entfernt', 'qualifiziert'+IK['checkmark'])]
 TICKETS_LEAD = [(IK['bath'], 'Komplettbad', 'EFH · Baujahr 1994 · Eigentümer · Start im Frühjahr', 'vorqualifiziert'+IK['checkmark']), (IK['flame'], 'Wärmepumpe', 'Ölheizung Bj. 2001 · 160 m² · Eigentümer', 'vorqualifiziert'+IK['checkmark']), (IK['bath'], 'Bad barrierefrei', 'Bodengleiche Dusche · Eigentumswohnung · zeitnah', 'vorqualifiziert'+IK['checkmark']), (IK['flame'], 'Heizungstausch', 'Gas raus, Wärmepumpe rein · EFH · Förderung geklärt', 'vorqualifiziert'+IK['checkmark'])]
 def tickets(liste):
@@ -714,7 +724,7 @@ def seite_start():
     </div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + vergleich() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
+    body = hero + logo_band() + leiter() + vergleich_tafel() + system(kurz=True)   # Vorher/Nachher-Reiter raus (Noah, 14.11.2026: „zu kompliziert … zu schwer zugreifbar“), dafür der Wege-Plan nach Hista; vergleich() bleibt als Funktion liegen + hebel() + fallstudien_teaser() + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
     return h + body + fuss()
 
 RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'headhunter-oder-social-recruiting']

@@ -162,7 +162,7 @@ def fuss():
     <div class="oben">
       <div class="marke">
         <img src="/assets/logo-hm-quer-schwarz.svg" alt="HandwerksManufaktur" width="340" height="91">
-        <p>Marketing für SHK-Betriebe: Monteure und Aufträge, planbar statt nach Zufall. Über 150 Handwerksbetriebe betreut, 8 Jahre Erfahrung.</p>
+        <p>Marketing für SHK-Betriebe: Monteure und Aufträge, planbar statt nach Zufall. Über 150 Handwerksbetriebe betreut. 8&nbsp;Jahre Erfahrung.</p>
       </div>
       <div><h4>Leistungen</h4><ul>
         <li><a href="{u('/monteure/')}">{ic('users')}Monteure gewinnen</a></li>
@@ -173,9 +173,6 @@ def fuss():
       <div><h4>Handwerks&shy;Manufaktur</h4><ul>
         <li><a href="{u('/ueber-uns/')}">{ic('handshake')}Über uns</a></li>
         <li><a href="{u('/wissen/')}">{ic('docs')}Wissen &amp; Ratgeber</a></li>
-        <li><a href="{u('/bayern/')}">{ic('pin')}SHK in Bayern</a></li>
-        <li><a href="{u('/muenchen/')}">{ic('pin')}SHK in München</a></li>
-        <li><a href="{u('/baden-wuerttemberg/')}">{ic('pin')}SHK in Baden-Württemberg</a></li>
         <li><a href="https://handwerksmanufaktur.digital/">{ic('globe')}Webdesign für Handwerk</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
@@ -184,7 +181,7 @@ def fuss():
         <li><a href="{INSTA}" target="_blank" rel="noopener">{ic('instagram')}Instagram</a></li>
       </ul></div>
     </div>
-    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur</span><nav class="recht" aria-label="Rechtliches"><a href="{u('/impressum/')}">Impressum</a><a href="{u('/datenschutz/')}">Datenschutz</a><a href="{u('/agb/')}">AGB</a></nav></div>
+    <div class="unten"><span><i class="kante" aria-hidden="true"></i>© 2026 HandwerksManufaktur</span><nav class="recht" aria-label="Rechtliches"><a href="{u('/impressum/')}">Impressum</a><a href="{u('/datenschutz/')}">Datenschutz</a></nav></div>
   </div>
 </footer>
 {rechner_dialog()}
@@ -527,7 +524,7 @@ def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, 
   </div>
 </article>'''
     return f'''<article class="fall-gross rv">
-  <div class="vid"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:{'50% 8%' if 'senftleben' in poster else ('96% 50%' if 'ess-' in poster else '50% 50%')}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
+  <div class="vid{' beide' if 'ess-' in poster else ''}"><video preload="none" poster="{poster}" playsinline aria-label="{aria}" style="object-position:{'50% 8%' if 'senftleben' in poster else ('52% 50%' if 'ess-' in poster else '50% 50%')}"><source src="{video}" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span>{ic("play","voll")} Video ansehen · {dauer}</span></button></div>
   <div class="txt">
     <div><blockquote>{zitat}</blockquote><p style="margin-top:18px">{absatz}</p></div>
     <div class="zahlen">{z}</div>

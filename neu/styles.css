@@ -2224,3 +2224,6 @@ html.rd-offen{overflow:hidden}
 .statement cite.mit-kopf{display:flex;align-items:center;gap:12px;text-align:left}
 .statement.mitte cite.mit-kopf{justify-content:center}
 .statement cite.mit-kopf img,.statement cite.mit-kopf img[width][height]{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none}
+/* 15.11.2026: Fuß-Logo größer; Erwin-Schmidt-Video im 4:3-Ausschnitt, damit Florian und Meike beide im Bild sind */
+.fuss .marke img,.fuss .marke img[width][height]{height:46px}
+@media(min-width:901px){.fall-gross .vid.beide{align-self:center;aspect-ratio:4/3;min-height:0;margin:24px 0 24px 24px;border-radius:var(--r-sm);overflow:hidden}}

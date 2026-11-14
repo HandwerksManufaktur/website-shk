@@ -2202,3 +2202,9 @@ html.rd-offen{overflow:hidden}
 @media(max-width:1100px){.hebel-grid.drei{grid-template-columns:minmax(0,1fr)}.hebel-grid.drei .hebel-karte{grid-template-rows:260px 1fr}}
 .hebel-grid.drei .hebel-karte.web .bild img{scale:1}  /* Seiten-Screenshot nie anschneiden: der Scroll-Zoom schnitt die Überschrift im Bild ab */
 @media(max-width:1100px){.hebel-grid.drei .hebel-karte.web{grid-template-rows:auto 1fr}.hebel-grid.drei .hebel-karte.web .bild{aspect-ratio:1200/700}}  /* Handy: nur der dunkle Hero des Seiten-Screenshots, kein heller Streifen darunter */
+
+/* Wege-Plan mit zwei Wegen (Entwurf /start-neu/auftraege/, 14.11.2026) */
+.leiter.n2 .wp-reihe{grid-template-columns:repeat(2,1fr);max-width:560px}
+.leiter.n2 .wp-reihe::before{left:25%;right:25%}
+.leiter.n2 .wp-schiene{width:50%;max-width:280px}
+@media(max-width:760px){.leiter.n2 .wp-reihe{grid-template-columns:1fr;max-width:none}}

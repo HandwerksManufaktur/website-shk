@@ -2191,3 +2191,13 @@ html.rd-offen{overflow:hidden}
 
 /* Leitsatz mit seiner Frage darüber */
 .statement .stm-kick{display:flex;justify-content:center;margin:0 auto 22px}
+
+/* Drei Einstiege auf der Startseite (Monteure · Aufträge · Website), 14.11.2026 */
+.hebel-grid.drei{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hebel-grid.drei .hebel-karte{grid-template-columns:minmax(0,1fr);grid-template-rows:240px 1fr;padding:0;min-height:0}
+.hebel-grid.drei .hebel-karte .bild{order:-1;min-height:0}
+.hebel-grid.drei .hebel-karte .txt{padding:26px 26px 30px;justify-content:flex-start}
+.hebel-grid.drei .hebel-karte h3{font-size:clamp(24px,2.1vw,30px)}
+.hebel .sec-kopf.mitte .lead{margin:14px auto 0;max-width:56ch}
+@media(max-width:1100px){.hebel-grid.drei{grid-template-columns:minmax(0,1fr)}.hebel-grid.drei .hebel-karte{grid-template-rows:260px 1fr}}
+.hebel-grid.drei .hebel-karte.web .bild img{scale:1}  /* Seiten-Screenshot nie anschneiden: der Scroll-Zoom schnitt die Überschrift im Bild ab */

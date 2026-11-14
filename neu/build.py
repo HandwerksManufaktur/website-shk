@@ -27,7 +27,7 @@ CAL_WEB = 'https://calendly.com/noahseelau/website-potenzial'
 ERWIN_URL = 'https://erwin-schmidt-vorschau.handwerksmanufaktur.workers.dev/'   # Vorschlag 31.10.2026, vor Freischaltung ggf. Kundendomain
 ERWIN_DA = (REPO / 'assets' / 'webdesign' / 'erwin-schmidt-start-desk.jpg').exists()   # dritte Referenz erst, wenn der Vorschlag steht   # Website-Erstgespräch (wie auf der HWM-Hauptseite)
 # Gebaut, aber versteckt: nicht in Nav, Sitemap, llms.txt, robots noindex — Noah, 29.10.2026: „unter irgendeiner Unterseite, wo man es noch nicht unbedingt sieht“
-VERSTECKT = set()   # /webdesign/ seit 14.11.2026 freigeschaltet (Noah: „Ja, freischalten“): Menü, Fuß, Sitemap, llms.txt, index
+VERSTECKT = {'/start-neu/'}   # /webdesign/ seit 14.11.2026 freigeschaltet (Noah: „Ja, freischalten“): Menü, Fuß, Sitemap, llms.txt, index
 
 def u(p):  # Seiten-Link
     return f'{B}{p}'
@@ -356,12 +356,12 @@ def vergleich():
   </div>
 </section>'''
 
-def vergleich_tafel():
+def vergleich_tafel(zeilen_daten=None, kick='Vorher und nachher', lead='Fünf Situationen aus Gesprächen mit SHK-Inhabern. Links, wie es heute nach Zufall läuft. Rechts, wie es morgen mit eigenen Anzeigen planbar wird.'):
     """Einfache Fassung ohne Reiter und Bilder (Noah, 14.11.2026: Inhalt gut, Darstellung „zu komplex“): alle fünf Lagen auf einen Blick, links heute, rechts morgen."""
-    zeilen = ''.join(f'<div class="vgl-t rv" data-d="{i+1}"><span class="ic" aria-hidden="true">{icn}</span><b>{t}</b></div><div class="vgl-c heute rv" data-d="{i+1}">{IK["x"]}<p>{h}</p></div><div class="vgl-c kanal rv" data-d="{i+1}">{IK["checkmark"]}<p>{k}</p></div>' for i, (a, icn, t, h, k) in enumerate(VERGLEICH))
+    zeilen = ''.join(f'<div class="vgl-t rv" data-d="{i+1}"><span class="ic" aria-hidden="true">{icn}</span><b>{t}</b></div><div class="vgl-c heute rv" data-d="{i+1}">{IK["x"]}<p>{h}</p></div><div class="vgl-c kanal rv" data-d="{i+1}">{IK["checkmark"]}<p>{k}</p></div>' for i, (a, icn, t, h, k) in enumerate(zeilen_daten or VERGLEICH))
     return f'''<section class="vergleich" id="vergleich">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick k rv">Vorher und nachher</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Situationen aus Gesprächen mit SHK-Inhabern. Links, wie es heute nach Zufall läuft. Rechts, wie es morgen mit eigenen Anzeigen planbar wird.</p></div>
+    <div class="sec-kopf"><div><p class="kick k rv">{kick}</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">{lead}</p></div>
     <div class="vgl-tafel drei"><div class="vgl-h leer" aria-hidden="true"></div><div class="vgl-h heute">Heute · Zufall</div><div class="vgl-h kanal">Morgen · planbar</div>{zeilen}</div>
   </div>
 </section>'''
@@ -378,12 +378,12 @@ UMKREIS = '''<svg class="umkreis" viewBox="0 0 320 320" aria-hidden="true">
   <circle class="haus" cx="160" cy="160" r="9"/>
 </svg>'''
 
-def system(mixed=True, kurz=False):
+def system(mixed=True, kurz=False, kick='So wird es planbar', lead='Eigene Anzeigen auf Facebook und Instagram, die nur für deinen Betrieb laufen: Das ist dein Kanal. So läuft er, in fünf Schritten.'):
     tk = TICKETS_REC[:2] + TICKETS_LEAD[:2] if mixed else TICKETS_REC
     if kurz: tk = [TICKETS_REC[0], TICKETS_LEAD[0]]   # Startseite: zwei statt vier Tickets, die Sektion war 1.700 px hoch (Noah, 14.11.2026: „nicht so riesig“)
     return f'''<section class="system" id="system">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick w rv">So wird es planbar</p><h2 class="d rv">Ein eigener Kanal. <span class="em w">Deine</span> Anfragen, <span class="em w">deine</span> Bewerber.</h2></div><p class="lead rv">Eigene Anzeigen auf Facebook und Instagram, die nur für deinen Betrieb laufen: Das ist dein Kanal. So läuft er, in fünf Schritten.</p></div>
+    <div class="sec-kopf"><div><p class="kick w rv">{kick}</p><h2 class="d rv">Ein eigener Kanal. <span class="em w">Deine</span> Anfragen, <span class="em w">deine</span> Bewerber.</h2></div><p class="lead rv">{lead}</p></div>
     <div class="bento">
       <article class="zelle z-a hoch rv"><div class="bild"><img src="/assets/fotos/stimpfle-team-wagen.jpg" alt="Drei Monteure von Stimpfle Sanitär- und Heizungstechnik vor dem Firmenwagen — Shooting für die Kampagne" loading="lazy" width="1600" height="1067" style="object-position:50% 35%"></div><span class="nr">01</span><h3>Anzeigen mit Fotos aus deinem Betrieb</h3><p>„Wir suchen dich" mit Stockfoto wird gesehen und ignoriert. Deine Leute, dein Lager, dein Firmenwagen erkennt man im Umkreis. Für das Shooting kommen wir zu dir.</p></article>
       <article class="zelle z-b hoch rv" data-d="1">{UMKREIS}<span class="nr">02</span><h3>Nur in deinem Einzugsgebiet</h3><p>Läuft auf deinen Namen, bespielt nur deinen Umkreis. Jede Anfrage gehört dir allein, nicht vier Wettbewerbern gleichzeitig.</p></article>
@@ -726,6 +726,48 @@ def seite_start():
 </section>'''
     # Vorher/Nachher-Reiter raus (Noah, 14.11.2026: „zu kompliziert … zu schwer zugreifbar“): Wege-Plan nach Hista + einfache Tafel; vergleich() bleibt als Funktion liegen
     body = hero + logo_band() + leiter() + vergleich_tafel() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
+    return h + body + fuss()
+
+def hebel_drei():
+    """Drei Einstiege statt zwei: Monteure · Aufträge · Website, jede Karte führt auf ihre Unterseite (Noah, 14.11.2026: Startseite muss Website, Leadgen und Recruiting abdecken, roter Faden)."""
+    k = [('', '/monteure/', 'users', 'Hebel 1 · Monteure', 'Monteure für deinen Betrieb.', ['Bewerbung in 60 Sekunden, ohne Lebenslauf', 'Vorqualifiziert: Gewerk, Erfahrung, Führerschein', 'Anzeigen mit Fotos aus deinem Betrieb'], 'Monteure finden', '/assets/fotos/klass-hebel-monteure.jpg', 'Monteur von Heizung Sanitär Klaß am Firmenwagen', 1920, 1277, '62% 40%'),
+         (' w', '/auftraege/', 'bath', 'Hebel 2 · Aufträge', 'Aufträge für Bad &amp; Wärmepumpe.', ['Jede Anfrage gehört dir allein', 'Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen', 'Regelbar, auf Wunsch nur 1–2 Aufträge im Monat'], 'Aufträge gewinnen', '/assets/fotos/klass-hebel-auftraege.jpg', 'Planung vor Ort mit dem Team von Heizung Sanitär Klaß', 1920, 1280, '45% 35%'),
+         (' web', '/webdesign/', 'globe', 'Hebel 3 · Website', 'Eine Website, die beides bringt.', ['Eine Seite je Leistung, mit deinem Ort', 'Anfrage fragt Baujahr und Eigentum ab', 'Jobs-Seite mit Bewerbung in 60 Sekunden'], 'Websites ansehen', '/assets/webdesign/irlbacher-start-desk.jpg', 'Startseite der Irlbacher GmbH', 1200, 3200, '50% 0%')]
+    karten = ''.join(f'<a class="hebel-karte{kl} rv" data-d="{i}" href="{u(href)}"><div class="txt"><span class="chip">{ic(icn)}{chip}</span><h3>{h3}</h3><ul>' + ''.join(f'<li>{ic("checkmark")}{x}</li>' for x in pts) + f'</ul><span class="btn btn-white">{btn} <span aria-hidden="true">→</span></span></div><div class="bild"><img src="{img}" alt="{alt}" loading="lazy" width="{w}" height="{h}" style="object-position:{pos}"></div></a>' for i, (kl, href, icn, chip, h3, pts, btn, img, alt, w, h, pos) in enumerate(k))
+    return f'''<section class="hebel" id="hebel">
+  <div class="wrap">
+    <div class="sec-kopf mitte"><p class="kick rv">Womit du startest</p><h2 class="d rv">Was fehlt dir gerade: <span class="em k">Monteure,</span> <span class="em w">Aufträge</span> oder die Website?</h2><p class="lead rv">Fang mit dem an, was gerade am meisten drückt. Wie es im Einzelnen läuft, steht auf der jeweiligen Seite.</p></div>
+    <div class="hebel-grid drei">{karten}</div>
+  </div>
+</section>'''
+
+def seite_start_neu():
+    """Entwurf der Startseite mit rotem Faden über Monteure, Aufträge und Website (Noah, 14.11.2026). Versteckt unter /start-neu/, noindex; die Live-Startseite bleibt, bis Noah abnimmt."""
+    h = kopf('Recruiting- und Marketing-Agentur für SHK-Betriebe', 'Monteure, Bad- und Wärmepumpen-Aufträge und die Website dazu: Anzeigen mit deinen Leuten im eigenen Umkreis, Filterfragen vor jeder Bewerbung und Anfrage.', '/start-neu/', schema_extra=faq_schema(FAQ_START), noindex=True)
+    hero = f'''<section class="hero" id="start">
+  <div class="wrap">
+    <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
+    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Mehr Monteure.</span></span><span class="zl" aria-hidden="true"><span>Mehr Bad-Aufträge.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Und eine Website, die beides bringt.</span></span><span class="sr">Mehr Monteure. Mehr Bad-Aufträge. Und eine Website, die beides bringt.</span></h1>
+    <p class="lead rv" data-d="2">Anzeigen mit deinen Leuten, nur in deinem Einzugsgebiet, und eine Website mit einer Seite je Leistung. Bewerber und Anfragen beantworten vorher ein paar Fragen. Du führst nur noch die Gespräche, den Rest machen wir.</p>
+    <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzialanalyse für meinen Umkreis</a><a class="btn btn-white btn-lg" href="#fallstudien">{ic('play','ic')}Fallstudien ansehen</a></div>
+    <div class="rv" data-d="4">{trust()}</div>
+  </div>
+  <div class="wrap weit buehne-wrap"><div class="buehne feed still"><div class="raster" aria-hidden="true"></div>
+    <div class="feed-innen still">
+      {phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Monteure · Erwin Schmidt &amp; Sohn', '#1E90E8', 'p2')}
+      {phone('/assets/webdesign/irlbacher-start-mobil.jpg', 'Website · Irlbacher GmbH', '#3DDC84', 'p3')}
+      {phone('/assets/funnels/sussmann-leadgen-hero.jpg', 'Aufträge · Sussmann GmbH', '#F5762B', 'p4')}
+    </div>
+  </div></div>
+</section>'''
+    zeilen = VERGLEICH + [('web', IK['globe'], 'Seite von früher', 'Wer dich googelt, landet auf einer Seite von früher.', 'Eine Seite je Leistung mit deinem Ort, dazu die Jobs-Seite.')]
+    body = (hero + logo_band()
+            + leiter(kick='Wie es heute läuft', lead='Ein Stellenportal oder ein Lead-Portal erreicht nur, wer gerade aktiv sucht. Der Monteur, der bleiben soll, ist in Arbeit und sucht nicht. Und wer sein Bad plant, hat noch keinen Betrieb im Kopf.')
+            + vergleich_tafel(zeilen, kick='Was sich ändert', lead='Sechs Situationen aus Gesprächen mit SHK-Inhabern. Links, wie es heute nach Zufall läuft. Rechts, wie es morgen mit eigenen Anzeigen und eigener Seite planbar wird.')
+            + system(kurz=True, kick='Wie es planbar wird', lead='Eigene Anzeigen auf Facebook und Instagram, die nur für deinen Betrieb laufen: Das ist dein Kanal. Anzeige und Website führen in dieselbe Strecke. So läuft er, in fünf Schritten.')
+            + hebel_drei() + fallstudien_teaser()
+            + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen()
+            + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt())
     return h + body + fuss()
 
 RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'headhunter-oder-social-recruiting']
@@ -1299,7 +1341,7 @@ def seite_webdesign():
                     wahl=f'<a class="w" href="{CAL_WEB}" target="_blank" rel="noopener">{ic("monitor","ic")}<span><h3>Website besprechen</h3><small>Termin aussuchen, 30 Minuten am Telefon</small></span><span class="pfeil" aria-hidden="true">→</span></a>')
     return h + body + fuss()
 
-SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial, '/webdesign/': seite_webdesign}
+SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial, '/webdesign/': seite_webdesign, '/start-neu/': seite_start_neu}
 for _p in RECHT: SEITEN[_p] = (lambda p: lambda: seite_recht(p))(_p)
 if WISSEN:
     SEITEN['/wissen/'] = seite_wissen

@@ -501,7 +501,7 @@ def fallstudien_teaser():
     # Fünf Fallstudien, 3 oben + 2 unten (Noah, 14.11.2026: „oben 3 hinmacht … und dann unten 2“), Bilder aus den Shootings statt Video-Standbild
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Die Ergebnisse</p><h2 class="d rv">So viel kam bei <span class="em w">unseren Kunden an.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
+    <div class="sec-kopf"><div><p class="kick rv">Die Ergebnisse</p><h2 class="d rv">Ergebnisse <span class="em w">unserer Kunden.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
     <div class="fall-grid drei fuenf">
       {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Mitarbeiter', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen in 4&nbsp;Wochen, 1&nbsp;Anlagenmechaniker eingestellt.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}

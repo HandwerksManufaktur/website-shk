@@ -794,8 +794,8 @@ def seite_start_neu():
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
     <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
-    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Der Partner</span></span><span class="zl" aria-hidden="true"><span>für SHK-Betriebe.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Monteure. Aufträge. Website.</span></span><span class="sr">Der Partner für SHK-Betriebe. Monteure. Aufträge. Website.</span></h1>
-    <p class="lead rv" data-d="2">Seit 8 Jahren arbeiten wir mit Handwerksbetrieben, über 150 bisher. SHK-Betrieben bringen wir Monteure und Aufträge für Bad und Wärmepumpe aus dem eigenen Umkreis und bauen die Website dazu.</p>
+    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Der Partner</span></span><span class="zl" aria-hidden="true"><span>für SHK-Betriebe.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Seit 8 Jahren im Handwerk.</span></span><span class="sr">Der Partner für SHK-Betriebe. Seit 8 Jahren im Handwerk.</span></h1>
+    <p class="lead rv" data-d="2">Wir bringen dir Monteure und Aufträge für Bad und Wärmepumpe aus deinem Umkreis und bauen die Website dazu.</p>
     <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzialanalyse für meinen Umkreis</a><a class="btn btn-white btn-lg" href="#fallstudien">{ic('play','ic')}Fallstudien ansehen</a></div>
     <div class="rv" data-d="4">{trust()}</div>
   </div>

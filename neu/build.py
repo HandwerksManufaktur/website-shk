@@ -788,9 +788,9 @@ def hebel_drei():
   </div>
 </section>'''
 
-def seite_start_neu():
+def seite_start_neu(pfad='/start-neu/', versteckt=True):
     """Entwurf der Startseite mit rotem Faden über Monteure, Aufträge und Website (Noah, 14.11.2026). Versteckt unter /start-neu/, noindex; die Live-Startseite bleibt, bis Noah abnimmt."""
-    h = kopf('Recruiting- und Marketing-Agentur für SHK-Betriebe', 'Der Partner für SHK-Betriebe: Monteure, Aufträge für Bad und Wärmepumpe und die Website. 150+ Betriebe, 8 Jahre Erfahrung, 5,0 auf Google.', '/start-neu/', schema_extra=faq_schema(FAQ_START), noindex=True)
+    h = kopf('Recruiting- und Marketing-Agentur für SHK-Betriebe', 'Der Partner für SHK-Betriebe: Monteure, Aufträge für Bad und Wärmepumpe und die Website. 150+ Betriebe, 8 Jahre Erfahrung, 5,0 auf Google.', pfad, schema_extra=faq_schema(FAQ_START), noindex=versteckt)
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
     <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
@@ -1412,7 +1412,7 @@ def fall_sektion(kick, h2, lead, inhalt):
 
 def drei_schritte(kick, h2, lead, schritte, farbe='k'):
     """Einfacher Block „Das übernehmen wir“: drei Karten mit Nummer, Titel und einem Satz (Noah, 14.11.2026: Unterseiten so simpel wie die Startseite)."""
-    k = ''.join(f'<article class="schritt-web {farbe} rv" data-d="{i+1}"><span class="nr">0{i+1}</span><div class="ic" aria-hidden="true">{IK[ik]}</div><h3>{t}</h3><p>{p}</p><span class="dauer">{ic("clock")}{dauer}</span></article>' for i, (ik, t, p, dauer) in enumerate(schritte))
+    k = ''.join(f'<article class="schritt-web {farbe} rv" data-d="{i+1}"><span class="nr">0{i+1}</span><div class="ic" aria-hidden="true">{IK[ik]}</div><h3>{t}</h3><p>{p}</p><span class="dauer">{dauer}</span></article>' for i, (ik, t, p, dauer) in enumerate(schritte))
     return ('<section class="sec" id="ablauf"><div class="wrap">'
             f'<div class="sec-kopf"><div><p class="kick {farbe} rv">{kick}</p><h2 class="d rv">{h2}</h2></div><p class="lead rv">{lead}</p></div>'
             f'<div class="web-schritte">{k}</div></div></section>')
@@ -1421,8 +1421,8 @@ FAQ_REC5 = [FAQ_REC[i] for i in (0, 1, 2, 3, 5)]
 FAQ_LEAD5 = [FAQ_LEAD[i] for i in (0, 1, 2, 3, 5)]
 FAQ_WEB5 = FAQ_WEB[:5]
 
-def seite_entwurf_monteure():
-    h = kopf('Recruiting-Agentur für SHK-Betriebe: Monteure über Social Media', 'Anlagenmechaniker und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert. Fallstudie: 25 Bewerbungen in 4 Wochen.', '/start-neu/monteure/', dunkel=True, schema_extra=faq_schema(FAQ_REC5), noindex=True)
+def seite_entwurf_monteure(pfad='/start-neu/monteure/', versteckt=True):
+    h = kopf('Recruiting-Agentur für SHK-Betriebe: Monteure über Social Media', 'Anlagenmechaniker und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert. Fallstudie: 25 Bewerbungen in 4 Wochen.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_REC5), noindex=versteckt)
     body = uhero('Monteure für SHK-Betriebe', 'Die Monteursuche<br>übernehmen wir.<br><span class="em k">Aus deinem Umkreis.</span>', 'Wir bringen dein Angebot zu den Monteuren im Umkreis, die gerade in Arbeit sind, und du führst nur noch die Gespräche.', 'Recruiting besprechen', CAL_REC, 'btn-kalt',
         phone(bildschirm_oben('/assets/funnels/irlbacher-jobs-full.jpg'), 'Recruiting · Irlbacher GmbH', '#1E90E8', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/senftleben-jobs-full.jpg'), 'Recruiting · Senftleben Haustechnik', '#1E90E8', 'mitte', '1s') + phone(bildschirm_oben('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Recruiting · Erwin Schmidt &amp; Sohn', '#1E90E8', 'rechts', '0s'))
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
@@ -1440,8 +1440,8 @@ def seite_entwurf_monteure():
                     wahl=f'<a href="{CAL_REC}" target="_blank" rel="noopener">{ic("users","ic")}<span><h3>Monteure finden</h3><small>Recruiting-Potenzial deiner Region</small></span><span class="pfeil" aria-hidden="true">→</span></a>')
     return h + body + fuss()
 
-def seite_entwurf_auftraege():
-    h = kopf('Anfragen für Bad und Wärmepumpe: Marketing für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Umkreis, nur für deinen Betrieb, vorqualifiziert nach Objekt und Eigentum. Fallstudie: 21 Anfragen in 2 Monaten.', '/start-neu/auftraege/', dunkel=True, schema_extra=faq_schema(FAQ_LEAD5), noindex=True)
+def seite_entwurf_auftraege(pfad='/start-neu/auftraege/', versteckt=True):
+    h = kopf('Anfragen für Bad und Wärmepumpe: Marketing für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Umkreis, nur für deinen Betrieb, vorqualifiziert nach Objekt und Eigentum. Fallstudie: 21 Anfragen in 2 Monaten.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_LEAD5), noindex=versteckt)
     body = uhero('Aufträge für SHK-Betriebe', 'Deine Bad&#8209;Anfragen<br>übernehmen wir.<br><span class="em w">Aus deinem Umkreis.</span>', 'Wir schalten Anzeigen auf deinen Namen in deinem Einzugsgebiet, jede Anfrage gehört dir allein und du fährst nur noch zum Termin.', 'Potenzial durchrechnen', '#rechner-auf', 'btn-warm',
         phone(bildschirm_oben('/assets/funnels/fischer-leadgen-full.jpg'), 'Aufträge · Fischer GmbH', '#F5762B', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/sussmann-leadgen-hero.jpg'), 'Aufträge · Sussmann GmbH', '#F5762B', 'mitte', '1s') + phone(bildschirm_oben('/assets/funnels/senftleben-leadgen-full.jpg'), 'Aufträge · Senftleben Haustechnik', '#F5762B', 'rechts', '0s'), warm=True)
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
@@ -1463,8 +1463,8 @@ WEB_ZEILEN = [('web', IK['globe'], 'Seite von früher', 'Wer dich googelt, lande
               ('anfrage', IK['inbox'], 'Anfrage ohne Angaben', 'Du fährst zu Kunden, bei denen es schon am Baujahr scheitert.', 'Das Formular fragt Baujahr und Eigentum ab, bevor du zurückrufst.'),
               ('bewerbung', IK['users'], 'Nur eine Mailadresse', 'Monteure bewerben sich am Handy oder gar nicht. Eine Mailadresse reicht ihnen nicht.', 'Bewerbung in 60 Sekunden am Handy, ohne Lebenslauf.')]
 
-def seite_entwurf_webdesign():
-    h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Websites, die Bad- und Wärmepumpen-Anfragen bringen, und Monteure dazu: eine Seite je Leistung mit Ort, Karriereseite mit Bewerbung in 60 Sekunden.', '/start-neu/webdesign/', dunkel=True, schema_extra=faq_schema(FAQ_WEB5), noindex=True)
+def seite_entwurf_webdesign(pfad='/start-neu/webdesign/', versteckt=True):
+    h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Websites, die Bad- und Wärmepumpen-Anfragen bringen, und Monteure dazu: eine Seite je Leistung mit Ort, Karriereseite mit Bewerbung in 60 Sekunden.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_WEB5), noindex=versteckt)
     body = web_hero('Deine Website<br>übernehmen wir.<br><span class="em w">In zwei bis drei Wochen.</span>', 'Jede Leistung bekommt ihre eigene Seite mit deinem Ort, dazu kommt eine Karriereseite, gebaut mit Fotos aus deinem Betrieb.')
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
     body += vergleich_tafel(WEB_ZEILEN, kick='Vorher und nachher', h2='Die alte Seite kostet dich <span class="em w">Anfragen.</span>', kopf_heute='Heute · alte Seite', kopf_morgen='Morgen · neue Seite', farbe='w',
@@ -1476,7 +1476,8 @@ def seite_entwurf_webdesign():
     body += kontakt('Welche Aufträge soll <span class="em w">deine Seite bringen?</span>', kick='Dein nächster Schritt', satz='Wir schauen uns vorher an, was es von dir im Netz gibt, und sagen dir, wo du bei Google heute stehst.', wahl=WEB_WAHL)
     return h + body + fuss()
 
-SEITEN = {'/': seite_start, '/monteure/': seite_monteure, '/auftraege/': seite_auftraege, '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial, '/webdesign/': seite_webdesign, '/start-neu/': entwurf(seite_start_neu),
+# Seit 14.11.2026 live: die einfache Fassung (Firma → Leistungen → Ergebnisse; Unterseiten je 7 Sektionen). Die alten Funktionen seite_start/seite_monteure/seite_auftraege/seite_webdesign bleiben als Archiv im Code.
+SEITEN = {'/': lambda: seite_start_neu('/', False), '/monteure/': lambda: seite_entwurf_monteure('/monteure/', False), '/auftraege/': lambda: seite_entwurf_auftraege('/auftraege/', False), '/ueber-uns/': seite_ueber, '/potenzialanalyse/': seite_potenzial, '/webdesign/': lambda: seite_entwurf_webdesign('/webdesign/', False), '/start-neu/': entwurf(seite_start_neu),
           '/start-neu/monteure/': entwurf(seite_entwurf_monteure), '/start-neu/auftraege/': entwurf(seite_entwurf_auftraege), '/start-neu/webdesign/': entwurf(seite_entwurf_webdesign)}
 for _p in RECHT: SEITEN[_p] = (lambda p: lambda: seite_recht(p))(_p)
 if WISSEN:

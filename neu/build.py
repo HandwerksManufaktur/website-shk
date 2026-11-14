@@ -783,7 +783,7 @@ def hebel_drei():
     karten = ''.join(f'<a class="hebel-karte{kl} rv" data-d="{i}" href="{u(href)}"><div class="txt"><span class="chip">{ic(icn)}{chip}</span><h3>{h3}</h3><ul>' + ''.join(f'<li>{ic("checkmark")}{x}</li>' for x in pts) + f'</ul><span class="btn btn-white">{btn} <span aria-hidden="true">→</span></span></div><div class="bild"><img src="{img}" alt="{alt}" loading="lazy" width="{w}" height="{h}" style="object-position:{pos}"></div></a>' for i, (kl, href, icn, chip, h3, pts, btn, img, alt, w, h, pos) in enumerate(k))
     return f'''<section class="hebel" id="hebel">
   <div class="wrap">
-    <div class="sec-kopf mitte"><p class="kick rv">Unsere Leistungen</p><h2 class="d rv">Drei Dinge machen wir <span class="em k">für SHK-Betriebe.</span></h2><p class="lead rv">Jede Leistung gibt es einzeln. Wie sie im Einzelnen läuft, steht auf ihrer Seite.</p></div>
+    <div class="sec-kopf mitte"><p class="kick rv">Unsere Leistungen</p><h2 class="d rv">Drei Baustellen übernehmen wir <span class="em k">für SHK-Betriebe.</span></h2><p class="lead rv">Jede Leistung gibt es einzeln. Wie sie im Einzelnen läuft, steht auf ihrer Seite.</p></div>
     <div class="hebel-grid drei">{karten}</div>
   </div>
 </section>'''

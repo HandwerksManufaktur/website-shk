@@ -182,7 +182,7 @@ def fuss():
 GOOGLE_G = '<svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.8 6.1C12.3 13.5 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.6h12.7c-.6 3-2.2 5.5-4.7 7.2l7.5 5.8c4.4-4.1 7-10.1 7-17.1z"/><path fill="#FBBC05" d="M10.4 28.6A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.8-4.6l-7.8-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.8-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.7-4-13.6-9.9l-7.8 6.1C6.5 42.6 14.6 48 24 48z"/></svg>'
 
 def trust(hell=True):
-    return f'<p class="trust"><span><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span> <b>5,0</b> auf Google</span><span>·</span><span><b>130+</b> Betriebe</span><span>·</span><span><b>Spezialisiert</b> auf SHK</span></p>'
+    return f'<p class="trust"><span><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span> <b>5,0</b> auf Google</span><span>·</span><span><b>150+</b> Betriebe</span><span>·</span><span><b>Spezialisiert</b> auf SHK</span></p>'
 
 def bildschirm_oben(img, verh=2.3):
     """Nur der obere Bildschirm eines langen Funnel-Screenshots. Im Unterseiten-Hero steht das Handy still
@@ -227,7 +227,7 @@ def logo_band():
     halb = (len(wand) + 1) // 2
     return f'''<section class="band hell" aria-label="Betriebe, mit denen wir arbeiten">
   <div class="wrap"><div class="band-innen rv">
-    <p class="band-t">Über <b>130 Betriebe</b> setzen auf uns.</p>
+    <p class="band-t">Über <b>150 Betriebe</b> setzen auf uns.</p>
     {reihe(wand[:halb])}{reihe(wand[halb:], ' rueck')}
   </div></div>
 </section>'''
@@ -251,10 +251,10 @@ def leiter(wege=WEGE_ALLE, kick='Was du wahrscheinlich schon probiert hast', h2=
 
 VERGLEICH = [
     ('team', IK['users'], 'Monteur fehlt', 'Bad abgesagt, weil der Monteur fehlt.', 'Bewerbungen kommen rein, bis die Stelle besetzt ist.'),
-    ('zeit', IK['clock'], 'Suche zu spät', 'Gesucht wird erst, wenn einer kündigt.', 'Die Anzeigen laufen durch. Kündigt einer, liegen schon Bewerbungen da.'),
-    ('portal', IK['cards'], 'Anfragen geteilt', 'Dieselbe Anfrage ging an vier Betriebe.', 'Jede Anfrage gehört dir allein.'),
-    ('last', IK['calendar'], 'Auslastung schwankt', 'Drei Wochen voll, danach Zufall.', 'Aufträge im Tempo, das dein Team stemmt.'),
-    ('umkreis', IK['eye'], 'Im Umkreis unbekannt', 'Guter Betrieb, nur kennt ihn keiner.', 'Dein Team auf jedem Handy im Umkreis.'),
+    ('zeit', IK['clock'], 'Einer kündigt', 'Gesucht wird erst, wenn einer kündigt.', 'Die Anzeigen laufen durch. Kündigt einer, liegen schon Bewerbungen da.'),
+    ('portal', IK['cards'], 'Gekaufte Anfragen', 'Dieselbe Anfrage ging an vier Betriebe.', 'Jede Anfrage gehört dir allein.'),
+    ('last', IK['calendar'], 'Mal voll, mal leer', 'Drei Wochen voll, danach Zufall.', 'Aufträge im Tempo, das dein Team stemmt.'),
+    ('umkreis', IK['eye'], 'Keiner kennt dich', 'Guter Betrieb, nur kennt ihn keiner.', 'Dein Team auf jedem Handy im Umkreis.'),
 ]
 
 def vgl_bild(art, kanal):
@@ -351,7 +351,7 @@ def vergleich():
     </div>''' for i, (a, icn, t, h, k) in enumerate(VERGLEICH))
     return f'''<section class="vergleich" id="vergleich">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick k rv">Vorher und nachher</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Situationen aus Gesprächen mit SHK-Inhabern. Zu jeder siehst du, wie es heute läuft und wie es mit eigenen Anzeigen läuft.</p></div>
+    <div class="sec-kopf"><div><p class="kick k rv">Kommt dir das bekannt vor?</p><h2 class="d rv">Monteure fehlen. Aufträge kommen <span class="em w">nach Zufall.</span></h2></div><p class="lead rv">Fünf Situationen aus Gesprächen mit SHK-Inhabern. Zu jeder siehst du, wie es heute läuft und wie es mit eigenen Anzeigen planbar wird.</p></div>
     <div class="vgl-buehne rv"><div class="vgl-tabs" role="tablist" aria-label="Lagen">{tabs}</div><div class="vgl-panels">{panels}</div></div>
   </div>
 </section>'''
@@ -447,7 +447,7 @@ def fallstudien_teaser():
     # Fünf Fallstudien, 3 oben + 2 unten (Noah, 14.11.2026: „oben 3 hinmacht … und dann unten 2“), Bilder aus den Shootings statt Video-Standbild
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Die Ergebnisse</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
+    <div class="sec-kopf"><div><p class="kick rv">Die Ergebnisse</p><h2 class="d rv">So viel kam bei <span class="em w">unseren Kunden an.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
     <div class="fall-grid drei fuenf">
       {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Mitarbeiter', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen in 4&nbsp;Wochen, 1&nbsp;Anlagenmechaniker eingestellt.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}
@@ -564,9 +564,9 @@ def ueber_offen(kurz=True):
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
-      <p>Ich bin Noah. Seit 2019 arbeiten wir nur für Handwerksbetriebe, über 130 waren es bisher. Für SHK-Betriebe drehen wir bei dir vor Ort, mit deinen Leuten vor der Kamera, und fragen vor jeder Bewerbung und jeder Anfrage ab, ob sie zu dir passt. Ist dein Umkreis zu klein, hörst du das im ersten Gespräch.</p>
+      <p>Ich bin Noah. Seit 2019 arbeiten wir nur für Handwerksbetriebe, über 150 waren es bisher. Für SHK-Betriebe drehen wir bei dir vor Ort, mit deinen Leuten vor der Kamera, und fragen vor jeder Bewerbung und jeder Anfrage ab, ob sie zu dir passt. Ist dein Umkreis zu klein, hörst du das im ersten Gespräch.</p>
       <div class="gruender"><img class="rund-blau" src="/assets/fotos/noah-gruender-rund-blau.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
-      <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>1</b><small>Ansprech&shy;partner von Anfang bis Ende</small></div><div class="stat"><b>130<span>+</span></b><small>Betriebe seit 2019</small></div></div>
+      <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>150<span>+</span></b><small>Handwerks&shy;betriebe betreut</small></div><div class="stat"><b>8</b><small>Jahre Erfahrung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
   </div></div>
@@ -697,7 +697,7 @@ def galerie():
 # ── Seiten ────────────────────────────────────────────────────────────────
 def seite_start():
     h = kopf('Recruiting- und Marketing-Agentur für SHK-Betriebe',   # Inhaber suchen „Agentur“ (Suchbegriff-Recherche 07.11.2026)
-         'Monteure und Bad-Anfragen, die nur du bekommst: Anzeigen mit deinen Leuten im eigenen Umkreis, Filterfragen vor jeder Bewerbung. 130+ Betriebe, 5,0 auf Google.', '/', schema_extra=faq_schema(FAQ_START))
+         'Monteure und Bad-Anfragen, die nur du bekommst: Anzeigen mit deinen Leuten im eigenen Umkreis, Filterfragen vor jeder Bewerbung. 150+ Betriebe, 5,0 auf Google.', '/', schema_extra=faq_schema(FAQ_START))
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
     <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
@@ -714,7 +714,7 @@ def seite_start():
     </div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + vergleich() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(h2='Das schreiben Betriebe <span class="em k">bei Google über uns.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
+    body = hero + logo_band() + vergleich() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
     return h + body + fuss()
 
 RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'headhunter-oder-social-recruiting']
@@ -794,7 +794,7 @@ def ueber_werdegang():
   <div class="werdegang-text">
     <p class="kick rv">Der Gründer</p>
     <h2 class="d rv">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
-    <p class="lead rv">Ich bin Noah. Seit 2019 dreht sich bei uns alles um eine Branche: das Handwerk. Über 130 Betriebe später wissen wir ziemlich genau, was funktioniert und was du dir sparen kannst.</p>
+    <p class="lead rv">Ich bin Noah. Seit 2019 dreht sich bei uns alles um eine Branche: das Handwerk. Über 150 Betriebe später wissen wir ziemlich genau, was funktioniert und was du dir sparen kannst.</p>
     <p class="rv werdegang-satz">Wir kennen dein Gewerk, bevor du es erklären musst. Wir wissen, was einen Monteur zum Wechseln bringt und wann ein Eigentümer bereit für sein neues Bad ist, und bauen deine Kampagne genau darauf.</p>
     <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
   </div>
@@ -814,7 +814,7 @@ def v_kurve():
             + '<text x="20" y="145">Start</text><text x="280" y="145" text-anchor="end">Woche 6</text></svg>')
 
 def seite_ueber():
-    h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit 2019 nur Handwerk, über 130 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
+    h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit 2019 nur Handwerk, über 150 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
     body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Marketing für Handwerks&shy;betriebe, <span class="em w">seit 2019.</span></h1><p class="lead rv" data-d="2">Für SHK-Betriebe bauen wir die Anzeigen für Monteure, Bäder und Wärmepumpen. Gedreht wird bei dir im Betrieb, mit deinen Leuten vor der Kamera.</p></div></section>
 <div style="height:64px"></div>'''
     body += ueber_werdegang() + team()

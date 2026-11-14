@@ -147,7 +147,7 @@ def fuss():
     <div class="oben">
       <div class="marke">
         <img src="/assets/logo-hm-quer-schwarz.svg" alt="HandwerksManufaktur" width="340" height="91">
-        <p>Marketing für SHK-Betriebe: Monteure und Aufträge, planbar statt nach Zufall. Ein Team, ein Ansprechpartner, seit über sechs Jahren nur Handwerk.</p>
+        <p>Marketing für SHK-Betriebe: Monteure und Aufträge, planbar statt nach Zufall. Über 150 Handwerksbetriebe betreut, 8 Jahre Erfahrung.</p>
       </div>
       <div><h4>Leistungen</h4><ul>
         <li><a href="{u('/monteure/')}">{ic('users')}Monteure gewinnen</a></li>

@@ -2201,3 +2201,4 @@ html.rd-offen{overflow:hidden}
 .hebel .sec-kopf.mitte .lead{margin:14px auto 0;max-width:56ch}
 @media(max-width:1100px){.hebel-grid.drei{grid-template-columns:minmax(0,1fr)}.hebel-grid.drei .hebel-karte{grid-template-rows:260px 1fr}}
 .hebel-grid.drei .hebel-karte.web .bild img{scale:1}  /* Seiten-Screenshot nie anschneiden: der Scroll-Zoom schnitt die Überschrift im Bild ab */
+@media(max-width:1100px){.hebel-grid.drei .hebel-karte.web{grid-template-rows:auto 1fr}.hebel-grid.drei .hebel-karte.web .bild{aspect-ratio:1200/770}}  /* Handy: nur der dunkle Hero des Seiten-Screenshots, kein heller Streifen darunter */

@@ -504,7 +504,7 @@ def fallstudien_teaser():
     # Fünf Fallstudien, 3 oben + 2 unten (Noah, 14.11.2026: „oben 3 hinmacht … und dann unten 2“), Bilder aus den Shootings statt Video-Standbild
     return f'''<section class="fall" id="fallstudien">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick rv">Die Ergebnisse</p><h2 class="d rv">Wir lassen unsere <span class="em w">Kunden sprechen.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
+    <div class="sec-kopf"><div><p class="kick rv">Die Ergebnisse</p><h2 class="d rv">So viel kam bei <span class="em w">unseren Kunden an.</span></h2></div><figure class="kopf-zitat rv"><blockquote>„Dass so schnell so viele Anfragen kommen, hätte ich nicht gedacht.“</blockquote><figcaption>Benjamin Senftleben · Senftleben Haustechnik</figcaption></figure></div>
     <div class="fall-grid drei fuenf">
       {fall_karte(ESS_LOGO, 'Erwin Schmidt &amp; Sohn', 'Sindelfingen · SHK-Familienbetrieb in 3. Generation', 'Mitarbeiter', '', '/assets/fotos/erwin-schmidt-team-wagen.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '25 Bewerbungen in 4&nbsp;Wochen, 1&nbsp;Anlagenmechaniker eingestellt.', [('25', 'Bewerbungen'), ('1', 'Stelle besetzt'), ('4', 'Wochen Laufzeit')], 'Florian Schmidt, Geschäftsführer · Zahlen aus den ersten 4 Wochen', pos='50% 30%')}
       {senftleben_recruiting_karte(1)}
@@ -774,14 +774,14 @@ def seite_start():
   </div></div>
 </section>'''
     # Vorher/Nachher-Reiter raus (Noah, 14.11.2026: „zu kompliziert … zu schwer zugreifbar“): Wege-Plan nach Hista + einfache Tafel; vergleich() bleibt als Funktion liegen
-    body = hero + logo_band() + leiter() + vergleich_tafel() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kopf='/assets/fotos/benjamin-kopf.jpg', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
+    body = hero + logo_band() + leiter() + vergleich_tafel() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kopf='/assets/fotos/benjamin-kopf.jpg', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
     return h + body + fuss()
 
 def hebel_drei():
     """Drei Einstiege statt zwei: Monteure · Aufträge · Website, jede Karte führt auf ihre Unterseite (Noah, 14.11.2026: Startseite muss Website, Leadgen und Recruiting abdecken, roter Faden)."""
-    k = [('', '/monteure/', 'users', 'Leistung 1 · Monteure', 'Monteure für deinen Betrieb.', ['Bewerbung in 60 Sekunden, ohne Lebenslauf', 'Vorqualifiziert: Gewerk, Erfahrung, Führerschein', 'Anzeigen mit Fotos aus deinem Betrieb'], 'Monteure finden', '/assets/fotos/klass-hebel-monteure.jpg', 'Monteur von Heizung Sanitär Klaß am Firmenwagen', 1920, 1277, '62% 40%'),
-         (' w', '/auftraege/', 'bath', 'Leistung 2 · Aufträge', 'Aufträge für Bad &amp; Wärmepumpe.', ['Jede Anfrage gehört dir allein', 'Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen', 'Regelbar, auf Wunsch nur 1–2 Aufträge im Monat'], 'Aufträge gewinnen', '/assets/fotos/klass-hebel-auftraege.jpg', 'Planung vor Ort mit dem Team von Heizung Sanitär Klaß', 1920, 1280, '45% 35%'),
-         (' web', '/webdesign/', 'globe', 'Leistung 3 · Website', 'Website mit Leistungs- und Jobs-Seiten.', ['Eine Seite je Leistung, mit deinem Ort', 'Anfrage fragt Baujahr und Eigentum ab', 'Jobs-Seite mit Bewerbung in 60 Sekunden'], 'Websites ansehen', '/assets/webdesign/irlbacher-start-desk.jpg', 'Startseite der Irlbacher GmbH', 1200, 3200, '50% 0%')]
+    k = [('', '/monteure/', 'users', 'Leistung 1 · Monteure', 'Neue Monteure.', ['Bewerbung in 60 Sekunden', 'Vorab gefiltert nach Gewerk', 'Fotos aus deinem Betrieb'], 'Monteure finden', '/assets/fotos/klass-hebel-monteure.jpg', 'Monteur von Heizung Sanitär Klaß am Firmenwagen', 1920, 1277, '62% 40%'),
+         (' w', '/auftraege/', 'bath', 'Leistung 2 · Aufträge', 'Neue Aufträge.', ['Für Bad und Wärmepumpe', 'Jede Anfrage gehört dir allein', 'Vorab gefiltert nach Eigentum'], 'Aufträge gewinnen', '/assets/fotos/klass-hebel-auftraege.jpg', 'Planung vor Ort mit dem Team von Heizung Sanitär Klaß', 1920, 1280, '45% 35%'),
+         (' web', '/webdesign/', 'globe', 'Leistung 3 · Website', 'Neue Website.', ['Eine Seite je Leistung mit deinem Ort', 'Für Google optimiert', 'Jobs-Seite inklusive'], 'Websites ansehen', '/assets/webdesign/irlbacher-start-desk.jpg', 'Startseite der Irlbacher GmbH', 1200, 3200, '50% 0%')]
     karten = ''.join(f'<a class="hebel-karte{kl} rv" data-d="{i}" href="{u(href)}"><div class="txt"><span class="chip">{ic(icn)}{chip}</span><h3>{h3}</h3><ul>' + ''.join(f'<li>{ic("checkmark")}{x}</li>' for x in pts) + f'</ul><span class="btn btn-white">{btn} <span aria-hidden="true">→</span></span></div><div class="bild"><img src="{img}" alt="{alt}" loading="lazy" width="{w}" height="{h}" style="object-position:{pos}"></div></a>' for i, (kl, href, icn, chip, h3, pts, btn, img, alt, w, h, pos) in enumerate(k))
     return f'''<section class="hebel" id="hebel">
   <div class="wrap">
@@ -804,8 +804,8 @@ def seite_start_neu(pfad='/start-neu/', versteckt=True):
   <div class="wrap weit buehne-wrap"><div class="buehne feed still"><div class="raster" aria-hidden="true"></div>
     <div class="feed-innen still">
       {phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Monteure · Erwin Schmidt &amp; Sohn', '#1E90E8', 'p2')}
-      {phone('/assets/funnels/sussmann-leadgen-hero.jpg', 'Aufträge · Sussmann GmbH', '#F5762B', 'p3')}
-      {phone('/assets/webdesign/irlbacher-start-mobil.jpg', 'Website · Irlbacher GmbH', '#3DDC84', 'p4')}
+      {reel_phone('kunden-szenen', 'Gedreht bei unseren Kunden', 'p3', 'kunden-szenen-poster.jpg')}
+      {phone('/assets/webdesign/entenmann-start-mobil.jpg', 'Website · Entenmann Haustechnik', '#F5762B', 'p4')}
     </div>
   </div></div>
 </section>'''
@@ -814,7 +814,7 @@ def seite_start_neu(pfad='/start-neu/', versteckt=True):
     body = (hero + logo_band() + hebel_drei()
             + vergleich_tafel(zeilen, kick='Vorher und nachher', lead='Sechs Situationen aus Gesprächen mit SHK-Inhabern.')
             + fallstudien_teaser()
-            + stimmen(kick='Die Zusammenarbeit') + ueber_offen()
+            + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen()
             + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kopf='/assets/fotos/benjamin-kopf.jpg', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt())
     return h + body + fuss()
 

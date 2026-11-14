@@ -724,7 +724,8 @@ def seite_start():
     </div>
   </div></div>
 </section>'''
-    body = hero + logo_band() + leiter() + vergleich_tafel() + system(kurz=True)   # Vorher/Nachher-Reiter raus (Noah, 14.11.2026: „zu kompliziert … zu schwer zugreifbar“), dafür der Wege-Plan nach Hista; vergleich() bleibt als Funktion liegen + hebel() + fallstudien_teaser() + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
+    # Vorher/Nachher-Reiter raus (Noah, 14.11.2026: „zu kompliziert … zu schwer zugreifbar“): Wege-Plan nach Hista + einfache Tafel; vergleich() bleibt als Funktion liegen
+    body = hero + logo_band() + leiter() + vergleich_tafel() + system(kurz=True) + hebel() + fallstudien_teaser() + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen() + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt()
     return h + body + fuss()
 
 RAT_MONTEURE = ['anlagenmechaniker-finden', 'social-recruiting-shk', 'kosten-mitarbeitergewinnung', 'passende-bewerber', 'bewerber-schnell-zurueckrufen', 'headhunter-oder-social-recruiting']

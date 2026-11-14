@@ -346,12 +346,12 @@ def rechner_dialog():
 def vergleich():
     tabs = ''.join(f'<button type="button" class="vgl-tab{" an" if i == 0 else ""}" role="tab" id="vgl-t{i}" aria-controls="vgl-p{i}" aria-selected="{"true" if i == 0 else "false"}"><span class="ic" aria-hidden="true">{icn}</span><b>{t}</b><i class="lauf" aria-hidden="true"></i></button>' for i, (a, icn, t, h, k) in enumerate(VERGLEICH))
     panels = ''.join(f'''<div class="vgl-panel{" an" if i == 0 else ""}" role="tabpanel" id="vgl-p{i}" aria-labelledby="vgl-t{i}"{"" if i == 0 else " hidden"}>
-      <div class="vgl-seite heute"><span class="vgl-etikett">{IK["x"]}Heute</span>{vgl_bild(a, False)}<p>{h}</p></div>
-      <div class="vgl-seite kanal"><span class="vgl-etikett">{IK["checkmark"]}Morgen · mit eigenen Anzeigen</span>{vgl_bild(a, True)}<p>{k}</p></div>
+      <div class="vgl-seite heute"><span class="vgl-etikett">{IK["x"]}Heute · Zufall</span>{vgl_bild(a, False)}<p>{h}</p></div>
+      <div class="vgl-seite kanal"><span class="vgl-etikett">{IK["checkmark"]}Morgen · planbar</span>{vgl_bild(a, True)}<p>{k}</p></div>
     </div>''' for i, (a, icn, t, h, k) in enumerate(VERGLEICH))
     return f'''<section class="vergleich" id="vergleich">
   <div class="wrap">
-    <div class="sec-kopf"><div><p class="kick k rv">Kommt dir das bekannt vor?</p><h2 class="d rv">Monteure fehlen. Aufträge kommen <span class="em w">nach Zufall.</span></h2></div><p class="lead rv">Fünf Situationen aus Gesprächen mit SHK-Inhabern. Zu jeder siehst du, wie es heute läuft und wie es mit eigenen Anzeigen planbar wird.</p></div>
+    <div class="sec-kopf"><div><p class="kick k rv">Vorher und nachher</p><h2 class="d rv">Heute Zufall. <span class="em w">Morgen</span> planbar.</h2></div><p class="lead rv">Fünf Situationen aus Gesprächen mit SHK-Inhabern. Zu jeder siehst du, wie es heute nach Zufall läuft und wie es morgen mit eigenen Anzeigen planbar wird.</p></div>
     <div class="vgl-buehne rv"><div class="vgl-tabs" role="tablist" aria-label="Lagen">{tabs}</div><div class="vgl-panels">{panels}</div></div>
   </div>
 </section>'''

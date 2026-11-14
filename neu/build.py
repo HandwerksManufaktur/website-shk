@@ -27,7 +27,7 @@ CAL_WEB = 'https://calendly.com/noahseelau/website-potenzial'
 ERWIN_URL = 'https://erwin-schmidt-vorschau.handwerksmanufaktur.workers.dev/'   # Vorschlag 31.10.2026, vor Freischaltung ggf. Kundendomain
 ERWIN_DA = (REPO / 'assets' / 'webdesign' / 'erwin-schmidt-start-desk.jpg').exists()   # dritte Referenz erst, wenn der Vorschlag steht   # Website-Erstgespräch (wie auf der HWM-Hauptseite)
 # Gebaut, aber versteckt: nicht in Nav, Sitemap, llms.txt, robots noindex — Noah, 29.10.2026: „unter irgendeiner Unterseite, wo man es noch nicht unbedingt sieht“
-VERSTECKT = {'/webdesign/'}
+VERSTECKT = set()   # /webdesign/ seit 14.11.2026 freigeschaltet (Noah: „Ja, freischalten“): Menü, Fuß, Sitemap, llms.txt, index
 
 def u(p):  # Seiten-Link
     return f'{B}{p}'
@@ -1252,7 +1252,7 @@ def web_ablauf():
             f'<div class="web-schritte">{k}</div></div></section>')
 
 def seite_webdesign():
-    h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Websites, die Bad- und Wärmepumpen-Anfragen bringen, und Monteure dazu: eine Seite je Leistung mit Ort, Karriereseite mit Bewerbung in 60 Sekunden.', '/webdesign/', dunkel=True, schema_extra=faq_schema(FAQ_WEB), noindex=True)
+    h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Websites, die Bad- und Wärmepumpen-Anfragen bringen, und Monteure dazu: eine Seite je Leistung mit Ort, Karriereseite mit Bewerbung in 60 Sekunden.', '/webdesign/', dunkel=True, schema_extra=faq_schema(FAQ_WEB))
     body = ('<section class="uhero w web-hero"><div class="raster" aria-hidden="true"></div><div class="wrap">'
             '<div class="txt"><p class="kick rv">Websites für SHK-Betriebe</p><h1 class="h-xl rv" data-d="1">Eine Website, die Bäder bringt. <span class="em w">Und Monteure.</span></h1>'
             '<p class="lead rv" data-d="2">Jede Leistung bekommt ihre eigene Seite mit deinem Ort. Die Anfrage fragt Baujahr und Eigentum ab, bevor du zurückrufst. Dazu eine Karriereseite, auf der sich Monteure in 60 Sekunden bewerben. Gebaut mit Fotos aus deinem Betrieb, online in zwei bis drei Wochen.</p>'

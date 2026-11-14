@@ -9,6 +9,7 @@
 
 ## Seiten
 - [SHK-Startseite](https://shk.handwerksmanufaktur.digital/): Recruiting- und Auftrags-Kampagnen für SHK-Betriebe
+- [Websites für SHK-Betriebe](https://shk.handwerksmanufaktur.digital/webdesign/): eine Seite je Leistung mit Ort, vorsortierte Anfragen, Karriereseite mit Bewerbung in 60 Sekunden
 - [Hauptseite](https://handwerksmanufaktur.digital/): Webdesign und Marketing für alle Handwerksgewerke
 
 ## Fakten

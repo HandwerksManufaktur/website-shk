@@ -104,7 +104,7 @@ def kopf(titel, beschreibung, pfad, dunkel=False, schema_extra=None, og=None, no
 <meta charset="UTF-8">
 <meta name="version" content="{V}">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<script>addEventListener('load',function(){{try{{var v='{V}';fetch('{u("/version.json")}?t='+Date.now(),{{cache:'no-store'}}).then(function(r){{return r.json()}}).then(function(j){{if(j&&j.v&&j.v!==v&&sessionStorage.getItem('shk-reload')!==j.v){{sessionStorage.setItem('shk-reload',j.v);location.replace(location.pathname+'?v='+j.v+location.hash)}}}}).catch(function(){{}})}}catch(e){{}}}})</script>
+<script>(function(){{var v='{V}';function pruefe(){{try{{fetch('{u("/version.json")}?t='+Date.now(),{{cache:'no-store'}}).then(function(r){{return r.json()}}).then(function(j){{if(j&&j.v&&j.v!==v&&sessionStorage.getItem('shk-reload')!==j.v){{sessionStorage.setItem('shk-reload',j.v);location.replace(location.pathname+'?v='+j.v+location.hash)}}}}).catch(function(){{}})}}catch(e){{}}}}addEventListener('load',pruefe);addEventListener('pageshow',function(e){{if(e.persisted)pruefe()}});document.addEventListener('visibilitychange',function(){{if(document.visibilityState==='visible')pruefe()}})}})()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(titel)}</title>
 <meta name="description" content="{html.escape(beschreibung)}">

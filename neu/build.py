@@ -730,42 +730,41 @@ def seite_start():
 
 def hebel_drei():
     """Drei Einstiege statt zwei: Monteure · Aufträge · Website, jede Karte führt auf ihre Unterseite (Noah, 14.11.2026: Startseite muss Website, Leadgen und Recruiting abdecken, roter Faden)."""
-    k = [('', '/monteure/', 'users', 'Hebel 1 · Monteure', 'Monteure für deinen Betrieb.', ['Bewerbung in 60 Sekunden, ohne Lebenslauf', 'Vorqualifiziert: Gewerk, Erfahrung, Führerschein', 'Anzeigen mit Fotos aus deinem Betrieb'], 'Monteure finden', '/assets/fotos/klass-hebel-monteure.jpg', 'Monteur von Heizung Sanitär Klaß am Firmenwagen', 1920, 1277, '62% 40%'),
-         (' w', '/auftraege/', 'bath', 'Hebel 2 · Aufträge', 'Aufträge für Bad &amp; Wärmepumpe.', ['Jede Anfrage gehört dir allein', 'Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen', 'Regelbar, auf Wunsch nur 1–2 Aufträge im Monat'], 'Aufträge gewinnen', '/assets/fotos/klass-hebel-auftraege.jpg', 'Planung vor Ort mit dem Team von Heizung Sanitär Klaß', 1920, 1280, '45% 35%'),
-         (' web', '/webdesign/', 'globe', 'Hebel 3 · Website', 'Eine Website, die beides bringt.', ['Eine Seite je Leistung, mit deinem Ort', 'Anfrage fragt Baujahr und Eigentum ab', 'Jobs-Seite mit Bewerbung in 60 Sekunden'], 'Websites ansehen', '/assets/webdesign/irlbacher-start-desk.jpg', 'Startseite der Irlbacher GmbH', 1200, 3200, '50% 0%')]
+    k = [('', '/monteure/', 'users', 'Leistung 1 · Monteure', 'Monteure für deinen Betrieb.', ['Bewerbung in 60 Sekunden, ohne Lebenslauf', 'Vorqualifiziert: Gewerk, Erfahrung, Führerschein', 'Anzeigen mit Fotos aus deinem Betrieb'], 'Monteure finden', '/assets/fotos/klass-hebel-monteure.jpg', 'Monteur von Heizung Sanitär Klaß am Firmenwagen', 1920, 1277, '62% 40%'),
+         (' w', '/auftraege/', 'bath', 'Leistung 2 · Aufträge', 'Aufträge für Bad &amp; Wärmepumpe.', ['Jede Anfrage gehört dir allein', 'Vorqualifiziert: Objekt, Baujahr, Eigentum, Zeitrahmen', 'Regelbar, auf Wunsch nur 1–2 Aufträge im Monat'], 'Aufträge gewinnen', '/assets/fotos/klass-hebel-auftraege.jpg', 'Planung vor Ort mit dem Team von Heizung Sanitär Klaß', 1920, 1280, '45% 35%'),
+         (' web', '/webdesign/', 'globe', 'Leistung 3 · Website', 'Website mit Leistungs- und Jobs-Seiten.', ['Eine Seite je Leistung, mit deinem Ort', 'Anfrage fragt Baujahr und Eigentum ab', 'Jobs-Seite mit Bewerbung in 60 Sekunden'], 'Websites ansehen', '/assets/webdesign/irlbacher-start-desk.jpg', 'Startseite der Irlbacher GmbH', 1200, 3200, '50% 0%')]
     karten = ''.join(f'<a class="hebel-karte{kl} rv" data-d="{i}" href="{u(href)}"><div class="txt"><span class="chip">{ic(icn)}{chip}</span><h3>{h3}</h3><ul>' + ''.join(f'<li>{ic("checkmark")}{x}</li>' for x in pts) + f'</ul><span class="btn btn-white">{btn} <span aria-hidden="true">→</span></span></div><div class="bild"><img src="{img}" alt="{alt}" loading="lazy" width="{w}" height="{h}" style="object-position:{pos}"></div></a>' for i, (kl, href, icn, chip, h3, pts, btn, img, alt, w, h, pos) in enumerate(k))
     return f'''<section class="hebel" id="hebel">
   <div class="wrap">
-    <div class="sec-kopf mitte"><p class="kick rv">Womit du startest</p><h2 class="d rv">Was fehlt dir gerade: <span class="em k">Monteure,</span> <span class="em w">Aufträge</span> oder die Website?</h2><p class="lead rv">Fang mit dem an, was gerade am meisten drückt. Wie es im Einzelnen läuft, steht auf der jeweiligen Seite.</p></div>
+    <div class="sec-kopf mitte"><p class="kick rv">Unsere Leistungen</p><h2 class="d rv">Drei Dinge machen wir <span class="em k">für SHK-Betriebe.</span></h2><p class="lead rv">Jede Leistung gibt es einzeln. Wie sie im Einzelnen läuft, steht auf ihrer Seite.</p></div>
     <div class="hebel-grid drei">{karten}</div>
   </div>
 </section>'''
 
 def seite_start_neu():
     """Entwurf der Startseite mit rotem Faden über Monteure, Aufträge und Website (Noah, 14.11.2026). Versteckt unter /start-neu/, noindex; die Live-Startseite bleibt, bis Noah abnimmt."""
-    h = kopf('Recruiting- und Marketing-Agentur für SHK-Betriebe', 'Monteure, Bad- und Wärmepumpen-Aufträge und die Website dazu: Anzeigen mit deinen Leuten im eigenen Umkreis, Filterfragen vor jeder Bewerbung und Anfrage.', '/start-neu/', schema_extra=faq_schema(FAQ_START), noindex=True)
+    h = kopf('Recruiting- und Marketing-Agentur für SHK-Betriebe', 'Der Partner für SHK-Betriebe: Monteure, Aufträge für Bad und Wärmepumpe und die Website. 150+ Betriebe, 8 Jahre Erfahrung, 5,0 auf Google.', '/start-neu/', schema_extra=faq_schema(FAQ_START), noindex=True)
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
     <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
-    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Mehr Monteure.</span></span><span class="zl" aria-hidden="true"><span>Mehr Bad-Aufträge.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Und eine Website, die beides bringt.</span></span><span class="sr">Mehr Monteure. Mehr Bad-Aufträge. Und eine Website, die beides bringt.</span></h1>
-    <p class="lead rv" data-d="2">Anzeigen mit deinen Leuten, nur in deinem Einzugsgebiet, und eine Website mit einer Seite je Leistung. Bewerber und Anfragen beantworten vorher ein paar Fragen. Du führst nur noch die Gespräche, den Rest machen wir.</p>
+    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Der Partner</span></span><span class="zl" aria-hidden="true"><span>für SHK-Betriebe.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Monteure. Aufträge. Website.</span></span><span class="sr">Der Partner für SHK-Betriebe. Monteure. Aufträge. Website.</span></h1>
+    <p class="lead rv" data-d="2">Seit 8 Jahren arbeiten wir mit Handwerksbetrieben, über 150 bisher. SHK-Betrieben bringen wir Monteure und Aufträge für Bad und Wärmepumpe aus dem eigenen Umkreis und bauen die Website dazu.</p>
     <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="{u('/potenzialanalyse/')}">{ic('target','ic')}Potenzialanalyse für meinen Umkreis</a><a class="btn btn-white btn-lg" href="#fallstudien">{ic('play','ic')}Fallstudien ansehen</a></div>
     <div class="rv" data-d="4">{trust()}</div>
   </div>
   <div class="wrap weit buehne-wrap"><div class="buehne feed still"><div class="raster" aria-hidden="true"></div>
     <div class="feed-innen still">
       {phone('/assets/funnels/erwin-schmidt-jobs-full.jpg', 'Monteure · Erwin Schmidt &amp; Sohn', '#1E90E8', 'p2')}
-      {phone('/assets/webdesign/irlbacher-start-mobil.jpg', 'Website · Irlbacher GmbH', '#3DDC84', 'p3')}
-      {phone('/assets/funnels/sussmann-leadgen-hero.jpg', 'Aufträge · Sussmann GmbH', '#F5762B', 'p4')}
+      {phone('/assets/funnels/sussmann-leadgen-hero.jpg', 'Aufträge · Sussmann GmbH', '#F5762B', 'p3')}
+      {phone('/assets/webdesign/irlbacher-start-mobil.jpg', 'Website · Irlbacher GmbH', '#3DDC84', 'p4')}
     </div>
   </div></div>
 </section>'''
     zeilen = VERGLEICH + [('web', IK['globe'], 'Seite von früher', 'Wer dich googelt, landet auf einer Seite von früher.', 'Eine Seite je Leistung mit deinem Ort, dazu die Jobs-Seite.')]
-    body = (hero + logo_band()
-            + leiter(kick='Wie es heute läuft', lead='Ein Stellenportal oder ein Lead-Portal erreicht nur, wer gerade aktiv sucht. Der Monteur, der bleiben soll, ist in Arbeit und sucht nicht. Und wer sein Bad plant, hat noch keinen Betrieb im Kopf.')
-            + vergleich_tafel(zeilen, kick='Was sich ändert', lead='Sechs Situationen aus Gesprächen mit SHK-Inhabern. Links, wie es heute nach Zufall läuft. Rechts, wie es morgen mit eigenen Anzeigen und eigener Seite planbar wird.')
-            + system(kurz=True, kick='Wie es planbar wird', lead='Eigene Anzeigen auf Facebook und Instagram, die nur für deinen Betrieb laufen: Das ist dein Kanal. Anzeige und Website führen in dieselbe Strecke. So läuft er, in fünf Schritten.')
-            + hebel_drei() + fallstudien_teaser()
+    # Aufbau Firma → Leistungen → Ergebnisse (Noah, 14.11.2026: „die startseite soll uns als firma zeigen, die leistungen, die ergebnisse“); Wege-Plan und Fünf-Schritte-Block gehören auf die Unterseiten
+    body = (hero + logo_band() + hebel_drei()
+            + vergleich_tafel(zeilen, kick='Vorher und nachher', lead='Sechs Situationen aus Gesprächen mit SHK-Inhabern. Links, wie es heute nach Zufall läuft. Rechts, wie es morgen läuft, wenn wir es für dich aufsetzen.')
+            + fallstudien_teaser()
             + stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit') + ueber_offen()
             + statement('„Werbung macht man nicht nur, <em>wenn es gut läuft.“</em>', mitte=True, von='Benjamin Senftleben · Inhaber, Senftleben Haustechnik, Ehingen', kick='Und wenn du gerade ausgelastet bist?') + faq() + kontakt())
     return h + body + fuss()

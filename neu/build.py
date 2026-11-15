@@ -932,22 +932,23 @@ def v_kachelwand():
 def seite_ueber():
     h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit 2019 nur Handwerk, über 150 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
     body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Marketing für Handwerks&shy;betriebe, <span class="em w">seit 2019.</span></h1><p class="lead rv" data-d="2">Für SHK-Betriebe machen wir Anzeigen für Monteure, Bäder und Wärmepumpen. Wir drehen bei dir im Betrieb, mit deinen Leuten vor der Kamera.</p></div></section>
-<div style="height:64px"></div>'''
+'''
     body += ueber_werdegang() + team()
-    body += f'''<section class="sec" id="wie" style="padding-top:0"><div class="wrap">
+    body += f'''<section class="sec" id="wie"><div class="wrap">
   <div class="sec-kopf"><div><p class="kick k rv">Wie wir arbeiten</p><h2 class="d rv">Kleines Team. <span class="em k">Kurze Wege.</span></h2></div><p class="lead rv">Du sprichst von Anfang bis Ende mit denselben Leuten. Das Erstgespräch, die Planung und die Kampagne macht dasselbe kleine Team.</p></div>
   {vorteile_bild([('', v_logos(), 'Nur Handwerk, seit 2019', 'Wir arbeiten nur für Handwerksbetriebe und wissen, was einen Monteur zum Wechseln bringt.'), ('', v_kachelwand(), 'Shooting bei dir im Betrieb', 'Wir fotografieren dein Team im Lager, im Heizungskeller und auf der Baustelle. Diese Bilder laufen in deinen Anzeigen.'), ('', v_kurve(), 'Wir prüfen die Zahlen', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet, und regeln nach, wenn etwas nicht läuft.')])}
 </div></section>'''
     body += stimmen()
+    h = h.replace('<main>', '<main class="takt">', 1)   # einheitliche Abstände wie auf den anderen Seiten (Noah, 15.11.2026)
     return h + body + fuss()
 
 def seite_potenzial():
     h = kopf('Potenzialanalyse für SHK-Betriebe: in 30 Minuten durchgerechnet', 'Wir rechnen in 30 Minuten durch, was in deiner Region an Bewerbungen oder Bad- und Wärmepumpen-Anfragen drin ist. Termin online aussuchen.', '/potenzialanalyse/')
     body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Potenzialanalyse</p><h1 class="h-xl rv" data-d="1">Was ist in deiner Region <span class="em w">drin?</span></h1><p class="lead rv" data-d="2">Wir rechnen durch, was in deinem Umkreis an Bewerbungen oder Bad-Anfragen drin ist. Das Gespräch dauert 30 Minuten und kostet nichts.</p></div></section>
-<div style="height:56px"></div>
 {kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')}
 '''
     body += faq([FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[4]], 'Vor dem <span class="em k">Termin.</span>')
+    h = h.replace('<main>', '<main class="takt">', 1)   # einheitliche Abstände wie auf den anderen Seiten (Noah, 15.11.2026)
     return h + body + fuss()
 
 RECHT = {'/impressum/': ('Impressum', 'Impressum der HandwerksManufaktur LTD: Anschrift, Registernummer, Umsatzsteuer-ID und Kontakt.'),

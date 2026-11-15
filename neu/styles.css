@@ -2257,6 +2257,10 @@ main.takt h2.d .em{display:block}
   main.takt .ueber.offen h2.d,main.takt .kontakt h2.d{font-size:clamp(30px,3.05vw,44px)}
 }
 @media(min-width:1001px){main.takt .kontakt-neu{grid-template-columns:.9fr 1.1fr}}
+/* Über uns + Potenzialanalyse auf demselben Raster (15.11.2026): letzte Sektion ohne Kontaktkarte bekommt unten denselben Abstand, Gründer-Überschrift wie die Über-uns-Überschrift der Startseite */
+main.takt>section:last-of-type:not(.kontakt):not(.hero):not(.uhero):not(.band){padding-bottom:var(--takt)!important}
+main.takt .werdegang-text h2+.lead{margin-top:var(--h2-lead)}
+@media(min-width:901px){main.takt .werdegang h2.d{font-size:clamp(30px,3.05vw,44px)}}
 
 /* Kontakt: die Termin-Wege als klare Knöpfe (gefüllt, Pfeil im Kreis, Hover, mind. 64 px hoch) */
 .kontakt .wahl a{background:#146FB8;border:0;border-radius:var(--r-pill);padding:12px 12px 12px 12px;min-height:64px;color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.28);transition:transform .35s var(--spring),background .3s,box-shadow .35s var(--spring)}

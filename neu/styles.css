@@ -806,10 +806,6 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .stimme .kopf{justify-content:space-between}
 .stimme .google-mini .g{width:20px;height:20px;display:block}
 .stimme .wer .lg{width:96px;height:34px;padding:0;flex:none}
-/* Bewertungskarten: Logo eng zugeschnitten, Rand ringsum gleich (8 px), Kachel nie breiter als nötig (Noah, 15.11.2026: „gleich viel abstand oben unten zu links und rechts“) */
-.stimme .wer.stapel{flex-direction:column;align-items:flex-start;gap:12px}
-.stimme .wer .lg.eng{width:auto;height:auto;padding:8px;max-width:100%;display:inline-flex}
-.stimme .wer .lg.eng img,.stimme .wer .lg.eng img[width][height]{width:auto;height:auto;max-height:36px;max-width:100%;display:block}
 .stimme .wer .lg img{width:100%;height:100%;object-fit:contain;max-width:none}
 .fall-karte .betrieb .lg{padding:0}
 .fall-karte .betrieb .lg img{width:100%;height:100%;max-width:none;object-fit:contain}
@@ -922,7 +918,7 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 @media(max-width:760px){.vgl-tafel{grid-template-columns:1fr}.vgl-h{display:none}.vgl-c{padding:18px 20px;font-size:15.5px}.vgl-c.heute{border-bottom:0}}
 .stimmen-marq .spur + .spur{margin-top:18px}
 .stimmen-marq .spur.rueck{animation-direction:reverse}
-.stimmen-marq .stimme blockquote{-webkit-line-clamp:4;min-height:calc(4 * 1.5em)}   /* Karten gleich groß, Zitate auf ihre Kernaussage gekürzt, damit nichts abbricht (Noah, 15.11.2026) */
+.stimmen-marq .stimme blockquote{-webkit-line-clamp:3;min-height:calc(3 * 1.5em)}
 .aufwand{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
 .aufwand>div{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;row-gap:4px;align-items:center;padding:20px 22px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--line);transition:transform .3s var(--spring),box-shadow .3s var(--spring)}
 .aufwand>div:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}

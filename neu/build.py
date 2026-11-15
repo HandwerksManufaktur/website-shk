@@ -78,15 +78,6 @@ def logos_box():
         weiss = Image.merge('RGBA', [Image.new('L', im.size, 255)] * 3 + [a])
         box = Image.new('RGBA', (W, H), (0, 0, 0, 0)); box.alpha_composite(weiss, dest=((W - im.width) // 2, (H - im.height) // 2))
         box.save(ziel / f'{slug}.png')
-        # Eng zugeschnitten (ohne Leinwand) für die Bewertungskarten: der Rand kommt per CSS, gleich viel oben/unten/links/rechts (Noah, 15.11.2026)
-        eng = Image.open(REPO / 'Logos SHK' / quelle).convert('RGBA'); eng = eng.crop(eng.getbbox())
-        k2 = 120 / eng.height; eng = eng.resize((max(1, round(eng.width * k2)), 120), Image.LANCZOS)
-        a2 = eng.getchannel('A'); w2 = sorted(v for v in a2.getdata() if v > 40); ref2 = w2[int(len(w2) * .75)] if w2 else 255
-        a2 = a2.point(lambda v: min(255, round(v * 255 / ref2)))
-        (REPO / 'assets' / 'logos-eng').mkdir(exist_ok=True)
-        Image.merge('RGBA', [Image.new('L', eng.size, 255)] * 3 + [a2]).save(REPO / 'assets' / 'logos-eng' / f'{slug}.png')
-        LOGO_ENG_MASS[slug] = eng.size
-LOGO_ENG_MASS = {}
 logos_box()
 
 
@@ -625,17 +616,17 @@ def reels():
 </section>'''
 
 STIMMEN = [
-    ('Franz Gallenberger', 'Sanitär · Heizung · Klimatechnik', '„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. (…) Das Ergebnis hat unsere Erwartungen (…) sogar übertroffen.“'),
-    ('Benjamin Senftleben', 'Senftleben Haustechnik, Ehingen', '„(…) Wir sind sehr zufrieden! Auch der Kontakt mit Noah ist immer freundlich. Grüße Fa. Senftleben Sanitär Heizung aus Ehingen (Donau).“'),
-    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„(…) Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit, gerne wieder.“'),
-    ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren. (…)“'),
-    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“'),
+    ('Franz Gallenberger', 'Sanitär · Heizung · Klimatechnik', '„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. (…)“'),
+    ('Benjamin Senftleben', 'Senftleben Haustechnik, Ehingen', '„(…) Wir sind sehr zufrieden! Auch der Kontakt mit Noah ist immer freundlich. (…)“'),
+    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„(…) Alle gewünschten Details wurden super umgesetzt. (…)“'),
+    ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! (…)“'),
+    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…)“'),
 ]
 STIMMEN_LOGO = {'Franz Gallenberger': 'gallenberger', 'Benjamin Senftleben': 'senftleben', 'Lanzinger GmbH': 'lanzinger', 'Andrea Süßmeier': 'suessmeier', 'Hannes Schmidt GmbH': 'hannes-schmidt', 'Alisa Kirchner': 'kirchner', 'Isabella Rauch': 'ressle'}
 def stimmen(liste=None, h2='Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span>', kick='Stimmen aus der Branche'):
     liste = STIMMEN if liste is None else liste
     def karte(n, b, z):
-        return f'<figure class="stimme"><div class="kopf"><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span><span class="google-mini" aria-hidden="true">{GOOGLE_G}</span></div><blockquote>{z}</blockquote><figcaption class="wer stapel"><span class="lg eng"><img src="/assets/logos-eng/{STIMMEN_LOGO[n]}.png" alt="" width="{LOGO_ENG_MASS[STIMMEN_LOGO[n]][0]}" height="{LOGO_ENG_MASS[STIMMEN_LOGO[n]][1]}"></span><span><b>{n}</b><small>{b}</small></span></figcaption></figure>'
+        return f'<figure class="stimme"><div class="kopf"><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span><span class="google-mini" aria-hidden="true">{GOOGLE_G}</span></div><blockquote>{z}</blockquote><figcaption class="wer"><span class="lg"><img src="/assets/logos-box/{STIMMEN_LOGO[n]}.png" alt="" width="336" height="120"></span><span><b>{n}</b><small>{b}</small></span></figcaption></figure>'
     reihe1 = ''.join(karte(n, b, z) for n, b, z in liste)
     still = lambda k: k.replace('<figure class="stimme">', '<figure class="stimme" aria-hidden="true">')
     return f'''<section class="stimmen" id="stimmen">
@@ -1350,11 +1341,11 @@ def seite_region(r):
 # HWM-Leistungsseite (firma/website/websites, /website-shk). Bewertungen wörtlich, Kürzungen mit (…).
 # 🔴 Vor dem Sichtbarmachen: „Seite ansehen“-Links auf die Kundendomains stellen (heute Vorschau-Adressen) und VERSTECKT leeren.
 STIMMEN_WEB = [
-    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„Reibungsloser Ablauf bis zur Fertigstellung der Homepage. Alle gewünschten Details wurden super umgesetzt. (…)“'),
-    ('Benjamin Senftleben', 'Senftleben Haustechnik, Ehingen', '„Noah hat unsere Homepage erstellt und betreut diese. Wir sind sehr zufrieden! Auch der Kontakt mit Noah ist immer freundlich. (…)“'),
-    ('Franz Gallenberger', 'Sanitär · Heizung · Klimatechnik', '„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. (…) Das Ergebnis hat unsere Erwartungen (…) sogar übertroffen.“'),
-    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“'),
-    ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! Immer angenehm mit ihm zu schreiben oder zu telefonieren. (…)“'),
+    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„Reibungsloser Ablauf bis zur Fertigstellung der Homepage. (…)“'),
+    ('Benjamin Senftleben', 'Senftleben Haustechnik, Ehingen', '„Noah hat unsere Homepage erstellt und betreut diese. Wir sind sehr zufrieden! (…)“'),
+    ('Franz Gallenberger', 'Sanitär · Heizung · Klimatechnik', '„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. (…)“'),
+    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…)“'),
+    ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! (…)“'),
 ]
 FAQ_WEB = [
     ('Was kostet eine Website bei euch?', 'Einmalig im vierstelligen Bereich, mit Karriereseite und Anfrage-Strecke. Die genaue Zahl steht nach dem Erstgespräch im Angebot, mit allen Posten im Klartext.'),

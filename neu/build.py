@@ -921,8 +921,8 @@ def ueber_werdegang():
   <div class="werdegang-text">
     <p class="kick rv">Der Gründer</p>
     <h2 class="d rv">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
-    <p class="lead rv">Wir arbeiten für Betriebe aus Sanitär, Heizung und Klima. Deshalb wissen wir, womit man einen Anlagenmechaniker erreicht und wann jemand sein Bad sanieren will.</p>
-    <p class="rv werdegang-satz">Dein Gewerk musst du uns nicht erklären. Wir wissen, warum ein Monteur wechselt und wann ein Eigentümer sein Bad machen lässt. Darauf bauen wir deine Kampagne.</p>
+    <p class="lead rv">Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
+    <p class="rv werdegang-satz">Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p><p class="rv werdegang-satz">In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
     <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
   </div>
 </div></div></section>'''

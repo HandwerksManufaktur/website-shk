@@ -208,6 +208,25 @@ def bildschirm_oben(img, verh=2.3):
             im.convert('RGB').crop((0, 0, w, round(w * verh))).save(ziel, quality=88, optimize=True)
     return img.rsplit('/', 1)[0] + '/' + ziel.name
 
+def hero_bild(img, rand=0.02, verh=2.3):
+    """Hero-Handy: Weißraum über dem ersten Inhalt (Logo, Überschrift) auf einen festen Rand von 2 % der Bildbreite zuschneiden,
+    damit alle Handys direkt unter der Kamera-Aussparung gleich beginnen (Noah, 15.11.2026: im Irlbacher-Funnel war oben viel leerer
+    Platz, 90 px statt 20 px). Danach nur der obere Bildschirm wie bei bildschirm_oben."""
+    quelle = REPO / img.lstrip('/')
+    ziel = quelle.with_name(quelle.stem + '-hero' + quelle.suffix)
+    if not ziel.exists() or ziel.stat().st_mtime < quelle.stat().st_mtime:
+        with Image.open(quelle) as im:
+            rgb = im.convert('RGB'); w, h = rgb.size
+            grau = rgb.convert('L'); px = grau.load()
+            grund = sorted(px[x, 0] for x in range(w))[w // 2]
+            erste = 0
+            for y in range(h):
+                if sum(1 for x in range(0, w, 2) if abs(px[x, y] - grund) > 30) > w * 0.005:
+                    erste = y; break
+            oben = max(0, erste - round(w * rand))
+            rgb.crop((0, oben, w, min(h, oben + round(w * verh)))).save(ziel, quality=88, optimize=True)
+    return img.rsplit('/', 1)[0] + '/' + ziel.name
+
 def etikett_text(etikett):
     """„Recruiting · Erwin Schmidt & Sohn" zweizeilig (Art / Betrieb) — einzeilig brach es auf schmalen Handys in vier Zeilen (Sichtprüfung 29.09.2026)."""
     if ' · ' not in etikett: return etikett
@@ -626,7 +645,7 @@ def ueber_offen(kurz=True):
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
-      <p>Ich bin Noah und in einer Handwerkerfamilie groß geworden. Meine drei Brüder haben alle eine Handwerksausbildung, zwei davon den Meister. In der Familie gibt es mehrere Handwerksbetriebe, von der Spenglerei bis zum Tiefbau. Seit 8 Jahren arbeiten wir nur für Handwerksbetriebe, über 150 waren es bisher.</p>
+      <p>Seit 8 Jahren arbeiten wir nur für Handwerksbetriebe, über 150 waren es bisher. Was ein SHK-Betrieb braucht, musst du uns nicht erklären.</p>
       <div class="gruender"><img class="rund-bart" src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>150<span>+</span></b><small>Handwerks&shy;betriebe betreut</small></div><div class="stat"><b>8<span>+</span></b><small>Jahre Erfahrung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
@@ -839,12 +858,12 @@ def ratgeber_weiter(slugs, h2, farbe='k', regionen=False):
   <div class="wx-raster">{karten}</div>
   <nav class="region-quer rv" aria-label="Weitere Seiten">{quer}</nav></div></section>'''
 
-def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False):
-    drei = ' drei' if phones.count('class="phone ') >= 3 else ''   # drei Funnels oben (Noah, 24.10.2026)
+def uhero(kick, h1, lead, cta_text, cta_href, cta_klasse, phones, warm=False, cta_ic='target', zweit=('Fallstudie ansehen', '#fallstudie'), drei_fest=False):
+    drei = ' drei' if drei_fest or phones.count('class="phone ') >= 3 else ''   # drei Funnels oben (Noah, 24.10.2026)
     return f'''<section class="uhero{' w' if warm else ''}"><div class="raster" aria-hidden="true"></div>
   <div class="wrap">
     <div class="txt"><p class="kick rv">{kick}</p><h1 class="h-xl rv" data-d="1">{h1}</h1><p class="lead rv" data-d="2">{lead}</p>
-      <div class="hero-cta rv" data-d="3"><a class="btn {cta_klasse} btn-lg" href="{cta_href}" target="_blank" rel="noopener">{ic('target','ic')}{cta_text}</a><a class="btn btn-glass btn-lg" href="#fallstudie">Fallstudie ansehen</a></div>
+      <div class="hero-cta rv" data-d="3"><a class="btn {cta_klasse} btn-lg" href="{cta_href}" target="_blank" rel="noopener">{ic(cta_ic,'ic')}{cta_text}</a><a class="btn btn-glass btn-lg" href="{zweit[1]}">{zweit[0]}</a></div>
       <div class="rv" data-d="4">{trust()}</div></div>
     <div class="buehne-phones rv{drei}" data-d="2">{phones}</div>
   </div>
@@ -902,7 +921,7 @@ def ueber_werdegang():
   <div class="werdegang-text">
     <p class="kick rv">Der Gründer</p>
     <h2 class="d rv">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
-    <p class="lead rv">Ich bin Noah. Seit 2019 arbeiten wir nur für Handwerksbetriebe, über 150 waren es bisher. Wir wissen, was funktioniert und was du dir sparen kannst.</p>
+    <p class="lead rv">Wir arbeiten für Betriebe aus Sanitär, Heizung und Klima. Deshalb wissen wir, womit man einen Anlagenmechaniker erreicht und wann jemand sein Bad sanieren will.</p>
     <p class="rv werdegang-satz">Dein Gewerk musst du uns nicht erklären. Wir wissen, warum ein Monteur wechselt und wann ein Eigentümer sein Bad machen lässt. Darauf bauen wir deine Kampagne.</p>
     <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
   </div>
@@ -1342,13 +1361,14 @@ def browser(img, titel):
 def web_phone(img):
     return f'<div class="phone klein"><div class="scroller"><img src="{img[:-4]}-240.jpg" srcset="{img[:-4]}-240.jpg 240w, {img} 480w" sizes="(max-width: 1180px) 24vw, 12vw" alt="" width="480" height="3400" loading="lazy"></div></div>'
 
-def web_stapel(slugs, titel):
+def web_stapel(slugs, titel, in_buehne=False):
     """Hero-Bühne: drei Startseiten als Browser-Stapel, der vordere scrollt (Noah, 31.10.2026: Handy oben war „komisch positioniert“ → kein Handy mehr im Hero)."""
     teile = []
     for i, s in reversed(list(enumerate(slugs))):
         lazy = ' loading="lazy" fetchpriority="low"' if i else ' fetchpriority="high"'
         k = f'/assets/webdesign/{s}-start-desk'
         teile.append(f'<div class="browser s{i+1}"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel[i]}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {k}.jpg 1200w" sizes="(max-width: 900px) 86vw, 40vw" alt="{html.escape(titel[i])}, Startseite" width="1200" height="3200"{lazy}></div></div>')
+    if in_buehne: return '<div class="web-stapel">' + ''.join(teile) + '</div>'   # in der Hero-Bühne der Unterseiten (.buehne-phones trägt rv)
     return '<div class="web-stapel rv" data-d="2">' + ''.join(teile) + '</div>'
 
 def web_projekt(slug, name, kick, text, punkte, titel, url, farbe, d=0):
@@ -1441,9 +1461,9 @@ FAQ_WEB5 = FAQ_WEB[:5]
 
 def seite_entwurf_monteure(pfad='/start-neu/monteure/', versteckt=True):
     h = kopf('Recruiting-Agentur für SHK-Betriebe: Monteure über Social Media', 'Anlagenmechaniker und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert. Fallstudie: 25 Bewerbungen in 4 Wochen.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_REC5), noindex=versteckt)
-    body = uhero('Monteure für SHK-Betriebe', f'Wir finden deinen<br>{wechsel_alt(["Anlagenmechaniker", "Monteur", "Heizungsbauer"])}<br>aus deinem Umkreis.<span class="sr">Wir finden deinen Anlagenmechaniker, Monteur oder Heizungsbauer aus deinem Umkreis.</span>', 'Wir bringen dein Angebot zu den Monteuren im Umkreis, die gerade in Arbeit sind, und du führst nur noch die Gespräche.', 'Monteure besprechen', CAL_REC, 'btn-kalt',
+    body = uhero('Monteure für SHK-Betriebe', f'Wir finden deinen<br>{wechsel_alt(["Anlagenmechaniker", "Monteur", "Heizungsbauer"])}<br>aus der Umgebung.<span class="sr">Wir finden deinen Anlagenmechaniker, Monteur oder Heizungsbauer aus der Umgebung.</span>', 'Wir bringen dein Angebot zu den Monteuren im Umkreis, die gerade in Arbeit sind, und du führst nur noch die Gespräche.', 'Monteure besprechen', CAL_REC, 'btn-kalt',
         # Mitte Irlbacher (Monteur-Stelle); Senftleben nur mit dem Abschnitt „So läuft deine Bewerbung“, nie mit dem Hero der Buchhaltungs-Stelle (Noah, 15.11.2026)
-        phone('/assets/funnels/senftleben-jobs-bewerbung.jpg', 'Bewerbung', '#1E90E8', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/irlbacher-jobs-full.jpg'), 'Monteure', '#1E90E8', 'mitte', '1s') + phone(bildschirm_oben('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Anlagenmechaniker', '#1E90E8', 'rechts', '0s'))
+        phone(hero_bild('/assets/funnels/senftleben-jobs-bewerbung.jpg'), 'Bewerbung', '#1E90E8', 'links', '2s') + phone(hero_bild('/assets/funnels/irlbacher-jobs-full.jpg'), 'Monteure', '#1E90E8', 'mitte', '1s') + phone(hero_bild('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Anlagenmechaniker', '#1E90E8', 'rechts', '0s'))
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
     zeilen = [z for z in VERGLEICH if z[0] in ('team', 'zeit', 'umkreis')]
     body += vergleich_tafel(zeilen, kick='Vorher und nachher', lead='Drei Situationen aus Gesprächen mit SHK-Inhabern.')
@@ -1463,7 +1483,7 @@ def seite_entwurf_monteure(pfad='/start-neu/monteure/', versteckt=True):
 def seite_entwurf_auftraege(pfad='/start-neu/auftraege/', versteckt=True):
     h = kopf('Anfragen für Bad und Wärmepumpe: Marketing für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Umkreis, nur für deinen Betrieb, vorqualifiziert nach Objekt und Eigentum. Fallstudie: 21 Anfragen in 2 Monaten.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_LEAD5), noindex=versteckt)
     body = uhero('Aufträge für SHK-Betriebe', f'Mehr<br>{wechsel_alt(["Badsanierungen", "Wärmepumpen", "Badumbauten"])}<br>aus deinem Umkreis.<span class="sr">Mehr Badsanierungen, Wärmepumpen und Badumbauten aus deinem Umkreis.</span>', 'Wir schalten Anzeigen auf deinen Namen in deinem Einzugsgebiet, jede Anfrage gehört dir allein und du fährst nur noch zum Termin.', 'Aufträge besprechen', CAL_LEAD, 'btn-warm',
-        phone(bildschirm_oben('/assets/funnels/fischer-leadgen-full.jpg'), 'Barrierearmes Bad', '#F5762B', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/sussmann-leadgen-hero.jpg'), 'Badsanierung', '#F5762B', 'mitte', '1s') + phone(bildschirm_oben('/assets/funnels/senftleben-leadgen-full.jpg'), 'Badsanierung', '#F5762B', 'rechts', '0s'), warm=True)
+        phone(hero_bild('/assets/funnels/fischer-leadgen-full.jpg'), 'Barrierearmes Bad', '#F5762B', 'links', '2s') + phone(hero_bild('/assets/funnels/sussmann-leadgen-hero.jpg'), 'Badsanierung', '#F5762B', 'mitte', '1s') + phone(hero_bild('/assets/funnels/senftleben-leadgen-full.jpg'), 'Badsanierung', '#F5762B', 'rechts', '0s'), warm=True)
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
     zeilen = [z for z in VERGLEICH if z[0] in ('portal', 'last', 'umkreis')]
     body += vergleich_tafel(zeilen, kick='Vorher und nachher', lead='Drei Situationen aus Gesprächen mit SHK-Inhabern.', farbe='w')
@@ -1486,7 +1506,12 @@ WEB_ZEILEN = [('web', IK['globe'], 'Seite von früher', 'Wer dich googelt, finde
 
 def seite_entwurf_webdesign(pfad='/start-neu/webdesign/', versteckt=True):
     h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Websites, die Bad- und Wärmepumpen-Anfragen bringen, und Monteure dazu: eine Seite je Leistung mit Ort, Karriereseite mit Bewerbung in 60 Sekunden.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_WEB5), noindex=versteckt)
-    body = web_hero(f'Wer nach<br><span class="tipp" aria-hidden="true" data-w="Badsanierung|Wärmepumpe|Heizungsbauer|Job als Monteur"><span class="tipp-t">Badsanierung</span></span><br>sucht, findet deine Seite.<span class="sr">Wer nach Badsanierung, Wärmepumpe, Heizungsbauer oder einem Job als Monteur sucht, findet deine Seite.</span>', 'Jede Leistung bekommt ihre eigene Seite mit deinem Ort, dazu kommt eine Karriereseite, gebaut mit Fotos aus deinem Betrieb.')
+    # Website-Hero auf demselben Raster wie Monteure/Aufträge (Noah, 15.11.2026: „reingepresst“): uhero, rechts der Seiten-Stapel in derselben Bühne.
+    # Suche nur dezent als Lupe in der Wortfarbe, kein weißes Suchfeld mehr.
+    body = uhero('Websites für SHK-Betriebe', f'Wer im Umkreis nach<br><span class="such-wort">{ic("search", "lupe")}{wechsel_alt(["Badsanierung", "Wärmepumpe", "Heizungsbauer"])}</span><br>sucht, findet dich.<span class="sr">Wer im Umkreis nach Badsanierung, Wärmepumpe oder Heizungsbauer sucht, findet dich.</span>',
+                 'Jede Leistung bekommt ihre eigene Seite mit deinem Ort, dazu kommt eine Karriereseite, gebaut mit Fotos aus deinem Betrieb.', 'Website besprechen', CAL_WEB, 'btn-warm',
+                 web_stapel(['entenmann', 'irlbacher'] + (['erwin-schmidt'] if ERWIN_DA else []), ['Entenmann Haustechnik · Weilheim i.OB', 'Irlbacher GmbH · Fensterbach', 'Erwin Schmidt & Sohn · Sindelfingen'], in_buehne=True),
+                 warm=True, cta_ic='monitor', zweit=(f'{"Drei" if ERWIN_DA else "Zwei"} Seiten ansehen', '#projekte'), drei_fest=True)
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
     body += vergleich_tafel(WEB_ZEILEN, kick='Vorher und nachher', h2='Die alte Seite kostet dich <span class="em w">Anfragen.</span>', kopf_heute='Heute · alte Seite', kopf_morgen='Morgen · neue Seite', farbe='w',
                             lead='Drei Stellen, an denen eine alte Seite SHK-Betriebe Aufträge und Bewerber kostet.')

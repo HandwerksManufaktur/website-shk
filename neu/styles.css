@@ -2327,17 +2327,37 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
 .uhero h1 .wechsel{color:#6DB8F5} .uhero.w h1 .wechsel{color:#FF9A57}
 .uhero h1 .wechsel-lauf{display:none}
 @media(max-width:600px){.uhero h1 .wechsel{font-size:.86em}}
-/* Website-Hero: Suchfeld, in dem getippt wird */
-.tipp{display:inline-flex;align-items:center;gap:.35em;max-width:100%;min-height:1.5em;margin:.14em 0;padding:.12em .55em .16em .45em;border-radius:var(--r-pill);background:#fff;color:var(--ink);font-size:.62em;font-weight:600;letter-spacing:-.01em;line-height:1.3;white-space:nowrap;box-shadow:var(--shadow-md)}
-.tipp::before{content:"";flex:none;width:.8em;height:.8em;border:.13em solid var(--faint);border-radius:50%;box-shadow:.42em .42em 0 -.33em var(--faint)}
-.tipp-t{min-width:6.2em;text-align:left}
-.tipp-t::after{content:"";display:inline-block;width:.08em;height:1em;margin-left:.06em;background:var(--kalt);vertical-align:-.14em;animation:tippCursor 1s steps(1) infinite}
-@keyframes tippCursor{50%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.tipp-t::after{animation:none}}
 .uhero h1 .wechsel{transition:width .4s var(--ease)} .uhero h1 .wechsel>span{transition:transform .4s var(--ease),opacity .3s var(--ease)}
-.tipp{line-height:1.2}
 /* Leistungskarten (15.11.2026): ein Raster in der Karte. Titel gehört zu seinen Punkten: Etikett → Titel 20, Titel → Punkte 12, Punkte → Knopf 24, Rand oben wie unten 28 */
 .hebel-grid.drei .hebel-karte .txt{padding:28px}
 .hebel-grid.drei .hebel-karte .chip{margin-bottom:20px}
 .hebel-grid.drei .hebel-karte h3{margin-bottom:0;line-height:1.15}
 .hebel-grid.drei .hebel-karte ul{margin:12px 0 24px;gap:8px}
+/* Unterseiten-Heros auf EINEM Raster (Noah, 15.11.2026: „die Heros der drei Unterseiten müssen gleich aussehen, auch gleich hoch“).
+   Monteure, Aufträge und Website: gleiche Spalten, Bühne fest hoch, Einleitung mit fester Zeilenzahl, damit Knöpfe und Vertrauenszeile
+   überall auf derselben Höhe stehen. Website-Stapel füllt dieselbe Bühne wie die drei Handys. Mindestens 32 px Luft zur Überschrift. */
+.uhero.kurz{--bh:600px}
+@media(min-width:901px){.uhero.kurz .wrap,.uhero.kurz .wrap:has(.buehne-phones.drei){grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;align-items:end}}
+.uhero.kurz .txt{padding-bottom:80px}
+.uhero.kurz .lead{min-height:3lh}
+.uhero.kurz .buehne-phones{height:var(--bh);box-sizing:border-box;align-self:end}
+.uhero.kurz .buehne-phones:has(.web-stapel){position:relative}
+.uhero.kurz .web-stapel{position:absolute;top:16px;bottom:14px;left:-5%;right:-5%;width:auto;height:auto;aspect-ratio:auto;margin:0}
+.uhero.kurz .web-stapel .browser{width:84%;aspect-ratio:16/11.5}
+.uhero.kurz .web-stapel .s3{top:0;left:0}
+.uhero.kurz .web-stapel .s2{top:50%;left:8%;translate:0 -50%}
+.uhero.kurz .web-stapel .s1{top:auto;bottom:0;left:16%}
+.such-wort{white-space:nowrap}
+.uhero h1 .lupe{width:.6em;height:.6em;margin-right:.14em;vertical-align:middle;position:relative;top:-.06em;color:#6DB8F5;stroke-width:2.4}
+.uhero.w h1 .lupe{color:#FF9A57}
+@media(min-width:901px) and (max-width:1180px){.uhero.kurz .wrap{column-gap:48px}}
+@media(max-width:760px){
+  .uhero.kurz{--bh:480px}
+  .uhero.kurz .wrap{column-gap:0}
+  .uhero.kurz .txt{padding-bottom:36px}
+  .uhero.kurz .lead{min-height:4lh}
+  .uhero.kurz .web-stapel{top:8px;bottom:0;left:0;right:0}
+  .uhero.kurz .web-stapel .browser{width:90%}
+  .uhero.kurz .web-stapel .s2{left:5%}
+  .uhero.kurz .web-stapel .s1{left:10%}
+}

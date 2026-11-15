@@ -648,6 +648,7 @@ def ueber_offen(kurz=True):
       <p>Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
       <p>Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p>
       <p>In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
+      <p>Und genau das setzen wir jetzt für deinen Betrieb um.</p>
       <div class="gruender"><img class="rund-bart" src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>150<span>+</span></b><small>Handwerks&shy;betriebe betreut</small></div><div class="stat"><b>8<span>+</span></b><small>Jahre Erfahrung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
@@ -702,7 +703,7 @@ def faq(fragen=FAQ_START, h2='Bevor du <span class="em k">fragst.</span>', satz=
     return f'''<section class="faq" id="faq">
   <div class="wrap"><div class="faq-grid">
     <div class="links rv"><p class="kick">Häufige Fragen</p><h2 class="d">{h2}</h2><p>{satz}</p>
-      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-kopf-nah.jpg" alt="Noah Seelau" width="400" height="400"><span><b>Deine Frage steht nicht dabei?</b><small>Am Telefon bist du direkt bei mir.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
+      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Deine Frage steht nicht dabei? Dann ruf einfach an.</b><small>Noah Seelau, Gründer der HandwerksManufaktur</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
     </div>
     <div class="faq-liste rv" data-d="1">{items}</div>
   </div></div>
@@ -925,6 +926,7 @@ def ueber_werdegang():
     <h2 class="d rv">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
     <p class="lead rv">Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
     <p class="rv werdegang-satz">Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p><p class="rv werdegang-satz">In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
+    <p class="rv werdegang-satz">Und genau das setzen wir jetzt für deinen Betrieb um.</p>
     <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
   </div>
 </div></div></section>'''
@@ -965,7 +967,7 @@ def seite_ueber():
 
 def seite_potenzial():
     h = kopf('Potenzialanalyse für SHK-Betriebe: in 30 Minuten durchgerechnet', 'Wir rechnen in 30 Minuten durch, was in deiner Region an Bewerbungen oder Bad- und Wärmepumpen-Anfragen drin ist. Termin online aussuchen.', '/potenzialanalyse/')
-    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Potenzialanalyse</p><h1 class="h-xl rv" data-d="1">Was ist in deiner Region <span class="em w">drin?</span></h1><p class="lead rv" data-d="2">Wir rechnen durch, was in deinem Umkreis an Bewerbungen oder Bad-Anfragen drin ist. Das Gespräch dauert 30 Minuten und kostet nichts.</p></div></section>
+    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Potenzialanalyse</p><h1 class="h-xl rv start-gross" data-d="1">Was ist in deiner Region <span class="em w">drin?</span></h1><p class="lead rv" data-d="2">Wir rechnen durch, was in deinem Umkreis an Bewerbungen oder Bad-Anfragen drin ist. Das Gespräch dauert 30 Minuten und kostet nichts.</p></div></section>
 {kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')}
 '''
     body += faq([FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[4]], 'Vor dem <span class="em k">Termin.</span>')

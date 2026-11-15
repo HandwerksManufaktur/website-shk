@@ -938,7 +938,7 @@ def seite_ueber():
   <div class="sec-kopf"><div><p class="kick k rv">Wie wir arbeiten</p><h2 class="d rv">Kleines Team. <span class="em k">Kurze Wege.</span></h2></div><p class="lead rv">Du sprichst von Anfang bis Ende mit denselben Leuten. Das Erstgespräch, die Planung und die Kampagne macht dasselbe kleine Team.</p></div>
   {vorteile_bild([('', v_logos(), 'Nur Handwerk, seit 2019', 'Wir arbeiten nur für Handwerksbetriebe und wissen, was einen Monteur zum Wechseln bringt.'), ('', v_kachelwand(), 'Shooting bei dir im Betrieb', 'Wir fotografieren dein Team im Lager, im Heizungskeller und auf der Baustelle. Diese Bilder laufen in deinen Anzeigen.'), ('', v_kurve(), 'Wir prüfen die Zahlen', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet, und regeln nach, wenn etwas nicht läuft.')])}
 </div></section>'''
-    body += stimmen()
+    body += stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit')
     h = h.replace('<main>', '<main class="takt">', 1)   # einheitliche Abstände wie auf den anderen Seiten (Noah, 15.11.2026)
     return h + body + fuss()
 

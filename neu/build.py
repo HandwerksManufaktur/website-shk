@@ -643,9 +643,11 @@ def ueber_offen(kurz=True):
       <figure class="gross"><img src="/assets/fotos/noah-laptop-hoch.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="980" height="1333" style="object-position:50% 30%"></figure>
     </div>
     <div class="txt">
-      <p class="kick">Wer dahinter steht</p>
-      <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
-      <p>Seit 8 Jahren arbeiten wir nur für Handwerksbetriebe, über 150 waren es bisher. Was ein SHK-Betrieb braucht, musst du uns nicht erklären.</p>
+      <p class="kick">Du bist auf der Baustelle daheim. Wir im Internet.</p>
+      <h2 class="d">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
+      <p>Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
+      <p>Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p>
+      <p>In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
       <div class="gruender"><img class="rund-bart" src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>150<span>+</span></b><small>Handwerks&shy;betriebe betreut</small></div><div class="stat"><b>8<span>+</span></b><small>Jahre Erfahrung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
@@ -950,7 +952,7 @@ def v_kachelwand():
 
 def seite_ueber():
     h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit 2019 nur Handwerk, über 150 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
-    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Marketing für Handwerks&shy;betriebe, <span class="em w">seit 2019.</span></h1><p class="lead rv" data-d="2">Für SHK-Betriebe machen wir Anzeigen für Monteure, Bäder und Wärmepumpen. Wir drehen bei dir im Betrieb, mit deinen Leuten vor der Kamera.</p></div></section>
+    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv" data-d="1">Marketing für Handwerks&shy;betriebe, <span class="em w">seit 2019.</span></h1><p class="lead rv" data-d="2">Wer wir sind, wie wir arbeiten<br>und warum wir das Handwerk so gut kennen.</p></div></section>
 '''
     body += ueber_werdegang() + team()
     body += f'''<section class="sec" id="wie"><div class="wrap">

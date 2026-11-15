@@ -2361,3 +2361,9 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
   .uhero.kurz .web-stapel .s2{left:5%}
   .uhero.kurz .web-stapel .s1{left:10%}
 }
+
+/* Über-uns-Text: alle Absätze in Lead-Größe, kein Größenbruch zwischen erstem und weiteren Absätzen (Noah, 15.11.2026) */
+.ueber.offen .txt > p:not(.kick){font-size:20px;line-height:1.6}
+.werdegang-satz{font-size:20px}
+@media(max-width:760px){.ueber.offen .txt > p:not(.kick),.werdegang-satz{font-size:18px}}
+@media(max-width:760px){p.lead:has(+ .werdegang-satz){font-size:18px}}

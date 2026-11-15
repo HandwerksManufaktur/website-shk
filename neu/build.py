@@ -1494,7 +1494,7 @@ def seite_entwurf_webdesign(pfad='/start-neu/webdesign/', versteckt=True):
         ('w', 'camera', 'Fotos bei dir', 'Wir fotografieren dein Team im Betrieb, den Entwurf siehst du am Handy.', ''),
         ('k', 'rocket', 'Seite geht online', 'Je eine Seite für Bad, Heizung und Wärmepumpe, dazu die Jobs-Seite.', '')])
     body += web_projekte(kick='Die Ergebnisse', lead='Jede Seite scrollt von selbst durch, sobald sie im Bild ist.')
-    body += stimmen(STIMMEN_WEB, 'Was Betriebe über <span class="em k">ihre Seite schreiben.</span>', kick='Die Zusammenarbeit')
+    body += stimmen(STIMMEN_WEB, 'Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit')
     body += faq(FAQ_WEB5, 'Bevor du <span class="em w">fragst.</span>', 'Preis, Dauer und was mit der alten Seite passiert, kurz beantwortet.')
     body += kontakt('Welche Aufträge soll <span class="em w">deine Seite bringen?</span>', kick='Dein nächster Schritt', satz='Wir schauen uns vorher an, was es von dir im Netz gibt, und sagen dir, wo du bei Google heute stehst.', wahl=WEB_WAHL)
     h = h.replace('<main>', '<main class="takt">', 1)   # einheitliche Abstände (Noah, 15.11.2026), Regeln in styles.css „Takt“

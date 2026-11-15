@@ -2332,3 +2332,8 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
 @media(prefers-reduced-motion:reduce){.tipp-t::after{animation:none}}
 .uhero h1 .wechsel{transition:width .4s var(--ease)} .uhero h1 .wechsel>span{transition:transform .4s var(--ease),opacity .3s var(--ease)}
 .tipp{line-height:1.2}
+/* Leistungskarten (15.11.2026): ein Raster in der Karte. Titel gehört zu seinen Punkten: Etikett → Titel 20, Titel → Punkte 12, Punkte → Knopf 24, Rand oben wie unten 28 */
+.hebel-grid.drei .hebel-karte .txt{padding:28px}
+.hebel-grid.drei .hebel-karte .chip{margin-bottom:20px}
+.hebel-grid.drei .hebel-karte h3{margin-bottom:0;line-height:1.15}
+.hebel-grid.drei .hebel-karte ul{margin:12px 0 24px;gap:8px}

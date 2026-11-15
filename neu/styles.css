@@ -2376,3 +2376,12 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
 
 /* Handy: lange Zahlen-Bezeichnung („Stelle besetzt: Anlagenmechaniker SHK") lief über Symbol und Kasten hinaus — darf umbrechen */
 @media(max-width:760px){.fall-gross .zahl small,.fall-grid.drei .zahl small{white-space:normal;overflow-wrap:anywhere}}
+
+/* Über-uns: das Foto richtet sich nach dem Text, nicht umgekehrt (Noah, 15.11.2026: „Sektion gleich groß wie das Foto“) */
+@media(min-width:901px){
+.werdegang-grid{align-items:stretch}
+.werdegang-bild{position:relative;height:auto!important;min-height:0!important}
+.werdegang-bild img,.werdegang-bild img[width][height]{position:absolute;inset:0;width:100%;height:100%}
+.ueber.offen .bilder.nur-noah{display:block;position:relative}
+.ueber.offen .bilder.nur-noah .gross{position:absolute;inset:0;aspect-ratio:auto}
+}

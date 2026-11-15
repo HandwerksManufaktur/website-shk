@@ -618,9 +618,9 @@ def reels():
 STIMMEN = [
     ('Franz Gallenberger', 'Sanitär · Heizung · Klimatechnik', '„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. (…)“'),
     ('Benjamin Senftleben', 'Senftleben Haustechnik, Ehingen', '„(…) Wir sind sehr zufrieden! Auch der Kontakt mit Noah ist immer freundlich. (…)“'),
-    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„(…) Alle gewünschten Details wurden super umgesetzt. (…)“'),
+    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„(…) Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit (…)“'),
     ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! (…)“'),
-    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…)“'),
+    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) verlief die Umsetzung reibungslos (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“'),
 ]
 STIMMEN_LOGO = {'Franz Gallenberger': 'gallenberger', 'Benjamin Senftleben': 'senftleben', 'Lanzinger GmbH': 'lanzinger', 'Andrea Süßmeier': 'suessmeier', 'Hannes Schmidt GmbH': 'hannes-schmidt', 'Alisa Kirchner': 'kirchner', 'Isabella Rauch': 'ressle'}
 def stimmen(liste=None, h2='Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span>', kick='Stimmen aus der Branche'):
@@ -1341,10 +1341,10 @@ def seite_region(r):
 # HWM-Leistungsseite (firma/website/websites, /website-shk). Bewertungen wörtlich, Kürzungen mit (…).
 # 🔴 Vor dem Sichtbarmachen: „Seite ansehen“-Links auf die Kundendomains stellen (heute Vorschau-Adressen) und VERSTECKT leeren.
 STIMMEN_WEB = [
-    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„Reibungsloser Ablauf bis zur Fertigstellung der Homepage. (…)“'),
+    ('Lanzinger GmbH', 'Sanitär · Heizung · Klimatechnik', '„(…) Alle gewünschten Details wurden super umgesetzt. Vielen Dank für die einwandfreie Zusammenarbeit (…)“'),
     ('Benjamin Senftleben', 'Senftleben Haustechnik, Ehingen', '„Noah hat unsere Homepage erstellt und betreut diese. Wir sind sehr zufrieden! (…)“'),
     ('Franz Gallenberger', 'Sanitär · Heizung · Klimatechnik', '„(…) Vom ersten Kontakt bis zur Umsetzung hat wirklich alles wunderbar funktioniert. (…)“'),
-    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…)“'),
+    ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) verlief die Umsetzung reibungslos (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“'),
     ('Andrea Süßmeier', 'Süßmeier Heizungstechnik · SHK', '„Zusammenarbeit mit Hr. Seelau der HandwerksManufaktur ist nur zu empfehlen! (…)“'),
 ]
 FAQ_WEB = [

@@ -2367,3 +2367,7 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
 .werdegang-satz{font-size:20px}
 @media(max-width:760px){.ueber.offen .txt > p:not(.kick),.werdegang-satz{font-size:18px}}
 @media(max-width:760px){p.lead:has(+ .werdegang-satz){font-size:18px}}
+
+/* Über-uns-Hero gleich groß wie die anderen Unterseiten-Heros, kein Größenbruch (Noah, 15.11.2026) */
+.hero h1.ueber-h1{font-size:clamp(32px,3.7vw,54px)}
+@media(max-width:760px){.hero h1.ueber-h1{font-size:clamp(28px,8.2vw,40px)}}

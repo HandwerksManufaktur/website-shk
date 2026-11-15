@@ -802,7 +802,7 @@ def seite_start_neu(pfad='/start-neu/', versteckt=True):
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
     <p class="kick rv">Der Partner für SHK-Betriebe</p>
-    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Mehr {wechsel_alt(['Monteure', 'Bad-Aufträge', 'Wärmepumpen-Aufträge'])}</span></span><span class="zl" aria-hidden="true"><span>aus deinem Umkreis.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Live in unter 2 Wochen.</span></span><span class="sr">Mehr Monteure und Aufträge aus deinem Umkreis. Live in unter 2 Wochen.</span></h1>
+    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Mehr {wechsel_alt(['Monteure', 'Bad-Aufträge', 'Heizungs-Aufträge'])}</span></span><span class="zl" aria-hidden="true"><span>aus deinem Umkreis.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Live in unter 2 Wochen.</span></span><span class="sr">Mehr Monteure und Aufträge aus deinem Umkreis. Live in unter 2 Wochen.</span></h1>
     <p class="lead rv" data-d="2">Wir bringen dir Monteure und Aufträge für Bad und Wärmepumpe aus deinem Umkreis und bauen die Website dazu.</p>
     <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="#kontakt">{ic('calendar','ic')}Erstgespräch vereinbaren</a><a class="btn btn-white btn-lg" href="#fallstudien">{ic('play','ic')}Fallstudien ansehen</a></div>
     <div class="rv" data-d="4">{trust()}</div>

@@ -2385,3 +2385,6 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
 .ueber.offen .bilder.nur-noah{display:block;position:relative}
 .ueber.offen .bilder.nur-noah .gross{position:absolute;inset:0;aspect-ratio:auto}
 }
+/* Bewertungs-Laufband: mehr Luft zur nächsten Sektion (Noah, 15.11.2026) */
+main.takt>section.stimmen:not(.hero):not(.uhero):not(.band):not(:last-of-type){padding-bottom:48px!important}
+@media(max-width:760px){main.takt>section.stimmen:not(.hero):not(.uhero):not(.band):not(:last-of-type){padding-bottom:32px!important}}

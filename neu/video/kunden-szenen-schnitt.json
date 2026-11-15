@@ -12,10 +12,10 @@
   "quellpixel_je_zielpixel": 1.95
  },
  "erwin-schmidt": {
-  "sekunde": 28.8,
+  "sekunde": 48.0,
   "kopf_x": 0.5,
   "kopf_y": 0.215,
-  "quellpixel_je_zielpixel": 3.37
+  "quellpixel_je_zielpixel": 2.99
  },
  "senftleben": {
   "sekunde": 82.8,
@@ -30,10 +30,10 @@
   "quellpixel_je_zielpixel": 1.91
  },
  "irlbacher": {
-  "sekunde": 25.27,
+  "sekunde": 15.0,
   "kopf_x": 0.5,
   "kopf_y": 0.215,
-  "quellpixel_je_zielpixel": 1.87
+  "quellpixel_je_zielpixel": 1.75
  },
  "sussmann-mirjana": {
   "sekunde": 3.7,
@@ -46,11 +46,5 @@
   "kopf_x": 0.5,
   "kopf_y": 0.215,
   "quellpixel_je_zielpixel": 3.42
- },
- "erwin-schmidt-meike": {
-  "sekunde": 48.0,
-  "kopf_x": 0.5,
-  "kopf_y": 0.215,
-  "quellpixel_je_zielpixel": 2.99
  }
 }

@@ -47,16 +47,16 @@ SZENEN = [
     # ── Umlauf 1: jeder Betrieb einmal ──
     dict(betrieb='Sussmann', wer='Patrick Wähnl im Lager', quelle='drive:18ng_habZYeS93k-Kslk3rCGAJaXpqY3e', datei='Sussmann Hooks (32).MP4', ab=2.5, dauer=6),   # Noah 19.10.: „von patrick hätte ich gerne den ausschnitt im lager drin“
     dict(betrieb='Fischer', wer='Bettina Tittmann im Lager an der Kiste', quelle='kunden/fischer-chemnitz/videos/rohmaterial/b2.mp4', datei='Bodys - Fischer (2).MP4 (Proxy)', ab=58, dauer=2.5, bild=15),   # Logo 1:1 geprüft: alle drei Symbole + FISCHER frei
-    dict(betrieb='Erwin Schmidt', wer='Florian Schmidt lächelt in der Badausstellung', quelle='drive:1cTO1f2TFeT2tXk70QJN3_4QLYDUU6fJH', datei='Erwin Schmidt Videos (1) - Skript 1.MP4', ab=27.5, dauer=4, bild=39),
+    dict(betrieb='Erwin Schmidt', wer='Meike im Lager vor den Regalkästen', quelle='drive:1234ziq-iZdt-irLxt0nd7-Hsj5HkDwHk', datei='Erwin Schmidt Videos (8) - Skript 5 Meike.MP4', ab=46, dauer=5, bild=60),   # Erwin Schmidt jetzt nur noch mit Meike (Florian raus, Noah 15.11.2026); ab 48 s lächelt sie, bei 49,5 s lacht sie
     dict(betrieb='Senftleben', wer='Benjamin Senftleben steht vor dem Firmenwagen und lacht', quelle='drive:1rSxSZJGqGEnIZ4qJeNti8Rq-ygGvPd16', datei='LeadGen/Skript 1 - 1.MP4', ab=77, dauer=7, bild=174),   # bei Bild 24–29 Zunge raus
     dict(betrieb='Stimpfle', wer='Yannick Stimpfle lächelt, Werkstatt', quelle='kunden/stimpfle/videos/rohmaterial/c1.mp4', datei='CTA (Proxy)', ab=21.5, dauer=2, bild=9),
-    dict(betrieb='Irlbacher', wer='Josef Irlbacher vor dem Firmenwagen', quelle='drive:1m-aq3JRkKiYh-hzbfRZR2R5DoBgA61ji', datei='Arbeitsclips/b2.mp4 (Proxy)', ab=20, dauer=9.5),   # ab 30 s Handgesten; 19.10.: h6 (lacht) hatte den Kopf bei 15 % ganz oben → Match Cut nur mit 1,6-fachem Zoom; b2 derselbe Wagen, Kopf bei 23 %
+    dict(betrieb='Irlbacher', wer='Josef Irlbacher zeigt in die Kamera, vor dem Firmenwagen', quelle='drive:1lTRU_crJucjfIMaimrS6ZjTxUjN7C7Pt', datei='Arbeitsclips/c1.mp4 (Proxy)', ab=14.8, dauer=2.5, bild=6, frontal_min=0.75),   # Noah 15.11.2026: andere Szene, in der er in die Kamera zeigt; Zeigegeste bei 15,75 s, Blick in die Kamera, Logo auf dem Polo frei
     # ── danach drei weitere Personen; nach Meike geht es von vorn los (Noah 19.10.: „nimm nicht zweimal so komisch irlbacher und fischer,
     #    sondern mach dann einfach ab dem clip von meike schluss“) ──
     dict(betrieb='Sussmann', id='sussmann-mirjana', wer='Mirjana Wähnl vor der Sussmann-Logowand', quelle='drive:1halUBA2cGwhBz5GF4YmQWQfMjl_eRJEk', datei='Sussmann Hooks (7).MP4', ab=3.5, dauer=3),
     dict(betrieb='Senftleben', id='senftleben-mitarbeiter', wer='Mitarbeiter von Senftleben spricht im Interview', quelle='drive:1UoQmbmYsOkSTgdlFyMja62lpe5nr5TpV', datei='Recruiting/MA-Interviews/Senftleben Mitarbeiter (1).MP4', ab=19.5, dauer=6, bild=102),   # Noah 19.10.: „ne sequenz wo der gerade redet“; Mitarbeiter (4) kneift fast durchgehend die Augen zu
-    dict(betrieb='Erwin Schmidt', id='erwin-schmidt-meike', wer='Meike im Lager vor den Regalkästen', quelle='drive:1234ziq-iZdt-irLxt0nd7-Hsj5HkDwHk', datei='Erwin Schmidt Videos (8) - Skript 5 Meike.MP4', ab=46, dauer=5, bild=60),   # ab 48 s lächelt sie, bei 49,5 s lacht sie
 ]
+# Raus (15.11.2026): Florian Schmidt (Erwin Schmidt & Sohn) ganz; Irlbacher-Szene b2 (vor dem Firmenwagen, ohne Geste) durch c1 mit Zeigegeste ersetzt.
 # Raus (18.10.2026): Josef im Büro (dreht den Kopf weg), Josef in der Sonne (kneift die Augen), alle Clips mit eingebrannten
 # Untertiteln aus dem Zusammenschnitt vom 27.09., drei weitere Bettina-Szenen, Senftleben-Szenen im Sitzen.
 
@@ -106,12 +106,14 @@ def ruhigste_sekunde(d, fest=None):
     best = None
     for s in ([fest] if fest is not None else range(len(d) - BILDER + 1)):
         f = d[s:s + BILDER]
-        if any(x is None for x in f): continue
+        if fest is None and any(x is None for x in f): continue
+        f = [x for x in f if x]
+        if len(f) < BILDER * 0.7: continue                  # Startbild fest gewählt: einzelne Aussetzer (Handgeste vor dem Gesicht) sind erlaubt, solange 70 % erkannt sind
         u = st.pstdev([x['cx'] for x in f]) * 10 + st.pstdev([x['cy'] for x in f]) * 10 + (max(x['h'] for x in f) / min(x['h'] for x in f) - 1) * 3
         if best is None or u < best[0]: best = (u, s)
     if best is None: sys.exit('keine Sekunde mit durchgehend frontalem Gesicht')
-    f = d[best[1]:best[1] + BILDER]
-    mitte = lambda k: sorted(x[k] for x in f)[BILDER // 2]
+    f = [x for x in d[best[1]:best[1] + BILDER] if x]
+    mitte = lambda k: sorted(x[k] for x in f)[len(f) // 2]
     return best[1], dict(cx=mitte('cx'), cy=mitte('cy'), h=mitte('h'), W=f[0]['W'], H=f[0]['H'])
 
 
@@ -160,12 +162,14 @@ def ausrichten(fenster, start, kopf, ziel):
     return lage, cw / 540
 
 
-def schneiden():
+def schneiden(nur=None):
     SZENEN_ORDNER.mkdir(exist_ok=True)
-    token = drive_token() if any(s['quelle'].startswith('drive:') for s in SZENEN) else ''
-    protokoll = {}
+    liste = [s for s in SZENEN if nur is None or sid(s) in nur]
+    token = drive_token() if any(s['quelle'].startswith('drive:') for s in liste) else ''
+    pf = HIER / 'kunden-szenen-schnitt.json'
+    protokoll = json.loads(pf.read_text(encoding='utf-8')) if nur and pf.exists() else {}
     with tempfile.TemporaryDirectory() as tmp:
-        for sz in SZENEN:
+        for sz in liste:
             # Zwischenspeicher (SZENEN_CACHE=<Ordner>): gleiche Quelle + Startsekunde + Länge wird nicht neu geladen
             cache = os.environ.get('SZENEN_CACHE')
             schluessel = f"{sid(sz)}-{sz['quelle'].split(':')[-1].replace('/', '_')[-24:]}-{sz['ab']}-{sz['dauer']}.mp4"
@@ -225,12 +229,13 @@ def pruefen():
             fehler.append(f'{a} zweimal hintereinander (Szene {i + 1} → {(i + 1) % len(folge) + 1})' + (' über die Schleife' if i == len(folge) - 1 else ''))
     # Kopf je Szene: Lage + Größe gleich, Kopf durchgehend frontal (dreht er weg, fällt die Erkennung aus)
     kd = gesichter(ZIEL, verkl=1.0)
+    min_frontal = {sid(s): s['frontal_min'] for s in SZENEN if 'frontal_min' in s}   # Handgeste vor dem Gesicht lässt die Haar-Erkennung aussetzen, ohne dass er wegschaut (von Hand im Kontaktbogen geprüft)
     werte = []
     for k in range(len(grenzen) - 1):
         f = kd[grenzen[k]:grenzen[k + 1]]; b = folge[k] if k < len(folge) else '?'
         erkannt = [x for x in f if x]
         quote = len(erkannt) / max(1, len(f))
-        if quote < 0.9:
+        if quote < min_frontal.get(b, 0.9):
             fehler.append(f'{b}: Kopf nur in {quote:.0%} der Bilder frontal (wegdrehen?)'); continue
         m = lambda key: sorted(x[key] for x in erkannt)[len(erkannt) // 2]
         cx, cy, h = m('cx'), m('cy'), m('h'); werte.append((b, cx, cy, h))
@@ -242,7 +247,9 @@ def pruefen():
 
 
 if __name__ == '__main__':
-    if '--schneiden' in sys.argv:
+    if '--nur' in sys.argv:                              # --nur id1,id2: nur diese Szenen neu schneiden
+        schneiden(sys.argv[sys.argv.index('--nur') + 1].split(','))
+    elif '--schneiden' in sys.argv:
         schneiden()
     if '--pruefen' not in sys.argv:
         bauen()

@@ -643,8 +643,8 @@ def ueber_offen(kurz=True):
       <figure class="gross"><img src="/assets/fotos/noah-laptop-hoch.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="980" height="1333" style="object-position:50% 30%"></figure>
     </div>
     <div class="txt">
-      <p class="kick">Du beherrschst dein Handwerk. Wir unseres.</p>
-      <h2 class="d">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
+      <p class="kick">Wer dahinter steht</p>
+      <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
       <p>Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
       <p>Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p>
       <p>In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>

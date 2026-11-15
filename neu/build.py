@@ -648,7 +648,7 @@ def ueber_offen(kurz=True):
       <p>Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
       <p>Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p>
       <p>In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
-      <p>Und genau das setzen wir jetzt für deinen Betrieb um.</p>
+      <p>Wenn du Lust hast, lass uns einfach mal quatschen.</p>
       <div class="gruender"><img class="rund-bart" src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>150<span>+</span></b><small>Handwerks&shy;betriebe betreut</small></div><div class="stat"><b>8<span>+</span></b><small>Jahre Erfahrung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
@@ -703,7 +703,7 @@ def faq(fragen=FAQ_START, h2='Bevor du <span class="em k">fragst.</span>', satz=
     return f'''<section class="faq" id="faq">
   <div class="wrap"><div class="faq-grid">
     <div class="links rv"><p class="kick">Häufige Fragen</p><h2 class="d">{h2}</h2><p>{satz}</p>
-      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Deine Frage steht nicht dabei? Dann ruf einfach an.</b><small>Noah Seelau, Gründer der HandwerksManufaktur</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
+      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Deine Frage steht nicht dabei?</b><small>Dann ruf einfach an.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
     </div>
     <div class="faq-liste rv" data-d="1">{items}</div>
   </div></div>
@@ -806,9 +806,9 @@ def seite_start():
 
 def hebel_drei():
     """Drei Einstiege statt zwei: Monteure · Aufträge · Website, jede Karte führt auf ihre Unterseite (Noah, 14.11.2026: Startseite muss Website, Leadgen und Recruiting abdecken, roter Faden)."""
-    k = [('', '/monteure/', 'users', 'Leistung 1 · Monteure', 'Neue Monteure.', ['Bewerbung in 60 Sekunden', 'Vorab gefiltert nach Gewerk', 'Fotos aus deinem Betrieb'], 'Monteure finden', '/assets/fotos/klass-hebel-monteure.jpg', 'Monteur von Heizung Sanitär Klaß am Firmenwagen', 1920, 1277, '62% 40%'),
-         (' w', '/auftraege/', 'bath', 'Leistung 2 · Aufträge', 'Neue Aufträge.', ['Für Bad und Wärmepumpe', 'Jede Anfrage gehört dir allein', 'Vorab gefiltert nach Eigentum'], 'Aufträge gewinnen', '/assets/fotos/fischer-team-wagen.jpg', 'Das Team der Fischer GmbH vor den Firmenwagen, vorne zwei mit verschränkten Armen', 1600, 1062, '56% 42%'),
-         (' web', '/webdesign/', 'globe', 'Leistung 3 · Website', 'Neue Website.', ['Eine Seite je Leistung mit deinem Ort', 'Für Google optimiert', 'Jobs-Seite inklusive'], 'Websites ansehen', '/assets/webdesign/entenmann-start-desk.jpg', 'Startseite von Entenmann Haustechnik', 1200, 3200, '50% 0%')]   # Fischer-Teamfoto statt Klaß-Planung, Entenmann statt Irlbacher (bei Irlbacher lag das Menü über dem Logo), Noah 15.11.2026
+    k = [('', '/monteure/', 'users', 'Leistung 1 · Monteure', 'Gute Monteure.', ['Bewerbung in 60 Sekunden', 'Vorab gefiltert nach Gewerk', 'Fotos aus deinem Betrieb'], 'Monteure finden', '/assets/fotos/klass-hebel-monteure.jpg', 'Monteur von Heizung Sanitär Klaß am Firmenwagen', 1920, 1277, '62% 40%'),
+         (' w', '/auftraege/', 'bath', 'Leistung 2 · Aufträge', 'Lukrative Aufträge.', ['Für Bad und Wärmepumpe', 'Jede Anfrage gehört dir allein', 'Vorab gefiltert nach Eigentum'], 'Aufträge gewinnen', '/assets/fotos/fischer-team-wagen.jpg', 'Das Team der Fischer GmbH vor den Firmenwagen, vorne zwei mit verschränkten Armen', 1600, 1062, '56% 42%'),
+         (' web', '/webdesign/', 'globe', 'Leistung 3 · Website', 'Starke Website.', ['Eine Seite je Leistung mit deinem Ort', 'Für Google optimiert', 'Jobs-Seite inklusive'], 'Websites ansehen', '/assets/webdesign/entenmann-start-desk.jpg', 'Startseite von Entenmann Haustechnik', 1200, 3200, '50% 0%')]   # Fischer-Teamfoto statt Klaß-Planung, Entenmann statt Irlbacher (bei Irlbacher lag das Menü über dem Logo), Noah 15.11.2026
     karten = ''.join(f'<a class="hebel-karte{kl} rv" data-d="{i}" href="{u(href)}"><div class="txt"><span class="chip">{ic(icn)}{chip}</span><h3>{h3}</h3><ul>' + ''.join(f'<li>{ic("checkmark")}{x}</li>' for x in pts) + f'</ul><span class="btn btn-white">{btn} <span aria-hidden="true">→</span></span></div><div class="bild"><img src="{img}" alt="{alt}" loading="lazy" width="{w}" height="{h}" style="object-position:{pos}"></div></a>' for i, (kl, href, icn, chip, h3, pts, btn, img, alt, w, h, pos) in enumerate(k))
     return f'''<section class="hebel" id="hebel">
   <div class="wrap">
@@ -926,7 +926,7 @@ def ueber_werdegang():
     <h2 class="d rv">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
     <p class="lead rv">Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
     <p class="rv werdegang-satz">Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p><p class="rv werdegang-satz">In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
-    <p class="rv werdegang-satz">Und genau das setzen wir jetzt für deinen Betrieb um.</p>
+    <p class="rv werdegang-satz">Wenn du Lust hast, lass uns einfach mal quatschen.</p>
     <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
   </div>
 </div></div></section>'''
@@ -954,7 +954,7 @@ def v_kachelwand():
 
 def seite_ueber():
     h = kopf('Über uns: HandwerksManufaktur, Marketing nur fürs Handwerk', 'Seit 2019 nur Handwerk, über 150 Betriebe betreut, 5,0 auf Google. Wer hinter den Kampagnen für SHK-Betriebe steht und wie wir arbeiten.', '/ueber-uns/')
-    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv ueber-h1" data-d="1">Du beherrschst dein Handwerk.<br><span class="em w">Wir unseres.</span></h1><p class="lead rv" data-d="2">Wer wir sind, wie wir arbeiten<br>und warum wir das Handwerk so gut kennen.</p></div></section>
+    body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Über uns</p><h1 class="h-xl rv ueber-h1" data-d="1">Du beherrschst<br>dein Handwerk.<br><span class="em w">Wir unseres.</span></h1><p class="lead rv" data-d="2">Wer wir sind, wie wir arbeiten<br>und warum wir das Handwerk so gut kennen.</p></div></section>
 '''
     body += ueber_werdegang() + team()
     body += f'''<section class="sec" id="wie"><div class="wrap">
@@ -970,7 +970,8 @@ def seite_potenzial():
     body = f'''<section class="hero" id="start" style="padding-bottom:0"><div class="wrap"><p class="kick rv">Potenzialanalyse</p><h1 class="h-xl rv start-gross" data-d="1">Was ist in deiner Region <span class="em w">drin?</span></h1><p class="lead rv" data-d="2">Wir rechnen durch, was in deinem Umkreis an Bewerbungen oder Bad-Anfragen drin ist. Das Gespräch dauert 30 Minuten und kostet nichts.</p></div></section>
 {kontakt('Such dir den Termin aus, <span class="em w">der passt.</span>')}
 '''
-    body += faq([FAQ_ALLE[2], FAQ_ALLE[0], FAQ_ALLE[4]], 'Vor dem <span class="em k">Termin.</span>')
+    body += '<style>main.takt>section#kontakt.kontakt{padding-top:40px!important;padding-bottom:0!important}@media(max-width:760px){main.takt>section#kontakt.kontakt{padding-top:40px!important}}</style>'   # engerer Abstand Hero → Kasten → Fragen (Noah, 15.11.2026)
+    body += faq([('Was passiert in der Potenzialanalyse?', 'Wir rechnen in 30 Minuten durch, was in deinem Umkreis an Bewerbungen oder Bad- und Wärmepumpen-Anfragen drin ist. Danach weißt du, ob sich eine Kampagne für dich lohnt.'), ('Kostet die Potenzialanalyse etwas?', 'Nein, die Potenzialanalyse ist kostenlos.'), FAQ_ALLE[2], FAQ_ALLE[1], FAQ_ALLE[0], FAQ_ALLE[4], FAQ_ALLE[6]], 'Vor dem <span class="em k">Termin.</span>')
     h = h.replace('<main>', '<main class="takt">', 1)   # einheitliche Abstände wie auf den anderen Seiten (Noah, 15.11.2026)
     return h + body + fuss()
 

@@ -2373,3 +2373,6 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
 .hero h1.ueber-h1,.hero h1.start-gross{font-size:clamp(36px,5.1vw,72px);letter-spacing:-.04em;line-height:1.02}
 .hero h1.ueber-h1 .em,.hero h1.start-gross .em{font-size:1.08em}
 @media(max-width:600px){.hero h1.ueber-h1,.hero h1.start-gross{font-size:min(36px,7.8vw)}}
+
+/* Handy: lange Zahlen-Bezeichnung („Stelle besetzt: Anlagenmechaniker SHK") lief über Symbol und Kasten hinaus — darf umbrechen */
+@media(max-width:760px){.fall-gross .zahl small,.fall-grid.drei .zahl small{white-space:normal;overflow-wrap:anywhere}}

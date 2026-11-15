@@ -665,7 +665,7 @@ def team():
         return f'''<figure><img src="/assets/team/{d}.jpg" alt="{n}, {r.replace('&nbsp;', ' ').replace('&amp;', '&')}" loading="lazy" width="{ {'noah': 480, 'robert-rund': 600}.get(d, 800) }" height="{ {'noah': 480, 'robert-rund': 600}.get(d, 1000) }" style="object-position:{pos}"></figure>'''
     k = ''.join(f'''<article class="person rv" data-d="{i+1}">{bild(d, n, r, pos)}<div class="txt"><h3>{n}</h3><p>{r}</p></div></article>''' for i, (d, n, r, pos) in enumerate(TEAM))
     return f'''<section class="sec team" id="team"><div class="wrap">
-  <div class="sec-kopf"><div><p class="kick rv">Das Team</p><h2 class="d rv">Diese drei <span class="em k">bauen deine Kampagne.</span></h2></div><p class="lead rv">Noah führt das Erstgespräch, Robert dreht bei dir im Betrieb, Rudolf baut Seiten und Anzeigen.</p></div>
+  <div class="sec-kopf"><div><p class="kick rv">Das Team</p><h2 class="d rv">Kleines Team. <span class="em k">Kurze Wege.</span></h2></div><p class="lead rv">Bei uns landest du nicht in einer großen Agentur. Du sprichst von Anfang bis Ende mit denselben Leuten, und jeder im Team weiß, was bei dir gerade läuft.</p></div>
   <div class="team-grid">{k}</div>
 </div></section>'''
 
@@ -954,8 +954,8 @@ def seite_ueber():
 '''
     body += ueber_werdegang() + team()
     body += f'''<section class="sec" id="wie"><div class="wrap">
-  <div class="sec-kopf"><div><p class="kick k rv">Wie wir arbeiten</p><h2 class="d rv">Kleines Team. <span class="em k">Kurze Wege.</span></h2></div><p class="lead rv">Du sprichst von Anfang bis Ende mit denselben Leuten. Das Erstgespräch, die Planung und die Kampagne macht dasselbe kleine Team.</p></div>
-  {vorteile_bild([('', v_logos(), 'Nur Handwerk, seit 2019', 'Wir arbeiten nur für Handwerksbetriebe und wissen, was einen Monteur zum Wechseln bringt.'), ('', v_kachelwand(), 'Shooting bei dir im Betrieb', 'Wir fotografieren dein Team im Lager, im Heizungskeller und auf der Baustelle. Diese Bilder laufen in deinen Anzeigen.'), ('', v_kurve(), 'Wir prüfen die Zahlen', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet, und regeln nach, wenn etwas nicht läuft.')])}
+  <div class="sec-kopf"><div><p class="kick k rv">Wie wir arbeiten</p><h2 class="d rv">Worauf du dich <span class="em k">verlassen kannst.</span></h2></div><p class="lead rv">Wir planen deine Kampagne, drehen bei dir im Betrieb und schauen danach laufend auf die Zahlen.</p></div>
+  {vorteile_bild([('', v_logos(), 'Wir kennen dein Gewerk', 'Wir arbeiten nur für Handwerksbetriebe und wissen, was einen Monteur zum Wechseln bringt.'), ('', v_kachelwand(), 'Shooting bei dir im Betrieb', 'Wir fotografieren dein Team im Lager, im Heizungskeller und auf der Baustelle. Diese Bilder laufen in deinen Anzeigen.'), ('', v_kurve(), 'Wir prüfen die Zahlen', 'Wir sehen, was jede Anfrage und jede Bewerbung kostet, und regeln nach, wenn etwas nicht läuft.')])}
 </div></section>'''
     body += stimmen(h2='Wir lassen unsere <span class="em k">Kunden sprechen.</span>', kick='Die Zusammenarbeit')
     h = h.replace('<main>', '<main class="takt">', 1)   # einheitliche Abstände wie auf den anderen Seiten (Noah, 15.11.2026)

@@ -570,3 +570,16 @@
   const setze = v => { v.defaultPlaybackRate = TEMPO; if (v.playbackRate !== TEMPO) v.playbackRate = TEMPO; };
   document.querySelectorAll('video[muted][loop]').forEach(v => { setze(v); ['loadeddata', 'play'].forEach(e => v.addEventListener(e, () => setze(v))); });
 })();
+/* Suchfeld im Website-Hero tippt Suchbegriffe (15.11.2026); bei reduzierter Bewegung steht der erste Begriff still */
+(() => {
+  const t = document.querySelector('.tipp'); if (!t || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const feld = t.querySelector('.tipp-t'), w = t.dataset.w.split('|'); let k = 0, n = w[0].length, zurueck = true;
+  const schritt = () => {
+    n += zurueck ? -1 : 1; feld.textContent = w[k].slice(0, n);
+    let warte = zurueck ? 45 : 95;
+    if (!zurueck && n === w[k].length) { zurueck = true; warte = 2200; }
+    else if (zurueck && n === 0) { zurueck = false; k = (k + 1) % w.length; warte = 350; }
+    setTimeout(schritt, warte);
+  };
+  setTimeout(schritt, 2200);
+})();

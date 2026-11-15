@@ -214,6 +214,10 @@ def etikett_text(etikett):
     a, b = etikett.split(' · ', 1)
     return f'<span class="et-t"><span class="et-a">{a}</span><span class="et-b">{b}</span></span>'
 
+def wechsel_alt(woerter):
+    """Wechselwort wie auf der früheren Startseite (Noah, 15.11.2026: „mach es einfach wieder wie vorher“): Takt 2,6 s, Breite folgt dem Wort."""
+    return '<span class="wechsel">' + ''.join(f'<span{" class=\"an\"" if i == 0 else ""}>{w}</span>' for i, w in enumerate(woerter)) + '<i class="wechsel-lauf"></i></span>'
+
 def wechsel(woerter, takt=1800):
     """Wechselwort (Mechanik aus der früheren Startseite, main.js „.wechsel“): feste Breite des längsten Worts, damit nichts springt (Noah, 15.11.2026)."""
     return f'<span class="wechsel fest" data-takt="{takt}">' + ''.join(f'<span{" class=\"an\"" if i == 0 else ""}>{w}</span>' for i, w in enumerate(woerter)) + '<i class="wechsel-lauf"></i></span>'
@@ -539,7 +543,7 @@ def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, 
 FALL_ESS = lambda: fall_gross(ESS_LOGO, 'Florian Schmidt', 'Geschäftsführer, Erwin Schmidt &amp; Sohn GmbH, Sindelfingen', 'Erwin Schmidt & Sohn', '/assets/testimonial/ess-testimonial-poster.jpg', '/assets/testimonial/ess-testimonial.mp4', '2:48', '„Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.“', 'Erwin Schmidt &amp; Sohn in Sindelfingen, SHK-Familienbetrieb in dritter Generation, suchte einen Anlagenmechaniker für den Kundendienst. Probiert war schon einiges: Aufkleber mit QR-Code auf den Firmenwagen, die Stelle auf der eigenen Webseite. Gebracht hat das wenig. Dann liefen 4 Wochen lang Anzeigen im Umkreis, mit Fotos aus dem Betrieb und Filterfragen vor der Bewerbung.', [('25', 'Bewerbungen'), ('4', 'Wochen Kampagnen-Laufzeit'), ('1', 'Stelle besetzt: Anlagenmechaniker SHK')], '', 'Fallstudie Erwin Schmidt & Sohn: 25 Bewerbungen in 4 Wochen')
 FALL_SEN = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/testimonial/senftleben-testimonial-poster.jpg', '/assets/testimonial/senftleben-testimonial.mp4', '2:22', '„Also die Zusammenarbeit würde ich auf jeden Fall jedem empfehlen, weil das auch immer unkompliziert ist.“', '„Aufträge haben wir jetzt aktuell genügend“, sagt Benjamin Senftleben. Sein Meisterbetrieb in Ehingen, dritte Generation, ist ausgelastet. Trotzdem laufen seit Juli Anzeigen für Badsanierung im Umkreis von 25 km, mit ihm selbst vor der Kamera und Filterfragen vor der Anfrage. Nach dem Startpaket hat er verlängert, damit der Name im Kopf bleibt, wenn das nächste Bad ansteht. Werbung macht man nicht nur, wenn es gut läuft. Das hat er schon in der Schule gelernt.', [('125.000', 'Aufrufe im 25-km-Umkreis'), ('21', 'Bad-Anfragen über den Funnel'), ('10<span class="plus">+</span>', 'Vor-Ort-Termine in 2 Monaten')], 'w', 'Fallstudie Senftleben Haustechnik: 21 Bad-Anfragen in 2 Monaten')
 
-FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-lager-scharf.jpg', '', '', '„So sind wir super zufrieden.“', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Von Anfang September bis Anfang November liefen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Nach gut zwei Wochen kam der erste Auftrag. Weil die Wartezeit auf fast drei Wochen gestiegen ist, pausieren die Anzeigen bis Februar. Dann folgt die Wärmepumpe.', [('30<span class="plus">+</span>', 'Bad-Anfragen in 2 Monaten'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach gut 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH', '40% 35%', anker='fallstudie-sussmann')
+FALL_SUS = lambda: fall_gross(SUS_LOGO, 'Patrick Wähnl', 'Geschäftsführer, Erich Sussmann GmbH, Kirchheim bei München', 'Erich Sussmann GmbH', '/assets/fotos/sussmann-wagen-nebeneinander.jpg', '', '', '„So sind wir super zufrieden.“', 'Erich Sussmann ist Meisterbetrieb für Heizung, Sanitär und Klima in Kirchheim bei München. Von Anfang September bis Anfang November liefen Anzeigen für Badsanierung im Umkreis von 30 km, mit Patrick und Mirjana vor der Kamera und Filterfragen vor jeder Anfrage. „Am Anfang war es extrem“, sagt Patrick über die ersten Tage. Nach gut zwei Wochen kam der erste Auftrag. Weil die Wartezeit auf fast drei Wochen gestiegen ist, pausieren die Anzeigen bis Februar. Dann folgt die Wärmepumpe.', [('30<span class="plus">+</span>', 'Bad-Anfragen in 2 Monaten'), ('7<span class="plus">+</span>', 'Vor-Ort-Termine'), ('10.000&nbsp;€', 'Erster Auftrag nach gut 2 Wochen')], 'w', 'Patrick und Mirjana Wähnl am Empfang der Erich Sussmann GmbH', '40% 35%', anker='fallstudie-sussmann')
 FALL_SEN_REC = lambda: fall_gross(SEN_LOGO, 'Benjamin Senftleben', 'Inhaber, Senftleben Haustechnik, Ehingen', 'Senftleben Haustechnik', '/assets/fotos/senftleben-team-2026.jpg', '', '', '„21 Bewerbungen in 18 Tagen, diesmal fürs Büro.“', 'Nach dem Auftrags-Funnel ging Senftleben Haustechnik denselben Weg für eine Stelle in Lohn- und Buchhaltung: Anzeigen im Umkreis, mit dem eigenen Team im Bild, Bewerbung in 60 Sekunden ohne Lebenslauf. Nach 18 Tagen lagen 21 Bewerbungen vor, die Stelle ist besetzt.', [('21', 'Bewerbungen'), ('18', 'Tage Kampagne'), ('1', 'Stelle: Lohn &amp; Buchhaltung')], 'k', 'Das Team von Senftleben Haustechnik im Lager', '50% 40%')
 
 KLASS_LOGO = '/assets/logos-box/klass.png'
@@ -701,7 +705,7 @@ COLLAGE = [7, 34, 37, 50, 53, 56, 49,
            17, 35, 38, 52, 55, 58,
            18, 43, 48, 40, 36, 41, 44, 45, 46]
 
-def kontakt(h2='Was ist in deinem Umkreis <span class="em w">drin?</span>', kick=None, satz='Am Ende steht eine Zahl für deinen Umkreis. Reicht sie nicht, sagen wir es dir.', wahl=None):
+def kontakt(h2='Was ist in deinem <span class="em w">Umkreis drin?</span>', kick=None, satz='Am Ende steht eine Zahl für deinen Umkreis. Reicht sie nicht, sagen wir es dir.', wahl=None):
     """Potenzialanalyse — neu angesetzt (Noah, 27.09.2026, vierte Ansage: „immer noch gleich … pass es endlich an"):
     zwei gleich breite Hälften, links ein echtes Foto aus einem Kundenbetrieb, rechts drei Zeilen und die zwei Wege. Kein Avatar-Band, keine Häkchen-Liste."""
     return f'''<section class="kontakt" id="kontakt">
@@ -797,8 +801,8 @@ def seite_start_neu(pfad='/start-neu/', versteckt=True):
     # Hero-Handys (Noah, 15.11.2026): links Bad-Funnel Fischer, Mitte Video, rechts Monteur-Funnel Irlbacher. Beide mit ganzem Logo unter der Kamera-Aussparung; „Du verdienst mehr“ und die abgeschnittene Entenmann-Website sind raus.
     hero = f'''<section class="hero" id="start">
   <div class="wrap">
-    <p class="kick rv">Spezialisiert auf SHK-Betriebe</p>
-    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Der Partner</span></span><span class="zl" aria-hidden="true"><span>für SHK-Betriebe.</span></span><span class="zl wz" aria-hidden="true"><span class="em w">Wir bringen dir {wechsel(['Monteure.', 'Anlagenmechaniker.', 'Badsanierungen.', 'Wärmepumpen-Aufträge.'])}</span></span><span class="sr">Der Partner für SHK-Betriebe. Wir bringen dir Monteure, Anlagenmechaniker, Badsanierungen und Wärmepumpen-Aufträge.</span></h1>
+    <p class="kick rv">Der Partner für SHK-Betriebe</p>
+    <h1 class="h-xl hero-h1 zwei"><span class="zl" aria-hidden="true"><span>Mehr {wechsel_alt(['Monteure', 'Bad-Aufträge', 'Wärmepumpen-Aufträge'])}</span></span><span class="zl" aria-hidden="true"><span>aus deinem Umkreis.</span></span><span class="zl" aria-hidden="true"><span class="em w glut">Live in unter 2 Wochen.</span></span><span class="sr">Mehr Monteure und Aufträge aus deinem Umkreis. Live in unter 2 Wochen.</span></h1>
     <p class="lead rv" data-d="2">Wir bringen dir Monteure und Aufträge für Bad und Wärmepumpe aus deinem Umkreis und bauen die Website dazu.</p>
     <div class="hero-cta rv" data-d="3"><a class="btn btn-ink btn-lg" href="#kontakt">{ic('calendar','ic')}Erstgespräch vereinbaren</a><a class="btn btn-white btn-lg" href="#fallstudien">{ic('play','ic')}Fallstudien ansehen</a></div>
     <div class="rv" data-d="4">{trust()}</div>
@@ -1156,7 +1160,7 @@ def seite_wissen_artikel(a):
                                                               {"@type": "ListItem", "position": 2, "name": "Wissen", "item": f"{DOMAIN}/wissen/"},
                                                               {"@type": "ListItem", "position": 3, "name": html.unescape(a['h1']), "item": url}]}]
     h = kopf(a['titel'], a['beschreibung'], f"/wissen/{a['slug']}/", schema_extra=schema)
-    cta_t = a.get('cta_titel') or 'Was ist in deinem Umkreis <span class="em w">drin?</span>'
+    cta_t = a.get('cta_titel') or 'Was ist in deinem <span class="em w">Umkreis drin?</span>'
     cta_s = a.get('cta_satz') or 'In 30 Minuten rechnen wir durch, was bei dir an Bewerbungen oder Anfragen drin ist.'
     return h + kopfteil + kern + weiter + wx_cta(cta_t, cta_s, a['leistung']) + fuss()
 
@@ -1436,7 +1440,7 @@ FAQ_WEB5 = FAQ_WEB[:5]
 
 def seite_entwurf_monteure(pfad='/start-neu/monteure/', versteckt=True):
     h = kopf('Recruiting-Agentur für SHK-Betriebe: Monteure über Social Media', 'Anlagenmechaniker und Kundendiensttechniker über Anzeigen im Umkreis: Bewerbung in 60 Sekunden, vorqualifiziert. Fallstudie: 25 Bewerbungen in 4 Wochen.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_REC5), noindex=versteckt)
-    body = uhero('Monteure für SHK-Betriebe', f'Wir finden deinen<br>{wechsel(["Anlagenmechaniker.", "Monteur.", "Kundendiensttechniker."])}<br><span class="em k">Aus deiner Umgebung.</span><span class="sr">Wir finden deinen Anlagenmechaniker, Monteur oder Kundendiensttechniker. Aus deiner Umgebung.</span>', 'Wir bringen dein Angebot zu den Monteuren im Umkreis, die gerade in Arbeit sind, und du führst nur noch die Gespräche.', 'Monteure besprechen', CAL_REC, 'btn-kalt',
+    body = uhero('Monteure für SHK-Betriebe', f'Wir finden deinen<br>{wechsel_alt(["Anlagenmechaniker", "Monteur", "Heizungsbauer"])}<br>aus deinem Umkreis.<span class="sr">Wir finden deinen Anlagenmechaniker, Monteur oder Heizungsbauer aus deinem Umkreis.</span>', 'Wir bringen dein Angebot zu den Monteuren im Umkreis, die gerade in Arbeit sind, und du führst nur noch die Gespräche.', 'Monteure besprechen', CAL_REC, 'btn-kalt',
         # Mitte Irlbacher (Monteur-Stelle); Senftleben nur mit dem Abschnitt „So läuft deine Bewerbung“, nie mit dem Hero der Buchhaltungs-Stelle (Noah, 15.11.2026)
         phone('/assets/funnels/senftleben-jobs-bewerbung.jpg', 'Bewerbung', '#1E90E8', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/irlbacher-jobs-full.jpg'), 'Monteure', '#1E90E8', 'mitte', '1s') + phone(bildschirm_oben('/assets/funnels/erwin-schmidt-jobs-full.jpg'), 'Anlagenmechaniker', '#1E90E8', 'rechts', '0s'))
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
@@ -1457,7 +1461,7 @@ def seite_entwurf_monteure(pfad='/start-neu/monteure/', versteckt=True):
 
 def seite_entwurf_auftraege(pfad='/start-neu/auftraege/', versteckt=True):
     h = kopf('Anfragen für Bad und Wärmepumpe: Marketing für SHK-Betriebe', 'Bad- und Wärmepumpen-Anfragen aus deinem Umkreis, nur für deinen Betrieb, vorqualifiziert nach Objekt und Eigentum. Fallstudie: 21 Anfragen in 2 Monaten.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_LEAD5), noindex=versteckt)
-    body = uhero('Aufträge für SHK-Betriebe', f'Mehr<br>{wechsel(["Badsanierungen", "Wärmepumpen-Aufträge", "barrierearme Bäder"])}<br><span class="em w">aus deinem Umkreis.</span><span class="sr">Mehr Badsanierungen, Wärmepumpen-Aufträge und barrierearme Bäder aus deinem Umkreis.</span>', 'Wir schalten Anzeigen auf deinen Namen in deinem Einzugsgebiet, jede Anfrage gehört dir allein und du fährst nur noch zum Termin.', 'Aufträge besprechen', CAL_LEAD, 'btn-warm',
+    body = uhero('Aufträge für SHK-Betriebe', f'Mehr<br>{wechsel_alt(["Badsanierungen", "Wärmepumpen", "Badumbauten"])}<br>aus deinem Umkreis.<span class="sr">Mehr Badsanierungen, Wärmepumpen und Badumbauten aus deinem Umkreis.</span>', 'Wir schalten Anzeigen auf deinen Namen in deinem Einzugsgebiet, jede Anfrage gehört dir allein und du fährst nur noch zum Termin.', 'Aufträge besprechen', CAL_LEAD, 'btn-warm',
         phone(bildschirm_oben('/assets/funnels/fischer-leadgen-full.jpg'), 'Barrierearmes Bad', '#F5762B', 'links', '2s') + phone(bildschirm_oben('/assets/funnels/sussmann-leadgen-hero.jpg'), 'Badsanierung', '#F5762B', 'mitte', '1s') + phone(bildschirm_oben('/assets/funnels/senftleben-leadgen-full.jpg'), 'Badsanierung', '#F5762B', 'rechts', '0s'), warm=True)
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
     zeilen = [z for z in VERGLEICH if z[0] in ('portal', 'last', 'umkreis')]
@@ -1481,7 +1485,7 @@ WEB_ZEILEN = [('web', IK['globe'], 'Seite von früher', 'Wer dich googelt, finde
 
 def seite_entwurf_webdesign(pfad='/start-neu/webdesign/', versteckt=True):
     h = kopf('Websites für SHK-Betriebe: Bäder, Wärmepumpen, Monteure', 'Websites, die Bad- und Wärmepumpen-Anfragen bringen, und Monteure dazu: eine Seite je Leistung mit Ort, Karriereseite mit Bewerbung in 60 Sekunden.', pfad, dunkel=True, schema_extra=faq_schema(FAQ_WEB5), noindex=versteckt)
-    body = web_hero(f'Deine Website<br>bringt dir<br><span class="em w">{wechsel(["Bad-Anfragen.", "Wärmepumpen-Anfragen.", "Bewerbungen."])}</span><span class="sr">Deine Website bringt dir Bad-Anfragen, Wärmepumpen-Anfragen und Bewerbungen.</span>', 'Jede Leistung bekommt ihre eigene Seite mit deinem Ort, dazu kommt eine Karriereseite, gebaut mit Fotos aus deinem Betrieb.')
+    body = web_hero(f'Wer nach<br><span class="tipp" aria-hidden="true" data-w="Badsanierung|Wärmepumpe|Heizungsbauer|Job als Monteur"><span class="tipp-t">Badsanierung</span></span><br>sucht, findet deine Seite.<span class="sr">Wer nach Badsanierung, Wärmepumpe, Heizungsbauer oder einem Job als Monteur sucht, findet deine Seite.</span>', 'Jede Leistung bekommt ihre eigene Seite mit deinem Ort, dazu kommt eine Karriereseite, gebaut mit Fotos aus deinem Betrieb.')
     body = body.replace('class="uhero', 'class="uhero kurz', 1)
     body += vergleich_tafel(WEB_ZEILEN, kick='Vorher und nachher', h2='Die alte Seite kostet dich <span class="em w">Anfragen.</span>', kopf_heute='Heute · alte Seite', kopf_morgen='Morgen · neue Seite', farbe='w',
                             lead='Drei Stellen, an denen eine alte Seite SHK-Betriebe Aufträge und Bewerber kostet.')

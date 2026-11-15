@@ -2319,3 +2319,14 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
 @media(max-width:1000px){.collage.kachelwand img:nth-child(n+13){display:block}}
 @media(min-width:761px){.vgl-tafel.drei .vgl-c{align-items:center}.vgl-tafel.drei .vgl-c .ik{margin-top:0}}
 .wechsel.fest>span{transition:transform .4s var(--ease),opacity .3s var(--ease)}
+/* Heros 15.11.2026 abends: Start wieder wie vorher (Wechselwort wächst mit, Takt 2,6 s). Unterseiten: nur das Wechselwort trägt Farbe, kein Regler-Strich, dritte Zeile ohne Akzent */
+.uhero h1 .wechsel{color:#6DB8F5} .uhero.w h1 .wechsel{color:#FF9A57}
+.uhero h1 .wechsel-lauf{display:none}
+@media(max-width:600px){.uhero h1 .wechsel{font-size:.86em}}
+/* Website-Hero: Suchfeld, in dem getippt wird */
+.tipp{display:inline-flex;align-items:center;gap:.35em;max-width:100%;min-height:1.5em;margin:.14em 0;padding:.12em .55em .16em .45em;border-radius:var(--r-pill);background:#fff;color:var(--ink);font-size:.62em;font-weight:600;letter-spacing:-.01em;line-height:1.3;white-space:nowrap;box-shadow:var(--shadow-md)}
+.tipp::before{content:"";flex:none;width:.8em;height:.8em;border:.13em solid var(--faint);border-radius:50%;box-shadow:.42em .42em 0 -.33em var(--faint)}
+.tipp-t{min-width:6.2em;text-align:left}
+.tipp-t::after{content:"";display:inline-block;width:.08em;height:1em;margin-left:.06em;background:var(--kalt);vertical-align:-.14em;animation:tippCursor 1s steps(1) infinite}
+@keyframes tippCursor{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.tipp-t::after{animation:none}}

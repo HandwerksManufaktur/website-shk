@@ -623,12 +623,13 @@ STIMMEN = [
     ('Hannes Schmidt GmbH', 'Sanitär-Heizung-Klima', '„(…) Nach einem kurzen Telefonat und Kennenlernen verlief die Umsetzung reibungslos und zu unserer vollen Zufriedenheit. (…) Wir können die Zusammenarbeit definitiv weiterempfehlen.“'),
 ]
 STIMMEN_LOGO = {'Franz Gallenberger': 'gallenberger', 'Benjamin Senftleben': 'senftleben', 'Lanzinger GmbH': 'lanzinger', 'Andrea Süßmeier': 'suessmeier', 'Hannes Schmidt GmbH': 'hannes-schmidt', 'Alisa Kirchner': 'kirchner', 'Isabella Rauch': 'ressle'}
+STIMMEN_MEHR = {'Hannes Schmidt GmbH', 'Franz Gallenberger'}   # eine Zeile mehr im Laufband, damit die stärkere Aussage zu sehen ist (Noah, 15.11.2026)
 def stimmen(liste=None, h2='Wir könnten viel erzählen. <span class="em k">Betriebe erzählen es besser.</span>', kick='Stimmen aus der Branche'):
     liste = STIMMEN if liste is None else liste
     def karte(n, b, z):
-        return f'<figure class="stimme"><div class="kopf"><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span><span class="google-mini" aria-hidden="true">{GOOGLE_G}</span></div><blockquote>{z}</blockquote><figcaption class="wer"><span class="lg"><img src="/assets/logos-box/{STIMMEN_LOGO[n]}.png" alt="" width="336" height="120"></span><span><b>{n}</b><small>{b}</small></span></figcaption></figure>'
+        return f'<figure class="stimme"{" data-mehr" if n in STIMMEN_MEHR else ""}><div class="kopf"><span class="stern" aria-hidden="true">{ic("star","voll")*5}</span><span class="google-mini" aria-hidden="true">{GOOGLE_G}</span></div><blockquote>{z}</blockquote><figcaption class="wer"><span class="lg"><img src="/assets/logos-box/{STIMMEN_LOGO[n]}.png" alt="" width="336" height="120"></span><span><b>{n}</b><small>{b}</small></span></figcaption></figure>'
     reihe1 = ''.join(karte(n, b, z) for n, b, z in liste)
-    still = lambda k: k.replace('<figure class="stimme">', '<figure class="stimme" aria-hidden="true">')
+    still = lambda k: k.replace('<figure class="stimme"', '<figure class="stimme" aria-hidden="true"')
     return f'''<section class="stimmen" id="stimmen">
   <div class="wrap">
     <div class="sec-kopf mitte"><p class="kick rv">{kick}</p><h2 class="d rv">{h2}</h2><p class="rv"><span class="google">{GOOGLE_G}<span>5,0 <span class="stern" aria-hidden="true">{ic("star","voll")*5}</span></span><span style="font-weight:500;color:var(--sub)">57 Google-Bewertungen</span></span></p></div>

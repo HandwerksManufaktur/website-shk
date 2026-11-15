@@ -918,7 +918,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 @media(max-width:760px){.vgl-tafel{grid-template-columns:1fr}.vgl-h{display:none}.vgl-c{padding:18px 20px;font-size:15.5px}.vgl-c.heute{border-bottom:0}}
 .stimmen-marq .spur + .spur{margin-top:18px}
 .stimmen-marq .spur.rueck{animation-direction:reverse}
-.stimmen-marq .stimme blockquote{-webkit-line-clamp:8;min-height:calc(8 * 1.5em)}
+.stimmen-marq .stimme blockquote{-webkit-line-clamp:3;min-height:calc(3 * 1.5em)}
+.stimmen-marq .stimme[data-mehr] blockquote{-webkit-line-clamp:4}
 .aufwand{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
 .aufwand>div{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;row-gap:4px;align-items:center;padding:20px 22px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--line);transition:transform .3s var(--spring),box-shadow .3s var(--spring)}
 .aufwand>div:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}

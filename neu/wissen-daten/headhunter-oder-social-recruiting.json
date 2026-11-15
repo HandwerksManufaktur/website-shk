@@ -1,14 +1,14 @@
 {
   "slug": "headhunter-oder-social-recruiting",
-  "titel": "Headhunter, Vermittlung oder Social Recruiting im SHK",
-  "h1": "Headhunter, Personalvermittlung oder Social Recruiting: Was passt für SHK-Betriebe?",
-  "beschreibung": "Headhunter, Personalvermittlung, Zeitarbeit und Social Recruiting im Vergleich: wie jeder Weg läuft, was er kostet und wann er für SHK-Betriebe passt.",
+  "titel": "Headhunter, Vermittlung oder Social Media: Monteure im SHK",
+  "h1": "Headhunter, Personalvermittlung oder Mitarbeitergewinnung über Social Media: Was passt für SHK-Betriebe?",
+  "beschreibung": "Headhunter, Personalvermittlung, Zeitarbeit und Anzeigen auf Social Media im Vergleich: wie jeder Weg läuft, was er kostet und wann er für SHK passt.",
   "kategorie": "Monteure finden",
   "reihe": 15,
   "top": false,
   "veroeffentlicht": "2026-11-07",
   "teaser": "Vier Wege zum neuen Monteur, nebeneinander: wie sie laufen, wann du zahlst, wo das Risiko liegt und in welcher Lage welcher passt.",
-  "kurzantwort": "Ein Headhunter passt für Führungskräfte und seltene Fachleute, sein Honorar lag 2024 laut BDU im Schnitt bei 27,5 % des Jahresgehalts. Eine Personalvermittlung passt, wenn du keine Zeit für die Suche hast. Zeitarbeit überbrückt Spitzen, höchstens 18 Monate je Monteur. Social Recruiting passt für Monteure im Umkreis, wenn du die Gespräche selbst führst.",
+  "kurzantwort": "Ein Headhunter passt für Führungskräfte und seltene Fachleute, sein Honorar lag 2024 laut BDU im Schnitt bei 27,5 % des Jahresgehalts. Eine Personalvermittlung passt, wenn du keine Zeit für die Suche hast. Zeitarbeit überbrückt Spitzen, höchstens 18 Monate je Monteur. Mitarbeitergewinnung über Social Media passt für Monteure im Umkreis, wenn du die Gespräche selbst führst.",
   "lesezeit": 8,
   "leistung": "monteure",
   "zahlen": [
@@ -36,7 +36,7 @@
   "abschnitte": [
     {
       "h2": "Welche Wege gibt es, und was unterscheidet sie?",
-      "html": "<p>Am Montag ruft der dritte Personalberater an und bietet dir einen „Top-Kandidaten aus der Region“ an. Ob du den brauchst oder ob du es selbst schaffst, hängt davon ab, wen du suchst und wie viel Zeit du hast.</p><p>Die vier Wege unterscheiden sich vor allem darin, wer sucht, wann du zahlst und bei wem der Monteur am Ende angestellt ist. Ein Headhunter spricht gezielt Leute an, die gerade woanders arbeiten. Eine Personalvermittlung schlägt dir Bewerber aus ihrer Kartei vor. Bei der Zeitarbeit leihst du dir einen Monteur, angestellt bleibt er beim Verleiher. Beim Social Recruiting schaltest du selbst Anzeigen im Umkreis, und die Bewerbungen kommen direkt zu dir.</p><p>Was die Wege einzelne Inhaber gekostet haben, steht im Artikel <a href='/wissen/kosten-mitarbeitergewinnung/'>Was kostet es, einen Monteur zu finden?</a>. Hier geht es um die Frage davor: welcher Weg zu deiner Lage passt.</p>",
+      "html": "<p>Am Montag ruft der dritte Personalberater an und bietet dir einen „Top-Kandidaten aus der Region“ an. Ob du den brauchst oder ob du es selbst schaffst, hängt davon ab, wen du suchst und wie viel Zeit du hast.</p><p>Die vier Wege unterscheiden sich vor allem darin, wer sucht, wann du zahlst und bei wem der Monteur am Ende angestellt ist. Ein Headhunter spricht gezielt Leute an, die gerade woanders arbeiten. Eine Personalvermittlung schlägt dir Bewerber aus ihrer Kartei vor. Bei der Zeitarbeit leihst du dir einen Monteur, angestellt bleibt er beim Verleiher. Bei der Mitarbeitergewinnung über Social Media schaltest du selbst Anzeigen im Umkreis, und die Bewerbungen kommen direkt zu dir.</p><p>Was die Wege einzelne Inhaber gekostet haben, steht im Artikel <a href='/wissen/kosten-mitarbeitergewinnung/'>Was kostet es, einen Monteur zu finden?</a>. Hier geht es um die Frage davor: welcher Weg zu deiner Lage passt.</p>",
       "tabelle": {
         "titel": "Vier Wege zum neuen Monteur",
         "kopf": [
@@ -65,7 +65,7 @@
             "Auftragsspitze, Ausfall überbrücken"
           ],
           [
-            "Social Recruiting",
+            "Mitarbeitergewinnung über Social Media",
             "du, mit Anzeigen im Umkreis",
             "Werbebudget laufend, dazu Aufbau und Betreuung",
             "Monteure und Kundendienst im Umkreis"
@@ -93,8 +93,8 @@
       }
     },
     {
-      "h2": "Was bringt Social Recruiting im Vergleich?",
-      "html": "<p>Social Recruiting bringt dir Bewerbungen von Monteuren aus deinem Umkreis, die gerade woanders arbeiten und nicht aktiv suchen. Die Gespräche führst du selbst, und genau da liegt der Aufwand.</p><p>Du schaltest Anzeigen auf Facebook und Instagram, nur im eigenen Umkreis, mit Fotos von deinem Team. Wer sich meldet, beantwortet vorher ein paar Filterfragen und bewirbt sich in 60 Sekunden ohne Lebenslauf. Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung. Die Monteure sind danach bei dir angestellt, und es fällt kein Honorar je Einstellung an.</p><p>Erwin Schmidt & Sohn in Sindelfingen bekam so 25 Bewerbungen in 4 Wochen, die Stelle als Anlagenmechaniker SHK ist besetzt. Heizung-Sanitär Klaß in Türkenfeld bekam 35 Bewerbungen für einen Obermonteur, 16 davon mit Erfahrung im Fach. Das sind zwei Einzelfälle und kein Versprechen.</p><p>Der Haken: Bewerbungen kommen oft in den ersten Tagen, und jemand muss zurückrufen. Hast du dafür niemanden, ist ein Vermittler die bessere Wahl.</p>",
+      "h2": "Was bringt Mitarbeitergewinnung über Social Media im Vergleich?",
+      "html": "<p>Mitarbeitergewinnung über Social Media bringt dir Bewerbungen von Monteuren aus deinem Umkreis, die gerade woanders arbeiten und nicht aktiv suchen. Die Gespräche führst du selbst, und genau da liegt der Aufwand.</p><p>Du schaltest Anzeigen auf Facebook und Instagram, nur im eigenen Umkreis, mit Fotos von deinem Team. Wer sich meldet, beantwortet vorher ein paar Filterfragen und bewirbt sich in 60 Sekunden ohne Lebenslauf. Das Werbebudget zahlst du direkt an Meta, in unseren Kampagnen meist 25 bis 33 € am Tag, also 750 bis 1.000 € im Monat. Dazu kommen Aufbau und Betreuung. Die Monteure sind danach bei dir angestellt, und es fällt kein Honorar je Einstellung an.</p><p>Erwin Schmidt & Sohn in Sindelfingen bekam so 25 Bewerbungen in 4 Wochen, die Stelle als Anlagenmechaniker SHK ist besetzt. Heizung-Sanitär Klaß in Türkenfeld bekam 35 Bewerbungen für einen Obermonteur, 16 davon mit Erfahrung im Fach. Das sind zwei Einzelfälle und kein Versprechen.</p><p>Der Haken: Bewerbungen kommen oft in den ersten Tagen, und jemand muss zurückrufen. Hast du dafür niemanden, ist ein Vermittler die bessere Wahl.</p>",
       "zitat": {
         "text": "Ich kann es jedem nur empfehlen: Wenn wirklich Personalmangel da ist, dass man den Schritt geht.",
         "wer": "Florian Schmidt, Geschäftsführer, Erwin Schmidt & Sohn, Sindelfingen"
@@ -102,7 +102,7 @@
     },
     {
       "h2": "Welcher Weg passt zu deiner Lage?",
-      "html": "<p>Welcher Weg passt, entscheidet vor allem die Stelle und deine Zeit. Oft ist eine Mischung sinnvoll, etwa Zeitarbeit für den Sommer und Anzeigen für die feste Stelle.</p><ul><li><strong>Du suchst eine Führungskraft oder einen Nachfolger:</strong> Headhunter. Da zählt die Direktansprache, und das Honorar steht im Verhältnis zur Tragweite.</li><li><strong>Du suchst jemanden mit seltener Zusatzqualifikation:</strong> Headhunter oder spezialisierter Vermittler.</li><li><strong>Du brauchst für ein paar Monate mehr Hände:</strong> Zeitarbeit, mit klarer Regel zur Übernahme.</li><li><strong>Du suchst Monteure oder Kundendiensttechniker und kannst Gespräche führen:</strong> Social Recruiting im Umkreis.</li><li><strong>Du hast keine Zeit für Rückrufe und Vorauswahl:</strong> Personalvermittlung.</li></ul><p>Eine gemeldete Stelle in Handwerksberufen war 2025 im Schnitt 242 Tage offen, über alle Berufe 167 Tage, so die Bundesagentur für Arbeit. Rechne deshalb mit, was dich jeder Monat ohne den Monteur kostet. Ein teurer Weg, der in sechs Wochen jemanden bringt, kann günstiger sein als ein billiger, der ein halbes Jahr dauert. Wie du das rechnest, steht im Artikel <a href='/wissen/kosten-offene-stelle/'>Was kostet eine unbesetzte Stelle?</a></p>",
+      "html": "<p>Welcher Weg passt, entscheidet vor allem die Stelle und deine Zeit. Oft ist eine Mischung sinnvoll, etwa Zeitarbeit für den Sommer und Anzeigen für die feste Stelle.</p><ul><li><strong>Du suchst eine Führungskraft oder einen Nachfolger:</strong> Headhunter. Da zählt die Direktansprache, und das Honorar steht im Verhältnis zur Tragweite.</li><li><strong>Du suchst jemanden mit seltener Zusatzqualifikation:</strong> Headhunter oder spezialisierter Vermittler.</li><li><strong>Du brauchst für ein paar Monate mehr Hände:</strong> Zeitarbeit, mit klarer Regel zur Übernahme.</li><li><strong>Du suchst Monteure oder Kundendiensttechniker und kannst Gespräche führen:</strong> Mitarbeitergewinnung über Social Media im Umkreis.</li><li><strong>Du hast keine Zeit für Rückrufe und Vorauswahl:</strong> Personalvermittlung.</li></ul><p>Eine gemeldete Stelle in Handwerksberufen war 2025 im Schnitt 242 Tage offen, über alle Berufe 167 Tage, so die Bundesagentur für Arbeit. Rechne deshalb mit, was dich jeder Monat ohne den Monteur kostet. Ein teurer Weg, der in sechs Wochen jemanden bringt, kann günstiger sein als ein billiger, der ein halbes Jahr dauert. Wie du das rechnest, steht im Artikel <a href='/wissen/kosten-offene-stelle/'>Was kostet eine unbesetzte Stelle?</a></p>",
       "balken": {
         "titel": "So lange war eine gemeldete Stelle 2025 im Schnitt offen",
         "werte": [
@@ -140,11 +140,11 @@
       "Ja. Ein Verbot im Vertrag mit dem Verleiher wäre nach § 9 Arbeitnehmerüberlassungsgesetz unwirksam. Der Verleiher darf aber eine angemessene Vermittlungsvergütung von dir verlangen. Frag vor dem Einsatz, wie hoch sie ist und ob sie mit der Einsatzdauer sinkt."
     ],
     [
-      "Kann ich Social Recruiting und Vermittler kombinieren?",
+      "Kann ich Mitarbeitergewinnung über Social Media und Vermittler kombinieren?",
       "Ja, das machen manche Betriebe. Die Anzeigen bringen Bewerbungen von Monteuren aus dem Umkreis, der Vermittler sucht parallel für eine schwer zu besetzende Stelle. Achte nur darauf, dass du bei einem Kandidaten weißt, über welchen Weg er kam, damit kein Honorar doppelt fällig wird."
     ],
     [
-      "Wie viel Zeit kostet mich Social Recruiting?",
+      "Wie viel Zeit kostet mich Mitarbeitergewinnung über Social Media?",
       "Am meisten Zeit brauchen die Rückrufe und Bewerbungsgespräche. Dazu kommen ein Startgespräch und ein Fototermin im Betrieb von meist 1,5 bis 2 Stunden. Aus unseren Kampagnen sind das insgesamt rund 5 bis 6 Stunden. Wer keine Zeit für Rückrufe hat, ist mit einem Vermittler oft besser bedient."
     ]
   ],

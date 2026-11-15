@@ -84,9 +84,9 @@
     },
     {
       "h2": "Was unterscheidet den Fall Klaß von Erwin Schmidt & Sohn?",
-      "html": "<p>Bei <a href='/wissen/fallstudie-erwin-schmidt/'>Erwin Schmidt & Sohn</a> ging es um den Kundendienst, bei Klaß um einen Obermonteur mit Bauleitung. Die zweite Stelle verlangt mehr Erfahrung, und genau dafür war die Filterfrage da.</p><p>Gleich war in beiden Fällen der Aufbau: Fotos aus dem eigenen Betrieb, Anzeigen im Umkreis, eine kurze Bewerbung und Fragen vorab. Unterschiedlich waren die Stelle und das, was die Anzeige in den Vordergrund stellte. Bei Klaß waren das die eigenen Projekte, das feste Team und die 4-Tage-Woche.</p><p>Die Tabelle zeigt drei Recruiting-Kampagnen nebeneinander, dazu die Bürostelle bei Senftleben Haustechnik.</p>",
+      "html": "<p>Bei <a href='/wissen/fallstudie-erwin-schmidt/'>Erwin Schmidt & Sohn</a> ging es um den Kundendienst, bei Klaß um einen Obermonteur mit Bauleitung. Die zweite Stelle verlangt mehr Erfahrung, und genau dafür war die Filterfrage da.</p><p>Gleich war in beiden Fällen der Aufbau: Fotos aus dem eigenen Betrieb, Anzeigen im Umkreis, eine kurze Bewerbung und Fragen vorab. Unterschiedlich waren die Stelle und das, was die Anzeige in den Vordergrund stellte. Bei Klaß waren das die eigenen Projekte, das feste Team und die 4-Tage-Woche.</p><p>Die Tabelle zeigt drei Kampagnen für Monteure nebeneinander, dazu die Bürostelle bei Senftleben Haustechnik.</p>",
       "tabelle": {
-        "titel": "Drei Recruiting-Kampagnen im Vergleich",
+        "titel": "Drei Kampagnen für Monteure im Vergleich",
         "kopf": [
           "Betrieb",
           "Stelle",
@@ -135,7 +135,7 @@
       "Es reicht dein Team. Bei Klaß stehen Monteure aus dem Betrieb im Bild. Fürs Shooting kommen wir zu dir, das dauert meist 1,5 bis 2 Stunden. Wichtig ist, dass man deinen Betrieb erkennt, am Firmenwagen und auf der Baustelle."
     ],
     [
-      "Hilft eine 4-Tage-Woche beim Recruiting?",
+      "Hilft eine 4-Tage-Woche bei der Suche nach Monteuren?",
       "Sie ist ein Argument, allein reicht sie oft nicht. Ein Inhaber erzählte uns, dass sie gut ankam und kaum jemand wechseln wollte. Bei Klaß stand sie neben den eigenen Projekten und dem festen Team in der Anzeige, zusammen mit Fotos der Leute, mit denen der Neue arbeiten würde."
     ],
     [
@@ -157,7 +157,7 @@
       "url": "https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf"
     },
     {
-      "name": "Eigene Kampagne: Heizung-Sanitär Klaß, Recruiting Obermonteur, 2024 (Fallstudie)",
+      "name": "Eigene Kampagne: Heizung-Sanitär Klaß, Stelle als Obermonteur, 2024 (Fallstudie)",
       "url": "https://shk.handwerksmanufaktur.digital/monteure/#fallstudie"
     }
   ],

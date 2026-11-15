@@ -7,7 +7,7 @@
   "reihe": 1,
   "top": false,
   "teaser": "Die Fragen, die du einer Agentur vor der Unterschrift stellst, mit Checkliste zum Abhaken und den Warnzeichen dazu.",
-  "kurzantwort": "Eine seriöse Agentur nennt Kunden mit Namen, die du anrufen kannst, und hat Google-Bewertungen, die du nachlesen kannst. Ihre Anzeigen zeigen Bilder aus den Betrieben der Kunden. Sie sagt dir vor der Unterschrift, wie lange du gebunden bist, und die Werbung läuft über das Werbekonto deines Betriebs. Bei Garantien fragst du nach, was genau gezählt wird.",
+  "kurzantwort": "Eine seriöse Agentur nennt Kunden mit Namen, die du anrufen kannst, und hat Google-Bewertungen, die du nachlesen kannst. Ihre Anzeigen zeigen Bilder aus den Betrieben der Kunden. Sie sagt dir vor der Unterschrift, wie lange die Zusammenarbeit mindestens dauert, und die Werbung läuft über das Werbekonto deines Betriebs. Bei Garantien fragst du nach, was genau gezählt wird.",
   "lesezeit": 10,
   "leistung": "potenzial",
   "zahlen": [
@@ -163,8 +163,8 @@
       "Die HandwerksManufaktur LTD hat ihren Sitz in Paphos auf Zypern, in der EU. Anschrift, Registernummer und Umsatzsteuer-ID stehen im Impressum. Dein Ansprechpartner ist Noah, erreichbar unter einer deutschen Nummer, und zum Shooting kommen wir zu dir in den Betrieb. Steuerliche Fragen zur Rechnung klärst du mit deinem Steuerberater."
     ],
     [
-      "Wie lange sollte die Mindestlaufzeit sein?",
-      "So lange, wie eine Kampagne zum Einspielen braucht, und nicht länger. Wir rechnen mit 3 Monaten Anlaufzeit, danach ist die Zusammenarbeit monatlich kündbar. Ein Vertrag über zwölf Monate fest ohne Begründung ist ein Grund, nachzufragen."
+      "Wie lange sollte die Zusammenarbeit mindestens dauern?",
+      "So lange, wie eine Kampagne zum Einspielen braucht, und nicht länger. Wir rechnen aus Erfahrung mit mindestens drei Monaten, danach entscheidest du jeden Monat neu. Ein Vertrag über zwölf Monate fest ohne Begründung ist ein Grund, nachzufragen."
     ],
     [
       "Muss die Agentur auf SHK spezialisiert sein?",

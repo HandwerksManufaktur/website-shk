@@ -2227,3 +2227,95 @@ html.rd-offen{overflow:hidden}
 /* 15.11.2026: Fuß-Logo größer; Erwin-Schmidt-Video im 4:3-Ausschnitt, damit Florian und Meike beide im Bild sind */
 .fuss .marke img,.fuss .marke img[width][height]{height:46px}
 @media(min-width:901px){.fall-gross .vid{margin:24px 0 24px 24px;border-radius:var(--r-sm);overflow:hidden}.fall-gross .vid.beide{align-self:center;aspect-ratio:4/3;min-height:0}}
+
+/* ── Runde 15.11.2026 (Noah): Takt, Überschriften, Kontakt-Knöpfe, Gründerfoto ───────────────────────────── */
+/* Takt: ein Abstand zwischen allen Sektionen, kleine Zeile → Überschrift → Einleitung → Inhalt immer gleich */
+:root{--takt:clamp(72px,8.4vw,120px);--kopf-inhalt:48px;--h2-lead:22px}
+@media(max-width:600px){:root{--takt:64px;--kopf-inhalt:32px}}
+main.takt>section:not(.hero):not(.uhero):not(.band){padding-top:var(--takt)!important;padding-bottom:0!important}
+main.takt>section.kontakt:not(.hero):not(.uhero):not(.band){padding-bottom:var(--takt)!important}
+main.takt .sec-kopf{margin-bottom:var(--kopf-inhalt)}
+main.takt .sec-kopf+*{margin-top:0!important}
+main.takt .sec-kopf.mitte{row-gap:0}
+main.takt .sec-kopf.mitte .lead,main.takt .sec-kopf.mitte>p:not(.kick){margin-top:var(--h2-lead)}
+main.takt .stimmen .wrap+.stimmen-marq{margin-top:calc(var(--kopf-inhalt) - 8px)}
+main.takt .faq .links h2+p{margin-top:var(--h2-lead)}
+main.takt .kontakt-neu .kontakt-satz{margin-top:var(--h2-lead)}
+main.takt .ueber.offen .txt .kick{margin-bottom:0}
+main.takt .ueber.offen .txt h2{margin-bottom:calc(var(--h2-lead) - 18px)}
+main.takt .vergleich .fussnote:last-child,main.takt .fall .fall-grid:last-child{margin-bottom:0}
+/* Ergebnisse: Ergebnis-Zeile in beiden Reihen gleich hoch, damit Betrieb und Zahlen überall im selben Abstand folgen */
+@media(min-width:1181px){main.takt .fall-grid.drei.fuenf .erg,main.takt .fall-grid.drei.fuenf>.fall-karte:nth-child(n+4) .erg{min-height:calc(2 * 1.25em)}}
+.fall-karte .vid a.play{text-decoration:none}
+.fall-karte .vid a.play .ik{width:15px;height:15px}
+
+/* Überschriften: eine Machart, fette Zeile + kursive Akzentzeile als eigene Zeile */
+main.takt h2.d .em{display:block}
+@media(min-width:901px){
+  main.takt .sec-kopf:not(.mitte){grid-template-columns:1.3fr .7fr}
+  main.takt .ueber.offen .ueber-grid{grid-template-columns:.85fr 1.15fr}
+  main.takt .ueber.offen h2.d,main.takt .kontakt h2.d{font-size:clamp(30px,3.05vw,44px)}
+}
+@media(min-width:1001px){main.takt .kontakt-neu{grid-template-columns:.9fr 1.1fr}}
+
+/* Kontakt: die Termin-Wege als klare Knöpfe (gefüllt, Pfeil im Kreis, Hover, mind. 64 px hoch) */
+.kontakt .wahl a{background:#146FB8;border:0;border-radius:var(--r-pill);padding:12px 12px 12px 12px;min-height:64px;color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.28);transition:transform .35s var(--spring),background .3s,box-shadow .35s var(--spring)}
+.kontakt .wahl a.w{background:#B44E15}
+.kontakt .wahl a:hover{transform:translateY(-2px);background:#0F5C9C;border-color:transparent;box-shadow:0 16px 34px rgba(20,111,184,.45)}
+.kontakt .wahl a.w:hover{background:#9C4210;box-shadow:0 16px 34px rgba(201,88,26,.45)}
+.kontakt .wahl a:active{transform:scale(.985);transition-duration:.1s}
+.kontakt .wahl a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.kontakt .wahl a>svg.ic,.kontakt .wahl .ic{width:44px;height:44px;padding:11px;border-radius:50%;background:rgba(255,255,255,.2);border:0;color:#fff}
+.kontakt .wahl a.w>svg.ic,.kontakt .wahl a.w .ic{background:rgba(255,255,255,.2)}
+.kontakt .wahl h3{color:#fff}
+.kontakt .wahl small{color:#fff;opacity:1}
+.kontakt .wahl .pfeil{width:44px;height:44px;border-radius:50%;background:#fff;color:#146FB8;display:grid;place-items:center;font-size:20px;font-weight:700;line-height:1;flex:none}
+.kontakt .wahl a.w .pfeil{color:#B44E15}
+.kontakt .wahl a:hover .pfeil{transform:translateX(3px);color:#0F5C9C}
+.kontakt .wahl a.w:hover .pfeil{color:#9C4210}
+
+/* Gründer-Zeile: Studio-Porträt mit Bart statt Lach-Foto auf Blau */
+.gruender img.rund-bart,.ueber.offen .gruender img.rund-bart,.gruender img.rund-bart[width][height]{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 50%;flex:none}
+@media(max-width:600px){.gruender img.rund-bart,.ueber.offen .gruender img.rund-bart,.gruender img.rund-bart[width][height]{width:56px;height:56px}}
+/* Hero-Handys am Handy (15.11.2026): Kamera-Aussparung wächst mit dem Handy mit (vorher fest 22 px, verdeckte bei 110 px Breite das Logo im Funnel),
+   seitliche Handys schmaler und weiter innen, damit kein Handy am Bühnenrand angeschnitten wird */
+.feed-innen .phone{container-type:inline-size}
+.feed-innen .phone::after{top:3.6cqw;height:8.2cqw;border-radius:5cqw}
+@media(max-width:760px){
+  .feed-innen{gap:0}
+  .feed-innen .p2,.feed-innen .p4{width:min(108px,28vw)}
+  .feed-innen .p3{width:min(176px,45vw)}
+  .feed-innen .p2{transform:translateX(calc((1 - var(--fan,1)) * 96% + var(--fan,1) * 46px)) translateY(calc((1 - var(--fan,1)) * 34px)) rotate(calc(-8deg * var(--fan,1)))}
+  .feed-innen .p4{transform:translateX(calc((var(--fan,1) - 1) * 96% - var(--fan,1) * 46px)) translateY(calc((1 - var(--fan,1)) * 34px)) rotate(calc(8deg * var(--fan,1)))}
+}
+/* Logo-Band (15.11.2026): die zweite Reihe hängt am rechten Rand statt am linken, so steht Kramer beim Start bei jeder Breite als letztes Logo
+   ganz rechts, voll sichtbar vor dem Verlauf, und läuft als Erstes nach rechts hinaus. Vorher hing es von der Bandbreite ab (1440 px: 43 px abgeschnitten im Verlauf). */
+@media(prefers-reduced-motion:no-preference){.band .marq.rueck{position:relative;left:100%;translate:calc(-50% - 112px) 0}}
+
+/* Wechselzeile in den Heros (15.11.2026): feste Breite (main.js), Wort in der Farbe der Zeile, am Start in der kursiven Akzentzeile */
+.wechsel.fest{color:inherit;transition:none}
+.uhero h1 .wechsel.fest{color:var(--kalt)} .uhero.w h1 .wechsel.fest{color:var(--warm)}
+.uhero.w h1 .em .wechsel.fest{color:inherit}
+.hero-h1 .zl.wz .wechsel{vertical-align:bottom}
+/* Unterseiten-Handys: Aussparung wächst mit, Funnel beginnt unter der Aussparung (Logo frei), oben weiß wie die Funnels */
+.uhero .phone{container-type:inline-size}
+.uhero .phone::after{top:3.6cqw;height:8.2cqw;border-radius:5cqw}
+.uhero .phone .scroller{background:#fff}
+.uhero .phone .scroller img{margin-top:13cqw}
+/* Vergleichstafel: Titelspalte breit genug, dass jeder Titel einzeilig steht */
+@media(min-width:761px){.vgl-tafel.drei{grid-template-columns:256px 1fr 1fr;background:linear-gradient(90deg,var(--card) 0 calc(50% + 128px),var(--night) calc(50% + 128px) 100%)}.vgl-t b{white-space:nowrap}}
+/* Regler-Strich so breit wie das aktuelle Wort; am Handy steht das Wort mittig in eigener Zeile */
+.wechsel.fest .wechsel-lauf{right:auto;width:var(--ww,100%)}
+@media(max-width:600px){.hero-h1 .zl.wz .wechsel{display:grid;margin:0 auto}.hero-h1 .zl.wz .wechsel>span{justify-self:center}.hero-h1 .zl.wz .wechsel-lauf{display:none}}
+/* Unterseiten-Heros am Handy: das längste Wechselwort passt in eine Zeile (390 px) */
+@media(max-width:600px){.uhero h1 .wechsel.fest{font-size:.84em}}
+/* Takt Feinschliff (15.11.2026): Einleitung → Inhalt auch in Stimmen, Fragen und Kontakt gleich (48 / 32) */
+main.takt .stimmen .wrap+.stimmen-marq{margin-top:calc(var(--kopf-inhalt) - 16px)}
+main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inhalt)}
+/* Kachelwand „Shooting bei dir im Betrieb“ auf /ueber-uns/ (15.11.2026): 3 × 2 im Stil der Kontakt-Collage */
+.vorteil.mit-bild .v-bild:has(.kachelwand){display:block;padding:0;background:none}
+.collage.kachelwand{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:6px;height:100%;width:100%}
+.collage.kachelwand img,.collage.kachelwand img[width][height]{aspect-ratio:auto;height:100%;border-radius:var(--r-sm);scale:1}
+@media(max-width:1000px){.collage.kachelwand img:nth-child(n+13){display:block}}
+@media(min-width:761px){.vgl-tafel.drei .vgl-c{align-items:center}.vgl-tafel.drei .vgl-c .ik{margin-top:0}}
+.wechsel.fest>span{transition:transform .4s var(--ease),opacity .3s var(--ease)}

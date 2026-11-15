@@ -287,9 +287,10 @@
      gemessen wird die Breite des Worts (offsetWidth, unberührt vom Transform) — nichts wechselt zwischen absolut/relativ. */
   const we = $('.wechsel');
   if (we) {
-    const w = $$(':scope > span', we), T = 2600; let k = 0;
+    const w = $$(':scope > span', we), T = +we.dataset.takt || 2600; let k = 0;
     we.style.setProperty('--wtakt', T / 1000 + 's');
-    const breite = () => { we.style.width = w[k].offsetWidth + 'px'; };
+    /* .fest: Breite des längsten Worts, damit die Zeile nie springt (15.11.2026) */
+    const breite = () => { we.style.setProperty('--ww', w[k].offsetWidth + 'px'); we.style.width = (we.classList.contains('fest') ? Math.max(...w.map(x => x.offsetWidth)) : w[k].offsetWidth) + 'px'; };
     const takt = () => { we.classList.remove('laeuft'); void we.offsetWidth; we.classList.add('laeuft'); };
     we.style.transition = 'none'; breite(); void we.offsetWidth; we.style.transition = '';
     addEventListener('resize', breite);
@@ -374,17 +375,19 @@
   }
 
   /* Kontakt: Collage aus Shooting-Fotos, alle 1,4 s wechselt ein Feld */
-  const col = $('.collage');
-  if (col && !rm) {
+  /* seit 15.11.2026 für jede Collage (auch die Kachelwand auf /ueber-uns/), nie zweimal dasselbe Bild gleichzeitig */
+  if (!rm) $$('.collage').forEach(col => {
     let pool = []; try { pool = JSON.parse(col.dataset.pool); } catch (e) {}
     const felder = $$('img', col); let naechstes = felder.length, timer = null;
     const tausch = () => {
       if (!pool.length) return; const f = felder[Math.floor(Math.random() * felder.length)];
+      const kz = x => ((x || '').match(/k\d\d/) || [''])[0], da = felder.map(x => kz(x.currentSrc || x.src));
+      let n = 0; while (n++ < pool.length && da.includes(kz(pool[naechstes % pool.length]))) naechstes++;
       const bild = new Image(); bild.src = pool[naechstes % pool.length]; naechstes++;
       bild.onload = () => { f.classList.add('raus'); setTimeout(() => { f.src = bild.src; f.removeAttribute('srcset'); f.classList.remove('raus'); }, 350); };
     };
-    new IntersectionObserver(es => es.forEach(e => { clearInterval(timer); if (e.isIntersecting) timer = setInterval(tausch, 1400); }), { threshold: .2 }).observe(col);
-  }
+    new IntersectionObserver(es => es.forEach(e => { clearInterval(timer); if (e.isIntersecting) timer = setInterval(tausch, col.classList.contains('kachelwand') ? 2600 : 1400); }), { threshold: .2 }).observe(col);
+  });
 
   /* Reels-Bahn: unter 900 px (Handy UND Tablet) liegen Reels seitlich in einer Wischbahn — die erreicht der Reveal-Beobachter nie.
      Aufdecken, sobald die Bahn im Bild ist (Prüfung 04.10.2026: zwischen 761 und 900 px blieben Reel 3–5 unsichtbar) */

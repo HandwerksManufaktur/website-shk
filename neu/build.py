@@ -648,7 +648,6 @@ def ueber_offen(kurz=True):
       <p>Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
       <p>Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p>
       <p>In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
-      <p>Wenn du Lust hast, lass uns einfach mal quatschen.</p>
       <div class="gruender"><img class="rund-bart" src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>150<span>+</span></b><small>Handwerks&shy;betriebe betreut</small></div><div class="stat"><b>8<span>+</span></b><small>Jahre Erfahrung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
@@ -926,7 +925,6 @@ def ueber_werdegang():
     <h2 class="d rv">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
     <p class="lead rv">Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
     <p class="rv werdegang-satz">Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p><p class="rv werdegang-satz">In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
-    <p class="rv werdegang-satz">Wenn du Lust hast, lass uns einfach mal quatschen.</p>
     <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
   </div>
 </div></div></section>'''

@@ -2330,3 +2330,5 @@ main.takt .faq .faq-anker,main.takt .kontakt-neu .wahl{margin-top:var(--kopf-inh
 .tipp-t::after{content:"";display:inline-block;width:.08em;height:1em;margin-left:.06em;background:var(--kalt);vertical-align:-.14em;animation:tippCursor 1s steps(1) infinite}
 @keyframes tippCursor{50%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.tipp-t::after{animation:none}}
+.uhero h1 .wechsel{transition:width .4s var(--ease)} .uhero h1 .wechsel>span{transition:transform .4s var(--ease),opacity .3s var(--ease)}
+.tipp{line-height:1.2}

@@ -1151,7 +1151,7 @@ async function submitForm() {
   try {
     const API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev';
     if (!shkCreatedFolders) {
-      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen), clientV: 5 }) });
+      const r = await fetch(API + '/create-folders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firmaName, leistungen, serviceType: 'shk', serviceTypes, formData: collectFormData(), missing: collectMissing(leistungen), clientV: 6 }) });
       const created = await r.json();
       if (created.error) throw new Error(created.error);
       shkCreatedFolders = created.folderIds;
@@ -1410,5 +1410,8 @@ window.UX_CFG = {
   if (stepSeq.length) showStep(currentIdx);
 })();
 </script>
+<!-- Auswahl-Schicht (19.11.2026): Chips statt Freitext, Gewerk-Vorschläge, Vorbelegung per ?k=… — gebaut von system/apps/onboarding-auswahl/ -->
+<script>window.HWM_ART='shk';</script>
+<script src="auswahl.js"></script>
 </body>
 </html>

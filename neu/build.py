@@ -1356,10 +1356,17 @@ FAQ_WEB = [
     ('Und wenn nach dem Livegang etwas hakt?', 'Wir bleiben dran. Updates und Sicherheit laufen über uns, kleine Änderungen auch. Du erreichst uns direkt, ohne Warteschleife.'),
 ]
 
+# Rundgang als Film im Browser-Rahmen (Noah, 20.11.2026: Entenmann ist Vorzeigeprojekt, „dass das Video durchläuft“):
+# Hero-Film läuft, dann fährt die Seite durch. Aufnahme: system/apps/audit/_ent_rundgang.mjs → assets/webdesign/<slug>-film.mp4
+WEB_FILM = {s_ for s_ in ('entenmann', 'irlbacher', 'erwin-schmidt') if (REPO / f'assets/webdesign/{s_}-film.mp4').exists()}
+def web_film(img):
+    slug = img.rsplit('/', 1)[-1].split('-start-')[0]
+    return f'<video class="b-film" muted loop playsinline preload="none" data-src="/assets/webdesign/{slug}-film.mp4" aria-hidden="true" tabindex="-1"></video>' if slug in WEB_FILM else ''
+
 def browser(img, titel):
     """Browser-Rahmen mit Seiten-Screenshot, der von selbst durchscrollt, sobald er im Bild ist (wie die Handys; main.js setzt --bh)."""
     k = img[:-4]
-    return f'<div class="browser"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {img} 1200w" sizes="(max-width: 1180px) 70vw, 36vw" alt="{html.escape(titel)}, Startseite" width="1200" height="3200" loading="lazy"></div></div>'
+    return f'<div class="browser"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {img} 1200w" sizes="(max-width: 1180px) 70vw, 36vw" alt="{html.escape(titel)}, Startseite" width="1200" height="3200" loading="lazy">{web_film(img)}</div></div>'
 
 def web_phone(img):
     return f'<div class="phone klein"><div class="scroller"><img src="{img[:-4]}-240.jpg" srcset="{img[:-4]}-240.jpg 240w, {img} 480w" sizes="(max-width: 1180px) 24vw, 12vw" alt="" width="480" height="3400" loading="lazy"></div></div>'
@@ -1370,7 +1377,7 @@ def web_stapel(slugs, titel, in_buehne=False):
     for i, s in reversed(list(enumerate(slugs))):
         lazy = ' loading="lazy" fetchpriority="low"' if i else ' fetchpriority="high"'
         k = f'/assets/webdesign/{s}-start-desk'
-        teile.append(f'<div class="browser s{i+1}"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel[i]}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {k}.jpg 1200w" sizes="(max-width: 900px) 86vw, 40vw" alt="{html.escape(titel[i])}, Startseite" width="1200" height="3200"{lazy}></div></div>')
+        teile.append(f'<div class="browser s{i+1}"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel[i]}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {k}.jpg 1200w" sizes="(max-width: 900px) 86vw, 40vw" alt="{html.escape(titel[i])}, Startseite" width="1200" height="3200"{lazy}>{web_film(k + ".jpg") if i == 0 else ""}</div></div>')
     if in_buehne: return '<div class="web-stapel">' + ''.join(teile) + '</div>'   # in der Hero-Bühne der Unterseiten (.buehne-phones trägt rv)
     return '<div class="web-stapel rv" data-d="2">' + ''.join(teile) + '</div>'
 

@@ -174,6 +174,11 @@
   });
 
   /* Browser-Rahmen (/webdesign/): sichtbare Höhe je Rahmen, damit der Screenshot genau bis zum Seitenende scrollt */
+  /* Rundgang-Film im Browser-Rahmen: lädt erst im Bild, hält an, wenn der Rahmen aus dem Bild ist (20.11.2026) */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) $$('.browser .b-film').forEach(v => {
+    v.addEventListener('playing', () => v.classList.add('an'), { once: true });
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { if (!v.src) { v.src = v.dataset.src; v.load(); } v.play().catch(() => {}); } else if (v.src) v.pause(); }), { threshold: 0.25 }).observe(v);
+  });
   $$('.browser .scroller img').forEach(img => { const set = () => img.style.setProperty('--bh', img.parentElement.getBoundingClientRect().height.toFixed(1) + 'px'); img.complete ? set() : img.addEventListener('load', set); addEventListener('resize', set); });
 
   /* Stimmen: eine Bühne, Logo-Leiste als Wähler, wechselt alle 6 s */

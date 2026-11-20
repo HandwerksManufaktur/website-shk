@@ -1409,8 +1409,8 @@ def web_vorteile(kick='Was die Seite können muss', lead='Ein Komplettbad oder e
             f'{vort}</div></section>')
 
 def web_projekte(kick=None, lead=None):
-    p1 = web_projekt('entenmann', 'Entenmann Haustechnik', 'Heizung · Bad · Wärmepumpe · Weilheim i.OB', 'Meisterbetrieb seit 1969, vom Diplom-Ingenieur geplant. Dunkle Bühne, Video im Hero, und der Wärmekreis aus dem Logo zieht sich als Linie durch die ganze Seite.',
-                     [('monitor', 'Eine Seite je Leistung: Heizung &amp; Wärmepumpe, Bad &amp; Sanitär, Anlagentechnik, Wartung &amp; Notdienst'), ('users', 'Jobs-Seite für Anlagenmechaniker SHK'), ('search', 'Jede Seite auf Weilheim und Umgebung gebaut')],
+    p1 = web_projekt('entenmann', 'Entenmann Haustechnik', 'Heizung · Bad · Wärmepumpe · Weilheim i.OB', 'Meisterbetrieb seit 1969, vom Diplom-Ingenieur geplant. Oben auf jeder Seite läuft ein Film vom Drehtag im Betrieb, und der Wärmekreis aus dem Logo zieht sich als Linie durch die ganze Seite.',
+                     [('monitor', 'Eine Seite je Leistung: Heizung &amp; Wärmepumpe, Bad &amp; Sanitär, Anlagentechnik, Wartung &amp; Notdienst'), ('users', 'Jobs-Seite für Anlagenmechaniker SHK'), ('camera', 'Foto- und Filmtag im Betrieb: Team, Lager, Fahrzeuge, Technikraum')],
                      'Entenmann Haustechnik · Weilheim i.OB', 'https://entenmann-preview.pages.dev/', 'w', 0)
     p2 = web_projekt('irlbacher', 'Irlbacher GmbH', 'Sanitär · Heizung · Lüftung · Fensterbach bei Schwandorf', 'Josef Irlbacher und sein Team vor der Kamera, Fotos vom Shooting im Betrieb. Die drei Bögen aus dem Logo laufen als Ring durch Hero und Unterseiten.',
                      [('monitor', 'Sechs Leistungsseiten: Bad, Heizung, Wärmepumpe, Lüftung &amp; Klima, Solar, Kundendienst'), ('users', 'Jobs-Seite mit Video aus dem Betrieb und Bewerbung in 60 Sekunden'), ('camera', 'Shooting bei Irlbacher: Team, Werkstatt, Fahrzeuge')],

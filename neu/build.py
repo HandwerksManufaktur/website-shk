@@ -645,17 +645,17 @@ def ueber_offen(kurz=True):
     <div class="txt">
       <p class="kick">Wer dahinter steht</p>
       <h2 class="d">Du beherrschst dein Handwerk. <span class="em w">Wir unseres.</span></h2>
-      <p>Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
+      <p>Servus, ich bin Noah, Inhaber der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
       <p>Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p>
       <p>In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
-      <div class="gruender"><img class="rund-bart" src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></span></div>
+      <div class="gruender"><img class="rund-bart" src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Inhaber der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Noah Seelau</b><small>Inhaber der HandwerksManufaktur</small></span></div>
       <div class="stats hell"><div class="stat"><b>5,0<span class="stern">{ic("star","voll")}</span></b><small>Google-Bewertung aus 57 Bewertungen</small></div><div class="stat"><b>150<span>+</span></b><small>Handwerks&shy;betriebe betreut</small></div><div class="stat"><b>8<span>+</span></b><small>Jahre Erfahrung</small></div></div>
       {'' if not kurz else f'<p style="margin-top:10px"><a class="btn btn-ink" href="{u("/ueber-uns/")}">Mehr über uns <span aria-hidden="true">→</span></a></p>'}
     </div>
   </div></div>
 </section>'''
 
-TEAM = [('noah', 'Noah', 'Gründer, Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 50%'),   # rundes Lächel-Porträt 03/2026 als Kreis — ganzer Kopf, und kein zweites Mal das Laptop-Foto aus „Wer dahinter steht" (Noah, 27.09.2026)
+TEAM = [('noah', 'Noah', 'Inhaber, Strategie&nbsp;&amp;&nbsp;Vertrieb', '50% 50%'),   # rundes Lächel-Porträt 03/2026 als Kreis — ganzer Kopf, und kein zweites Mal das Laptop-Foto aus „Wer dahinter steht" (Noah, 27.09.2026)
         ('robert-rund', 'Robert', 'Videoschnitt&nbsp;&amp;&nbsp;Creative', '50% 50%'),   # Kopf mit Luft nach oben — im Original berührt das Haar den Rand (Noah, 27.09.2026)
         (None, 'Rudolf', 'Websites&nbsp;&amp;&nbsp;Anzeigen', '')]   # Noah, 27.09.2026: „mach gesicht von rudolf raus!!! und einfach n R rein … füll die kreise aus"
 
@@ -702,7 +702,7 @@ def faq(fragen=FAQ_START, h2='Bevor du <span class="em k">fragst.</span>', satz=
     return f'''<section class="faq" id="faq">
   <div class="wrap"><div class="faq-grid">
     <div class="links rv"><p class="kick">Häufige Fragen</p><h2 class="d">{h2}</h2><p>{satz}</p>
-      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Gründer der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Deine Frage steht nicht dabei?</b><small>Dann ruf einfach an.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
+      <div class="faq-anker"><div class="wer"><img src="/assets/fotos/noah-gruender-rund-bart.jpg" alt="Porträt Noah Seelau, Inhaber der HandwerksManufaktur" width="480" height="480" loading="lazy"><span><b>Deine Frage steht nicht dabei?</b><small>Dann ruf einfach an.</small></span></div><a class="btn btn-ink" href="{TEL_HREF}">{ic('phone','ic')}{TEL}</a></div>
     </div>
     <div class="faq-liste rv" data-d="1">{items}</div>
   </div></div>
@@ -921,11 +921,11 @@ def ueber_werdegang():
     return f'''<section class="sec werdegang" id="werdegang"><div class="wrap"><div class="werdegang-grid">
   <figure class="werdegang-bild rv"><img src="/assets/fotos/noah-laptop-hoch.jpg" alt="Noah Seelau am Laptop" loading="lazy" width="980" height="1333" style="object-position:50% 30%"></figure>
   <div class="werdegang-text">
-    <p class="kick rv">Der Gründer</p>
+    <p class="kick rv">Der Inhaber</p>
     <h2 class="d rv">Wer hinter der <span class="em w">HandwerksManufaktur steht.</span></h2>
-    <p class="lead rv">Servus, ich bin Noah, Gründer der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
+    <p class="lead rv">Servus, ich bin Noah, Inhaber der HandwerksManufaktur. Dass wir nur fürs Handwerk arbeiten, kommt nicht von ungefähr.</p>
     <p class="rv werdegang-satz">Meine drei Brüder haben alle im Handwerk gelernt. Zwei davon sind Meister. Zusätzlich haben wir in der Familie mehrere Handwerksbetriebe. Dadurch habe ich schon von klein auf täglich mitgekriegt, wie es im Handwerk wirklich zugeht.</p><p class="rv werdegang-satz">In den letzten 8 Jahren haben wir über 150 Firmen betreut und wissen mittlerweile ganz genau, was ein Handwerksbetrieb online braucht, damit Kunden und Bewerber bei ihm landen.</p>
-    <p class="rv werdegang-name"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur</small></p>
+    <p class="rv werdegang-name"><b>Noah Seelau</b><small>Inhaber der HandwerksManufaktur</small></p>
   </div>
 </div></div></section>'''
 
@@ -1159,7 +1159,7 @@ def seite_wissen_artikel(a):
     qliste = ''.join(f'<li><a href="{q["url"]}" target="_blank" rel="noopener">{q["name"]}</a></li>' for q in quellen)
     kopfteil = (f'<section class="wx-kopf"><div class="wrap wx-schmal"><nav class="wx-brot" aria-label="Brotkrumen"><a href="{u("/")}">Start</a><span aria-hidden="true">›</span><a href="{u("/wissen/")}">Wissen</a><span aria-hidden="true">›</span><span>{a["kategorie"]}</span></nav>'
                 f'<p class="kick">{a["kategorie"]}</p><h1 class="wx-h1">{a["h1"]}</h1><p class="lead">{a["teaser"]}</p>'
-                f'<div class="wx-meta"><img src="/assets/team/noah.jpg" alt="Noah Seelau" width="480" height="480"><span class="wx-autor"><b>Noah Seelau</b><small>Gründer der HandwerksManufaktur, seit 2019 nur Handwerk</small></span>'
+                f'<div class="wx-meta"><img src="/assets/team/noah.jpg" alt="Noah Seelau" width="480" height="480"><span class="wx-autor"><b>Noah Seelau</b><small>Inhaber der HandwerksManufaktur, seit 2019 nur Handwerk</small></span>'
                 f'<span class="wx-meta-rest"><span>{ic("calendar")}Aktualisiert {wx_datum(a.get("aktualisiert") or a.get("veroeffentlicht", WX_STAND))}</span><span>{ic("clock")}{a["lesezeit"]} Min. Lesezeit</span></span></div></div></section>')
     kern = (f'<section class="wx-inhalt"><div class="wrap wx-raster-artikel"><aside class="wx-seite"><nav class="wx-toc" aria-label="Inhalt"><p>Inhalt</p><ol>{inhalt}</ol></nav>'
             f'<a class="wx-leistung" data-cta="wissen-leistung" href="{u(l[0])}">{ic(l[1])}<span><small>Passende Leistung</small><b>{l[2]}</b></span></a></aside>'
@@ -1172,7 +1172,7 @@ def seite_wissen_artikel(a):
     weiter = (f'<section class="sec wx-weiter"><div class="wrap"><div class="sec-kopf"><div><p class="kick rv">Weiterlesen</p><h2 class="d rv">Das fragen Betriebe <span class="em k">als Nächstes.</span></h2></div></div>'
               f'<div class="wx-raster">{"".join(wx_karte(x) for x in verwandt)}</div></div></section>')
     url = f"{DOMAIN}/wissen/{a['slug']}/"
-    autor = {"@type": "Person", "name": "Noah Seelau", "jobTitle": "Gründer", "url": f"{DOMAIN}/ueber-uns/", "image": f"{DOMAIN}/assets/team/noah.jpg",
+    autor = {"@type": "Person", "name": "Noah Seelau", "jobTitle": "Inhaber", "url": f"{DOMAIN}/ueber-uns/", "image": f"{DOMAIN}/assets/team/noah.jpg",
              "worksFor": {"@id": "https://handwerksmanufaktur.digital/#organization"}}
     art = {"@type": "Article", "headline": html.unescape(a['h1']), "description": a['beschreibung'], "author": autor, "publisher": {"@id": "https://handwerksmanufaktur.digital/#organization"},
            "datePublished": a.get('veroeffentlicht', WX_STAND), "dateModified": a.get('aktualisiert') or a.get('veroeffentlicht', WX_STAND), "mainEntityOfPage": url, "inLanguage": "de-DE",

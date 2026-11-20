@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Hero-Zusammenschnitt der SHK-Seite (assets/reels/kunden-szenen.mp4): jeder Betrieb EINMAL, Köpfe als Match Cut.
 
+🔴 Seit 20.11.2026 ist assets/reels/kunden-szenen.mp4 die Fassung der HWM-Startseite (firma/website/static/assets/vid/saeule/
+kunden-shk-d.mp4: Patrick im Lager, Bettina stehend, andere Reihenfolge). Noah: „bei der shk seite nimmst das gleiche video jetzt
+wie bei hwm seite“. Dieses Skript NICHT laufen lassen, ohne die Änderungen der HWM-Fassung (firma/website/start-neu/bauen.py,
+Abschnitt „Rechte Hero-Säule“) vorher hier nachzuziehen, sonst überschreibt es die abgenommene Fassung mit dem alten Schnitt.
+
 Noah, 18.10.2026 (1): „es sollten doch bei dem Handyvideo alle einmal durchlaufen … kein Kunde soll 2x kommen,
 bevor die nicht alle Kunden 1x gekommen sind."
 Noah, 18.10.2026 (2): „im Clip von Irlbacher schaut er auf einmal so komisch zur Seite. Bettina kannst du vielleicht

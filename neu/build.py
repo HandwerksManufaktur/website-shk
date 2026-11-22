@@ -1359,9 +1359,12 @@ FAQ_WEB = [
 # Rundgang als Film im Browser-Rahmen (Noah, 20.11.2026: Entenmann ist Vorzeigeprojekt, „dass das Video durchläuft“):
 # Hero-Film läuft, dann fährt die Seite durch. Aufnahme: system/apps/audit/_ent_rundgang.mjs → assets/webdesign/<slug>-film.mp4
 WEB_FILM = {s_ for s_ in ('entenmann', 'irlbacher', 'erwin-schmidt') if (REPO / f'assets/webdesign/{s_}-film.mp4').exists()}
-def web_film(img):
+def web_film(img, hero=False):
+    """hero=True: nur der stehende Hero-Film <slug>-hero.mp4 (Hero-Stapel, Noah 22.11.2026: „im hero muss es gar nicht scrollen“)."""
     slug = img.rsplit('/', 1)[-1].split('-start-')[0]
-    return f'<video class="b-film" muted loop playsinline preload="none" data-src="/assets/webdesign/{slug}-film.mp4" aria-hidden="true" tabindex="-1"></video>' if slug in WEB_FILM else ''
+    datei = f'{slug}-hero.mp4' if hero else f'{slug}-film.mp4'
+    if hero and not (REPO / 'assets/webdesign' / datei).exists(): return ''
+    return f'<video class="b-film" muted loop playsinline preload="none" data-src="/assets/webdesign/{datei}" aria-hidden="true" tabindex="-1"></video>' if slug in WEB_FILM or hero else ''
 
 def browser(img, titel):
     """Browser-Rahmen mit Seiten-Screenshot, der von selbst durchscrollt, sobald er im Bild ist (wie die Handys; main.js setzt --bh)."""
@@ -1377,7 +1380,7 @@ def web_stapel(slugs, titel, in_buehne=False):
     for i, s in reversed(list(enumerate(slugs))):
         lazy = ' loading="lazy" fetchpriority="low"' if i else ' fetchpriority="high"'
         k = f'/assets/webdesign/{s}-start-desk'
-        teile.append(f'<div class="browser s{i+1}"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel[i]}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {k}.jpg 1200w" sizes="(max-width: 900px) 86vw, 40vw" alt="{html.escape(titel[i])}, Startseite" width="1200" height="3200"{lazy}>{web_film(k + ".jpg")}</div></div>')  # Film in jedem Rahmen, der einen hat (Noah, 22.11.2026: Erwin Schmidt „da müsste jz das video zu sehen sein“)
+        teile.append(f'<div class="browser s{i+1}"><div class="b-leiste" aria-hidden="true"><i></i><i></i><i></i><span>{titel[i]}</span></div><div class="scroller"><img src="{k}-600.jpg" srcset="{k}-600.jpg 600w, {k}.jpg 1200w" sizes="(max-width: 900px) 86vw, 40vw" alt="{html.escape(titel[i])}, Startseite" width="1200" height="3200"{lazy}>{web_film(k + ".jpg", hero=True)}</div></div>')  # Film in jedem Rahmen, der einen hat (Noah, 22.11.2026: Erwin Schmidt „da müsste jz das video zu sehen sein“)
     if in_buehne: return '<div class="web-stapel">' + ''.join(teile) + '</div>'   # in der Hero-Bühne der Unterseiten (.buehne-phones trägt rv)
     return '<div class="web-stapel rv" data-d="2">' + ''.join(teile) + '</div>'
 

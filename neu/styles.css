@@ -2142,6 +2142,7 @@ html.rd-offen{overflow:hidden}
 .web-stapel .s2{z-index:2;top:14%;left:7%;filter:brightness(.78)}
 .web-stapel .s1{z-index:3;top:28%;left:14%}
 .web-stapel .s2 .scroller img,.web-stapel .s3 .scroller img{animation:none}
+.web-stapel .scroller img{animation:none!important}  /* Hero-Stapel scrollt nie (Noah, 22.11.2026) */
 .web-projekte{display:grid;gap:28px}
 .web-projekt{display:grid;grid-template-columns:.8fr 1.2fr;gap:12px;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:transform .4s var(--spring),box-shadow .4s var(--spring)}
 .web-projekt:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}

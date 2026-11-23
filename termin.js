@@ -13,8 +13,10 @@
   var SEITE = ds.seite === 'shk' ? 'shk' : 'hwm';
   var KNOPF = ds.knopf || 'btn btn-tinte';
   var API = 'https://handwerksmanufaktur-onboarding.handwerksmanufaktur.workers.dev/termin-anfrage';
-  var CAL = 'https://calendly.com/noahseelau/potenzial-erstgespraech';
-  var SLUG_THEMA = { 'website-potenzial': 'website', 'leadgen-potenzial': 'kunden', 'recruiting-potenzial': 'mitarbeiter', 'recruiting-potenzial-hwm': 'mitarbeiter', 'potenzial-erstgespraech': '' };
+  // Eigene Terminart „Beratung“ nur für das Termin-Fenster: halbstündige Startzeiten, Noahs eigene Terminarten bleiben im 15-Minuten-Raster
+  // (Noah, 22.11.2026). Die Leistung steht über a1 („Worum es geht: …“) im Kalendereintrag.
+  var CAL = 'https://calendly.com/noahseelau/beratung';
+  var SLUG_THEMA = { 'website-potenzial': 'website', 'leadgen-potenzial': 'kunden', 'recruiting-potenzial': 'mitarbeiter', 'recruiting-potenzial-hwm': 'mitarbeiter', 'potenzial-erstgespraech': '', 'beratung': '' };
   var IC = {
     website: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
     kunden: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
@@ -36,9 +38,10 @@
     ['kunden', 'Aufträge', 'Bad, Heizung, Wärmepumpe', 'bad'],
     ['website', 'Website', 'Neu oder überarbeitet']
   ] : [
-    ['website', 'Website', 'Neu oder überarbeitet'],
-    ['kunden', 'Neue Kunden', 'Mehr Anfragen über Werbung'],
-    ['mitarbeiter', 'Neue Mitarbeiter', 'Bewerbungen über Social Media']
+    // Unterzeile je Zeile verteilt (Noah, 22.11.2026: „Mehr Anfragen“ / „über Werbung“, „Bewerbungen“ / „über Social Media“)
+    ['website', 'Website', 'Neu oder\nüberarbeitet'],
+    ['kunden', 'Neue Kunden', 'Mehr Anfragen\nüber Werbung'],
+    ['mitarbeiter', 'Neue Mitarbeiter', 'Bewerbungen\nüber Social Media']
   ];
   function svg(n, k) { return '<svg class="' + (k || 'td-ic') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + IC[n] + '</svg>'; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -92,7 +95,7 @@
     dlg = document.createElement('dialog');
     dlg.className = 'rd td td-weit'; dlg.id = 'termin-dialog'; dlg.setAttribute('aria-labelledby', 'td-titel');
     var wahl = THEMEN.map(function (t) {
-      return '<button type="button" data-thema="' + t[0] + '" aria-pressed="false">' + svg(t[3] || t[0]) + '<span>' + esc(t[1]) + '<small>' + esc(t[2]) + '</small></span></button>';
+      return '<button type="button" data-thema="' + t[0] + '" aria-pressed="false">' + svg(t[3] || t[0]) + '<span>' + esc(t[1]) + '<small>' + esc(t[2]).replace(/\n/g, '<br>') + '</small></span></button>';
     }).join('');
     dlg.innerHTML = '<form class="rd-form" novalidate>' +
       '<input type="text" name="bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
@@ -106,7 +109,7 @@
       '<button type="button" class="' + KNOPF + ' td-knopf" data-weiter="2">Weiter ' + svg('pfeil') + '</button></section>' +
       '<section class="rd-schritt" data-schritt="3" hidden><h3>Wohin schicken wir die Terminbestätigung?</h3>' +
       '<label class="rd-feld"><span>E-Mail</span><input name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@betrieb.de" required></label>' +
-      '<p class="td-mail">' + svg('schloss') + '<span>Die Mail brauchen wir nur für die Terminbestätigung und den Link zum Gespräch. Kein Newsletter, keine Werbung.</span></p>' +
+      '<p class="td-mail">' + svg('schloss') + '<span>Die Mail brauchen wir für die Terminbestätigung und den Link zum Gespräch. Buchst du keinen Termin, melden wir uns einmal per Mail.<br>Keine Sorge, du meldest dich gerade nicht für einen Newsletter an.</span></p>' +
       '<p class="td-fehler" data-fehler="3" hidden></p>' +
       '<button type="submit" class="' + KNOPF + ' td-knopf" data-weiter="3">Weiter zum Kalender ' + svg('pfeil') + '</button>' +
       '<p class="td-hinweis">Der Kalender kommt von Calendly. Mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p></section>' +
@@ -235,11 +238,15 @@
 
   document.addEventListener('click', function (e) {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    var el = e.target.closest('[data-termin], a[href*="calendly.com/noahseelau/"]');
+    var el = e.target.closest('[data-termin], a[href*="calendly.com/noahseelau/"], a[href^="/kontakt/"], a[href^="/potenzialanalyse/"], a[href="#kontakt"]');
     if (!el || el.closest('.rd') || el.hasAttribute('data-termin-aus')) return;
     var thema = '';
     if (el.hasAttribute('data-termin')) thema = el.getAttribute('data-termin') || '';
-    else {
+    else if (/^(\/kontakt\/|\/potenzialanalyse\/|#kontakt$)/.test(el.getAttribute('href') || '')) {
+      /* Jeder Beratungsgespräch-Knopf öffnet das Fenster statt der Kontaktseite (Noah, 23.11.2026: „egal, wo man auf der
+         Seite ist … soll es einfach immer direkt dieses Pop-up öffnen“). Der schlichte Link „Kontakt“ führt weiter zur Seite. Auf der SHK-Seite gilt das ebenso für /potenzialanalyse/ und #kontakt. */
+      if (!/#anfrage/.test(el.getAttribute('href')) && !/beratung|erstgespr|termin|potenzial/i.test(el.textContent || '')) return;
+    } else {
       var m = (el.getAttribute('href') || '').match(/calendly\.com\/noahseelau\/([a-z0-9-]+)/);
       if (!m || !(m[1] in SLUG_THEMA)) return;
       thema = SLUG_THEMA[m[1]];

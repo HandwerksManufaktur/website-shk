@@ -186,6 +186,7 @@ def fuss():
 </footer>
 <script src="/neu/main.js?v={V}" defer></script>
 <script src="/messung.js?v={V}" defer></script>
+<script src="/termin.js?v=12" data-seite="shk" data-knopf="btn btn-ink" defer></script>
 </body>
 </html>
 '''

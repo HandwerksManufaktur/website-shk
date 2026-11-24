@@ -100,7 +100,7 @@
     },
     {
       "h2": "Rechenbeispiel: Wann trägt sich das Werbebudget?",
-      "html": "<p>Die Rechnung zeigt, wie du das Budget gegen einen Auftrag hältst. Das ist ein Rechenbeispiel, keine Prognose. Die Annahmen stehen dabei, setz deine eigenen ein.</p><ol><li>Werbebudget für die Anlaufzeit: 30 € × 30 Tage × 3 Monate = 2.700 €</li><li>Rohertrag aus einem Bad: 10.000 € Auftragswert × 20 % = 2.000 €</li><li>Aufträge, bis das Budget gedeckt ist: 2.700 € ÷ 2.000 € = 1,35</li></ol><p>Mit zwei solchen Bädern in drei Monaten hast du das Werbebudget wieder drin. Die 10.000 € stammen aus einem Fall: So groß war der erste Auftrag, den die Erich Sussmann GmbH gut zwei Wochen nach dem Start über die Anzeigen bekam. Die 20 % Rohertrag sind eine Annahme, deine Kalkulation kennst nur du.</p><p>In der Rechnung fehlen die Kosten der Agentur und deine eigene Zeit. Die gehören in eine vollständige Rechnung, die wir im Erstgespräch mit dir aufstellen. Für Monteure geht die Rechnung anders, dort zählt, was dich die offene Stelle jeden Monat kostet. Das steht im Artikel <a href='/wissen/kosten-offene-stelle/'>Was kostet eine unbesetzte Stelle</a>.</p>",
+      "html": "<p>Die Rechnung zeigt, wie du das Budget gegen einen Auftrag hältst. Das ist ein Rechenbeispiel, keine Prognose. Die Annahmen stehen dabei, setz deine eigenen ein.</p><ol><li>Werbebudget für die Anlaufzeit: 30 € × 30 Tage × 3 Monate = 2.700 €</li><li>Rohertrag aus einem Bad: 12.000 € Auftragswert × 20 % = 2.400 €</li><li>Aufträge, bis das Budget gedeckt ist: 2.700 € ÷ 2.400 € = 1,13</li></ol><p>Mit zwei solchen Bädern in drei Monaten hast du das Werbebudget wieder drin. Die 12.000 € stammen aus einem Fall: So groß war der erste Auftrag, den die Erich Sussmann GmbH gut zwei Wochen nach dem Start über die Anzeigen bekam. Die 20 % Rohertrag sind eine Annahme, deine Kalkulation kennst nur du.</p><p>In der Rechnung fehlen die Kosten der Agentur und deine eigene Zeit. Die gehören in eine vollständige Rechnung, die wir im Erstgespräch mit dir aufstellen. Für Monteure geht die Rechnung anders, dort zählt, was dich die offene Stelle jeden Monat kostet. Das steht im Artikel <a href='/wissen/kosten-offene-stelle/'>Was kostet eine unbesetzte Stelle</a>.</p>",
       "tabelle": {
         "titel": "Deine Zahlen: trägt sich das Werbebudget?",
         "kopf": [
@@ -131,7 +131,7 @@
           [
             "Auftragswert",
             "durchschnittliches Bad oder Wärmepumpe",
-            "10.000 €",
+            "12.000 €",
             ""
           ],
           [
@@ -143,7 +143,7 @@
           [
             "Aufträge bis gedeckt",
             "Werbebudget ÷ (Auftragswert × Rohertrag)",
-            "1,35",
+            "1,13",
             ""
           ]
         ],

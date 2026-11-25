@@ -288,6 +288,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .fall-gross .vid.laeuft .play{display:none}
 /* Sussmann-Film (16:9 mit Untertitel-Streifen) läuft in der großen Fallstudie ganz, nie seitlich beschnitten (25.11.2026) */
 .fall-gross .vid.ganz.laeuft video{object-fit:contain;background:#000;scale:1}
+/* Jeder Kundenfilm läuft in der großen Fallstudie ganz: die Filme sind 16:9, die Box 4:3 (Noah, 25.11.2026: „an der Seite abgeschnitten“) */
+.fall-gross .vid.laeuft video{object-fit:contain;background:#000;scale:1;object-position:50% 50% !important}
 .fall-gross .txt{padding:40px 40px 40px 0;display:flex;flex-direction:column;gap:22px;justify-content:space-between}
 .fall-gross .txt p{color:var(--sub);font-size:16px}
 .fall-gross blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.4vw,34px);line-height:1.15;letter-spacing:-.015em}

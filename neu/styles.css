@@ -286,6 +286,8 @@ h3{font-weight:700;letter-spacing:-.02em;font-size:20px;line-height:1.25}
 .fall-gross .vid .play span{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:var(--r-pill);background:rgba(11,20,36,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);font-weight:700;font-size:14px;transition:transform .35s var(--spring)}
 .fall-gross .vid .play:hover span{transform:scale(1.05)}
 .fall-gross .vid.laeuft .play{display:none}
+/* Sussmann-Film (16:9 mit Untertitel-Streifen) läuft in der großen Fallstudie ganz, nie seitlich beschnitten (25.11.2026) */
+.fall-gross .vid.ganz.laeuft video{object-fit:contain;background:#000;scale:1}
 .fall-gross .txt{padding:40px 40px 40px 0;display:flex;flex-direction:column;gap:22px;justify-content:space-between}
 .fall-gross .txt p{color:var(--sub);font-size:16px}
 .fall-gross blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.4vw,34px);line-height:1.15;letter-spacing:-.015em}

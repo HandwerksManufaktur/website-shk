@@ -540,7 +540,13 @@ def fallstudien_teaser():
   </div>
 </section>'''
 
+# Schalter Sussmann-Kundenfilm (Interview Patrick Wähnl). Noah, 26.11.2026: „nimm nochmal ganz kurz das video von patrick … runter,
+# einfach solang ich dir sage, nimms wieder mit rein“ — True = Film wieder überall drin (Karte, große Fallstudie, Regionsseiten).
+SUSSMANN_FILM = False
+
 def fall_gross(logo, name, rolle, betrieb, poster, video, dauer, zitat, absatz, zahlen, chipk, aria, pos='50% 40%', anker=''):
+    if 'sussmann-testimonial' in video and not SUSSMANN_FILM:
+        video = ''
     z = ''.join(zahl_html(b, s, chipk) for b, s in zahlen)
     if not video:   # Fallstudie ohne Inhaber-Video: scharfes Foto aus dem Shooting (Noah, 27.09.2026)
         return f'''<article class="fall-gross rv"{f' id="{anker}"' if anker else ''}>
@@ -585,6 +591,16 @@ def senftleben_recruiting_karte(d=1):
 
 def sussmann_karte(d=1):
     # Seit 25.11.2026 mit Kundenfilm (Interview Patrick Wähnl, 24.11.2026) statt Foto + Link
+    if not SUSSMANN_FILM:   # Film vorübergehend raus (26.11.2026): Foto wie vor dem Film, Zahlen aktuell
+        return f'''<article class="fall-karte rv" data-d="{d}">
+  <div class="vid"><img src="/assets/fotos/sussmann-team-wagen-duo.jpg" alt="Patrick und Mirjana Wähnl mit ihren Monteuren an den Firmenwagen der Erich Sussmann GmbH" loading="lazy" width="1600" height="1067" style="object-position:74% 30%"></div>
+  <div class="txt">
+    <span class="chip w"><i aria-hidden="true"></i>Aufträge</span>
+    <p class="erg">Erster Auftrag über 12.000&nbsp;€ nach gut 2&nbsp;Wochen unterschrieben.</p>
+    <div class="betrieb"><span class="lg"><img src="{SUS_LOGO}" alt="Sussmann GmbH"></span><span><b>Sussmann GmbH</b></span></div>
+    <div class="zahlen">{zahl_html('39', 'Bad-Anfragen', 'w')}{zahl_html('14', 'Vor-Ort-Termine', 'w')}{zahl_html('12.000&nbsp;€', 'Erster Auftrag', 'w')}</div>
+  </div>
+</article>'''
     return fall_karte(SUS_LOGO, 'Sussmann GmbH', 'Kirchheim bei München · Badsanierung', 'Aufträge', 'w', '/assets/fotos/sussmann-team-wagen-duo.jpg', '/assets/testimonial/sussmann-testimonial.mp4', '2:57', 'Erster Auftrag über 12.000&nbsp;€ nach gut 2&nbsp;Wochen unterschrieben.', [('39', 'Bad-Anfragen'), ('14', 'Vor-Ort-Termine'), ('12.000&nbsp;€', 'Erster Auftrag')], 'Patrick Wähnl, Geschäftsführer', d, pos='74% 30%')
 
 def stimpfle_karte(d=2):

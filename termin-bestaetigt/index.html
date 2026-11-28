@@ -146,6 +146,20 @@
 .tb-kap2 li{display:flex;gap:8px}.tb-kap2 li span{color:var(--kalt-deep);font-weight:700}
 @media(max-width:900px){.tb-raster{grid-template-columns:1fr;margin-top:30px;row-gap:16px}.tb-hero2{padding-top:calc(var(--nav-h) + 36px)!important}.tb-links{display:contents}.tb-links>*{order:2}.tb-links>.kick,.tb-links>h1{order:0}.tb-rechts{order:1}.tb-hero2 h1{font-size:36px}.tb-kap2{display:none}.tb-noah .pa2-play b{display:none}.tb-noah .pa2-play{align-content:start;padding-top:12%}.tb-noah .pa2-play i{width:60px;height:60px}.tb-noah figcaption{padding:24px 14px 10px;font-size:0}.tb-noah figcaption b{font-size:15px}}
 #tb-datum{font-size:clamp(24px,2.6vw,34px)!important}
+/* 28.11.2026 Noah: „wieso unten zentriert, oben nicht und dann komisch mittig?“ → eine Ausrichtung: alles linksbündig, volle Breite wie der Kopf */
+.tb-raster{align-items:stretch}
+.tb-links{display:flex;flex-direction:column;gap:18px}.tb-links .kick,.tb-links h1,.tb-links .lead{margin-top:0;margin-bottom:0}
+.tb-links .tb-kap2{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:0 24px;font-size:15px}
+.tb-links .tb-kap2 li{padding:11px 0;border-top:1px solid var(--line)}
+.tb-liste,.tb-video,.tb-video .fall-karte,.tb-feste{max-width:none;margin:0}
+.tb-liste h2,.tb-video h2{text-align:left}
+.tb-punkte{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tb-punkte>div{grid-template-columns:1fr;gap:14px;align-content:start}
+.tb-video .fall-karte{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.tb-video .fall-karte .vid{aspect-ratio:auto;min-height:100%}
+.tb-video .fall-karte .txt{justify-content:center;padding:clamp(24px,3vw,44px)}
+@media(max-width:900px){.tb-links{display:contents}.tb-links .tb-kap2{display:none}.tb-punkte{grid-template-columns:1fr}.tb-punkte>div{grid-template-columns:44px 1fr}.tb-video .fall-karte{grid-template-columns:1fr}.tb-video .fall-karte .vid{aspect-ratio:16/9}}
+
 @media(max-width:900px){.tb-vgrid{grid-template-columns:1fr}}
 </style></head>
 <body>
@@ -165,9 +179,9 @@
 <main class="takt">
 <section class="tb-hero tb-hero2" id="start"><div class="wrap tb-raster"><div class="tb-links"><p class="kick">Termin bestätigt</p><h1 class="h-xl">Dein Termin <span class="em w">steht<span id="tb-name"></span>.</span></h1>
 <div id="tb-zeit" hidden><div class="tb-termin"><span id="tb-datum"></span><small>Per Video (Google Meet)</small></div></div>
-<p class="lead">Die Einladung mit dem Link zum Gespräch liegt schon in deinem Postfach.</p></div><div class="tb-rechts">
+<p class="lead">Die Einladung mit dem Link zum Gespräch liegt schon in deinem Postfach.</p><ol class="tb-kap2"><li><span>01</span>Worum es geht</li><li><span>02</span>Was dich erwartet</li><li><span>03</span>Darum geht es im Gespräch</li><li><span>04</span>Deine Vorbereitung</li><li><span>05</span>Wer wir sind</li><li><span>06</span>Nächster Schritt</li></ol></div><div class="tb-rechts">
 <!-- VIDEO-PLATZ: Noahs Vorab-Video je Linie (Skripte: marketing/webdesign/videoskripte-danke-seite.md) ersetzt Bild + Platzhalter -->
-<figure class="pa-bild tb-noah"><img decoding="async" src="/assets/opt/assets-fotos-noah-bei-klass-960.webp" alt="Noah Seelau mit dem Team eines SHK-Betriebs" width="960" height="960" loading="eager"><div class="pa2-play" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></i><b>Video folgt</b></div><figcaption><b id="tb-vtitel">Was dich im Gespräch erwartet</b>Noah Seelau, Gründer · ca. 2 Minuten</figcaption></figure><ol class="tb-kap2"><li><span>01</span>Worum es geht</li><li><span>02</span>Was dich erwartet</li><li><span>03</span>Darum geht es im Gespräch</li><li><span>04</span>Deine Vorbereitung</li><li><span>05</span>Wer wir sind</li><li><span>06</span>Nächster Schritt</li></ol></div></div></section>
+<figure class="pa-bild tb-noah"><img decoding="async" src="/assets/opt/assets-fotos-noah-bei-klass-960.webp" alt="Noah Seelau mit dem Team eines SHK-Betriebs" width="960" height="960" loading="eager"><div class="pa2-play" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></i><b>Video folgt</b></div><figcaption><b id="tb-vtitel">Was dich im Gespräch erwartet</b>Noah Seelau, Gründer · ca. 2 Minuten</figcaption></figure></div></div></section>
 
 
 

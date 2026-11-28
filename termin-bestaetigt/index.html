@@ -135,6 +135,16 @@
 .tb-kap li{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:12px 0;border-top:1px solid var(--line);font-size:16px}
 .tb-kap li span{color:var(--kalt-deep);font-weight:700;font-variant-numeric:tabular-nums}
 .tb-kap p{margin-top:auto;padding-top:16px;color:var(--sub);font-size:15px}
+.tb-hero2{text-align:left}
+.tb-raster{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:clamp(28px,4vw,56px);align-items:start}
+.tb-hero2 .kick{justify-content:flex-start}
+.tb-hero2 h1{font-size:clamp(40px,4.6vw,68px)}
+.tb-hero2 .tb-termin{margin:22px 0 0}
+.tb-hero2 .lead{margin-left:0}
+.tb-rechts{display:grid;gap:12px}
+.tb-kap2{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--sub)}
+.tb-kap2 li{display:flex;gap:8px}.tb-kap2 li span{color:var(--kalt-deep);font-weight:700}
+@media(max-width:900px){.tb-raster{grid-template-columns:1fr}.tb-hero2{padding-top:calc(var(--nav-h) + 36px)!important}.tb-links{display:contents}.tb-links>*{order:2}.tb-links>.kick,.tb-links>h1{order:0}.tb-rechts{order:1}.tb-hero2 h1{font-size:36px}.tb-kap2{display:none}.tb-noah .pa2-play b{display:none}.tb-noah .pa2-play{align-content:start;padding-top:12%}.tb-noah .pa2-play i{width:60px;height:60px}.tb-noah figcaption{padding:24px 14px 10px;font-size:0}.tb-noah figcaption b{font-size:15px}}
 #tb-datum{font-size:clamp(24px,2.6vw,34px)!important}
 @media(max-width:900px){.tb-vgrid{grid-template-columns:1fr}}
 </style></head>
@@ -153,15 +163,13 @@
 </header>
 <div class="mobilmenu" id="mobilmenu"><a href="/monteure/"><svg class="ik" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Monteure</a><a href="/auftraege/"><svg class="ik" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><path d="m10 5-2 2"/><path d="M2 12h20"/><path d="M7 19v2"/><path d="M17 19v2"/></svg>Aufträge</a><a href="/webdesign/"><svg class="ik" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>Websites</a><a href="/ueber-uns/"><svg class="ik" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>Über uns</a><a class="nav-cta" href="/potenzialanalyse/"><svg class="ik" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Potenzialanalyse</a></div>
 <main class="takt">
-<section class="tb-hero" id="start"><div class="wrap"><p class="kick rv">Termin bestätigt</p><h1 class="h-xl rv" data-d="1">Dein Termin <span class="em w">steht<span id="tb-name"></span>.</span></h1>
-<div id="tb-zeit" hidden><div class="tb-termin rv" data-d="2"><span id="tb-datum"></span><small>Per Video (Google Meet)</small></div></div>
-<p class="lead rv" data-d="2">Die Einladung mit dem Link zum Gespräch liegt schon in deinem Postfach.</p></div></section>
+<section class="tb-hero tb-hero2" id="start"><div class="wrap tb-raster"><div class="tb-links"><p class="kick">Termin bestätigt</p><h1 class="h-xl">Dein Termin <span class="em w">steht<span id="tb-name"></span>.</span></h1>
+<div id="tb-zeit" hidden><div class="tb-termin"><span id="tb-datum"></span><small>Per Video (Google Meet)</small></div></div>
+<p class="lead">Die Einladung mit dem Link zum Gespräch liegt schon in deinem Postfach.</p></div><div class="tb-rechts">
+<!-- VIDEO-PLATZ: Noahs Vorab-Video je Linie (Skripte: marketing/webdesign/videoskripte-danke-seite.md) ersetzt Bild + Platzhalter -->
+<figure class="pa-bild tb-noah"><img decoding="async" src="/assets/opt/assets-fotos-noah-bei-klass-960.webp" alt="Noah Seelau mit dem Team eines SHK-Betriebs" width="960" height="960" loading="eager"><div class="pa2-play" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></i><b>Video folgt</b></div><figcaption><b id="tb-vtitel">Was dich im Gespräch erwartet</b>Noah Seelau, Gründer · ca. 2 Minuten</figcaption></figure><ol class="tb-kap2"><li><span>01</span>Worum es geht</li><li><span>02</span>Was dich erwartet</li><li><span>03</span>Darum geht es im Gespräch</li><li><span>04</span>Deine Vorbereitung</li><li><span>05</span>Wer wir sind</li><li><span>06</span>Nächster Schritt</li></ol></div></div></section>
 
-<section class="tb-sec" id="video"><div class="wrap"><h2 class="d rv">Worum es geht und <span class="em k">wie wir arbeiten.</span></h2><div class="tb-vgrid">
-<!-- VIDEO-PLATZ: Noahs Video (Skripte je Leistung in marketing/webdesign/videoskripte-danke-seite.md, Website / Leadgen / Recruiting) ersetzt Bild + Platzhalter -->
-<figure class="pa-bild tb-noah rv"><img decoding="async" src="/assets/opt/assets-fotos-noah-bei-klass-960.webp" alt="Noah Seelau mit dem Team eines SHK-Betriebs" width="960" height="960" loading="eager"><div class="pa2-play" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></i><b>Video folgt</b></div><figcaption><b id="tb-vtitel">Noah Seelau, Gründer</b>Er führt das Gespräch selbst</figcaption></figure>
-<div class="tb-kap rv" data-d="1"><h3>Im Video</h3><ol><li><span>01</span>Worum es geht</li><li><span>02</span>Was dich erwartet</li><li><span>03</span>Darum geht es im Gespräch</li><li><span>04</span>Deine Vorbereitung</li><li><span>05</span>Wer wir sind</li><li><span>06</span>Nächster Schritt</li></ol><p>Erst Fragen, dann eine ehrliche Einschätzung.</p></div>
-</div></div></section>
+
 
 <section class="tb-sec" id="vorbereitung"><div class="wrap"><div class="tb-liste"><h2 class="d rv">So bereitest du <span class="em w">dich vor.</span></h2><div class="tb-punkte" id="tb-punkte">
 <div class="rv"><span class="nr" aria-hidden="true">1</span><div><h3>Wie ausgelastet seid ihr?</h3><p>Grob reicht: Wie viele Leute seid ihr, wie viel Arbeit habt ihr, wie weit ist das Auftragsbuch voll?</p></div></div>

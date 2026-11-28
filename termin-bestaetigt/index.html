@@ -117,7 +117,27 @@
 </style>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.HM_GRUPPE='shk-v3'</script><script src="/zustimmung.js?v=74105e7d" defer></script>
 
-</head>
+<style>
+.tb-vgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:stretch;margin-top:28px}
+.tb-noah{aspect-ratio:16/10}
+.pa-bild{position:relative;margin:0;border-radius:4px;overflow:hidden;background:var(--night)}
+.pa-bild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.pa-bild figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 20px 18px;background:linear-gradient(180deg,transparent,rgba(11,20,36,.82));color:#fff;font-size:14px;font-weight:600;z-index:3}
+.pa-bild figcaption b{display:block;font-size:17px;font-family:var(--fh)}
+.pa2-play{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:12px;background:rgba(11,20,36,.28);pointer-events:none;z-index:2}
+.pa2-play i{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;transition:transform .3s}
+.pa2-play i svg{width:28px;height:28px;fill:#fff;margin-left:4px}
+.pa2-play b{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.pa-bild:hover .pa2-play i{transform:scale(1.08)}
+.tb-kap{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:26px 24px;display:flex;flex-direction:column}
+.tb-kap h3{font-size:20px;margin:0 0 8px}
+.tb-kap ol{list-style:none;margin:0;padding:0}
+.tb-kap li{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:12px 0;border-top:1px solid var(--line);font-size:16px}
+.tb-kap li span{color:var(--kalt-deep);font-weight:700;font-variant-numeric:tabular-nums}
+.tb-kap p{margin-top:auto;padding-top:16px;color:var(--sub);font-size:15px}
+#tb-datum{font-size:clamp(24px,2.6vw,34px)!important}
+@media(max-width:900px){.tb-vgrid{grid-template-columns:1fr}}
+</style></head>
 <body>
 
 <div class="regler-leiste" aria-hidden="true"></div>
@@ -137,13 +157,10 @@
 <div id="tb-zeit" hidden><div class="tb-termin rv" data-d="2"><span id="tb-datum"></span><small>Per Video (Google Meet)</small></div></div>
 <p class="lead rv" data-d="2">Die Einladung mit dem Link zum Gespräch liegt schon in deinem Postfach.</p></div></section>
 
-<section class="tb-sec" id="video"><div class="wrap"><div class="tb-video">
-<h2 class="d rv">Damit du weißt, mit <span class="em k">wem du sprichst.</span></h2>
-<!-- VIDEO-PLATZ: hier später Noahs eigenes Vorstellungsvideo -->
-<article class="fall-karte rv" data-d="1">
-  <div class="vid"><video preload="none" poster="/assets/opt/assets-fotos-senftleben-benjamin-buero-team-960.webp?v=71a0fb7e" playsinline style="object-position:50% 30%"><source src="/assets/testimonial/senftleben-testimonial.mp4?v=ce0508e7" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span><svg class="ik voll" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4.5v15l12-7.5z"/></svg> Video ansehen · 1:59</span></button></div>
-  <div class="txt"><p class="erg" style="font-weight:700;font-size:18px;line-height:1.35">21 Bad-Anfragen in 2&nbsp;Monaten, 10+ Vor-Ort-Termine.</p><p class="zeit" style="font-size:14px;color:var(--sub)">Senftleben Haustechnik erzählt, wie es bei ihnen lief.</p></div>
-</article>
+<section class="tb-sec" id="video"><div class="wrap"><h2 class="d rv">Worum es geht und <span class="em k">wie wir arbeiten.</span></h2><div class="tb-vgrid">
+<!-- VIDEO-PLATZ: Noahs Video (Skripte je Leistung in marketing/webdesign/videoskripte-danke-seite.md, SHK = Nr. 7 Monteure / Nr. 8 Aufträge) ersetzt Bild + Platzhalter -->
+<figure class="pa-bild tb-noah rv"><img decoding="async" src="/assets/opt/assets-fotos-noah-bei-klass-960.webp" alt="Noah Seelau mit dem Team eines SHK-Betriebs" width="960" height="960" loading="eager"><div class="pa2-play" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></i><b>Video folgt</b></div><figcaption><b>Noah Seelau, Gründer</b>Er führt das Gespräch selbst</figcaption></figure>
+<div class="tb-kap rv" data-d="1"><h3>Im Video</h3><ol><li><span>0:00</span>Worum es geht</li><li><span>0:25</span>Was wir im Gespräch klären</li><li><span>0:55</span>Deine Vorbereitung</li><li><span>1:25</span>Wer wir sind</li><li><span>1:45</span>Nächster Schritt</li></ol><p>Erst Fragen, dann eine ehrliche Einschätzung. Ein Angebot gibt es im Gespräch nicht.</p></div>
 </div></div></section>
 
 <section class="tb-sec" id="vorbereitung"><div class="wrap"><div class="tb-liste"><h2 class="d rv">So bereitest du <span class="em w">dich vor.</span></h2><div class="tb-punkte">
@@ -152,6 +169,10 @@
 <div class="rv" data-d="2"><span class="nr" aria-hidden="true">3</span><div><h3>Was habt ihr schon probiert?</h3><p>Ob Stellenanzeige, Agentur oder Mundpropaganda: Was lief, was nicht?</p></div></div>
 </div></div></div></section>
 
+<section class="tb-sec" id="praxis"><div class="wrap"><div class="tb-video"><h2 class="d rv">So lief es bei <span class="em k">Senftleben.</span></h2><article class="fall-karte rv" data-d="1">
+  <div class="vid"><video preload="none" poster="/assets/opt/assets-fotos-senftleben-benjamin-buero-team-960.webp?v=71a0fb7e" playsinline style="object-position:50% 30%"><source src="/assets/testimonial/senftleben-testimonial.mp4?v=ce0508e7" type="video/mp4">Dein Browser kann dieses Video nicht abspielen.</video><button class="play" type="button" aria-label="Video ansehen"><span><svg class="ik voll" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4.5v15l12-7.5z"/></svg> Video ansehen · 1:59</span></button></div>
+  <div class="txt"><p class="erg" style="font-weight:700;font-size:18px;line-height:1.35">21 Bad-Anfragen in 2&nbsp;Monaten, 10+ Vor-Ort-Termine.</p><p class="zeit" style="font-size:14px;color:var(--sub)">Senftleben Haustechnik erzählt, wie es bei ihnen lief.</p></div>
+</article></div></div></section>
 <section class="tb-sec" id="verschieben" style="padding-bottom:clamp(64px,8vw,110px)"><div class="wrap"><div class="tb-feste rv"><h2 class="d">Der Termin ist für <span class="em w">dich geblockt.</span></h2><p>Kommt doch etwas dazwischen, verschieb ihn lieber, statt ihn ausfallen zu lassen.</p>
 <a class="btn btn-white btn-lg pa-btn" id="tb-verschieben" href="tel:+4981947174990" data-termin-aus="">Termin verschieben</a>
 <p class="tb-alt" id="tb-alt">Oder ruf kurz an: <a href="tel:+4981947174990">+49 8194 7174990</a> · <a href="mailto:info@handwerksmanufaktur.digital">info@handwerksmanufaktur.digital</a></p></div></div></section>
@@ -185,7 +206,7 @@
 </footer>
 <script src="/neu/main.js?v=8cfcb642" defer></script>
 <script src="/messung.js?v=8cfcb642" defer></script>
-<script src="/termin.js?v=13" data-seite="shk" data-knopf="btn btn-ink" defer></script>
+<script src="/termin.js?v=14" data-seite="shk" data-knopf="btn btn-ink" defer></script>
 <script>
 (function(){
   var q=new URLSearchParams(window.__TQ||"");

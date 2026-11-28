@@ -159,11 +159,11 @@
 
 <section class="tb-sec" id="video"><div class="wrap"><h2 class="d rv">Worum es geht und <span class="em k">wie wir arbeiten.</span></h2><div class="tb-vgrid">
 <!-- VIDEO-PLATZ: Noahs Video (Skripte je Leistung in marketing/webdesign/videoskripte-danke-seite.md, SHK = Nr. 7 Monteure / Nr. 8 Aufträge) ersetzt Bild + Platzhalter -->
-<figure class="pa-bild tb-noah rv"><img decoding="async" src="/assets/opt/assets-fotos-noah-bei-klass-960.webp" alt="Noah Seelau mit dem Team eines SHK-Betriebs" width="960" height="960" loading="eager"><div class="pa2-play" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></i><b>Video folgt</b></div><figcaption><b>Noah Seelau, Gründer</b>Er führt das Gespräch selbst</figcaption></figure>
+<figure class="pa-bild tb-noah rv"><img decoding="async" src="/assets/opt/assets-fotos-noah-bei-klass-960.webp" alt="Noah Seelau mit dem Team eines SHK-Betriebs" width="960" height="960" loading="eager"><div class="pa2-play" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></i><b>Video folgt</b></div><figcaption><b id="tb-vtitel">Noah Seelau, Gründer</b>Er führt das Gespräch selbst</figcaption></figure>
 <div class="tb-kap rv" data-d="1"><h3>Im Video</h3><ol><li><span>0:00</span>Worum es geht</li><li><span>0:25</span>Was wir im Gespräch klären</li><li><span>0:55</span>Deine Vorbereitung</li><li><span>1:25</span>Wer wir sind</li><li><span>1:45</span>Nächster Schritt</li></ol><p>Erst Fragen, dann eine ehrliche Einschätzung. Ein Angebot gibt es im Gespräch nicht.</p></div>
 </div></div></section>
 
-<section class="tb-sec" id="vorbereitung"><div class="wrap"><div class="tb-liste"><h2 class="d rv">So bereitest du <span class="em w">dich vor.</span></h2><div class="tb-punkte">
+<section class="tb-sec" id="vorbereitung"><div class="wrap"><div class="tb-liste"><h2 class="d rv">So bereitest du <span class="em w">dich vor.</span></h2><div class="tb-punkte" id="tb-punkte">
 <div class="rv"><span class="nr" aria-hidden="true">1</span><div><h3>Wie ausgelastet seid ihr?</h3><p>Grob reicht: Wie viele Leute seid ihr, wie viel Arbeit habt ihr, wie weit ist das Auftragsbuch voll?</p></div></div>
 <div class="rv" data-d="1"><span class="nr" aria-hidden="true">2</span><div><h3>Welche Stellen sind offen?</h3><p>Welche Monteure fehlen dir, und wie lange schon?</p></div></div>
 <div class="rv" data-d="2"><span class="nr" aria-hidden="true">3</span><div><h3>Was habt ihr schon probiert?</h3><p>Ob Stellenanzeige, Agentur oder Mundpropaganda: Was lief, was nicht?</p></div></div>
@@ -210,6 +210,12 @@
 <script>
 (function(){
   var q=new URLSearchParams(window.__TQ||"");
+  
+  var L={website:{t:'Worum es im Gespräch zur Website geht',v:[['Wie sieht deine Seite heute aus?','Schau sie dir einmal am Handy an, so wie ein Kunde sie sieht.'],['Welche Aufträge willst du mehr?','Zum Beispiel Bad, Wärmepumpe oder Kundendienst.'],['Woher kommen deine Kunden heute?','Mundpropaganda, Google oder Empfehlung: Was bringt am meisten?']]},
+  leadgen:{t:'Worum es im Gespräch zu neuen Aufträgen geht',v:[['Wie ausgelastet seid ihr?','Grob reicht: Wie viele Leute seid ihr, und für wann sucht ihr Aufträge?'],['Welche Aufträge wollt ihr mehr?','Bad, Wärmepumpe oder beides, und in welchem Umkreis?'],['Was habt ihr schon probiert?','Ob Anzeigen, Portale oder Mundpropaganda: Was lief, was nicht?']]},
+  recruiting:{t:'Worum es im Gespräch zu neuen Monteuren geht',v:[['Welche Stellen sind offen?','Welche Monteure fehlen dir, und wie lange schon?'],['Wie viele seid ihr?','Teamgröße und Umkreis, aus dem eure Leute kommen.'],['Was habt ihr schon probiert?','Ob Stellenanzeige, Agentur oder Mundpropaganda: Was lief, was nicht?']]}};
+  var li=L[(q.get('linie')||'').toLowerCase()];
+  if(li){var vt=document.getElementById('tb-vtitel');if(vt)vt.textContent=li.t;var z=document.querySelectorAll('#tb-punkte > div');li.v.forEach(function(v,n){if(z[n]){z[n].querySelector('h3').textContent=v[0];z[n].querySelector('p').textContent=v[1];}});}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   var vor=(q.get('invitee_first_name')||'').trim();
   if(!vor){var v=(q.get('invitee_full_name')||'').trim().split(/\s+/)[0];vor=v||''}

@@ -211,6 +211,15 @@
 .tb-feste-foto{margin:0;border-radius:4px;overflow:hidden;min-height:280px;position:relative}.tb-feste-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
 @media(max-width:900px){.tb-feste{grid-template-columns:1fr}.tb-feste-foto{min-height:0;aspect-ratio:4/3}}
 .vk-hinweis[hidden]{display:none}
+.tb-schritte{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:8px}
+.tb-schritt{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 20px}.tb-schritt .nr{display:block;font-family:var(--fh);font-weight:800;font-size:20px;color:var(--kalt-deep);margin-bottom:12px}.tb-schritt h3{font-size:18px;margin-bottom:6px}.tb-schritt p{color:var(--sub);font-size:15.5px;line-height:1.5}
+.tb-logos{overflow:hidden;margin-top:28px;padding:10px 0}.tb-logos .spur{display:flex;gap:64px;width:max-content;align-items:center;animation:marq 70s linear infinite}.tb-logos img{height:40px;width:auto;max-width:170px;object-fit:contain}
+.tb-wer-raster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(24px,4vw,56px);align-items:center}
+.tb-wer-karte{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:26px}.tb-wer-karte .kopf{display:flex;gap:16px;align-items:center;margin-bottom:16px}.tb-wer-karte .kopf img{width:64px;height:64px;border-radius:4px;object-fit:cover;object-position:50% 20%}.tb-wer-karte b{display:block;font-size:18px}.tb-wer-karte span{color:var(--sub);font-size:15px}.tb-wer-karte p{color:var(--sub);font-size:16px;margin-top:10px}.tb-wer-karte a{text-decoration:underline;text-underline-offset:3px}
+.tb-blase{position:fixed;right:16px;bottom:16px;z-index:900;background:#fff;border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow-md);padding:8px 12px 8px 8px}.tb-blase .b{display:flex;align-items:center;gap:12px;text-align:left}.tb-blase img{width:56px;height:56px;border-radius:4px;object-fit:cover;object-position:50% 20%}.tb-blase span{font-weight:700;font-size:16px;line-height:1.25}.tb-blase small{display:block;font-weight:500;font-size:13px;color:var(--sub)}.tb-blase .x{position:absolute;top:-12px;right:-12px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:18px;line-height:1}
+.tb-blase[hidden]{display:none}
+@media(max-width:1100px){.tb-schritte{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:900px){.tb-wer-raster{grid-template-columns:1fr}.tb-blase{right:10px;bottom:10px}}@media(max-width:560px){.tb-schritte{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.tb-logos .spur{animation:none;flex-wrap:wrap;width:auto}}
 </style></head>
 <body>
 
@@ -235,6 +244,7 @@
 
 
 
+<section class="tb-sec" id="ablauf"><div class="wrap"><div class="tb-liste"><p class="kick rv">So läuft unser Gespräch</p><h2 class="d rv">Fünf Schritte, in <span class="em w">dieser Reihenfolge.</span></h2><div class="tb-schritte"><div class="tb-schritt rv"><span class="nr">01</span><h3>Ihre Seite heute</h3><p>Wie sie am Handy wirkt und was Kunden dort finden.</p></div><div class="tb-schritt rv" data-d="1"><span class="nr">02</span><h3>Ihre Wunschaufträge</h3><p>Welche Aufträge die Seite Ihnen mehr bringen soll.</p></div><div class="tb-schritt rv" data-d="2"><span class="nr">03</span><h3>Ihre Fotos</h3><p>Welche Bilder Sie haben und was wir im Betrieb neu aufnehmen können.</p></div><div class="tb-schritt rv" data-d="3"><span class="nr">04</span><h3>Aufbau der Seite</h3><p>Eine Seite je Leistung und bei Bedarf eine Jobs-Seite für Bewerber.</p></div><div class="tb-schritt rv" data-d="3"><span class="nr">05</span><h3>Ihr nächster Schritt</h3><p>Eine klare Empfehlung, ob und wie wir starten.</p></div></div></div></div></section>
 <section class="tb-sec" id="vorbereitung"><div class="wrap"><div class="tb-liste"><h2 class="d rv">So bereiten Sie <span class="em w">sich vor.</span></h2><div class="tb-punkte" id="tb-punkte">
 <div class="rv"><span class="nr" aria-hidden="true">1</span><div><h3>Ihre Seite am Handy</h3><p>Schauen Sie sie sich einmal an, so wie ein Kunde.</p></div></div>
 <div class="rv" data-d="1"><span class="nr" aria-hidden="true">2</span><div><h3>Wunschaufträge</h3><p>Welche Aufträge die Seite Ihnen mehr bringen soll.</p></div></div>
@@ -244,6 +254,8 @@
 <!--BEWEIS-->
 <section class="tb-sec tb-beweis" id="praxis"><div class="wrap"><div class="sec-kopf"><div><p class="kick w rv">Aus der Praxis</p><h2 class="d rv">Websites, die wir <span class="em w">gebaut haben.</span></h2></div></div><div class="kz-reihe"><article class="kz rv"><a class="kz-bilder" href="https://entenmann-preview.pages.dev/" target="_blank" rel="noopener" aria-label="Entenmann Haustechnik: Seite ansehen (neuer Tab)"><img src="/assets/web-konzept/entenmann-hero.webp" alt="Entenmann Haustechnik, Startseite" width="1200" height="750" loading="lazy" decoding="async"><img src="/assets/web-konzept/entenmann-leistungen.webp" alt="Entenmann Haustechnik, Leistungen" width="1200" height="750" loading="lazy" decoding="async"></a><div class="kz-in"><small>Heizung, Bad, Wärmepumpe · Weilheim i. OB</small><h3>Entenmann Haustechnik</h3><p>Eine Seite je Leistung, eine Jobs-Seite für Anlagenmechaniker SHK und ein Film vom Drehtag im Betrieb.</p><a class="btn btn-ink pa-btn" href="https://entenmann-preview.pages.dev/" target="_blank" rel="noopener">Seite ansehen</a></div></article><article class="kz rv"><a class="kz-bilder" href="https://irlbacher-vorschau.handwerksmanufaktur.workers.dev/" target="_blank" rel="noopener" aria-label="Irlbacher GmbH: Seite ansehen (neuer Tab)"><img src="/assets/web-konzept/irlbacher-hero.webp" alt="Irlbacher GmbH, Startseite" width="1200" height="750" loading="lazy" decoding="async"><img src="/assets/web-konzept/irlbacher-leistungen.webp" alt="Irlbacher GmbH, Leistungen" width="1200" height="750" loading="lazy" decoding="async"></a><div class="kz-in"><small>Sanitär, Heizung, Lüftung · Fensterbach</small><h3>Irlbacher GmbH</h3><p>Sechs Leistungsseiten und eine Jobs-Seite mit Video aus dem Betrieb, Bewerbung in 60 Sekunden.</p><a class="btn btn-ink pa-btn" href="https://irlbacher-vorschau.handwerksmanufaktur.workers.dev/" target="_blank" rel="noopener">Seite ansehen</a></div></article><article class="kz rv"><a class="kz-bilder" href="https://erwin-schmidt-vorschau.handwerksmanufaktur.workers.dev/" target="_blank" rel="noopener" aria-label="Erwin Schmidt &amp; Sohn: Seite ansehen (neuer Tab)"><img src="/assets/web-konzept/erwin-schmidt-hero.webp" alt="Erwin Schmidt &amp; Sohn, Startseite" width="1200" height="750" loading="lazy" decoding="async"><img src="/assets/web-konzept/erwin-schmidt-leistungen.webp" alt="Erwin Schmidt &amp; Sohn, Leistungen" width="1200" height="750" loading="lazy" decoding="async"></a><div class="kz-in"><small>Sanitär, Heizung, Energie · Sindelfingen</small><h3>Erwin Schmidt &amp; Sohn</h3><p>Drei Leistungsseiten und eine Jobs-Seite, die in die laufende Bewerbungsstrecke führt.</p><a class="btn btn-ink pa-btn" href="https://erwin-schmidt-vorschau.handwerksmanufaktur.workers.dev/" target="_blank" rel="noopener">Seite ansehen</a></div></article></div></div></section>
 <!--/BEWEIS-->
+<section class="tb-sec" id="logos"><div class="wrap"><p class="kick rv">Mit wem wir gearbeitet haben</p><h2 class="d rv">Betriebe, für die wir <span class="em w">gearbeitet haben.</span></h2></div><div class="tb-logos" aria-label="Betriebe, für die wir gearbeitet haben"><div class="spur"><img src="/assets/kunden-logos/entenmann.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/irlbacher.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/ess.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/gallenberger.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/hannes-schmidt.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/lanzinger.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/klass.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/kirchner.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/autohaus-ressle.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/senftleben.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/stimpfle.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/sussmann.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/suessmeier.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/entenmann.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/irlbacher.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/ess.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/gallenberger.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/hannes-schmidt.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/lanzinger.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/klass.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/kirchner.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/autohaus-ressle.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/senftleben.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/stimpfle.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/sussmann.png" alt="" loading="lazy" decoding="async"><img src="/assets/kunden-logos/suessmeier.png" alt="" loading="lazy" decoding="async"></div></div></section>
+<section class="tb-sec" id="wer"><div class="wrap"><div class="tb-wer-raster"><div><p class="kick rv">Wer im Gespräch dabei ist</p><h2 class="d rv">Noah Seelau führt das <span class="em w">Gespräch persönlich.</span></h2><p class="lead rv" style="margin-top:18px">Noah Seelau ist Gründer der HandwerksManufaktur. Seit 2019 arbeitet er nur für Handwerksbetriebe: Websites, neue Kunden und neue Mitarbeiter.</p></div><div class="tb-wer-karte"><div class="kopf"><img src="/assets/noah/noah-gruender-blau.webp" alt="Noah Seelau" width="960" height="1200" loading="lazy" decoding="async"><div><b>Noah Seelau</b><span>Gründer, HandwerksManufaktur</span></div></div><p>Termin verschieben oder absagen? Der Link steht in Ihrer Bestätigungsmail.</p><p>Fragen vorab: <a href="mailto:info@handwerksmanufaktur.digital">info@handwerksmanufaktur.digital</a></p></div></div></div></section>
 <section class="tb-sec" id="verschieben" style="padding-bottom:clamp(64px,8vw,110px)"><div class="wrap"><div class="tb-feste rv"><div class="tb-feste-text"><h2 class="d">Der Termin ist für <span class="em w">Sie geblockt.</span></h2><p>Kommt etwas dazwischen, können Sie den Termin einfach hier verschieben.</p>
 <a class="btn btn-white btn-lg pa-btn" id="tb-verschieben" href="tel:+4981947174990" data-termin-aus="">Termin verschieben</a>
 <p class="tb-hinweis" id="tb-hinweis" hidden>Den Link zum Verschieben finden Sie in der Kalender-Einladung in Ihrem Postfach.</p>
@@ -284,54 +296,83 @@
   var P=(function(){
   var q=new URLSearchParams(window.__TQ||"");
   function g(k){return (q.get(k)||"").trim()}
-  var M=" thomas michael andreas stefan markus christian peter wolfgang klaus jürgen hans josef franz georg matthias martin alexander daniel florian tobias sebastian johannes manfred helmut werner walter günter günther bernd uwe frank ralf rainer dieter horst karl heinz gerhard thorsten torsten jörg dirk jens oliver patrick benjamin simon lukas lucas jan nico niko kevin marco marcel maximilian max felix fabian philipp philip julian dominik christoph tim tom paul robert richard rudolf anton ludwig erwin ernst otto albert alfred herbert hermann norbert reinhard roland rolf siegfried volker wilhelm willi kurt lothar holger ingo mario mirko sven timo yannick janik jonas leon moritz nils niklas noah david adrian armin benedikt clemens erik eric gabriel hubert kilian konrad lars leonhard marc mathias matthäus michl rené rene sascha steffen stephan ulrich uli viktor victor xaver hannes bastian kai ben elias emil jakob jacob lorenz korbinian sepp wastl alois bruno claus detlef egon emanuel eugen fritz gottfried harald heiko henning jochen joachim jörn karsten lutz marius olaf rüdiger thilo tilman udo ulf waldemar wilfried mehmet ahmet ali mustafa murat emre tomasz piotr marek krzysztof andrzej dimitri sergej alexej vladimir ivan nikolaus nikolai giuseppe luca antonio giovanni salvatore ",W=" anna maria petra sabine claudia monika susanne birgit karin ursula barbara gabriele angelika brigitte christine martina heike anja nicole stefanie katharina sandra melanie julia sarah lisa laura lena nina jessica jennifer daniela simone silke renate ingrid gisela elisabeth eva doris helga hannelore margit margarete marion tanja nadine manuela carmen bettina cornelia christina kristina miriam vanessa alexandra franziska johanna hannah sophie sofia sophia emma mia marie theresa therese veronika verena viktoria victoria yvonne ulrike uta sonja sylvia silvia rosa rita renata regina ramona patricia michaela melissa leonie larissa katrin katja kathrin jutta judith isabel isabella irene ilse hildegard gerda gertrud gudrun frauke elke edith dagmar corinna constanze clara charlotte carolin caroline bianca beate astrid antje annette anke angela amelie alina alisa agnes adelheid meike svenja steffi nadja natalie natascha mareike maike linda lara kerstin jana ina inge ilona heidi hanna hedwig helene gaby gabi evelyn ellen elena diana denise christa cindy carina brigitta anita anneliese anette ";
+  var M="  thomas michael andreas stefan markus christian peter wolfgang klaus jürgen hans josef franz georg matthias martin alexander daniel florian tobias sebastian johannes manfred helmut werner walter günter günther bernd uwe frank ralf rainer dieter horst karl heinz gerhard thorsten torsten jörg dirk jens oliver patrick benjamin simon lukas lucas jan nico niko kevin marco marcel maximilian max felix fabian philipp philip julian dominik christoph tim tom paul robert richard rudolf anton ludwig erwin ernst otto albert alfred herbert hermann norbert reinhard roland rolf siegfried volker wilhelm willi kurt lothar holger ingo mario mirko sven timo yannick janik jonas leon moritz nils niklas noah david adrian armin benedikt clemens erik eric gabriel hubert kilian konrad lars leonhard marc mathias matthäus michl rené rene sascha steffen stephan ulrich uli viktor victor xaver hannes bastian kai ben elias emil jakob jacob lorenz korbinian sepp wastl alois bruno claus detlef egon emanuel eugen fritz gottfried harald heiko henning jochen joachim jörn karsten lutz marius olaf rüdiger thilo tilman udo ulf waldemar wilfried mehmet ahmet ali mustafa murat emre tomasz piotr marek krzysztof andrzej dimitri sergej alexej vladimir ivan nikolaus nikolai giuseppe luca antonio giovanni salvatore  ",W="  anna maria petra sabine claudia monika susanne birgit karin ursula barbara gabriele angelika brigitte christine martina heike anja nicole stefanie katharina sandra melanie julia sarah lisa laura lena nina jessica jennifer daniela simone silke renate ingrid gisela elisabeth eva doris helga hannelore margit margarete marion tanja nadine manuela carmen bettina cornelia christina kristina miriam vanessa alexandra franziska johanna hannah sophie sofia sophia emma mia marie theresa therese veronika verena viktoria victoria yvonne ulrike uta sonja sylvia silvia rosa rita renata regina ramona patricia michaela melissa leonie larissa katrin katja kathrin jutta judith isabel isabella irene ilse hildegard gerda gertrud gudrun frauke elke edith dagmar corinna constanze clara charlotte carolin caroline bianca beate astrid antje annette anke angela amelie alina alisa agnes adelheid meike svenja steffi nadja natalie natascha mareike maike linda lara kerstin jana ina inge ilona heidi hanna hedwig helene gaby gabi evelyn ellen elena diana denise christa cindy carina brigitta anita anneliese anette  ";
   function ok(s){return /^[A-Za-zÄÖÜäöüßéèàáñçłśżźćńęąóőűÉÈ .'\-]{1,60}$/.test(s)}
-  function cut(s){return s.split(/\s+[-–—|]\s+/)[0].trim()}
-  var full=g("invitee_full_name"),first=g("invitee_first_name"),last=g("invitee_last_name"),firma=g("answer_1");
+  function cut(s){return s.replace(/^TEST[\s:_-]+/i,"").split(/\s+[-–—|]\s+/)[0].trim()}
+  function mk(full,first,last){
+    full=cut(full||"");first=cut(first||"");last=cut(last||"");
+    if(!first||!last){var t=full.split(/\s+/).filter(Boolean);if(!first)first=t[0]||"";if(!last)last=t.length>1?t.slice(1).join(" "):""}
+    if(!ok(first))first="";if(!ok(last))last="";
+    var f1=first.toLowerCase().split(/[\s-]/)[0];
+    if(first&&last)return M.indexOf(" "+f1+" ")>-1?"Herr "+last:W.indexOf(" "+f1+" ")>-1?"Frau "+last:first+" "+last;
+    return last||"";
+  }
+  var full=g("invitee_full_name"),firma=g("answer_1");
   if(/\s[-–—|]\s/.test(full)&&!firma){firma=full.split(/\s+[-–—|]\s+/).slice(1).join(" - ")}
-  full=cut(full);first=cut(first);last=cut(last);
-  if(!first||!last){var t=full.split(/\s+/).filter(Boolean);if(!first)first=t[0]||"";if(!last)last=t.length>1?t.slice(1).join(" "):""}
-  if(!ok(first))first="";if(!ok(last))last="";
-  var f1=first.toLowerCase().split(/[\s-]/)[0],anrede="";
-  if(first&&last){anrede=M.indexOf(" "+f1+" ")>-1?"Herr "+last:W.indexOf(" "+f1+" ")>-1?"Frau "+last:first+" "+last}
-  else if(last){anrede=last}
   firma=firma.slice(0,70);if(!/^[^<>]{1,70}$/.test(firma))firma="";
+  var MON={januar:0,februar:1,"märz":2,april:3,mai:4,juni:5,juli:6,august:7,september:8,oktober:9,november:10,dezember:11};
+  function offB(ts){var p=new Intl.DateTimeFormat("en-US",{timeZone:"Europe/Berlin",timeZoneName:"shortOffset"}).formatToParts(new Date(ts)).filter(function(x){return x.type==="timeZoneName"})[0].value;var m=/GMT([+-]\d+)(?::(\d+))?/.exec(p);return m?(+m[1])*60+(m[1][0]==="-"?-1:1)*(+(m[2]||0)):60}
+  function deZeit(dt,tt){
+    var a=/(\d{1,2})\.\s*([A-Za-zäöüÄÖÜ]+)\s+(\d{4})/.exec(dt||""),b=/(\d{1,2}):(\d{2})\s*(am|pm)?/i.exec(tt||"");
+    if(!a||!b||MON[a[2].toLowerCase()]===undefined)return null;
+    if(/\(/.test(tt)&&!/mitteleurop/i.test(tt))return null;
+    var h=+b[1];if(b[3]){h=h%12+(/pm/i.test(b[3])?12:0)}
+    var u=Date.UTC(+a[3],MON[a[2].toLowerCase()],+a[1],h,+b[2]);u-=offB(u)*60000;u=Date.UTC(+a[3],MON[a[2].toLowerCase()],+a[1],h,+b[2])-offB(u)*60000;return new Date(u)}
   var s=g("event_start_time").replace(/ (\d\d:\d\d)$/,"+$1"),d=s?new Date(s):null;if(d&&isNaN(d))d=null;
+  var dText="";
+  if(!d){d=deZeit(g("event_date"),g("event_time"));if(!d&&g("event_date")){dText=g("event_date")+", "+g("event_time").replace(/\s*\(.*\)/,"")}}
+  var e2=g("event_end_time").replace(/ (\d\d:\d\d)$/,"+$1"),dauer=30;if(e2&&d){var mm=(new Date(e2)-d)/60000;if(mm>=10&&mm<=240)dauer=Math.round(mm)}
   var u=g("invitee_uuid");if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u))u="";
-  var e2=g("event_end_time").replace(/ (\d\d:\d\d)$/,"+$1"),dauer=30;if(e2&&d){var m=(new Date(e2)-d)/60000;if(m>=10&&m<=240)dauer=Math.round(m)}
   var em=g("invitee_email").toLowerCase().split("@")[1]||"",kal=g("kal");
   if(!kal&&em){kal=/(^|\.)(gmail|googlemail)\./.test("."+em+".")?"google":/(^|\.)(outlook|hotmail|live|msn|t-online|gmx|web)\./.test("."+em+".")?"outlook":""}
-  return {anrede:anrede,firma:firma,d:d,u:u,dauer:dauer,kal:kal};
+  return {anrede:mk(full,g("invitee_first_name"),g("invitee_last_name")),mk:mk,hatName:!!full,firma:firma,d:d,dText:dText,u:u,dauer:dauer,kal:kal,meet:""};
 })();
   var E=function(i){return document.getElementById(i)};
-  if(P.anrede){E("tb-gruss").textContent="Danke, "+P.anrede+".";}
-  if(P.firma){E("tb-firma").textContent=" · "+P.firma;}
-  if(P.d){
-    var tag=new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",weekday:"long",day:"numeric",month:"long"}).format(P.d);
-    var zeit=new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",hour:"2-digit",minute:"2-digit",hour12:false}).format(P.d);
-    E("tb-datum").textContent=tag+", "+zeit+" Uhr";E("tb-zeit").hidden=false;
+  function anzeigen(){
+    if(P.anrede){E("tb-gruss").textContent="Danke, "+P.anrede+".";}
+    if(P.firma){E("tb-firma").textContent=" · "+P.firma;}
+    if(P.d){var tag=new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",weekday:"long",day:"numeric",month:"long"}).format(P.d);var zeit=new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",hour:"2-digit",minute:"2-digit",hour12:false}).format(P.d);E("tb-datum").textContent=tag+", "+zeit+" Uhr";E("tb-zeit").hidden=false;}
+    else if(P.dText){E("tb-datum").textContent=P.dText;E("tb-zeit").hidden=false;}
+    kalender();
   }
 
   var W="https://cold-mail-signale.handwerksmanufaktur.workers.dev/danke";
   function spur(e){try{var b=new Blob([JSON.stringify({u:P.u||"",e:e,p:location.pathname,r:(document.referrer||"").slice(0,200)})],{type:"text/plain"});if(!(navigator.sendBeacon&&navigator.sendBeacon(W,b)))fetch(W,{method:"POST",body:b,keepalive:true,mode:"no-cors"})}catch(x){}}
   spur("geoeffnet");
+  var gebunden=false;
+  function kalender(){
+    if(!P.d)return;
+    var Z=function(n){return String(n).padStart(2,"0")},U=function(x){return x.getUTCFullYear()+Z(x.getUTCMonth()+1)+Z(x.getUTCDate())+"T"+Z(x.getUTCHours())+Z(x.getUTCMinutes())+"00Z"};
+    var ende=new Date(P.d.getTime()+(P.dauer||30)*60000),titel="Gespräch mit Noah Seelau (HandwerksManufaktur)",ort=P.meet?"Google Meet: "+P.meet:"Videogespräch (Google Meet), Link in der Einladung",info="Per Video, "+(P.meet?"Link: "+P.meet:"Link in der Kalender-Einladung")+". Noah Seelau, HandwerksManufaktur";
+    var ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//HandwerksManufaktur//Termin//DE","METHOD:PUBLISH","BEGIN:VEVENT","UID:"+(P.u||U(P.d))+"@handwerksmanufaktur.digital","DTSTAMP:"+U(new Date()),"DTSTART:"+U(P.d),"DTEND:"+U(ende),"SUMMARY:"+titel,"LOCATION:"+ort,"DESCRIPTION:"+info,"END:VEVENT","END:VCALENDAR"].join("\r\n");
+    E("kal-ics").href="data:text/calendar;charset=utf-8,"+encodeURIComponent(ics);
+    E("kal-google").href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(titel)+"&dates="+U(P.d)+"/"+U(ende)+"&details="+encodeURIComponent(info)+"&location="+encodeURIComponent(ort);
+    E("kal-outlook").href="https://outlook.live.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&subject="+encodeURIComponent(titel)+"&startdt="+encodeURIComponent(P.d.toISOString())+"&enddt="+encodeURIComponent(ende.toISOString())+"&body="+encodeURIComponent(info)+"&location="+encodeURIComponent(ort);
+    if(!gebunden){gebunden=true;["outlook","google","ics"].forEach(function(k){E("kal-"+k).addEventListener("click",function(){spur("kalender:"+k)})});}
+    var erst=E(P.kal==="google"?"kal-google":"kal-outlook");erst.className=erst.className.replace("btn-glass","").replace(" erst","")+" erst";erst.style.order="-1";
+    E("kal").hidden=false;
+  }
+  anzeigen();
   var vk=E("video-knopf");if(vk)vk.addEventListener("click",function(){E("video-hinweis").hidden=false;spur("video")});
   var vb=E("tb-verschieben");
   if(P.u){vb.href="https://calendly.com/reschedulings/"+P.u;vb.target="_blank";vb.rel="noopener";}
   else{vb.href="#tb-hinweis";vb.addEventListener("click",function(e){e.preventDefault();E("tb-hinweis").hidden=false;});}
   vb.addEventListener("click",function(){spur("verschieben")});
-  if(P.d){
-    var Z=function(n){return String(n).padStart(2,"0")},U=function(x){return x.getUTCFullYear()+Z(x.getUTCMonth()+1)+Z(x.getUTCDate())+"T"+Z(x.getUTCHours())+Z(x.getUTCMinutes())+"00Z"};
-    var ende=new Date(P.d.getTime()+(P.dauer||30)*60000),titel="Gespräch mit Noah Seelau (HandwerksManufaktur)",ort="Videogespräch (Google Meet), Link in der Einladung",info="Per Video, Link in der Kalender-Einladung. Noah Seelau, HandwerksManufaktur";
-    var ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//HandwerksManufaktur//Termin//DE","METHOD:PUBLISH","BEGIN:VEVENT","UID:"+(P.u||U(P.d))+"@handwerksmanufaktur.digital","DTSTAMP:"+U(new Date()),"DTSTART:"+U(P.d),"DTEND:"+U(ende),"SUMMARY:"+titel,"LOCATION:"+ort,"DESCRIPTION:"+info,"END:VEVENT","END:VCALENDAR"].join("\r\n");
-    E("kal-ics").href="data:text/calendar;charset=utf-8,"+encodeURIComponent(ics);
-    E("kal-google").href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(titel)+"&dates="+U(P.d)+"/"+U(ende)+"&details="+encodeURIComponent(info)+"&location="+encodeURIComponent(ort);
-    E("kal-outlook").href="https://outlook.live.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&subject="+encodeURIComponent(titel)+"&startdt="+encodeURIComponent(P.d.toISOString())+"&enddt="+encodeURIComponent(ende.toISOString())+"&body="+encodeURIComponent(info)+"&location="+encodeURIComponent(ort);
-    ["outlook","google","ics"].forEach(function(k){E("kal-"+k).addEventListener("click",function(){spur("kalender:"+k)})});
-    var erst=E(P.kal==="google"?"kal-google":"kal-outlook");erst.className=erst.className.replace("btn-glass","")+" erst";erst.style.order="-1";
-    E("kal").hidden=false;
-  }
+  /* Buchungsdaten nur mit der UUID: Name, Start, Ende, Meet aus dem Worker (nur diese Felder) — füllt auf, was Calendly im Link nicht mitgibt */
+  if(P.u&&window.fetch){fetch("https://cold-mail-signale.handwerksmanufaktur.workers.dev/danke/info?uuid="+P.u).then(function(r){return r.ok?r.json():null}).then(function(j){
+    if(!j)return;
+    if(j.start){var d=new Date(j.start);if(!isNaN(d)){P.d=d;if(j.ende){var m=(new Date(j.ende)-d)/60000;if(m>=10&&m<=240)P.dauer=Math.round(m)}}}
+    if(j.meet)P.meet=j.meet;
+    if(!P.hatName&&j.name){P.anrede=P.mk(j.name,"","")}
+    if(!P.firma&&j.firma){P.firma=String(j.firma).slice(0,70)}
+    anzeigen();
+  }).catch(function(){})}
+  /* schwebende Video-Blase */
+  var bl=E("blase");
+  if(bl){var zu=false;E("blase-x").addEventListener("click",function(){zu=true;bl.hidden=true});E("blase-go").addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});setTimeout(function(){if(vk)vk.click()},350)});
+    var pruef=function(){bl.hidden=zu||window.scrollY<700};pruef();addEventListener("scroll",pruef,{passive:true})}
 })();
 </script>
+<div class="tb-blase" id="blase" hidden><button class="x" type="button" id="blase-x" aria-label="Schließen">×</button><button class="b" type="button" id="blase-go"><img src="/assets/noah/noah-gruender-blau.webp" alt="" width="56" height="56" loading="lazy"><span>Video ansehen<small>Noah Seelau, ca. 2 Minuten</small></span></button></div>
 </body>
 </html>
